@@ -6,22 +6,53 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+// 🔥 Emotional expansion map (core of BB-BOT)
+const emotionMap: Record<string, string[]> = {
+  sad: ["sad", "heartbreak", "lonely", "loss", "miss", "pain"],
+  love: ["love", "romantic", "heart", "warm", "affection"],
+  happy: ["happy", "joy", "celebration", "smile", "bright"],
+  angry: ["angry", "rage", "fire", "fight"],
+  calm: ["calm", "soft", "peaceful", "gentle"],
+  hype: ["hype", "energy", "drive", "intense"]
+};
+
+function expandQuery(q: string): string[] {
+  const base = q.toLowerCase().split(/\s+/);
+  let expanded = new Set<string>();
+
+  base.forEach((word) => {
+    expanded.add(word);
+
+    if (emotionMap[word]) {
+      emotionMap[word].forEach((e) => expanded.add(e));
+    }
+  });
+
+  return Array.from(expanded);
+}
+
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const q = (searchParams.get("q") || "").toLowerCase().trim();
 
+    const terms = expandQuery(q);
+
+    // 🔥 build OR query across ALL expanded terms
+    const filters = terms
+      .map((t) => `title.ilike.%${t}%,description.ilike.%${t}%`)
+      .join(",");
+
     const { data, error } = await supabase
       .from("k_kuts")
       .select("*")
-      .or(`title.ilike.%${q}%,description.ilike.%${q}%`)
-      .limit(10);
+      .or(filters)
+      .limit(20);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // normalize to "moment" shape
     const moments = (data || []).map((k: any) => ({
       id: k.id,
       phrase: k.title,
@@ -33,6 +64,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({
       query: q,
+      expanded_terms: terms,
       count: moments.length,
       moments
     });
