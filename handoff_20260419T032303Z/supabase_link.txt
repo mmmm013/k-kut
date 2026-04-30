@@ -1,0 +1,8 @@
+Using workdir /Users/gregoryputnam/gputnam-music-final-site
+WARN: no SMS provider is enabled. Disabling phone login
+WARN: environment variable is unset: SUPABASE_AUTH_EXTERNAL_GITHUB_CLIENT_ID
+WARN: environment variable is unset: SUPABASE_AUTH_EXTERNAL_GITHUB_SECRET
+WARN: environment variable is unset: SUPABASE_AUTH_EXTERNAL_GITHUB_REDIRECT_URI
+Finished supabase link.
+A new version of Supabase CLI is available: v2.90.0 (currently installed v2.72.7)
+We recommend updating regularly for new features and bug fixes: https://supabase.com/docs/guides/cli/getting-started#updating-the-supabase-cli

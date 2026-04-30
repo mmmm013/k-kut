@@ -1,0 +1,17 @@
+Handoff Timestamp (UTC): 20260419T032303Z
+Project Ref: vwlzubxshjjonabpeagd
+Base Branch: main
+Feature Branch: chore/prod-handoff-k-kut
+
+Files:
+base_head_sha.txt
+db_verification.txt
+git_branch_vv.txt
+git_log_last30.txt
+git_remote_v.txt
+git_status.txt
+pr_error.txt
+repo_root.txt
+SUMMARY.txt
+supabase_link.txt
+supabase_migration_list.txt

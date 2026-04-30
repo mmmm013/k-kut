@@ -1,0 +1,38 @@
+Using workdir /Users/gregoryputnam/gputnam-music-final-site
+WARN: no SMS provider is enabled. Disabling phone login
+WARN: environment variable is unset: SUPABASE_AUTH_EXTERNAL_GITHUB_CLIENT_ID
+WARN: environment variable is unset: SUPABASE_AUTH_EXTERNAL_GITHUB_SECRET
+WARN: environment variable is unset: SUPABASE_AUTH_EXTERNAL_GITHUB_REDIRECT_URI
+Initialising login role...
+Connecting to remote database...
+
+  
+   Local          | Remote | Time (UTC)          
+  ----------------|--------|---------------------
+   20260114120000 |        | 2026-01-14 12:00:00 
+   20260114150000 |        | 2026-01-14 15:00:00 
+   20260125225953 |        | 2026-01-25 22:59:53 
+   20260206160000 |        | 2026-02-06 16:00:00 
+   20260322000001 |        | 2026-03-22 00:00:01 
+   20260322000002 |        | 2026-03-22 00:00:02 
+   20260322000003 |        | 2026-03-22 00:00:03 
+   20260322000004 |        | 2026-03-22 00:00:04 
+   20260322000005 |        | 2026-03-22 00:00:05 
+   20260322000006 |        | 2026-03-22 00:00:06 
+   20260329000001 |        | 2026-03-29 00:00:01 
+   20260401000001 |        | 2026-04-01 00:00:01 
+   20260402000001 |        | 2026-04-02 00:00:01 
+   20260402000002 |        | 2026-04-02 00:00:02 
+   20260402230500 |        | 2026-04-02 23:05:00 
+   20260403000001 |        | 2026-04-03 00:00:01 
+   20260403100000 |        | 2026-04-03 10:00:00 
+   20260405000001 |        | 2026-04-05 00:00:01 
+   20260405194000 |        | 2026-04-05 19:40:00 
+   20260408000001 |        | 2026-04-08 00:00:01 
+   20260408000002 |        | 2026-04-08 00:00:02 
+   20260409000001 |        | 2026-04-09 00:00:01 
+   20260410000001 |        | 2026-04-10 00:00:01 
+   20260410000002 |        | 2026-04-10 00:00:02 
+
+A new version of Supabase CLI is available: v2.90.0 (currently installed v2.72.7)
+We recommend updating regularly for new features and bug fixes: https://supabase.com/docs/guides/cli/getting-started#updating-the-supabase-cli
