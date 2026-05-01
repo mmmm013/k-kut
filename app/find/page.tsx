@@ -7,11 +7,9 @@ type Moment = {
   id: string;
   title?: string;
   phrase?: string;
-  phrase_type?: string;
   source_title?: string;
   description?: string;
   keenness_score?: number;
-  emotion_level?: string;
   audio_url?: string;
 };
 
@@ -38,7 +36,7 @@ export default function FindMomentPage() {
       setMoments(json.moments || []);
 
       if (!json.moments || json.moments.length === 0) {
-        setError("BB did not find a perfect match yet. Try: I miss you, support my friend, happy birthday, I am sorry.");
+        setError("BB didn’t find a perfect match — showing closest moments.");
       }
     } catch {
       setError("Network/API error. BB could not complete the moment search.");
@@ -58,7 +56,7 @@ export default function FindMomentPage() {
         <h1 className="text-4xl font-bold">Tell BB what happened.</h1>
 
         <p className="mt-4 text-[#E8CFA8] max-w-2xl">
-          BB finds real song moments for support, love, grief, celebration, apology, distance, and care.
+          More than a message — BB finds real moments that speak for you.
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -71,97 +69,92 @@ export default function FindMomentPage() {
             onKeyDown={(e) => {
               if (e.key === "Enter") search();
             }}
-            placeholder="Example: my friend is sick and I want to send support"
-            className="flex-1 p-3 rounded bg-[#120C07] border border-[#D4A017]/40 text-[#F5E6C8] placeholder:text-[#C8A882]/60"
+            placeholder="my friend is sick and I want to send support"
+            className="flex-1 p-3 rounded bg-[#120C07] border border-[#D4A017]/40 text-[#F5E6C8]"
           />
 
           <button
             onClick={search}
             disabled={loading}
-            className="px-6 py-3 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10 disabled:opacity-50"
+            className="px-6 py-3 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10"
           >
             {loading ? "BB is finding..." : "Find Feeling"}
           </button>
         </div>
 
         {error && (
-          <div className="mt-6 rounded border border-[#D4A017]/30 bg-[#24180F] p-4 text-[#E8CFA8]">
+          <div className="mt-6 border border-[#D4A017]/30 bg-[#24180F] p-4">
             {error}
           </div>
         )}
 
         <div className="mt-8 grid gap-4">
           {moments.map((m) => (
-            <div key={m.id} className="rounded border border-[#D4A017]/20 bg-[#24180F] p-5">
-              <h2 className="text-xl font-semibold text-[#D4A017]">
-                {m.phrase || m.title || "Untitled Moment"}
+            <div key={m.id} className="border border-[#D4A017]/20 bg-[#24180F] p-5 rounded">
+              <h2 className="text-xl text-[#D4A017]">
+                {m.phrase || m.title || "K-KUT Moment"}
               </h2>
 
-              <p className="mt-2 text-sm text-[#C8A882]">
+              <p className="text-sm text-[#C8A882] mt-1">
                 {m.source_title || "GPM source audio"}
               </p>
 
-              {m.description && (
-                <p className="mt-3 text-sm text-[#E8CFA8]">{m.description}</p>
+              <p className="text-sm mt-2">
+                A moment that says it for you.
+              </p>
+
+              {m.audio_url && (
+                <audio controls src={m.audio_url} className="mt-4 w-full" />
               )}
 
-              {typeof m.keenness_score !== "undefined" && (
-                <p className="mt-2 text-sm text-[#E8CFA8]">
-                  Feel score: {m.keenness_score}
-                </p>
-              )}
+              <div className="mt-4 flex gap-3 flex-wrap">
 
-              {m.audio_url && <audio controls src={m.audio_url} className="mt-4 w-full" />}
-
-              <div className="mt-4 flex flex-wrap gap-3">
+                {/* PRIMARY ACTION */}
                 <a
-                  href={`mailto:hello@gputnammusic.com?subject=K-KUT Moment Request&body=I want to request this moment: ${encodeURIComponent(m.phrase || m.title || m.id)}`}
-                  className="px-4 py-2 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10"
+                  href="mailto:?subject=This says it better than I could&body=I found something for you: https://k-kut.com/find"
+                  className="px-4 py-2 border border-[#D4A017] text-[#D4A017] rounded"
                 >
-                  Request This Moment
+                  Send This Moment
                 </a>
 
+                {/* SECONDARY */}
                 <a
-                  href="mailto:?subject=Sending you a K-KUT feeling&body=I found a song moment for you: https://k-kut.com/find"
-                  className="px-4 py-2 border border-[#D4A017]/50 text-[#E8CFA8] rounded hover:bg-[#D4A017]/10"
+                  href={`mailto:hello@gputnammusic.com?subject=Moment Request&body=${encodeURIComponent(m.title || m.id)}`}
+                  className="px-4 py-2 border border-[#D4A017]/50 text-[#E8CFA8] rounded"
                 >
-                  Share Feeling
+                  Request Variation
                 </a>
+
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-10 border border-[#D4A017]/30 rounded p-5 bg-[#24180F]">
-          <p className="text-[#E8CFA8] text-sm">
-            G Putnam Music is supporting Michael Scherer and his family.
+        {/* DONATION BLOCK */}
+        <div className="mt-10 border border-[#D4A017]/30 p-5 rounded bg-[#24180F]">
+
+          <p className="text-[#D4A017] font-semibold">
+            More than a message.
           </p>
 
-          <p className="mt-2 text-xs text-[#C8A882]">
-            Michael is facing an advanced auto-immune disorder. His wife and three girls need support.
-            100% of donations go directly to Michael Scherer.
+          <p className="mt-2">
+            Supporting Michael Scherer and his family.
           </p>
 
-          <div className="mt-4 flex gap-3 flex-wrap">
-            <a
-              href="mailto:hello@gputnammusic.com?subject=Donation for Michael Scherer&body=I want to help Michael Scherer and his family."
-              className="px-4 py-2 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10"
-            >
-              Donate / Help Michael
-            </a>
+          <p className="text-sm text-[#C8A882] mt-2">
+            100% of donations go directly to him.
+          </p>
 
+          <div className="mt-4 flex gap-3">
             <a
-              href="mailto:?subject=Help Michael Scherer&body=G Putnam Music is supporting Michael Scherer and his family. 100% of donations go directly to Michael. Visit https://k-kut.com/find"
-              className="px-4 py-2 border border-[#D4A017]/50 text-[#E8CFA8] rounded hover:bg-[#D4A017]/10"
+              href="mailto:hello@gputnammusic.com?subject=Support Michael"
+              className="px-4 py-2 border border-[#D4A017] text-[#D4A017] rounded"
             >
-              Share Campaign
+              Send Support
             </a>
           </div>
         </div>
 
-        <p className="mt-10 text-sm text-[#C8A882]">
-          Powered by 4PE PROMOTER. Final audio remains real source audio.
-        </p>
       </section>
     </main>
   );
