@@ -6,6 +6,13 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+const ACTIVE_STATUSES = new Set([
+  "active",
+  "approved",
+  "published",
+  "ready",
+]);
+
 const brain: Record<string, string[]> = {
   encourage: ["support", "strong", "strength", "hope", "believe", "keep going", "you got this", "proud", "steady", "rise"],
   sick: ["support", "healing", "hospital", "care", "comfort", "gentle", "hope", "presence", "family"],
@@ -22,6 +29,8 @@ const brain: Record<string, string[]> = {
   card: ["message", "send", "feeling", "presence", "care", "personal", "thinking of you"],
   text: ["message", "quick", "send", "feeling", "presence", "personal", "care"],
   song: ["vocal", "hook", "phrase", "section", "chorus", "voice", "melody"],
+  child: ["family", "care", "protect", "hope", "gentle", "support"],
+  friend: ["support", "care", "presence", "thinking of you", "steady"],
 };
 
 function expand(raw: string): string[] {
@@ -43,39 +52,99 @@ function expand(raw: string): string[] {
   if (q.includes("wife") || q.includes("husband")) ["love", "support", "family", "devotion"].forEach((v) => out.add(v));
   if (q.includes("can't be there") || q.includes("wish i was there")) ["presence", "distance", "support", "connection"].forEach((v) => out.add(v));
 
-  return Array.from(out).slice(0, 50);
+  return Array.from(out).map((t) => t.trim()).filter(Boolean).slice(0, 60);
 }
 
-function clean(term: string) {
-  return term.replace(/[%_,]/g, " ").trim();
-}
-
-function pickTrackUrl(track: any): string {
+function pickAudioUrl(mk: any): string {
   return (
-    track?.mp3_url ||
-    track?.audio_url ||
-    track?.public_url ||
-    track?.url ||
-    track?.source_path ||
+    mk.audio_url ||
+    mk.mp3_url ||
+    mk.clip_url ||
+    mk.public_url ||
+    mk.playback_url ||
+    mk.url ||
     ""
   );
 }
 
 function isPlayable(url: string): boolean {
-  return typeof url === "string" && /^https?:\/\//i.test(url) && /\.(mp3|wav|aiff|aif)(\?|$)/i.test(url);
+  return typeof url === "string" &&
+    /^https?:\/\//i.test(url) &&
+    /\.(mp3|wav|aiff|aif|m4a)(\?|$)/i.test(url);
 }
 
-function scoreText(text: string, terms: string[]) {
-  const hay = text.toLowerCase();
-  let score = 0;
+function isRealActiveMk(mk: any): boolean {
+  const status = String(mk.status || "").toLowerCase().trim();
+
+  if (status && !ACTIVE_STATUSES.has(status)) return false;
+
+  const title = String(mk.title || mk.phrase || mk.display_text || "").toLowerCase();
+
+  if (title.includes("test example")) return false;
+  if (title.includes("placeholder")) return false;
+  if (title.includes("dummy")) return false;
+  if (title.includes("sample only")) return false;
+
+  const audioUrl = pickAudioUrl(mk);
+  return isPlayable(audioUrl);
+}
+
+function searchableText(mk: any): string {
+  return [
+    mk.title,
+    mk.phrase,
+    mk.display_text,
+    mk.description,
+    mk.emotion_level,
+    mk.feeling,
+    mk.feeling_tag,
+    mk.theme,
+    mk.source_title,
+    mk.source_track_title,
+    mk.product_or_offer,
+    mk.phrase_type,
+    mk.tags,
+  ]
+    .filter(Boolean)
+    .map((v) => typeof v === "string" ? v : JSON.stringify(v))
+    .join(" ")
+    .toLowerCase();
+}
+
+function scoreMk(mk: any, terms: string[]): number {
+  const text = searchableText(mk);
+  let score = Number(mk.keenness_score || 0);
 
   for (const term of terms) {
     const t = term.toLowerCase();
     if (!t) continue;
-    if (hay.includes(t)) score += 10;
+
+    if (text.includes(t)) score += 10;
   }
 
+  if (text.includes("vocal")) score += 2;
+  if (text.includes("hook")) score += 2;
+  if (text.includes("support")) score += 2;
+  if (text.includes("care")) score += 2;
+
   return score;
+}
+
+function toMoment(mk: any, terms: string[]) {
+  const audioUrl = pickAudioUrl(mk);
+
+  return {
+    id: mk.id || mk.mk_id || mk.kut_id,
+    phrase: mk.display_text || mk.phrase || mk.title || "mini-KUT Moment",
+    title: mk.title || mk.display_text || mk.phrase || "mini-KUT Moment",
+    source_title: mk.source_title || mk.source_track_title || mk.pix_title || "GPMx active mK",
+    description: mk.description || "Active real-audio mini-KUT sample.",
+    keenness_score: scoreMk(mk, terms),
+    emotion_level: mk.emotion_level || mk.feeling || "",
+    phrase_type: mk.phrase_type || "mK",
+    audio_url: audioUrl,
+    object_type: "mK",
+  };
 }
 
 export async function GET(req: Request) {
@@ -84,108 +153,57 @@ export async function GET(req: Request) {
     const q = (searchParams.get("q") || "").trim();
 
     if (!q) {
-      return NextResponse.json({ query: q, expanded_terms: [], count: 0, moments: [] });
-    }
-
-    const terms = expand(q).map(clean).filter(Boolean);
-
-    const { data: tracks, error: trackError } = await supabase
-      .from("tracks")
-      .select("*")
-      .limit(500);
-
-    if (trackError) {
-      return NextResponse.json({ error: trackError.message }, { status: 500 });
-    }
-
-    const playableTracks = (tracks || [])
-      .map((t: any) => ({ ...t, playback_url: pickTrackUrl(t) }))
-      .filter((t: any) => isPlayable(t.playback_url));
-
-    if (playableTracks.length === 0) {
       return NextResponse.json({
         query: q,
-        expanded_terms: terms,
+        source: "active_mks_only",
+        expanded_terms: [],
         count: 0,
         moments: [],
-        error: "No playable audio found in public.tracks. Add mp3_url or audio_url values from Supabase Storage / tracks.",
       });
     }
 
-    const filters = terms
-      .flatMap((t) => [
-        `title.ilike.%${t}%`,
-        `description.ilike.%${t}%`,
-        `kut_title.ilike.%${t}%`,
-        `product_or_offer.ilike.%${t}%`
-      ])
-      .join(",");
+    const terms = expand(q);
 
-    let { data: kcuts, error: kError } = await supabase
-      .from("k_kuts")
+    const { data, error } = await supabase
+      .from("mks")
       .select("*")
-      .or(filters)
-      .limit(20);
+      .limit(500);
 
-    if (kError) {
-      return NextResponse.json({ error: kError.message }, { status: 500 });
+    if (error) {
+      return NextResponse.json(
+        {
+          error: error.message,
+          detail: "BB requires a public mks table/view with active real mKs and playable audio_url/mp3_url/clip_url.",
+        },
+        { status: 500 }
+      );
     }
 
-    if (!kcuts || kcuts.length === 0) {
-      const fallback = await supabase.from("k_kuts").select("*").limit(20);
-      kcuts = fallback.data || [];
+    const activePlayableMks = (data || []).filter(isRealActiveMk);
+
+    if (activePlayableMks.length === 0) {
+      return NextResponse.json({
+        query: q,
+        source: "active_mks_only",
+        expanded_terms: terms,
+        count: 0,
+        moments: [],
+        error: "No active playable mKs found. Add real active mKs with audio_url/mp3_url/clip_url before showing samples.",
+      });
     }
 
-    const trackById = new Map<string, any>();
-    for (const t of playableTracks) {
-      if (t.id) trackById.set(String(t.id), t);
-    }
+    const scored = activePlayableMks
+      .map((mk: any) => ({ mk, score: scoreMk(mk, terms) }))
+      .sort((a: any, b: any) => b.score - a.score);
 
-    const linkedMoments = (kcuts || [])
-      .map((k: any) => {
-        const track = k.track_id ? trackById.get(String(k.track_id)) : null;
-        const audioUrl = track ? track.playback_url : "";
+    const bestMatches = scored.filter((x: any) => x.score > Number(x.mk.keenness_score || 0));
+    const selected = (bestMatches.length > 0 ? bestMatches : scored).slice(0, 5);
 
-        if (!audioUrl) return null;
-
-        return {
-          id: k.kut_id || k.id,
-          phrase: k.title || k.kut_title || "K-KUT Moment",
-          title: k.title || k.kut_title || "K-KUT Moment",
-          source_title: track?.title || k.kut_title || k.title || "GPM source audio",
-          description: k.description || k.product_or_offer || "A real song moment BB selected for this feeling.",
-          keenness_score: k.keenness_score || 0,
-          emotion_level: k.emotion_level || "",
-          audio_url: audioUrl,
-        };
-      })
-      .filter(Boolean);
-
-    let moments = linkedMoments;
-
-    if (moments.length === 0) {
-      moments = playableTracks
-        .map((t: any) => {
-          const text = [t.title, t.description, t.source_path, t.mp3_url, t.audio_url].filter(Boolean).join(" ");
-          return {
-            score: scoreText(text, terms),
-            id: t.id,
-            phrase: t.title || "GPM PIX Audio Sample",
-            title: t.title || "GPM PIX Audio Sample",
-            source_title: "PIX source audio from SB/tracks",
-            description: "Playable source-audio sample. K-KUT lineage link still needs track_id assignment.",
-            keenness_score: scoreText(text, terms),
-            emotion_level: "",
-            audio_url: t.playback_url,
-          };
-        })
-        .sort((a: any, b: any) => b.score - a.score)
-        .slice(0, 5)
-        .map(({ score, ...m }: any) => m);
-    }
+    const moments = selected.map((x: any) => toMoment(x.mk, terms));
 
     return NextResponse.json({
       query: q,
+      source: "active_mks_only",
       expanded_terms: terms,
       count: moments.length,
       moments,
