@@ -6,85 +6,48 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const intentMap: Record<string, string[]> = {
-  grief: [
-    "grief", "loss", "lost", "passed", "died", "funeral", "mourning",
-    "sorry", "condolence", "comfort", "gentle", "support", "presence"
-  ],
-  distance: [
-    "miss", "missing", "far", "away", "distance", "wish i was there",
-    "thinking of you", "longing", "connection", "together"
-  ],
-  love: [
-    "love", "romantic", "heart", "warm", "tender", "care", "affection",
-    "us", "together", "forever", "intimate"
-  ],
-  apology: [
-    "sorry", "apology", "forgive", "wrong", "hurt", "repair",
-    "peace", "soft", "honest", "regret"
-  ],
-  celebration: [
-    "birthday", "anniversary", "celebrate", "party", "joy", "happy",
-    "proud", "cheer", "bright", "big moment"
-  ],
-  support: [
-    "support", "you got this", "believe", "strong", "encourage",
-    "hold on", "hope", "courage", "steady"
-  ],
-  sad: [
-    "sad", "heartbreak", "lonely", "alone", "cry", "pain",
-    "miss", "loss", "blue", "down"
-  ],
-  hype: [
-    "hype", "energy", "drive", "pump", "power", "win",
-    "go", "move", "fire", "intense"
-  ],
-  calm: [
-    "calm", "soft", "peaceful", "gentle", "quiet", "safe",
-    "breathe", "still", "rest"
-  ],
-  visual: [
-    "cinematic", "film", "scene", "visual", "trailer", "ad",
-    "montage", "memory", "slow motion", "close up"
-  ]
+const brain: Record<string, string[]> = {
+  encourage: ["support", "strong", "strength", "hope", "believe", "keep going", "you got this", "proud", "steady", "rise"],
+  sick: ["support", "healing", "get well", "hospital", "care", "comfort", "gentle", "hope", "presence", "family"],
+  grief: ["loss", "sorry", "condolence", "comfort", "gentle", "mourning", "presence", "support", "peace", "memory"],
+  sad: ["heartbreak", "lonely", "miss", "loss", "blue", "pain", "soft", "comfort", "gentle", "presence"],
+  miss: ["missing", "distance", "wish i was there", "longing", "together", "memory", "heart", "presence", "connection"],
+  love: ["romantic", "heart", "warm", "care", "tender", "intimate", "together", "forever", "devotion"],
+  apology: ["sorry", "forgive", "regret", "repair", "honest", "soft", "peace", "hurt", "reconcile"],
+  birthday: ["happy", "celebrate", "joy", "bright", "party", "gift", "special", "smile"],
+  anniversary: ["love", "memory", "together", "forever", "romantic", "gratitude", "heart"],
+  thanks: ["thank you", "gratitude", "appreciation", "honor", "kindness", "warm"],
+  proud: ["congratulations", "proud", "achievement", "win", "strong", "rise", "big moment"],
+  hustle: ["drive", "energy", "work", "grind", "power", "win", "move", "fire", "focus"],
+  card: ["message", "send", "feeling", "presence", "care", "personal", "thinking of you"],
+  text: ["message", "quick", "send", "feeling", "presence", "personal", "care"],
+  song: ["vocal", "hook", "phrase", "section", "chorus", "voice", "melody"],
 };
 
-function expandQuery(raw: string): string[] {
+function expand(raw: string): string[] {
   const q = raw.toLowerCase().trim();
   const words = q.split(/[^a-z0-9']+/).filter(Boolean);
-  const expanded = new Set<string>();
+  const out = new Set<string>();
 
-  for (const word of words) expanded.add(word);
+  for (const word of words) out.add(word);
 
-  for (const [intent, terms] of Object.entries(intentMap)) {
-    if (
-      q.includes(intent) ||
-      terms.some((term) => q.includes(term))
-    ) {
-      expanded.add(intent);
-      terms.forEach((term) => expanded.add(term));
+  for (const [key, values] of Object.entries(brain)) {
+    if (q.includes(key) || values.some((v) => q.includes(v))) {
+      out.add(key);
+      values.forEach((v) => out.add(v));
     }
   }
 
-  // Presence doctrine: people send moments because they cannot be there.
-  if (
-    q.includes("card") ||
-    q.includes("emoji") ||
-    q.includes("text") ||
-    q.includes("bitmoji") ||
-    q.includes("wish i was there") ||
-    q.includes("thinking of you")
-  ) {
-    ["presence", "connection", "support", "warm", "personal", "felt"].forEach((t) =>
-      expanded.add(t)
-    );
-  }
+  if (q.includes("friend")) ["support", "care", "presence", "thinking of you"].forEach((v) => out.add(v));
+  if (q.includes("wife") || q.includes("husband")) ["love", "support", "family", "devotion"].forEach((v) => out.add(v));
+  if (q.includes("daughter") || q.includes("girls") || q.includes("kids")) ["family", "care", "protect", "hope"].forEach((v) => out.add(v));
+  if (q.includes("can't be there") || q.includes("wish i was there")) ["presence", "distance", "support", "connection"].forEach((v) => out.add(v));
 
-  return Array.from(expanded).slice(0, 40);
+  return Array.from(out).slice(0, 50);
 }
 
-function safeIlike(term: string) {
-  return term.replace(/[%_,]/g, " ");
+function clean(term: string) {
+  return term.replace(/[%_,]/g, " ").trim();
 }
 
 export async function GET(req: Request) {
@@ -93,15 +56,10 @@ export async function GET(req: Request) {
     const q = (searchParams.get("q") || "").trim();
 
     if (!q) {
-      return NextResponse.json({
-        query: q,
-        expanded_terms: [],
-        count: 0,
-        moments: []
-      });
+      return NextResponse.json({ query: q, expanded_terms: [], count: 0, moments: [] });
     }
 
-    const terms = expandQuery(q).map(safeIlike);
+    const terms = expand(q).map(clean).filter(Boolean);
 
     const filters = terms
       .flatMap((t) => [
@@ -112,22 +70,32 @@ export async function GET(req: Request) {
       ])
       .join(",");
 
-    const { data, error } = await supabase
+    let { data, error } = await supabase
       .from("k_kuts")
       .select("*")
       .or(filters)
       .limit(20);
+
+    if (!error && (!data || data.length === 0)) {
+      const fallback = await supabase
+        .from("k_kuts")
+        .select("*")
+        .limit(20);
+
+      data = fallback.data;
+      error = fallback.error;
+    }
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
     const moments = (data || []).map((k: any) => ({
-      id: k.id,
-      phrase: k.title || k.kut_title || "Untitled Moment",
-      title: k.title || k.kut_title || "Untitled Moment",
+      id: k.kut_id || k.id,
+      phrase: k.title || k.kut_title || "K-KUT Moment",
+      title: k.title || k.kut_title || "K-KUT Moment",
       source_title: k.kut_title || k.title || "GPM source audio",
-      description: k.description || k.product_or_offer || "",
+      description: k.description || k.product_or_offer || "A real song moment BB selected for this feeling.",
       keenness_score: k.keenness_score || 0,
       emotion_level: k.emotion_level || "",
       audio_url: k.audio_url || ""
@@ -140,9 +108,6 @@ export async function GET(req: Request) {
       moments
     });
   } catch (err) {
-    return NextResponse.json(
-      { error: "Server error", detail: String(err) },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Server error", detail: String(err) }, { status: 500 });
   }
 }
