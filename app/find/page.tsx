@@ -13,6 +13,16 @@ type Moment = {
   audio_url?: string;
 };
 
+const PAY_LINKS = {
+  mK: "https://buy.stripe.com/3cI28q48e2oa0Pq4xg4ow0i",
+  KK: "https://buy.stripe.com/4gMaEW9sye6Scy8d3M4ow0j",
+  KPD: "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+  VOCAL_NOTE: "https://buy.stripe.com/aFabJ0bAG0g27dO1l44ow0l",
+  HUG: "https://buy.stripe.com/28EfZgdIO7Iuaq03tc4ow0m",
+  PRODUCTION: "https://buy.stripe.com/14A9AScEKfaWcy8aVE4ow0n",
+  MS_DONATION: "https://buy.stripe.com/6oUcN47kq8Mybu43tc4ow0g",
+};
+
 export default function FindMomentPage() {
   const [q, setQ] = useState("Tell BB what happened...");
   const [moments, setMoments] = useState<Moment[]>([]);
@@ -36,33 +46,12 @@ export default function FindMomentPage() {
       setMoments(json.moments || []);
 
       if (!json.moments || json.moments.length === 0) {
-        setError("BB didn’t find a perfect match — showing closest moments.");
+        setError("BB didn’t find a perfect match yet. Try: encouragement, love, apology, thanks, grief, birthday, support.");
       }
     } catch {
       setError("Network/API error. BB could not complete the moment search.");
     } finally {
       setLoading(false);
-    }
-  }
-
-  async function donate(amount: number) {
-    try {
-      const res = await fetch("/api/donate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount }),
-      });
-
-      const json = await res.json();
-
-      if (!res.ok || !json.url) {
-        alert(json.error || "Donation checkout failed.");
-        return;
-      }
-
-      window.location.href = json.url;
-    } catch {
-      alert("Donation checkout could not start.");
     }
   }
 
@@ -73,14 +62,15 @@ export default function FindMomentPage() {
         <Link href="/supe" className="text-[#D4A017]">SUPE Specialties</Link>
       </header>
 
-      <section className="mx-auto max-w-4xl px-6 py-14">
+      <section className="mx-auto max-w-5xl px-6 py-14">
         <h1 className="text-4xl font-bold">Tell BB what happened.</h1>
 
-        <p className="mt-4 text-[#E8CFA8] max-w-2xl">
-          More than a message — BB finds real moments that speak for you.
+        <p className="mt-4 max-w-2xl text-[#E8CFA8]">
+          More than a message — BB finds real song moments for support, love, grief,
+          celebration, apology, distance, and care.
         </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -91,13 +81,13 @@ export default function FindMomentPage() {
               if (e.key === "Enter") search();
             }}
             placeholder="my friend is sick and I want to send support"
-            className="flex-1 p-3 rounded bg-[#120C07] border border-[#D4A017]/40 text-[#F5E6C8] placeholder:text-[#C8A882]/60"
+            className="flex-1 rounded border border-[#D4A017]/40 bg-[#120C07] p-3 text-[#F5E6C8] placeholder:text-[#C8A882]/60"
           />
 
           <button
             onClick={search}
             disabled={loading}
-            className="px-6 py-3 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10 disabled:opacity-50"
+            className="rounded border border-[#D4A017] px-6 py-3 text-[#D4A017] hover:bg-[#D4A017]/10 disabled:opacity-50"
           >
             {loading ? "BB is finding..." : "Find Feeling"}
           </button>
@@ -121,7 +111,7 @@ export default function FindMomentPage() {
               </p>
 
               <p className="mt-2 text-sm text-[#E8CFA8]">
-                A moment that says it for you.
+                A real-audio moment that says it for you.
               </p>
 
               {m.description && (
@@ -138,19 +128,58 @@ export default function FindMomentPage() {
                 <audio controls src={m.audio_url} className="mt-4 w-full" />
               )}
 
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <a
-                  href="mailto:?subject=This says it better than I could&body=I found something for you: https://k-kut.com/find"
-                  className="px-4 py-2 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10"
+                  href={PAY_LINKS.mK}
+                  className="rounded border border-[#D4A017] px-4 py-2 text-center text-[#D4A017] hover:bg-[#D4A017]/10"
                 >
-                  Send This Moment
+                  Buy mK — $2.79
                 </a>
 
                 <a
-                  href={`mailto:hello@gputnammusic.com?subject=Moment Request&body=${encodeURIComponent(m.phrase || m.title || m.id)}`}
-                  className="px-4 py-2 border border-[#D4A017]/50 text-[#E8CFA8] rounded hover:bg-[#D4A017]/10"
+                  href={PAY_LINKS.KK}
+                  className="rounded border border-[#D4A017] px-4 py-2 text-center text-[#D4A017] hover:bg-[#D4A017]/10"
                 >
-                  Request Variation
+                  Buy KK — $14.99
+                </a>
+
+                <a
+                  href={PAY_LINKS.KPD}
+                  className="rounded border border-[#D4A017] px-4 py-2 text-center text-[#D4A017] hover:bg-[#D4A017]/10"
+                >
+                  Buy KPD — $49
+                </a>
+
+                <a
+                  href={PAY_LINKS.VOCAL_NOTE}
+                  className="rounded border border-[#D4A017]/50 px-4 py-2 text-center text-[#E8CFA8] hover:bg-[#D4A017]/10"
+                >
+                  Add Vocal Note
+                </a>
+              </div>
+
+              <div className="mt-3 flex flex-wrap gap-3">
+                <a
+                  href={PAY_LINKS.HUG}
+                  className="rounded border border-[#D4A017]/50 px-4 py-2 text-[#E8CFA8] hover:bg-[#D4A017]/10"
+                >
+                  Send as HUG — $9.99
+                </a>
+
+                <a
+                  href={PAY_LINKS.PRODUCTION}
+                  className="rounded border border-[#D4A017]/50 px-4 py-2 text-[#E8CFA8] hover:bg-[#D4A017]/10"
+                >
+                  Production Use Deposit
+                </a>
+
+                <a
+                  href={`mailto:hello@gputnammusic.com?subject=Moment Request&body=${encodeURIComponent(
+                    `I want help with this K-KUT moment: ${m.phrase || m.title || m.id}`
+                  )}`}
+                  className="rounded border border-[#D4A017]/30 px-4 py-2 text-[#C8A882] hover:bg-[#D4A017]/10"
+                >
+                  Ask GPM
                 </a>
               </div>
             </div>
@@ -158,39 +187,60 @@ export default function FindMomentPage() {
         </div>
 
         <div className="mt-10 rounded border border-[#D4A017]/30 bg-[#24180F] p-5">
-          <p className="text-[#D4A017] font-semibold">More than a message.</p>
+          <p className="font-semibold text-[#D4A017]">K-KUT Product Ladder</p>
 
-          <p className="mt-2 text-[#E8CFA8]">
-            Supporting Michael Scherer and his family.
+          <p className="mt-2 text-sm text-[#E8CFA8]">
+            Start small, send feeling, add voice, or request production use.
+          </p>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <a href={PAY_LINKS.mK} className="rounded border border-[#D4A017]/40 p-4 hover:bg-[#D4A017]/10">
+              <span className="block font-semibold text-[#D4A017]">mK — $2.79</span>
+              <span className="mt-1 block text-sm text-[#C8A882]">A tiny phrase, word, sigh, or emotional hit.</span>
+            </a>
+
+            <a href={PAY_LINKS.KK} className="rounded border border-[#D4A017]/40 p-4 hover:bg-[#D4A017]/10">
+              <span className="block font-semibold text-[#D4A017]">KK — $14.99</span>
+              <span className="mt-1 block text-sm text-[#C8A882]">A regular K-KUT emotional moment.</span>
+            </a>
+
+            <a href={PAY_LINKS.KPD} className="rounded border border-[#D4A017]/40 p-4 hover:bg-[#D4A017]/10">
+              <span className="block font-semibold text-[#D4A017]">KPD — $49</span>
+              <span className="mt-1 block text-sm text-[#C8A882]">A bold production-grade moment.</span>
+            </a>
+
+            <a href={PAY_LINKS.VOCAL_NOTE} className="rounded border border-[#D4A017]/40 p-4 hover:bg-[#D4A017]/10">
+              <span className="block font-semibold text-[#D4A017]">Add Vocal Note — $24.99</span>
+              <span className="mt-1 block text-sm text-[#C8A882]">Add a custom note or directed message layer.</span>
+            </a>
+
+            <a href={PAY_LINKS.HUG} className="rounded border border-[#D4A017]/40 p-4 hover:bg-[#D4A017]/10">
+              <span className="block font-semibold text-[#D4A017]">HUG — $9.99</span>
+              <span className="mt-1 block text-sm text-[#C8A882]">A sendable real-audio feeling object.</span>
+            </a>
+
+            <a href={PAY_LINKS.PRODUCTION} className="rounded border border-[#D4A017]/40 p-4 hover:bg-[#D4A017]/10">
+              <span className="block font-semibold text-[#D4A017]">Production Deposit — $99</span>
+              <span className="mt-1 block text-sm text-[#C8A882]">For supervisor, licensing, or custom production review.</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-10 rounded border border-[#D4A017]/30 bg-[#24180F] p-5">
+          <p className="font-semibold text-[#D4A017]">
+            Support Michael Scherer and his family
           </p>
 
           <p className="mt-2 text-sm text-[#C8A882]">
-            Michael is facing an advanced auto-immune disorder. His wife and three girls need support.
-            100% of marked MS Donation funds are forwarded to Michael Scherer.
+            Personal support for Michael Scherer and his family. G Putnam Music promotes this support effort.
           </p>
 
-          <p className="mt-2 text-xs text-[#C8A882]">
-            Receipt/thanks confirmation provided by G Putnam Music. This is not a tax-deductible charitable receipt unless separately processed by a qualified nonprofit.
-          </p>
-
-          <div className="mt-4 flex flex-wrap gap-3">
-            {[5, 15, 25, 50].map((amount) => (
-              <button
-                key={amount}
-                onClick={() => donate(amount)}
-                className="px-4 py-2 border border-[#D4A017] text-[#D4A017] rounded hover:bg-[#D4A017]/10"
-              >
-                Donate ${amount}
-              </button>
-            ))}
-
-            <a
-              href="mailto:?subject=Help Michael Scherer&body=G Putnam Music is supporting Michael Scherer and his family. 100% of marked MS Donation funds are forwarded to Michael. Visit https://k-kut.com/find"
-              className="px-4 py-2 border border-[#D4A017]/50 text-[#E8CFA8] rounded hover:bg-[#D4A017]/10"
-            >
-              Share This
-            </a>
-          </div>
+          <a
+            href={PAY_LINKS.MS_DONATION}
+            className="mt-4 inline-block rounded border border-[#D4A017] px-4 py-2 text-[#D4A017] hover:bg-[#D4A017]/10"
+          >
+            MS Donation — $25
+          </a>
         </div>
 
         <p className="mt-10 text-sm text-[#C8A882]">
