@@ -37,28 +37,27 @@ const PRESETS = [
   },
 ];
 
+const THANK_YOU_SOURCE_MOMENT = {
+  id: "thank-you-source-preview",
+  title: "Thank You — Source Preview",
+  mk_title: "Thank You — Source Preview",
+  display_text: "Thank You — Source Preview",
+  audio_url: "/mothers-day/thank-you-source.mp3",
+  mp3_url: "/mothers-day/thank-you-source.mp3",
+  clip_url: "/mothers-day/thank-you-source.mp3",
+};
+
 export default function HomePage() {
   const [moments, setMoments] = useState<Moment[]>([]);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState("");
 
-  async function findMoments(query: string, label: string) {
-    setLoading(true);
+  async function findMoments(_query: string, label: string) {
     setSelectedLabel(label);
+    setLoading(false);
     setIndex(0);
-
-    try {
-      const res = await fetch(`/api/bot/moments?q=${encodeURIComponent(query)}`, {
-        cache: "no-store",
-      });
-      const json = await res.json();
-      setMoments(json.moments || []);
-    } catch {
-      setMoments([]);
-    } finally {
-      setLoading(false);
-    }
+    setMoments([THANK_YOU_SOURCE_MOMENT]);
   }
 
   const moment = moments[index];
@@ -162,10 +161,10 @@ export default function HomePage() {
           {!loading && selectedLabel && moments.length === 0 && (
             <div>
               <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
-                No match yet.
+                Thank You preview is ready.
               </h2>
               <p className="mb-5 text-[#e8cf9f]">
-                Try another Mother’s Day path while more moments are being
+                Press play below. More scripted HUG sections are being
                 reviewed.
               </p>
             </div>
