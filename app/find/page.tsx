@@ -125,6 +125,9 @@ export default function HomePage() {
           >
             ❤️ Order Mother’s Day HUG — $9.99
           </a>
+          <p className="mt-4 text-sm leading-relaxed text-[#b99759]">
+            One K-KUT per purchase per day. You may send more than one HUG, but each HUG must be a separate purchase so each gift honors one title, one song, and one recipient moment.
+          </p>
         </div>
 
 
