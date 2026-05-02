@@ -50,14 +50,6 @@ function expandedTermsFor(q: string) {
       "mom",
       "mama",
       "thank you",
-      "BELIEVE IN LOVE",
-      "LOVE RENEWS",
-      "love",
-      "care",
-      "home",
-      "heart",
-      "family",
-      "gentle",
     ];
   }
 
@@ -78,13 +70,50 @@ function expandedTermsFor(q: string) {
   );
 }
 
-async function fetchByTitleTerm(term: string, limit: number) {
+async function fetchThankYouOnly(limit: number) {
   const { data, error } = await supabase
     .from("k_kuts")
     .select(
       "kut_id,kut_title,product_or_offer,status_ok_or_broken,capture_start_sec,capture_end_sec,delivered_url_or_path"
     )
-    .eq("product_or_offer", "mK")
+    .eq("status_ok_or_broken", "active")
+    .not("delivered_url_or_path", "is", null)
+    .ilike("kut_title", "%THANK%")
+    .order("capture_start_sec", { ascending: true })
+    .limit(limit);
+
+  if (error) {
+    throw error;
+  }
+
+  return ((data || []) as KutRow[]).filter((row) => {
+    const title = (row.kut_title || "").toUpperCase();
+
+    const isThankYou =
+      title.includes("THANK YOU") ||
+      title.includes("THANK-YOU") ||
+      title.includes("THANKYOU") ||
+      title.includes("THANKS MOM") ||
+      title.includes("THANK MOM");
+
+    const isAllowedHolidayProduct =
+      row.product_or_offer !== "mK" ||
+      title.includes("VERSE") ||
+      title.includes("CHORUS") ||
+      title.includes("OUTRO") ||
+      title.includes("BITE") ||
+      title.includes("SCRIPT");
+
+    return isThankYou && isAllowedHolidayProduct;
+  });
+}
+
+async function fetchStandardSearch(term: string, limit: number) {
+  const { data, error } = await supabase
+    .from("k_kuts")
+    .select(
+      "kut_id,kut_title,product_or_offer,status_ok_or_broken,capture_start_sec,capture_end_sec,delivered_url_or_path"
+    )
     .eq("status_ok_or_broken", "active")
     .not("delivered_url_or_path", "is", null)
     .ilike("kut_title", `%${term}%`)
@@ -126,16 +155,34 @@ function cleanDisplayTitle(raw: string | null) {
     .trim();
 }
 
-function toMoment(r: KutRow) {
-  const displayTitle = cleanDisplayTitle(r.kut_title);
+function scriptedMotherDisplayTitle(row: KutRow) {
+  const title = cleanDisplayTitle(row.kut_title);
+  const upper = title.toUpperCase();
+
+  if (upper.includes("CHORUS 3")) return "Thank You — Chorus 3";
+  if (upper.includes("OUTRO")) return "Thank You — Outro";
+  if (upper.includes("VERSE 1")) return "Thank You — Verse 1";
+  if (upper.includes("VERSE 2")) return "Thank You — Verse 2";
+  if (upper.includes("BITE")) return "Thank You — Bite-size Chunk";
+
+  return title
+    .replace(/THANKS/gi, "Thank You")
+    .replace(/THANKYOU/gi, "Thank You")
+    .replace(/THANK-YOU/gi, "Thank You");
+}
+
+function toMoment(r: KutRow, holidayMode = false) {
+  const displayTitle = holidayMode
+    ? scriptedMotherDisplayTitle(r)
+    : cleanDisplayTitle(r.kut_title);
 
   return {
     id: r.kut_id,
     title: displayTitle,
     mk_title: displayTitle,
     display_text: displayTitle || "A real-audio moment.",
-    role: "mK",
-    type: "mK",
+    role: r.product_or_offer || "K-KUT",
+    type: r.product_or_offer || "K-KUT",
     start_ms:
       typeof r.capture_start_sec === "number"
         ? r.capture_start_sec * 1000
@@ -156,8 +203,7 @@ export async function GET(req: Request) {
     return NextResponse.json(
       {
         query: "",
-        source: "public.k_kuts_active_mks_delivered_url_or_path",
-        expanded_terms: [],
+        source: "public.k_kuts_active_delivered_url_or_path",
         count: 0,
         moments: [],
         error:
@@ -170,57 +216,53 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const q = searchParams.get("q") || "";
   const expanded = expandedTermsFor(q);
+  const holidayMode = isMotherSearch(q);
 
   try {
     const rows: KutRow[] = [];
 
-    if (isMotherSearch(q)) {
-      const priorityTerms = [
-        "THANK YOU",
-        "BELIEVE IN LOVE",
-        "LOVE RENEWS",
-      ];
-
-      for (const term of priorityTerms) {
-        rows.push(...(await fetchByTitleTerm(term, 12)));
-      }
-
-      const fallbackTerms = ["mother", "mom", "mama", "love", "family", "heart"];
-      for (const term of fallbackTerms) {
-        rows.push(...(await fetchByTitleTerm(term, 8)));
-      }
+    if (holidayMode) {
+      rows.push(...(await fetchThankYouOnly(40)));
     } else {
       for (const term of expanded) {
-        rows.push(...(await fetchByTitleTerm(term, 8)));
+        rows.push(...(await fetchStandardSearch(term, 8)));
       }
     }
 
-    const moments = dedupeRows(rows).slice(0, 8).map(toMoment);
+    const moments = dedupeRows(rows).slice(0, 8).map((row) => toMoment(row, holidayMode));
 
     return NextResponse.json({
       query: q,
-      source: "public.k_kuts_active_mks_delivered_url_or_path",
-      display_cleanup: "artist-prefix-v2",
-      priority:
-        isMotherSearch(q)
-          ? [
-              "THANK YOU",
-              "BELIEVE IN LOVE",
-              "LOVE RENEWS",
-              "fallback mother/mom/love/family",
-            ]
-          : ["query terms", "fallback emotional terms"],
+      source: "public.k_kuts_active_delivered_url_or_path",
+      display_cleanup: "artist-prefix-v3",
+      holiday_product_rule: holidayMode
+        ? "Mother’s Day defaults to scripted Thank You inventory only. No generic mKs, no Believe in Love default, no Love Renews default."
+        : "Standard search may include available products.",
       expanded_terms: expanded,
+      priority: holidayMode
+        ? [
+            "THANK YOU scripted inventory only",
+            "Verse 1",
+            "Verse 2",
+            "Chorus 3",
+            "Outro",
+            "Bite-size chunks",
+          ]
+        : ["query terms", "fallback emotional terms"],
       count: moments.length,
       moments,
-      error: moments.length ? null : "No matching active playable mKs found.",
+      error: moments.length
+        ? null
+        : holidayMode
+          ? "Mother’s Day Thank You scripted inventory is not loaded yet."
+          : "No matching active playable K-KUT products found.",
     });
   } catch (error: any) {
     return NextResponse.json(
       {
         query: q,
-        source: "public.k_kuts_active_mks_delivered_url_or_path",
-        display_cleanup: "artist-prefix-v2",
+        source: "public.k_kuts_active_delivered_url_or_path",
+        display_cleanup: "artist-prefix-v3",
         expanded_terms: expanded,
         count: 0,
         moments: [],
