@@ -1,0 +1,48 @@
+{
+  "promo_id": "mothers-day",
+  "status": "active",
+  "holiday_name": "Mother’s Day",
+  "public_offer_name": "Mother’s Day GPM HUG",
+  "default_source_title": "Thank You",
+  "default_behavior": "scripted_source_only",
+  "fallback_policy": "do_not_show_backup_inventory",
+  "customer_rule": "Do not show generic mKs. Do not default to Believe in Love. Do not default to Love Renews. Do not show artist names. If Thank You scripted inventory is not loaded, return an inventory-prep message instead of showing the wrong product.",
+  "allowed_units": [
+    "mVerse",
+    "contiguous Chorus",
+    "Verse 1",
+    "Verse 2",
+    "Chorus 3",
+    "Outro",
+    "admin-scripted bite-size HUG"
+  ],
+  "blocked_defaults": [
+    "generic mK",
+    "Believe in Love",
+    "Love Renews",
+    "artist-name display titles",
+    "raw storage filenames",
+    "raw source_path",
+    "raw import titles"
+  ],
+  "display_titles": {
+    "mVerse": "Thank You — mVerse",
+    "contiguous_chorus": "Thank You — Contiguous Chorus",
+    "verse_1": "Thank You — Verse 1",
+    "verse_2": "Thank You — Verse 2",
+    "chorus_3": "Thank You — Chorus 3",
+    "outro": "Thank You — Outro",
+    "bite_size_hug": "Thank You — Bite-size HUG"
+  },
+  "hero_copy": {
+    "headline": "FIND THE RIGHT WORDS!",
+    "subhead": "Be there when you can’t.",
+    "offer_line": "Send Mom something she has never, ever received: a GPM HUG for Mother’s Day.",
+    "footer_note": "Mother’s Day HUGs are curated K-KUT gifts. No generic mini-KUTs are shown in this holiday flow. Thank You inventory is being scripted for Verse 1, Verse 2, Chorus 3, Outro, and bite-size HUG options."
+  },
+  "payment": {
+    "hug_price": "$9.99",
+    "hug_label": "Send this to Mom — $9.99"
+  },
+  "admin_script_required": true
+}
