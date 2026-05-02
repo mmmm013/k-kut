@@ -1,28 +1,30 @@
-/**
- * scripts/check-env.mjs
- *
- * Runs before `next build` (via the `prebuild` npm script).
- * Fails fast with a clear error if required environment variables are missing.
- * Never prints secret values — only reports which names are absent.
- */
+import fs from "fs";
+import path from "path";
+import dotenv from "dotenv";
+
+const envLocalPath = path.join(process.cwd(), ".env.local");
+
+if (fs.existsSync(envLocalPath)) {
+  dotenv.config({ path: envLocalPath });
+}
 
 const REQUIRED = [
-  'NEXT_PUBLIC_SUPABASE_URL',
-  'NEXT_PUBLIC_SUPABASE_ANON_KEY',
+  "NEXT_PUBLIC_SUPABASE_URL",
+  "NEXT_PUBLIC_SUPABASE_ANON_KEY",
 ];
 
 const missing = REQUIRED.filter((key) => !process.env[key]);
 
 if (missing.length > 0) {
-  console.error('\n❌ Missing required environment variables:\n');
+  console.error("\n❌ Missing required environment variables:\n");
   for (const key of missing) {
     console.error(`   • ${key}`);
   }
   console.error(
-    '\nSet these in Vercel: Project → Settings → Environment Variables' +
-    '\nFor local dev: copy .env.example → .env.local and fill in real values.\n'
+    "\nLocal dev: .env.local is loaded automatically by scripts/check-env.mjs." +
+    "\nVercel: Project → Settings → Environment Variables must include these keys.\n"
   );
   process.exit(1);
 }
 
-console.log('✅ Required environment variables are present.');
+console.log("✅ Required environment variables are present.");
