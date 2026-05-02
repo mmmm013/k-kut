@@ -115,8 +115,12 @@ function dedupeRows(rows: KutRow[]) {
 function cleanDisplayTitle(raw: string | null) {
   const original = raw || "K-KUT Moment";
 
-  return original
-    .replace(/^\s*\d+\s*-\s*.*?\s*-\s*/u, "")
+  const withoutNumberArtistPrefix = original.replace(
+    /^\s*\d+\s*-\s*[^-]+\s*-\s*/u,
+    ""
+  );
+
+  return withoutNumberArtistPrefix
     .replace(/\s+/g, " ")
     .replace(/\s+—\s+/g, " — ")
     .trim();
@@ -196,6 +200,7 @@ export async function GET(req: Request) {
     return NextResponse.json({
       query: q,
       source: "public.k_kuts_active_mks_delivered_url_or_path",
+      display_cleanup: "artist-prefix-v2",
       priority:
         isMotherSearch(q)
           ? [
@@ -215,6 +220,7 @@ export async function GET(req: Request) {
       {
         query: q,
         source: "public.k_kuts_active_mks_delivered_url_or_path",
+        display_cleanup: "artist-prefix-v2",
         expanded_terms: expanded,
         count: 0,
         moments: [],
