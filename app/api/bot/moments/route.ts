@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import mothersDayPromo from "@/promos/mothers-day.json";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,18 @@ type KutRow = {
   capture_end_sec: number | null;
   delivered_url_or_path: string | null;
 };
+
+type PromoConfig = {
+  promo_id: string;
+  holiday_name: string;
+  default_source_title: string;
+  fallback_policy: string;
+  customer_rule: string;
+  allowed_units: string[];
+  display_titles: Record<string, string>;
+};
+
+const promo = mothersDayPromo as PromoConfig;
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseKey =
@@ -45,12 +58,7 @@ function expandedTermsFor(q: string) {
   const n = normalize(q);
 
   if (isMotherSearch(n)) {
-    return [
-      "mother",
-      "mom",
-      "mama",
-      "thank you",
-    ];
+    return ["mother", "mom", "mama", promo.default_source_title.toLowerCase()];
   }
 
   if (!n) {
@@ -58,19 +66,13 @@ function expandedTermsFor(q: string) {
   }
 
   return Array.from(
-    new Set([
-      q,
-      n,
-      "love",
-      "heart",
-      "feeling",
-      "home",
-      "care",
-    ])
+    new Set([q, n, "love", "heart", "feeling", "home", "care"])
   );
 }
 
-async function fetchThankYouOnly(limit: number) {
+async function fetchHolidaySourceOnly(limit: number) {
+  const sourceTitle = promo.default_source_title.toUpperCase();
+
   const { data, error } = await supabase
     .from("k_kuts")
     .select(
@@ -78,7 +80,7 @@ async function fetchThankYouOnly(limit: number) {
     )
     .eq("status_ok_or_broken", "active")
     .not("delivered_url_or_path", "is", null)
-    .ilike("kut_title", "%THANK%")
+    .ilike("kut_title", `%${promo.default_source_title}%`)
     .order("capture_start_sec", { ascending: true })
     .limit(limit);
 
@@ -89,15 +91,12 @@ async function fetchThankYouOnly(limit: number) {
   return ((data || []) as KutRow[]).filter((row) => {
     const title = (row.kut_title || "").toUpperCase();
 
-    const isThankYou =
-      title.includes("THANK YOU") ||
-      title.includes("THANK-YOU") ||
-      title.includes("THANKYOU") ||
-      title.includes("THANKS MOM") ||
-      title.includes("THANK MOM");
+    const isDefaultSource =
+      title.includes(sourceTitle) ||
+      title.includes(sourceTitle.replace(/\s+/g, "")) ||
+      title.includes(sourceTitle.replace(/\s+/g, "-"));
 
-    const isAllowedHolidayProduct =
-      row.product_or_offer !== "mK" ||
+    const isAllowedScriptedUnit =
       title.includes("MVERSE") ||
       title.includes("VERSE") ||
       title.includes("CONTIGUOUS CHORUS") ||
@@ -106,7 +105,10 @@ async function fetchThankYouOnly(limit: number) {
       title.includes("BITE") ||
       title.includes("SCRIPT");
 
-    return isThankYou && isAllowedHolidayProduct;
+    const isAllowedHolidayProduct =
+      row.product_or_offer !== "mK" || isAllowedScriptedUnit;
+
+    return isDefaultSource && isAllowedHolidayProduct;
   });
 }
 
@@ -157,27 +159,29 @@ function cleanDisplayTitle(raw: string | null) {
     .trim();
 }
 
-function scriptedMotherDisplayTitle(row: KutRow) {
+function scriptedHolidayDisplayTitle(row: KutRow) {
   const title = cleanDisplayTitle(row.kut_title);
   const upper = title.toUpperCase();
 
-  if (upper.includes("MVERSE")) return "Thank You — mVerse";
-  if (upper.includes("CONTIGUOUS CHORUS")) return "Thank You — Contiguous Chorus";
-  if (upper.includes("CHORUS 3")) return "Thank You — Chorus 3";
-  if (upper.includes("OUTRO")) return "Thank You — Outro";
-  if (upper.includes("VERSE 1")) return "Thank You — Verse 1";
-  if (upper.includes("VERSE 2")) return "Thank You — Verse 2";
-  if (upper.includes("BITE")) return "Thank You — Bite-size HUG";
+  if (upper.includes("MVERSE")) return promo.display_titles.mVerse;
+  if (upper.includes("CONTIGUOUS CHORUS")) {
+    return promo.display_titles.contiguous_chorus;
+  }
+  if (upper.includes("CHORUS 3")) return promo.display_titles.chorus_3;
+  if (upper.includes("OUTRO")) return promo.display_titles.outro;
+  if (upper.includes("VERSE 1")) return promo.display_titles.verse_1;
+  if (upper.includes("VERSE 2")) return promo.display_titles.verse_2;
+  if (upper.includes("BITE")) return promo.display_titles.bite_size_hug;
 
   return title
-    .replace(/THANKS/gi, "Thank You")
-    .replace(/THANKYOU/gi, "Thank You")
-    .replace(/THANK-YOU/gi, "Thank You");
+    .replace(/THANKS/gi, promo.default_source_title)
+    .replace(/THANKYOU/gi, promo.default_source_title)
+    .replace(/THANK-YOU/gi, promo.default_source_title);
 }
 
 function toMoment(r: KutRow, holidayMode = false) {
   const displayTitle = holidayMode
-    ? scriptedMotherDisplayTitle(r)
+    ? scriptedHolidayDisplayTitle(r)
     : cleanDisplayTitle(r.kut_title);
 
   return {
@@ -226,33 +230,32 @@ export async function GET(req: Request) {
     const rows: KutRow[] = [];
 
     if (holidayMode) {
-      rows.push(...(await fetchThankYouOnly(40)));
+      rows.push(...(await fetchHolidaySourceOnly(40)));
     } else {
       for (const term of expanded) {
         rows.push(...(await fetchStandardSearch(term, 8)));
       }
     }
 
-    const moments = dedupeRows(rows).slice(0, 8).map((row) => toMoment(row, holidayMode));
+    const moments = dedupeRows(rows)
+      .slice(0, 8)
+      .map((row) => toMoment(row, holidayMode));
 
     return NextResponse.json({
       query: q,
       source: "public.k_kuts_active_delivered_url_or_path",
-      display_cleanup: "artist-prefix-v3",
+      promo_id: holidayMode ? promo.promo_id : null,
+      promo_config_source: holidayMode ? "promos/mothers-day.json" : null,
+      display_cleanup: "artist-prefix-v4-config",
       holiday_product_rule: holidayMode
-        ? "Mother’s Day defaults to scripted Thank You inventory only. Allowed units: mVerse, contiguous Chorus, Verse 1, Verse 2, Chorus 3, Outro, and admin-scripted bite-size HUGs. No generic mKs, no Believe in Love default, no Love Renews default."
+        ? promo.customer_rule
         : "Standard search may include available products.",
+      fallback_policy: holidayMode ? promo.fallback_policy : "standard_search",
       expanded_terms: expanded,
       priority: holidayMode
         ? [
-            "THANK YOU scripted inventory only",
-            "mVerse",
-            "Contiguous Chorus",
-            "Verse 1",
-            "Verse 2",
-            "Chorus 3",
-            "Outro",
-            "Admin-scripted bite-size HUGs",
+            `${promo.default_source_title} scripted inventory only`,
+            ...promo.allowed_units,
           ]
         : ["query terms", "fallback emotional terms"],
       count: moments.length,
@@ -260,7 +263,7 @@ export async function GET(req: Request) {
       error: moments.length
         ? null
         : holidayMode
-          ? "Mother’s Day Thank You scripted inventory is not loaded yet."
+          ? `${promo.holiday_name} ${promo.default_source_title} scripted inventory is not loaded yet.`
           : "No matching active playable K-KUT products found.",
     });
   } catch (error: any) {
@@ -268,7 +271,9 @@ export async function GET(req: Request) {
       {
         query: q,
         source: "public.k_kuts_active_delivered_url_or_path",
-        display_cleanup: "artist-prefix-v3",
+        promo_id: holidayMode ? promo.promo_id : null,
+        promo_config_source: holidayMode ? "promos/mothers-day.json" : null,
+        display_cleanup: "artist-prefix-v4-config",
         expanded_terms: expanded,
         count: 0,
         moments: [],
