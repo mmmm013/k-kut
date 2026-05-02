@@ -86,6 +86,26 @@ export default function HomePage() {
           samples. Just GPMx source audio, ready to send.
         </p>
 
+        <div className="mb-8 rounded-3xl border border-[#d6a400]/40 bg-[#24180f] p-6 shadow-2xl">
+          <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#ffd36a]">
+            Mother’s Day HUG
+          </p>
+          <p className="mt-3 text-2xl font-black text-[#fff3cf]">
+            Order the HUG now. The curated Thank You audio is being scripted.
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-[#e8cf9f]">
+            This is a real-audio K-KUT gift built for Mother’s Day. No generic mini-KUTs. No wrong-song fallback.
+            Your HUG order reserves the Mother’s Day delivery flow.
+          </p>
+          <a
+            href={PAYMENT_LINKS.hug}
+            className="mt-5 inline-block rounded-2xl bg-[#d6a400] px-6 py-4 text-lg font-black text-[#160d08] hover:bg-[#f0bf28]"
+          >
+            ❤️ Order Mother’s Day HUG — $9.99
+          </a>
+        </div>
+
+
         <div className="mb-10 grid gap-3 md:grid-cols-3">
           {PRESETS.map((preset) => (
             <button
@@ -104,25 +124,6 @@ export default function HomePage() {
               <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
                 Choose what you need to say.
               </h2>
-              <div className="mb-6 rounded-3xl border border-[#d6a400]/40 bg-[#24180f] p-6 shadow-2xl">
-                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#ffd36a]">
-                  Mother’s Day HUG
-                </p>
-                <p className="mt-3 text-2xl font-black text-[#fff3cf]">
-                  Order the HUG now. The curated Thank You audio is being scripted.
-                </p>
-                <p className="mt-3 text-base leading-relaxed text-[#e8cf9f]">
-                  This is a real-audio K-KUT gift built for Mother’s Day. No generic mini-KUTs. No wrong-song fallback.
-                  Your HUG order reserves the Mother’s Day delivery flow.
-                </p>
-                <a
-                  href={PAYMENT_LINKS.hug}
-                  className="mt-5 inline-block rounded-2xl bg-[#d6a400] px-6 py-4 text-lg font-black text-[#160d08] hover:bg-[#f0bf28]"
-                >
-                  ❤️ Order Mother’s Day HUG — $9.99
-                </a>
-              </div>
-
               <p className="text-[#e8cf9f]">
                 BB will find a real K-KUT moment for Mom.
               </p>
