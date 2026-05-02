@@ -1,116 +1,171 @@
 "use client";
 
-import BBBotDemo from "@/components/BBBotDemo";
-import Link from "next/link";
+import { useState } from "react";
 
-export default function Home() {
+type Moment = {
+  id: string;
+  title: string;
+  mk_title?: string;
+  display_text?: string;
+  audio_url?: string;
+  mp3_url?: string;
+  clip_url?: string;
+};
+
+const PAYMENT_LINKS = {
+  hug: "https://buy.stripe.com/28EfZgdIO7Iuaq03tc4ow0m",
+  vocalNote: "https://buy.stripe.com/aFabJ0bAG0g27dO1l44ow0l",
+};
+
+const PRESETS = [
+  {
+    key: "thank-you-mom",
+    label: "❤️ Thank You, Mom",
+    query: "mother love care heart family thank you",
+  },
+  {
+    key: "miss-you",
+    label: "🤍 I Miss You",
+    query: "miss you mother home love heart",
+  },
+  {
+    key: "just-for-you",
+    label: "🌸 Just For You",
+    query: "gentle beautiful love heart care mother",
+  },
+];
+
+export default function HomePage() {
+  const [moments, setMoments] = useState<Moment[]>([]);
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [selectedLabel, setSelectedLabel] = useState("");
+
+  async function findMoments(query: string, label: string) {
+    setLoading(true);
+    setSelectedLabel(label);
+    setIndex(0);
+
+    try {
+      const res = await fetch(`/api/bot/moments?q=${encodeURIComponent(query)}`, {
+        cache: "no-store",
+      });
+      const json = await res.json();
+      setMoments(json.moments || []);
+    } catch {
+      setMoments([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const moment = moments[index];
+  const audioUrl = moment?.audio_url || moment?.mp3_url || moment?.clip_url;
+
   return (
-    <main className="min-h-screen bg-[#1A120B] text-[#F5E6C8]">
-
-      {/* Header */}
-      <header className="border-b border-[#D4A017]/20 px-6 py-4 flex justify-between">
-        <div className="text-[#D4A017] font-bold">K-KUT</div>
-        <Link href="/invention" className="text-[#D4A017] hover:opacity-80">
-          Inventions
-        </Link>
-      </header>
-
-      {/* Hero */}
-      <section className="max-w-4xl mx-auto px-6 py-14">
-        <h1 className="text-4xl font-bold">
-          Find the exact moment you need.
-        </h1>
-
-        <p className="mt-4 text-[#E8CFA8] max-w-2xl">
-          Vocal hooks, phrases, emotional moments, and song sections—ready for film, TV, ads, and content.
+    <main className="min-h-screen bg-[#160d08] text-[#fff3d6]">
+      <section className="mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-12">
+        <p className="mb-4 text-sm font-semibold tracking-[0.25em] text-[#d6a400]">
+          K-KUT · REAL AUDIO MOMENTS
         </p>
 
-        {/* Actions */}
-        <div className="mt-10 space-y-8">
+        <h1 className="mb-5 text-5xl font-bold leading-tight md:text-7xl">
+          Be there when you can’t.
+        </h1>
 
-          {/* Browse */}
-          <div>
-            <h2 className="font-semibold">Browse Moments</h2>
-            <p className="text-sm text-[#C8A882]">
-              Discover precise emotional moments: lead-ins, hooks, phrases, and sections.
-            </p>
-            <Link href="/find">
-              <button className="mt-3 px-6 py-3 border border-[#D4A017] rounded text-[#D4A017] hover:bg-[#D4A017]/10">
-                Browse Moments
-              </button>
-            </Link>
-          </div>
+        <p className="mb-8 max-w-2xl text-xl leading-relaxed text-[#e8cf9f]">
+          Send a real song moment that says what you feel. No AI. No fake
+          samples. Just GPMx source audio, ready to send.
+        </p>
 
-          {/* Request */}
-          <div>
-            <h2 className="font-semibold">Request a Package</h2>
-            <p className="text-sm text-[#C8A882]">
-              Tell us what you need:
-            </p>
-            <div className="text-sm mt-2 text-[#E8CFA8]">
-              <div>“warm romantic lead-in”</div>
-              <div>“nostalgic couple moment”</div>
-              <div>“intimate vocal phrase”</div>
+        <div className="mb-10 grid gap-3 md:grid-cols-3">
+          {PRESETS.map((preset) => (
+            <button
+              key={preset.key}
+              onClick={() => findMoments(preset.query, preset.label)}
+              className="rounded-2xl border border-[#d6a400] bg-[#24150d] px-5 py-4 text-left text-lg font-semibold text-[#ffd36a] hover:bg-[#332014]"
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
+
+        <section className="rounded-3xl border border-[#6b4a15] bg-[#21140d] p-6 shadow-xl">
+          {!selectedLabel && (
+            <div>
+              <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
+                Choose what you need to say.
+              </h2>
+              <p className="text-[#e8cf9f]">
+                BB will find a real K-KUT moment for Mom.
+              </p>
             </div>
+          )}
 
-            <a href="mailto:hello@gputnammusic.com?subject=K-KUT Request">
-              <button className="mt-3 px-6 py-3 border border-[#D4A017] rounded text-[#D4A017] hover:bg-[#D4A017]/10">
-                Start a Request
-              </button>
-            </a>
-          </div>
+          {loading && (
+            <p className="text-lg text-[#ffd36a]">Finding the moment…</p>
+          )}
 
-          {/* Use */}
-          <div>
-            <h2 className="font-semibold">Use in a Production</h2>
-            <p className="text-sm text-[#C8A882]">
-              Film, TV, advertising, brand, or digital use.
-            </p>
+          {!loading && selectedLabel && moments.length === 0 && (
+            <div>
+              <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
+                No match yet.
+              </h2>
+              <p className="mb-5 text-[#e8cf9f]">
+                Try another Mother’s Day path while more moments are being
+                reviewed.
+              </p>
+            </div>
+          )}
 
-            <Link href="/supe">
-              <button className="mt-3 px-6 py-3 border border-[#D4A017] rounded text-[#D4A017] hover:bg-[#D4A017]/10">
-                Work with SUPE
-              </button>
-            </Link>
-          </div>
-        </div>
+          {!loading && moment && (
+            <div>
+              <p className="mb-2 text-sm font-semibold text-[#d6a400]">
+                {selectedLabel}
+              </p>
 
-        {/* TRUST BLOCK (CRITICAL) */}
-        <div className="mt-14 p-6 border border-[#D4A017]/30 rounded bg-[#120C07]">
-          <h3 className="text-lg font-semibold text-[#D4A017]">
-            Built for Trust by Design
-          </h3>
+              <h2 className="mb-4 text-2xl font-bold text-[#ffd36a]">
+                {moment.display_text || moment.mk_title || moment.title}
+              </h2>
 
-          <p className="mt-3 text-sm text-[#E8CFA8] leading-relaxed">
-            4PE never accesses non-public or proprietary data unless explicitly directed by the Owner.
-            By default, the system operates with zero visibility into your business data.
-          </p>
+              {audioUrl ? (
+                <audio controls className="mb-6 w-full" src={audioUrl}>
+                  Your browser does not support audio.
+                </audio>
+              ) : (
+                <p className="mb-6 text-red-300">Audio unavailable.</p>
+              )}
 
-          <p className="mt-3 text-sm text-[#E8CFA8] leading-relaxed">
-            GPEx does not store or operate on client data. Access is limited to discovery,
-            troubleshooting, or admin support—and only when required.
-          </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={PAYMENT_LINKS.hug}
+                  className="rounded-xl bg-[#d6a400] px-5 py-3 font-bold text-[#160d08] hover:bg-[#f0bf28]"
+                >
+                  ❤️ Send this to Mom — $9.99
+                </a>
 
-          <p className="mt-3 text-sm text-[#E8CFA8] leading-relaxed">
-            The platform improves how you work—not what you own. Your data remains yours,
-            fully isolated.
-          </p>
+                <button
+                  onClick={() => setIndex((index + 1) % moments.length)}
+                  className="rounded-xl border border-[#d6a400] px-5 py-3 font-bold text-[#ffd36a] hover:bg-[#332014]"
+                >
+                  Try another
+                </button>
 
-          <p className="mt-3 text-sm text-[#C8A882] italic">
-            Love. Care. Share. Every interaction follows the GP Experience standard.
-          </p>
-        </div>
+                <a
+                  href={PAYMENT_LINKS.vocalNote}
+                  className="rounded-xl border border-[#6b4a15] px-5 py-3 font-bold text-[#e8cf9f] hover:bg-[#332014]"
+                >
+                  Add Vocal Note
+                </a>
+              </div>
+            </div>
+          )}
+        </section>
 
-        {/* BB BOT */}
-        <div className="mt-14">
-          <BBBotDemo />
-        </div>
-
-        <div className="mt-10 text-sm text-[#C8A882]">
-          Powered by GPM 4PE music operations.
-          <br />
-          Send as a HUG | Download full songs
-        </div>
+        <p className="mt-8 text-sm text-[#b99759]">
+          First-pass Mother’s Day preview inventory. All samples are real GPMx
+          source audio. Catalog refinement is ongoing.
+        </p>
       </section>
     </main>
   );
