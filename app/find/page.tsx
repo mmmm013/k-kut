@@ -99,6 +99,11 @@ export default function HomePage() {
             This is a real-audio K-KUT gift built for Mother’s Day. No generic mini-KUTs. No wrong-song fallback.
             Your HUG order reserves the Mother’s Day delivery flow.
           </p>
+          <p className="mt-4 rounded-2xl border border-[#d6a400]/25 bg-[#160d08] p-4 text-base leading-relaxed text-[#fff3cf]">
+            A GPM HUG is a new kind of music gift: a real, human-made audio object built from curated K-KUT song sections.
+            It is not AI, not a greeting card, and not a generic clip. It is part of the G Putnam Music invention family:
+            K-KUT, K-UPID, and GPM HUGs.
+          </p>
           <a
             href={PAYMENT_LINKS.hug}
             className="mt-5 inline-block rounded-2xl bg-[#d6a400] px-6 py-4 text-lg font-black text-[#160d08] hover:bg-[#f0bf28]"
