@@ -112,12 +112,24 @@ function dedupeRows(rows: KutRow[]) {
   return clean;
 }
 
+function cleanDisplayTitle(raw: string | null) {
+  const original = raw || "K-KUT Moment";
+
+  return original
+    .replace(/^\s*\d+\s*-\s*.*?\s*-\s*/u, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s+—\s+/g, " — ")
+    .trim();
+}
+
 function toMoment(r: KutRow) {
+  const displayTitle = cleanDisplayTitle(r.kut_title);
+
   return {
     id: r.kut_id,
-    title: r.kut_title || "K-KUT Moment",
-    mk_title: r.kut_title || "K-KUT Moment",
-    display_text: r.kut_title || "A real-audio moment.",
+    title: displayTitle,
+    mk_title: displayTitle,
+    display_text: displayTitle || "A real-audio moment.",
     role: "mK",
     type: "mK",
     start_ms:
