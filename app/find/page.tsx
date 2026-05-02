@@ -72,7 +72,15 @@ export default function HomePage() {
         </p>
 
         <h1 className="mb-5 text-5xl font-bold leading-tight md:text-7xl">
-          Be there when you can’t.
+          <span className="block text-2xl font-black tracking-[0.18em] text-[#ffd36a] sm:text-3xl">
+            FIND THE RIGHT WORDS!
+          </span>
+          <span className="mt-4 block">
+            Be there when you can’t.
+          </span>
+          <span className="mt-4 block text-2xl font-bold text-[#f4c04a] sm:text-3xl">
+            Send Mom something she has never, ever received: a GPM HUG for Mother’s Day.
+          </span>
         </h1>
 
         <p className="mb-8 max-w-2xl text-xl leading-relaxed text-[#e8cf9f]">
