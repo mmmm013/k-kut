@@ -98,7 +98,9 @@ async function fetchThankYouOnly(limit: number) {
 
     const isAllowedHolidayProduct =
       row.product_or_offer !== "mK" ||
+      title.includes("MVERSE") ||
       title.includes("VERSE") ||
+      title.includes("CONTIGUOUS CHORUS") ||
       title.includes("CHORUS") ||
       title.includes("OUTRO") ||
       title.includes("BITE") ||
@@ -159,11 +161,13 @@ function scriptedMotherDisplayTitle(row: KutRow) {
   const title = cleanDisplayTitle(row.kut_title);
   const upper = title.toUpperCase();
 
+  if (upper.includes("MVERSE")) return "Thank You — mVerse";
+  if (upper.includes("CONTIGUOUS CHORUS")) return "Thank You — Contiguous Chorus";
   if (upper.includes("CHORUS 3")) return "Thank You — Chorus 3";
   if (upper.includes("OUTRO")) return "Thank You — Outro";
   if (upper.includes("VERSE 1")) return "Thank You — Verse 1";
   if (upper.includes("VERSE 2")) return "Thank You — Verse 2";
-  if (upper.includes("BITE")) return "Thank You — Bite-size Chunk";
+  if (upper.includes("BITE")) return "Thank You — Bite-size HUG";
 
   return title
     .replace(/THANKS/gi, "Thank You")
@@ -236,17 +240,19 @@ export async function GET(req: Request) {
       source: "public.k_kuts_active_delivered_url_or_path",
       display_cleanup: "artist-prefix-v3",
       holiday_product_rule: holidayMode
-        ? "Mother’s Day defaults to scripted Thank You inventory only. No generic mKs, no Believe in Love default, no Love Renews default."
+        ? "Mother’s Day defaults to scripted Thank You inventory only. Allowed units: mVerse, contiguous Chorus, Verse 1, Verse 2, Chorus 3, Outro, and admin-scripted bite-size HUGs. No generic mKs, no Believe in Love default, no Love Renews default."
         : "Standard search may include available products.",
       expanded_terms: expanded,
       priority: holidayMode
         ? [
             "THANK YOU scripted inventory only",
+            "mVerse",
+            "Contiguous Chorus",
             "Verse 1",
             "Verse 2",
             "Chorus 3",
             "Outro",
-            "Bite-size chunks",
+            "Admin-scripted bite-size HUGs",
           ]
         : ["query terms", "fallback emotional terms"],
       count: moments.length,
