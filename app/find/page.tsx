@@ -173,8 +173,8 @@ export default function HomePage() {
         </section>
 
         <p className="mt-8 text-sm text-[#b99759]">
-          First-pass Mother’s Day preview inventory. All samples are real GPMx
-          source audio. Catalog refinement is ongoing.
+          Mother’s Day HUGs are curated K-KUT gifts. No generic mini-KUTs are shown in this holiday flow.
+          Thank You inventory is being scripted for Verse 1, Verse 2, Chorus 3, Outro, and bite-size HUG options.
         </p>
       </section>
     </main>
