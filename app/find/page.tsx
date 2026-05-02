@@ -104,6 +104,21 @@ export default function HomePage() {
             It is not AI, not a greeting card, and not a generic clip. It is part of the G Putnam Music invention family:
             K-KUT, K-UPID, and GPM HUGs.
           </p>
+          <div className="mt-5 rounded-2xl border border-[#d6a400]/30 bg-[#0f0906] p-4">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#ffd36a]">
+              Hear the Mother’s Day source
+            </p>
+            <p className="mt-2 text-lg font-bold text-[#fff3cf]">
+              Thank You — Source Preview
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-[#e8cf9f]">
+              This is the Mother’s Day source being scripted into mVerse, contiguous Chorus, Verse, Outro, and bite-size HUG options.
+            </p>
+            <audio controls preload="none" className="mt-4 w-full">
+              <source src="/mothers-day/thank-you-source.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
           <a
             href={PAYMENT_LINKS.hug}
             className="mt-5 inline-block rounded-2xl bg-[#d6a400] px-6 py-4 text-lg font-black text-[#160d08] hover:bg-[#f0bf28]"
