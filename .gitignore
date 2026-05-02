@@ -7,3 +7,8 @@ out/
 .env.local
 .vercel/
 .DS_Store
+
+# Local processing artifacts
+reports/
+tmp/
+app/page Bup Text.tsx
