@@ -50,7 +50,6 @@ function expandedTermsFor(q: string) {
       "mom",
       "mama",
       "thank you",
-      "KLEIGH",
       "BELIEVE IN LOVE",
       "LOVE RENEWS",
       "love",
@@ -162,7 +161,6 @@ export async function GET(req: Request) {
     if (isMotherSearch(q)) {
       const priorityTerms = [
         "THANK YOU",
-        "KLEIGH",
         "BELIEVE IN LOVE",
         "LOVE RENEWS",
       ];
@@ -190,7 +188,6 @@ export async function GET(req: Request) {
         isMotherSearch(q)
           ? [
               "THANK YOU",
-              "KLEIGH",
               "BELIEVE IN LOVE",
               "LOVE RENEWS",
               "fallback mother/mom/love/family",
