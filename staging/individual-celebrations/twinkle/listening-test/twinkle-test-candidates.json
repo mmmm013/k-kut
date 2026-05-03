@@ -1,0 +1,54 @@
+{
+  "test_name": "PKK-004F Twinkle 10-Day Listening Test",
+  "twinkle_role": "closing-only HUG signature",
+  "direction": "Option D — Natural Bird / Living Sound, with PIX / IN-PIX candidate exploration",
+  "status": "NOT_STARTED",
+  "candidates": [
+    {
+      "day": 1,
+      "file": "staging/individual-celebrations/twinkle/candidates/source/interesting-bird-across-street.m4a",
+      "name": "interesting-bird-across-street",
+      "status": "LISTEN_REVIEW_SCHEDULED"
+    },
+    {
+      "day": 2,
+      "file": "staging/individual-celebrations/twinkle/candidates/source/interesting-bird-call.m4a",
+      "name": "interesting-bird-call",
+      "status": "LISTEN_REVIEW_SCHEDULED"
+    },
+    {
+      "day": 3,
+      "file": "staging/individual-celebrations/twinkle/candidates/source/cornfield-instro-100bpm-gmaj.wav",
+      "name": "cornfield-instro-100bpm-gmaj",
+      "status": "LISTEN_REVIEW_SCHEDULED"
+    },
+    {
+      "day": 4,
+      "file": "staging/individual-celebrations/twinkle/candidates/source/cornfield-elle.wav",
+      "name": "cornfield-elle",
+      "status": "LISTEN_REVIEW_SCHEDULED"
+    },
+    {
+      "day": 5,
+      "file": "staging/individual-celebrations/twinkle/candidates/source/home-is-sunny-instro-84-5bpm-cminor.wav",
+      "name": "home-is-sunny-instro-84-5bpm-cminor",
+      "status": "LISTEN_REVIEW_SCHEDULED"
+    }
+  ],
+  "scoring": {
+    "scale": "1-5",
+    "fields": [
+      "closing-only fit",
+      "warmth",
+      "living / natural feel",
+      "non-distraction",
+      "birthday compatibility",
+      "anniversary compatibility",
+      "mother's day / thank you compatibility",
+      "sync potential",
+      "levelness / volume comfort",
+      "memorability",
+      "GPM / K-KUT identity fit"
+    ]
+  }
+}
