@@ -15,8 +15,9 @@ const requiredFiles = [
 const requiredHomepageText = [
   "Order Mother’s Day HUG",
   "A GPM HUG is a new kind",
-  "Thank You — Source Preview",
+  "Hear Mother’s Day KK Samples",
   "One K-KUT per purchase per day",
+  "BB-BOT Story: Why Thank You matters",
 ];
 
 const forbiddenPublicText = [
