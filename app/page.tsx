@@ -289,7 +289,7 @@ export default function HomePage() {
         </section>
 
         <p className="mt-8 text-sm text-[#b99759]">
-          Mother’s Day HUGs are curated K-KUT gifts. No generic mini-KUTs are shown in this holiday flow.
+          Mother’s Day HUGs are curated K-KUT gifts. No generic generic clips are shown in this holiday flow.
           Thank You KK inventory is being scripted for clean song-section HUG options.
         </p>
       </section>
