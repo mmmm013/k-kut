@@ -37,6 +37,39 @@ const PRESETS = [
   },
 ];
 
+const MOTHERS_DAY_SAMPLES = [
+  {
+    title: "Thank You — KK Opening",
+    type: "KK Sample",
+    purpose: "A longer opening section from the actual song.",
+    audio_url: "/mothers-day/samples/thank-you-kk-opening.mp3",
+  },
+  {
+    title: "Thank You — 2-Line mK 1",
+    type: "mK Sample",
+    purpose: "A short two-line emotional moment.",
+    audio_url: "/mothers-day/samples/thank-you-mk-two-line-1.mp3",
+  },
+  {
+    title: "Thank You — 2-Line mK 2",
+    type: "mK Sample",
+    purpose: "Another compact two-line HUG option.",
+    audio_url: "/mothers-day/samples/thank-you-mk-two-line-2.mp3",
+  },
+  {
+    title: "Thank You — Chorus Sample",
+    type: "Chorus Sample",
+    purpose: "A larger musical section for a fuller HUG.",
+    audio_url: "/mothers-day/samples/thank-you-chorus-sample.mp3",
+  },
+  {
+    title: "Thank You — Outro Sample",
+    type: "Outro Sample",
+    purpose: "A closing song moment for a final Mother’s Day message.",
+    audio_url: "/mothers-day/samples/thank-you-outro-sample.mp3",
+  },
+];
+
 const THANK_YOU_SOURCE_MOMENT = {
   id: "thank-you-source-preview",
   title: "BB-BOT Story: Why Thank You matters",
@@ -49,6 +82,7 @@ const THANK_YOU_SOURCE_MOMENT = {
 
 export default function HomePage() {
   const [moments, setMoments] = useState<Moment[]>([]);
+  const [sampleIndex, setSampleIndex] = useState(0);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState("");
@@ -62,6 +96,7 @@ export default function HomePage() {
 
   const moment = moments[index];
   const audioUrl = moment?.audio_url || moment?.mp3_url || moment?.clip_url;
+  const sample = MOTHERS_DAY_SAMPLES[sampleIndex];
 
   return (
     <main className="min-h-screen bg-[#160d08] text-[#fff3d6]">
@@ -86,6 +121,59 @@ export default function HomePage() {
           Send a real song moment that says what you feel. No AI. No fake
           samples. Just GPMx source audio, ready to send.
         </p>
+
+        <div className="mb-8 rounded-3xl border border-[#d6a400]/50 bg-[#24180f] p-6 shadow-2xl">
+          <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">
+            Hear Mother’s Day K-KUT Samples
+          </p>
+          <div className="mt-4 rounded-2xl border border-[#d6a400]/30 bg-[#0f0906] p-5">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b99759]">
+                  {sample.type}
+                </p>
+                <h2 className="mt-2 text-2xl font-black text-[#fff3cf]">
+                  {sample.title}
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#e8cf9f]">
+                  {sample.purpose}
+                </p>
+              </div>
+              <p className="rounded-full border border-[#d6a400]/30 px-3 py-1 text-xs font-bold text-[#ffd36a]">
+                {sampleIndex + 1} / {MOTHERS_DAY_SAMPLES.length}
+              </p>
+            </div>
+
+            <audio key={sample.audio_url} controls preload="metadata" className="mt-5 w-full">
+              <source src={sample.audio_url} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setSampleIndex(
+                    (sampleIndex - 1 + MOTHERS_DAY_SAMPLES.length) %
+                      MOTHERS_DAY_SAMPLES.length
+                  )
+                }
+                className="rounded-full border border-[#d6a400]/50 px-5 py-3 text-sm font-black text-[#ffd36a] hover:bg-[#d6a400]/10"
+              >
+                ← Previous
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setSampleIndex((sampleIndex + 1) % MOTHERS_DAY_SAMPLES.length)
+                }
+                className="rounded-full bg-[#d6a400] px-5 py-3 text-sm font-black text-[#160d08] hover:bg-[#f0bf28]"
+              >
+                Next sample →
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div className="mb-8 rounded-3xl border border-[#d6a400]/40 bg-[#24180f] p-6 shadow-2xl">
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#ffd36a]">
