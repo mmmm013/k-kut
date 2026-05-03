@@ -4,9 +4,19 @@ const PAYMENT_LINKS = {
 
 const KK_SAMPLES = [
   {
-    title: "Thank You — KK",
-    subtitle: "Mother’s Day song-section sample",
+    title: "Thank You — KK Opening",
+    subtitle: "Mother’s Day KK song-section sample",
     audioUrl: "/mothers-day/samples/thank-you-kk-opening.mp3",
+  },
+  {
+    title: "Thank You — KK Chorus",
+    subtitle: "Mother’s Day KK song-section sample",
+    audioUrl: "/mothers-day/samples/thank-you-chorus-sample.mp3",
+  },
+  {
+    title: "Thank You — KK Outro",
+    subtitle: "Mother’s Day KK song-section sample",
+    audioUrl: "/mothers-day/samples/thank-you-outro-sample.mp3",
   },
 ];
 
