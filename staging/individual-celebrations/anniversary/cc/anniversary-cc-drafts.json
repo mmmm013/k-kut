@@ -1,0 +1,57 @@
+{
+  "celebration_type": "Anniversary",
+  "priority": 2,
+  "canonical_title": "Awesome Anniversary",
+  "source_asset": "staging/individual-celebrations/anniversary/source/Awesome Anniversary.mp3",
+  "status": {
+    "source_asset": "PROVEN",
+    "cc_model": "DRAFT",
+    "kk_sections": "NOT_PROVEN",
+    "mk_candidates": "NOT_PROVEN",
+    "public_ready": "NO"
+  },
+  "cards": [
+    {
+      "name": "Happy Anniversary",
+      "intent": "direct anniversary greeting",
+      "feeling": ["love", "celebration", "gratitude"],
+      "message": "Happy Anniversary. Here is a real musical moment for the story you share."
+    },
+    {
+      "name": "Still Us",
+      "intent": "relationship affirmation",
+      "feeling": ["loyalty", "intimacy", "continuity"],
+      "message": "After everything, it is still us. That is worth a sound of its own."
+    },
+    {
+      "name": "I’d Choose You Again",
+      "intent": "romantic recommitment",
+      "feeling": ["devotion", "certainty", "love"],
+      "message": "I would choose you again. Today, tomorrow, and through every year we get."
+    },
+    {
+      "name": "Every Year With You",
+      "intent": "gratitude for shared time",
+      "feeling": ["appreciation", "tenderness", "reflection"],
+      "message": "Every year with you means more than words can hold."
+    },
+    {
+      "name": "Our Story",
+      "intent": "shared-history celebration",
+      "feeling": ["memory", "depth", "belonging"],
+      "message": "Our story keeps becoming something only we could have lived."
+    },
+    {
+      "name": "Thank You for the Years",
+      "intent": "gratitude-focused anniversary note",
+      "feeling": ["thankfulness", "humility", "love"],
+      "message": "Thank you for the years, the moments, and the life we keep building."
+    },
+    {
+      "name": "Forever Isn’t Long Enough",
+      "intent": "deep romantic expression",
+      "feeling": ["devotion", "longing", "permanence"],
+      "message": "Forever still would not feel long enough with you."
+    }
+  ]
+}
