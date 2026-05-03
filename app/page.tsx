@@ -7,7 +7,7 @@ const KK_SAMPLES = [
     title: "Thank You — KK",
     subtitle: "Mother’s Day song-section sample",
     audioUrl:
-      "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/thank-you-kk.mp3",
+      "/mothers-day/samples/thank-you-kk-opening.mp3",
   },
 ];
 
