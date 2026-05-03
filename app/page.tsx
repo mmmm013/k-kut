@@ -1,297 +1,84 @@
-"use client";
-
-import { useState } from "react";
-
-type Moment = {
-  id: string;
-  title: string;
-  mk_title?: string;
-  display_text?: string;
-  audio_url?: string;
-  mp3_url?: string;
-  clip_url?: string;
-};
-
-const PAYMENT_LINKS = {
+const CHECKOUT_LINKS = {
   hug: "https://buy.stripe.com/28EfZgdIO7Iuaq03tc4ow0m",
-  vocalNote: "https://buy.stripe.com/aFabJ0bAG0g27dO1l44ow0l",
 };
 
-const PRESETS = [
+const KK_SAMPLES = [
   {
-    key: "thank-you-mom",
-    label: "❤️ Thank You, Mom",
-    query: "mother love care heart family thank you",
-  },
-  {
-    key: "miss-you",
-    label: "🤍 I Miss You",
-    query: "miss you mother home love heart",
-  },
-  {
-    key: "just-for-you",
-    label: "🌸 Just For You",
-    query: "gentle beautiful love heart care mother",
+    title: "Thank You — KK",
+    subtitle: "Mother’s Day song-section sample",
+    audioUrl:
+      "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/thank-you-kk.mp3",
   },
 ];
-
-const MOTHERS_DAY_SAMPLES = [
-  {
-    title: "Thank You — KK Opening Sample",
-    type: "KK Sample",
-    purpose: "A longer opening section from the actual song.",
-    audio_url: "/mothers-day/samples/thank-you-kk-opening.mp3",
-  },
-  {
-    title: "Thank You — KK Chorus Sample",
-    type: "Chorus Sample",
-    purpose: "A larger musical section for a fuller HUG.",
-    audio_url: "/mothers-day/samples/thank-you-chorus-sample.mp3",
-  },
-  {
-    title: "Thank You — KK Outro Sample",
-    type: "Outro Sample",
-    purpose: "A closing song moment for a final Mother’s Day message.",
-    audio_url: "/mothers-day/samples/thank-you-outro-sample.mp3",
-  },
-];
-
-const THANK_YOU_SOURCE_MOMENT = {
-  id: "thank-you-source-preview",
-  title: "BB-BOT Story: Why Thank You matters",
-  mk_title: "BB-BOT Story: Why Thank You matters",
-  display_text: "BB-BOT Story: Why Thank You matters",
-  audio_url: "/mothers-day/thank-you-source.mp3",
-  mp3_url: "/mothers-day/thank-you-source.mp3",
-  clip_url: "/mothers-day/thank-you-source.mp3",
-};
 
 export default function HomePage() {
-  const [moments, setMoments] = useState<Moment[]>([]);
-  const [sampleIndex, setSampleIndex] = useState(0);
-  const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [selectedLabel, setSelectedLabel] = useState("");
-
-  async function findMoments(_query: string, label: string) {
-    setSelectedLabel(label);
-    setLoading(false);
-    setIndex(0);
-    setMoments([THANK_YOU_SOURCE_MOMENT]);
-  }
-
-  const moment = moments[index];
-  const audioUrl = moment?.audio_url || moment?.mp3_url || moment?.clip_url;
-  const sample = MOTHERS_DAY_SAMPLES[sampleIndex];
-
   return (
-    <main className="min-h-screen bg-[#160d08] text-[#fff3d6]">
-      <section className="mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-6 py-12">
-        <p className="mb-4 text-sm font-semibold tracking-[0.25em] text-[#d6a400]">
-          K-KUT · REAL AUDIO MOMENTS
-        </p>
-
-        <h1 className="mb-5 text-5xl font-bold leading-tight md:text-7xl">
-          <span className="block text-2xl font-black tracking-[0.18em] text-[#ffd36a] sm:text-3xl">
-            FIND THE RIGHT WORDS!
-          </span>
-          <span className="mt-4 block">
-            Be there when you can’t.
-          </span>
-          <span className="mt-4 block text-2xl font-bold text-[#f4c04a] sm:text-3xl">
-            Send Mom something she has never, ever received: a GPM HUG for Mother’s Day.
-          </span>
-        </h1>
-
-        <p className="mb-8 max-w-2xl text-xl leading-relaxed text-[#e8cf9f]">
-          Send a real song moment that says what you feel. No AI. No fake
-          samples. Just GPMx source audio, ready to send.
-        </p>
-
-        <div className="mb-8 rounded-3xl border border-[#d6a400]/50 bg-[#24180f] p-6 shadow-2xl">
-          <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">
-            Hear Mother’s Day KK Samples
+    <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
+      <section className="mx-auto max-w-5xl">
+        <div className="rounded-3xl border border-[#D4A017]/35 bg-[#24180F] p-6 shadow-2xl">
+          <p className="text-sm uppercase tracking-[0.28em] text-[#D4A017]">
+            K-KUT · Mother’s Day HUG
           </p>
-          <div className="mt-4 rounded-2xl border border-[#d6a400]/30 bg-[#0f0906] p-5">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b99759]">
-                  {sample.type}
-                </p>
-                <h2 className="mt-2 text-2xl font-black text-[#fff3cf]">
-                  {sample.title}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-[#e8cf9f]">
-                  {sample.purpose}
-                </p>
-              </div>
-              <p className="rounded-full border border-[#d6a400]/30 px-3 py-1 text-xs font-bold text-[#ffd36a]">
-                {sampleIndex + 1} / {MOTHERS_DAY_SAMPLES.length}
-              </p>
-            </div>
 
-            <audio key={sample.audio_url} controls preload="metadata" className="mt-5 w-full">
-              <source src={sample.audio_url} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
+          <h1 className="mt-4 text-4xl font-bold leading-tight text-[#FFD36A] md:text-6xl">
+            Exact song-section ownership.
+          </h1>
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() =>
-                  setSampleIndex(
-                    (sampleIndex - 1 + MOTHERS_DAY_SAMPLES.length) %
-                      MOTHERS_DAY_SAMPLES.length
-                  )
-                }
-                className="rounded-full border border-[#d6a400]/50 px-5 py-3 text-sm font-black text-[#ffd36a] hover:bg-[#d6a400]/10"
-              >
-                ← Previous
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  setSampleIndex((sampleIndex + 1) % MOTHERS_DAY_SAMPLES.length)
-                }
-                className="rounded-full bg-[#d6a400] px-5 py-3 text-sm font-black text-[#160d08] hover:bg-[#f0bf28]"
-              >
-                Next sample →
-              </button>
-            </div>
-          </div>
-        </div>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#F5E6C8]">
+            K-KUTs are real, human-made song-section audio gifts. Choose a
+            Mother’s Day HUG, press play, and send a meaningful musical moment.
+          </p>
 
-        <div className="mb-8 rounded-3xl border border-[#d6a400]/40 bg-[#24180f] p-6 shadow-2xl">
-          <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#ffd36a]">
-            Mother’s Day HUG
-          </p>
-          <p className="mt-3 text-2xl font-black text-[#fff3cf]">
-            Order the HUG now. The curated Thank You audio is being scripted.
-          </p>
-          <p className="mt-3 text-base leading-relaxed text-[#e8cf9f]">
-            This is a real-audio K-KUT gift built for Mother’s Day. No generic clips. No wrong-song fallback.
-            Your HUG order reserves the Mother’s Day delivery flow.
-          </p>
-          <p className="mt-4 rounded-2xl border border-[#d6a400]/25 bg-[#160d08] p-4 text-base leading-relaxed text-[#fff3cf]">
-            A GPM HUG is a new kind of music gift: a real, human-made audio object built from curated K-KUT song sections.
-            It is not AI, not a greeting card, and not a generic clip. It is part of the G Putnam Music invention family:
-            K-KUT, K-UPID, and GPM HUGs.
-          </p>
-          <div className="mt-5 rounded-2xl border border-[#d6a400]/30 bg-[#0f0906] p-4">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#ffd36a]">
-              Hear the story behind the HUG
-            </p>
-            <p className="mt-2 text-lg font-bold text-[#fff3cf]">
-              BB-BOT Story: Why Thank You matters
-            </p>
-            <p className="mt-1 text-sm leading-relaxed text-[#e8cf9f]">
-              This commentary explains why Thank You matters for the Mother’s Day HUG. Actual KK product samples from the song are above.
-            </p>
-            <audio controls preload="none" className="mt-4 w-full">
-              <source src="/mothers-day/thank-you-source.mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
           <a
-            href={PAYMENT_LINKS.hug}
-            className="mt-5 inline-block rounded-2xl bg-[#d6a400] px-6 py-4 text-lg font-black text-[#160d08] hover:bg-[#f0bf28]"
+            href={CHECKOUT_LINKS.hug}
+            className="mt-8 inline-block rounded-2xl border border-[#D4A017] bg-[#D4A017] px-6 py-4 text-base font-bold text-[#1A120B]"
           >
-            ❤️ Order Mother’s Day HUG — $9.99
+            Order Mother’s Day HUG
           </a>
-          <p className="mt-4 text-sm leading-relaxed text-[#b99759]">
-            One K-KUT per purchase per day. You may send more than one HUG, but each HUG must be a separate purchase so each gift honors one title, one song, and one recipient moment.
+        </div>
+
+        <section className="mt-10 rounded-3xl border border-[#D4A017]/30 bg-[#24180F] p-6">
+          <h2 className="text-3xl font-bold text-[#FFD36A]">
+            Hear Mother’s Day KK Samples
+          </h2>
+
+          <p className="mt-3 max-w-3xl text-[#C8A882]">
+            Public samples are KK song-section samples only. Every public player is reserved for Mother’s Day KK audio.
           </p>
-        </div>
 
+          <div className="mt-6 grid gap-5">
+            {KK_SAMPLES.map((sample) => (
+              <article
+                key={sample.title}
+                className="rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"
+              >
+                <h3 className="text-2xl font-bold text-[#FFD36A]">
+                  {sample.title}
+                </h3>
 
-        <div className="mb-10 grid gap-3 md:grid-cols-3">
-          {PRESETS.map((preset) => (
-            <button
-              key={preset.key}
-              onClick={() => findMoments(preset.query, preset.label)}
-              className="rounded-2xl border border-[#d6a400] bg-[#24150d] px-5 py-4 text-left text-lg font-semibold text-[#ffd36a] hover:bg-[#332014]"
-            >
-              {preset.label}
-            </button>
-          ))}
-        </div>
+                <p className="mt-2 text-sm text-[#C8A882]">
+                  {sample.subtitle}
+                </p>
 
-        <section className="rounded-3xl border border-[#6b4a15] bg-[#21140d] p-6 shadow-xl">
-          {!selectedLabel && (
-            <div>
-              <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
-                Choose what you need to say.
-              </h2>
-              <p className="text-[#e8cf9f]">
-                BB will find a real K-KUT moment for Mom.
-              </p>
-            </div>
-          )}
-
-          {loading && (
-            <p className="text-lg text-[#ffd36a]">Finding the moment…</p>
-          )}
-
-          {!loading && selectedLabel && moments.length === 0 && (
-            <div>
-              <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
-                BB-BOT story is ready.
-              </h2>
-              <p className="mb-5 text-[#e8cf9f]">
-                Press play below for the story. KK song samples are
-                reviewed.
-              </p>
-            </div>
-          )}
-
-          {!loading && moment && (
-            <div>
-              <p className="mb-2 text-sm font-semibold text-[#d6a400]">
-                {selectedLabel}
-              </p>
-
-              <h2 className="mb-4 text-2xl font-bold text-[#ffd36a]">
-                {moment.display_text || moment.mk_title || moment.title}
-              </h2>
-
-              {audioUrl ? (
-                <audio controls className="mb-6 w-full" src={audioUrl}>
-                  Your browser does not support audio.
+                <audio
+                  controls
+                  preload="metadata"
+                  className="mt-5 w-full rounded-xl border border-[#D4A017]/25 bg-[#1A120B] p-3"
+                >
+                  <source src={sample.audioUrl} type="audio/mpeg" />
+                  Your browser does not support the audio element.
                 </audio>
-              ) : (
-                <p className="mb-6 text-red-300">Audio unavailable.</p>
-              )}
-
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={PAYMENT_LINKS.hug}
-                  className="rounded-xl bg-[#d6a400] px-5 py-3 font-bold text-[#160d08] hover:bg-[#f0bf28]"
-                >
-                  ❤️ Send this to Mom — $9.99
-                </a>
-
-                <button
-                  onClick={() => setIndex((index + 1) % moments.length)}
-                  className="rounded-xl border border-[#d6a400] px-5 py-3 font-bold text-[#ffd36a] hover:bg-[#332014]"
-                >
-                  Try another
-                </button>
 
                 <a
-                  href={PAYMENT_LINKS.vocalNote}
-                  className="rounded-xl border border-[#6b4a15] px-5 py-3 font-bold text-[#e8cf9f] hover:bg-[#332014]"
+                  href={CHECKOUT_LINKS.hug}
+                  className="mt-5 inline-block rounded-xl border border-[#D4A017] px-5 py-3 text-sm font-bold text-[#FFD36A]"
                 >
-                  Add Vocal Note
+                  Order Mother’s Day HUG
                 </a>
-              </div>
-            </div>
-          )}
+              </article>
+            ))}
+          </div>
         </section>
-
-        <p className="mt-8 text-sm text-[#b99759]">
-          Mother’s Day HUGs are curated K-KUT gifts. No generic generic clips are shown in this holiday flow.
-          Thank You KK inventory is being scripted for clean song-section HUG options.
-        </p>
       </section>
     </main>
   );
