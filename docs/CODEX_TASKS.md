@@ -72,7 +72,7 @@ Expected output:
 Create real Mother’s Day listening room from `Thank You`.
 
 Required units:
-- Thank You — mVerse
+- Thank You — Verse
 - Thank You — Contiguous Chorus
 - Thank You — Verse 1
 - Thank You — Verse 2
