@@ -39,9 +39,9 @@ const PRESETS = [
 
 const THANK_YOU_SOURCE_MOMENT = {
   id: "thank-you-source-preview",
-  title: "Thank You — Source Preview",
-  mk_title: "Thank You — Source Preview",
-  display_text: "Thank You — Source Preview",
+  title: "BB-BOT Story: Why Thank You matters",
+  mk_title: "BB-BOT Story: Why Thank You matters",
+  display_text: "BB-BOT Story: Why Thank You matters",
   audio_url: "/mothers-day/thank-you-source.mp3",
   mp3_url: "/mothers-day/thank-you-source.mp3",
   clip_url: "/mothers-day/thank-you-source.mp3",
@@ -105,13 +105,13 @@ export default function HomePage() {
           </p>
           <div className="mt-5 rounded-2xl border border-[#d6a400]/30 bg-[#0f0906] p-4">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-[#ffd36a]">
-              Hear the Mother’s Day source
+              Hear the story behind the HUG
             </p>
             <p className="mt-2 text-lg font-bold text-[#fff3cf]">
-              Thank You — Source Preview
+              BB-BOT Story: Why Thank You matters
             </p>
             <p className="mt-1 text-sm leading-relaxed text-[#e8cf9f]">
-              This is the Mother’s Day source being scripted into mVerse, contiguous Chorus, Verse, Outro, and bite-size HUG options.
+              This commentary explains why Thank You matters for the Mother’s Day HUG. Actual K-KUT product samples from the song are being prepared separately.
             </p>
             <audio controls preload="none" className="mt-4 w-full">
               <source src="/mothers-day/thank-you-source.mp3" type="audio/mpeg" />
@@ -161,10 +161,10 @@ export default function HomePage() {
           {!loading && selectedLabel && moments.length === 0 && (
             <div>
               <h2 className="mb-2 text-2xl font-bold text-[#ffd36a]">
-                Thank You preview is ready.
+                BB-BOT story is ready.
               </h2>
               <p className="mb-5 text-[#e8cf9f]">
-                Press play below. More scripted HUG sections are being
+                Press play below for the story. Actual K-KUT song samples are being
                 reviewed.
               </p>
             </div>
