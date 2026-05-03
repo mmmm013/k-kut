@@ -1,0 +1,90 @@
+{
+  "pix": "Thank You",
+  "model": "KK song-section objects with CC opportunities inside KKs",
+  "public_rule": "KK only. No mKs. No mini-KUTs.",
+  "kk_set": [
+    {
+      "kk_id": "KK1",
+      "title": "Intro + V1a",
+      "includes": ["Intro", "V1a"],
+      "cc_opportunities": ["Like a Star", "Guide My Way", "Like a Bird", "Carry Me Through Darker Days"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK2",
+      "title": "V1b + Chorus 1",
+      "includes": ["V1b", "Ch1a", "Ch1b", "Ch1c", "Ch1d"],
+      "cc_opportunities": ["Like a River", "Sustaining Love", "Walk Beside Me", "Road May Lead", "Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK3",
+      "title": "Chorus 1",
+      "includes": ["Ch1a", "Ch1b", "Ch1c", "Ch1d"],
+      "cc_opportunities": ["Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK4",
+      "title": "Intro through Chorus 1",
+      "includes": ["Intro", "V1a", "V1b", "PreCh1", "Ch1a", "Ch1b", "Ch1c", "Ch1d"],
+      "cc_opportunities": ["Like a Star", "Like a Bird", "Like a River", "Walk Beside Me", "Dark Nights / Bright Days", "Your Love Will Always Remain", "Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK5",
+      "title": "V2a",
+      "includes": ["V2a"],
+      "cc_opportunities": ["Best Friend", "Always Listening"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK6",
+      "title": "V2b + Chorus 2",
+      "includes": ["V2b", "Ch2a", "Ch2b", "Ch2c", "Ch2d"],
+      "cc_opportunities": ["Tree to Her Garden", "Shelter From Wind and Rain", "Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK7",
+      "title": "Chorus 2",
+      "includes": ["Ch2a", "Ch2b", "Ch2c", "Ch2d"],
+      "cc_opportunities": ["Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK8",
+      "title": "Bridge",
+      "includes": ["Bridge"],
+      "cc_opportunities": ["Valleys and Mountains", "Fun Along the Way", "Your Love Will Always Remain"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK9",
+      "title": "Chorus 2 + Outro",
+      "includes": ["Ch2a", "Ch2b", "Ch2c", "Ch2d", "Outro"],
+      "cc_opportunities": ["Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today", "Final Thank You"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK10",
+      "title": "V2b through Outro",
+      "includes": ["V2b", "Bridge", "Ch2a", "Ch2b", "Ch2c", "Ch2d", "Outro"],
+      "cc_opportunities": ["Tree to Her Garden", "Shelter From Wind and Rain", "Valleys and Mountains", "Your Love Will Always Remain", "Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today", "Final Thank You"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    },
+    {
+      "kk_id": "KK11",
+      "title": "Chorus Sub-Section Set",
+      "includes": ["Ch1a", "Ch1b", "Ch1c", "Ch1d", "Ch2a", "Ch2b", "Ch2c", "Ch2d"],
+      "cc_opportunities": ["Chance in This Life", "Showing Me the Way", "Giving Me the Best", "Giving Me Today"],
+      "status": "STRUCTURE_DEFINED_AUDIO_NOT_PROVEN"
+    }
+  ],
+  "current_public_audio_files": [
+    "public/mothers-day/samples/thank-you-kk-opening.mp3",
+    "public/mothers-day/samples/thank-you-chorus-sample.mp3",
+    "public/mothers-day/samples/thank-you-outro-sample.mp3"
+  ],
+  "current_mapping_status": "NEEDS_REPROCESSING_AGAINST_KK1_TO_KK11"
+}
