@@ -1,0 +1,25 @@
+{
+  "pix": "Thank You",
+  "source": "staging/mothers-day/thank-you/source/thank-you-pix-source.mp3",
+  "duration_seconds": 325.877,
+  "rules": [
+    "KK only",
+    "No mKs",
+    "No mini-KUTs",
+    "No public exposure until audio proof passes",
+    "No cutting until boundary plan is reviewed"
+  ],
+  "kk_boundaries": [
+    { "kk_id": "KK1", "title": "Intro + V1a", "includes": ["Intro", "V1a"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK2", "title": "V1b + Chorus 1", "includes": ["V1b", "Ch1a", "Ch1b", "Ch1c", "Ch1d"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK3", "title": "Chorus 1", "includes": ["Ch1a", "Ch1b", "Ch1c", "Ch1d"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK4", "title": "Intro through Chorus 1", "includes": ["Intro", "V1a", "V1b", "PreCh1", "Ch1a", "Ch1b", "Ch1c", "Ch1d"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK5", "title": "V2a", "includes": ["V2a"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK6", "title": "V2b + Chorus 2", "includes": ["V2b", "Ch2a", "Ch2b", "Ch2c", "Ch2d"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK7", "title": "Chorus 2", "includes": ["Ch2a", "Ch2b", "Ch2c", "Ch2d"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK8", "title": "Bridge", "includes": ["Bridge"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK9", "title": "Chorus 2 + Outro", "includes": ["Ch2a", "Ch2b", "Ch2c", "Ch2d", "Outro"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK10", "title": "V2b through Outro", "includes": ["V2b", "Bridge", "Ch2a", "Ch2b", "Ch2c", "Ch2d", "Outro"], "start": "TBD", "end": "TBD", "confidence": "NOT_SET" },
+    { "kk_id": "KK11", "title": "Chorus Sub-Section Set", "includes": ["Ch1a", "Ch1b", "Ch1c", "Ch1d", "Ch2a", "Ch2b", "Ch2c", "Ch2d"], "start": "MULTI_SECTION", "end": "MULTI_SECTION", "confidence": "NOT_SET" }
+  ]
+}
