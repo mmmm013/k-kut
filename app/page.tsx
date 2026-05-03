@@ -11,6 +11,17 @@ const KK_SAMPLES = [
   },
 ];
 
+const CONTEXT_LINKS = [
+  {
+    label: "Interview context: Thank You source story",
+    href: "/mothers-day/thank-you-source.mp3",
+  },
+  {
+    label: "BB-BOT Story context: Why Thank You matters",
+    href: "/mothers-day/thank-you-source.mp3",
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
@@ -43,7 +54,7 @@ export default function HomePage() {
           </h2>
 
           <p className="mt-3 max-w-3xl text-[#C8A882]">
-            Public samples are KK song-section samples only. Every public player is reserved for Mother’s Day KK audio.
+            Public players are reserved for Mother’s Day KK audio.
           </p>
 
           <div className="mt-6 grid gap-5">
@@ -76,6 +87,28 @@ export default function HomePage() {
                   Order Mother’s Day HUG
                 </a>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-8 rounded-3xl border border-[#D4A017]/20 bg-[#24180F] p-6">
+          <h2 className="text-2xl font-bold text-[#FFD36A]">
+            Optional context links
+          </h2>
+
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#C8A882]">
+            These are links only. They do not replace the KK samples above.
+          </p>
+
+          <div className="mt-5 flex flex-col gap-3">
+            {CONTEXT_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="rounded-xl border border-[#D4A017]/30 px-4 py-3 text-sm font-semibold text-[#FFD36A]"
+              >
+                {link.label}
+              </a>
             ))}
           </div>
         </section>
