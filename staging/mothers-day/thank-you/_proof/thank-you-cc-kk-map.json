@@ -1,0 +1,57 @@
+{
+  "pix": "Thank You",
+  "public_rule": "KK only. No mKs. No mini-KUTs.",
+  "normalized_structure_note": "Submitted lyric had V2a twice; second V2a normalized to V2b.",
+  "recommended_public_kk_set": [
+    {
+      "structure": "Ch1a / Ch2a",
+      "kk_title": "Thank You — Chance in This Life",
+      "cc_intent": "core gratitude for life and opportunity"
+    },
+    {
+      "structure": "Ch1b / Ch2b",
+      "kk_title": "Thank You — Showing Me the Way",
+      "cc_intent": "thanks for guidance"
+    },
+    {
+      "structure": "Ch1c / Ch2c",
+      "kk_title": "Thank You — Giving Me the Best",
+      "cc_intent": "recognizing sacrifice"
+    },
+    {
+      "structure": "Ch1d / Ch2d",
+      "kk_title": "Thank You — Giving Me Today",
+      "cc_intent": "gratitude for presence and now"
+    },
+    {
+      "structure": "V1a",
+      "kk_title": "Like a Star — Guide My Way",
+      "cc_intent": "gratitude for guidance"
+    },
+    {
+      "structure": "PreCh1 / Br",
+      "kk_title": "Your Love Will Always Remain",
+      "cc_intent": "permanent love"
+    },
+    {
+      "structure": "V2a",
+      "kk_title": "Always Listening",
+      "cc_intent": "being heard"
+    },
+    {
+      "structure": "V2b",
+      "kk_title": "Shelter From Wind and Rain",
+      "cc_intent": "protection through storms"
+    },
+    {
+      "structure": "Br",
+      "kk_title": "Valleys and Mountains",
+      "cc_intent": "shared life journey"
+    },
+    {
+      "structure": "Outro",
+      "kk_title": "Final Thank You",
+      "cc_intent": "simple closing gratitude"
+    }
+  ]
+}
