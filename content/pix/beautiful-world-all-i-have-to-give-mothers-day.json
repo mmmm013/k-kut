@@ -1,0 +1,154 @@
+{
+  "pix_id": "beautiful-world-all-i-have-to-give-mothers-day",
+  "display_title": "All I Have to Give",
+  "source_title_candidate": "Beautiful World",
+  "public_artist_display": false,
+  "holiday_fit": [
+    "mothers_day",
+    "mother_love",
+    "gratitude",
+    "hope",
+    "forgiveness",
+    "beautiful_world",
+    "all_i_have_to_give"
+  ],
+  "status": "lyrics_structured_audio_needed",
+  "k_kut_policy": {
+    "sample_mode": "KK_only_until_section_accuracy_verified",
+    "no_mk_public_samples_until_admin_scripted": true,
+    "one_k_kut_per_purchase_per_day": true,
+    "separate_purchase_required_for_each_hug": true
+  },
+  "sections": [
+    {
+      "section": "Ch1",
+      "lines": [
+        "And I live,",
+        "With all I have to give"
+      ]
+    },
+    {
+      "section": "V1",
+      "lines": [
+        "These trees as green as I've ever seen",
+        "And the water's shades of blue",
+        "And the mountains soaring up so high",
+        "It's reaching out for truth",
+        "From the black sky to starry night",
+        "As the moon reflects in the lover's eyes"
+      ]
+    },
+    {
+      "section": "PreCh2",
+      "lines": [
+        "I'm here for you",
+        "Oh, I'm here with you"
+      ]
+    },
+    {
+      "section": "Ch2",
+      "lines": [
+        "And I live Oh,",
+        "I live for this world",
+        "For all that it holds within"
+      ]
+    },
+    {
+      "section": "Br",
+      "lines": [
+        "Yeah, and I'll always",
+        "Oh, I'll always love this world",
+        "With all I have to give",
+        "Yeah, yeah, yeah, yeah"
+      ]
+    },
+    {
+      "section": "V2",
+      "lines": [
+        "The way a mother loves her child",
+        "With the rich mankind or in the wild",
+        "Sometimes love is all she has to give",
+        "Oh, we dare to hope",
+        "We dare to dream",
+        "We dare to believe in",
+        "Things unseen",
+        "We dare to forgive",
+        "And wash our mistakes clean"
+      ]
+    },
+    {
+      "section": "AltCh2",
+      "lines": [
+        "Oh, yeah",
+        "Oh",
+        "What a beautiful world",
+        "What a beautiful world",
+        "That we live",
+        "Oh",
+        "What a beautiful world",
+        "What a beautiful world",
+        "That we live"
+      ]
+    },
+    {
+      "section": "Ch3",
+      "lines": [
+        "And I live Oh,",
+        "I live for this world",
+        "For all that it holds within"
+      ]
+    },
+    {
+      "section": "Ch4",
+      "lines": [
+        "Yeah, and I'll always",
+        "Oh, I'll always love this world",
+        "With all I have to give",
+        "Yeah, yeah, yeah, yeah"
+      ]
+    },
+    {
+      "section": "Ch5",
+      "lines": [
+        "And I live Oh,",
+        "I live for this world",
+        "For all that it holds within"
+      ]
+    },
+    {
+      "section": "Outro",
+      "lines": [
+        "And I live",
+        "Oh,",
+        "I live for this world",
+        "For all that it holds within",
+        "With all I have to give",
+        "Yeah, I love for this world..."
+      ],
+      "needs_review": [
+        "Confirm whether final line is 'Yeah, I love for this world...' or 'Yeah, I live for this world...'"
+      ]
+    }
+  ],
+  "recommended_mothers_day_kk_samples": [
+    "All I Have to Give — KK Ch1",
+    "All I Have to Give — KK V2 Mother Love",
+    "All I Have to Give — KK AltCh2 Beautiful World",
+    "All I Have to Give — KK Outro"
+  ],
+  "best_mothers_day_lines": [
+    "The way a mother loves her child",
+    "Sometimes love is all she has to give",
+    "We dare to hope",
+    "We dare to dream",
+    "We dare to believe in things unseen",
+    "We dare to forgive",
+    "With all I have to give"
+  ],
+  "notes": [
+    "Use as an upcoming Mother's Day script source.",
+    "Keep separate from Thank You and God Only Knows.",
+    "Publish KK samples only until exact audio section timing is verified.",
+    "Do not show artist name in public display."
+  ]
+}
