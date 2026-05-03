@@ -16,10 +16,6 @@ const CONTEXT_LINKS = [
     label: "Interview context: Thank You source story",
     href: "/mothers-day/thank-you-source.mp3",
   },
-  {
-    label: "BB-BOT Story context: Why Thank You matters",
-    href: "/mothers-day/thank-you-source.mp3",
-  },
 ];
 
 export default function FindPage() {
