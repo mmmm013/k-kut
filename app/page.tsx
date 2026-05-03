@@ -37,31 +37,19 @@ const PRESETS = [
 
 const MOTHERS_DAY_SAMPLES = [
   {
-    title: "Thank You — KK Opening",
+    title: "Thank You — KK Opening Sample",
     type: "KK Sample",
     purpose: "A longer opening section from the actual song.",
     audio_url: "/mothers-day/samples/thank-you-kk-opening.mp3",
   },
   {
-    title: "Thank You — 2-Line mK 1",
-    type: "mK Sample",
-    purpose: "A short two-line emotional moment.",
-    audio_url: "/mothers-day/samples/thank-you-mk-two-line-1.mp3",
-  },
-  {
-    title: "Thank You — 2-Line mK 2",
-    type: "mK Sample",
-    purpose: "Another compact two-line HUG option.",
-    audio_url: "/mothers-day/samples/thank-you-mk-two-line-2.mp3",
-  },
-  {
-    title: "Thank You — Chorus Sample",
+    title: "Thank You — KK Chorus Sample",
     type: "Chorus Sample",
     purpose: "A larger musical section for a fuller HUG.",
     audio_url: "/mothers-day/samples/thank-you-chorus-sample.mp3",
   },
   {
-    title: "Thank You — Outro Sample",
+    title: "Thank You — KK Outro Sample",
     type: "Outro Sample",
     purpose: "A closing song moment for a final Mother’s Day message.",
     audio_url: "/mothers-day/samples/thank-you-outro-sample.mp3",
@@ -122,7 +110,7 @@ export default function HomePage() {
 
         <div className="mb-8 rounded-3xl border border-[#d6a400]/50 bg-[#24180f] p-6 shadow-2xl">
           <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">
-            Hear Mother’s Day K-KUT Samples
+            Hear Mother’s Day KK Samples
           </p>
           <div className="mt-4 rounded-2xl border border-[#d6a400]/30 bg-[#0f0906] p-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
@@ -181,7 +169,7 @@ export default function HomePage() {
             Order the HUG now. The curated Thank You audio is being scripted.
           </p>
           <p className="mt-3 text-base leading-relaxed text-[#e8cf9f]">
-            This is a real-audio K-KUT gift built for Mother’s Day. No generic mini-KUTs. No wrong-song fallback.
+            This is a real-audio K-KUT gift built for Mother’s Day. No generic clips. No wrong-song fallback.
             Your HUG order reserves the Mother’s Day delivery flow.
           </p>
           <p className="mt-4 rounded-2xl border border-[#d6a400]/25 bg-[#160d08] p-4 text-base leading-relaxed text-[#fff3cf]">
@@ -197,7 +185,7 @@ export default function HomePage() {
               BB-BOT Story: Why Thank You matters
             </p>
             <p className="mt-1 text-sm leading-relaxed text-[#e8cf9f]">
-              This commentary explains why Thank You matters for the Mother’s Day HUG. Actual K-KUT product samples from the song are being prepared separately.
+              This commentary explains why Thank You matters for the Mother’s Day HUG. Actual KK product samples from the song are above.
             </p>
             <audio controls preload="none" className="mt-4 w-full">
               <source src="/mothers-day/thank-you-source.mp3" type="audio/mpeg" />
@@ -250,7 +238,7 @@ export default function HomePage() {
                 BB-BOT story is ready.
               </h2>
               <p className="mb-5 text-[#e8cf9f]">
-                Press play below for the story. Actual K-KUT song samples are being
+                Press play below for the story. KK song samples are
                 reviewed.
               </p>
             </div>
@@ -302,7 +290,7 @@ export default function HomePage() {
 
         <p className="mt-8 text-sm text-[#b99759]">
           Mother’s Day HUGs are curated K-KUT gifts. No generic mini-KUTs are shown in this holiday flow.
-          Thank You inventory is being scripted for Verse 1, Verse 2, Chorus 3, Outro, and bite-size HUG options.
+          Thank You KK inventory is being scripted for clean song-section HUG options.
         </p>
       </section>
     </main>
