@@ -140,11 +140,27 @@ Awesome Anniversary
 - Audio family: Awesome Anniversary
 - Status: CC DRAFT / AUDIO SOURCE PROVEN / KK NOT PROVEN / mK NOT PROVEN
 
+
+## Twinkle Requirement
+
+Twinkle is a required audible HUG element.
+
+Twinkle must be treated as important as KK and mK inside HUGs.
+
+Twinkle is not copy-only. It is an audible emotional / sonic marker that supports the Celebration Card meaning.
+
+Current Twinkle proof status:
+- Birthday Twinkle: NOT PROVEN
+- Anniversary Twinkle: NOT PROVEN
+
+No Birthday or Anniversary HUG should be marked public-ready until Twinkle is defined, generated, or selected and verified as audible inside the HUG experience.
+
 ## Control Rule
 
 Birthday and Anniversary may not be promoted publicly until:
 - CC text is approved
 - KK audio proof exists
 - mK candidate proof exists, if mKs are used
+- Twinkle audible marker proof exists
 - fulfillment path is defined
 - PKK verification passes
