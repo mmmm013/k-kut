@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import MothersDayBBBot from "@/components/MothersDayBBBot";
 
 const kks = [
   {
@@ -414,65 +415,7 @@ export default function MothersDayThankYouPage() {
         </div>
 
 
-        <section className="mt-10 rounded-3xl border border-[#f4b000] bg-[#0f0f0f] p-6 shadow-2xl">
-          <p className="text-sm font-black tracking-[0.3em] text-[#f4b000]">
-            BB-BOT HELPER
-          </p>
-          <h2 className="mt-3 text-3xl font-black">
-            Not sure what to send?
-          </h2>
-          <p className="mt-3 max-w-3xl leading-7 text-[#e4c89b]">
-            Try one sample of each size. Choose the quick version, the fuller HUG,
-            or the big emotional one.
-          </p>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {bbBotSamples.map((sample) => (
-              <article
-                key={sample.id}
-                className="rounded-2xl border border-[#5b3b12] bg-[#211309] p-5"
-              >
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#c9a36a]">
-                  {sample.label} · {sample.price}
-                </p>
-                <h3 className="mt-3 text-xl font-black">{sample.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[#e4c89b]">
-                  {sample.description}
-                </p>
-
-                <audio
-                  className="mt-4 w-full"
-                  controls
-                  preload="metadata"
-                  src={sample.audioUrl}
-                />
-
-                <button
-                  onClick={() => {
-                    window.localStorage.setItem("selectedMotherDayKk", sample.id);
-                    fetch("/api/donate", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ kk: sample.id }),
-                    })
-                      .then((res) => res.json())
-                      .then((data) => {
-                        if (data?.url) window.location.href = data.url;
-                      });
-                  }}
-                  className="mt-4 block w-full rounded-xl bg-[#f4b000] px-4 py-3 text-center font-black text-black hover:opacity-90"
-                >
-                  {`Send this ${sample.label}`}
-                </button>
-              </article>
-            ))}
-          </div>
-
-          <p className="mt-5 text-sm text-[#a88350]">
-            Want more choices? Browse all Mother’s Day HUG options below.
-          </p>
-        </section>
-
+        <MothersDayBBBot />
 
         <section className="mt-10 grid gap-5 md:grid-cols-2">
           {kks.map((kk) => (
