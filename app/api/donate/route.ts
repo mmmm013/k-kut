@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const MS_DONATION_LINK = "https://buy.stripe.com/28EfZgdIO7Iuaq03tc4ow0m";
-
-const VALID_KKS = new Set([
+const FEATURED_IDS = new Set([
   "thank-you-kk1",
   "thank-you-kk2",
   "thank-you-kk3",
@@ -11,6 +9,39 @@ const VALID_KKS = new Set([
   "thank-you-kk6",
   "thank-you-kk7",
 ]);
+
+const SECTION_IDS = new Set([
+  "thank-you-sec-intro",
+  "thank-you-sec-v1a",
+  "thank-you-sec-v1c",
+  "thank-you-sec-v1d",
+  "thank-you-sec-ch1",
+  "thank-you-sec-v2a",
+  "thank-you-sec-v2b",
+  "thank-you-sec-ch2",
+  "thank-you-sec-outro",
+]);
+
+function getTier(kk: string) {
+  if (FEATURED_IDS.has(kk)) return "featured";
+  if (SECTION_IDS.has(kk)) return "section";
+  if (/^thank-you-cc-\d{3}$/.test(kk)) return "moment";
+  return "";
+}
+
+function getPaymentLink(tier: string) {
+  if (tier === "moment") return process.env.NEXT_PUBLIC_MD_MOMENT_KK_LINK;
+  if (tier === "section") return process.env.NEXT_PUBLIC_MD_SECTION_KK_LINK;
+  if (tier === "featured") return process.env.NEXT_PUBLIC_MD_FEATURED_KK_LINK;
+  return "";
+}
+
+function getPrice(tier: string) {
+  if (tier === "moment") return "$4.99";
+  if (tier === "section") return "$7.99";
+  if (tier === "featured") return "$12.99";
+  return "";
+}
 
 export async function POST(req: NextRequest) {
   let kk = "";
@@ -22,21 +53,34 @@ export async function POST(req: NextRequest) {
     kk = "";
   }
 
-  if (!VALID_KKS.has(kk)) {
+  const tier = getTier(kk);
+  const url = getPaymentLink(tier);
+
+  if (!kk || !tier) {
+    return NextResponse.json(
+      { ok: false, error: "Invalid or missing K-KUT selection." },
+      { status: 400 }
+    );
+  }
+
+  if (!url) {
     return NextResponse.json(
       {
         ok: false,
-        error: "Invalid or missing K-KUT selection.",
+        error: `Missing Stripe payment link for ${tier} K-KUT.`,
+        tier,
+        kk,
       },
-      { status: 400 }
+      { status: 500 }
     );
   }
 
   return NextResponse.json({
     ok: true,
     kk,
-    url: MS_DONATION_LINK,
-    note:
-      "Stripe link is currently generic. Selected K-KUT is handled by the site before redirect.",
+    tier,
+    price: getPrice(tier),
+    url,
+    note: "One K-KUT per purchase. Stripe Payment Link selected by K-KUT tier.",
   });
 }

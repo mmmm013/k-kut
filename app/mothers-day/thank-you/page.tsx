@@ -309,6 +309,20 @@ const kks = [
   },
 ];
 
+
+function priceForTier(priceTier: string) {
+  if (priceTier === "small") return "$4.99";
+  if (priceTier === "standard") return "$7.99";
+  if (priceTier === "premium") return "$12.99";
+  return "";
+}
+
+function publicTierName(tier: string) {
+  if (tier === "cc") return "Moment K-KUT";
+  if (tier === "section") return "Section K-KUT";
+  return "Featured K-KUT";
+}
+
 export default function MothersDayThankYouPage() {
   const songRef = useRef<HTMLAudioElement | null>(null);
   const [started, setStarted] = useState(false);
@@ -386,7 +400,7 @@ export default function MothersDayThankYouPage() {
               <p className="mt-2 text-[#e4c89b]">{kk.section}</p>
 
               <p className="mt-2 inline-block rounded-full border border-[#6f4b12] px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#c9a36a]">
-                {kk.tier} · {kk.priceTier}
+                {publicTierName(kk.tier)} · {priceForTier(kk.priceTier)}
               </p>
 
               <audio
