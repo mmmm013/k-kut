@@ -1,0 +1,52 @@
+{
+  "program": "Mother's Day Thank You",
+  "launch_status": "ready",
+  "product_rule": "One K-KUT per purchase. Buyers may purchase multiple K-KUTs through separate purchases.",
+  "public_rule": "No mKs / no mini-KUTs in buyer flow.",
+  "song_first_copy": "Listen first. Play the Mother’s Day Thank You song and listen for the special parts. Each K-KUT is one special cut from the song.",
+  "twinkle_status": "backlog",
+  "kks": [
+    {
+      "id": "thank-you-kk1",
+      "title": "Thank You KK1",
+      "section": "Intro / Verse 1A",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk1.mp3"
+    },
+    {
+      "id": "thank-you-kk2",
+      "title": "Thank You KK2",
+      "section": "Chorus 1",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk2.mp3"
+    },
+    {
+      "id": "thank-you-kk3",
+      "title": "Thank You KK3",
+      "section": "Chorus 1 lift",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk3.mp3"
+    },
+    {
+      "id": "thank-you-kk4",
+      "title": "Thank You KK4",
+      "section": "Intro through Chorus 1",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk4.mp3"
+    },
+    {
+      "id": "thank-you-kk5",
+      "title": "Thank You KK5",
+      "section": "Verse 2A",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk5.mp3"
+    },
+    {
+      "id": "thank-you-kk6",
+      "title": "Thank You KK6",
+      "section": "Verse 2B / Chorus 2",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk6.mp3"
+    },
+    {
+      "id": "thank-you-kk7",
+      "title": "Thank You KK7",
+      "section": "Chorus 2 through Outro",
+      "audio_url": "/mothers-day/thank-you/kks/thank-you-kk7.mp3"
+    }
+  ]
+}
