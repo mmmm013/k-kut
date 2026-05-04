@@ -75,8 +75,7 @@ export default function MothersDayThankYouPage() {
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-[#e4c89b]">
             Play the song and listen for the moments that feel personal,
-            emotional, funny, loving, or unforgettable. Each K-KUT is one
-            special cut from the song.
+            emotional, funny, loving, or unforgettable. Each featured K-KUT is one special cut from the song. More section cuts and smaller moment cuts are being added.
           </p>
 
           <div className="mt-8 rounded-2xl border border-[#4b3212] bg-[#0f0f0f] p-5">
@@ -105,8 +104,7 @@ export default function MothersDayThankYouPage() {
               Choose one K-KUT per purchase.
             </h2>
             <p className="mt-3 text-[#e4c89b]">
-              You can buy many K-KUTs, but each purchase is one K-KUT at a time.
-              Pick the special part you want, then purchase that one.
+              You can buy many K-KUTs, but each purchase is one K-KUT at a time. Featured K-KUTs are shown now; smaller section and moment cuts are being added.
             </p>
           </div>
         </div>
@@ -145,6 +143,22 @@ export default function MothersDayThankYouPage() {
               </p>
             </article>
           ))}
+        </section>
+
+
+        <section className="mt-10 rounded-2xl border border-[#5b3b12] bg-[#111] p-6">
+          <h2 className="text-2xl font-black text-[#f4b000]">
+            More K-KUT options are being added.
+          </h2>
+          <p className="mt-3 leading-7 text-[#e4c89b]">
+            This first launch set shows featured K-KUTs. The full Mother’s Day
+            program will include more section cuts and smaller moment cuts:
+            verses, chorus parts, endings, and 2–3 line emotional moments.
+          </p>
+          <p className="mt-3 leading-7 text-[#e4c89b]">
+            Smaller K-KUTs will have a smaller price. Each purchase remains one
+            K-KUT at a time.
+          </p>
         </section>
 
         <section className="mt-10 rounded-2xl border border-[#5b3b12] bg-[#211309] p-6">
