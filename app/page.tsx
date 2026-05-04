@@ -70,7 +70,7 @@ export default function HomePage() {
           </p>
 
           <h1 className="max-w-4xl text-5xl font-black leading-tight text-[#ffd36a] md:text-7xl">
-            Exact song-section ownership.
+            Send the world’s first Audio Greeting Card — a K-KUT HUG.
           </h1>
 
           <p className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed text-[#fff3cf]">
