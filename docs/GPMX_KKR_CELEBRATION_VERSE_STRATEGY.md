@@ -33,7 +33,27 @@ A K-KUT candidate is a sendable emotional ceremony unit.
 
 ## Celebration Metadata Tags
 
-Use these controlled tags:
+Use these controlled tags.
+
+Genre must also be captured as one popular tag because genre affects buyer expectation, recipient fit, and ceremony use.
+
+Required genre tag examples:
+
+- pop
+- country
+- folk
+- rock
+- soul
+- gospel
+- acoustic
+- cinematic
+- piano_ballad
+- singer_songwriter
+- americana
+- instrumental
+- other
+
+Use these controlled celebration tags:
 
 - birthday
 - anniversary
@@ -145,6 +165,7 @@ Every KKR verse / CC assessment should produce:
 - start / end if known
 - feeling tags
 - celebration tags
+- genre tag
 - product size
 - score out of 10
 - rating
@@ -160,4 +181,4 @@ Do not approve based on duration alone.
 
 Do not approve based on one positive word alone.
 
-Approve only when meaning, feeling, ceremony fit, silo permission, and audio quality all support the candidate.
+Approve only when meaning, feeling, ceremony fit, silo permission, genre fit, and audio quality all support the candidate.
