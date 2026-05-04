@@ -1,0 +1,39 @@
+id,tier,title,section,start,end,price_tier,notes
+thank-you-kk1,featured,Thank You KK1,Intro + V1A,0.000,52.500,premium,Existing padded featured cut
+thank-you-kk2,featured,Thank You KK2,V1C + V1D + Chorus 1,52.000,163.000,premium,Corrected label
+thank-you-kk3,featured,Thank You KK3,Chorus 1,114.000,163.000,standard,Existing chorus cut
+thank-you-kk4,featured,Thank You KK4,Intro through Chorus 1,0.000,163.000,premium,Long featured arc
+thank-you-kk5,featured,Thank You KK5,V2A,163.000,184.000,standard,Existing short section
+thank-you-kk6,featured,Thank You KK6,V2B through Outro,184.000,326.000,premium,Run to end; end padding only if needed
+thank-you-kk7,featured,Thank You KK7,Chorus 2 through Outro,228.000,326.000,premium,Ending feature
+thank-you-sec-intro,section,Intro,Intro,0.000,20.000,small,Section cut
+thank-you-sec-v1a,section,Verse 1A,V1A,20.000,52.500,standard,Section cut
+thank-you-sec-v1c,section,Verse 1C,V1C,52.000,80.000,standard,Section cut
+thank-you-sec-v1d,section,Verse 1D,V1D,80.000,114.000,standard,Section cut
+thank-you-sec-ch1,section,Chorus 1,Chorus 1,114.000,163.000,standard,Section cut
+thank-you-sec-v2a,section,Verse 2A,V2A,163.000,184.000,small,Short section cut
+thank-you-sec-v2b,section,Verse 2B,V2B,184.000,228.000,standard,Section cut
+thank-you-sec-ch2,section,Chorus 2,Chorus 2,228.000,283.000,standard,Section cut
+thank-you-sec-outro,section,Outro,Outro,283.000,326.000,standard,Ending cut
+thank-you-cc-001,cc,Opening Moment,Intro moment,0.000,10.000,small,2-3 line / moment cut
+thank-you-cc-002,cc,Intro Lift,Intro moment,10.000,20.000,small,2-3 line / moment cut
+thank-you-cc-003,cc,V1A First Moment,V1A moment,20.000,32.000,small,2-3 line / moment cut
+thank-you-cc-004,cc,V1A Second Moment,V1A moment,32.000,44.000,small,2-3 line / moment cut
+thank-you-cc-005,cc,V1A Close,V1A moment,44.000,52.500,small,2-3 line / moment cut
+thank-you-cc-006,cc,V1C First Moment,V1C moment,52.000,66.000,small,2-3 line / moment cut
+thank-you-cc-007,cc,V1C Second Moment,V1C moment,66.000,80.000,small,2-3 line / moment cut
+thank-you-cc-008,cc,V1D First Moment,V1D moment,80.000,97.000,small,2-3 line / moment cut
+thank-you-cc-009,cc,V1D Second Moment,V1D moment,97.000,114.000,small,2-3 line / moment cut
+thank-you-cc-010,cc,Chorus 1 Opening,Chorus 1 moment,114.000,130.000,small,2-3 line / moment cut
+thank-you-cc-011,cc,Chorus 1 Middle,Chorus 1 moment,130.000,146.000,small,2-3 line / moment cut
+thank-you-cc-012,cc,Chorus 1 Close,Chorus 1 moment,146.000,163.000,small,2-3 line / moment cut
+thank-you-cc-013,cc,V2A Moment,V2A moment,163.000,184.000,small,Short emotional section
+thank-you-cc-014,cc,V2B Opening,V2B moment,184.000,199.000,small,2-3 line / moment cut
+thank-you-cc-015,cc,V2B Middle,V2B moment,199.000,214.000,small,2-3 line / moment cut
+thank-you-cc-016,cc,V2B Close,V2B moment,214.000,228.000,small,2-3 line / moment cut
+thank-you-cc-017,cc,Chorus 2 Opening,Chorus 2 moment,228.000,246.000,small,2-3 line / moment cut
+thank-you-cc-018,cc,Chorus 2 Middle,Chorus 2 moment,246.000,264.000,small,2-3 line / moment cut
+thank-you-cc-019,cc,Chorus 2 Close,Chorus 2 moment,264.000,283.000,small,2-3 line / moment cut
+thank-you-cc-020,cc,Outro Opening,Outro moment,283.000,300.000,small,Ending moment
+thank-you-cc-021,cc,Outro Middle,Outro moment,300.000,313.000,small,Ending moment
+thank-you-cc-022,cc,Final Thank You,Outro final moment,313.000,326.000,small,Final ending moment

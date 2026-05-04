@@ -1,0 +1,300 @@
+{
+  "program": "Mother's Day Thank You",
+  "launch_status": "expanded_with_triage",
+  "public_rule": "No mKs / no mini-KUTs in buyer flow.",
+  "purchase_rule": "One K-KUT per purchase. Buyers may purchase multiple K-KUTs through separate purchases.",
+  "triage_rule": "Cuts with generation errors are excluded from the public catalog and kept in side triage.",
+  "price_tiers": {
+    "premium": "Longer featured or multi-section K-KUT.",
+    "standard": "One full section or meaningful section-length K-KUT.",
+    "small": "Short section, subsection, or 2-3 line moment K-KUT."
+  },
+  "kks": [
+    {
+      "id": "thank-you-kk1",
+      "tier": "featured",
+      "title": "Thank You KK1",
+      "section": "Intro + V1A",
+      "start": 0.0,
+      "end": 52.5,
+      "price_tier": "premium",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
+      "notes": "Existing padded featured cut"
+    },
+    {
+      "id": "thank-you-kk6",
+      "tier": "featured",
+      "title": "Thank You KK6",
+      "section": "V2B through Outro",
+      "start": 184.0,
+      "end": 326.0,
+      "price_tier": "premium",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk6.mp3",
+      "notes": "Run to end; end padding only if needed"
+    },
+    {
+      "id": "thank-you-sec-v1c",
+      "tier": "section",
+      "title": "Verse 1C",
+      "section": "V1C",
+      "start": 52.0,
+      "end": 80.0,
+      "price_tier": "standard",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+      "notes": "Section cut"
+    },
+    {
+      "id": "thank-you-sec-v1d",
+      "tier": "section",
+      "title": "Verse 1D",
+      "section": "V1D",
+      "start": 80.0,
+      "end": 114.0,
+      "price_tier": "standard",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+      "notes": "Section cut"
+    },
+    {
+      "id": "thank-you-sec-ch1",
+      "tier": "section",
+      "title": "Chorus 1",
+      "section": "Chorus 1",
+      "start": 114.0,
+      "end": 163.0,
+      "price_tier": "standard",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "notes": "Section cut"
+    },
+    {
+      "id": "thank-you-sec-v2b",
+      "tier": "section",
+      "title": "Verse 2B",
+      "section": "V2B",
+      "start": 184.0,
+      "end": 228.0,
+      "price_tier": "standard",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "notes": "Section cut"
+    },
+    {
+      "id": "thank-you-sec-ch2",
+      "tier": "section",
+      "title": "Chorus 2",
+      "section": "Chorus 2",
+      "start": 228.0,
+      "end": 283.0,
+      "price_tier": "standard",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "notes": "Section cut"
+    },
+    {
+      "id": "thank-you-cc-001",
+      "tier": "cc",
+      "title": "Opening Moment",
+      "section": "Intro moment",
+      "start": 0.0,
+      "end": 10.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-003",
+      "tier": "cc",
+      "title": "V1A First Moment",
+      "section": "V1A moment",
+      "start": 20.0,
+      "end": 32.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-004",
+      "tier": "cc",
+      "title": "V1A Second Moment",
+      "section": "V1A moment",
+      "start": 32.0,
+      "end": 44.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-006",
+      "tier": "cc",
+      "title": "V1C First Moment",
+      "section": "V1C moment",
+      "start": 52.0,
+      "end": 66.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-007",
+      "tier": "cc",
+      "title": "V1C Second Moment",
+      "section": "V1C moment",
+      "start": 66.0,
+      "end": 80.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-008",
+      "tier": "cc",
+      "title": "V1D First Moment",
+      "section": "V1D moment",
+      "start": 80.0,
+      "end": 97.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-009",
+      "tier": "cc",
+      "title": "V1D Second Moment",
+      "section": "V1D moment",
+      "start": 97.0,
+      "end": 114.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-009.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-010",
+      "tier": "cc",
+      "title": "Chorus 1 Opening",
+      "section": "Chorus 1 moment",
+      "start": 114.0,
+      "end": 130.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-010.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-011",
+      "tier": "cc",
+      "title": "Chorus 1 Middle",
+      "section": "Chorus 1 moment",
+      "start": 130.0,
+      "end": 146.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-011.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-012",
+      "tier": "cc",
+      "title": "Chorus 1 Close",
+      "section": "Chorus 1 moment",
+      "start": 146.0,
+      "end": 163.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-013",
+      "tier": "cc",
+      "title": "V2A Moment",
+      "section": "V2A moment",
+      "start": 163.0,
+      "end": 184.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-013.mp3",
+      "notes": "Short emotional section"
+    },
+    {
+      "id": "thank-you-cc-014",
+      "tier": "cc",
+      "title": "V2B Opening",
+      "section": "V2B moment",
+      "start": 184.0,
+      "end": 199.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-014.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-015",
+      "tier": "cc",
+      "title": "V2B Middle",
+      "section": "V2B moment",
+      "start": 199.0,
+      "end": 214.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-015.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-016",
+      "tier": "cc",
+      "title": "V2B Close",
+      "section": "V2B moment",
+      "start": 214.0,
+      "end": 228.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-016.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-017",
+      "tier": "cc",
+      "title": "Chorus 2 Opening",
+      "section": "Chorus 2 moment",
+      "start": 228.0,
+      "end": 246.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-017.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-018",
+      "tier": "cc",
+      "title": "Chorus 2 Middle",
+      "section": "Chorus 2 moment",
+      "start": 246.0,
+      "end": 264.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-018.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-019",
+      "tier": "cc",
+      "title": "Chorus 2 Close",
+      "section": "Chorus 2 moment",
+      "start": 264.0,
+      "end": 283.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-019.mp3",
+      "notes": "2-3 line / moment cut"
+    },
+    {
+      "id": "thank-you-cc-020",
+      "tier": "cc",
+      "title": "Outro Opening",
+      "section": "Outro moment",
+      "start": 283.0,
+      "end": 300.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-020.mp3",
+      "notes": "Ending moment"
+    },
+    {
+      "id": "thank-you-cc-021",
+      "tier": "cc",
+      "title": "Outro Middle",
+      "section": "Outro moment",
+      "start": 300.0,
+      "end": 313.0,
+      "price_tier": "small",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-021.mp3",
+      "notes": "Ending moment"
+    }
+  ]
+}

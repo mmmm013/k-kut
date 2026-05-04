@@ -5,45 +5,211 @@ import { useRef, useState } from "react";
 const kks = [
   {
     id: "thank-you-kk1",
+    tier: "featured",
     title: "Thank You KK1",
-    section: "Intro / Verse 1A",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk1.mp3",
-  },
-  {
-    id: "thank-you-kk2",
-    title: "Thank You KK2",
-    section: "V1C + V1D + Chorus 1",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk2.mp3",
-  },
-  {
-    id: "thank-you-kk3",
-    title: "Thank You KK3",
-    section: "Chorus 1 lift",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk3.mp3",
-  },
-  {
-    id: "thank-you-kk4",
-    title: "Thank You KK4",
-    section: "Intro through Chorus 1",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk4.mp3",
-  },
-  {
-    id: "thank-you-kk5",
-    title: "Thank You KK5",
-    section: "Verse 2A",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk5.mp3",
+    section: "Intro + V1A",
+    priceTier: "premium",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
   },
   {
     id: "thank-you-kk6",
+    tier: "featured",
     title: "Thank You KK6",
-    section: "Verse 2B through Outro",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk6.mp3",
+    section: "V2B through Outro",
+    priceTier: "premium",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk6.mp3",
   },
   {
-    id: "thank-you-kk7",
-    title: "Thank You KK7",
-    section: "Chorus 2 through Outro",
-    audioUrl: "/mothers-day/thank-you/kks/thank-you-kk7.mp3",
+    id: "thank-you-sec-v1c",
+    tier: "section",
+    title: "Verse 1C",
+    section: "V1C",
+    priceTier: "standard",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+  },
+  {
+    id: "thank-you-sec-v1d",
+    tier: "section",
+    title: "Verse 1D",
+    section: "V1D",
+    priceTier: "standard",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+  },
+  {
+    id: "thank-you-sec-ch1",
+    tier: "section",
+    title: "Chorus 1",
+    section: "Chorus 1",
+    priceTier: "standard",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+  },
+  {
+    id: "thank-you-sec-v2b",
+    tier: "section",
+    title: "Verse 2B",
+    section: "V2B",
+    priceTier: "standard",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+  },
+  {
+    id: "thank-you-sec-ch2",
+    tier: "section",
+    title: "Chorus 2",
+    section: "Chorus 2",
+    priceTier: "standard",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+  },
+  {
+    id: "thank-you-cc-001",
+    tier: "cc",
+    title: "Opening Moment",
+    section: "Intro moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+  },
+  {
+    id: "thank-you-cc-003",
+    tier: "cc",
+    title: "V1A First Moment",
+    section: "V1A moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+  },
+  {
+    id: "thank-you-cc-004",
+    tier: "cc",
+    title: "V1A Second Moment",
+    section: "V1A moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
+  },
+  {
+    id: "thank-you-cc-006",
+    tier: "cc",
+    title: "V1C First Moment",
+    section: "V1C moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
+  },
+  {
+    id: "thank-you-cc-007",
+    tier: "cc",
+    title: "V1C Second Moment",
+    section: "V1C moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
+  },
+  {
+    id: "thank-you-cc-008",
+    tier: "cc",
+    title: "V1D First Moment",
+    section: "V1D moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
+  },
+  {
+    id: "thank-you-cc-009",
+    tier: "cc",
+    title: "V1D Second Moment",
+    section: "V1D moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-009.mp3",
+  },
+  {
+    id: "thank-you-cc-010",
+    tier: "cc",
+    title: "Chorus 1 Opening",
+    section: "Chorus 1 moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-010.mp3",
+  },
+  {
+    id: "thank-you-cc-011",
+    tier: "cc",
+    title: "Chorus 1 Middle",
+    section: "Chorus 1 moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-011.mp3",
+  },
+  {
+    id: "thank-you-cc-012",
+    tier: "cc",
+    title: "Chorus 1 Close",
+    section: "Chorus 1 moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+  },
+  {
+    id: "thank-you-cc-013",
+    tier: "cc",
+    title: "V2A Moment",
+    section: "V2A moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-013.mp3",
+  },
+  {
+    id: "thank-you-cc-014",
+    tier: "cc",
+    title: "V2B Opening",
+    section: "V2B moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-014.mp3",
+  },
+  {
+    id: "thank-you-cc-015",
+    tier: "cc",
+    title: "V2B Middle",
+    section: "V2B moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-015.mp3",
+  },
+  {
+    id: "thank-you-cc-016",
+    tier: "cc",
+    title: "V2B Close",
+    section: "V2B moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-016.mp3",
+  },
+  {
+    id: "thank-you-cc-017",
+    tier: "cc",
+    title: "Chorus 2 Opening",
+    section: "Chorus 2 moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-017.mp3",
+  },
+  {
+    id: "thank-you-cc-018",
+    tier: "cc",
+    title: "Chorus 2 Middle",
+    section: "Chorus 2 moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-018.mp3",
+  },
+  {
+    id: "thank-you-cc-019",
+    tier: "cc",
+    title: "Chorus 2 Close",
+    section: "Chorus 2 moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-019.mp3",
+  },
+  {
+    id: "thank-you-cc-020",
+    tier: "cc",
+    title: "Outro Opening",
+    section: "Outro moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-020.mp3",
+  },
+  {
+    id: "thank-you-cc-021",
+    tier: "cc",
+    title: "Outro Middle",
+    section: "Outro moment",
+    priceTier: "small",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-021.mp3",
   },
 ];
 
@@ -104,7 +270,7 @@ export default function MothersDayThankYouPage() {
               Choose one K-KUT per purchase.
             </h2>
             <p className="mt-3 text-[#e4c89b]">
-              You can buy many K-KUTs, but each purchase is one K-KUT at a time. Featured K-KUTs are shown now; smaller section and moment cuts are being added.
+              You can buy many K-KUTs, but each purchase is one K-KUT at a time. Choose from featured K-KUTs, full section cuts, and smaller 2–3 line moment cuts.
             </p>
           </div>
         </div>
@@ -122,6 +288,10 @@ export default function MothersDayThankYouPage() {
               <h3 className="mt-3 text-2xl font-black">{kk.title}</h3>
 
               <p className="mt-2 text-[#e4c89b]">{kk.section}</p>
+
+              <p className="mt-2 inline-block rounded-full border border-[#6f4b12] px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#c9a36a]">
+                {kk.tier} · {kk.priceTier}
+              </p>
 
               <audio
                 className="mt-5 w-full"
@@ -151,13 +321,10 @@ export default function MothersDayThankYouPage() {
             More K-KUT options are being added.
           </h2>
           <p className="mt-3 leading-7 text-[#e4c89b]">
-            This first launch set shows featured K-KUTs. The full Mother’s Day
-            program will include more section cuts and smaller moment cuts:
-            verses, chorus parts, endings, and 2–3 line emotional moments.
+            This expanded Mother’s Day program includes featured K-KUTs, full section cuts, and smaller moment cuts: verses, chorus parts, endings, and 2–3 line emotional moments.
           </p>
           <p className="mt-3 leading-7 text-[#e4c89b]">
-            Smaller K-KUTs will have a smaller price. Each purchase remains one
-            K-KUT at a time.
+            Smaller K-KUTs have a smaller price tier. Each purchase remains one K-KUT at a time.
           </p>
         </section>
 

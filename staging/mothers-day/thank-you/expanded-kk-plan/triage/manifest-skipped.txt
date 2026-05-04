@@ -1,0 +1,12 @@
+thank-you-kk2 | missing audio | V1C + V1D + Chorus 1 | 52.000-163.000
+thank-you-kk3 | missing audio | Chorus 1 | 114.000-163.000
+thank-you-kk4 | missing audio | Intro through Chorus 1 | 0.000-163.000
+thank-you-kk5 | missing audio | V2A | 163.000-184.000
+thank-you-kk7 | missing audio | Chorus 2 through Outro | 228.000-326.000
+thank-you-sec-intro | missing audio | Intro | 0.000-20.000
+thank-you-sec-v1a | missing audio | V1A | 20.000-52.500
+thank-you-sec-v2a | missing audio | V2A | 163.000-184.000
+thank-you-sec-outro | missing audio | Outro | 283.000-326.000
+thank-you-cc-002 | missing audio | Intro moment | 10.000-20.000
+thank-you-cc-005 | missing audio | V1A moment | 44.000-52.500
+thank-you-cc-022 | missing audio | Outro final moment | 313.000-326.000
