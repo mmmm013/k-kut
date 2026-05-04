@@ -310,6 +310,34 @@ const kks = [
 ];
 
 
+
+const bbBotSamples = [
+  {
+    label: "Short KUT",
+    price: "$4.99",
+    description: "A quick emotional moment.",
+    id: "thank-you-cc-022",
+    title: "Final Thank You",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3",
+  },
+  {
+    label: "HUG",
+    price: "$7.99",
+    description: "A fuller audio greeting from one song section.",
+    id: "thank-you-sec-ch1",
+    title: "Chorus 1",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+  },
+  {
+    label: "Big HUG",
+    price: "$12.99",
+    description: "A larger audio greeting with the strongest emotional arc.",
+    id: "thank-you-kk7",
+    title: "Chorus 2 through Outro",
+    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk7.mp3",
+  },
+];
+
 function priceForTier(priceTier: string) {
   if (priceTier === "small") return "$4.99";
   if (priceTier === "standard") return "$7.99";
@@ -318,9 +346,9 @@ function priceForTier(priceTier: string) {
 }
 
 function publicTierName(tier: string) {
-  if (tier === "cc") return "Moment K-KUT";
-  if (tier === "section") return "Section K-KUT";
-  return "Featured K-KUT";
+  if (tier === "cc") return "Short KUT";
+  if (tier === "section") return "HUG";
+  return "Big HUG";
 }
 
 export default function MothersDayThankYouPage() {
@@ -380,10 +408,71 @@ export default function MothersDayThankYouPage() {
               Choose one K-KUT per purchase.
             </h2>
             <p className="mt-3 text-[#e4c89b]">
-              You can buy many K-KUTs, but each purchase is one K-KUT at a time. Choose from featured K-KUTs, full section cuts, and smaller 2–3 line moment cuts.
+              You can buy many K-KUTs, but each purchase is one K-KUT at a time. Choose a Short KUT, HUG, or Big HUG. Each purchase sends one real-audio greeting.
             </p>
           </div>
         </div>
+
+
+        <section className="mt-10 rounded-3xl border border-[#f4b000] bg-[#0f0f0f] p-6 shadow-2xl">
+          <p className="text-sm font-black tracking-[0.3em] text-[#f4b000]">
+            BB-BOT HELPER
+          </p>
+          <h2 className="mt-3 text-3xl font-black">
+            Not sure what to send?
+          </h2>
+          <p className="mt-3 max-w-3xl leading-7 text-[#e4c89b]">
+            Try one sample of each size. Choose the quick version, the fuller HUG,
+            or the big emotional one.
+          </p>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {bbBotSamples.map((sample) => (
+              <article
+                key={sample.id}
+                className="rounded-2xl border border-[#5b3b12] bg-[#211309] p-5"
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#c9a36a]">
+                  {sample.label} · {sample.price}
+                </p>
+                <h3 className="mt-3 text-xl font-black">{sample.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#e4c89b]">
+                  {sample.description}
+                </p>
+
+                <audio
+                  className="mt-4 w-full"
+                  controls
+                  preload="metadata"
+                  src={sample.audioUrl}
+                />
+
+                <button
+                  onClick={() => {
+                    window.localStorage.setItem("selectedMotherDayKk", sample.id);
+                    fetch("/api/donate", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ kk: sample.id }),
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        if (data?.url) window.location.href = data.url;
+                      });
+                  }}
+                  className="mt-4 block w-full rounded-xl bg-[#f4b000] px-4 py-3 text-center font-black text-black hover:opacity-90"
+                >
+                  {`Send this ${sample.label}`}
+                </button>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-5 text-sm text-[#a88350]">
+            Want more choices? Browse all Mother’s Day HUG options below.
+          </p>
+        </section>
+
 
         <section className="mt-10 grid gap-5 md:grid-cols-2">
           {kks.map((kk) => (
@@ -431,10 +520,10 @@ export default function MothersDayThankYouPage() {
             More K-KUT options are being added.
           </h2>
           <p className="mt-3 leading-7 text-[#e4c89b]">
-            This expanded Mother’s Day program includes featured K-KUTs, full section cuts, and smaller moment cuts: verses, chorus parts, endings, and 2–3 line emotional moments.
+            This Mother’s Day program includes Short KUTs, HUGs, and Big HUGs: short emotional moments, fuller song sections, and larger signature audio greetings.
           </p>
           <p className="mt-3 leading-7 text-[#e4c89b]">
-            Smaller K-KUTs have a smaller price tier. Each purchase remains one K-KUT at a time.
+            Short KUTs are the smallest and lowest price. HUGs are fuller. Big HUGs are larger audio greetings with the strongest emotional arc.
           </p>
         </section>
 
