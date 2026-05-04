@@ -346,7 +346,7 @@ export default function MothersDayThankYouPage() {
           </p>
 
           <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-            Listen first. Then choose the special part.
+            Send the world’s first Audio Greeting Card — a K-KUT HUG.
           </h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-[#e4c89b]">
