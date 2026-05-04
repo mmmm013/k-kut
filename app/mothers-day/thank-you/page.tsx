@@ -12,7 +12,7 @@ const kks = [
   {
     id: "thank-you-kk2",
     title: "Thank You KK2",
-    section: "Chorus 1",
+    section: "V1C + V1D + Chorus 1",
     audioUrl: "/mothers-day/thank-you/kks/thank-you-kk2.mp3",
   },
   {
@@ -36,7 +36,7 @@ const kks = [
   {
     id: "thank-you-kk6",
     title: "Thank You KK6",
-    section: "Verse 2B / Chorus 2",
+    section: "Verse 2B through Outro",
     audioUrl: "/mothers-day/thank-you/kks/thank-you-kk6.mp3",
   },
   {
