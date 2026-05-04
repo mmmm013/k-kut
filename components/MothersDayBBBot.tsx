@@ -77,15 +77,20 @@ export default function MothersDayBBBot() {
   return (
     <section className="mt-10 rounded-3xl border border-[#f4b000] bg-[#0f0f0f] p-6 shadow-2xl">
       <p className="text-sm font-black tracking-[0.3em] text-[#f4b000]">
-        BB-BOT HELPER
+        BB-BOT IS HERE
       </p>
 
-      <h2 className="mt-3 text-3xl font-black">Not sure what to send?</h2>
+      <h2 className="mt-3 text-3xl font-black">Hi, I’m BB-BOT.</h2>
 
-      <p className="mt-3 max-w-3xl leading-7 text-[#e4c89b]">
-        BB-BOT can help you choose the size of your audio greeting. Start with a
-        feeling, then try one sample of each: Short KUT, HUG, and Big HUG.
-      </p>
+      <div className="mt-4 rounded-2xl border border-[#5b3b12] bg-[#211309] p-5">
+        <p className="text-xl font-black text-[#f8ead0]">
+          I’ll help you choose the right Mother’s Day HUG.
+        </p>
+        <p className="mt-3 leading-7 text-[#e4c89b]">
+          Answer one feeling question. Then I’ll show you three simple choices:
+          a Short KUT, a HUG, or a Big HUG.
+        </p>
+      </div>
 
       <div className="mt-6">
         <p className="font-bold text-[#f8ead0]">What feeling are you sending?</p>
