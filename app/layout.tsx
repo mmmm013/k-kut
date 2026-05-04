@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'K-KUT — Exact Song Section Ownership',
+  title: 'K-KUT HUGs — Audio Greeting Cards',
   description:
     'K-KUT is a G Putnam Music invention. Own an exact excerpt of a song section — legally, permanently, and playably.',
   icons: { icon: '/logo.png', apple: '/logo.png' },

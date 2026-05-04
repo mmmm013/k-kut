@@ -379,8 +379,7 @@ export default function MothersDayThankYouPage() {
           </h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-[#e4c89b]">
-            Play the song and listen for the moments that feel personal,
-            emotional, funny, loving, or unforgettable. Each featured K-KUT is one special cut from the song. More section cuts and smaller moment cuts are being added.
+            Play the Mother’s Day song, choose the feeling you want to send, and let BB-BOT help you pick a Short KUT, HUG, or Big HUG.
           </p>
 
           <div className="mt-8 rounded-2xl border border-[#4b3212] bg-[#0f0f0f] p-5">
