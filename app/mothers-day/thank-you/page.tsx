@@ -21,7 +21,7 @@ const kks = [
   },
   {
     id: "thank-you-kk3",
-    tier: "featured",
+    tier: "section",
     title: "Thank You KK3",
     section: "Chorus 1",
     priceTier: "standard",
@@ -37,7 +37,7 @@ const kks = [
   },
   {
     id: "thank-you-kk5",
-    tier: "featured",
+    tier: "section",
     title: "Thank You KK5",
     section: "V2A",
     priceTier: "standard",

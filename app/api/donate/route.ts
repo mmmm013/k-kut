@@ -3,14 +3,14 @@ import { NextRequest, NextResponse } from "next/server";
 const FEATURED_IDS = new Set([
   "thank-you-kk1",
   "thank-you-kk2",
-  "thank-you-kk3",
   "thank-you-kk4",
-  "thank-you-kk5",
   "thank-you-kk6",
   "thank-you-kk7",
 ]);
 
 const SECTION_IDS = new Set([
+  "thank-you-kk3",
+  "thank-you-kk5",
   "thank-you-sec-intro",
   "thank-you-sec-v1a",
   "thank-you-sec-v1c",
