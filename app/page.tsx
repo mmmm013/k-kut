@@ -331,7 +331,7 @@ export default function HomePage() {
                   BB-BOT help
                 </p>
                 <p className="mt-2 text-lg font-bold text-amber-50/80">
-                  Stuck or not sure?
+                  Not sure yet?
                 </p>
               </div>
 
@@ -344,19 +344,23 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => {
-                  setHelpOpen(true);
-                  playBotVoice(step === 1 ? "welcome" : "pick-one");
+                  playBotVoice("play-demo");
+                  setSelectedFamilyId("special-days");
+                  setSelectedCategorySlug("mothers-day");
+                  setSelectedSong("Thank You");
+                  setLastAction("Demo: Mother’s Day Thank You is live. Start the HUG to see how this works.");
+                  setStep(4);
                 }}
                 className="rounded-2xl bg-amber-300 px-5 py-3 text-base font-black text-[#2a180d] transition hover:bg-amber-200"
               >
-                I don’t understand
+                Show me a demo
               </button>
             </div>
 
             {(helpOpen || slowHelpOpen) && (
               <div className="mt-4 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
                 <p className="text-sm font-black uppercase tracking-[0.18em]">
-                  Need help?
+                  Demo help
                 </p>
                 <p className="mt-2 text-xl font-black leading-8">
                   {stepHelpText}
@@ -364,7 +368,7 @@ export default function HomePage() {
 
                 {slowHelpOpen && (
                   <p className="mt-3 text-base font-bold leading-7">
-                    Start with the yellow action button. It is the only button that moves this step forward.
+                    Use the demo path. Start the live Mother’s Day HUG to see how this works.
                   </p>
                 )}
 
