@@ -86,6 +86,20 @@ export default function TermsPage() {
           timing may vary depending on the product or service.
         </p>
 
+
+        <h2 className="mt-8 text-2xl font-semibold text-white">SMS Messaging</h2>
+        <p className="mt-3 text-neutral-300">
+          G Putnam Music / K-KUT may send customer-care SMS messages related to
+          K-KUT HUG orders, delivery links, support requests, and service-status
+          updates. Message frequency varies. Message and data rates may apply.
+          Reply STOP to opt out. Reply HELP for help.
+        </p>
+        <p className="mt-3 text-neutral-300">
+          Mobile phone numbers collected for SMS messaging are used only for
+          G Putnam Music / K-KUT customer-care messaging and are not sold,
+          rented, or shared with third parties for their marketing purposes.
+        </p>
+
         <h2 className="mt-8 text-2xl font-semibold text-white">Contact</h2>
         <p className="mt-3 text-neutral-300">
           For questions about these Terms, contact G Putnam Music, LLC at{" "}
