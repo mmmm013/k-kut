@@ -170,7 +170,7 @@ export default function HomePage() {
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
   const [lastAction, setLastAction] = useState<string>(
-    "Required: learn what a HUG is, then tap I understand."
+    "Read this first. Then tap I understand — pick what this is for."
   );
 
   const selectedFamily = useMemo<Family>(() => {
@@ -187,7 +187,7 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (step === 1) {
-      return "Welcome. First, learn what a HUG is. Then tap I understand.";
+      return "Welcome. First, read this. Then tap I understand — pick what this is for.";
     }
 
     if (step === 2) {
@@ -342,7 +342,7 @@ export default function HomePage() {
                   Say yes before moving on
                 </p>
                 <p className="mt-2 text-2xl font-black leading-8">
-                  I understand: a HUG is an audio greeting card that sends a real song moment with my message.
+                  I understand: a HUG sends a real song moment with my message.
                 </p>
               </div>
 
