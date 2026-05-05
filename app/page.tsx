@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const ACTIVE_BOT = "gp-bot";
 
@@ -172,6 +172,8 @@ export default function HomePage() {
   const [lastAction, setLastAction] = useState<string>(
     "Read this first. Then tap I understand — pick what this is for."
   );
+  const [helpOpen, setHelpOpen] = useState<boolean>(false);
+  const [slowHelpOpen, setSlowHelpOpen] = useState<boolean>(false);
 
   const selectedFamily = useMemo<Family>(() => {
     return families.find((item) => item.id === selectedFamilyId) ?? families[0];
@@ -214,6 +216,33 @@ export default function HomePage() {
       console.log("GP-BOT voice blocked until user taps:", clip);
     });
   }
+
+  const stepHelpText =
+    step === 1
+      ? "A HUG is an audio greeting card. It sends a real song moment with your message. Tap: I understand — pick what this is for."
+      : step === 2
+        ? "Pick what this HUG is for. Choose one kind, like Special Days."
+        : step === 3
+          ? "Pick one song. If you want to buy today, choose Mother’s Day and Thank You."
+          : "Start the HUG if this choice is live. If not, try Mother’s Day.";
+
+  useEffect(() => {
+    setHelpOpen(false);
+    setSlowHelpOpen(false);
+
+    const helpTimer = window.setTimeout(() => {
+      setHelpOpen(true);
+    }, 5000);
+
+    const slowTimer = window.setTimeout(() => {
+      setSlowHelpOpen(true);
+    }, 12000);
+
+    return () => {
+      window.clearTimeout(helpTimer);
+      window.clearTimeout(slowTimer);
+    };
+  }, [step, selectedFamilyId, selectedCategorySlug, selectedSong]);
 
   function chooseFamily(family: Family) {
     setSelectedFamilyId(family.id);
@@ -293,6 +322,58 @@ export default function HomePage() {
             <p className="mt-3 text-lg leading-8 text-amber-50/80">
               Only the active step works. The next steps are locked until you finish this one.
             </p>
+          </section>
+
+          <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-[#3a1f0f] p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                  BB-BOT help
+                </p>
+                <p className="mt-2 text-lg font-bold text-amber-50/80">
+                  Stuck or not sure?
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setHelpOpen(true);
+                  playBotVoice(step === 1 ? "welcome" : "pick-one");
+                }}
+                className="rounded-2xl bg-amber-300 px-5 py-3 text-base font-black text-[#2a180d] transition hover:bg-amber-200"
+              >
+                I don’t understand
+              </button>
+            </div>
+
+            {(helpOpen || slowHelpOpen) && (
+              <div className="mt-4 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
+                <p className="text-sm font-black uppercase tracking-[0.18em]">
+                  Need help?
+                </p>
+                <p className="mt-2 text-xl font-black leading-8">
+                  {stepHelpText}
+                </p>
+
+                {slowHelpOpen && (
+                  <p className="mt-3 text-base font-bold leading-7">
+                    Start with the yellow action button. It is the only button that moves this step forward.
+                  </p>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setHelpOpen(false);
+                    setSlowHelpOpen(false);
+                  }}
+                  className="mt-4 rounded-xl bg-[#2a180d] px-4 py-2 text-sm font-black text-amber-100"
+                >
+                  Got it
+                </button>
+              </div>
+            )}
           </section>
 
           <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-5">
