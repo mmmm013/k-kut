@@ -179,6 +179,14 @@ export default function HomePage() {
               BB-BOT
             </p>
             <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
+
+              <button
+                type="button"
+                onClick={() => playBotVoice("welcome")}
+                className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
+              >
+                Play BB-BOT voice
+              </button>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
