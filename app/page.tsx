@@ -203,8 +203,7 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-5 max-w-2xl text-lg leading-8 text-amber-50/85">
-                BB-BOT guides the buyer from the first second: say the feeling,
-                hear the demo, choose the HUG, and checkout securely.
+                BB-BOT talks the buyer through every step: say the feeling, hear the demo, choose the HUG, and checkout securely.
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -273,7 +272,7 @@ export default function HomePage() {
                 <div>
                   <h2 className="text-2xl font-black">BB-BOT is guiding this order.</h2>
                   <p className="mt-2 text-base leading-7 text-amber-50/80">
-                    Voice, tap, or type. BB-BOT recommends the best Mother’s Day HUG.
+                    Voice, tap, or type. BB-BOT watches the whole flow and talks you through the next best action.
                   </p>
                 </div>
               </div>
@@ -344,7 +343,7 @@ export default function HomePage() {
                 Active guided demo
               </p>
               <h2 className="mt-2 text-3xl font-black sm:text-4xl">
-                BB-BOT selected: {selectedDemo.feeling}
+                BB-BOT is guiding: {selectedDemo.feeling}
               </h2>
             </div>
 
@@ -414,7 +413,7 @@ export default function HomePage() {
               </audio>
 
               <div className="mt-6 rounded-2xl bg-white/5 p-4">
-                <p className="font-bold text-amber-100">BB-BOT next action</p>
+                <p className="font-bold text-amber-100">BB-BOT knows your next action</p>
                 <p className="mt-2 leading-7 text-amber-50/75">
                   {hugChosen
                     ? "HUG selected. Go to secure checkout to complete the Mother’s Day order."
@@ -450,14 +449,14 @@ export default function HomePage() {
           <div className="rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-5">
             <h3 className="text-xl font-black">Voice or type.</h3>
             <p className="mt-2 leading-7 text-amber-50/75">
-              BB-BOT responds to what the buyer says or types.
+              BB-BOT talks, listens, responds, and keeps the buyer moving.
             </p>
           </div>
 
           <div className="rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-5">
             <h3 className="text-xl font-black">One active step.</h3>
             <p className="mt-2 leading-7 text-amber-50/75">
-              The highlighted step moves as the buyer chooses, listens, and orders.
+              BB-BOT highlights the current step and explains what to do next.
             </p>
           </div>
 
