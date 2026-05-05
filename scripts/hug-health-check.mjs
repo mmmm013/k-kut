@@ -58,6 +58,7 @@ check("Home has current action panel", home.includes("Current action"));
 check("Home has coming soon response", home.includes("coming soon"));
 check("Home has buy-today response", home.includes("buy today"));
 check("Home avoids dead Hear BB-BOT wording", !home.includes("Hear BB-BOT"));
+check("Home avoids decorative BOT badge", !home.includes("BB-BOT guide · GP-BOT voice"));
 check("Home avoids message path wording", !home.includes("message path"));
 check("Home avoids visible Step-number wording", !home.includes("Step {item.step}:") && !home.includes("Active Step 1"));
 check("Home intro says read below", home.includes("Please read below first"));
