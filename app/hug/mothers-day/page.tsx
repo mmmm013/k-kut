@@ -1,3 +1,36 @@
+
+function stopAllAudio() {
+  if (typeof document === "undefined") return;
+
+  document.querySelectorAll("audio").forEach((audio) => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  window.dispatchEvent(new Event("k-kut-stop-audio"));
+}
+
+function playOneAudio(src: string) {
+  if (typeof window === "undefined") return;
+
+  stopAllAudio();
+
+  const audio = new Audio(src);
+  audio.volume = 0.95;
+
+  const stopHandler = () => {
+    audio.pause();
+    audio.currentTime = 0;
+  };
+
+  window.addEventListener("k-kut-stop-audio", stopHandler, { once: true });
+
+  audio.currentTime = 0;
+  audio.play().catch(() => {
+    console.log("Audio blocked until user taps:", src);
+  });
+}
+
 "use client";
 
 import { useMemo, useRef, useState } from "react";

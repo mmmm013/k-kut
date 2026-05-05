@@ -5,6 +5,39 @@ import { useMemo, useState } from "react";
 
 const ACTIVE_BOT = "gp-bot";
 
+function stopAllAudio() {
+  if (typeof document === "undefined") return;
+
+  document.querySelectorAll("audio").forEach((audio) => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  window.dispatchEvent(new Event("k-kut-stop-audio"));
+}
+
+function playOneAudio(src: string) {
+  if (typeof window === "undefined") return;
+
+  stopAllAudio();
+
+  const audio = new Audio(src);
+  audio.volume = 0.95;
+
+  const stopHandler = () => {
+    audio.pause();
+    audio.currentTime = 0;
+  };
+
+  window.addEventListener("k-kut-stop-audio", stopHandler, { once: true });
+
+  audio.currentTime = 0;
+  audio.play().catch(() => {
+    console.log("Audio blocked until user taps:", src);
+  });
+}
+
+
 const families = [
   {
     id: "special-days",
@@ -206,13 +239,7 @@ const selectedFamily = useMemo<Family>(() => {
   }, [step, selectedCategory, selectedSong]);
 
   function playBotVoice(clip: string = "welcome") {
-    if (typeof window === "undefined") return;
-
-    const audio = new Audio(`/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
-    audio.volume = 0.95;
-    audio.play().catch(() => {
-      console.log("GP-BOT voice blocked until user taps:", clip);
-    });
+    playOneAudio(`/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
   }
   function chooseFamily(family: Family) {
     setSelectedFamilyId(family.id);
