@@ -269,6 +269,7 @@ export default function HomePage() {
                 onSubmit={(event) => {
                   event.preventDefault();
                   playBotVoice("pick-one");
+                  playBotVoice("pick-one");
                   submitFeeling(typedFeeling);
                 }}
               >
