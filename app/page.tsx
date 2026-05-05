@@ -335,6 +335,12 @@ export default function HomePage() {
                 </p>
               </div>
 
+              <div className="mt-6 grid gap-3 text-lg font-bold leading-8 text-amber-50/90">
+                <p>♪ A HUG is an audio greeting card.</p>
+                <p>♬ A HUG sends feeling through music.</p>
+                <p>♫ A HUG can be sent by text, DM, social link, or email.</p>
+              </div>
+
               <button
                 type="button"
                 onClick={() => {
