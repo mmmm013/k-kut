@@ -59,6 +59,9 @@ check("Home has coming soon response", home.includes("coming soon"));
 check("Home has buy-today response", home.includes("buy today"));
 check("Home avoids dead Hear BB-BOT wording", !home.includes("Hear BB-BOT"));
 check("Home avoids message path wording", !home.includes("message path"));
+check("Home avoids visible Step-number wording", !home.includes("Step {item.step}:") && !home.includes("Active Step 1"));
+check("Home intro says read below", home.includes("Please read below first"));
+check("Home uses music bullets", home.includes("♪") && home.includes("♬") && home.includes("♫"));
 
 check("Mother's Day has playBotVoice function", mothers.includes("function playBotVoice"));
 check("Mother's Day shows Play GP-BOT button", mothers.includes("Play GP-BOT"));

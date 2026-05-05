@@ -189,7 +189,7 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (step === 1) {
-      return "Welcome. I’ll help you choose a HUG. Read below first.";
+      return "Welcome. I’ll help you choose a HUG. Please read below first.";
     }
 
     if (step === 2) {
@@ -320,7 +320,7 @@ export default function HomePage() {
             </p>
             <h2 className="mt-2 text-3xl font-black text-amber-50">{lastAction}</h2>
             <p className="mt-3 text-lg leading-8 text-amber-50/80">
-              Only the active step works. The next steps are locked until you finish this one.
+              Only the active area works. The other parts are locked until you finish this one.
             </p>
           </section>
 
@@ -381,13 +381,13 @@ export default function HomePage() {
               Progress
             </p>
             <p className="mt-3 text-lg leading-8 text-amber-50/85">
-              <span className="font-black text-amber-200">Active:</span> Step {step}.
-              The other steps are locked until this step is done.
+              <span className="font-black text-amber-200">Active now:</span> {stepLabels.find((item) => item.step === step)?.label}.
+              The other parts are locked until this part is done.
             </p>
             <div className="mt-4 space-y-2 text-base text-amber-50/60">
               {stepLabels.map((item) => (
                 <p key={item.step} className={item.step === step ? "font-black text-amber-100" : ""}>
-                  Step {item.step}: {item.label}
+                  {item.step === step ? "♪" : "♩"} {item.label}
                   {item.step === step ? " — do this now" : " — locked"}
                 </p>
               ))}
@@ -397,7 +397,7 @@ export default function HomePage() {
           {step === 1 && (
             <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Active Step 1 · Required Learn
+                Read below first
               </p>
 
               <h2 className="mt-2 text-4xl font-black">
@@ -440,7 +440,7 @@ export default function HomePage() {
               </button>
 
               <p className="mt-4 text-center text-base font-bold text-amber-50/65">
-                This is required. The next step stays locked until you tap the button.
+                This is required. The next part stays locked until you tap the button.
               </p>
             </section>
           )}
@@ -448,7 +448,7 @@ export default function HomePage() {
           {step === 2 && (
             <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Step 2 · Pick a HUG kind
+                Pick what this is for
               </p>
 
               <h2 className="mt-2 text-4xl font-black">What is this for?</h2>
@@ -474,7 +474,7 @@ export default function HomePage() {
           {step === 3 && (
             <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Step 3 · Pick a song
+                Pick a song
               </p>
 
               <h2 className="mt-2 text-4xl font-black">{selectedFamily.title}</h2>
@@ -526,7 +526,7 @@ export default function HomePage() {
           {step === 4 && (
             <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Step 4 · Start the HUG
+                Start the HUG
               </p>
 
               <h2 className="mt-2 text-4xl font-black">{selectedSong}</h2>

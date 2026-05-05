@@ -252,16 +252,16 @@ export default function HomePage() {
 
               <div className="mt-6 grid gap-3">
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  1. Tell BB-BOT how Mom should feel.
+                  ♪ Tell BB-BOT how Mom should feel.
                 </div>
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
                   2. See a few HUG options.
                 </div>
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  3. Choose one HUG.
+                  ♩ Choose one HUG.
                 </div>
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  4. Checkout.
+                  ♫ Checkout.
                 </div>
               </div>
 
