@@ -14,7 +14,7 @@ const DEMOS = [
   },
   {
     id: "chorus",
-    feeling: "Big Seet",
+    feeling: "Big Heart",
     title: "Thank You — KK Chorus",
     description: "Warm, strong, and emotional.",
     audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
@@ -268,6 +268,7 @@ export default function HomePage() {
                 className="mt-5 flex flex-col gap-3 sm:flex-row"
                 onSubmit={(event) => {
                   event.preventDefault();
+                  playBotVoice("pick-one");
                   submitFeeling(typedFeeling);
                 }}
               >
@@ -287,11 +288,14 @@ export default function HomePage() {
               </form>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                {["Loved", "Appreciated", "Gentle", "Peaceful", "Big Seet"].map((feeling) => (
+                {["Loved", "Appreciated", "Gentle", "Peaceful", "Big Heart"].map((feeling) => (
                   <button
                     key={feeling}
                     type="button"
-                    onClick={() => submitFeeling(feeling)}
+                    onClick={() => {
+                      playBotVoice("pick-one");
+                      submitFeeling(feeling);
+                    }}
                     className="rounded-2xl border border-amber-200/20 bg-black/20 px-4 py-4 text-lg font-black transition hover:bg-white/10"
                   >
                     {feeling}
