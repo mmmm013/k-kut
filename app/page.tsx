@@ -185,13 +185,12 @@ export default function HomePage() {
 
   function speak(text: string) {
     if (typeof window === "undefined") return;
-    if (!("speechSynthesis" in window)) return;
 
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.96;
-    utterance.pitch = 1.0;
-    window.speechSynthesis.speak(utterance);
+    // Shrewd BB-BOT voice rule:
+    // Do NOT use generic browser AI voice.
+    // Real MC-BOT clips should be placed in /public/voices/mc-bot/
+    // Browser speech is intentionally disabled to avoid cheap AI voice.
+    console.log("BB-BOT:", text);
   }
 
   useEffect(() => {
