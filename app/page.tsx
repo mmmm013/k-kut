@@ -172,7 +172,7 @@ export default function HomePage() {
   const [selectedFamilyId, setSelectedFamilyId] = useState<string>("special-days");
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
-  const [lastAction, setLastAction] = useState<string>("Pick the kind of HUG.");
+  const [lastAction, setLastAction] = useState<string>("Pick a HUG kind.");
 
   const selectedFamily = useMemo<Family>(() => {
     return families.find((item) => item.id === selectedFamilyId) ?? families[0];
@@ -192,7 +192,7 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (selectedCategory.liveHref) {
-      return `${lastAction} This one is live. Press Start this HUG.`;
+      return `${lastAction} This one is live. Press Start the HUG.`;
     }
 
     return `${lastAction} This one is coming soon. Try Mother’s Day to buy today.`;
@@ -238,11 +238,11 @@ export default function HomePage() {
           <div className="mt-6 grid gap-7 lg:grid-cols-[1fr_0.95fr] lg:items-start">
             <div>
               <h1 className="text-4xl font-black leading-tight sm:text-6xl">
-                Send a real audio greeting gift.
+                Send a historic audio greeting card.
               </h1>
 
               <p className="mt-5 max-w-2xl text-xl leading-8 text-amber-50/85">
-                Pick the kind of HUG first. Then BB-BOT shows one simple choice at a time.
+                Pick a HUG kind first. Then BB-BOT shows one simple choice at a time.
               </p>
             </div>
 
@@ -270,13 +270,13 @@ export default function HomePage() {
           <p className="mt-2 text-2xl font-black text-amber-50">{lastAction}</p>
           <p className="mt-2 text-base leading-7 text-amber-50/70">
             {selectedCategory.liveHref
-              ? "This HUG is live. Use Start this HUG."
+              ? "This HUG is live. Use Start the HUG."
               : "This HUG is coming soon. Click Mother’s Day to buy today."}
           </p>
         </section>
 
         <section className="mt-8">
-          <h2 className="text-3xl font-black">Pick the kind of HUG</h2>
+          <h2 className="text-3xl font-black">Pick a HUG kind</h2>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {families.map((family) => {
@@ -327,7 +327,7 @@ export default function HomePage() {
               </p>
               <h2 className="mt-2 text-4xl font-black">{selectedFamily.title}</h2>
               <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
-                Pick the HUG kind.
+                Pick a HUG kind.
               </p>
             </div>
           </div>
@@ -390,7 +390,7 @@ export default function HomePage() {
                 href={selectedCategory.liveHref}
                 className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                Start this HUG
+                Start the HUG
               </Link>
             ) : (
               <button
