@@ -50,6 +50,10 @@ export default function HomePage() {
   const [gotFeeling, setSeedFeeling] = useState("");
   const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening"]);
   const [selectedId, setSelectedId] = useState<string>("chorus");
+  const [focusTitle, setFocusTitle] = useState<string>("Learn");
+  const [focusBody, setFocusBody] = useState<string>(
+    "A HUG is a historic audio greeting card. Start here, then choose how Mom should feel."
+  );
 
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
 
@@ -145,12 +149,18 @@ export default function HomePage() {
     };
   }
 
+  function setFocus(title: string, body: string) {
+    setFocusTitle(title);
+    setFocusBody(body);
+  }
+
   function submitFeeling(value: string) {
     const result = normalizeFeeling(value);
     setSeedFeeling(result.got);
     setOptionIds(result.optionIds);
     setSelectedId(result.optionIds[0]);
     setTypedFeeling("");
+    setFocus("Good choice", `You picked ${result.heard}. Now hear your best HUG options.`);
     setStep(2);
   }
 
@@ -203,6 +213,14 @@ export default function HomePage() {
               </button>
           </div>
 
+          <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Current step
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-amber-50">{focusTitle}</h2>
+            <p className="mt-3 text-lg leading-8 text-amber-50/80">{focusBody}</p>
+          </section>
+
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {progress.map((item) => {
               const active = activeProgress === item.n;
@@ -251,6 +269,7 @@ export default function HomePage() {
                 type="button"
                 onClick={() => {
                     playBotVoice("start-hug");
+                    setFocus("Start the HUG", "Now choose how you want Mom to feel.");
                     setStep(1);
                   }}
                 className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
@@ -270,6 +289,7 @@ export default function HomePage() {
                   event.preventDefault();
                   playBotVoice("pick-one");
                   playBotVoice("pick-one");
+                  setFocus("Feeling entered", "I’ll use that to find your best HUG options.");
                   submitFeeling(typedFeeling);
                 }}
               >
@@ -295,6 +315,7 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       playBotVoice("pick-one");
+                      setFocus("Feeling picked", `You picked ${feeling}. I’ll show matching HUG options.`);
                       submitFeeling(feeling);
                     }}
                     className="rounded-2xl border border-amber-200/20 bg-black/20 px-4 py-4 text-lg font-black transition hover:bg-white/10"
@@ -340,6 +361,7 @@ export default function HomePage() {
                           type="button"
                           onClick={() => {
                           playBotVoice("play-demo");
+                          setFocus("Listen first", `You are playing ${demo.title}. If it feels right, choose this HUG.`);
                           playDemo(demo.id);
                         }}
                           className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
@@ -351,6 +373,7 @@ export default function HomePage() {
                           type="button"
                           onClick={() => {
                             playBotVoice("choose-hug");
+                            setFocus("HUG selected", `${demo.title} is selected. Checkout is ready.`);
                             setSelectedId(demo.id);
                             setStep(3);
                           }}
@@ -383,6 +406,7 @@ export default function HomePage() {
                   type="button"
                   onClick={() => {
                     playBotVoice("start-hug");
+                    setFocus("Start the HUG", "Now choose how you want Mom to feel.");
                     setStep(1);
                   }}
                   className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
