@@ -1,69 +1,158 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
-const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
-
-const DEMOS = [
+const categories = [
   {
-    id: "opening",
-    feeling: "Gentle",
-    title: "Thank You — KK Opening",
-    description: "Soft and tender. A gentle start.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
+    slug: "mothers-day",
+    group: "Special Days",
+    title: "Mother’s Day",
+    theme: "Thank You",
+    description: "For thanking Mom with a real audio HUG.",
+    songs: ["Thank You"],
+    liveHref: "/hug/mothers-day",
   },
   {
-    id: "chorus",
-    feeling: "Big Heart",
-    title: "Thank You — KK Chorus",
-    description: "Warm, strong, and emotional.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
+    slug: "wedding",
+    group: "Special Days",
+    title: "Wedding",
+    theme: "Forever & a Day",
+    description: "For vows, forever, commitment, and celebration.",
+    songs: ["Forever & a Day"],
   },
   {
-    id: "outro",
-    feeling: "Peaceful",
-    title: "Thank You — KK Outro",
-    description: "A calm and warm closing.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-outro.mp3",
+    slug: "anniversary",
+    group: "Special Days",
+    title: "Anniversary",
+    theme: "Awesome Anniversary",
+    description: "For celebrating years, loyalty, and love that lasted.",
+    songs: ["Awesome Anniversary"],
+  },
+  {
+    slug: "birthday",
+    group: "Special Days",
+    title: "Birthday",
+    theme: "Best Birthday",
+    description: "For a personal birthday audio greeting.",
+    songs: ["Best Birthday"],
+  },
+  {
+    slug: "sorry",
+    group: "Hard Feelings",
+    title: "Sorry",
+    theme: "Apology / Come Back",
+    description: "For apology, regret, and trying to reconnect.",
+    songs: ["I’m Sorry", "Come Back"],
+  },
+  {
+    slug: "reflection",
+    group: "Hard Feelings",
+    title: "Reflection",
+    theme: "My Reality",
+    description: "For looking inward and telling the truth.",
+    songs: ["My Reality"],
+  },
+  {
+    slug: "hurt",
+    group: "Hard Feelings",
+    title: "Hurt",
+    theme: "Pain / Change",
+    description: "For heartbreak, disappointment, and emotional injury.",
+    songs: ["Hurt Like This", "Changed Your Mind"],
+  },
+  {
+    slug: "cry",
+    group: "Hard Feelings",
+    title: "Cry",
+    theme: "Tears / Memory",
+    description: "For grief, tears, and memories that still hurt.",
+    songs: ["Over Yesterday", "Torn Memories"],
+  },
+  {
+    slug: "romance",
+    group: "Love & Connection",
+    title: "Romance",
+    theme: "Love Songs",
+    description: "For falling in love, staying in love, and saying it clearly.",
+    songs: [
+      "Me in Love",
+      "A Love Like That",
+      "This Time It’s Love",
+      "Curious Thing",
+      "More Than a Feeling",
+      "To Love Me",
+      "Heartwave",
+      "I Do Swear",
+    ],
+  },
+  {
+    slug: "hope",
+    group: "Strength & Hope",
+    title: "Hope",
+    theme: "Believe / Keep Going",
+    description: "For encouragement, faith, grit, and tomorrow.",
+    songs: ["Believe It", "Bein’ Her Man", "Me n’ My Guitar"],
+  },
+  {
+    slug: "self-esteem",
+    group: "Strength & Hope",
+    title: "Self Esteem",
+    theme: "Worth / Fighter",
+    description: "For confidence, courage, and personal strength.",
+    songs: ["Comin’ True", "I Am a Fighter", "No Mystery", "Til I’m Dyin’ I’m Tryin’"],
+  },
+  {
+    slug: "hang-tough",
+    group: "Strength & Hope",
+    title: "Hang Tough",
+    theme: "Support / Endurance",
+    description: "For someone who needs to keep standing.",
+    songs: ["Hang On", "Tough People Do", "Imagine If", "Now, That’s Tough", "My Rock", "By Your Side"],
+  },
+  {
+    slug: "pride",
+    group: "Strength & Hope",
+    title: "Pride",
+    theme: "Identity / Renewal",
+    description: "For pride, renewal, and standing tall.",
+    songs: ["Hearts Like Mine", "Life New", "Love Renews", "Better Watch Out"],
+  },
+  {
+    slug: "sorrow-breakup",
+    group: "Hard Feelings",
+    title: "Sorrow / Break Up",
+    theme: "Loss / Ending",
+    description: "For endings, breakups, and emotional release.",
+    songs: ["Baby We’re Through", "Last Time", "World of Words", "The New Sunset", "Life New"],
   },
 ] as const;
 
-type Step = 0 | 1 | 2 | 3;
+type Category = (typeof categories)[number];
 
 export default function HomePage() {
-  const [step, setStep] = useState<Step>(0);
-  const [typedFeeling, setTypedFeeling] = useState("");
-  const [heardFeeling, setHeardFeeling] = useState("");
-  const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening"]);
-  const [selectedId, setSelectedId] = useState<string>("chorus");
+  const [selectedSlug, setSelectedSlug] = useState<string>("mothers-day");
+  const [selectedSong, setSelectedSong] = useState<string>("Thank You");
 
-  const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
+  const selected = useMemo<Category>(() => {
+    return categories.find((item) => item.slug === selectedSlug) ?? categories[0];
+  }, [selectedSlug]);
 
-  const options = useMemo(
-    () => optionIds.map((id) => DEMOS.find((demo) => demo.id === id)).filter(Boolean) as typeof DEMOS,
-    [optionIds]
-  );
-
-  const selectedDemo = useMemo(
-    () => DEMOS.find((demo) => demo.id === selectedId) ?? DEMOS[1],
-    [selectedId]
-  );
+  const groups = useMemo(() => {
+    return Array.from(new Set(categories.map((item) => item.group)));
+  }, []);
 
   const botMessage = useMemo(() => {
-    if (step === 0) {
-      return "Welcome. A HUG is a short real-audio greeting gift for Mom. First, I’ll show you how this works.";
+    if (!selectedSong) {
+      return `Choose a moment. I’ll show only the right songs for that kind of HUG.`;
     }
 
-    if (step === 1) {
-      return "Step 1. Tell me how Mom should feel.";
+    if (selected.liveHref) {
+      return `You chose ${selected.title}: ${selectedSong}. This HUG activity is ready. Start the guided HUG wizard.`;
     }
 
-    if (step === 2) {
-      return `Step 2. I heard "${heardFeeling}". These are your best HUG options. Press Play on any option, then choose one.`;
-    }
-
-    return `Step 3. Good choice. You picked "${selectedDemo.title}". Now checkout to order this HUG.`;
-  }, [step, heardFeeling, selectedDemo.title]);
+    return `You chose ${selected.title}: ${selectedSong}. This catalog path is selected. Audio demos can be connected next.`;
+  }, [selected, selectedSong]);
 
   function speak(text: string) {
     if (typeof window === "undefined") return;
@@ -80,350 +169,201 @@ export default function HomePage() {
     speak(botMessage);
   }, [botMessage]);
 
-  function normalizeFeeling(input: string) {
-    const raw = input.trim().toLowerCase();
-
-    if (!raw) {
-      return {
-        heard: "loved",
-        optionIds: ["chorus", "opening"],
-      };
-    }
-
-    if (
-      raw.includes("appreciated") ||
-      raw.includes("grateful") ||
-      raw.includes("thank") ||
-      raw.includes("thanks")
-    ) {
-      return {
-        heard: "appreciated",
-        optionIds: ["chorus", "opening"],
-      };
-    }
-
-    if (
-      raw.includes("gentle") ||
-      raw.includes("soft") ||
-      raw.includes("tender")
-    ) {
-      return {
-        heard: "gentle",
-        optionIds: ["opening", "chorus"],
-      };
-    }
-
-    if (
-      raw.includes("peaceful") ||
-      raw.includes("calm") ||
-      raw.includes("peace")
-    ) {
-      return {
-        heard: "peaceful",
-        optionIds: ["outro", "opening"],
-      };
-    }
-
-    if (
-      raw.includes("emotional") ||
-      raw.includes("big heart") ||
-      raw.includes("love") ||
-      raw.includes("loved")
-    ) {
-      return {
-        heard: "big heart",
-        optionIds: ["chorus", "outro"],
-      };
-    }
-
-    return {
-      heard: raw,
-      optionIds: ["chorus", "opening"],
-    };
+  function chooseCategory(category: Category) {
+    setSelectedSlug(category.slug);
+    setSelectedSong(category.songs[0] ?? "");
   }
-
-  function submitFeeling(value: string) {
-    const result = normalizeFeeling(value);
-    setHeardFeeling(result.heard);
-    setOptionIds(result.optionIds);
-    setSelectedId(result.optionIds[0]);
-    setTypedFeeling("");
-    setStep(2);
-  }
-
-  function playDemo(id: string) {
-    const el = audioRefs.current[id];
-    if (!el) return;
-
-    el.play().catch(() => {});
-  }
-
-  const progress = [
-    { n: 1, label: "Learn" },
-    { n: 2, label: "Tell BB-BOT" },
-    { n: 3, label: "Hear options" },
-    { n: 4, label: "Checkout" },
-  ];
-
-  const activeProgress = step === 0 ? 1 : step === 1 ? 2 : step === 2 ? 3 : 4;
 
   return (
-    <main className="min-h-screen bg-[#261208] text-[#fff6e8]">
-      <section className="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12">
+    <main className="min-h-screen bg-[#241105] text-[#fff7e8]">
+      <section className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
         <div className="rounded-[2rem] border border-amber-300/20 bg-[#3a1f0f] p-6 shadow-2xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-amber-200">
-              K-KUT HUG · Mother’s Day
+            <p className="text-sm font-black uppercase tracking-[0.24em] text-amber-200">
+              K-KUT HUGs
             </p>
 
-            <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
+            <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-black text-green-100">
               BB-BOT active
             </div>
           </div>
 
-          <h1 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
-            Send Mom a real audio greeting card.
-          </h1>
+          <div className="mt-6 grid gap-7 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+            <div>
+              <h1 className="text-4xl font-black leading-tight sm:text-6xl">
+                Send a real audio greeting gift.
+              </h1>
 
-          <div className="mt-6 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
-            <p className="text-sm font-black uppercase tracking-[0.18em]">
-              BB-BOT
-            </p>
-            <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
-
-            <button
-              type="button"
-              onClick={() => speak(botMessage)}
-              className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
-            >
-              Hear BB-BOT
-            </button>
-          </div>
-
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {progress.map((item) => {
-              const active = activeProgress === item.n;
-
-              return (
-                <div
-                  key={item.n}
-                  className={`rounded-[1.25rem] border px-4 py-4 text-center ${
-                    active
-                      ? "border-amber-300 bg-amber-300 text-[#2a180d]"
-                      : "border-amber-200/20 bg-white/5 text-amber-50/70"
-                  }`}
-                >
-                  <p className="text-sm font-black uppercase tracking-[0.18em]">
-                    Step {item.n}
-                  </p>
-                  <p className="mt-2 text-lg font-black">{item.label}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {step === 0 && (
-            <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-              <h2 className="text-3xl font-black">What is a HUG?</h2>
-              <p className="mt-4 text-lg leading-8 text-amber-50/85">
-                A HUG is a short real-audio greeting gift for Mom.
+              <p className="mt-5 max-w-2xl text-xl leading-8 text-amber-50/85">
+                Choose the kind of moment. BB-BOT shows only the right options,
+                one step at a time.
               </p>
 
-              <div className="mt-6 grid gap-3">
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  1. Tell BB-BOT how Mom should feel.
+              <div className="mt-7 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 p-5 text-[#2a180d] shadow-lg">
+                <p className="text-sm font-black uppercase tracking-[0.18em]">
+                  BB-BOT
+                </p>
+                <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
+
+                <button
+                  type="button"
+                  onClick={() => speak(botMessage)}
+                  className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
+                >
+                  Hear BB-BOT
+                </button>
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-amber-200/20 bg-black/20 p-5">
+              <h2 className="text-2xl font-black">How it works</h2>
+
+              <div className="mt-4 grid gap-3">
+                <div className="rounded-2xl bg-white/5 p-4 text-lg">
+                  1. Choose the moment.
                 </div>
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  2. Hear a few HUG options.
+                <div className="rounded-2xl bg-white/5 p-4 text-lg">
+                  2. Pick the message or song path.
                 </div>
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  3. Choose one HUG.
+                <div className="rounded-2xl bg-white/5 p-4 text-lg">
+                  3. Hear HUG options.
                 </div>
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  4. Checkout.
+                <div className="rounded-2xl bg-white/5 p-4 text-lg">
+                  4. Choose one and checkout.
                 </div>
               </div>
 
+              <p className="mt-4 text-sm leading-6 text-amber-50/65">
+                One HUG per order. Additional HUGs are separate purchases.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <section className="mt-8">
+          <h2 className="text-3xl font-black">Choose a moment</h2>
+
+          <div className="mt-5 space-y-8">
+            {groups.map((group) => (
+              <div key={group}>
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                  {group}
+                </p>
+
+                <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {categories
+                    .filter((category) => category.group === group)
+                    .map((category) => {
+                      const active = category.slug === selected.slug;
+
+                      return (
+                        <button
+                          key={category.slug}
+                          type="button"
+                          onClick={() => chooseCategory(category)}
+                          className={`rounded-[1.5rem] border p-5 text-left transition ${
+                            active
+                              ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
+                              : "border-amber-200/20 bg-[#3a1f0f] text-amber-50 hover:bg-white/10"
+                          }`}
+                        >
+                          <p className={`text-xs font-black uppercase tracking-[0.18em] ${
+                            active ? "text-[#2a180d]/70" : "text-amber-200"
+                          }`}>
+                            {category.theme}
+                          </p>
+
+                          <h3 className="mt-2 text-2xl font-black">{category.title}</h3>
+
+                          <p className={`mt-3 text-sm leading-6 ${
+                            active ? "text-[#2a180d]/75" : "text-amber-50/70"
+                          }`}>
+                            {category.description}
+                          </p>
+                        </button>
+                      );
+                    })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-8 rounded-[2rem] border border-amber-200/20 bg-[#3a1f0f] p-6 sm:p-8">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Selected moment
+              </p>
+              <h2 className="mt-2 text-4xl font-black">{selected.title}</h2>
+              <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
+                {selected.description}
+              </p>
+            </div>
+
+            {selected.liveHref ? (
+              <Link
+                href={selected.liveHref}
+                className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+              >
+                Start guided HUG
+              </Link>
+            ) : (
               <button
                 type="button"
-                onClick={() => setStep(1)}
-                className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+                onClick={() =>
+                  speak("This HUG category is selected. Audio demo wiring comes next.")
+                }
+                className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-50 transition hover:bg-white/10"
               >
-                Start
+                Category selected
               </button>
-            </section>
-          )}
+            )}
+          </div>
 
-          {step === 1 && (
-            <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-              <h2 className="text-3xl font-black">How should Mom feel?</h2>
+          <div className="mt-6">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Choose a message path
+            </p>
 
-              <form
-                className="mt-5 flex flex-col gap-3 sm:flex-row"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  submitFeeling(typedFeeling);
-                }}
-              >
-                <input
-                  value={typedFeeling}
-                  onChange={(event) => setTypedFeeling(event.target.value)}
-                  placeholder='Example: "appreciated"'
-                  className="min-h-14 flex-1 rounded-2xl border border-amber-200/20 bg-black/20 px-4 text-lg text-amber-50 outline-none placeholder:text-amber-100/40"
-                />
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {selected.songs.map((song) => {
+                const active = selectedSong === song;
 
-                <button
-                  type="submit"
-                  className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                >
-                  Show options
-                </button>
-              </form>
-
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                {["Loved", "Appreciated", "Gentle", "Peaceful", "Big Heart"].map((feeling) => (
+                return (
                   <button
-                    key={feeling}
+                    key={song}
                     type="button"
-                    onClick={() => submitFeeling(feeling)}
-                    className="rounded-2xl border border-amber-200/20 bg-black/20 px-4 py-4 text-lg font-black transition hover:bg-white/10"
+                    onClick={() => setSelectedSong(song)}
+                    className={`rounded-2xl border px-5 py-4 text-left text-lg font-black transition ${
+                      active
+                        ? "border-amber-300 bg-amber-300 text-[#2a180d]"
+                        : "border-amber-200/20 bg-black/20 text-amber-50 hover:bg-white/10"
+                    }`}
                   >
-                    {feeling}
+                    {song}
                   </button>
-                ))}
-              </div>
-            </section>
-          )}
+                );
+              })}
+            </div>
+          </div>
 
-          {step === 2 && (
-            <section className="mt-8">
-              <h2 className="text-3xl font-black">Your HUG options</h2>
-              <p className="mt-3 text-lg leading-8 text-amber-50/80">
-                BB-BOT heard: <span className="font-black text-amber-200">{heardFeeling}</span>
+          {selected.liveHref ? (
+            <div className="mt-6 rounded-2xl bg-black/20 p-5">
+              <p className="text-lg leading-8 text-amber-50/80">
+                Mother’s Day is live now. BB-BOT will guide the buyer through
+                choosing the feeling, hearing options, choosing one HUG, and checkout.
               </p>
-
-              <div className="mt-5 grid gap-4">
-                {options.map((demo) => {
-                  const chosen = selectedId === demo.id;
-
-                  return (
-                    <div
-                      key={demo.id}
-                      className={`rounded-[1.5rem] border p-6 ${
-                        chosen
-                          ? "border-amber-300 bg-amber-300/10"
-                          : "border-amber-200/20 bg-white/5"
-                      }`}
-                    >
-                      <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                        {demo.feeling}
-                      </p>
-
-                      <h3 className="mt-2 text-2xl font-black">{demo.title}</h3>
-                      <p className="mt-2 text-base leading-7 text-amber-50/75">
-                        {demo.description}
-                      </p>
-
-                      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                        <button
-                          type="button"
-                          onClick={() => playDemo(demo.id)}
-                          className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                        >
-                          Play demo
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setSelectedId(demo.id);
-                            setStep(3);
-                          }}
-                          className="rounded-2xl border border-amber-200/30 px-6 py-4 text-lg font-black text-amber-50 transition hover:bg-white/10"
-                        >
-                          Choose this HUG
-                        </button>
-                      </div>
-
-                      <audio
-                        ref={(el) => {
-                          audioRefs.current[demo.id] = el;
-                        }}
-                        controls
-                        preload="metadata"
-                        className="mt-4 w-full"
-                        onPlay={() => speak(`You are hearing ${demo.title}.`)}
-                        onEnded={() => speak("Demo finished. Choose this HUG if it feels right.")}
-                      >
-                        <source src={demo.audioSrc} type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                      </audio>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-5">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-                >
-                  Back
-                </button>
-              </div>
-            </section>
-          )}
-
-          {step === 3 && (
-            <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-              <h2 className="text-3xl font-black">Checkout</h2>
-
-              <div className="mt-5 rounded-2xl bg-black/20 p-5">
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                  Your chosen HUG
-                </p>
-                <h3 className="mt-2 text-3xl font-black">{selectedDemo.title}</h3>
-                <p className="mt-2 text-base leading-7 text-amber-50/75">
-                  {selectedDemo.description}
-                </p>
-              </div>
-
-              <a
-                href={STRIPE_URL}
-                onClick={() => speak("Opening secure checkout now.")}
-                className="mt-6 inline-block rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
-              >
-                Checkout · $7.99
-              </a>
-
-              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => setStep(2)}
-                  className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-                >
-                  Hear options again
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setStep(1);
-                    setTypedFeeling("");
-                  }}
-                  className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-                >
-                  Start over
-                </button>
-              </div>
-
-              <p className="mt-5 text-sm leading-7 text-amber-50/65">
-                One HUG per order. If you want another HUG, return and choose another one.
+            </div>
+          ) : (
+            <div className="mt-6 rounded-2xl bg-black/20 p-5">
+              <p className="text-lg leading-8 text-amber-50/80">
+                This HUG category is staged in the catalog. Next step is connecting
+                approved audio demos and a matching checkout path.
               </p>
-            </section>
+            </div>
           )}
-        </div>
+        </section>
       </section>
     </main>
   );
