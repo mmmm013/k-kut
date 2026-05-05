@@ -52,7 +52,7 @@ for (const file of requiredDemoFiles) {
 
 check("Home has playBotVoice function", home.includes("function playBotVoice"));
 check("Home shows Play GP-BOT button", home.includes("Play GP-BOT"));
-check("Home uses GP-BOT prompt path", home.includes("/voices/gp-bot/prompts/"));
+check("Home uses GP-BOT prompt path", home.includes("/voices/${ACTIVE_BOT}/prompts/") || home.includes("/voices/gp-bot/prompts/"));
 check("Home links to Mother's Day wizard", home.includes("/hug/mothers-day"));
 check("Home has current action panel", home.includes("Current action"));
 check("Home has coming soon response", home.includes("coming soon"));
