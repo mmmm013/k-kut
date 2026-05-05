@@ -423,7 +423,7 @@ export default function HomePage() {
                   Say yes before moving on
                 </p>
                 <p className="mt-2 text-2xl font-black leading-8">
-                  I understand: a HUG sends a real song moment with my message.
+                  I understand: a HUG is a digital audio card that sends feeling through music.
                 </p>
               </div>
 
