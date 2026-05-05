@@ -275,6 +275,32 @@ export default function HomePage() {
           </p>
         </section>
 
+        <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-[#3a1f0f] p-6 sm:p-8">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            Learn
+          </p>
+          <h2 className="mt-2 text-4xl font-black">What is a HUG?</h2>
+          <div className="mt-5 grid gap-4 text-lg leading-8 text-amber-50/85">
+            <p>
+              A HUG is a historic audio greeting card.
+            </p>
+            <p>
+              It lets you send brilliant, emotional song parts that focus the feeling of your message.
+            </p>
+            <p>
+              Send a HUG by text, DM, social link, or email.
+            </p>
+          </div>
+          <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
+            <p className="text-sm font-black uppercase tracking-[0.18em]">
+              Start here
+            </p>
+            <p className="mt-2 text-2xl font-black">
+              Pick the kind of message you want to send.
+            </p>
+          </div>
+        </section>
+
         <section className="mt-8">
           <h2 className="text-3xl font-black">Pick a HUG kind</h2>
 

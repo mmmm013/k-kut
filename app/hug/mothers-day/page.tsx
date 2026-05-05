@@ -52,7 +52,7 @@ export default function HomePage() {
   const [selectedId, setSelectedId] = useState<string>("chorus");
   const [focusTitle, setFocusTitle] = useState<string>("Learn");
   const [focusBody, setFocusBody] = useState<string>(
-    "A HUG is a historic audio greeting card. Start here, then choose how Mom should feel."
+    "A HUG sends a real song moment to Mom by text, DM, social link, or email. Start here, then choose how Mom should feel."
   );
 
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
