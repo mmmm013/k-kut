@@ -17,7 +17,7 @@ const families = [
   {
     id: "love-connection",
     title: "Love & Connection",
-    description: "Romance and love-centered HUG paths.",
+    description: "Romance and love-centered HUG choices.",
   },
   {
     id: "strength-hope",
@@ -242,14 +242,6 @@ export default function HomePage() {
                 BB-BOT
               </p>
               <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
-
-              <button
-                type="button"
-                onClick={() => speak(botMessage)}
-                className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
-              >
-                Hear BB-BOT
-              </button>
             </div>
           </div>
         </div>
