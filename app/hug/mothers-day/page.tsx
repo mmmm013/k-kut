@@ -469,6 +469,20 @@ export default function HomePage() {
               </p>
             </section>
           )}
+        <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-4 text-center">
+          <p className="text-sm font-bold leading-6 text-amber-50/70">
+            A HUG uses a focused song moment. For full tracks, artists, and more music, visit{" "}
+            <a
+              href="https://www.gputnammusic.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-black text-amber-200 underline underline-offset-4"
+            >
+              G Putnam Music
+            </a>.
+          </p>
+        </div>
+
         </div>
       </section>
     </main>
