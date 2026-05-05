@@ -177,10 +177,10 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (selectedCategory.liveHref) {
-      return `You chose ${selectedFamily.title}, then ${selectedCategory.title}. Select a message path, then start the guided HUG.`;
+      return `You picked ${selectedFamily.title}, then ${selectedCategory.title}. Pick a song, then start the guided HUG.`;
     }
 
-    return `You chose ${selectedFamily.title}, then ${selectedCategory.title}. Select a message path. This catalog path is staged next.`;
+    return `You picked ${selectedFamily.title}, then ${selectedCategory.title}. Pick a song. This HUG choice is staged next.`;
   }, [selectedFamily.title, selectedCategory.title, selectedCategory.liveHref]);
 
   function speak(text: string) {
@@ -233,8 +233,7 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-5 max-w-2xl text-xl leading-8 text-amber-50/85">
-                Choose the kind of moment first. Then BB-BOT shows only the right
-                paths, one step at a time.
+                Pick the kind of HUG first. Then BB-BOT shows one simple choice at a time.
               </p>
             </div>
 
@@ -256,7 +255,7 @@ export default function HomePage() {
         </div>
 
         <section className="mt-8">
-          <h2 className="text-3xl font-black">Choose the kind of moment</h2>
+          <h2 className="text-3xl font-black">Pick the kind of HUG</h2>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {families.map((family) => {
@@ -304,7 +303,7 @@ export default function HomePage() {
               </p>
               <h2 className="mt-2 text-4xl font-black">{selectedFamily.title}</h2>
               <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
-                Choose the specific kind of HUG.
+                Pick the HUG kind.
               </p>
             </div>
           </div>
@@ -355,7 +354,7 @@ export default function HomePage() {
               </p>
               <h2 className="mt-2 text-4xl font-black">{selectedCategory.title}</h2>
               <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
-                Choose the message path.
+                Choose the song.
               </p>
             </div>
 
@@ -364,17 +363,17 @@ export default function HomePage() {
                 href={selectedCategory.liveHref}
                 className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                Start guided HUG
+                Start this HUG
               </Link>
             ) : (
               <button
                 type="button"
                 onClick={() =>
-                  speak("This category is selected. Audio demos and checkout can be connected next.")
+                  speak("This HUG choice is coming soon.")
                 }
                 className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-50 transition hover:bg-white/10"
               >
-                Category selected
+                Coming soon
               </button>
             )}
           </div>
@@ -404,7 +403,7 @@ export default function HomePage() {
             <p className="text-lg leading-8 text-amber-50/80">
               {selectedCategory.liveHref
                 ? "This path is live now. BB-BOT will guide the buyer through hearing options, choosing one HUG, and checkout."
-                : "This path is staged in the catalog. Next step is connecting approved audio demos and a matching checkout path."}
+                : "This HUG choice is coming soon."}
             </p>
           </div>
         </section>
