@@ -212,7 +212,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-black text-green-100">
-              BB-BOT guide
+              BB-BOT voice guide
             </div>
           </div>
 
@@ -232,6 +232,14 @@ export default function HomePage() {
                 BB-BOT
               </p>
               <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
+
+              <button
+                type="button"
+                onClick={() => playBotVoice("welcome")}
+                className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
+              >
+                Play BB-BOT voice
+              </button>
             </div>
           </div>
         </div>

@@ -166,7 +166,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BB-BOT guide
+              BB-BOT voice guide
             </div>
           </div>
 
