@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
 
@@ -14,7 +14,7 @@ const DEMOS = [
   },
   {
     id: "chorus",
-    feeling: "Big Heart",
+    feeling: "Big Seet",
     title: "Thank You — KK Chorus",
     description: "Warm, strong, and emotional.",
     audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
@@ -33,7 +33,7 @@ type Step = 0 | 1 | 2 | 3;
 export default function HomePage() {
   const [step, setStep] = useState<Step>(0);
   const [typedFeeling, setTypedFeeling] = useState("");
-  const [heardFeeling, setHeardFeeling] = useState("");
+  const [gotFeeling, setSeedFeeling] = useState("");
   const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening"]);
   const [selectedId, setSelectedId] = useState<string>("chorus");
 
@@ -59,32 +59,22 @@ export default function HomePage() {
     }
 
     if (step === 2) {
-      return `Step 2. I heard "${heardFeeling}". These are your best HUG options. Press Play on any option, then choose one.`;
+      return `Step 2. I got "${gotFeeling}". These are your best HUG options. Press Play on any option, then choose one.`;
     }
 
     return `Step 3. Good choice. You picked "${selectedDemo.title}". Now checkout to order this HUG.`;
-  }, [step, heardFeeling, selectedDemo.title]);
+  }, [step, gotFeeling, selectedDemo.title]);
 
-  function speak(text: string) {
-    if (typeof window === "undefined") return;
-
-    // Shrewd BB-BOT voice rule:
-    // Do NOT use generic browser AI voice.
-    // Real MC-BOT clips should be placed in /public/voices/mc-bot/
-    // Browser speech is intentionally disabled to avoid cheap AI voice.
-    console.log("BB-BOT:", text);
+  function show(_text: string) {
+    // No BOT guide. BB-BOT is visual guidance only.
   }
-
-  useEffect(() => {
-    speak(botMessage);
-  }, [botMessage]);
 
   function normalizeFeeling(input: string) {
     const raw = input.trim().toLowerCase();
 
     if (!raw) {
       return {
-        heard: "loved",
+        got: "loved",
         optionIds: ["chorus", "opening"],
       };
     }
@@ -96,7 +86,7 @@ export default function HomePage() {
       raw.includes("thanks")
     ) {
       return {
-        heard: "appreciated",
+        got: "appreciated",
         optionIds: ["chorus", "opening"],
       };
     }
@@ -107,7 +97,7 @@ export default function HomePage() {
       raw.includes("tender")
     ) {
       return {
-        heard: "gentle",
+        got: "gentle",
         optionIds: ["opening", "chorus"],
       };
     }
@@ -118,7 +108,7 @@ export default function HomePage() {
       raw.includes("peace")
     ) {
       return {
-        heard: "peaceful",
+        got: "peaceful",
         optionIds: ["outro", "opening"],
       };
     }
@@ -130,20 +120,20 @@ export default function HomePage() {
       raw.includes("loved")
     ) {
       return {
-        heard: "big heart",
+        got: "big heart",
         optionIds: ["chorus", "outro"],
       };
     }
 
     return {
-      heard: raw,
+      got: raw,
       optionIds: ["chorus", "opening"],
     };
   }
 
   function submitFeeling(value: string) {
     const result = normalizeFeeling(value);
-    setHeardFeeling(result.heard);
+    setSeedFeeling(result.got);
     setOptionIds(result.optionIds);
     setSelectedId(result.optionIds[0]);
     setTypedFeeling("");
@@ -160,7 +150,7 @@ export default function HomePage() {
   const progress = [
     { n: 1, label: "Learn" },
     { n: 2, label: "Tell BB-BOT" },
-    { n: 3, label: "Hear options" },
+    { n: 3, label: "See options" },
     { n: 4, label: "Checkout" },
   ];
 
@@ -176,7 +166,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BB-BOT active
+              BB-BOT guide
             </div>
           </div>
 
@@ -225,7 +215,7 @@ export default function HomePage() {
                   1. Tell BB-BOT how Mom should feel.
                 </div>
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  2. Hear a few HUG options.
+                  2. See a few HUG options.
                 </div>
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
                   3. Choose one HUG.
@@ -272,7 +262,7 @@ export default function HomePage() {
               </form>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                {["Loved", "Appreciated", "Gentle", "Peaceful", "Big Heart"].map((feeling) => (
+                {["Loved", "Appreciated", "Gentle", "Peaceful", "Big Seet"].map((feeling) => (
                   <button
                     key={feeling}
                     type="button"
@@ -290,7 +280,7 @@ export default function HomePage() {
             <section className="mt-8">
               <h2 className="text-3xl font-black">Your HUG options</h2>
               <p className="mt-3 text-lg leading-8 text-amber-50/80">
-                BB-BOT heard: <span className="font-black text-amber-200">{heardFeeling}</span>
+                BB-BOT got: <span className="font-black text-amber-200">{gotFeeling}</span>
               </p>
 
               <div className="mt-5 grid gap-4">
@@ -343,8 +333,8 @@ export default function HomePage() {
                         controls
                         preload="metadata"
                         className="mt-4 w-full"
-                        onPlay={() => speak(`You are hearing ${demo.title}.`)}
-                        onEnded={() => speak("Demo finished. Choose this HUG if it feels right.")}
+                        onPlay={() => show(`You are hearing ${demo.title}.`)}
+                        onEnded={() => show("Demo finished. Choose this HUG if it feels right.")}
                       >
                         <source src={demo.audioSrc} type="audio/mpeg" />
                         Your browser does not support the audio element.
@@ -382,7 +372,7 @@ export default function HomePage() {
 
               <a
                 href={STRIPE_URL}
-                onClick={() => speak("Opening secure checkout now.")}
+                onClick={() => show("Opening secure checkout now.")}
                 className="mt-6 inline-block rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
                 Checkout · $7.99
@@ -394,7 +384,7 @@ export default function HomePage() {
                   onClick={() => setStep(2)}
                   className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
                 >
-                  Hear options again
+                  See options again
                 </button>
 
                 <button

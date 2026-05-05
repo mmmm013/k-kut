@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 const families = [
   {
@@ -113,7 +113,7 @@ const categories = [
       "Curious Thing",
       "More Than a Feeling",
       "To Love Me",
-      "Heartwave",
+      "Seetwave",
       "I Do Swear",
     ],
   },
@@ -147,7 +147,7 @@ const categories = [
     title: "Pride",
     theme: "Identity / Renewal",
     description: "For pride, renewal, and standing tall.",
-    songs: ["Hearts Like Mine", "Life New", "Love Renews", "Better Watch Out"],
+    songs: ["Seets Like Mine", "Life New", "Love Renews", "Better Watch Out"],
   },
 ] as const;
 
@@ -183,19 +183,9 @@ export default function HomePage() {
     return `You picked ${selectedFamily.title}, then ${selectedCategory.title}. Pick a song. This HUG choice is staged next.`;
   }, [selectedFamily.title, selectedCategory.title, selectedCategory.liveHref]);
 
-  function speak(text: string) {
-    if (typeof window === "undefined") return;
-
-    // Shrewd BB-BOT voice rule:
-    // Do NOT use generic browser AI voice.
-    // Real MC-BOT clips should be placed in /public/voices/mc-bot/
-    // Browser speech is intentionally disabled to avoid cheap AI voice.
-    console.log("BB-BOT:", text);
+  function show(_text: string) {
+    // No BOT guide. BB-BOT is visual guidance only.
   }
-
-  useEffect(() => {
-    speak(botMessage);
-  }, [botMessage]);
 
   function chooseFamily(familyId: string) {
     setSelectedFamilyId(familyId);
@@ -222,7 +212,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-black text-green-100">
-              BB-BOT active
+              BB-BOT guide
             </div>
           </div>
 
@@ -361,7 +351,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() =>
-                  speak("This HUG choice is coming soon.")
+                  show("This HUG choice is coming soon.")
                 }
                 className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-50 transition hover:bg-white/10"
               >
