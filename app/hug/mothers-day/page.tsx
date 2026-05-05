@@ -1,3 +1,4 @@
+"use client";
 
 function stopAllAudio() {
   if (typeof document === "undefined") return;
@@ -31,7 +32,6 @@ function playOneAudio(src: string) {
   });
 }
 
-"use client";
 
 import { useMemo, useRef, useState } from "react";
 
