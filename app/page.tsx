@@ -172,6 +172,7 @@ export default function HomePage() {
   const [selectedFamilyId, setSelectedFamilyId] = useState<string>("special-days");
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
+  const [lastAction, setLastAction] = useState<string>("Pick the kind of HUG.");
 
   const selectedFamily = useMemo<Family>(() => {
     return families.find((item) => item.id === selectedFamilyId) ?? families[0];
@@ -191,11 +192,11 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (selectedCategory.liveHref) {
-      return `You picked ${selectedFamily.title}, then ${selectedCategory.title}. Pick a song, then start the guided HUG.`;
+      return `${lastAction} This one is live. Press Start this HUG.`;
     }
 
-    return `You picked ${selectedFamily.title}, then ${selectedCategory.title}. Pick a song. This HUG choice is staged next.`;
-  }, [selectedFamily.title, selectedCategory.title, selectedCategory.liveHref]);
+    return `${lastAction} This one is coming soon. Try Mother’s Day to buy today.`;
+  }, [lastAction, selectedCategory.liveHref]);
 
   function show(_text: string) {
     // No BOT guide. BB-BOT is visual guidance only.
@@ -205,15 +206,19 @@ export default function HomePage() {
     setSelectedFamilyId(familyId);
     const nextCategories = categories.filter((item) => item.family === familyId);
     const firstCategory = nextCategories[0];
+
     if (firstCategory) {
       setSelectedCategorySlug(firstCategory.slug);
       setSelectedSong(firstCategory.songs[0] ?? "");
+      const family = families.find((item) => item.id === familyId);
+      setLastAction(`You picked ${family?.title ?? "a HUG kind"}. Now pick one.`);
     }
   }
 
   function chooseCategory(category: Category) {
     setSelectedCategorySlug(category.slug);
     setSelectedSong(category.songs[0] ?? "");
+    setLastAction(`You picked ${category.title}. Now pick a song.`);
   }
 
   return (
@@ -226,7 +231,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-black text-green-100">
-              BB-BOT voice guide
+              BB-BOT guide · MC-BOT voice
             </div>
           </div>
 
@@ -252,11 +257,23 @@ export default function HomePage() {
                 onClick={() => playBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
-                Play BB-BOT voice
+                Play MC-BOT voice
               </button>
             </div>
           </div>
         </div>
+
+        <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-[#3a1f0f] p-5">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            Current action
+          </p>
+          <p className="mt-2 text-2xl font-black text-amber-50">{lastAction}</p>
+          <p className="mt-2 text-base leading-7 text-amber-50/70">
+            {selectedCategory.liveHref
+              ? "This HUG is live. Use Start this HUG."
+              : "This HUG is coming soon. Click Mother’s Day to buy today."}
+          </p>
+        </section>
 
         <section className="mt-8">
           <h2 className="text-3xl font-black">Pick the kind of HUG</h2>
@@ -390,7 +407,10 @@ export default function HomePage() {
                 <button
                   key={song}
                   type="button"
-                  onClick={() => setSelectedSong(song)}
+                  onClick={() => {
+                    setSelectedSong(song);
+                    setLastAction(`You picked ${song}.`);
+                  }}
                   className={`rounded-2xl border px-5 py-4 text-left text-lg font-black transition ${
                     active
                       ? "border-amber-300 bg-amber-300 text-[#2a180d]"
