@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
+const ACTIVE_BOT = "gp-bot";
+
 const families = [
   {
     id: "special-days",
@@ -17,7 +19,7 @@ const families = [
   {
     id: "love-connection",
     title: "Love & Connection",
-    description: "Romance and love-centered HUG choices.",
+    description: "Romance and love-centered HUG paths.",
   },
   {
     id: "strength-hope",
@@ -64,7 +66,7 @@ const categories = [
     slug: "sorry",
     family: "hard-feelings",
     title: "Sorry",
-    theme: "Apology / Come Back",
+    theme: "Apology",
     description: "For apology, regret, and trying to reconnect.",
     songs: ["I’m Sorry", "Come Back"],
   },
@@ -113,7 +115,7 @@ const categories = [
       "Curious Thing",
       "More Than a Feeling",
       "To Love Me",
-      "Seetwave",
+      "Heartwave",
       "I Do Swear",
     ],
   },
@@ -147,32 +149,29 @@ const categories = [
     title: "Pride",
     theme: "Identity / Renewal",
     description: "For pride, renewal, and standing tall.",
-    songs: ["Seets Like Mine", "Life New", "Love Renews", "Better Watch Out"],
+    songs: ["Hearts Like Mine", "Life New", "Love Renews", "Better Watch Out"],
   },
 ] as const;
 
+type Step = 1 | 2 | 3 | 4;
 type Family = (typeof families)[number];
 type Category = (typeof categories)[number];
 
+const stepLabels = [
+  { step: 1, label: "Learn" },
+  { step: 2, label: "Pick a HUG kind" },
+  { step: 3, label: "Pick a song" },
+  { step: 4, label: "Start the HUG" },
+] as const;
+
 export default function HomePage() {
-  function playBotVoice(clip: string = "welcome") {
-    if (typeof window === "undefined") return;
-
-    const audio = new Audio(`/voices/gp-bot/prompts/${clip}.m4a`);
-    audio.volume = 0.95;
-    audio.play().catch(() => {
-      console.log("GP-BOT voice blocked until user taps:", clip);
-    });
-  }
-
-  function speak(_text: string) {
-    playBotVoice("welcome");
-  }
-
+  const [step, setStep] = useState<Step>(1);
   const [selectedFamilyId, setSelectedFamilyId] = useState<string>("special-days");
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
-  const [lastAction, setLastAction] = useState<string>("Pick a HUG kind.");
+  const [lastAction, setLastAction] = useState<string>(
+    "Start here. Learn what a HUG is."
+  );
 
   const selectedFamily = useMemo<Family>(() => {
     return families.find((item) => item.id === selectedFamilyId) ?? families[0];
@@ -183,47 +182,77 @@ export default function HomePage() {
   }, [selectedFamilyId]);
 
   const selectedCategory = useMemo<Category>(() => {
-    return (
-      categories.find((item) => item.slug === selectedCategorySlug) ??
-      familyCategories[0] ??
-      categories[0]
-    );
-  }, [selectedCategorySlug, familyCategories]);
+    return categories.find((item) => item.slug === selectedCategorySlug) ?? categories[0];
+  }, [selectedCategorySlug]);
 
   const botMessage = useMemo(() => {
-    if (selectedCategory.liveHref) {
-      return `${lastAction} This one is live. Press Start the HUG.`;
+    if (step === 1) {
+      return "Learn first. A HUG is a historic audio greeting card.";
     }
 
-    return `${lastAction} This one is coming soon. Try Mother’s Day to buy today.`;
-  }, [lastAction, selectedCategory.liveHref]);
+    if (step === 2) {
+      return "Now pick the kind of message you want to send.";
+    }
 
-  function show(_text: string) {
-    // No BOT guide. BB-BOT is visual guidance only.
+    if (step === 3) {
+      return `You picked ${selectedCategory.title}. Now pick a song.`;
+    }
+
+    if (selectedCategory.liveHref) {
+      return `You picked ${selectedSong}. This HUG is live. Start the HUG.`;
+    }
+
+    return `${selectedCategory.title} is coming soon. Try Mother’s Day to buy today.`;
+  }, [step, selectedCategory, selectedSong]);
+
+  function playBotVoice(clip: string = "welcome") {
+    if (typeof window === "undefined") return;
+
+    const audio = new Audio(`/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
+    audio.volume = 0.95;
+    audio.play().catch(() => {
+      console.log("GP-BOT voice blocked until user taps:", clip);
+    });
   }
 
-  function chooseFamily(familyId: string) {
-    setSelectedFamilyId(familyId);
-    const nextCategories = categories.filter((item) => item.family === familyId);
+  function chooseFamily(family: Family) {
+    setSelectedFamilyId(family.id);
+
+    const nextCategories = categories.filter((item) => item.family === family.id);
     const firstCategory = nextCategories[0];
 
     if (firstCategory) {
       setSelectedCategorySlug(firstCategory.slug);
       setSelectedSong(firstCategory.songs[0] ?? "");
-      const family = families.find((item) => item.id === familyId);
-      setLastAction(`You picked ${family?.title ?? "a HUG kind"}. Now pick one.`);
     }
+
+    playBotVoice("pick-kind");
+    setLastAction(`You picked ${family.title}. Next: pick one HUG.`);
+    setStep(3);
   }
 
   function chooseCategory(category: Category) {
     setSelectedCategorySlug(category.slug);
     setSelectedSong(category.songs[0] ?? "");
-    setLastAction(`You picked ${category.title}. Now pick a song.`);
+    playBotVoice(category.liveHref ? "live" : "coming-soon");
+    setLastAction(
+      category.liveHref
+        ? `You picked ${category.title}. This one is live. Next: pick a song.`
+        : `You picked ${category.title}. This one is coming soon. Try Mother’s Day to buy today.`
+    );
+    setStep(3);
+  }
+
+  function chooseSong(song: string) {
+    setSelectedSong(song);
+    playBotVoice("pick-song");
+    setLastAction(`You picked ${song}. Next: start the HUG.`);
+    setStep(4);
   }
 
   return (
     <main className="min-h-screen bg-[#241105] text-[#fff7e8]">
-      <section className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
+      <section className="mx-auto max-w-5xl px-5 py-8 sm:px-8 sm:py-12">
         <div className="rounded-[2rem] border border-amber-300/20 bg-[#3a1f0f] p-6 shadow-2xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm font-black uppercase tracking-[0.24em] text-amber-200">
@@ -235,235 +264,226 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-7 lg:grid-cols-[1fr_0.95fr] lg:items-start">
-            <div>
-              <h1 className="text-4xl font-black leading-tight sm:text-6xl">
-                Send a historic audio greeting card.
-              </h1>
+          <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">
+            Send a historic audio greeting card.
+          </h1>
 
-              <p className="mt-5 max-w-2xl text-xl leading-8 text-amber-50/85">
-                Pick a HUG kind first. Then BB-BOT shows one simple choice at a time.
-              </p>
-            </div>
+          <div className="mt-6 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 p-5 text-[#2a180d] shadow-lg">
+            <p className="text-sm font-black uppercase tracking-[0.18em]">
+              BB-BOT
+            </p>
+            <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
 
-            <div className="rounded-[1.5rem] border border-amber-300/30 bg-amber-300 p-5 text-[#2a180d] shadow-lg">
-              <p className="text-sm font-black uppercase tracking-[0.18em]">
-                BB-BOT
-              </p>
-              <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
-
+            <div className="mt-4">
               <button
                 type="button"
                 onClick={() => playBotVoice("welcome")}
-                className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
+                className="rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
                 Play GP-BOT
               </button>
             </div>
           </div>
-        </div>
 
-        <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-[#3a1f0f] p-5">
-          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-            Current action
-          </p>
-          <p className="mt-2 text-2xl font-black text-amber-50">{lastAction}</p>
-          <p className="mt-2 text-base leading-7 text-amber-50/70">
-            {selectedCategory.liveHref
-              ? "This HUG is live. Use Start the HUG."
-              : "This HUG is coming soon. Click Mother’s Day to buy today."}
-          </p>
-        </section>
+          <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Current action
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-amber-50">{lastAction}</h2>
+            <p className="mt-3 text-lg leading-8 text-amber-50/80">
+              Only the active step below can be used. The other steps are just a preview.
+            </p>
+          </section>
 
-        <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-[#3a1f0f] p-6 sm:p-8">
-          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-            Learn
-          </p>
-          <h2 className="mt-2 text-4xl font-black">What is a HUG?</h2>
-          <div className="mt-5 grid gap-4 text-lg leading-8 text-amber-50/85">
-            <p>
-              A HUG is a historic audio greeting card.
-            </p>
-            <p>
-              It lets you send brilliant, emotional song parts that focus the feeling of your message.
-            </p>
-            <p>
-              Send a HUG by text, DM, social link, or email.
-            </p>
-          </div>
-          <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
-            <p className="text-sm font-black uppercase tracking-[0.18em]">
-              Start here
-            </p>
-            <p className="mt-2 text-2xl font-black">
-              Pick the kind of message you want to send.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-8">
-          <h2 className="text-3xl font-black">Pick a HUG kind</h2>
-
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {families.map((family) => {
-              const active = family.id === selectedFamily.id;
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {stepLabels.map((item) => {
+              const active = item.step === step;
+              const past = item.step < step;
 
               return (
-                <button
-                  key={family.id}
-                  type="button"
-                  onClick={() => {
-                    playBotVoice("pick-kind");
-                    chooseFamily(family.id);
-                  }}
-                  className={`rounded-[1.5rem] border p-6 text-left transition ${
-                    active
-                      ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
-                      : "border-amber-200/20 bg-[#3a1f0f] text-amber-50 hover:bg-white/10"
-                  }`}
-                >
-                  <p
-                    className={`text-xs font-black uppercase tracking-[0.18em] ${
-                      active ? "text-[#2a180d]/70" : "text-amber-200"
-                    }`}
-                  >
-                    Step 1
-                  </p>
-
-                  <h3 className="mt-2 text-2xl font-black">{family.title}</h3>
-
-                  <p
-                    className={`mt-3 text-sm leading-6 ${
-                      active ? "text-[#2a180d]/75" : "text-amber-50/70"
-                    }`}
-                  >
-                    {family.description}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="mt-8 rounded-[2rem] border border-amber-200/20 bg-[#3a1f0f] p-6 sm:p-8">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-            <div>
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Step 2
-              </p>
-              <h2 className="mt-2 text-4xl font-black">{selectedFamily.title}</h2>
-              <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
-                Pick a HUG kind.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {familyCategories.map((category) => {
-              const active = category.slug === selectedCategory.slug;
-
-              return (
-                <button
-                  key={category.slug}
-                  type="button"
-                  onClick={() => {
-                    playBotVoice(category.liveHref ? "live" : "coming-soon");
-                    chooseCategory(category);
-                  }}
-                  className={`rounded-[1.5rem] border p-5 text-left transition ${
-                    active
-                      ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
-                      : "border-amber-200/20 bg-black/20 text-amber-50 hover:bg-white/10"
-                  }`}
-                >
-                  <p
-                    className={`text-xs font-black uppercase tracking-[0.18em] ${
-                      active ? "text-[#2a180d]/70" : "text-amber-200"
-                    }`}
-                  >
-                    {category.theme}
-                  </p>
-
-                  <h3 className="mt-2 text-2xl font-black">{category.title}</h3>
-
-                  <p
-                    className={`mt-3 text-sm leading-6 ${
-                      active ? "text-[#2a180d]/75" : "text-amber-50/70"
-                    }`}
-                  >
-                    {category.description}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="mt-8 rounded-[2rem] border border-amber-200/20 bg-[#3a1f0f] p-6 sm:p-8">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-            <div>
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Step 3
-              </p>
-              <h2 className="mt-2 text-4xl font-black">{selectedCategory.title}</h2>
-              <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
-                Choose the song.
-              </p>
-            </div>
-
-            {selectedCategory.liveHref ? (
-              <Link
-                href={selectedCategory.liveHref}
-                className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
-              >
-                Start the HUG
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() =>
-                  show("This HUG choice is coming soon.")
-                }
-                className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-50 transition hover:bg-white/10"
-              >
-                Coming soon
-              </button>
-            )}
-          </div>
-
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {selectedCategory.songs.map((song) => {
-              const active = selectedSong === song;
-
-              return (
-                <button
-                  key={song}
-                  type="button"
-                  onClick={() => {
-                    playBotVoice("pick-song");
-                    setSelectedSong(song);
-                    setLastAction(`You picked ${song}.`);
-                  }}
-                  className={`rounded-2xl border px-5 py-4 text-left text-lg font-black transition ${
+                <div
+                  key={item.step}
+                  className={`rounded-2xl border px-4 py-4 text-center ${
                     active
                       ? "border-amber-300 bg-amber-300 text-[#2a180d]"
-                      : "border-amber-200/20 bg-black/20 text-amber-50 hover:bg-white/10"
+                      : "border-amber-200/20 bg-white/5 text-amber-50/50"
                   }`}
                 >
-                  {song}
-                </button>
+                  <p className="text-xs font-black uppercase tracking-[0.18em]">
+                    {active ? "Active step" : past ? "Done" : "Next"}
+                  </p>
+                  <p className="mt-2 text-lg font-black">
+                    Step {item.step}: {item.label}
+                  </p>
+                </div>
               );
             })}
           </div>
 
-          <div className="mt-6 rounded-2xl bg-black/20 p-5">
-            <p className="text-lg leading-8 text-amber-50/80">
-              {selectedCategory.liveHref
-                ? "This path is live now. BB-BOT will guide the buyer through hearing options, choosing one HUG, and checkout."
-                : "This HUG choice is coming soon."}
-            </p>
-          </div>
-        </section>
+          {step === 1 && (
+            <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Step 1 · Learn
+              </p>
+
+              <h2 className="mt-2 text-4xl font-black">What is a HUG?</h2>
+
+              <div className="mt-5 grid gap-4 text-lg leading-8 text-amber-50/85">
+                <p>A HUG is a historic audio greeting card.</p>
+                <p>
+                  It sends brilliant, emotional song parts that focus the feeling of your message.
+                </p>
+                <p>
+                  Send a HUG by text, DM, social link, or email.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  playBotVoice("pick-kind");
+                  setLastAction("Next: pick the kind of message you want to send.");
+                  setStep(2);
+                }}
+                className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+              >
+                Next: Pick a HUG kind
+              </button>
+            </section>
+          )}
+
+          {step === 2 && (
+            <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Step 2 · Pick a HUG kind
+              </p>
+
+              <h2 className="mt-2 text-4xl font-black">What is this for?</h2>
+
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {families.map((family) => (
+                  <button
+                    key={family.id}
+                    type="button"
+                    onClick={() => chooseFamily(family)}
+                    className="rounded-[1.5rem] border border-amber-200/20 bg-[#3a1f0f] p-6 text-left transition hover:bg-white/10"
+                  >
+                    <h3 className="text-2xl font-black">{family.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-amber-50/70">
+                      {family.description}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {step === 3 && (
+            <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Step 3 · Pick a song
+              </p>
+
+              <h2 className="mt-2 text-4xl font-black">{selectedFamily.title}</h2>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {familyCategories.map((category) => (
+                  <button
+                    key={category.slug}
+                    type="button"
+                    onClick={() => chooseCategory(category)}
+                    className={`rounded-[1.5rem] border p-5 text-left transition ${
+                      category.slug === selectedCategory.slug
+                        ? "border-amber-300 bg-amber-300 text-[#2a180d]"
+                        : "border-amber-200/20 bg-[#3a1f0f] text-amber-50 hover:bg-white/10"
+                    }`}
+                  >
+                    <p className="text-xs font-black uppercase tracking-[0.18em]">
+                      {category.theme}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-black">{category.title}</h3>
+                    <p className="mt-3 text-sm leading-6 opacity-80">
+                      {category.description}
+                    </p>
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-6">
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                  Song choices
+                </p>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {selectedCategory.songs.map((song) => (
+                    <button
+                      key={song}
+                      type="button"
+                      onClick={() => chooseSong(song)}
+                      className="rounded-2xl border border-amber-200/20 bg-black/20 px-5 py-4 text-left text-lg font-black text-amber-50 transition hover:bg-white/10"
+                    >
+                      {song}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {step === 4 && (
+            <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Step 4 · Start the HUG
+              </p>
+
+              <h2 className="mt-2 text-4xl font-black">{selectedSong}</h2>
+
+              <p className="mt-4 text-lg leading-8 text-amber-50/80">
+                {selectedCategory.liveHref
+                  ? "This HUG is live. Start now."
+                  : "This HUG is coming soon. Try Mother’s Day to buy today."}
+              </p>
+
+              {selectedCategory.liveHref ? (
+                <Link
+                  href={selectedCategory.liveHref}
+                  onClick={() => playBotVoice("start-hug")}
+                  className="mt-6 inline-block rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+                >
+                  Start the HUG
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    playBotVoice("try-mothers-day");
+                    setSelectedFamilyId("special-days");
+                    setSelectedCategorySlug("mothers-day");
+                    setSelectedSong("Thank You");
+                    setLastAction("Mother’s Day is live. Pick Thank You, then start the HUG.");
+                    setStep(3);
+                  }}
+                  className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+                >
+                  Try Mother’s Day
+                </button>
+              )}
+
+              <div className="mt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLastAction("Go back and pick a different HUG kind.");
+                    setStep(2);
+                  }}
+                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-lg font-black text-amber-50 transition hover:bg-white/10"
+                >
+                  Back
+                </button>
+              </div>
+            </section>
+          )}
+        </div>
       </section>
     </main>
   );
