@@ -295,29 +295,22 @@ export default function HomePage() {
             </p>
           </section>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {stepLabels.map((item) => {
-              const active = item.step === step;
-              const past = item.step < step;
-
-              return (
-                <div
-                  key={item.step}
-                  className={`rounded-2xl border px-4 py-4 text-center ${
-                    active
-                      ? "border-amber-300 bg-amber-300 text-[#2a180d]"
-                      : "border-amber-200/20 bg-white/5 text-amber-50/50"
-                  }`}
-                >
-                  <p className="text-xs font-black uppercase tracking-[0.18em]">
-                    {active ? "Active step" : past ? "Done" : "Next"}
-                  </p>
-                  <p className="mt-2 text-lg font-black">
-                    Step {item.step}: {item.label}
-                  </p>
-                </div>
-              );
-            })}
+          <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Progress
+            </p>
+            <p className="mt-3 text-lg leading-8 text-amber-50/85">
+              <span className="font-black text-amber-200">Active:</span> Step {step}.
+              The other steps are locked until this step is done.
+            </p>
+            <div className="mt-4 space-y-2 text-base text-amber-50/60">
+              {stepLabels.map((item) => (
+                <p key={item.step} className={item.step === step ? "font-black text-amber-100" : ""}>
+                  Step {item.step}: {item.label}
+                  {item.step === step ? " — do this now" : " — locked"}
+                </p>
+              ))}
+            </div>
           </div>
 
           {step === 1 && (
@@ -362,7 +355,7 @@ export default function HomePage() {
                 }}
                 className="mt-6 w-full rounded-2xl bg-amber-300 px-8 py-6 text-2xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                I understand — start
+                I understand — pick what this is for
               </button>
 
               <p className="mt-4 text-center text-base font-bold text-amber-50/65">
