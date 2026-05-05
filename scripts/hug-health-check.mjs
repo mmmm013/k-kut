@@ -17,15 +17,18 @@ function read(path) {
 const home = read("app/page.tsx");
 const mothers = read("app/hug/mothers-day/page.tsx");
 
-const forbiddenPlaceholderVoiceFiles = [
-  "public/voices/mc-bot/welcome.m4a",
-  "public/voices/mc-bot/pick-kind.m4a",
-  "public/voices/mc-bot/pick-one.m4a",
-  "public/voices/mc-bot/pick-song.m4a",
-  "public/voices/mc-bot/start-hug.m4a",
-  "public/voices/mc-bot/play-demo.m4a",
-  "public/voices/mc-bot/choose-hug.m4a",
-  "public/voices/mc-bot/checkout.m4a",
+const requiredGpBotPromptFiles = [
+  "public/voices/gp-bot/prompts/welcome.m4a",
+  "public/voices/gp-bot/prompts/pick-kind.m4a",
+  "public/voices/gp-bot/prompts/pick-one.m4a",
+  "public/voices/gp-bot/prompts/pick-song.m4a",
+  "public/voices/gp-bot/prompts/live.m4a",
+  "public/voices/gp-bot/prompts/coming-soon.m4a",
+  "public/voices/gp-bot/prompts/try-mothers-day.m4a",
+  "public/voices/gp-bot/prompts/start-hug.m4a",
+  "public/voices/gp-bot/prompts/play-demo.m4a",
+  "public/voices/gp-bot/prompts/choose-hug.m4a",
+  "public/voices/gp-bot/prompts/checkout.m4a",
 ];
 
 const requiredDemoFiles = [
@@ -37,15 +40,19 @@ const requiredDemoFiles = [
 check("Home page file exists", exists("app/page.tsx"));
 check("Mother's Day wizard file exists", exists("app/hug/mothers-day/page.tsx"));
 
-check("Real MC-BOT welcome voice exists", exists("public/voices/mc-bot/welcome.m4a"));
+check("GP-BOT welcome prompt exists", exists("public/voices/gp-bot/prompts/welcome.m4a"));
+
+for (const file of requiredGpBotPromptFiles) {
+  check(`GP-BOT prompt exists: ${file}`, exists(file));
+}
 
 for (const file of requiredDemoFiles) {
   check(`Demo audio exists: ${file}`, exists(file));
 }
 
 check("Home has playBotVoice function", home.includes("function playBotVoice"));
-check("Home shows Play MC-BOT voice button", home.includes("Play MC-BOT voice"));
-check("Home uses real MC-BOT audio path", home.includes("/voices/mc-bot/"));
+check("Home shows Play GP-BOT button", home.includes("Play GP-BOT"));
+check("Home uses GP-BOT prompt path", home.includes("/voices/gp-bot/prompts/"));
 check("Home links to Mother's Day wizard", home.includes("/hug/mothers-day"));
 check("Home has current action panel", home.includes("Current action"));
 check("Home has coming soon response", home.includes("coming soon"));
