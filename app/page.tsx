@@ -3,10 +3,33 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
+const families = [
+  {
+    id: "special-days",
+    title: "Special Days",
+    description: "Mother’s Day, Wedding, Anniversary, and Birthday.",
+  },
+  {
+    id: "hard-feelings",
+    title: "Hard Feelings",
+    description: "Sorry, Reflection, Hurt, Cry, and Sorrow / Break Up.",
+  },
+  {
+    id: "love-connection",
+    title: "Love & Connection",
+    description: "Romance and love-centered HUG paths.",
+  },
+  {
+    id: "strength-hope",
+    title: "Strength & Hope",
+    description: "Hope, Self Esteem, Hang Tough, and Pride.",
+  },
+] as const;
+
 const categories = [
   {
     slug: "mothers-day",
-    group: "Special Days",
+    family: "special-days",
     title: "Mother’s Day",
     theme: "Thank You",
     description: "For thanking Mom with a real audio HUG.",
@@ -15,7 +38,7 @@ const categories = [
   },
   {
     slug: "wedding",
-    group: "Special Days",
+    family: "special-days",
     title: "Wedding",
     theme: "Forever & a Day",
     description: "For vows, forever, commitment, and celebration.",
@@ -23,7 +46,7 @@ const categories = [
   },
   {
     slug: "anniversary",
-    group: "Special Days",
+    family: "special-days",
     title: "Anniversary",
     theme: "Awesome Anniversary",
     description: "For celebrating years, loyalty, and love that lasted.",
@@ -31,7 +54,7 @@ const categories = [
   },
   {
     slug: "birthday",
-    group: "Special Days",
+    family: "special-days",
     title: "Birthday",
     theme: "Best Birthday",
     description: "For a personal birthday audio greeting.",
@@ -39,7 +62,7 @@ const categories = [
   },
   {
     slug: "sorry",
-    group: "Hard Feelings",
+    family: "hard-feelings",
     title: "Sorry",
     theme: "Apology / Come Back",
     description: "For apology, regret, and trying to reconnect.",
@@ -47,7 +70,7 @@ const categories = [
   },
   {
     slug: "reflection",
-    group: "Hard Feelings",
+    family: "hard-feelings",
     title: "Reflection",
     theme: "My Reality",
     description: "For looking inward and telling the truth.",
@@ -55,7 +78,7 @@ const categories = [
   },
   {
     slug: "hurt",
-    group: "Hard Feelings",
+    family: "hard-feelings",
     title: "Hurt",
     theme: "Pain / Change",
     description: "For heartbreak, disappointment, and emotional injury.",
@@ -63,15 +86,23 @@ const categories = [
   },
   {
     slug: "cry",
-    group: "Hard Feelings",
+    family: "hard-feelings",
     title: "Cry",
     theme: "Tears / Memory",
     description: "For grief, tears, and memories that still hurt.",
     songs: ["Over Yesterday", "Torn Memories"],
   },
   {
+    slug: "sorrow-breakup",
+    family: "hard-feelings",
+    title: "Sorrow / Break Up",
+    theme: "Loss / Ending",
+    description: "For endings, breakups, and emotional release.",
+    songs: ["Baby We’re Through", "Last Time", "World of Words", "The New Sunset", "Life New"],
+  },
+  {
     slug: "romance",
-    group: "Love & Connection",
+    family: "love-connection",
     title: "Romance",
     theme: "Love Songs",
     description: "For falling in love, staying in love, and saying it clearly.",
@@ -88,7 +119,7 @@ const categories = [
   },
   {
     slug: "hope",
-    group: "Strength & Hope",
+    family: "strength-hope",
     title: "Hope",
     theme: "Believe / Keep Going",
     description: "For encouragement, faith, grit, and tomorrow.",
@@ -96,7 +127,7 @@ const categories = [
   },
   {
     slug: "self-esteem",
-    group: "Strength & Hope",
+    family: "strength-hope",
     title: "Self Esteem",
     theme: "Worth / Fighter",
     description: "For confidence, courage, and personal strength.",
@@ -104,7 +135,7 @@ const categories = [
   },
   {
     slug: "hang-tough",
-    group: "Strength & Hope",
+    family: "strength-hope",
     title: "Hang Tough",
     theme: "Support / Endurance",
     description: "For someone who needs to keep standing.",
@@ -112,47 +143,45 @@ const categories = [
   },
   {
     slug: "pride",
-    group: "Strength & Hope",
+    family: "strength-hope",
     title: "Pride",
     theme: "Identity / Renewal",
     description: "For pride, renewal, and standing tall.",
     songs: ["Hearts Like Mine", "Life New", "Love Renews", "Better Watch Out"],
   },
-  {
-    slug: "sorrow-breakup",
-    group: "Hard Feelings",
-    title: "Sorrow / Break Up",
-    theme: "Loss / Ending",
-    description: "For endings, breakups, and emotional release.",
-    songs: ["Baby We’re Through", "Last Time", "World of Words", "The New Sunset", "Life New"],
-  },
 ] as const;
 
+type Family = (typeof families)[number];
 type Category = (typeof categories)[number];
 
 export default function HomePage() {
-  const [selectedSlug, setSelectedSlug] = useState<string>("mothers-day");
+  const [selectedFamilyId, setSelectedFamilyId] = useState<string>("special-days");
+  const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
 
-  const selected = useMemo<Category>(() => {
-    return categories.find((item) => item.slug === selectedSlug) ?? categories[0];
-  }, [selectedSlug]);
+  const selectedFamily = useMemo<Family>(() => {
+    return families.find((item) => item.id === selectedFamilyId) ?? families[0];
+  }, [selectedFamilyId]);
 
-  const groups = useMemo(() => {
-    return Array.from(new Set(categories.map((item) => item.group)));
-  }, []);
+  const familyCategories = useMemo<Category[]>(() => {
+    return categories.filter((item) => item.family === selectedFamilyId);
+  }, [selectedFamilyId]);
+
+  const selectedCategory = useMemo<Category>(() => {
+    return (
+      categories.find((item) => item.slug === selectedCategorySlug) ??
+      familyCategories[0] ??
+      categories[0]
+    );
+  }, [selectedCategorySlug, familyCategories]);
 
   const botMessage = useMemo(() => {
-    if (!selectedSong) {
-      return `Choose a moment. I’ll show only the right songs for that kind of HUG.`;
+    if (selectedCategory.liveHref) {
+      return `You chose ${selectedFamily.title}, then ${selectedCategory.title}. Select a message path, then start the guided HUG.`;
     }
 
-    if (selected.liveHref) {
-      return `You chose ${selected.title}: ${selectedSong}. This HUG activity is ready. Start the guided HUG wizard.`;
-    }
-
-    return `You chose ${selected.title}: ${selectedSong}. This catalog path is selected. Audio demos can be connected next.`;
-  }, [selected, selectedSong]);
+    return `You chose ${selectedFamily.title}, then ${selectedCategory.title}. Select a message path. This catalog path is staged next.`;
+  }, [selectedFamily.title, selectedCategory.title, selectedCategory.liveHref]);
 
   function speak(text: string) {
     if (typeof window === "undefined") return;
@@ -169,8 +198,18 @@ export default function HomePage() {
     speak(botMessage);
   }, [botMessage]);
 
+  function chooseFamily(familyId: string) {
+    setSelectedFamilyId(familyId);
+    const nextCategories = categories.filter((item) => item.family === familyId);
+    const firstCategory = nextCategories[0];
+    if (firstCategory) {
+      setSelectedCategorySlug(firstCategory.slug);
+      setSelectedSong(firstCategory.songs[0] ?? "");
+    }
+  }
+
   function chooseCategory(category: Category) {
-    setSelectedSlug(category.slug);
+    setSelectedCategorySlug(category.slug);
     setSelectedSong(category.songs[0] ?? "");
   }
 
@@ -188,104 +227,73 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-7 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+          <div className="mt-6 grid gap-7 lg:grid-cols-[1fr_0.95fr] lg:items-start">
             <div>
               <h1 className="text-4xl font-black leading-tight sm:text-6xl">
                 Send a real audio greeting gift.
               </h1>
 
               <p className="mt-5 max-w-2xl text-xl leading-8 text-amber-50/85">
-                Choose the kind of moment. BB-BOT shows only the right options,
-                one step at a time.
+                Choose the kind of moment first. Then BB-BOT shows only the right
+                paths, one step at a time.
               </p>
-
-              <div className="mt-7 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 p-5 text-[#2a180d] shadow-lg">
-                <p className="text-sm font-black uppercase tracking-[0.18em]">
-                  BB-BOT
-                </p>
-                <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
-
-                <button
-                  type="button"
-                  onClick={() => speak(botMessage)}
-                  className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
-                >
-                  Hear BB-BOT
-                </button>
-              </div>
             </div>
 
-            <div className="rounded-[1.5rem] border border-amber-200/20 bg-black/20 p-5">
-              <h2 className="text-2xl font-black">How it works</h2>
-
-              <div className="mt-4 grid gap-3">
-                <div className="rounded-2xl bg-white/5 p-4 text-lg">
-                  1. Choose the moment.
-                </div>
-                <div className="rounded-2xl bg-white/5 p-4 text-lg">
-                  2. Pick the message or song path.
-                </div>
-                <div className="rounded-2xl bg-white/5 p-4 text-lg">
-                  3. Hear HUG options.
-                </div>
-                <div className="rounded-2xl bg-white/5 p-4 text-lg">
-                  4. Choose one and checkout.
-                </div>
-              </div>
-
-              <p className="mt-4 text-sm leading-6 text-amber-50/65">
-                One HUG per order. Additional HUGs are separate purchases.
+            <div className="rounded-[1.5rem] border border-amber-300/30 bg-amber-300 p-5 text-[#2a180d] shadow-lg">
+              <p className="text-sm font-black uppercase tracking-[0.18em]">
+                BB-BOT
               </p>
+              <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
+
+              <button
+                type="button"
+                onClick={() => speak(botMessage)}
+                className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
+              >
+                Hear BB-BOT
+              </button>
             </div>
           </div>
         </div>
 
         <section className="mt-8">
-          <h2 className="text-3xl font-black">Choose a moment</h2>
+          <h2 className="text-3xl font-black">Choose the kind of moment</h2>
 
-          <div className="mt-5 space-y-8">
-            {groups.map((group) => (
-              <div key={group}>
-                <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                  {group}
-                </p>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {families.map((family) => {
+              const active = family.id === selectedFamily.id;
 
-                <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {categories
-                    .filter((category) => category.group === group)
-                    .map((category) => {
-                      const active = category.slug === selected.slug;
+              return (
+                <button
+                  key={family.id}
+                  type="button"
+                  onClick={() => chooseFamily(family.id)}
+                  className={`rounded-[1.5rem] border p-6 text-left transition ${
+                    active
+                      ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
+                      : "border-amber-200/20 bg-[#3a1f0f] text-amber-50 hover:bg-white/10"
+                  }`}
+                >
+                  <p
+                    className={`text-xs font-black uppercase tracking-[0.18em] ${
+                      active ? "text-[#2a180d]/70" : "text-amber-200"
+                    }`}
+                  >
+                    Step 1
+                  </p>
 
-                      return (
-                        <button
-                          key={category.slug}
-                          type="button"
-                          onClick={() => chooseCategory(category)}
-                          className={`rounded-[1.5rem] border p-5 text-left transition ${
-                            active
-                              ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
-                              : "border-amber-200/20 bg-[#3a1f0f] text-amber-50 hover:bg-white/10"
-                          }`}
-                        >
-                          <p className={`text-xs font-black uppercase tracking-[0.18em] ${
-                            active ? "text-[#2a180d]/70" : "text-amber-200"
-                          }`}>
-                            {category.theme}
-                          </p>
+                  <h3 className="mt-2 text-2xl font-black">{family.title}</h3>
 
-                          <h3 className="mt-2 text-2xl font-black">{category.title}</h3>
-
-                          <p className={`mt-3 text-sm leading-6 ${
-                            active ? "text-[#2a180d]/75" : "text-amber-50/70"
-                          }`}>
-                            {category.description}
-                          </p>
-                        </button>
-                      );
-                    })}
-                </div>
-              </div>
-            ))}
+                  <p
+                    className={`mt-3 text-sm leading-6 ${
+                      active ? "text-[#2a180d]/75" : "text-amber-50/70"
+                    }`}
+                  >
+                    {family.description}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </section>
 
@@ -293,17 +301,68 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Selected moment
+                Step 2
               </p>
-              <h2 className="mt-2 text-4xl font-black">{selected.title}</h2>
+              <h2 className="mt-2 text-4xl font-black">{selectedFamily.title}</h2>
               <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
-                {selected.description}
+                Choose the specific kind of HUG.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {familyCategories.map((category) => {
+              const active = category.slug === selectedCategory.slug;
+
+              return (
+                <button
+                  key={category.slug}
+                  type="button"
+                  onClick={() => chooseCategory(category)}
+                  className={`rounded-[1.5rem] border p-5 text-left transition ${
+                    active
+                      ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
+                      : "border-amber-200/20 bg-black/20 text-amber-50 hover:bg-white/10"
+                  }`}
+                >
+                  <p
+                    className={`text-xs font-black uppercase tracking-[0.18em] ${
+                      active ? "text-[#2a180d]/70" : "text-amber-200"
+                    }`}
+                  >
+                    {category.theme}
+                  </p>
+
+                  <h3 className="mt-2 text-2xl font-black">{category.title}</h3>
+
+                  <p
+                    className={`mt-3 text-sm leading-6 ${
+                      active ? "text-[#2a180d]/75" : "text-amber-50/70"
+                    }`}
+                  >
+                    {category.description}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mt-8 rounded-[2rem] border border-amber-200/20 bg-[#3a1f0f] p-6 sm:p-8">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Step 3
+              </p>
+              <h2 className="mt-2 text-4xl font-black">{selectedCategory.title}</h2>
+              <p className="mt-3 max-w-2xl text-lg leading-8 text-amber-50/75">
+                Choose the message path.
               </p>
             </div>
 
-            {selected.liveHref ? (
+            {selectedCategory.liveHref ? (
               <Link
-                href={selected.liveHref}
+                href={selectedCategory.liveHref}
                 className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
                 Start guided HUG
@@ -312,7 +371,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() =>
-                  speak("This HUG category is selected. Audio demo wiring comes next.")
+                  speak("This category is selected. Audio demos and checkout can be connected next.")
                 }
                 className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-50 transition hover:bg-white/10"
               >
@@ -321,48 +380,34 @@ export default function HomePage() {
             )}
           </div>
 
-          <div className="mt-6">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-              Choose a message path
-            </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {selectedCategory.songs.map((song) => {
+              const active = selectedSong === song;
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {selected.songs.map((song) => {
-                const active = selectedSong === song;
-
-                return (
-                  <button
-                    key={song}
-                    type="button"
-                    onClick={() => setSelectedSong(song)}
-                    className={`rounded-2xl border px-5 py-4 text-left text-lg font-black transition ${
-                      active
-                        ? "border-amber-300 bg-amber-300 text-[#2a180d]"
-                        : "border-amber-200/20 bg-black/20 text-amber-50 hover:bg-white/10"
-                    }`}
-                  >
-                    {song}
-                  </button>
-                );
-              })}
-            </div>
+              return (
+                <button
+                  key={song}
+                  type="button"
+                  onClick={() => setSelectedSong(song)}
+                  className={`rounded-2xl border px-5 py-4 text-left text-lg font-black transition ${
+                    active
+                      ? "border-amber-300 bg-amber-300 text-[#2a180d]"
+                      : "border-amber-200/20 bg-black/20 text-amber-50 hover:bg-white/10"
+                  }`}
+                >
+                  {song}
+                </button>
+              );
+            })}
           </div>
 
-          {selected.liveHref ? (
-            <div className="mt-6 rounded-2xl bg-black/20 p-5">
-              <p className="text-lg leading-8 text-amber-50/80">
-                Mother’s Day is live now. BB-BOT will guide the buyer through
-                choosing the feeling, hearing options, choosing one HUG, and checkout.
-              </p>
-            </div>
-          ) : (
-            <div className="mt-6 rounded-2xl bg-black/20 p-5">
-              <p className="text-lg leading-8 text-amber-50/80">
-                This HUG category is staged in the catalog. Next step is connecting
-                approved audio demos and a matching checkout path.
-              </p>
-            </div>
-          )}
+          <div className="mt-6 rounded-2xl bg-black/20 p-5">
+            <p className="text-lg leading-8 text-amber-50/80">
+              {selectedCategory.liveHref
+                ? "This path is live now. BB-BOT will guide the buyer through hearing options, choosing one HUG, and checkout."
+                : "This path is staged in the catalog. Next step is connecting approved audio demos and a matching checkout path."}
+            </p>
+          </div>
         </section>
       </section>
     </main>
