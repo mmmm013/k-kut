@@ -316,6 +316,12 @@ const selectedFamily = useMemo<Family>(() => {
                 Read Step 1 below.
               </h2>
 
+              <div className="mt-5 grid gap-3 text-lg font-bold leading-8 text-amber-50/90">
+                <p>♪ A HUG is an audio greeting card.</p>
+                <p>♬ A HUG sends feeling through music.</p>
+                <p>♫ A HUG can be sent by text, DM, social link, or email.</p>
+              </div>
+
               <div className="mt-5 grid gap-4 text-xl leading-9 text-amber-50/90">
                 <p>
                   A HUG is an audio greeting card.
