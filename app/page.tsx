@@ -158,10 +158,10 @@ export default function HomePage() {
   function playBotVoice(clip: string = "welcome") {
     if (typeof window === "undefined") return;
 
-    const audio = new Audio(`/voices/mc-bot/${clip}.m4a`);
+    const audio = new Audio(`/voices/gp-bot/prompts/${clip}.m4a`);
     audio.volume = 0.95;
     audio.play().catch(() => {
-      console.log("BB-BOT voice blocked until user taps:", clip);
+      console.log("GP-BOT voice blocked until user taps:", clip);
     });
   }
 
@@ -231,7 +231,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-black text-green-100">
-              BB-BOT guide · MC-BOT voice
+              BB-BOT guide · GP-BOT voice
             </div>
           </div>
 
@@ -257,7 +257,7 @@ export default function HomePage() {
                 onClick={() => playBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
-                Play MC-BOT voice
+                Play GP-BOT
               </button>
             </div>
           </div>
@@ -286,7 +286,10 @@ export default function HomePage() {
                 <button
                   key={family.id}
                   type="button"
-                  onClick={() => chooseFamily(family.id)}
+                  onClick={() => {
+                    playBotVoice("pick-kind");
+                    chooseFamily(family.id);
+                  }}
                   className={`rounded-[1.5rem] border p-6 text-left transition ${
                     active
                       ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
@@ -337,7 +340,10 @@ export default function HomePage() {
                 <button
                   key={category.slug}
                   type="button"
-                  onClick={() => chooseCategory(category)}
+                  onClick={() => {
+                    playBotVoice(category.liveHref ? "live" : "coming-soon");
+                    chooseCategory(category);
+                  }}
                   className={`rounded-[1.5rem] border p-5 text-left transition ${
                     active
                       ? "border-amber-300 bg-amber-300 text-[#2a180d] shadow-xl"
@@ -408,6 +414,7 @@ export default function HomePage() {
                   key={song}
                   type="button"
                   onClick={() => {
+                    playBotVoice("pick-song");
                     setSelectedSong(song);
                     setLastAction(`You picked ${song}.`);
                   }}

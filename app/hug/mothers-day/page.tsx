@@ -34,10 +34,10 @@ export default function HomePage() {
   function playBotVoice(clip: string = "welcome") {
     if (typeof window === "undefined") return;
 
-    const audio = new Audio(`/voices/mc-bot/${clip}.m4a`);
+    const audio = new Audio(`/voices/gp-bot/prompts/${clip}.m4a`);
     audio.volume = 0.95;
     audio.play().catch(() => {
-      console.log("BB-BOT voice blocked until user taps:", clip);
+      console.log("GP-BOT voice blocked until user taps:", clip);
     });
   }
 
@@ -180,7 +180,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BB-BOT guide · MC-BOT voice
+              BB-BOT guide · GP-BOT voice
             </div>
           </div>
 
@@ -199,7 +199,7 @@ export default function HomePage() {
                 onClick={() => playBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
-                Play MC-BOT voice
+                Play GP-BOT
               </button>
           </div>
 
@@ -249,7 +249,10 @@ export default function HomePage() {
 
               <button
                 type="button"
-                onClick={() => setStep(1)}
+                onClick={() => {
+                    playBotVoice("start-hug");
+                    setStep(1);
+                  }}
                 className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
                 Start
@@ -330,7 +333,10 @@ export default function HomePage() {
                       <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                         <button
                           type="button"
-                          onClick={() => playDemo(demo.id)}
+                          onClick={() => {
+                          playBotVoice("play-demo");
+                          playDemo(demo.id);
+                        }}
                           className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
                         >
                           Play demo
@@ -339,6 +345,7 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => {
+                            playBotVoice("choose-hug");
                             setSelectedId(demo.id);
                             setStep(3);
                           }}
@@ -369,7 +376,10 @@ export default function HomePage() {
               <div className="mt-5">
                 <button
                   type="button"
-                  onClick={() => setStep(1)}
+                  onClick={() => {
+                    playBotVoice("start-hug");
+                    setStep(1);
+                  }}
                   className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
                 >
                   Back
