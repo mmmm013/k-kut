@@ -81,6 +81,22 @@ export default function HomePage() {
     [selectedDemo]
   );
 
+  const bbInstruction = useMemo(() => {
+    if (activeStep === 0) {
+      return "Step 1 is active. Tell me what Mom should feel. You can speak, type, or tap a feeling.";
+    }
+
+    if (activeStep === 1) {
+      return `Step 2 is active. I selected ${selectedDemo.title}. Press play and listen for the feeling.`;
+    }
+
+    if (activeStep === 2) {
+      return `Step 3 is active. ${selectedDemo.title} is ready. Choose this HUG if it feels right.`;
+    }
+
+    return "Step 4 is active. Secure checkout is ready. Complete the Mother’s Day HUG order through Stripe.";
+  }, [activeStep, selectedDemo.title]);
+
   useEffect(() => {
     const timer = window.setTimeout(() => setBotAwake(true), 400);
     return () => window.clearTimeout(timer);
@@ -134,6 +150,11 @@ export default function HomePage() {
       addBot("Now press play. If it feels right, choose this HUG and I’ll move you to checkout.", shouldSpeak);
       setActiveStep(1);
     }, 250);
+  }
+
+  function speakCurrentStep() {
+    setBotAwake(true);
+    addBot(bbInstruction, true);
   }
 
   function startVoice() {
@@ -309,6 +330,40 @@ export default function HomePage() {
           </div>
         </div>
 
+        <section className="sticky top-3 z-30 mt-6 rounded-[1.5rem] border border-amber-300/40 bg-[#120904]/95 p-4 shadow-2xl backdrop-blur">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200">
+                BB-BOT control tower
+              </p>
+              <p className="mt-2 text-lg font-black leading-7 text-amber-50">
+                {bbInstruction}
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <button
+                type="button"
+                onClick={speakCurrentStep}
+                className="rounded-2xl border border-amber-200/35 px-5 py-3 font-black text-amber-50 transition hover:bg-white/10"
+              >
+                BB-BOT talk me through this step
+              </button>
+
+              <a
+                href={STRIPE_URL}
+                onClick={() => {
+                  setActiveStep(3);
+                  addBot("Opening secure Stripe checkout for the Mother’s Day HUG.", true);
+                }}
+                className="rounded-2xl bg-amber-300 px-5 py-3 text-center font-black text-[#2b190d] transition hover:bg-amber-200"
+              >
+                Checkout · $7.99
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="mt-8 grid gap-4 md:grid-cols-4">
           {steps.map((step, index) => {
             const active = activeStep === index;
@@ -317,7 +372,10 @@ export default function HomePage() {
               <button
                 key={step.title}
                 type="button"
-                onClick={() => setActiveStep(index)}
+                onClick={() => {
+                  setActiveStep(index);
+                  window.setTimeout(() => speakCurrentStep(), 50);
+                }}
                 className={`rounded-[1.5rem] border p-5 text-left transition ${
                   active
                     ? "scale-[1.02] border-amber-300 bg-amber-300 text-[#2b190d] shadow-xl"
@@ -349,6 +407,10 @@ export default function HomePage() {
 
             <a
               href={STRIPE_URL}
+              onClick={() => {
+                setActiveStep(3);
+                addBot("Opening secure Stripe checkout for the Mother’s Day HUG.", true);
+              }}
               className="rounded-2xl bg-amber-300 px-6 py-4 text-center font-black text-[#2b190d] shadow-lg transition hover:bg-amber-200"
             >
               Secure checkout · $7.99
@@ -432,6 +494,10 @@ export default function HomePage() {
 
                 <a
                   href={STRIPE_URL}
+                  onClick={() => {
+                    setActiveStep(3);
+                    addBot("Opening secure Stripe checkout for the Mother’s Day HUG.", true);
+                  }}
                   className={`rounded-2xl px-5 py-4 text-center font-black transition ${
                     hugChosen
                       ? "bg-green-300 text-[#102015] hover:bg-green-200"
