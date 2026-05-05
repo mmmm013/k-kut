@@ -170,7 +170,7 @@ export default function HomePage() {
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
   const [lastAction, setLastAction] = useState<string>(
-    "Start here. Learn what a HUG is."
+    "Step 1: Learn what a HUG is. Then click the big button."
   );
 
   const selectedFamily = useMemo<Family>(() => {
@@ -187,7 +187,7 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (step === 1) {
-      return "Learn first. A HUG is a historic audio greeting card.";
+      return "Step 1. Learn what a HUG is. Then click the big button to pick a HUG kind.";
     }
 
     if (step === 2) {
@@ -323,18 +323,34 @@ export default function HomePage() {
           {step === 1 && (
             <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-black/20 p-6 sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Step 1 · Learn
+                Active Step 1 · Learn
               </p>
 
-              <h2 className="mt-2 text-4xl font-black">What is a HUG?</h2>
+              <h2 className="mt-2 text-4xl font-black">
+                What is a HUG?
+              </h2>
 
-              <div className="mt-5 grid gap-4 text-lg leading-8 text-amber-50/85">
-                <p>A HUG is a historic audio greeting card.</p>
+              <div className="mt-5 grid gap-4 text-xl leading-9 text-amber-50/90">
                 <p>
-                  It sends brilliant, emotional song parts that focus the feeling of your message.
+                  A HUG is a historic audio greeting card.
                 </p>
+
+                <p>
+                  Before now, people could send words, emojis, pictures, and links.
+                  A HUG lets you send a real emotional song moment with your message.
+                </p>
+
                 <p>
                   Send a HUG by text, DM, social link, or email.
+                </p>
+              </div>
+
+              <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
+                <p className="text-sm font-black uppercase tracking-[0.18em]">
+                  What you do next
+                </p>
+                <p className="mt-2 text-2xl font-black leading-8">
+                  Pick what kind of message you want to send.
                 </p>
               </div>
 
@@ -342,13 +358,17 @@ export default function HomePage() {
                 type="button"
                 onClick={() => {
                   playBotVoice("pick-kind");
-                  setLastAction("Next: pick the kind of message you want to send.");
+                  setLastAction("Step 2: Pick what kind of HUG you want to send.");
                   setStep(2);
                 }}
-                className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+                className="mt-6 w-full rounded-2xl bg-amber-300 px-8 py-6 text-2xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                Next: Pick a HUG kind
+                I get it — pick a HUG kind
               </button>
+
+              <p className="mt-4 text-center text-base font-bold text-amber-50/65">
+                Only this button moves you forward.
+              </p>
             </section>
           )}
 
