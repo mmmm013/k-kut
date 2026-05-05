@@ -54,8 +54,8 @@ check("Home avoids dead Hear BB-BOT wording", !home.includes("Hear BB-BOT"));
 check("Home avoids message path wording", !home.includes("message path"));
 
 check("Mother's Day has playBotVoice function", mothers.includes("function playBotVoice"));
-check("Mother's Day does not show fake Play BB-BOT voice button", !mothers.includes("Play BB-BOT voice"));
-check("Mother's Day avoids fake MC-BOT audio path until real clips exist", !mothers.includes("/voices/mc-bot/"));
+check("Mother's Day shows Play MC-BOT voice button", mothers.includes("Play MC-BOT voice"));
+check("Mother's Day uses real MC-BOT audio path", mothers.includes("/voices/mc-bot/"));
 check("Mother's Day has Play demo button", mothers.includes("Play demo"));
 check("Mother's Day has Choose this HUG button", mothers.includes("Choose this HUG"));
 check("Mother's Day has checkout price button", mothers.includes("Checkout · $7.99"));
