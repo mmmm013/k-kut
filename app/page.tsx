@@ -172,6 +172,7 @@ export default function HomePage() {
   const [lastAction, setLastAction] = useState<string>(
     "Look below. Read Step 1. Then tap I understand — pick what this is for."
   );
+  const [comingSoonNotice, setComingSoonNotice] = useState<string | null>(null);
 const selectedFamily = useMemo<Family>(() => {
     return families.find((item) => item.id === selectedFamilyId) ?? families[0];
   }, [selectedFamilyId]);
@@ -233,6 +234,11 @@ const selectedFamily = useMemo<Family>(() => {
     setSelectedCategorySlug(category.slug);
     setSelectedSong(category.songs[0] ?? "");
     playBotVoice(category.liveHref ? "live" : "coming-soon");
+
+    if (!category.liveHref) {
+      setComingSoonNotice(`${category.title} is coming soon. Try Mother’s Day to buy today.`);
+    }
+
     setLastAction(
       category.liveHref
         ? `You picked ${category.title}. This one is live. Next: pick a song.`
@@ -251,6 +257,50 @@ const selectedFamily = useMemo<Family>(() => {
   return (
     <main className="min-h-screen bg-[#241105] text-[#fff7e8]">
       <section className="mx-auto max-w-5xl px-5 py-8 sm:px-8 sm:py-12">
+        {comingSoonNotice && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-5">
+            <section className="w-full max-w-md rounded-[2rem] border border-amber-300/30 bg-[#3a1f0f] p-6 text-center shadow-2xl">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Coming soon
+              </p>
+              <h2 className="mt-3 text-3xl font-black text-amber-50">
+                This HUG is not ready yet.
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-amber-50/80">
+                {comingSoonNotice}
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setComingSoonNotice(null);
+                    setSelectedFamilyId("special-days");
+                    setSelectedCategorySlug("mothers-day");
+                    setSelectedSong("Thank You");
+                    setLastAction("Mother’s Day is live. Pick Thank You, then start the HUG.");
+                    setStep(3);
+                    playBotVoice("try-mothers-day");
+                  }}
+                  className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                >
+                  Try Mother’s Day
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setComingSoonNotice(null)}
+                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-lg font-black text-amber-50 transition hover:bg-white/10"
+                >
+                  Close
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* Coming soon popup */}
+
         <div className="rounded-[2rem] border border-amber-300/20 bg-[#3a1f0f] p-6 shadow-2xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm font-black uppercase tracking-[0.24em] text-amber-200">
