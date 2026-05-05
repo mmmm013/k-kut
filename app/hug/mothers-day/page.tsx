@@ -334,6 +334,10 @@ export default function HomePage() {
                 BB-BOT got: <span className="font-black text-amber-200">{gotFeeling}</span>
               </p>
 
+              <p className="mt-4 rounded-2xl bg-black/25 px-4 py-3 text-base font-bold text-amber-100">
+                If this HUG does not feel right, tell BB-BOT.
+              </p>
+
               <div className="mt-5 grid gap-4">
                 {options.map((demo) => {
                   const chosen = selectedId === demo.id;
