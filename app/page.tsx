@@ -357,6 +357,15 @@ const selectedFamily = useMemo<Family>(() => {
                 I understand — pick what this is for
               </button>
 
+              <div className="mt-4 text-center">
+                <a
+                  href="/hug/mothers-day"
+                  className="text-sm font-black text-amber-200 underline underline-offset-4"
+                >
+                  I don’t understand — show me the demo
+                </a>
+              </div>
+
               <p className="mt-4 text-center text-base font-bold text-amber-50/65">
                 This is required. The next part stays locked until you tap the button.
               </p>
