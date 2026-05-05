@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-const STRIPE_URL = "https://buy.stripe.com";
+const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
 
 const demos = [
   {
