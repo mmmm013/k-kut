@@ -31,6 +31,20 @@ const DEMOS = [
 type Step = 0 | 1 | 2 | 3;
 
 export default function HomePage() {
+  function playBotVoice(clip: string = "welcome") {
+    if (typeof window === "undefined") return;
+
+    const audio = new Audio(`/voices/mc-bot/${clip}.m4a`);
+    audio.volume = 0.95;
+    audio.play().catch(() => {
+      console.log("BB-BOT voice blocked until user taps:", clip);
+    });
+  }
+
+  function speak(_text: string) {
+    playBotVoice("welcome");
+  }
+
   const [step, setStep] = useState<Step>(0);
   const [typedFeeling, setTypedFeeling] = useState("");
   const [gotFeeling, setSeedFeeling] = useState("");
