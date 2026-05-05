@@ -170,7 +170,7 @@ export default function HomePage() {
   const [selectedCategorySlug, setSelectedCategorySlug] = useState<string>("mothers-day");
   const [selectedSong, setSelectedSong] = useState<string>("Thank You");
   const [lastAction, setLastAction] = useState<string>(
-    "Read this first. Then tap I understand — pick what this is for."
+    "Look below. Read Step 1. Then tap I understand — pick what this is for."
   );
   const [helpOpen, setHelpOpen] = useState<boolean>(false);
   const [slowHelpOpen, setSlowHelpOpen] = useState<boolean>(false);
@@ -189,7 +189,7 @@ export default function HomePage() {
 
   const botMessage = useMemo(() => {
     if (step === 1) {
-      return "Welcome. First, read this. Then tap I understand — pick what this is for.";
+      return "Welcome. I’ll help you choose a HUG. Read below first.";
     }
 
     if (step === 2) {
@@ -401,7 +401,7 @@ export default function HomePage() {
               </p>
 
               <h2 className="mt-2 text-4xl font-black">
-                First, understand the HUG.
+                Read Step 1 below.
               </h2>
 
               <div className="mt-5 grid gap-4 text-xl leading-9 text-amber-50/90">
