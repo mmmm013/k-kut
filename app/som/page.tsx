@@ -99,10 +99,9 @@ export default function SomPage() {
               What is SOM?
             </h2>
             <p className="mt-2 max-w-4xl text-sm font-bold leading-relaxed text-amber-50/75">
-              SOM is the public way to choose a K-KUT by feeling instead of by
-              catalog. Internally, K-KUT tracks inventory items, cost items,
-              stress, calm, phrase strength, and audio proof. Publicly, people
-              just choose the moment they need to send.
+              SOM is the simple way to choose a K-KUT by feeling instead of by
+              catalog. Pick the kind of moment you need, listen first, then send
+              a private music link to someone who matters.
             </p>
           </div>
         </div>
