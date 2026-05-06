@@ -118,14 +118,14 @@ export default function HomePage() {
     };
   }, []);
 
-  const [step, setStep] = useState<Step>(0);
+  const [step, setStep] = useState<Step>(2);
   const [typedFeeling, setTypedFeeling] = useState("");
-  const [gotFeeling, setSeedFeeling] = useState("");
+  const [gotFeeling, setSeedFeeling] = useState("Mom");
   const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening", "outro"]);
   const [selectedId, setSelectedId] = useState<string>("chorus");
-  const [focusTitle, setFocusTitle] = useState<string>("Learn");
+  const [focusTitle, setFocusTitle] = useState<string>("Hear samples");
   const [focusBody, setFocusBody] = useState<string>(
-    "A HUG sends a real song moment to Mom by text, DM, social link, or email. Start here, then choose how Mom should feel."
+    "Press Play on the Mother’s Day HUG samples. Choose the one that feels right, then checkout to order the private HUG link."
   );
 
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
@@ -234,7 +234,7 @@ export default function HomePage() {
     setOptionIds(result.optionIds);
     setSelectedId(result.optionIds[0]);
     setTypedFeeling("");
-    setFocus("Good choice", `You picked ${result.heard}. Now hear your best HUG options.`);
+    setFocus("Good choice", `You picked ${result.got}. Now hear your best HUG options.`);
     setStep(2);
   }
 
