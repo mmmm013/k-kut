@@ -1,0 +1,248 @@
+{
+  "artist": "KLEIGH",
+  "set": "guide-final",
+  "total_captured": 37,
+  "unique_recordings": 34,
+  "duplicate_copies_removed": 3,
+  "purpose": "K-KUT / HUG guided user assistance and sales support",
+  "items": [
+    {
+      "id": "after-checkout-link",
+      "title": "After Checkout Link",
+      "file": "/audio/kleigh/guide-final/01-after-checkout-link.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "back-one",
+      "title": "Back One",
+      "file": "/audio/kleigh/guide-final/02-back-one.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "best-hug",
+      "title": "Best Hug",
+      "file": "/audio/kleigh/guide-final/03-best-hug.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "checkout-is-ready",
+      "title": "Checkout Is Ready",
+      "file": "/audio/kleigh/guide-final/04-checkout-is-ready.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "checkout-not-open",
+      "title": "Checkout Not Open",
+      "file": "/audio/kleigh/guide-final/05-checkout-not-open.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "checkout-opens",
+      "title": "Checkout Opens",
+      "file": "/audio/kleigh/guide-final/06-checkout-opens.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "choose-feel",
+      "title": "Choose Feel",
+      "file": "/audio/kleigh/guide-final/07-choose-feel.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "demo-not-play",
+      "title": "Demo Not Play",
+      "file": "/audio/kleigh/guide-final/08-demo-not-play.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-choice-selected",
+      "title": "Good Choice Selected",
+      "file": "/audio/kleigh/guide-final/09-good-choice-selected.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-choice",
+      "title": "Good Choice",
+      "file": "/audio/kleigh/guide-final/10-good-choice.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-choose-calm-peace",
+      "title": "Good Choose Calm Peace",
+      "file": "/audio/kleigh/guide-final/11-good-choose-calm-peace.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-find-appreciated",
+      "title": "Good Find Appreciated",
+      "file": "/audio/kleigh/guide-final/12-good-find-appreciated.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-soft-gentle",
+      "title": "Good Soft Gentle",
+      "file": "/audio/kleigh/guide-final/13-good-soft-gentle.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-strongest",
+      "title": "Good Strongest",
+      "file": "/audio/kleigh/guide-final/14-good-strongest.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good-let-s-find",
+      "title": "Good Let S Find",
+      "file": "/audio/kleigh/guide-final/15-good-let-s-find.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "good",
+      "title": "Good",
+      "file": "/audio/kleigh/guide-final/16-good.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "if-you-want-to-send-today",
+      "title": "If You Want To Send Today",
+      "file": "/audio/kleigh/guide-final/17-if-you-want-to-send-today.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "i-m-not-sure",
+      "title": "I M Not Sure",
+      "file": "/audio/kleigh/guide-final/18-i-m-not-sure.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "let-s-start-over",
+      "title": "Let S Start Over",
+      "file": "/audio/kleigh/guide-final/19-let-s-start-over.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "listen-first",
+      "title": "Listen First",
+      "file": "/audio/kleigh/guide-final/20-listen-first.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "mothers-ready",
+      "title": "Mothers Ready",
+      "file": "/audio/kleigh/guide-final/21-mothers-ready.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "one-hug-per-order",
+      "title": "One Hug Per Order",
+      "file": "/audio/kleigh/guide-final/22-one-hug-per-order.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "pick-the-song-msg",
+      "title": "Pick The Song Msg",
+      "file": "/audio/kleigh/guide-final/23-pick-the-song-msg.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "press-play",
+      "title": "Press Play",
+      "file": "/audio/kleigh/guide-final/24-press-play.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "real-audio-greeting",
+      "title": "Real Audio Greeting",
+      "file": "/audio/kleigh/guide-final/25-real-audio-greeting.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "real-song-moment",
+      "title": "Real Song Moment",
+      "file": "/audio/kleigh/guide-final/26-real-song-moment.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "soon",
+      "title": "Soon",
+      "file": "/audio/kleigh/guide-final/27-soon.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "start-hug",
+      "title": "Start Hug",
+      "file": "/audio/kleigh/guide-final/28-start-hug.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "start",
+      "title": "Start",
+      "file": "/audio/kleigh/guide-final/29-start.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "try-again",
+      "title": "Try Again",
+      "file": "/audio/kleigh/guide-final/30-try-again.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "try-one-feeling",
+      "title": "Try One Feeling",
+      "file": "/audio/kleigh/guide-final/31-try-one-feeling.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "welcome-mother-s-day",
+      "title": "Welcome Mother S Day",
+      "file": "/audio/kleigh/guide-final/32-welcome-mother-s-day.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "welcome",
+      "title": "Welcome",
+      "file": "/audio/kleigh/guide-final/33-welcome.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    },
+    {
+      "id": "you-can-send",
+      "title": "You Can Send",
+      "file": "/audio/kleigh/guide-final/34-you-can-send.m4a",
+      "source": "KLEIGH guide recording",
+      "status": "captured_unique"
+    }
+  ]
+}
