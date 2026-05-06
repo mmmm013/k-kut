@@ -2,20 +2,19 @@ import Link from "next/link";
 
 const MOMENTS = [
   {
-    label: "Warmth",
+    label: "Send warmth",
     line: "For gratitude, love, care, and the quiet things people remember.",
+    href: "/hug/mothers-day",
   },
   {
-    label: "Support",
+    label: "Send support",
     line: "For someone who needs to feel seen, heard, or carried.",
+    href: "/hug/mothers-day",
   },
   {
-    label: "Repair",
+    label: "Send repair",
     line: "For apology, longing, distance, and words that are hard to say.",
-  },
-  {
-    label: "Memory",
-    line: "For remembrance, legacy, family, and love that remains.",
+    href: "/hug/mothers-day",
   },
 ];
 
@@ -42,9 +41,10 @@ export default function SomPage() {
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {MOMENTS.map((moment) => (
-                  <div
+                  <Link
                     key={moment.label}
-                    className="rounded-2xl border border-amber-300/20 bg-black/20 p-4"
+                    href={moment.href}
+                    className="rounded-2xl border border-amber-300/20 bg-black/20 p-4 transition hover:border-amber-300/55 hover:bg-amber-300/10"
                   >
                     <h2 className="text-xl font-black text-amber-200">
                       {moment.label}
@@ -52,7 +52,10 @@ export default function SomPage() {
                     <p className="mt-2 text-sm font-bold leading-relaxed text-amber-50/70">
                       {moment.line}
                     </p>
-                  </div>
+                    <p className="mt-4 text-sm font-black text-amber-300">
+                      Choose this feeling →
+                    </p>
+                  </Link>
                 ))}
               </div>
 
