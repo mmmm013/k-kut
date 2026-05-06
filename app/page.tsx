@@ -3,22 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 
 const ACTIVE_BOT = "gp-bot";
-
-const KLEIGH_GUIDE_VOICE: Record<string, string> = {
-  welcome: "/audio/kleigh/guide-final/33-welcome.m4a",
-  "welcome-mothers-day": "/audio/kleigh/guide-final/32-welcome-mother-s-day.m4a",
-  "choose-feel": "/audio/kleigh/guide-final/07-choose-feel.m4a",
-  "try-one-feeling": "/audio/kleigh/guide-final/31-try-one-feeling.m4a",
-  "good-lets-find": "/audio/kleigh/guide-final/15-good-let-s-find.m4a",
-  "pick-song": "/audio/kleigh/guide-final/23-pick-the-song-msg.m4a",
-  "press-play": "/audio/kleigh/guide-final/24-press-play.m4a",
-  "good-choice-selected": "/audio/kleigh/guide-final/09-good-choice-selected.m4a",
-  "checkout-ready": "/audio/kleigh/guide-final/04-checkout-is-ready.m4a",
-  "checkout-not-open": "/audio/kleigh/guide-final/05-checkout-not-open.m4a",
-  "after-checkout-link": "/audio/kleigh/guide-final/01-after-checkout-link.m4a",
-  "you-can-send": "/audio/kleigh/guide-final/34-you-can-send.m4a",
-  "back-one": "/audio/kleigh/guide-final/02-back-one.m4a",
-};
 const WELCOME_KEY = "k-kut-gp-bot-founder-welcome-heard";
 const MIN_KK_OPTIONS = 10;
 const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
@@ -533,12 +517,12 @@ export default function Home() {
       setHasHeardWelcome(true);
     }
 
-    playOneAudio(KLEIGH_GUIDE_VOICE[clip] ?? `/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
+    playOneAudio(`/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
   }
 
   function startFlow() {
     setScreen("purpose");
-    playBotVoice("choose-feel");
+    playBotVoice("pick-kind");
   }
 
   function choosePurpose(nextPurpose: Purpose) {
