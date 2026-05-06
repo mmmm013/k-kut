@@ -252,6 +252,8 @@ if (typeof window !== "undefined") {
 }
 
 
+
+
 export default function Home() {
   const [screen, setScreen] = useState<"welcome" | "purpose" | "type" | "song" | "kk" | "confirm" | "buy">("welcome");
   const [purposeId, setPurposeId] = useState("");
@@ -470,7 +472,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {purpose.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Choose the smaller type.</h2>
+              <h2 className="mt-3 text-4xl font-black">Now narrow it. Choose the kind that fits best.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 This narrows the choices before you pick a song.
               </p>
@@ -585,7 +587,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Confirm
               </p>
-              <h2 className="mt-3 text-4xl font-black">Review your HUG. Is this the one?</h2>
+              <h2 className="mt-3 text-4xl font-black">Review your HUG. Review your HUG. Is this the one?</h2>
 
               <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
                 <p className="font-black">Purpose: {purpose.title}</p>
@@ -623,7 +625,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Checkout
               </p>
-              <h2 className="mt-3 text-4xl font-black">Final step. Buy this HUG.</h2>
+              <h2 className="mt-3 text-4xl font-black">Final step. Final step. Buy this HUG.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 You selected one purpose, one feeling type, one song, and one K-KUT moment.
               </p>
