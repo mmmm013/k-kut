@@ -221,9 +221,9 @@ export default function HomePage() {
     setStep(2);
   }
 
-  function stopAllDemoAudio() {
+  function stopOtherDemoAudio(current: HTMLAudioElement) {
     for (const el of Object.values(audioRefs.current)) {
-      if (!el) continue;
+      if (!el || el === current) continue;
       el.pause();
       el.currentTime = 0;
     }
@@ -233,7 +233,7 @@ export default function HomePage() {
     const el = audioRefs.current[id];
     if (!el) return;
 
-    stopAllDemoAudio();
+    stopOtherDemoAudio(el);
     el.play().catch(() => {});
   }
 
@@ -458,8 +458,11 @@ export default function HomePage() {
                         }}
                         controls
                         preload="metadata"
+                        onPlay={(event) => {
+                          stopOtherDemoAudio(event.currentTarget);
+                          show(`You are hearing ${demo.title}.`);
+                        }}
                         className="mt-4 w-full"
-                        onPlay={() => show(`You are hearing ${demo.title}.`)}
                         onEnded={() => show("Demo finished. Choose this HUG if it feels right.")}
                       >
                         <source src={demo.audioSrc} type="audio/mpeg" />
