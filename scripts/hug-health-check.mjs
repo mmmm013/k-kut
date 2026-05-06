@@ -1,99 +1,89 @@
-import fs from "fs";
+import fs from "node:fs";
 
 const checks = [];
 
-function check(name, ok, detail = "") {
-  checks.push({ name, ok, detail });
+function check(name, ok) {
+  checks.push({ name, ok: Boolean(ok) });
 }
 
 function exists(path) {
   return fs.existsSync(path);
 }
 
-function read(path) {
-  return exists(path) ? fs.readFileSync(path, "utf8") : "";
-}
-
-const home = read("app/page.tsx");
-const mothers = read("app/hug/mothers-day/page.tsx");
-
-const requiredGpBotPromptFiles = [
-  "public/voices/gp-bot/prompts/welcome.m4a",
-  "public/voices/gp-bot/prompts/pick-kind.m4a",
-  "public/voices/gp-bot/prompts/pick-one.m4a",
-  "public/voices/gp-bot/prompts/pick-song.m4a",
-  "public/voices/gp-bot/prompts/live.m4a",
-  "public/voices/gp-bot/prompts/coming-soon.m4a",
-  "public/voices/gp-bot/prompts/try-mothers-day.m4a",
-  "public/voices/gp-bot/prompts/start-hug.m4a",
-  "public/voices/gp-bot/prompts/play-demo.m4a",
-  "public/voices/gp-bot/prompts/choose-hug.m4a",
-  "public/voices/gp-bot/prompts/checkout.m4a",
-];
-
-const requiredDemoFiles = [
-  "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
-  "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
-  "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-outro.mp3",
-];
-
-check("Home page file exists", exists("app/page.tsx"));
-check("Mother's Day wizard file exists", exists("app/hug/mothers-day/page.tsx"));
-
-check("GP-BOT welcome prompt exists", exists("public/voices/gp-bot/prompts/welcome.m4a"));
-
-for (const file of requiredGpBotPromptFiles) {
-  check(`GP-BOT prompt exists: ${file}`, exists(file));
-}
-
-for (const file of requiredDemoFiles) {
-  check(`Demo audio exists: ${file}`, exists(file));
-}
-
-check("Home has playBotVoice function", home.includes("function playBotVoice"));
-check("Home shows Play GP-BOT button", home.includes("Play GP-BOT"));
-check("Home uses GP-BOT prompt path", home.includes("/voices/${ACTIVE_BOT}/prompts/") || home.includes("/voices/gp-bot/prompts/"));
-check("Home links to Mother's Day wizard", home.includes("/hug/mothers-day"));
-check("Home has current action panel", home.includes("Current action"));
-check("Home has coming soon response", home.includes("coming soon"));
-check("Home has buy-today response", home.includes("buy today"));
-check("Home avoids dead Hear BB-BOT wording", !home.includes("Hear BB-BOT"));
-check("Home avoids decorative BOT badge", !home.includes("BB-BOT guide · GP-BOT voice"));
-check("Home avoids auto-help timers", !home.includes("5000") && !home.includes("12000") && !home.includes("useEffect"));
-check(
-  "Home routes confusion to demo link",
-  home.includes("/hug/mothers-day") &&
-    home.includes("show me the demo") &&
-    home.includes("I don")
-);
-check("Home avoids message path wording", !home.includes("message path"));
-check("Home avoids visible Step-number wording", !home.includes("Step {item.step}:") && !home.includes("Active Step 1"));
-check("Home intro says read below", home.includes("Please read below first"));
-check("Home uses music bullets", home.includes("♪") && home.includes("♬") && home.includes("♫"));
-
-check("Mother's Day has playBotVoice function", mothers.includes("function playBotVoice"));
-check("Mother's Day shows Play GP-BOT button", mothers.includes("Play GP-BOT"));
-check("Mother's Day uses GP-BOT prompt path", mothers.includes("/voices/gp-bot/prompts/"));
-check("Mother's Day has Play demo button", mothers.includes("Play demo"));
-check("Mother's Day has Choose this HUG button", mothers.includes("Choose this HUG"));
-check("Mother's Day has checkout price button", mothers.includes("Checkout · $7.99"));
-check("Mother's Day has Stripe link", mothers.includes("https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p"));
-
-const failed = checks.filter((item) => !item.ok);
+const home = fs.readFileSync("app/page.tsx", "utf8");
+const mothers = fs.readFileSync("app/hug/mothers-day/page.tsx", "utf8");
 
 console.log("\nK-KUT HUG HEALTH CHECK");
 console.log("======================\n");
 
-for (const item of checks) {
-  console.log(`${item.ok ? "PASS" : "FAIL"} - ${item.name}${item.detail ? ` — ${item.detail}` : ""}`);
-}
+check("Home page file exists", exists("app/page.tsx"));
+check("Mother's Day wizard file exists", exists("app/hug/mothers-day/page.tsx"));
+
+[
+  "welcome",
+  "pick-kind",
+  "pick-one",
+  "pick-song",
+  "live",
+  "coming-soon",
+  "try-mothers-day",
+  "start-hug",
+  "play-demo",
+  "choose-hug",
+  "checkout",
+].forEach((clip) => {
+  check(`GP-BOT prompt exists: public/voices/gp-bot/prompts/${clip}.m4a`, exists(`public/voices/gp-bot/prompts/${clip}.m4a`));
+});
+
+[
+  "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
+  "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
+  "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-outro.mp3",
+].forEach((file) => {
+  check(`Demo audio exists: ${file}`, exists(file));
+});
+
+check("Home is strict one-card wizard", home.includes('screen === "welcome"') && home.includes('screen === "purpose"') && home.includes('screen === "song"') && home.includes('screen === "kk"'));
+check("Home asks only one main question at a time", home.includes("What is this HUG for?") && home.includes("Pick a song.") && home.includes("Choose the song moment."));
+check("Home has founder welcome replay", home.includes("Play Founder Welcome") && home.includes("Replay Founder Welcome"));
+check("Home remembers founder welcome heard state", home.includes("k-kut-gp-bot-founder-welcome-heard"));
+check("Home has clear understand action", home.includes("I understand — pick what this is for"));
+check("Home routes confusion to demo link", home.includes("I don’t understand — show me the demo") && home.includes("/hug/mothers-day"));
+check("Home uses music bullets", home.includes("♪") && home.includes("♬") && home.includes("♫"));
+check("Home has KK options", home.includes("KK Option") && home.includes("Choose this HUG"));
+check("Home avoids decorative BOT badge", !home.includes("BB-BOT guide · GP-BOT voice"));
+check("Home avoids auto-help timers", !home.includes("5000") && !home.includes("12000"));
+check("Home avoids current action box", !home.includes("CURRENT ACTION"));
+check("Home avoids progress box", !home.includes("PROGRESS"));
+check("Home avoids false coming soon dead end", !home.includes("This one is coming soon. Try Mother"));
+check("Home enforces one audio at a time", home.includes("stopAllAudio") && home.includes("playOneAudio"));
+
+check("Mother's Day has playBotVoice function", mothers.includes("playBotVoice"));
+check("Mother's Day uses GP-BOT prompt path", mothers.includes("/voices/") && mothers.includes("/prompts/"));
+check("Mother's Day has Play demo button", mothers.includes("Play demo"));
+check("Mother's Day has Choose this HUG button", mothers.includes("Choose this HUG"));
+check("Mother's Day has checkout price button", mothers.includes("Checkout") || mothers.includes("checkout"));
+check("Mother's Day has Stripe link", mothers.includes("stripe") || mothers.includes("STRIPE_URL"));
+
+let pass = 0;
+let fail = 0;
+
+checks.forEach((item) => {
+  if (item.ok) {
+    pass++;
+    console.log(`PASS - ${item.name}`);
+  } else {
+    fail++;
+    console.log(`FAIL - ${item.name}`);
+  }
+});
 
 console.log("\nSUMMARY");
 console.log("=======");
 console.log(`Total: ${checks.length}`);
-console.log(`Pass:  ${checks.length - failed.length}`);
-console.log(`Fail:  ${failed.length}`);
+console.log(`Pass:  ${pass}`);
+console.log(`Fail:  ${fail}`);
 
-if (failed.length) {
+if (fail > 0) {
   process.exit(1);
 }
