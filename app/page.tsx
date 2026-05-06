@@ -382,7 +382,7 @@ export default function Home() {
               </p>
 
               <h2 className="mt-3 text-3xl font-black leading-tight">
-                A HUG is a digital audio card that sends feeling through music.
+                I’ll guide you one step at a time. A HUG is a digital audio card that sends feeling through music.
               </h2>
 
               <div className="mt-6 grid gap-3 text-lg font-bold leading-8 text-amber-50/90">
@@ -414,7 +414,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 One question
               </p>
-              <h2 className="mt-3 text-4xl font-black">What is this HUG for?</h2>
+              <h2 className="mt-3 text-4xl font-black">Let’s start broad. What is this HUG for?</h2>
 
               <div className="mt-6 grid gap-3">
                 {PURPOSES.map((item) => (
@@ -471,7 +471,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {purpose.title} · {choiceType.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Pick a song.</h2>
+              <h2 className="mt-3 text-4xl font-black">Here are fitting songs. Pick one.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 Choose the song that fits this message best.
               </p>
@@ -501,9 +501,9 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {choiceType.title} · {song.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Choose your K-KUT moment.</h2>
+              <h2 className="mt-3 text-4xl font-black">Now choose your K-KUT moment.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                Listen to the options below and choose the one that feels right.
+                Listen to the options below. Choose the one that feels right.
               </p>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/65">
                 Song: {song.title} · Feeling: {purpose.title} · Type: {choiceType.title}
@@ -556,7 +556,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Confirm
               </p>
-              <h2 className="mt-3 text-4xl font-black">Is this the one?</h2>
+              <h2 className="mt-3 text-4xl font-black">Review your HUG. Is this the one?</h2>
 
               <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
                 <p className="font-black">Purpose: {purpose.title}</p>
@@ -594,9 +594,9 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Checkout
               </p>
-              <h2 className="mt-3 text-4xl font-black">Buy this HUG.</h2>
+              <h2 className="mt-3 text-4xl font-black">Final step. Buy this HUG.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                You selected one purpose, one smaller type, one song, and one K-KUT moment.
+                You selected one purpose, one feeling type, one song, and one K-KUT moment.
               </p>
               <p className="mt-3 text-lg font-bold leading-8 text-amber-50/80">
                 After checkout, G Putnam Music prepares your playable HUG link.
