@@ -92,21 +92,21 @@ export default function HomePage() {
     "choose-hug": "/audio/kleigh/guide-final/03-best-hug.m4a",
   };
 
-  function playBotVoice(clip: string = "welcome") {
+  function playMcBotVoice(clip: string = "welcome") {
     if (typeof window === "undefined") return;
 
     playOneAudio(kleighVoice[clip] ?? kleighVoice.welcome);
   }
 
   function speak(_text: string) {
-    playBotVoice("welcome");
+    playMcBotVoice("welcome");
   }
 
   useEffect(() => {
     function greetOnFirstInteraction() {
       if (hasAutoGreetedRef.current) return;
       hasAutoGreetedRef.current = true;
-      playBotVoice("welcome");
+      playMcBotVoice("welcome");
     }
 
     window.addEventListener("pointerdown", greetOnFirstInteraction, { once: true });
@@ -289,7 +289,7 @@ export default function HomePage() {
 
               <button
                 type="button"
-                onClick={() => playBotVoice("welcome")}
+                onClick={() => playMcBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
                 Play KLEIGH Guide
@@ -351,7 +351,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => {
-                    playBotVoice("start-hug");
+                    playMcBotVoice("start-hug");
                     setFocus("Start the HUG", "Now choose how you want Mom to feel.");
                     setStep(1);
                   }}
@@ -370,7 +370,7 @@ export default function HomePage() {
                 className="mt-5 flex flex-col gap-3 sm:flex-row"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  playBotVoice("pick-one");
+                  playMcBotVoice("pick-one");
                   setFocus("Feeling entered", "I’ll use that to find your best HUG options.");
                   submitFeeling(typedFeeling);
                 }}
@@ -396,7 +396,7 @@ export default function HomePage() {
                     key={feeling}
                     type="button"
                     onClick={() => {
-                      playBotVoice("pick-one");
+                      playMcBotVoice("pick-one");
                       setFocus("Feeling picked", `You picked ${feeling}. I’ll show matching HUG options.`);
                       submitFeeling(feeling);
                     }}
@@ -446,7 +446,7 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => {
-                          playBotVoice("play-demo");
+                          playMcBotVoice("play-demo");
                           setFocus("Listen first", `You are playing ${demo.title}. If it feels right, choose this HUG.`);
                           playDemo(demo.id);
                         }}
@@ -458,7 +458,7 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => {
-                            playBotVoice("choose-hug");
+                            playMcBotVoice("choose-hug");
                             setFocus("HUG selected", `${demo.title} is selected. Checkout is ready.`);
                             setSelectedId(demo.id);
                             setStep(3);
@@ -494,7 +494,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => {
-                    playBotVoice("start-hug");
+                    playMcBotVoice("start-hug");
                     setFocus("Start the HUG", "Now choose how you want Mom to feel.");
                     setStep(1);
                   }}
