@@ -726,18 +726,48 @@ export default function Home() {
             </div>
           )}
 
-          {screen === "song" && purpose && choiceType && (
+          {screen === "intent" && purpose && choiceType && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                {purpose.title} · {choiceType.title}
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Now get more specific.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                Choose the intent that feels closest. This is how I narrow the choices before songs.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {intentChoices.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => chooseIntent(item)}
+                    className="rounded-2xl border border-amber-300/25 bg-black/20 p-5 text-left transition hover:bg-amber-300 hover:text-[#2a180d]"
+                  >
+                    <span className="text-xl font-black">{item.title}</span>
+                    <span className="mt-2 block text-sm font-bold opacity-80">{item.line}</span>
+                  </button>
+                ))}
+              </div>
+
+              <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
+              </button>
+            </div>
+          )}
+
+          {screen === "song" && purpose && choiceType && intentChoice && (
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {purpose.title} · {choiceType.title} · {intentChoice.title}
               </p>
               <h2 className="mt-3 text-4xl font-black">Now pick a fitting song.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                Choose the song that fits this message best.
+                Here are fitting songs for this intent. Choose one, or ask for another set.
               </p>
 
               <div className="mt-6 grid gap-3">
-                {choiceType.songs.map((item) => (
+                {visibleSongs.map((item) => (
                   <button
                     key={item.id}
                     type="button"
