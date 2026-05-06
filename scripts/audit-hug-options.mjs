@@ -18,7 +18,10 @@ check("Homepage confirms from kkOptions", home.includes("kkOptions.find((item) =
 check("Homepage tells user there are at least 10 options", home.includes("at least 10 K-KUT options"));
 check("Homepage avoids false category coming-soon dead end", !home.includes("This one is coming soon. Try Mother"));
 check("Homepage still has Play option", home.includes("Play option"));
-check("Homepage still has Choose this HUG", home.includes("Choose this HUG"));
+check("Homepage still has Choose/confirm action", home.includes("Choose this one") || home.includes("Choose this HUG"));
+check("KK screen avoids BOT voice", !home.includes('setScreen("kk");\n    playBotVoice("play-demo");'));
+check("KK screen has user-centered title", home.includes("Choose your K-KUT moment."));
+check("Homepage contains no 18A label", !home.includes("18A"));
 
 console.log("\nSUMMARY");
 console.log("=======");

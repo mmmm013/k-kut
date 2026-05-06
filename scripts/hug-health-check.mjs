@@ -50,12 +50,13 @@ check("Home remembers founder welcome heard state", home.includes("k-kut-gp-bot-
 check("Home has clear understand action", home.includes("I understand — pick what this is for"));
 check("Home routes confusion to demo link", home.includes("I don’t understand — show me the demo") && home.includes("/hug/mothers-day"));
 check("Home uses music bullets", home.includes("♪") && home.includes("♬") && home.includes("♫"));
-check("Home has KK options", home.includes("KK Option") && home.includes("Choose this HUG"));
+check("Home has KK options", home.includes("K-KUT Option") && (home.includes("Choose this one") || home.includes("Choose this HUG")));
 check("Home avoids decorative BOT badge", !home.includes("BB-BOT guide · GP-BOT voice"));
 check("Home avoids auto-help timers", !home.includes("5000") && !home.includes("12000"));
 check("Home avoids current action box", !home.includes("CURRENT ACTION"));
 check("Home avoids progress box", !home.includes("PROGRESS"));
 check("Home avoids false coming soon dead end", !home.includes("This one is coming soon. Try Mother"));
+check("Home avoids 18A internal label", !home.includes("18A"));
 check("Home enforces one audio at a time", home.includes("stopAllAudio") && home.includes("playOneAudio"));
 
 check("Mother's Day has playBotVoice function", mothers.includes("playBotVoice"));

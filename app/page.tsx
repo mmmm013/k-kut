@@ -316,14 +316,14 @@ export default function Home() {
   function chooseSong(nextSong: Song) {
     setSongId(nextSong.id);
     setKkId("");
+    stopAllAudio();
     setScreen("kk");
-    playBotVoice("play-demo");
   }
 
   function chooseKK(nextKK: KKOption) {
     setKkId(nextKK.id);
+    stopAllAudio();
     setScreen("confirm");
-    playBotVoice("choose-hug");
   }
 
   function playKK(nextKK: KKOption) {
@@ -332,7 +332,7 @@ export default function Home() {
       return;
     }
 
-    playBotVoice("play-demo");
+    stopAllAudio();
   }
 
   function goBack() {
@@ -471,7 +471,14 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {song.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Choose one of at least 10 K-KUT options.</h2>
+              <h2 className="mt-3 text-4xl font-black">Choose your K-KUT moment.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                Listen to the options below and choose the one that feels right.
+              </p>
+              <p className="mt-3 text-base font-bold leading-7 text-amber-50/65">
+                Song: {song.title}
+                {purpose ? ` · Feeling: ${purpose.title}` : ""}
+              </p>
 
               <div className="mt-6 grid gap-3">
                 {kkOptions.map((item, index) => (
