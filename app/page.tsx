@@ -536,6 +536,18 @@ export default function Home() {
     playOneAudio(KLEIGH_GUIDE_VOICE[clip] ?? `/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
   }
 
+  function GuideButton({ clip, label }: { clip: string; label: string }) {
+    return (
+      <button
+        type="button"
+        onClick={() => playBotVoice(clip)}
+        className="mt-5 rounded-2xl bg-black/40 px-6 py-4 text-base font-black text-amber-100 transition hover:bg-black/60"
+      >
+        {label}
+      </button>
+    );
+  }
+
   function startFlow() {
     setScreen("purpose");
     playBotVoice("choose-feel");
@@ -692,6 +704,8 @@ export default function Home() {
               </p>
               <h2 className="mt-3 text-4xl font-black">Let’s start broad. Choose what this HUG is for.</h2>
 
+              <GuideButton clip="choose-feel" label="Play guide: choose the feeling" />
+
               <div className="mt-6 grid gap-3">
                 {PURPOSES.map((item) => (
                   <button
@@ -721,6 +735,8 @@ export default function Home() {
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 This narrows the choices before you pick a song.
               </p>
+
+              <GuideButton clip="try-one-feeling" label="Play guide: narrow the feeling" />
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {typeChoices.map((item) => (
@@ -752,6 +768,8 @@ export default function Home() {
                 Choose the intent that feels closest. This is how I narrow the choices before songs.
               </p>
 
+              <GuideButton clip="good-lets-find" label="Play guide: find the closest fit" />
+
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {intentChoices.map((item) => (
                   <button
@@ -782,6 +800,8 @@ export default function Home() {
                 Here are fitting songs for this intent. Choose one, or ask for another set.
               </p>
 
+              <GuideButton clip="pick-song" label="Play guide: pick the song" />
+
               <div className="mt-6 grid gap-3">
                 {visibleSongs.map((item) => (
                   <button
@@ -811,6 +831,8 @@ export default function Home() {
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 Listen to the options below. Choose the one that feels right.
               </p>
+
+              <GuideButton clip="press-play" label="Play guide: preview the moments" />
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/65">
                 Song: {song.title} · Feeling: {purpose.title} · Type: {choiceType.title} · Intent: {intentChoice.title}
               </p>
@@ -877,6 +899,8 @@ export default function Home() {
                 This order includes one selected HUG.
               </p>
 
+              <GuideButton clip="good-choice-selected" label="Play guide: good choice" />
+
               <div className="mt-6 grid gap-3">
                 <button
                   type="button"
@@ -908,6 +932,8 @@ export default function Home() {
               <p className="mt-3 text-lg font-bold leading-8 text-amber-50/80">
                 After checkout, G Putnam Music prepares your playable HUG link.
               </p>
+
+              <GuideButton clip="checkout-ready" label="Play guide: checkout is ready" />
 
               <a
                 href={STRIPE_URL}
