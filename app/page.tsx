@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 const ACTIVE_BOT = "gp-bot";
 const WELCOME_KEY = "k-kut-gp-bot-founder-welcome-heard";
 const MIN_KK_OPTIONS = 10;
+const SONG_BATCH_SIZE = 6;
 const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
 
 type Purpose = {
@@ -140,12 +141,6 @@ const SONGS = {
   },
 } satisfies Record<string, Song>;
 
-const HARD_FEELINGS_SONGS = [
-  SONGS.hurtLikeThis,
-  SONGS.changedYourMind,
-  SONGS.timeKeeps,
-];
-
 const CHOICE_TYPES: Record<string, ChoiceType[]> = {
   love: [
     { id: "romance", title: "Romance", line: "For love, attraction, and closeness.", songs: [SONGS.loveLikeThat] },
@@ -160,11 +155,11 @@ const CHOICE_TYPES: Record<string, ChoiceType[]> = {
     { id: "tribute", title: "Tribute", line: "For respect, honor, and remembrance.", songs: [SONGS.thankYou] },
   ],
   "hard-feelings": [
-    { id: "apology", title: "Apology", line: "For regret and repair.", songs: HARD_FEELINGS_SONGS },
-    { id: "my-reality", title: "My Reality", line: "For reflection and telling the truth.", songs: HARD_FEELINGS_SONGS },
-    { id: "pain-change", title: "Pain / Change", line: "For heartbreak, disappointment, and emotional injury.", songs: HARD_FEELINGS_SONGS },
-    { id: "tears-memory", title: "Tears / Memory", line: "For grief, tears, and memories that still hurt.", songs: HARD_FEELINGS_SONGS },
-    { id: "loss-ending", title: "Loss / Ending", line: "For endings, breakups, and release.", songs: HARD_FEELINGS_SONGS },
+    { id: "apology", title: "Apology", line: "For regret and repair.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+    { id: "my-reality", title: "My Reality", line: "For reflection and telling the truth.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
+    { id: "pain-change", title: "Pain / Change", line: "For heartbreak, disappointment, and emotional injury.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+    { id: "tears-memory", title: "Tears / Memory", line: "For grief, tears, and memories that still hurt.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+    { id: "loss-ending", title: "Loss / Ending", line: "For endings, breakups, and release.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
   ],
   celebration: [
     { id: "anniversary", title: "Anniversary", line: "For lasting love and milestones.", songs: [SONGS.awesomeAnniversary] },
@@ -246,6 +241,7 @@ export default function Home() {
   const [typeId, setTypeId] = useState("");
   const [songId, setSongId] = useState("");
   const [kkId, setKkId] = useState("");
+  const [songBatchIndex, setSongBatchIndex] = useState(0);
   const [hasHeardWelcome, setHasHeardWelcome] = useState(false);
 
   useEffect(() => {
@@ -265,6 +261,17 @@ export default function Home() {
   const choiceType = useMemo(
     () => typeChoices.find((item) => item.id === typeId) ?? null,
     [typeChoices, typeId]
+  );
+
+  const visibleSongs = useMemo(() => {
+    if (!choiceType) return [];
+
+    const start = songBatchIndex * SONG_BATCH_SIZE;
+    return choiceType.songs.slice(start, start + SONG_BATCH_SIZE);
+  }, [choiceType, songBatchIndex]);
+
+  const hasMoreSongSets = Boolean(
+    choiceType && (songBatchIndex + 1) * SONG_BATCH_SIZE < choiceType.songs.length
   );
 
   const song = useMemo(
@@ -302,6 +309,7 @@ export default function Home() {
     setTypeId("");
     setSongId("");
     setKkId("");
+    setSongBatchIndex(0);
     setScreen("type");
   }
 
@@ -310,6 +318,7 @@ export default function Home() {
     setTypeId(nextType.id);
     setSongId("");
     setKkId("");
+    setSongBatchIndex(0);
     setScreen("song");
   }
 
@@ -479,11 +488,11 @@ export default function Home() {
               </p>
               <h2 className="mt-3 text-4xl font-black">Pick a song.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                Choose the song that fits this message best.
+                Here are fitting songs for {choiceType.title}. Choose one, or ask for another set when more are available.
               </p>
 
               <div className="mt-6 grid gap-3">
-                {choiceType.songs.map((item) => (
+                {visibleSongs.map((item) => (
                   <button
                     key={item.id}
                     type="button"
@@ -495,6 +504,28 @@ export default function Home() {
                   </button>
                 ))}
               </div>
+
+              {hasMoreSongSets ? (
+                <button
+                  type="button"
+                  onClick={() => setSongBatchIndex((current) => current + 1)}
+                  className="mt-6 w-full rounded-2xl border border-amber-300/40 bg-black/20 px-6 py-4 font-black text-amber-100 transition hover:bg-white/10"
+                >
+                  Show me another set
+                </button>
+              ) : choiceType.songs.length < SONG_BATCH_SIZE ? (
+                <p className="mt-6 rounded-2xl border border-amber-300/20 bg-black/20 p-4 text-sm font-bold leading-6 text-amber-50/70">
+                  More fitting songs are being reviewed. We only show songs that fit this choice.
+                </p>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setSongBatchIndex(0)}
+                  className="mt-6 w-full rounded-2xl border border-amber-300/40 bg-black/20 px-6 py-4 font-black text-amber-100 transition hover:bg-white/10"
+                >
+                  Start song list again
+                </button>
+              )}
 
               <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
                 Back
