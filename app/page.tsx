@@ -41,7 +41,7 @@ export default function Home() {
               </div>
 
               <Link
-                href="/hug/mothers-day"
+                href="/som"
                 className="mt-9 inline-flex items-center gap-4 rounded-full bg-amber-300 px-8 py-4 text-2xl font-black text-[#2a180d] shadow-lg shadow-amber-500/20 transition hover:bg-amber-200"
               >
                 Start now <span aria-hidden="true">→</span>

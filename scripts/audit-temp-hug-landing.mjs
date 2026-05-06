@@ -19,7 +19,7 @@ check("Landing has Choose the feeling", home.includes("Choose the feeling"));
 check("Landing has Find the fit", home.includes("Find the fit"));
 check("Landing has Send the moment", home.includes("Send the moment"));
 check("Landing has Start now CTA", home.includes("Start now"));
-check("Landing points Start now to Mother’s Day HUG", home.includes('href="/hug/mothers-day"'));
+check("Landing points Start now to SOM", home.includes('href="/som"'));
 check("Landing includes text DM social email sharing", home.includes("text, DM, social link, or email"));
 check("Landing introduces HUGs and TUGs", home.includes("K-KUT HUGs &amp; TUGs"));
 check("Landing does not claim automated SMS", !home.toLowerCase().includes("automated sms"));
