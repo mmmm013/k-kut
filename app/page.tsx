@@ -140,6 +140,12 @@ const SONGS = {
   },
 } satisfies Record<string, Song>;
 
+const HARD_FEELINGS_SONGS = [
+  SONGS.hurtLikeThis,
+  SONGS.changedYourMind,
+  SONGS.timeKeeps,
+];
+
 const CHOICE_TYPES: Record<string, ChoiceType[]> = {
   love: [
     { id: "romance", title: "Romance", line: "For love, attraction, and closeness.", songs: [SONGS.loveLikeThat] },
@@ -154,11 +160,11 @@ const CHOICE_TYPES: Record<string, ChoiceType[]> = {
     { id: "tribute", title: "Tribute", line: "For respect, honor, and remembrance.", songs: [SONGS.thankYou] },
   ],
   "hard-feelings": [
-    { id: "apology", title: "Apology", line: "For regret and repair.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
-    { id: "my-reality", title: "My Reality", line: "For reflection and telling the truth.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
-    { id: "pain-change", title: "Pain / Change", line: "For heartbreak, disappointment, and emotional injury.", songs: [SONGS.hurtLikeThis] },
-    { id: "tears-memory", title: "Tears / Memory", line: "For grief, tears, and memories that still hurt.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
-    { id: "loss-ending", title: "Loss / Ending", line: "For endings, breakups, and release.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
+    { id: "apology", title: "Apology", line: "For regret and repair.", songs: HARD_FEELINGS_SONGS },
+    { id: "my-reality", title: "My Reality", line: "For reflection and telling the truth.", songs: HARD_FEELINGS_SONGS },
+    { id: "pain-change", title: "Pain / Change", line: "For heartbreak, disappointment, and emotional injury.", songs: HARD_FEELINGS_SONGS },
+    { id: "tears-memory", title: "Tears / Memory", line: "For grief, tears, and memories that still hurt.", songs: HARD_FEELINGS_SONGS },
+    { id: "loss-ending", title: "Loss / Ending", line: "For endings, breakups, and release.", songs: HARD_FEELINGS_SONGS },
   ],
   celebration: [
     { id: "anniversary", title: "Anniversary", line: "For lasting love and milestones.", songs: [SONGS.awesomeAnniversary] },
