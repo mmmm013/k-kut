@@ -119,6 +119,66 @@ const SONGS = {
       { id: "changed-3", title: "Aftermath", line: "A reflective ending." },
     ],
   },
+  imSorry: {
+    id: "im-sorry",
+    title: "I’m Sorry",
+    line: "For apology, regret, and trying to reconnect.",
+    kk: [
+      { id: "sorry-1", title: "First apology", line: "A clear opening apology." },
+      { id: "sorry-2", title: "Regret", line: "A deeper moment of owning hurt." },
+      { id: "sorry-3", title: "Please hear me", line: "A reaching-out moment." },
+    ],
+  },
+  comeBack: {
+    id: "come-back",
+    title: "Come Back",
+    line: "For wanting repair, return, or one more chance.",
+    kk: [
+      { id: "comeback-1", title: "Reach", line: "A first reach toward reconnection." },
+      { id: "comeback-2", title: "Please return", line: "A stronger emotional ask." },
+      { id: "comeback-3", title: "Still here", line: "A softer closing moment." },
+    ],
+  },
+  cry: {
+    id: "cry",
+    title: "Cry",
+    line: "For tears, grief, memory, and emotional release.",
+    kk: [
+      { id: "cry-1", title: "Tears", line: "A vulnerable first moment." },
+      { id: "cry-2", title: "Memory", line: "A reflective emotional center." },
+      { id: "cry-3", title: "Let it out", line: "A release moment." },
+    ],
+  },
+  sorrowBreakUp: {
+    id: "sorrow-break-up",
+    title: "Sorrow / Break Up",
+    line: "For endings, breakups, and emotional release.",
+    kk: [
+      { id: "sorrow-1", title: "Ending", line: "A first goodbye feeling." },
+      { id: "sorrow-2", title: "Aftershock", line: "A stronger breakup moment." },
+      { id: "sorrow-3", title: "Release", line: "A closing release." },
+    ],
+  },
+  lookingBack: {
+    id: "looking-back",
+    title: "Looking Back",
+    line: "For reflection, truth, and understanding what happened.",
+    kk: [
+      { id: "lookback-1", title: "Look back", line: "A reflective opening." },
+      { id: "lookback-2", title: "Truth", line: "A clear realization moment." },
+      { id: "lookback-3", title: "Understanding", line: "A calmer closing moment." },
+    ],
+  },
+  myRealitySong: {
+    id: "my-reality",
+    title: "My Reality",
+    line: "For looking inward and telling the truth.",
+    kk: [
+      { id: "reality-1", title: "My truth", line: "A direct personal opening." },
+      { id: "reality-2", title: "Seeing it", line: "A realization moment." },
+      { id: "reality-3", title: "No hiding", line: "A truthful closing moment." },
+    ],
+  },
   awesomeAnniversary: {
     id: "awesome-anniversary",
     title: "Awesome Anniversary",
@@ -155,11 +215,71 @@ const CHOICE_TYPES: Record<string, ChoiceType[]> = {
     { id: "tribute", title: "Tribute", line: "For respect, honor, and remembrance.", songs: [SONGS.thankYou] },
   ],
   "hard-feelings": [
-    { id: "apology", title: "Apology", line: "For regret and repair.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
-    { id: "my-reality", title: "My Reality", line: "For reflection and telling the truth.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
-    { id: "pain-change", title: "Pain / Change", line: "For heartbreak, disappointment, and emotional injury.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
-    { id: "tears-memory", title: "Tears / Memory", line: "For grief, tears, and memories that still hurt.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
-    { id: "loss-ending", title: "Loss / Ending", line: "For endings, breakups, and release.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
+    {
+      id: "sorry",
+      title: "Sorry",
+      line: "For apology, regret, and trying to reconnect.",
+      songs: [
+        SONGS.imSorry,
+        SONGS.comeBack,
+        SONGS.changedYourMind,
+        SONGS.hurtLikeThis,
+        SONGS.myRealitySong,
+        SONGS.lookingBack,
+      ],
+    },
+    {
+      id: "reflection",
+      title: "Reflection",
+      line: "For looking inward and telling the truth.",
+      songs: [
+        SONGS.myRealitySong,
+        SONGS.lookingBack,
+        SONGS.changedYourMind,
+        SONGS.hurtLikeThis,
+        SONGS.imSorry,
+        SONGS.comeBack,
+      ],
+    },
+    {
+      id: "hurt",
+      title: "Hurt",
+      line: "For heartbreak, disappointment, and emotional injury.",
+      songs: [
+        SONGS.hurtLikeThis,
+        SONGS.changedYourMind,
+        SONGS.cry,
+        SONGS.sorrowBreakUp,
+        SONGS.comeBack,
+        SONGS.imSorry,
+      ],
+    },
+    {
+      id: "cry",
+      title: "Cry",
+      line: "For grief, tears, and memories that still hurt.",
+      songs: [
+        SONGS.cry,
+        SONGS.hurtLikeThis,
+        SONGS.sorrowBreakUp,
+        SONGS.changedYourMind,
+        SONGS.lookingBack,
+        SONGS.comeBack,
+      ],
+    },
+    {
+      id: "sorrow-break-up",
+      title: "Sorrow / Break Up",
+      line: "For endings, breakups, and emotional release.",
+      songs: [
+        SONGS.sorrowBreakUp,
+        SONGS.changedYourMind,
+        SONGS.comeBack,
+        SONGS.hurtLikeThis,
+        SONGS.imSorry,
+        SONGS.cry,
+      ],
+    },
   ],
   celebration: [
     { id: "anniversary", title: "Anniversary", line: "For lasting love and milestones.", songs: [SONGS.awesomeAnniversary] },
@@ -456,9 +576,9 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {purpose.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Choose the smaller type.</h2>
+              <h2 className="mt-3 text-4xl font-black">Choose the kind of hard feeling.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                This narrows the choices before you pick a song.
+                This helps match the song choices to what you really want to send.
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
