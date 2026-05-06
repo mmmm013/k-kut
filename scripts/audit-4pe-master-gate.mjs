@@ -3,12 +3,14 @@ import fs from "node:fs";
 
 const checks = [
   ["4PE Level 5 control", "scripts/audit-4pe-level5-control.mjs"],
+  ["Temporary K-KUT HUG landing", "scripts/audit-temp-hug-landing.mjs"],
   ["HUG/TUG classification", "scripts/audit-hug-tug-classification.mjs"],
   ["HUG/TUG pricing", "scripts/audit-hug-tug-pricing.mjs"],
   ["User intent capture rules", "scripts/audit-user-intent-capture-rules.mjs"],
   ["4PE event capture API", "scripts/audit-4pe-event-api.mjs"],
   ["4PE HUG fulfillment API", "scripts/audit-4pe-fulfillment-api.mjs"],
   ["Mother’s Day promo sets", "scripts/audit-mothers-day-promo-sets.mjs"],
+  ["Mother’s Day checkout handoff", "scripts/audit-mothers-day-checkout-handoff.mjs"],
   ["KLEIGH final guide assets", "scripts/audit-kleigh-guide-final-assets.mjs"],
   ["KK live inventory deploy gate", "scripts/audit-kk-inventory-live-gate.mjs"]
 ];

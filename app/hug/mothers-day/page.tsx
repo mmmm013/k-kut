@@ -254,6 +254,41 @@ export default function HomePage() {
     el.play().catch(() => {});
   }
 
+  async function startCheckout() {
+    show("Preparing your HUG checkout.");
+
+    try {
+      await fetch("/api/4pe/fulfillment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          selected_hug_id: selectedDemo.id,
+          selected_hug_title: selectedDemo.title,
+          source_page: "/hug/mothers-day",
+          product_family: "HUG",
+          holiday_set: "mothers_day",
+          source_song: "Thank You",
+          sentiment_product_type: "HUG",
+          typed_feeling: gotFeeling,
+          interpreted_feeling: gotFeeling,
+          delivery_preference: "own_text",
+          consent_sms: false,
+          metadata: {
+            checkout_handoff: true,
+            no_download: true,
+            sms_enabled: false,
+          },
+        }),
+      });
+    } catch {
+      // Checkout remains available. 4PE can reconcile manually if capture fails.
+    }
+
+    window.location.href = STRIPE_URL;
+  }
+
   const progress = [
     { n: 1, label: "Learn" },
     { n: 2, label: "Tell BB-BOT" },
@@ -530,13 +565,13 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <a
-                href={STRIPE_URL}
-                onClick={() => show("Opening secure checkout now.")}
-                className="mt-6 inline-block rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+              <button
+                type="button"
+                onClick={startCheckout}
+                className="mt-5 inline-flex w-full justify-center rounded-2xl bg-amber-300 px-6 py-4 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
                 Checkout · $7.99
-              </a>
+              </button>
 
               <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                 <button
