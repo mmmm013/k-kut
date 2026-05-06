@@ -517,7 +517,12 @@ export default function Home() {
       setHasHeardWelcome(true);
     }
 
-    playOneAudio(`/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`);
+    const src =
+      clip === "welcome"
+        ? "/audio/kleigh/guide-final/33-welcome.m4a"
+        : `/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`;
+
+    playOneAudio(src);
   }
 
   function startFlow() {
