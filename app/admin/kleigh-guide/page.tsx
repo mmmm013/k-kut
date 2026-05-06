@@ -1,3 +1,5 @@
+"use client";
+
 import manifest from "@/public/audio/kleigh/guide-final/manifest.json";
 
 type GuideItem = {
@@ -10,6 +12,16 @@ type GuideItem = {
 
 export default function KleighGuidePreviewPage() {
   const items = manifest.items as GuideItem[];
+
+  function stopOtherAudio(current: HTMLAudioElement) {
+    const all = Array.from(document.querySelectorAll("audio"));
+    for (const audio of all) {
+      if (audio !== current) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+    }
+  }
 
   return (
     <main className="min-h-screen bg-neutral-950 px-6 py-10 text-neutral-100">
@@ -38,6 +50,9 @@ export default function KleighGuidePreviewPage() {
             {manifest.unique_recordings} · Removed duplicates:{" "}
             {manifest.duplicate_copies_removed}
           </p>
+          <p className="mt-2 text-sm font-bold text-amber-50/70">
+            BIC rule: starting one clip stops all others.
+          </p>
         </div>
 
         <div className="mt-8 grid gap-4">
@@ -55,7 +70,12 @@ export default function KleighGuidePreviewPage() {
               <p className="mt-2 break-all text-sm font-bold text-amber-50/70">
                 {item.file}
               </p>
-              <audio className="mt-4 w-full" controls preload="none">
+              <audio
+                className="mt-4 w-full"
+                controls
+                preload="none"
+                onPlay={(event) => stopOtherAudio(event.currentTarget)}
+              >
                 <source src={item.file} type="audio/mp4" />
               </audio>
             </article>
