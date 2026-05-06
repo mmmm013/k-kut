@@ -385,6 +385,10 @@ export default function Home() {
                 I’ll guide you one step at a time. A HUG is a digital audio card that sends feeling through music.
               </h2>
 
+              <p className="mt-5 rounded-2xl bg-black/25 p-4 text-base font-bold leading-7 text-amber-50/80">
+                Mother’s Day is the live HUG checkout today. Other guided paths help you explore and refine what you want.
+              </p>
+
               <div className="mt-6 grid gap-3 text-lg font-bold leading-8 text-amber-50/90">
                 <p>♪ A HUG is an audio greeting card.</p>
                 <p>♬ A HUG sends feeling through music.</p>
@@ -406,6 +410,13 @@ export default function Home() {
               >
                 I understand — start
               </button>
+
+              <a
+                href="/hug/mothers-day"
+                className="mt-4 block w-full rounded-2xl border border-amber-300 bg-[#f6c453] px-8 py-5 text-center text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+              >
+                Buy live Mother’s Day HUG now
+              </a>
             </div>
           )}
 

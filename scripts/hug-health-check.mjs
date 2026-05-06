@@ -49,6 +49,7 @@ check("Home has founder welcome replay", home.includes("Play Founder Welcome") &
 check("Home remembers founder welcome heard state", home.includes("k-kut-gp-bot-founder-welcome-heard"));
 check("Home has clear understand action", home.includes("I understand — pick what this is for"));
 check("Home routes confusion to demo link", home.includes("I don’t understand — show me the demo") && home.includes("/hug/mothers-day"));
+check("Home has direct live buy path", home.includes("Buy live Mother’s Day HUG now") && home.includes('href="/hug/mothers-day"'));
 check("Home uses music bullets", home.includes("♪") && home.includes("♬") && home.includes("♫"));
 check("Home has KK options", home.includes("K-KUT Option") && (home.includes("Choose this one") || home.includes("Choose this HUG")));
 check("Home avoids decorative BOT badge", !home.includes("BB-BOT guide · GP-BOT voice"));
