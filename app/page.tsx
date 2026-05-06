@@ -20,6 +20,13 @@ type ChoiceType = {
   songs: Song[];
 };
 
+type IntentChoice = {
+  id: string;
+  title: string;
+  line: string;
+  songs: Song[];
+};
+
 type Song = {
   id: string;
   title: string;
@@ -174,6 +181,191 @@ const CHOICE_TYPES: Record<string, ChoiceType[]> = {
   ],
 };
 
+const INTENT_CHOICES: Record<string, Record<string, IntentChoice[]>> = {
+  love: {
+    romance: [
+      { id: "new-love", title: "New Love", line: "For attraction, spark, and beginning.", songs: [SONGS.loveLikeThat] },
+      { id: "deep-love", title: "Deep Love", line: "For devotion and lasting feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "miss-you", title: "Missing You", line: "For distance, longing, and wanting closeness.", songs: [SONGS.loveLikeThat, SONGS.comeBack] },
+      { id: "say-it-clearly", title: "Say It Clearly", line: "For direct love with no hiding.", songs: [SONGS.loveLikeThat] },
+      { id: "soft-love", title: "Soft Love", line: "For gentle, tender feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "big-love", title: "Big Love", line: "For bold, open-hearted love.", songs: [SONGS.loveLikeThat] },
+    ],
+    devotion: [
+      { id: "promise", title: "Promise", line: "For loyalty, commitment, and staying.", songs: [SONGS.loveLikeThat] },
+      { id: "always", title: "Always", line: "For lasting care.", songs: [SONGS.loveLikeThat] },
+      { id: "thankful-love", title: "Thankful Love", line: "For gratitude inside love.", songs: [SONGS.loveLikeThat, SONGS.thankYou] },
+      { id: "protected", title: "Protected", line: "For safe, steady love.", songs: [SONGS.loveLikeThat] },
+      { id: "seen", title: "Seen", line: "For feeling known and chosen.", songs: [SONGS.loveLikeThat] },
+      { id: "forever-tone", title: "Forever Tone", line: "For long-haul devotion.", songs: [SONGS.loveLikeThat] },
+    ],
+    "missing-you": [
+      { id: "come-back-love", title: "Come Back", line: "For wanting return.", songs: [SONGS.comeBack, SONGS.loveLikeThat] },
+      { id: "distance", title: "Distance", line: "For love across space.", songs: [SONGS.loveLikeThat, SONGS.changedYourMind] },
+      { id: "lonely", title: "Lonely", line: "For missing presence.", songs: [SONGS.comeBack] },
+      { id: "still-here", title: "Still Here", line: "For love that remains.", songs: [SONGS.loveLikeThat] },
+      { id: "remember-us", title: "Remember Us", line: "For memory and longing.", songs: [SONGS.loveLikeThat, SONGS.lookingBack] },
+      { id: "reach-out", title: "Reach Out", line: "For one more message.", songs: [SONGS.comeBack] },
+    ],
+    "big-heart": [
+      { id: "open-heart", title: "Open Heart", line: "For generous feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "no-hiding", title: "No Hiding", line: "For honest love.", songs: [SONGS.loveLikeThat] },
+      { id: "warmth", title: "Warmth", line: "For warmth and care.", songs: [SONGS.loveLikeThat, SONGS.thankYou] },
+      { id: "lift-them", title: "Lift Them", line: "For making someone feel loved.", songs: [SONGS.loveLikeThat] },
+      { id: "whole-heart", title: "Whole Heart", line: "For all-in feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "bright-love", title: "Bright Love", line: "For positive, joyful love.", songs: [SONGS.loveLikeThat, SONGS.awesomeAnniversary] },
+    ],
+  },
+
+  gratitude: {
+    "thank-you": [
+      { id: "simple-thanks", title: "Simple Thanks", line: "For clear appreciation.", songs: [SONGS.thankYou] },
+      { id: "deep-thanks", title: "Deep Thanks", line: "For bigger gratitude.", songs: [SONGS.thankYou] },
+      { id: "you-helped-me", title: "You Helped Me", line: "For support that mattered.", songs: [SONGS.thankYou] },
+      { id: "i-see-you", title: "I See You", line: "For being noticed and valued.", songs: [SONGS.thankYou] },
+      { id: "long-overdue", title: "Long Overdue", line: "For thanks that should have come sooner.", songs: [SONGS.thankYou, SONGS.imSorry] },
+      { id: "honor", title: "Honor", line: "For respect and appreciation.", songs: [SONGS.thankYou] },
+    ],
+    appreciation: [
+      { id: "value-you", title: "I Value You", line: "For honoring someone’s meaning.", songs: [SONGS.thankYou] },
+      { id: "grateful-heart", title: "Grateful Heart", line: "For warm thanks.", songs: [SONGS.thankYou, SONGS.loveLikeThat] },
+      { id: "seen-work", title: "I See Your Work", line: "For effort and care.", songs: [SONGS.thankYou] },
+      { id: "respect", title: "Respect", line: "For dignity and honor.", songs: [SONGS.thankYou] },
+      { id: "because-of-you", title: "Because of You", line: "For impact.", songs: [SONGS.thankYou] },
+      { id: "quiet-thanks", title: "Quiet Thanks", line: "For gentle appreciation.", songs: [SONGS.thankYou] },
+    ],
+    "mothers-day": [
+      { id: "mom-thanks", title: "Thank You, Mom", line: "For direct Mother’s Day gratitude.", songs: [SONGS.thankYou] },
+      { id: "mother-figure", title: "Mother Figure", line: "For someone who mothered you.", songs: [SONGS.thankYou] },
+      { id: "raised-me", title: "You Raised Me", line: "For care over time.", songs: [SONGS.thankYou] },
+      { id: "i-remember", title: "I Remember", line: "For memory and gratitude.", songs: [SONGS.thankYou, SONGS.lookingBack] },
+      { id: "love-and-thanks", title: "Love and Thanks", line: "For mixed love and appreciation.", songs: [SONGS.thankYou, SONGS.loveLikeThat] },
+      { id: "honor-mom", title: "Honor Mom", line: "For respect and tribute.", songs: [SONGS.thankYou] },
+    ],
+    tribute: [
+      { id: "honor-you", title: "Honor You", line: "For tribute and respect.", songs: [SONGS.thankYou] },
+      { id: "remembering", title: "Remembering", line: "For memory and gratitude.", songs: [SONGS.thankYou, SONGS.lookingBack] },
+      { id: "legacy", title: "Legacy", line: "For what someone leaves behind.", songs: [SONGS.thankYou] },
+      { id: "respectful", title: "Respectful", line: "For dignified appreciation.", songs: [SONGS.thankYou] },
+      { id: "because-they-matter", title: "Because They Matter", line: "For emotional recognition.", songs: [SONGS.thankYou] },
+      { id: "quiet-tribute", title: "Quiet Tribute", line: "For soft honor.", songs: [SONGS.thankYou] },
+    ],
+  },
+
+  "hard-feelings": {
+    sorry: [
+      { id: "i-am-sorry", title: "I’m Sorry", line: "For apology and regret.", songs: [SONGS.imSorry, SONGS.comeBack, SONGS.changedYourMind, SONGS.hurtLikeThis, SONGS.myRealitySong, SONGS.lookingBack] },
+      { id: "i-was-wrong", title: "I Was Wrong", line: "For owning the mistake.", songs: [SONGS.imSorry, SONGS.myRealitySong, SONGS.changedYourMind] },
+      { id: "please-hear-me", title: "Please Hear Me", line: "For trying to be understood.", songs: [SONGS.imSorry, SONGS.comeBack] },
+      { id: "try-again", title: "Try Again", line: "For repair and reconnection.", songs: [SONGS.comeBack, SONGS.imSorry] },
+      { id: "regret", title: "Regret", line: "For wishing it went differently.", songs: [SONGS.changedYourMind, SONGS.imSorry] },
+      { id: "make-it-right", title: "Make It Right", line: "For repair and humility.", songs: [SONGS.imSorry, SONGS.comeBack] },
+    ],
+    reflection: [
+      { id: "truth", title: "Truth", line: "For telling the truth.", songs: [SONGS.myRealitySong, SONGS.lookingBack, SONGS.changedYourMind, SONGS.hurtLikeThis, SONGS.imSorry, SONGS.comeBack] },
+      { id: "looking-back", title: "Looking Back", line: "For understanding what happened.", songs: [SONGS.lookingBack, SONGS.changedYourMind] },
+      { id: "my-side", title: "My Side", line: "For speaking your reality.", songs: [SONGS.myRealitySong, SONGS.changedYourMind] },
+      { id: "no-hiding", title: "No Hiding", line: "For honesty.", songs: [SONGS.myRealitySong, SONGS.imSorry] },
+      { id: "realization", title: "Realization", line: "For seeing it now.", songs: [SONGS.changedYourMind, SONGS.lookingBack] },
+      { id: "what-happened", title: "What Happened", line: "For naming the situation.", songs: [SONGS.lookingBack, SONGS.hurtLikeThis] },
+    ],
+    hurt: [
+      { id: "heartbreak", title: "Heartbreak", line: "For deep personal hurt.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind, SONGS.cry, SONGS.sorrowBreakUp, SONGS.comeBack, SONGS.imSorry] },
+      { id: "disappointment", title: "Disappointment", line: "For being let down.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind, SONGS.lookingBack] },
+      { id: "emotional-injury", title: "Emotional Injury", line: "For damage that still hurts.", songs: [SONGS.hurtLikeThis, SONGS.cry, SONGS.sorrowBreakUp] },
+      { id: "still-angry", title: "Still Angry", line: "For hurt with edge.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+      { id: "missing-them", title: "Missing Them", line: "For hurt mixed with longing.", songs: [SONGS.comeBack, SONGS.changedYourMind, SONGS.cry] },
+      { id: "letting-go", title: "Letting Go", line: "For release after pain.", songs: [SONGS.sorrowBreakUp, SONGS.cry, SONGS.changedYourMind] },
+    ],
+    cry: [
+      { id: "grief", title: "Grief", line: "For sadness and loss.", songs: [SONGS.cry, SONGS.hurtLikeThis, SONGS.sorrowBreakUp, SONGS.changedYourMind, SONGS.lookingBack, SONGS.comeBack] },
+      { id: "tears", title: "Tears", line: "For letting it out.", songs: [SONGS.cry, SONGS.hurtLikeThis] },
+      { id: "memory", title: "Memory", line: "For memories that still hurt.", songs: [SONGS.cry, SONGS.lookingBack] },
+      { id: "soft-sad", title: "Soft Sadness", line: "For quiet sadness.", songs: [SONGS.cry, SONGS.sorrowBreakUp] },
+      { id: "overwhelmed", title: "Overwhelmed", line: "For too much feeling.", songs: [SONGS.cry, SONGS.hurtLikeThis] },
+      { id: "missed-moments", title: "Missed Moments", line: "For what did not happen.", songs: [SONGS.lookingBack, SONGS.cry] },
+    ],
+    "sorrow-break-up": [
+      { id: "ending", title: "Ending", line: "For when something is over.", songs: [SONGS.sorrowBreakUp, SONGS.changedYourMind, SONGS.comeBack, SONGS.hurtLikeThis, SONGS.imSorry, SONGS.cry] },
+      { id: "breakup", title: "Break Up", line: "For separation and goodbye.", songs: [SONGS.sorrowBreakUp, SONGS.changedYourMind] },
+      { id: "goodbye", title: "Goodbye", line: "For finality.", songs: [SONGS.sorrowBreakUp, SONGS.cry] },
+      { id: "one-more-chance", title: "One More Chance", line: "For wanting repair before the end.", songs: [SONGS.comeBack, SONGS.imSorry] },
+      { id: "release", title: "Release", line: "For letting go.", songs: [SONGS.sorrowBreakUp, SONGS.cry] },
+      { id: "aftershock", title: "Aftershock", line: "For the pain after ending.", songs: [SONGS.hurtLikeThis, SONGS.sorrowBreakUp] },
+    ],
+  },
+
+  celebration: {
+    anniversary: [
+      { id: "years-together", title: "Years Together", line: "For lasting love.", songs: [SONGS.awesomeAnniversary, SONGS.loveLikeThat] },
+      { id: "still-us", title: "Still Us", line: "For choosing each other again.", songs: [SONGS.awesomeAnniversary] },
+      { id: "milestone-love", title: "Milestone Love", line: "For the big date.", songs: [SONGS.awesomeAnniversary] },
+      { id: "look-what-we-built", title: "Look What We Built", line: "For shared life.", songs: [SONGS.awesomeAnniversary] },
+      { id: "joyful-anniversary", title: "Joyful Anniversary", line: "For celebration.", songs: [SONGS.awesomeAnniversary] },
+      { id: "love-thanks", title: "Love and Thanks", line: "For romance plus gratitude.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+    ],
+    birthday: [
+      { id: "happy-birthday", title: "Happy Birthday", line: "For a joyful birthday.", songs: [SONGS.awesomeAnniversary] },
+      { id: "glad-you-exist", title: "Glad You Exist", line: "For celebrating the person.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+      { id: "big-day", title: "Big Day", line: "For birthday energy.", songs: [SONGS.awesomeAnniversary] },
+      { id: "wish-you-well", title: "Wish You Well", line: "For warm wishes.", songs: [SONGS.awesomeAnniversary] },
+      { id: "birthday-love", title: "Birthday Love", line: "For love on a birthday.", songs: [SONGS.awesomeAnniversary, SONGS.loveLikeThat] },
+      { id: "celebrate-you", title: "Celebrate You", line: "For making someone feel seen.", songs: [SONGS.awesomeAnniversary] },
+    ],
+    milestone: [
+      { id: "achievement", title: "Achievement", line: "For something earned.", songs: [SONGS.awesomeAnniversary] },
+      { id: "new-chapter", title: "New Chapter", line: "For moving forward.", songs: [SONGS.awesomeAnniversary] },
+      { id: "proud-of-you", title: "Proud of You", line: "For pride and honor.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+      { id: "big-moment", title: "Big Moment", line: "For a life moment.", songs: [SONGS.awesomeAnniversary] },
+      { id: "we-made-it", title: "We Made It", line: "For shared victory.", songs: [SONGS.awesomeAnniversary] },
+      { id: "bright-future", title: "Bright Future", line: "For hope and celebration.", songs: [SONGS.awesomeAnniversary] },
+    ],
+    congratulations: [
+      { id: "congrats", title: "Congratulations", line: "For direct celebration.", songs: [SONGS.awesomeAnniversary] },
+      { id: "you-did-it", title: "You Did It", line: "For accomplishment.", songs: [SONGS.awesomeAnniversary] },
+      { id: "well-earned", title: "Well Earned", line: "For deserved success.", songs: [SONGS.awesomeAnniversary] },
+      { id: "proud", title: "Proud", line: "For pride and support.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+      { id: "joy", title: "Joy", line: "For happy energy.", songs: [SONGS.awesomeAnniversary] },
+      { id: "raise-it-up", title: "Raise It Up", line: "For big celebration.", songs: [SONGS.awesomeAnniversary] },
+    ],
+  },
+
+  comfort: {
+    support: [
+      { id: "i-am-here", title: "I’m Here", line: "For presence.", songs: [SONGS.timeKeeps] },
+      { id: "hold-on", title: "Hold On", line: "For encouragement.", songs: [SONGS.timeKeeps] },
+      { id: "not-alone", title: "Not Alone", line: "For support.", songs: [SONGS.timeKeeps] },
+      { id: "steady", title: "Steady", line: "For calm reassurance.", songs: [SONGS.timeKeeps] },
+      { id: "keep-going", title: "Keep Going", line: "For forward motion.", songs: [SONGS.timeKeeps] },
+      { id: "beside-you", title: "Beside You", line: "For standing with someone.", songs: [SONGS.timeKeeps] },
+    ],
+    healing: [
+      { id: "heal", title: "Healing", line: "For care during pain.", songs: [SONGS.timeKeeps] },
+      { id: "gentle-care", title: "Gentle Care", line: "For softness.", songs: [SONGS.timeKeeps] },
+      { id: "breathe", title: "Breathe", line: "For calming down.", songs: [SONGS.timeKeeps] },
+      { id: "time", title: "Time", line: "For healing over time.", songs: [SONGS.timeKeeps] },
+      { id: "safe", title: "Safe", line: "For reassurance.", songs: [SONGS.timeKeeps] },
+      { id: "soft-support", title: "Soft Support", line: "For quiet help.", songs: [SONGS.timeKeeps] },
+    ],
+    hope: [
+      { id: "hopeful", title: "Hopeful", line: "For hope.", songs: [SONGS.timeKeeps] },
+      { id: "forward", title: "Forward", line: "For moving ahead.", songs: [SONGS.timeKeeps] },
+      { id: "better-days", title: "Better Days", line: "For encouragement.", songs: [SONGS.timeKeeps] },
+      { id: "light", title: "Light", line: "For a brighter feeling.", songs: [SONGS.timeKeeps] },
+      { id: "keep-moving", title: "Keep Moving", line: "For persistence.", songs: [SONGS.timeKeeps] },
+      { id: "still-possible", title: "Still Possible", line: "For possibility.", songs: [SONGS.timeKeeps] },
+    ],
+    presence: [
+      { id: "with-you", title: "With You", line: "For presence.", songs: [SONGS.timeKeeps] },
+      { id: "i-care", title: "I Care", line: "For care.", songs: [SONGS.timeKeeps] },
+      { id: "check-in", title: "Check In", line: "For reaching out.", songs: [SONGS.timeKeeps] },
+      { id: "quiet-company", title: "Quiet Company", line: "For not leaving them alone.", songs: [SONGS.timeKeeps] },
+      { id: "steady-hand", title: "Steady Hand", line: "For grounding.", songs: [SONGS.timeKeeps] },
+      { id: "near", title: "Near", line: "For emotional closeness.", songs: [SONGS.timeKeeps] },
+    ],
+  },
+};
+
 function buildKKOptions(song: Song): KKOption[] {
   const base = [...song.kk];
 
@@ -255,9 +447,10 @@ if (typeof window !== "undefined") {
 
 
 export default function Home() {
-  const [screen, setScreen] = useState<"welcome" | "purpose" | "type" | "song" | "kk" | "confirm" | "buy">("welcome");
+  const [screen, setScreen] = useState<"welcome" | "purpose" | "type" | "intent" | "song" | "kk" | "confirm" | "buy">("welcome");
   const [purposeId, setPurposeId] = useState("");
   const [typeId, setTypeId] = useState("");
+  const [intentId, setIntentId] = useState("");
   const [songId, setSongId] = useState("");
   const [kkId, setKkId] = useState("");
   const [hasHeardWelcome, setHasHeardWelcome] = useState(false);
@@ -281,9 +474,30 @@ export default function Home() {
     [typeChoices, typeId]
   );
 
+  const intentChoices = useMemo(
+    () => (purpose && choiceType ? INTENT_CHOICES[purpose.id]?.[choiceType.id] ?? [] : []),
+    [purpose, choiceType]
+  );
+
+  const intentChoice = useMemo(
+    () => intentChoices.find((item) => item.id === intentId) ?? null,
+    [intentChoices, intentId]
+  );
+
+  const visibleSongs = useMemo(() => {
+    if (!intentChoice) return [];
+
+    const start = songBatchIndex * SONG_BATCH_SIZE;
+    return intentChoice.songs.slice(start, start + SONG_BATCH_SIZE);
+  }, [intentChoice, songBatchIndex]);
+
+  const hasMoreSongSets = Boolean(
+    intentChoice && (songBatchIndex + 1) * SONG_BATCH_SIZE < intentChoice.songs.length
+  );
+
   const song = useMemo(
-    () => choiceType?.songs.find((item) => item.id === songId) ?? null,
-    [choiceType, songId]
+    () => intentChoice?.songs.find((item) => item.id === songId) ?? null,
+    [intentChoice, songId]
   );
 
   const kkOptions = useMemo(
@@ -314,6 +528,7 @@ export default function Home() {
     stopAllAudio();
     setPurposeId(nextPurpose.id);
     setTypeId("");
+    setIntentId("");
     setSongId("");
     setKkId("");
     setScreen("type");
@@ -322,8 +537,18 @@ export default function Home() {
   function chooseType(nextType: ChoiceType) {
     stopAllAudio();
     setTypeId(nextType.id);
+    setIntentId("");
     setSongId("");
     setKkId("");
+    setScreen("intent");
+  }
+
+  function chooseIntent(nextIntent: IntentChoice) {
+    stopAllAudio();
+    setIntentId(nextIntent.id);
+    setSongId("");
+    setKkId("");
+    setSongBatchIndex(0);
     setScreen("song");
   }
 
@@ -355,7 +580,8 @@ export default function Home() {
     if (screen === "buy") setScreen("confirm");
     else if (screen === "confirm") setScreen("kk");
     else if (screen === "kk") setScreen("song");
-    else if (screen === "song") setScreen("type");
+    else if (screen === "song") setScreen("intent");
+    else if (screen === "intent") setScreen("type");
     else if (screen === "type") setScreen("purpose");
     else if (screen === "purpose") setScreen("welcome");
   }
@@ -367,8 +593,10 @@ export default function Home() {
         ? "Pick what this is for"
         : screen === "type"
           ? "Refine the choice"
-          : screen === "song"
-            ? "Pick a song"
+          : screen === "intent"
+            ? "Choose intent"
+            : screen === "song"
+              ? "Pick a song"
             : screen === "kk"
               ? "Choose a KK option"
               : screen === "confirm"
@@ -500,7 +728,7 @@ export default function Home() {
           {screen === "song" && purpose && choiceType && (
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                {purpose.title} · {choiceType.title}
+                {purpose.title} · {choiceType.title} · {intentChoice.title}
               </p>
               <h2 className="mt-3 text-4xl font-black">Now pick a fitting song.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
@@ -527,7 +755,7 @@ export default function Home() {
             </div>
           )}
 
-          {screen === "kk" && purpose && choiceType && song && (
+          {screen === "kk" && purpose && choiceType && intentChoice && song && (
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {choiceType.title} · {song.title}
@@ -537,7 +765,7 @@ export default function Home() {
                 Listen to the options below. Choose the one that feels right.
               </p>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/65">
-                Song: {song.title} · Feeling: {purpose.title} · Type: {choiceType.title}
+                Song: {song.title} · Feeling: {purpose.title} · Type: {choiceType.title} · Intent: {intentChoice.title}
               </p>
 
               <div className="mt-6 grid gap-3">
@@ -582,7 +810,7 @@ export default function Home() {
             </div>
           )}
 
-          {screen === "confirm" && purpose && choiceType && song && kk && (
+          {screen === "confirm" && purpose && choiceType && intentChoice && song && kk && (
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Confirm
@@ -592,6 +820,7 @@ export default function Home() {
               <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
                 <p className="font-black">Purpose: {purpose.title}</p>
                 <p className="mt-2 font-black">Type: {choiceType.title}</p>
+                <p className="mt-2 font-black">Intent: {intentChoice.title}</p>
                 <p className="mt-2 text-3xl font-black">Song: {song.title}</p>
                 <p className="mt-2 text-xl font-black">K-KUT moment: {kk.title}</p>
                 <p className="mt-2 text-base font-bold">{kk.line}</p>
@@ -620,14 +849,14 @@ export default function Home() {
             </div>
           )}
 
-          {screen === "buy" && purpose && choiceType && song && kk && (
+          {screen === "buy" && purpose && choiceType && intentChoice && song && kk && (
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Checkout
               </p>
               <h2 className="mt-3 text-4xl font-black">Final step. Final step. Buy this HUG.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                You selected one purpose, one feeling type, one song, and one K-KUT moment.
+                You selected one purpose, one feeling type, one intent, one song, and one K-KUT moment.
               </p>
               <p className="mt-3 text-lg font-bold leading-8 text-amber-50/80">
                 After checkout, G Putnam Music prepares your playable HUG link.
