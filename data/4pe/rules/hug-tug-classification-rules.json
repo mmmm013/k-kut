@@ -1,0 +1,64 @@
+{
+  "rule_name": "4PE HUG/TUG Classification",
+  "version": "1.0.0",
+  "locked_rule": "4PE suggests. KKr proves. Owner approves. MC-BOT presents.",
+  "product_types": {
+    "HUG": {
+      "meaning": "Warmth, care, gratitude, love, comfort, support, appreciation, celebration, tenderness.",
+      "signals": [
+        "gratitude",
+        "thanks",
+        "thank you",
+        "appreciation",
+        "love",
+        "warmth",
+        "support",
+        "comfort",
+        "peace",
+        "gentle",
+        "tender",
+        "honor",
+        "celebration",
+        "encouragement",
+        "mother_love",
+        "big_heart"
+      ]
+    },
+    "TUG": {
+      "meaning": "Longing, apology, repair, grief, regret, distance, hard feelings, unresolved emotion.",
+      "signals": [
+        "longing",
+        "miss",
+        "missing you",
+        "sorry",
+        "apology",
+        "regret",
+        "grief",
+        "loss",
+        "hard feelings",
+        "hurt",
+        "distance",
+        "repair",
+        "come back",
+        "please understand",
+        "unresolved",
+        "pull_closer"
+      ]
+    }
+  },
+  "classifications": [
+    "HUG",
+    "TUG",
+    "HUG_PRIMARY_TUG_SECONDARY",
+    "TUG_PRIMARY_HUG_SECONDARY",
+    "HOLD_FOR_REVIEW"
+  ],
+  "pricing_rules": {
+    "base_product": "HUG",
+    "tug_emotional_depth_add_on_usd": 0.33,
+    "public_positioning": "TUGs include deeper matching for feelings that pull harder.",
+    "checkout_line_item_label": "TUG emotional-depth matching",
+    "rule": "HUGs remain base price. TUGs are base price + $0.33 when the buyer chooses a TUG-classified product.",
+    "marketing_guardrail": "Do not foreground the fee in marketing. Use it as systematic pricing metadata and checkout detail when applicable."
+  }
+}

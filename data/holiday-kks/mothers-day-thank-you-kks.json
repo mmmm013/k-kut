@@ -1,0 +1,30 @@
+{
+  "holiday_set": "mothers_day",
+  "source_song": "Thank You",
+  "template": "Holiday KK Set Template",
+  "display_rule": "one_section_or_curated_set_at_a_time",
+  "product_control": {
+    "download_allowed": false,
+    "share_mode": "private_hug_link"
+  },
+  "asset_families": {
+    "feellines_cc": {
+      "count": 22,
+      "description": "Short emotional line-pair / moment KKs"
+    },
+    "larger_kks": {
+      "count": 7,
+      "description": "Larger emotional Thank You KKs"
+    },
+    "sections": {
+      "count": 9,
+      "description": "Focused song sections"
+    }
+  },
+  "assets": [],
+  "pricing_model": {
+    "hug_base": "base_price",
+    "tug_add_on_usd": 0.33,
+    "rule": "TUG-classified products may carry a +$0.33 emotional-depth add-on."
+  }
+}
