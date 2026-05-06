@@ -105,7 +105,7 @@ export default function HomePage() {
   const [step, setStep] = useState<Step>(0);
   const [typedFeeling, setTypedFeeling] = useState("");
   const [gotFeeling, setSeedFeeling] = useState("");
-  const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening"]);
+  const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening", "outro"]);
   const [selectedId, setSelectedId] = useState<string>("chorus");
   const [focusTitle, setFocusTitle] = useState<string>("Learn");
   const [focusBody, setFocusBody] = useState<string>(
@@ -150,7 +150,7 @@ export default function HomePage() {
     if (!raw) {
       return {
         got: "loved",
-        optionIds: ["chorus", "opening"],
+        optionIds: ["chorus", "opening", "outro"],
       };
     }
 
@@ -162,7 +162,7 @@ export default function HomePage() {
     ) {
       return {
         got: "appreciated",
-        optionIds: ["chorus", "opening"],
+        optionIds: ["chorus", "opening", "outro"],
       };
     }
 
@@ -173,7 +173,7 @@ export default function HomePage() {
     ) {
       return {
         got: "gentle",
-        optionIds: ["opening", "chorus"],
+        optionIds: ["opening", "chorus", "outro"],
       };
     }
 
@@ -184,7 +184,7 @@ export default function HomePage() {
     ) {
       return {
         got: "peaceful",
-        optionIds: ["outro", "opening"],
+        optionIds: ["outro", "opening", "chorus"],
       };
     }
 
@@ -196,13 +196,13 @@ export default function HomePage() {
     ) {
       return {
         got: "big heart",
-        optionIds: ["chorus", "outro"],
+        optionIds: ["chorus", "outro", "opening"],
       };
     }
 
     return {
       got: raw,
-      optionIds: ["chorus", "opening"],
+      optionIds: ["chorus", "opening", "outro"],
     };
   }
 
