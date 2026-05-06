@@ -14,3 +14,6 @@ tmp/
 app/page Bup Text.tsx
 scripts/gpmx-first-pass-process.mjs
 .vercel
+
+# 4PE local capture inbox
+inbox/
