@@ -273,13 +273,23 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BB-BOT guide · KLEIGH voice
+              BB-BOT guide · MC-BOT voice · MC-BOT voice
             </div>
           </div>
 
           <h1 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
             Send Mom a real audio greeting card.
           </h1>
+
+          <div className="mt-5 rounded-[1.5rem] border border-amber-300/30 bg-black/25 p-5">
+            <p className="text-lg font-black text-amber-100">
+              Get a private HUG link Mom can open — no file download.
+            </p>
+            <p className="mt-2 text-base font-bold leading-7 text-amber-50/80">
+              Send by email, DM, social link, or text from your own phone.
+              No shipping. No app. No file download. Just a real music moment Mom can open instantly.
+            </p>
+          </div>
 
           <div className="mt-6 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
             <p className="text-sm font-black uppercase tracking-[0.18em]">
@@ -292,7 +302,7 @@ export default function HomePage() {
                 onClick={() => playMcBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
-                Play KLEIGH Guide
+                Play MC-BOT Guide
               </button>
           </div>
 

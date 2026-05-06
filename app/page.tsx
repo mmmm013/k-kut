@@ -654,7 +654,7 @@ export default function Home() {
                 onClick={() => playBotVoice()}
                 className="mt-6 rounded-2xl bg-black/40 px-6 py-4 text-base font-black text-amber-100 transition hover:bg-black/60"
               >
-                {hasHeardWelcome ? "Replay Founder Welcome" : "Play Founder Welcome"}
+                {hasHeardWelcome ? "Replay GP-BOT Founder Welcome" : "Play GP-BOT Founder Welcome"}
               </button>
 
               <button
