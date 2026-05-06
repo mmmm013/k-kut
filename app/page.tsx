@@ -202,8 +202,16 @@ function buildKKOptions(song: Song): KKOption[] {
   return base;
 }
 
+let activeKkutAudio: HTMLAudioElement | null = null;
+
 function stopAllAudio() {
-  if (typeof document === "undefined") return;
+  if (typeof window === "undefined") return;
+
+  if (activeKkutAudio) {
+    activeKkutAudio.pause();
+    activeKkutAudio.currentTime = 0;
+    activeKkutAudio = null;
+  }
 
   document.querySelectorAll("audio").forEach((audio) => {
     audio.pause();
@@ -219,20 +227,30 @@ function playOneAudio(src: string) {
   stopAllAudio();
 
   const audio = new Audio(src);
+  activeKkutAudio = audio;
   audio.volume = 0.95;
+  audio.currentTime = 0;
 
-  const stopHandler = () => {
-    audio.pause();
-    audio.currentTime = 0;
+  const clearIfActive = () => {
+    if (activeKkutAudio === audio) {
+      activeKkutAudio = null;
+    }
   };
 
-  window.addEventListener("k-kut-stop-audio", stopHandler, { once: true });
+  audio.addEventListener("ended", clearIfActive, { once: true });
+  audio.addEventListener("pause", clearIfActive, { once: true });
 
-  audio.currentTime = 0;
   audio.play().catch(() => {
+    clearIfActive();
     console.log("Audio blocked until user taps:", src);
   });
 }
+
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", stopAllAudio);
+  window.addEventListener("beforeunload", stopAllAudio);
+}
+
 
 export default function Home() {
   const [screen, setScreen] = useState<"welcome" | "purpose" | "type" | "song" | "kk" | "confirm" | "buy">("welcome");
@@ -378,11 +396,11 @@ export default function Home() {
           {screen === "welcome" && (
             <div>
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Please read below first
+                One step at a time
               </p>
 
               <h2 className="mt-3 text-3xl font-black leading-tight">
-                I’ll guide you one step at a time. A HUG is a digital audio card that sends feeling through music.
+                I’ll guide you through one clear step at a time. A HUG is a digital audio card that sends feeling through music.
               </h2>
 
               <p className="mt-5 rounded-2xl bg-black/25 p-4 text-base font-bold leading-7 text-amber-50/80">
@@ -425,7 +443,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 One question
               </p>
-              <h2 className="mt-3 text-4xl font-black">Let’s start broad. What is this HUG for?</h2>
+              <h2 className="mt-3 text-4xl font-black">Let’s start broad. Choose what this HUG is for.</h2>
 
               <div className="mt-6 grid gap-3">
                 {PURPOSES.map((item) => (
@@ -482,7 +500,7 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {purpose.title} · {choiceType.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Here are fitting songs. Pick one.</h2>
+              <h2 className="mt-3 text-4xl font-black">Now pick a fitting song.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 Choose the song that fits this message best.
               </p>

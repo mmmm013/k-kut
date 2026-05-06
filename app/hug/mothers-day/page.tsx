@@ -1,7 +1,15 @@
 "use client";
 
+let activeKkutAudio: HTMLAudioElement | null = null;
+
 function stopAllAudio() {
-  if (typeof document === "undefined") return;
+  if (typeof window === "undefined") return;
+
+  if (activeKkutAudio) {
+    activeKkutAudio.pause();
+    activeKkutAudio.currentTime = 0;
+    activeKkutAudio = null;
+  }
 
   document.querySelectorAll("audio").forEach((audio) => {
     audio.pause();
@@ -17,20 +25,30 @@ function playOneAudio(src: string) {
   stopAllAudio();
 
   const audio = new Audio(src);
+  activeKkutAudio = audio;
   audio.volume = 0.95;
+  audio.currentTime = 0;
 
-  const stopHandler = () => {
-    audio.pause();
-    audio.currentTime = 0;
+  const clearIfActive = () => {
+    if (activeKkutAudio === audio) {
+      activeKkutAudio = null;
+    }
   };
 
-  window.addEventListener("k-kut-stop-audio", stopHandler, { once: true });
+  audio.addEventListener("ended", clearIfActive, { once: true });
+  audio.addEventListener("pause", clearIfActive, { once: true });
 
-  audio.currentTime = 0;
   audio.play().catch(() => {
+    clearIfActive();
     console.log("Audio blocked until user taps:", src);
   });
 }
+
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", stopAllAudio);
+  window.addEventListener("beforeunload", stopAllAudio);
+}
+
 
 
 import { useMemo, useRef, useState } from "react";
