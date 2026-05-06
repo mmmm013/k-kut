@@ -26,5 +26,6 @@
     "hug_base": "base_price",
     "tug_add_on_usd": 0.33,
     "rule": "TUG-classified products may carry a +$0.33 emotional-depth add-on."
-  }
+  },
+  "asset_count": 0
 }
