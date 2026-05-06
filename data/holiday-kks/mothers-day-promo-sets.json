@@ -1,0 +1,67 @@
+{
+  "holiday_set": "mothers_day",
+  "source_song": "Thank You",
+  "purpose": "Curated Mother’s Day HUG promo sets selected from the 38 internal Thank You KK assets.",
+  "display_rule": "one_section_or_curated_set_at_a_time",
+  "ui_rule": "Do not display all available KKs at once.",
+  "voice_rule": "MC-BOT leads. GP-BOT is reserved only for intentional Founder / Founder Quote clicks.",
+  "product_control": {
+    "download_allowed": false,
+    "share_mode": "private_hug_link",
+    "sms_enabled": false
+  },
+  "sets": [
+    {
+      "id": "gentle-gratitude",
+      "title": "Gentle Gratitude",
+      "mc_bot_intent": "Start soft, sincere, and reassuring.",
+      "emotional_lanes": ["gentle", "gratitude", "tender", "appreciation"],
+      "default_asset_ids": [
+        "thank-you-cc-001",
+        "thank-you-cc-002",
+        "thank-you-cc-003",
+        "thank-you-sec-intro",
+        "thank-you-sec-v1a"
+      ]
+    },
+    {
+      "id": "big-heart-thank-you",
+      "title": "Big-Heart Thank You",
+      "mc_bot_intent": "Offer a stronger, fuller emotional HUG.",
+      "emotional_lanes": ["big_heart", "gratitude", "mother_love", "honor"],
+      "default_asset_ids": [
+        "thank-you-kk7",
+        "thank-you-kk6",
+        "thank-you-sec-ch1",
+        "thank-you-sec-ch2",
+        "thank-you-cc-010"
+      ]
+    },
+    {
+      "id": "peaceful-closing",
+      "title": "Peaceful Closing",
+      "mc_bot_intent": "Give calm, warm closure.",
+      "emotional_lanes": ["peaceful", "comfort", "calm", "warm"],
+      "default_asset_ids": [
+        "thank-you-sec-outro",
+        "thank-you-cc-018",
+        "thank-you-cc-019",
+        "thank-you-cc-020",
+        "thank-you-cc-021"
+      ]
+    },
+    {
+      "id": "stronger-emotional-hug",
+      "title": "Stronger Emotional HUG",
+      "mc_bot_intent": "Use when the sender wants the feeling to land deeper.",
+      "emotional_lanes": ["strong", "appreciation", "love", "memory"],
+      "default_asset_ids": [
+        "thank-you-kk1",
+        "thank-you-kk2",
+        "thank-you-kk3",
+        "thank-you-kk4",
+        "thank-you-cc-022"
+      ]
+    }
+  ]
+}
