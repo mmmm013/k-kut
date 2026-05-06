@@ -3,6 +3,7 @@ import fs from "node:fs";
 
 const checks = [
   ["4PE Level 5 control", "scripts/audit-4pe-level5-control.mjs"],
+  ["II/CI multi-use disposition rule", "scripts/audit-ii-ci-multi-use-disposition-rule.mjs"],
   ["Temporary K-KUT HUG landing", "scripts/audit-temp-hug-landing.mjs"],
   ["HUG/TUG classification", "scripts/audit-hug-tug-classification.mjs"],
   ["HUG/TUG pricing", "scripts/audit-hug-tug-pricing.mjs"],
