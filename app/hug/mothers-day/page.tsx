@@ -578,6 +578,22 @@ export default function HomePage() {
           </p>
         </div>
 
+          <div className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+              K-KUT Admin Support
+            </p>
+            <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
+              Need help with an order, HUG link, audio playback, or delivery question?
+              Email{" "}
+              <a
+                className="text-amber-300 underline underline-offset-4"
+                href="mailto:reachus@gputnammusic.com?bcc=gputnam@gputnammusic.com&subject=K-KUT%20HUG%20Support"
+              >
+                reachus@gputnammusic.com
+              </a>.
+            </p>
+          </div>
+
         </div>
       </section>
     </main>
