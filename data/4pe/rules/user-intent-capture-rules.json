@@ -1,0 +1,61 @@
+{
+  "rule_name": "GPMx User Intent and CRM Capture",
+  "version": "1.0.0",
+  "locked_rule": "4PE captures. KKr proves fit. MC-BOT leads. Owner can review. Checkout fulfills.",
+  "event_types": [
+    "page_view",
+    "mc_bot_greeted",
+    "feeling_entered",
+    "feeling_interpreted",
+    "set_presented",
+    "option_previewed",
+    "option_selected",
+    "delivery_preference_selected",
+    "checkout_clicked",
+    "support_clicked",
+    "order_completed",
+    "hug_link_created",
+    "hug_link_shared"
+  ],
+  "delivery_preferences": [
+    "email",
+    "dm",
+    "social_link",
+    "own_text",
+    "twilio_sms_later"
+  ],
+  "sms_rule": {
+    "twilio_sms_enabled": false,
+    "reason": "A2P 10DLC campaign approval required before automated SMS delivery.",
+    "consent_required": true,
+    "consent_must_be_voluntary": true,
+    "checkbox_default": "unchecked"
+  },
+  "product_control": {
+    "hug_download_allowed": false,
+    "tug_download_allowed": false,
+    "share_mode": "private_hug_link",
+    "song_downloads_only_when_explicitly_sold": true
+  },
+  "required_event_fields": [
+    "event_type",
+    "session_id",
+    "created_at",
+    "source_page",
+    "product_family",
+    "holiday_set",
+    "sentiment_product_type",
+    "typed_feeling",
+    "interpreted_feeling",
+    "selected_hug_id",
+    "selected_hug_title",
+    "delivery_preference",
+    "consent_sms",
+    "consent_email",
+    "customer_email",
+    "customer_phone",
+    "checkout_session_id",
+    "order_id",
+    "metadata"
+  ]
+}
