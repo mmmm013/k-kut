@@ -7,6 +7,7 @@ const checks = [
   ["HUG/TUG pricing", "scripts/audit-hug-tug-pricing.mjs"],
   ["User intent capture rules", "scripts/audit-user-intent-capture-rules.mjs"],
   ["4PE event capture API", "scripts/audit-4pe-event-api.mjs"],
+  ["4PE HUG fulfillment API", "scripts/audit-4pe-fulfillment-api.mjs"],
   ["Mother’s Day promo sets", "scripts/audit-mothers-day-promo-sets.mjs"],
   ["KLEIGH final guide assets", "scripts/audit-kleigh-guide-final-assets.mjs"],
   ["KK live inventory deploy gate", "scripts/audit-kk-inventory-live-gate.mjs"]
