@@ -84,14 +84,18 @@ const DEMOS = [
 type Step = 0 | 1 | 2 | 3;
 
 export default function HomePage() {
+  const kleighVoice: Record<string, string> = {
+    welcome: "/audio/kleigh/guide-final/32-welcome-mother-s-day.m4a",
+    "start-hug": "/audio/kleigh/guide-final/28-start-hug.m4a",
+    "pick-one": "/audio/kleigh/guide-final/07-choose-feel.m4a",
+    "play-demo": "/audio/kleigh/guide-final/24-press-play.m4a",
+    "choose-hug": "/audio/kleigh/guide-final/03-best-hug.m4a",
+  };
+
   function playBotVoice(clip: string = "welcome") {
     if (typeof window === "undefined") return;
 
-    const audio = new Audio(`/voices/gp-bot/prompts/${clip}.m4a`);
-    audio.volume = 0.95;
-    audio.play().catch(() => {
-      console.log("GP-BOT voice blocked until user taps:", clip);
-    });
+    playOneAudio(kleighVoice[clip] ?? kleighVoice.welcome);
   }
 
   function speak(_text: string) {
@@ -252,7 +256,7 @@ export default function HomePage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BB-BOT guide · GP-BOT voice
+              BB-BOT guide · KLEIGH voice
             </div>
           </div>
 
@@ -271,7 +275,7 @@ export default function HomePage() {
                 onClick={() => playBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
-                Play GP-BOT
+                Play KLEIGH Guide
               </button>
           </div>
 
@@ -349,7 +353,6 @@ export default function HomePage() {
                 className="mt-5 flex flex-col gap-3 sm:flex-row"
                 onSubmit={(event) => {
                   event.preventDefault();
-                  playBotVoice("pick-one");
                   playBotVoice("pick-one");
                   setFocus("Feeling entered", "I’ll use that to find your best HUG options.");
                   submitFeeling(typedFeeling);
