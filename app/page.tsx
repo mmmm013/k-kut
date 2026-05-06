@@ -453,6 +453,7 @@ export default function Home() {
   const [intentId, setIntentId] = useState("");
   const [songId, setSongId] = useState("");
   const [kkId, setKkId] = useState("");
+  const [songBatchIndex, setSongBatchIndex] = useState(0);
   const [hasHeardWelcome, setHasHeardWelcome] = useState(false);
 
   useEffect(() => {
