@@ -341,6 +341,22 @@ export default function HomePage() {
               </button>
           </div>
 
+
+          <section className="mt-6 rounded-[1.5rem] border border-amber-300/35 bg-amber-300/10 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Important
+            </p>
+            <h2 className="mt-2 text-2xl font-black text-amber-50">
+              This is the order path — not the final HUG link.
+            </h2>
+            <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
+              Choose a HUG here and checkout. After checkout, the private
+              recipient HUG link is prepared separately. That recipient link is
+              what Mom opens. The recipient page has no checkout, no searching,
+              and no buying pressure.
+            </p>
+          </section>
+
           <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
               Current step
