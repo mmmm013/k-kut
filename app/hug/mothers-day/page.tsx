@@ -53,7 +53,7 @@ if (typeof window !== "undefined") {
 
 
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
 
@@ -102,6 +102,22 @@ export default function HomePage() {
     playBotVoice("welcome");
   }
 
+  useEffect(() => {
+    function greetOnFirstInteraction() {
+      if (hasAutoGreetedRef.current) return;
+      hasAutoGreetedRef.current = true;
+      playBotVoice("welcome");
+    }
+
+    window.addEventListener("pointerdown", greetOnFirstInteraction, { once: true });
+    window.addEventListener("keydown", greetOnFirstInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", greetOnFirstInteraction);
+      window.removeEventListener("keydown", greetOnFirstInteraction);
+    };
+  }, []);
+
   const [step, setStep] = useState<Step>(0);
   const [typedFeeling, setTypedFeeling] = useState("");
   const [gotFeeling, setSeedFeeling] = useState("");
@@ -113,6 +129,7 @@ export default function HomePage() {
   );
 
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
+  const hasAutoGreetedRef = useRef(false);
 
   const options = useMemo(
     () => optionIds.map((id) => DEMOS.find((demo) => demo.id === id)).filter(Boolean) as typeof DEMOS,
