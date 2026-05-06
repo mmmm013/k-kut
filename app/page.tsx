@@ -201,31 +201,7 @@ const PURPOSES: Purpose[] = [
 ];
 
 function buildKKOptions(song: Song): KKOption[] {
-  const base = [...song.kk];
-
-  const optionNames = [
-    "Opening feeling",
-    "Soft lift",
-    "Clear message",
-    "Heart moment",
-    "Strongest hook",
-    "Gentle turn",
-    "Deep feeling",
-    "Warm close",
-    "Lasting echo",
-    "Best send",
-  ];
-
-  while (base.length < MIN_KK_OPTIONS) {
-    const next = base.length + 1;
-    base.push({
-      id: `${song.id}-kk-${next}`,
-      title: optionNames[next - 1] ?? `KK Option ${next}`,
-      line: `A prepared K-KUT option for “${song.title}.”`,
-    });
-  }
-
-  return base.slice(0, Math.max(MIN_KK_OPTIONS, base.length));
+  return song.kk;
 }
 
 function stopAllAudio() {
@@ -327,12 +303,12 @@ export default function Home() {
   }
 
   function playKK(nextKK: KKOption) {
-    if (nextKK.audio) {
-      playOneAudio(nextKK.audio);
+    if (!nextKK.audio) {
+      stopAllAudio();
       return;
     }
 
-    stopAllAudio();
+    playOneAudio(nextKK.audio);
   }
 
   function goBack() {
@@ -475,6 +451,9 @@ export default function Home() {
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
                 Listen to the options below and choose the one that feels right.
               </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-amber-50/60">
+                Only options with loaded previews show Play.
+              </p>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/65">
                 Song: {song.title}
                 {purpose ? ` · Feeling: ${purpose.title}` : ""}
@@ -490,20 +469,26 @@ export default function Home() {
                     <p className="mt-2 text-base font-bold text-amber-50/75">{item.line}</p>
 
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      <button
-                        type="button"
-                        onClick={() => playKK(item)}
-                        className="rounded-xl bg-black/40 px-5 py-3 font-black text-amber-100"
-                      >
-                        Play option
-                      </button>
+                      {item.audio ? (
+                        <button
+                          type="button"
+                          onClick={() => playKK(item)}
+                          className="rounded-xl bg-black/40 px-5 py-3 font-black text-amber-100"
+                        >
+                          Play
+                        </button>
+                      ) : (
+                        <p className="rounded-xl border border-amber-300/20 bg-black/20 px-5 py-3 text-center text-sm font-black text-amber-100/70">
+                          Preview not loaded yet
+                        </p>
+                      )}
 
                       <button
                         type="button"
                         onClick={() => chooseKK(item)}
                         className="rounded-xl bg-amber-300 px-5 py-3 font-black text-[#2a180d]"
                       >
-                        Choose this HUG
+                        Choose this one
                       </button>
                     </div>
                   </div>
