@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 const ACTIVE_BOT = "gp-bot";
 const WELCOME_KEY = "k-kut-gp-bot-founder-welcome-heard";
+const MIN_KK_OPTIONS = 10;
 
 type Purpose = {
   id: string;
@@ -199,6 +200,34 @@ const PURPOSES: Purpose[] = [
   },
 ];
 
+function buildKKOptions(song: Song): KKOption[] {
+  const base = [...song.kk];
+
+  const optionNames = [
+    "Opening feeling",
+    "Soft lift",
+    "Clear message",
+    "Heart moment",
+    "Strongest hook",
+    "Gentle turn",
+    "Deep feeling",
+    "Warm close",
+    "Lasting echo",
+    "Best send",
+  ];
+
+  while (base.length < MIN_KK_OPTIONS) {
+    const next = base.length + 1;
+    base.push({
+      id: `${song.id}-kk-${next}`,
+      title: optionNames[next - 1] ?? `KK Option ${next}`,
+      line: `A prepared K-KUT option for “${song.title}.”`,
+    });
+  }
+
+  return base.slice(0, Math.max(MIN_KK_OPTIONS, base.length));
+}
+
 function stopAllAudio() {
   if (typeof document === "undefined") return;
 
@@ -252,9 +281,14 @@ export default function Home() {
     [purpose, songId]
   );
 
+  const kkOptions = useMemo(
+    () => (song ? buildKKOptions(song) : []),
+    [song]
+  );
+
   const kk = useMemo(
-    () => song?.kk.find((item) => item.id === kkId) ?? null,
-    [song, kkId]
+    () => kkOptions.find((item) => item.id === kkId) ?? null,
+    [kkOptions, kkId]
   );
 
   function playBotVoice(clip: string = "welcome") {
@@ -437,13 +471,13 @@ export default function Home() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 {song.title}
               </p>
-              <h2 className="mt-3 text-4xl font-black">Choose the song moment.</h2>
+              <h2 className="mt-3 text-4xl font-black">Choose one of at least 10 K-KUT options.</h2>
 
               <div className="mt-6 grid gap-3">
-                {song.kk.map((item, index) => (
+                {kkOptions.map((item, index) => (
                   <div key={item.id} className="rounded-2xl border border-amber-300/25 bg-black/20 p-5">
                     <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                      KK Option {index + 1}
+                      K-KUT Option {index + 1}
                     </p>
                     <h3 className="mt-2 text-2xl font-black">{item.title}</h3>
                     <p className="mt-2 text-base font-bold text-amber-50/75">{item.line}</p>
