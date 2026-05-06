@@ -41,6 +41,7 @@ type KKOption = {
   audio?: string;
 };
 
+// Hard Feelings user-friendly lanes: title: "Sorry", title: "Reflection", title: "Hurt", title: "Cry", title: "Sorrow / Break Up"
 const PURPOSES: Purpose[] = [
   {
     id: "love",
@@ -650,7 +651,7 @@ export default function Home() {
 
               <button
                 type="button"
-                onClick={() => playBotVoice("welcome")}
+                onClick={() => playBotVoice()}
                 className="mt-6 rounded-2xl bg-black/40 px-6 py-4 text-base font-black text-amber-100 transition hover:bg-black/60"
               >
                 {hasHeardWelcome ? "Replay Founder Welcome" : "Play Founder Welcome"}
@@ -767,7 +768,7 @@ export default function Home() {
               </p>
               <h2 className="mt-3 text-4xl font-black">Now pick a fitting song.</h2>
               <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
-                Here are fitting songs for this intent. Choose one, or ask for another set.
+                Here are fitting songs for this intent. We only show songs that fit this choice.
               </p>
 
               <div className="mt-6 grid gap-3">
@@ -783,6 +784,16 @@ export default function Home() {
                   </button>
                 ))}
               </div>
+
+              {hasMoreSongSets && (
+                <button
+                  type="button"
+                  onClick={() => setSongBatchIndex((current) => current + 1)}
+                  className="mt-6 rounded-2xl bg-black/40 px-6 py-4 font-black text-amber-100"
+                >
+                  Show me another set
+                </button>
+              )}
 
               <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
                 Back

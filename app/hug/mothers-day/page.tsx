@@ -217,10 +217,19 @@ export default function HomePage() {
     setStep(2);
   }
 
+  function stopAllDemoAudio() {
+    for (const el of Object.values(audioRefs.current)) {
+      if (!el) continue;
+      el.pause();
+      el.currentTime = 0;
+    }
+  }
+
   function playDemo(id: string) {
     const el = audioRefs.current[id];
     if (!el) return;
 
+    stopAllDemoAudio();
     el.play().catch(() => {});
   }
 
