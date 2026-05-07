@@ -67,7 +67,7 @@ export default function MothersDayBBBot() {
       window.localStorage.setItem("motherDayRecipient", recipient);
       window.localStorage.setItem("motherDayFeeling", feeling);
 
-      const res = await fetch("/api/donate", {
+      const res = await fetch("/api/4pe/events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kk: kkId }),

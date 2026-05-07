@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL("/mothers-day/thank-you", request.url));
   }
 
-  const apiUrl = new URL("/api/donate", request.url);
+  const apiUrl = new URL("/api/checkout", request.url);
   apiUrl.searchParams.set("kk", kk);
 
   const response = await fetch(apiUrl, {
