@@ -435,7 +435,7 @@ export default function MothersDayThankYouPage() {
                 {publicTierName(kk.tier)} · {priceForTier(kk.priceTier)}
               </p>
 
-              <EofSignatureAudio src={kk.audioUrl} leadSeconds={3.5} />
+              <EofSignatureAudio src={kk.audioUrl} leadSeconds={3.0} />
 
               <a
                 href={`/donate?kk=${encodeURIComponent(kk.id)}`}
