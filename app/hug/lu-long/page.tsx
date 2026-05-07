@@ -13,17 +13,17 @@ export default function LuLongHugPage() {
           </p>
 
           <h1 className="mt-5 text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-7xl">
-            Lu, this longer HUG is for you to share with Mom.
+            Lu, this is for you to share with Mom.
           </h1>
 
           <p className="mt-6 text-xl font-bold leading-relaxed text-amber-50/85">
-            I picked a longer real-music moment this time — a fuller K-KUT with
-            the closing chorus and outro feeling.
+            I picked a longer K-KUT this time — a fuller closing moment with the
+            chorus and outro feeling.
           </p>
 
           <p className="mt-5 rounded-3xl border border-amber-300/25 bg-black/20 p-5 text-lg font-bold leading-relaxed text-amber-50/80">
             For Mom: this is meant to send warmth, love, thanks, and the feeling
-            of a full closing moment. Just press play.
+            of a full closing HUG. Just press play.
           </p>
 
           <div className="mt-8 rounded-3xl border border-amber-300/25 bg-black/25 p-5">
@@ -32,7 +32,7 @@ export default function LuLongHugPage() {
             </p>
 
             <h2 className="mt-3 text-3xl font-black text-amber-100">
-              Chorus through outro
+              Chorus + outro
             </h2>
 
             <audio
@@ -41,7 +41,7 @@ export default function LuLongHugPage() {
               className="mt-6 w-full rounded-xl border border-amber-300/25 bg-[#1A120B] p-3"
             >
               <source
-                src="/mothers-day/thank-you/kks-long/thank-you-kk7-chorus2-through-outro.mp3"
+                src="/mothers-day/thank-you/kks/thank-you-kk7.mp3"
                 type="audio/mpeg"
               />
               Your browser does not support the audio element.
