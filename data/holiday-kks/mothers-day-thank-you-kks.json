@@ -43,13 +43,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-002",
@@ -72,13 +74,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-003",
@@ -101,13 +105,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-004",
@@ -130,13 +136,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-005",
@@ -159,13 +167,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-006",
@@ -188,13 +198,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-007",
@@ -217,13 +229,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-008",
@@ -246,13 +260,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-009",
@@ -275,13 +291,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-010",
@@ -304,13 +322,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-011",
@@ -333,13 +353,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-012",
@@ -362,13 +384,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-013",
@@ -391,13 +415,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-014",
@@ -420,13 +446,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-015",
@@ -449,13 +477,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-016",
@@ -478,13 +508,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-017",
@@ -507,13 +539,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-018",
@@ -536,13 +570,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-019",
@@ -565,13 +601,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-020",
@@ -594,13 +632,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-021",
@@ -623,13 +663,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-cc-022",
@@ -652,13 +694,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "paused_for_linefeel_refinement",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "LineFeels require owner review and refinement before public offering."
     },
     {
       "id": "thank-you-kk1",
@@ -681,13 +725,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-kk2",
@@ -710,13 +756,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-kk3",
@@ -739,13 +787,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-kk4",
@@ -768,13 +818,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-kk5",
@@ -797,13 +849,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-kk6",
@@ -826,13 +880,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-kk7",
@@ -855,13 +911,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": true,
+      "offer_pause_reason": null
     },
     {
       "id": "thank-you-sec-intro",
@@ -885,13 +943,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-v1a",
@@ -915,13 +975,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-v1c",
@@ -945,13 +1007,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-v1d",
@@ -975,13 +1039,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-ch1",
@@ -1005,13 +1071,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-v2a",
@@ -1035,13 +1103,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-v2b",
@@ -1065,13 +1135,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-ch2",
@@ -1095,13 +1167,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     },
     {
       "id": "thank-you-sec-outro",
@@ -1125,13 +1199,15 @@
       "tug_score": 0.0,
       "primary_emotional_job": "hold_and_warm",
       "secondary_emotional_job": "appreciation",
-      "review_status": "four_pe_suggested",
+      "review_status": "not_active_mothers_day_offer",
       "owner_override": null,
       "download_allowed": false,
       "share_mode": "private_hug_link",
       "price_adjustment_usd": 0.0,
       "price_adjustment_reason": "HUG base sentiment pricing",
-      "internal_source": "KKr"
+      "internal_source": "KKr",
+      "active_offer_eligible": false,
+      "offer_pause_reason": "Mother\u2019s Day public offer is KK-only while LineFeels are refined."
     }
   ],
   "pricing_model": {
@@ -1139,5 +1215,16 @@
     "tug_add_on_usd": 0.33,
     "rule": "TUG-classified products may carry a +$0.33 emotional-depth add-on."
   },
-  "asset_count": 38
+  "asset_count": 38,
+  "active_offer_rule": "Mother\u2019s Day public offer uses only approved Thank You KKs. LineFeels/CC are paused for refinement.",
+  "active_offer_asset_ids": [
+    "thank-you-kk1",
+    "thank-you-kk2",
+    "thank-you-kk3",
+    "thank-you-kk4",
+    "thank-you-kk5",
+    "thank-you-kk6",
+    "thank-you-kk7"
+  ],
+  "linefeels_paused_for_refinement": true
 }
