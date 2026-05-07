@@ -11,7 +11,11 @@ export async function GET(request: NextRequest) {
   apiUrl.searchParams.set("kk", kk);
 
   const response = await fetch(apiUrl, {
-    method: "GET",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ kk }),
     cache: "no-store",
   });
 
