@@ -438,10 +438,10 @@ export default function MothersDayThankYouPage() {
               <EofSignatureAudio src={kk.audioUrl} leadSeconds={3.0} />
 
               <a
-                href="/sponsorships"
+                href={`/checkout?kk=${encodeURIComponent(kk.id)}`}
                 className="mt-5 block rounded-xl border border-[#f4b000] px-5 py-3 text-center font-black text-[#f4b000] hover:bg-[#f4b000] hover:text-black"
               >
-                Ask about Sponsorship Membership
+                Send this HUG
               </a>
 
               <p className="mt-3 text-xs text-[#a88350]">
