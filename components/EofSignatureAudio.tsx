@@ -23,6 +23,7 @@ type EofSignatureAudioProps = {
   showOpeningMessage?: boolean;
   defaultOpeningMessages?: string[];
   personalMessageText?: string;
+  openingMessageHoldMs?: number;
 };
 
 const DEFAULT_SIGNATURE_LEAD_SECONDS = 1.5;
@@ -68,6 +69,7 @@ export default function EofSignatureAudio({
   showOpeningMessage = true,
   defaultOpeningMessages = DEFAULT_OPENING_MESSAGES,
   personalMessageText,
+  openingMessageHoldMs = 1800,
 }: EofSignatureAudioProps) {
   const mainRef = useRef<HTMLAudioElement | null>(null);
   const openingSignatureRef = useRef<HTMLAudioElement | null>(null);
@@ -79,6 +81,7 @@ export default function EofSignatureAudio({
 
   const openingMessageLoggedRef = useRef(false);
   const personalMessageLoggedRef = useRef(false);
+  const openingHoldTimeoutRef = useRef<number | null>(null);
 
   const sessionIdRef = useRef(
     `gpex-chamber-${Date.now()}-${Math.random().toString(36).slice(2)}`
@@ -201,6 +204,11 @@ export default function EofSignatureAudio({
     openingMessageLoggedRef.current = false;
     personalMessageLoggedRef.current = false;
 
+    if (openingHoldTimeoutRef.current !== null) {
+      window.clearTimeout(openingHoldTimeoutRef.current);
+      openingHoldTimeoutRef.current = null;
+    }
+
     const openingSignature = openingSignatureRef.current;
     if (openingSignature) {
       openingSignature.pause();
@@ -248,22 +256,39 @@ export default function EofSignatureAudio({
       });
   }
 
-  function resumeMainAfterOpening() {
+  function resumeMainAfterOpening(delayMs = 0) {
     const main = mainRef.current;
     if (!main) return;
 
-    resumingAfterOpeningRef.current = true;
-    void main.play().catch(() => {
-      resumingAfterOpeningRef.current = false;
-    });
+    const startMain = () => {
+      resumingAfterOpeningRef.current = true;
+      void main.play().catch(() => {
+        resumingAfterOpeningRef.current = false;
+      });
+    };
+
+    if (delayMs > 0) {
+      openingHoldTimeoutRef.current = window.setTimeout(() => {
+        openingHoldTimeoutRef.current = null;
+        startMain();
+      }, delayMs);
+      return;
+    }
+
+    startMain();
   }
 
   function handleOpeningEnded() {
-    resumeMainAfterOpening();
+    resumeMainAfterOpening(openingMessageHoldMs);
   }
 
   function handlePlay(event: SyntheticEvent<HTMLAudioElement>) {
     const main = event.currentTarget;
+    if (openingHoldTimeoutRef.current !== null) {
+      window.clearTimeout(openingHoldTimeoutRef.current);
+      openingHoldTimeoutRef.current = null;
+    }
+
     const openingSignature = openingSignatureRef.current;
 
     if (
@@ -289,7 +314,7 @@ export default function EofSignatureAudio({
           logOpeningSignatureUsage();
         })
         .catch(() => {
-          resumeMainAfterOpening();
+          resumeMainAfterOpening(0);
         });
 
       return;
@@ -319,10 +344,13 @@ export default function EofSignatureAudio({
   return (
     <div className={className}>
       {showOpeningMessage && (openingMessage || personalMessageText) && (
-        <div className="mb-3 rounded-xl border border-amber-300/20 bg-black/20 px-4 py-3 text-sm leading-relaxed text-amber-50/80">
-          {openingMessage && <p>{openingMessage}</p>}
+        <div className="mb-3 rounded-xl border border-amber-300/30 bg-amber-950/30 px-4 py-3 text-sm leading-relaxed text-amber-50 shadow-sm">
+          <p className="mb-1 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-200/80">
+            Opening message
+          </p>
+          {openingMessage && <p className="font-semibold">{openingMessage}</p>}
           {personalMessageText?.trim() && (
-            <p className="mt-2 font-semibold text-amber-100">
+            <p className="mt-2 border-t border-amber-200/15 pt-2 font-semibold text-amber-100">
               {personalMessageText.trim()}
             </p>
           )}
