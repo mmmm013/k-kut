@@ -25,3 +25,19 @@ inbox/
 public/audio/kleigh/hug-guide/
 public/mothers-day/thank-you/magic-tails/
 public/mothers-day/thank-you/magic-tests/
+
+# Local / workbench scripts not for production commit
+scripts/4pe-celebration-candidate-scan.mjs
+scripts/4pe-phase2-source-inventory.mjs
+scripts/audit-kleigh-hug-guide-assets.mjs
+scripts/audit-product-control.mjs
+scripts/audit-public-non-kk-ii-abrupt-ends.mjs
+scripts/create-magic-tail-candidates.mjs
+scripts/render-non-kk-ii-sustain-fades.mjs
+scripts/report-cc-enriched-ii-ci-registry.mjs
+scripts/report-human-expression-linefeel-dispositions.mjs
+scripts/report-human-expression-linefeels.mjs
+scripts/report-kk-objectified-ii-ci-json.mjs
+scripts/report-kk-objectified-ii-ci.mjs
+scripts/report-thank-you-linefeel-candidates.mjs
+scripts/test-magic-tail-on-lu-long.mjs
