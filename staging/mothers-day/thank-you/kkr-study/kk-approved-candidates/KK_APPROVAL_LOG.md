@@ -214,3 +214,32 @@ CC value:
 - Thank You — Giving Me the Best
 - Thank You — Giving Me Today
 - Final Thank You
+
+---
+
+## KK8 — Bridge
+
+Boundary originally tested: 3:26–3:48  
+Original start: 206s  
+Original lyric-boundary end: 228s  
+
+Final natural-safe boundary:
+Start: 206s  
+End: 232s  
+Duration: 26s  
+
+Approved file:
+staging/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk8-bridge-206s-232s-natural-safe.mp3
+
+Status: APPROVED  
+Result: LOCKED  
+
+Proof:
+- 228s lyric-boundary ending was rejected because sustained vocal/music was cut off.
+- User reviewed 230s–233s tail options.
+- 232s felt right and was locked.
+- Final boundary respects vocal note, musical decay, and natural release before any Signature.
+
+Production rule confirmed:
+- Do NOT add Signature until all original vocal/music ends.
+- Signature is allowed only after natural release.

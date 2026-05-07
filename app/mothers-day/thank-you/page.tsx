@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import MothersDayBBBot from "@/components/MothersDayBBBot";
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 
 const kks = [
   {
@@ -434,18 +435,13 @@ export default function MothersDayThankYouPage() {
                 {publicTierName(kk.tier)} · {priceForTier(kk.priceTier)}
               </p>
 
-              <audio
-                className="mt-5 w-full"
-                controls
-                preload="metadata"
-                src={kk.audioUrl}
-              />
+              <EofSignatureAudio src={kk.audioUrl} leadSeconds={3.5} />
 
               <a
                 href={`/donate?kk=${encodeURIComponent(kk.id)}`}
                 className="mt-5 block rounded-xl border border-[#f4b000] px-5 py-3 text-center font-black text-[#f4b000] hover:bg-[#f4b000] hover:text-black"
               >
-                Buy this K-KUT
+                Send this HUG
               </a>
 
               <p className="mt-3 text-xs text-[#a88350]">
