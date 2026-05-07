@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 
 type HugPick = {
   id: string;
@@ -170,10 +171,8 @@ export default function MothersDayBBBot() {
           {recommended.description}
         </p>
 
-        <audio
+        <EofSignatureAudio
           className="mt-4 w-full"
-          controls
-          preload="metadata"
           src={recommended.audioUrl}
         />
 

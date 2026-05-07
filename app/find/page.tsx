@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 const GUIDE_OPTIONS = [
   {
     title: "Send warmth",
@@ -104,14 +105,10 @@ export default function FindPage() {
                   {sample.subtitle}
                 </p>
 
-                <audio
-                  controls
-                  preload="metadata"
-                  className="mt-5 w-full rounded-xl border border-[#D4A017]/25 bg-[#1A120B] p-3"
-                >
-                  <source src={sample.audioUrl} type="audio/mpeg" />
-                  Your browser does not support the audio element.
-                </audio>
+                <EofSignatureAudio
+                src={sample.audioUrl}
+                className="mt-5 w-full rounded-xl border border-[#D4A017]/25 bg-[#1A120B] p-3"
+              />
 
                 <Link
                   href="/hug/mothers-day"

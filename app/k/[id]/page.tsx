@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 
 /**
  * K-KUT Playback / Redemption Page — /k/[id]
@@ -156,13 +157,10 @@ export default function KKutPlayPage({ params }: { params: Promise<{ id: string 
               </div>
 
               {/* Audio player */}
-              <audio
-                controls
+              <EofSignatureAudio
                 src={data.signed_url}
                 className="w-full rounded"
-              >
-                Your browser does not support audio playback.
-              </audio>
+              />
 
               {data.expires_in > 0 && (
                 <p className="text-xs text-[#C8A882]/60 text-center">

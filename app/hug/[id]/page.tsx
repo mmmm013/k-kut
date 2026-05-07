@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 type HugRecord = {
   id?: string;
   audio_url?: string;
@@ -89,10 +90,10 @@ export default function HugPage({ params }: { params: { id: string } }) {
         </p>
 
         {audioUrl ? (
-          <audio controls preload="metadata" className="mt-8 w-full">
-            <source src={audioUrl} type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
+          <EofSignatureAudio
+                src={audioUrl}
+                className="mt-8 w-full"
+              />
         ) : (
           <div className="mt-8 rounded-2xl border border-[#d6a400]/30 bg-[#160d08] p-5 text-[#ffd36a]">
             Audio is being prepared for this HUG.

@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 
 /**
  * mini-KUT View Page — /mkut/[id]
@@ -129,13 +130,10 @@ export default function MiniKutPage({ params }: { params: Promise<{ id: string }
               </div>
 
               {/* Audio player */}
-              <audio
-                controls
+              <EofSignatureAudio
                 src={data.signed_url}
                 className="w-full rounded"
-              >
-                Your browser does not support audio playback.
-              </audio>
+              />
 
               {data.duration_ms && (
                 <p className="text-xs text-[#C8A882]/60 text-center">

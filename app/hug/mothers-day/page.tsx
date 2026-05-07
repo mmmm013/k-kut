@@ -1,5 +1,6 @@
 "use client";
 
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 let activeKkutAudio: HTMLAudioElement | null = null;
 
 function stopAllAudio() {
@@ -530,22 +531,18 @@ export default function HomePage() {
                         </button>
                       </div>
 
-                      <audio
-                        ref={(el) => {
+                      <EofSignatureAudio
+                        audioRef={(el) => {
                           audioRefs.current[demo.id] = el;
                         }}
-                        controls
-                        preload="metadata"
+                        src={demo.audioSrc}
+                        className="mt-4 w-full"
                         onPlay={(event) => {
                           stopOtherDemoAudio(event.currentTarget);
                           show(`You are hearing ${demo.title}.`);
                         }}
-                        className="mt-4 w-full"
                         onEnded={() => show("Demo finished. Choose this HUG if it feels right.")}
-                      >
-                        <source src={demo.audioSrc} type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                      </audio>
+                      />
                     </div>
                   );
                 })}

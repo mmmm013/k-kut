@@ -1,3 +1,4 @@
+import EofSignatureAudio from "@/components/EofSignatureAudio";
 export const metadata = {
   title: "Cindy, this is for you.",
   description: "A private real-music K-KUT HUG.",
@@ -33,17 +34,10 @@ export default function RecipientHugPage() {
               A real music moment
             </h2>
 
-            <audio
-              controls
-              preload="metadata"
-              className="mt-6 w-full rounded-xl border border-amber-300/25 bg-[#1A120B] p-3"
-            >
-              <source
+            <EofSignatureAudio
                 src="/mothers-day/samples/thank-you-chorus-sample.mp3"
-                type="audio/mpeg"
+                className="mt-6 w-full rounded-xl border border-amber-300/25 bg-[#1A120B] p-3"
               />
-              Your browser does not support the audio element.
-            </audio>
           </div>
 
           <p className="mt-6 text-sm font-bold leading-relaxed text-amber-50/60">
