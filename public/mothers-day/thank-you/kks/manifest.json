@@ -2,7 +2,7 @@
   "program": "Mother's Day Thank You",
   "launch_status": "ready",
   "product_rule": "One K-KUT per purchase. Buyers may purchase multiple K-KUTs through separate purchases.",
-  "public_rule": "No mKs / no mini-KUTs in buyer flow.",
+  "public_rule": "Only K-KUTs in buyer flow.",
   "song_first_copy": "Listen first. Play the Mother’s Day Thank You song and listen for the special parts. Each K-KUT is one special cut from the song.",
   "twinkle_status": "backlog",
   "kks": [

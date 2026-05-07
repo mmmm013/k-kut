@@ -1,7 +1,7 @@
 {
   "program": "Mother's Day Thank You",
   "launch_status": "expanded",
-  "public_rule": "No mKs / no mini-KUTs in buyer flow.",
+  "public_rule": "Only K-KUTs in buyer flow.",
   "purchase_rule": "One K-KUT per purchase. Buyers may purchase multiple K-KUTs through separate purchases.",
   "price_tiers": {
     "premium": "Longer featured or multi-section K-KUT.",

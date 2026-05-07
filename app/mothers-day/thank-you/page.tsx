@@ -469,7 +469,7 @@ export default function MothersDayThankYouPage() {
           <h2 className="text-2xl font-black">What you are buying</h2>
           <p className="mt-3 leading-7 text-[#e4c89b]">
             A K-KUT is a selected emotional cut from the real song. No artificial
-            final vocals. No mini-KUTs in this buyer flow. No mKs in this buyer
+            final vocals. Only K-KUTs in this buyer flow. No internal/backend formats in this buyer
             flow.
           </p>
         </section>
