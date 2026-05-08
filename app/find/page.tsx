@@ -1,39 +1,49 @@
 import Link from "next/link";
 
-import EofSignatureAudio from "@/components/EofSignatureAudio";
-const GUIDE_OPTIONS = [
+const GUIDE_PATHS = [
   {
-    title: "Send warmth",
-    description: "For gratitude, love, care, and the quiet things people remember.",
-    href: "/hug/mothers-day",
+    title: "Personal HUGs",
+    description:
+      "For love, thanks, birthdays, apology, comfort, encouragement, friendship, family, and real human moments.",
+    href: "/personal",
+    cta: "Browse Personal →",
   },
   {
-    title: "Send support",
-    description: "For someone who needs to feel seen, heard, or carried.",
-    href: "/hug/mothers-day",
+    title: "Holiday HUGs",
+    description:
+      "For Mother’s Day, Father’s Day, Valentine’s Day, Thanksgiving, Christmas, New Year’s, and seasonal moments.",
+    href: "/holiday",
+    cta: "Browse Holiday →",
   },
   {
-    title: "Send repair",
-    description: "For apology, longing, distance, and words that are hard to say.",
+    title: "Current Mother’s Day HUG",
+    description:
+      "Use the live Mother’s Day path now. Hear the song-section samples and choose the private HUG link to send.",
     href: "/hug/mothers-day",
+    cta: "Open Mother’s Day →",
   },
 ];
 
-const KK_SAMPLES = [
+const FEELING_PATHS = [
   {
-    title: "Opening feeling",
-    subtitle: "A gentle first moment for warmth and gratitude.",
-    audioUrl: "/mothers-day/samples/thank-you-kk-opening.mp3",
+    title: "Warmth",
+    examples: "Thank you, love, care, appreciation, support.",
+    href: "/personal/thank-you",
   },
   {
-    title: "Chorus feeling",
-    subtitle: "A stronger song-section moment for love and appreciation.",
-    audioUrl: "/mothers-day/samples/thank-you-chorus-sample.mp3",
+    title: "Celebration",
+    examples: "Birthday, anniversary, congratulations, friendship.",
+    href: "/personal/birthday",
   },
   {
-    title: "Final feeling",
-    subtitle: "A closing moment for memory, thanks, and lasting love.",
-    audioUrl: "/mothers-day/samples/thank-you-outro-sample.mp3",
+    title: "Repair",
+    examples: "Apology, longing, distance, hard feelings, reconnection.",
+    href: "/personal/apology",
+  },
+  {
+    title: "Seasonal",
+    examples: "Mother’s Day, Father’s Day, holidays, family traditions.",
+    href: "/holiday",
   },
 ];
 
@@ -43,34 +53,33 @@ export default function FindPage() {
       <section className="mx-auto max-w-6xl">
         <div className="rounded-[2rem] border border-[#D4A017]/35 bg-[#24180F] p-7 shadow-2xl sm:p-10">
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#D4A017]">
-            MC-BOT Guide
+            Find the right words
           </p>
 
           <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-7xl">
-            Pick the feeling first.
+            Start with the feeling.
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">
-            I’ll guide you to the right Mother’s Day K-KUT HUG. Start with the
-            feeling, hear real music samples, then choose the private HUG link
-            you want to send.
+            K-KUT helps you choose a focused music moment for what you want to
+            send. Pick the kind of moment first, then narrow into the right HUG.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {GUIDE_OPTIONS.map((option) => (
+            {GUIDE_PATHS.map((path) => (
               <Link
-                key={option.title}
-                href={option.href}
+                key={path.title}
+                href={path.href}
                 className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 transition hover:border-[#FFD36A] hover:bg-[#2A180D]"
               >
                 <h2 className="text-2xl font-black text-[#FFD36A]">
-                  {option.title}
+                  {path.title}
                 </h2>
                 <p className="mt-3 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-                  {option.description}
+                  {path.description}
                 </p>
                 <p className="mt-5 text-sm font-black text-[#FFD36A]">
-                  Continue →
+                  {path.cta}
                 </p>
               </Link>
             ))}
@@ -79,47 +88,59 @@ export default function FindPage() {
 
         <section className="mt-10 rounded-[2rem] border border-[#D4A017]/30 bg-[#24180F] p-7 sm:p-10">
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#D4A017]">
-            Listen first
+            Feeling paths
           </p>
 
           <h2 className="mt-4 text-4xl font-black text-[#FFD36A]">
-            Hear Mother’s Day K-KUT moments
+            What kind of moment is this?
           </h2>
 
           <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-[#F5E6C8]/75">
-            These are public samples only. The final HUG is sent as a private
-            link. No raw downloads.
+            Choose the closest path. The system can grow from here into more
+            guided listening, more categories, and more refined HUG options.
           </p>
 
-          <div className="mt-7 grid gap-5">
-            {KK_SAMPLES.map((sample) => (
-              <article
-                key={sample.title}
-                className="rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"
+          <div className="mt-7 grid gap-4 sm:grid-cols-2">
+            {FEELING_PATHS.map((path) => (
+              <Link
+                key={path.title}
+                href={path.href}
+                className="rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5 transition hover:border-[#FFD36A] hover:bg-[#2A180D]"
               >
                 <h3 className="text-2xl font-black text-[#FFD36A]">
-                  {sample.title}
+                  {path.title}
                 </h3>
-
-                <p className="mt-2 text-sm font-bold text-[#C8A882]">
-                  {sample.subtitle}
+                <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
+                  {path.examples}
                 </p>
-
-                <EofSignatureAudio
-                src={sample.audioUrl}
-                className="mt-5 w-full rounded-xl border border-[#D4A017]/25 bg-[#1A120B] p-3"
-              />
-
-                <Link
-                  href="/hug/mothers-day"
-                  className="mt-5 inline-block rounded-xl border border-[#D4A017] px-5 py-3 text-sm font-black text-[#FFD36A] transition hover:bg-[#D4A017]/10"
-                >
-                  Choose a Mother’s Day HUG →
-                </Link>
-              </article>
+                <p className="mt-5 text-sm font-black text-[#FFD36A]">
+                  Continue →
+                </p>
+              </Link>
             ))}
           </div>
         </section>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/"
+            className="rounded-full border border-[#D4A017]/35 px-5 py-3 text-sm font-black text-[#FFD36A] transition hover:bg-[#D4A017]/10"
+          >
+            Home
+          </Link>
+          <Link
+            href="/som"
+            className="rounded-full border border-[#D4A017]/35 px-5 py-3 text-sm font-black text-[#FFD36A] transition hover:bg-[#D4A017]/10"
+          >
+            Story of Music
+          </Link>
+          <Link
+            href="/invention"
+            className="rounded-full border border-[#D4A017]/35 px-5 py-3 text-sm font-black text-[#FFD36A] transition hover:bg-[#D4A017]/10"
+          >
+            Invention
+          </Link>
+        </div>
       </section>
     </main>
   );
