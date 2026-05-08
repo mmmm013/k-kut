@@ -41,10 +41,10 @@ export default function Home() {
               </div>
 
               <Link
-                href="/som"
+                href="/find"
                 className="mt-9 inline-flex items-center gap-4 rounded-full bg-amber-300 px-8 py-4 text-2xl font-black text-[#2a180d] shadow-lg shadow-amber-500/20 transition hover:bg-amber-200"
               >
-                Start now <span aria-hidden="true">→</span>
+                Find the right words <span aria-hidden="true">→</span>
               </Link>
 
               <div className="mt-9 border-t border-amber-300/25 pt-5 text-sm font-bold text-amber-50/75 sm:flex sm:items-center sm:justify-between">
