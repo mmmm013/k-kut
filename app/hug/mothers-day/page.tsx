@@ -1,6 +1,9 @@
 "use client";
 
-import EofSignatureAudio from "@/components/EofSignatureAudio";
+import { useMemo, useRef, useState } from "react";
+
+const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
+
 let activeKkutAudio: HTMLAudioElement | null = null;
 
 function stopAllAudio() {
@@ -45,198 +48,246 @@ function playOneAudio(src: string) {
   });
 }
 
-if (typeof window !== "undefined") {
-  window.addEventListener("pagehide", stopAllAudio);
-  window.addEventListener("beforeunload", stopAllAudio);
-}
-
-
-
-
-
-import { useEffect, useMemo, useRef, useState } from "react";
-
-const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
+const GUIDE_AUDIO = {
+  welcome: "/audio/kleigh/guide-final/32-welcome-mother-s-day.m4a",
+  choose: "/audio/kleigh/guide-final/07-choose-feel.m4a",
+  play: "/audio/kleigh/guide-final/24-press-play.m4a",
+  checkout: "/audio/kleigh/guide-final/03-best-hug.m4a",
+} as const;
 
 const DEMOS = [
   {
-    id: "opening",
-    feeling: "Gentle",
-    title: "Thank You — KK Opening",
-    description: "Soft and tender. A gentle start.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
-  },
-  {
     id: "chorus",
     feeling: "Big Heart",
-    title: "Thank You — KK Chorus",
-    description: "Warm, strong, and emotional.",
+    title: "Thank You — Big Heart HUG",
+    shortTitle: "Big Heart",
+    description: "Warm, strong, and emotional. Best when the HUG should feel full, grateful, and loved.",
     audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
+  },
+  {
+    id: "opening",
+    feeling: "Gentle",
+    title: "Thank You — Gentle HUG",
+    shortTitle: "Gentle",
+    description: "Soft and tender. Best when the HUG should feel calm, kind, and close.",
+    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
   },
   {
     id: "outro",
     feeling: "Peaceful",
-    title: "Thank You — KK Outro",
-    description: "A calm and warm closing.",
+    title: "Thank You — Peaceful HUG",
+    shortTitle: "Peaceful",
+    description: "A calm and warm closing. Best when the HUG should feel reflective, comforting, and complete.",
     audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-outro.mp3",
   },
 ] as const;
 
-type Step = 0 | 1 | 2 | 3;
+type DemoId = (typeof DEMOS)[number]["id"];
 
-export default function HomePage() {
-  const kleighVoice: Record<string, string> = {
-    welcome: "/audio/kleigh/guide-final/32-welcome-mother-s-day.m4a",
-    "start-hug": "/audio/kleigh/guide-final/28-start-hug.m4a",
-    "pick-one": "/audio/kleigh/guide-final/07-choose-feel.m4a",
-    "play-demo": "/audio/kleigh/guide-final/24-press-play.m4a",
-    "choose-hug": "/audio/kleigh/guide-final/03-best-hug.m4a",
-  };
+const INTENTS: {
+  id: string;
+  label: string;
+  body: string;
+  demoId: DemoId;
+  order: DemoId[];
+}[] = [
+  {
+    id: "always-there",
+    label: "Thank you for always being there",
+    body: "For steady love, help, patience, and the things Mom did without needing praise.",
+    demoId: "chorus",
+    order: ["chorus", "opening", "outro"],
+  },
+  {
+    id: "made-difference",
+    label: "You made a difference",
+    body: "For a message that needs to feel important, full, and deeply grateful.",
+    demoId: "chorus",
+    order: ["chorus", "outro", "opening"],
+  },
+  {
+    id: "appreciate-everything",
+    label: "I appreciate everything you did",
+    body: "For gratitude that is bigger than one sentence.",
+    demoId: "chorus",
+    order: ["chorus", "opening", "outro"],
+  },
+  {
+    id: "soft-thanks",
+    label: "A soft thank you",
+    body: "For a gentle, tender, quieter expression of thanks.",
+    demoId: "opening",
+    order: ["opening", "chorus", "outro"],
+  },
+  {
+    id: "close-and-kind",
+    label: "Make her feel close and loved",
+    body: "For warmth, care, and a simple emotional connection.",
+    demoId: "opening",
+    order: ["opening", "outro", "chorus"],
+  },
+  {
+    id: "happy-tears",
+    label: "Happy tears",
+    body: "For a HUG that can feel emotional without being heavy.",
+    demoId: "chorus",
+    order: ["chorus", "outro", "opening"],
+  },
+  {
+    id: "peaceful",
+    label: "Peaceful and comforting",
+    body: "For calm gratitude, comfort, reflection, and a warm landing.",
+    demoId: "outro",
+    order: ["outro", "opening", "chorus"],
+  },
+  {
+    id: "miss-you",
+    label: "I miss you, Mom",
+    body: "For distance, memory, longing, or being there when you cannot be there.",
+    demoId: "outro",
+    order: ["outro", "chorus", "opening"],
+  },
+  {
+    id: "simple-classic",
+    label: "Simple classic thank you",
+    body: "For a clear, direct thank-you HUG that does not need extra explanation.",
+    demoId: "opening",
+    order: ["opening", "chorus", "outro"],
+  },
+];
 
-  function playMcBotVoice(clip: string = "welcome") {
-    if (typeof window === "undefined") return;
+type Step = 1 | 2 | 3;
 
-    playOneAudio(kleighVoice[clip] ?? kleighVoice.welcome);
-  }
-
-  function speak(_text: string) {
-    playMcBotVoice("welcome");
-  }
-
-  useEffect(() => {
-    function greetOnFirstInteraction() {
-      if (hasAutoGreetedRef.current) return;
-      hasAutoGreetedRef.current = true;
-      playMcBotVoice("welcome");
-    }
-
-    window.addEventListener("pointerdown", greetOnFirstInteraction, { once: true });
-    window.addEventListener("keydown", greetOnFirstInteraction, { once: true });
-
-    return () => {
-      window.removeEventListener("pointerdown", greetOnFirstInteraction);
-      window.removeEventListener("keydown", greetOnFirstInteraction);
-    };
-  }, []);
-
-  const [step, setStep] = useState<Step>(2);
+export default function MothersDayHugPage() {
+  const [step, setStep] = useState<Step>(1);
   const [typedFeeling, setTypedFeeling] = useState("");
-  const [gotFeeling, setSeedFeeling] = useState("Mom");
-  const [optionIds, setOptionIds] = useState<string[]>(["chorus", "opening", "outro"]);
-  const [selectedId, setSelectedId] = useState<string>("chorus");
-  const [focusTitle, setFocusTitle] = useState<string>("Hear samples");
-  const [focusBody, setFocusBody] = useState<string>(
-    "Press Play on the Mother’s Day HUG samples. Choose the one that feels right, then checkout to order the private HUG link."
+  const [selectedIntentId, setSelectedIntentId] = useState("always-there");
+  const [selectedId, setSelectedId] = useState<DemoId>("chorus");
+  const [optionIds, setOptionIds] = useState<DemoId[]>(["chorus", "opening", "outro"]);
+  const [focusTitle, setFocusTitle] = useState("Choose the feeling first");
+  const [focusBody, setFocusBody] = useState(
+    "Pick the closest Mother’s Day intent. Then hear the matching HUG options before checkout."
   );
 
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
-  const hasAutoGreetedRef = useRef(false);
+
+  const selectedIntent = useMemo(
+    () => INTENTS.find((intent) => intent.id === selectedIntentId) ?? INTENTS[0],
+    [selectedIntentId]
+  );
 
   const options = useMemo(
-    () => optionIds.map((id) => DEMOS.find((demo) => demo.id === id)).filter(Boolean) as typeof DEMOS,
+    () =>
+      optionIds
+        .map((id) => DEMOS.find((demo) => demo.id === id))
+        .filter(Boolean) as typeof DEMOS,
     [optionIds]
   );
 
   const selectedDemo = useMemo(
-    () => DEMOS.find((demo) => demo.id === selectedId) ?? DEMOS[1],
+    () => DEMOS.find((demo) => demo.id === selectedId) ?? DEMOS[0],
     [selectedId]
   );
 
-  const botMessage = useMemo(() => {
-    if (step === 0) {
-      return "Welcome. A HUG is a short real-audio greeting gift for Mom. First, I’ll show you how this works.";
-    }
-
+  const guideMessage = useMemo(() => {
     if (step === 1) {
-      return "Step 1. Tell me how Mom should feel.";
+      return "Step 1. Choose what Mom should feel.";
     }
 
     if (step === 2) {
-      return `Step 2. I got "${gotFeeling}". These are your best HUG options. Press Play on any option, then choose one.`;
+      return `Step 2. You chose “${selectedIntent.label}.” Hear the matching HUG options.`;
     }
 
-    return `Step 3. Good choice. You picked "${selectedDemo.title}". Now checkout to order this HUG.`;
-  }, [step, gotFeeling, selectedDemo.title]);
+    return `Step 3. You selected “${selectedDemo.shortTitle}.” Checkout to order the private HUG link.`;
+  }, [step, selectedIntent.label, selectedDemo.shortTitle]);
 
-  function show(_text: string) {
-    // No BOT guide. Guide is visual guidance only.
+  function playGuide(kind: keyof typeof GUIDE_AUDIO = "welcome") {
+    playOneAudio(GUIDE_AUDIO[kind]);
   }
 
-  function normalizeFeeling(input: string) {
+  function chooseIntent(intent: (typeof INTENTS)[number]) {
+    setSelectedIntentId(intent.id);
+    setSelectedId(intent.demoId);
+    setOptionIds(intent.order);
+    setFocusTitle(intent.label);
+    setFocusBody(intent.body);
+    setStep(2);
+    playGuide("choose");
+  }
+
+  function normalizeTypedFeeling(input: string) {
     const raw = input.trim().toLowerCase();
 
-    if (!raw) {
-      return {
-        got: "loved",
-        optionIds: ["chorus", "opening", "outro"],
-      };
-    }
+    if (!raw) return INTENTS[0];
 
     if (
-      raw.includes("appreciated") ||
-      raw.includes("grateful") ||
-      raw.includes("thank") ||
-      raw.includes("thanks")
+      raw.includes("miss") ||
+      raw.includes("distance") ||
+      raw.includes("far") ||
+      raw.includes("gone") ||
+      raw.includes("memory")
     ) {
-      return {
-        got: "appreciated",
-        optionIds: ["chorus", "opening", "outro"],
-      };
+      return INTENTS.find((intent) => intent.id === "miss-you") ?? INTENTS[0];
     }
 
     if (
-      raw.includes("gentle") ||
-      raw.includes("soft") ||
-      raw.includes("tender")
-    ) {
-      return {
-        got: "gentle",
-        optionIds: ["opening", "chorus", "outro"],
-      };
-    }
-
-    if (
-      raw.includes("peaceful") ||
+      raw.includes("peace") ||
       raw.includes("calm") ||
-      raw.includes("peace")
+      raw.includes("comfort") ||
+      raw.includes("gentle")
     ) {
-      return {
-        got: "peaceful",
-        optionIds: ["outro", "opening", "chorus"],
-      };
+      return INTENTS.find((intent) => intent.id === "peaceful") ?? INTENTS[0];
     }
 
     if (
+      raw.includes("cry") ||
+      raw.includes("tears") ||
       raw.includes("emotional") ||
-      raw.includes("big heart") ||
+      raw.includes("big")
+    ) {
+      return INTENTS.find((intent) => intent.id === "happy-tears") ?? INTENTS[0];
+    }
+
+    if (
+      raw.includes("help") ||
+      raw.includes("there") ||
+      raw.includes("always") ||
+      raw.includes("support")
+    ) {
+      return INTENTS.find((intent) => intent.id === "always-there") ?? INTENTS[0];
+    }
+
+    if (
+      raw.includes("difference") ||
+      raw.includes("matter") ||
+      raw.includes("important")
+    ) {
+      return INTENTS.find((intent) => intent.id === "made-difference") ?? INTENTS[0];
+    }
+
+    if (
+      raw.includes("thank") ||
+      raw.includes("grateful") ||
+      raw.includes("appreciate") ||
       raw.includes("love") ||
       raw.includes("loved")
     ) {
-      return {
-        got: "big heart",
-        optionIds: ["chorus", "outro", "opening"],
-      };
+      return INTENTS.find((intent) => intent.id === "appreciate-everything") ?? INTENTS[0];
     }
 
     return {
-      got: raw,
-      optionIds: ["chorus", "opening", "outro"],
+      id: "typed",
+      label: input.trim(),
+      body: "A custom Mother’s Day feeling. Start with the strongest match, then hear the options.",
+      demoId: "chorus",
+      order: ["chorus", "opening", "outro"],
     };
   }
 
-  function setFocus(title: string, body: string) {
-    setFocusTitle(title);
-    setFocusBody(body);
-  }
-
-  function submitFeeling(value: string) {
-    const result = normalizeFeeling(value);
-    setSeedFeeling(result.got);
-    setOptionIds(result.optionIds);
-    setSelectedId(result.optionIds[0]);
+  function submitTypedFeeling() {
+    const intent = normalizeTypedFeeling(typedFeeling);
+    chooseIntent(intent);
     setTypedFeeling("");
-    setFocus("Good choice", `You picked ${result.got}. Now hear your best HUG options.`);
-    setStep(2);
   }
 
   function stopOtherDemoAudio(current: HTMLAudioElement) {
@@ -252,12 +303,21 @@ export default function HomePage() {
     if (!el) return;
 
     stopOtherDemoAudio(el);
+    el.currentTime = 0;
     el.play().catch(() => {});
+    playGuide("play");
+  }
+
+  function chooseDemo(id: DemoId) {
+    const demo = DEMOS.find((item) => item.id === id) ?? DEMOS[0];
+    setSelectedId(id);
+    setFocusTitle(`${demo.shortTitle} HUG selected`);
+    setFocusBody(demo.description);
+    setStep(3);
+    playGuide("checkout");
   }
 
   async function startCheckout() {
-    show("Preparing your HUG checkout.");
-
     try {
       await fetch("/api/4pe/fulfillment", {
         method: "POST",
@@ -267,19 +327,23 @@ export default function HomePage() {
         body: JSON.stringify({
           selected_hug_id: selectedDemo.id,
           selected_hug_title: selectedDemo.title,
+          selected_intent_id: selectedIntent.id,
+          selected_intent_label: selectedIntent.label,
           source_page: "/hug/mothers-day",
           product_family: "HUG",
           holiday_set: "mothers_day",
           source_song: "Thank You",
           sentiment_product_type: "HUG",
-          typed_feeling: gotFeeling,
-          interpreted_feeling: gotFeeling,
-          delivery_preference: "own_text",
+          typed_feeling: selectedIntent.label,
+          interpreted_feeling: selectedIntent.label,
+          delivery_preference: "private_link",
           consent_sms: false,
           metadata: {
             checkout_handoff: true,
             no_download: true,
             sms_enabled: false,
+            sms_note: "SMS is pending A2P approval. Use email/manual private link delivery until verified.",
+            buyer_page_is_not_recipient_page: true,
           },
         }),
       });
@@ -291,17 +355,14 @@ export default function HomePage() {
   }
 
   const progress = [
-    { n: 1, label: "Learn" },
-    { n: 2, label: "Tell Guide" },
-    { n: 3, label: "See options" },
-    { n: 4, label: "Checkout" },
+    { n: 1, label: "Choose feeling" },
+    { n: 2, label: "Hear options" },
+    { n: 3, label: "Checkout" },
   ];
-
-  const activeProgress = step === 0 ? 1 : step === 1 ? 2 : step === 2 ? 3 : 4;
 
   return (
     <main className="min-h-screen bg-[#261208] text-[#fff6e8]">
-      <section className="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12">
+      <section className="mx-auto max-w-5xl px-5 py-8 sm:px-8 sm:py-12">
         <div className="rounded-[2rem] border border-amber-300/20 bg-[#3a1f0f] p-6 shadow-2xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-amber-200">
@@ -319,11 +380,11 @@ export default function HomePage() {
 
           <div className="mt-5 rounded-[1.5rem] border border-amber-300/30 bg-black/25 p-5">
             <p className="text-lg font-black text-amber-100">
-              Get a private HUG link Mom can open — no file download.
+              Start with what you want Mom to feel.
             </p>
             <p className="mt-2 text-base font-bold leading-7 text-amber-50/80">
-              Send by email, DM, social link, or text from your own phone.
-              No shipping. No app. No file download. Just a real music moment Mom can open instantly.
+              Choose the emotional intent, hear real K-KUT song-section HUG options,
+              then checkout to order a private HUG link Mom can open. No app. No file download.
             </p>
           </div>
 
@@ -331,17 +392,16 @@ export default function HomePage() {
             <p className="text-sm font-black uppercase tracking-[0.18em]">
               Guide
             </p>
-            <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
+            <p className="mt-2 text-2xl font-black leading-tight">{guideMessage}</p>
 
-              <button
-                type="button"
-                onClick={() => playMcBotVoice("welcome")}
-                className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
-              >
-                Play Guide
-              </button>
+            <button
+              type="button"
+              onClick={() => playGuide("welcome")}
+              className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
+            >
+              Play Guide
+            </button>
           </div>
-
 
           <section className="mt-6 rounded-[1.5rem] border border-amber-300/35 bg-amber-300/10 p-5">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
@@ -351,10 +411,9 @@ export default function HomePage() {
               This is the order path — not the final HUG link.
             </h2>
             <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
-              Choose a HUG here and checkout. After checkout, the private
-              recipient HUG link is prepared separately. That recipient link is
-              what Mom opens. The recipient page has no checkout, no searching,
-              and no buying pressure.
+              Choose a HUG here and checkout. After checkout, the private recipient
+              HUG link is prepared separately. That recipient link is what Mom opens.
+              The recipient page has no checkout, no searching, and no buying pressure.
             </p>
           </section>
 
@@ -366,265 +425,233 @@ export default function HomePage() {
             <p className="mt-3 text-lg leading-8 text-amber-50/80">{focusBody}</p>
           </section>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="mt-6 grid grid-cols-3 gap-3">
             {progress.map((item) => {
-              const active = activeProgress === item.n;
+              const active = step === item.n;
 
               return (
                 <div
                   key={item.n}
-                  className={`rounded-[1.25rem] border px-4 py-4 text-center ${
+                  className={`rounded-[1.25rem] border px-3 py-4 text-center ${
                     active
                       ? "border-amber-300 bg-amber-300 text-[#2a180d]"
                       : "border-amber-200/20 bg-white/5 text-amber-50/70"
                   }`}
                 >
-                  <p className="text-sm font-black uppercase tracking-[0.18em]">
+                  <p className="text-xs font-black uppercase tracking-[0.16em]">
                     Step {item.n}
                   </p>
-                  <p className="mt-2 text-lg font-black">{item.label}</p>
+                  <p className="mt-2 text-base font-black">{item.label}</p>
                 </div>
               );
             })}
           </div>
 
-          {step === 0 && (
-            <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-              <h2 className="text-3xl font-black">What is a HUG?</h2>
-              <p className="mt-4 text-lg leading-8 text-amber-50/85">
-                A HUG is a short real-audio greeting gift for Mom.
-              </p>
-
-              <div className="mt-6 grid gap-3">
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  ♪ Tell Guide how Mom should feel.
-                </div>
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  2. See a few HUG options.
-                </div>
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  ♩ Choose one HUG.
-                </div>
-                <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  ♫ Checkout.
-                </div>
+          <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
+            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                  Feeling choices
+                </p>
+                <h2 className="mt-2 text-3xl font-black">
+                  What should this HUG say without making you write it all?
+                </h2>
               </div>
-
               <button
                 type="button"
                 onClick={() => {
-                    playMcBotVoice("start-hug");
-                    setFocus("Start the HUG", "Now choose how you want Mom to feel.");
-                    setStep(1);
-                  }}
-                className="mt-6 rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
-              >
-                Start
-              </button>
-            </section>
-          )}
-
-          {step === 1 && (
-            <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-              <h2 className="text-3xl font-black">How should Mom feel?</h2>
-
-              <form
-                className="mt-5 flex flex-col gap-3 sm:flex-row"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  playMcBotVoice("pick-one");
-                  setFocus("Feeling entered", "I’ll use that to find your best HUG options.");
-                  submitFeeling(typedFeeling);
+                  setStep(1);
+                  setFocusTitle("Choose the feeling first");
+                  setFocusBody("Pick the closest Mother’s Day intent. Then hear the matching HUG options before checkout.");
                 }}
+                className="rounded-2xl border border-amber-200/20 px-5 py-3 text-sm font-black text-amber-50/80 transition hover:bg-white/10"
               >
-                <input
-                  value={typedFeeling}
-                  onChange={(event) => setTypedFeeling(event.target.value)}
-                  placeholder='Example: "appreciated"'
-                  className="min-h-14 flex-1 rounded-2xl border border-amber-200/20 bg-black/20 px-4 text-lg text-amber-50 outline-none placeholder:text-amber-100/40"
-                />
+                Start over
+              </button>
+            </div>
 
-                <button
-                  type="submit"
-                  className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                >
-                  Show options
-                </button>
-              </form>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <input
+                value={typedFeeling}
+                onChange={(event) => setTypedFeeling(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    submitTypedFeeling();
+                  }
+                }}
+                placeholder="Example: I want her to feel appreciated"
+                className="min-h-[3.5rem] flex-1 rounded-2xl border border-amber-300/25 bg-black/30 px-5 py-4 text-base font-bold text-amber-50 outline-none placeholder:text-amber-50/45"
+              />
+              <button
+                type="button"
+                onClick={submitTypedFeeling}
+                className="rounded-2xl bg-amber-300 px-6 py-4 text-base font-black text-[#2a180d] transition hover:bg-amber-200"
+              >
+                Match feeling
+              </button>
+            </div>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                {["Loved", "Appreciated", "Gentle", "Peaceful", "Big Heart"].map((feeling) => (
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {INTENTS.map((intent) => {
+                const active = selectedIntentId === intent.id;
+
+                return (
                   <button
-                    key={feeling}
+                    key={intent.id}
                     type="button"
-                    onClick={() => {
-                      playMcBotVoice("pick-one");
-                      setFocus("Feeling picked", `You picked ${feeling}. I’ll show matching HUG options.`);
-                      submitFeeling(feeling);
-                    }}
-                    className="rounded-2xl border border-amber-200/20 bg-black/20 px-4 py-4 text-lg font-black transition hover:bg-white/10"
+                    onClick={() => chooseIntent(intent)}
+                    className={`rounded-[1.25rem] border p-5 text-left transition ${
+                      active
+                        ? "border-amber-300 bg-amber-300 text-[#2a180d]"
+                        : "border-amber-300/20 bg-[#251209] text-amber-50 hover:border-amber-300/50 hover:bg-[#30180c]"
+                    }`}
                   >
-                    {feeling}
+                    <p className="text-lg font-black">{intent.label}</p>
+                    <p className={`mt-2 text-sm font-bold leading-6 ${active ? "text-[#2a180d]/75" : "text-amber-50/70"}`}>
+                      {intent.body}
+                    </p>
                   </button>
-                ))}
-              </div>
-            </section>
-          )}
+                );
+              })}
+            </div>
+          </section>
 
-          {step === 2 && (
-            <section className="mt-8">
-              <h2 className="text-3xl font-black">Your HUG options</h2>
-              <p className="mt-3 text-lg leading-8 text-amber-50/80">
-                Guide got: <span className="font-black text-amber-200">{gotFeeling}</span>
-              </p>
+          <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-black/25 p-6">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              HUG options
+            </p>
+            <h2 className="mt-2 text-3xl font-black">
+              Hear the best matches for this feeling.
+            </h2>
+            <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
+              Press Play first. Then choose the HUG that feels right.
+            </p>
 
-              <p className="mt-4 rounded-2xl bg-black/25 px-4 py-3 text-base font-bold text-amber-100">
-                If this HUG does not feel right, tell Guide.
-              </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {options.map((demo) => {
+                const selected = selectedId === demo.id;
 
-              <div className="mt-5 grid gap-4">
-                {options.map((demo) => {
-                  const chosen = selectedId === demo.id;
+                return (
+                  <article
+                    key={demo.id}
+                    className={`rounded-[1.5rem] border p-5 shadow-xl ${
+                      selected
+                        ? "border-amber-300 bg-[#3a1f0f]"
+                        : "border-amber-300/20 bg-[#251209]"
+                    }`}
+                  >
+                    <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                      {demo.feeling}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-black text-amber-50">
+                      {demo.title}
+                    </h3>
+                    <p className="mt-3 text-sm font-bold leading-6 text-amber-50/75">
+                      {demo.description}
+                    </p>
 
-                  return (
-                    <div
-                      key={demo.id}
-                      className={`rounded-[1.5rem] border p-6 ${
-                        chosen
-                          ? "border-amber-300 bg-amber-300/10"
-                          : "border-amber-200/20 bg-white/5"
-                      }`}
-                    >
-                      <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                        {demo.feeling}
-                      </p>
+                    <audio
+                      ref={(el) => {
+                        audioRefs.current[demo.id] = el;
+                      }}
+                      src={demo.audioSrc}
+                      preload="metadata"
+                      className="mt-5 w-full"
+                      controls
+                      onPlay={(event) => stopOtherDemoAudio(event.currentTarget)}
+                    />
 
-                      <h3 className="mt-2 text-2xl font-black">{demo.title}</h3>
-                      <p className="mt-2 text-base leading-7 text-amber-50/75">
-                        {demo.description}
-                      </p>
+                    <div className="mt-5 flex flex-col gap-3">
+                      <button
+                        type="button"
+                        onClick={() => playDemo(demo.id)}
+                        className="rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
+                      >
+                        Play {demo.shortTitle}
+                      </button>
 
-                      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                        <button
-                          type="button"
-                          onClick={() => {
-                          playMcBotVoice("play-demo");
-                          setFocus("Listen first", `You are playing ${demo.title}. If it feels right, choose this HUG.`);
-                          playDemo(demo.id);
-                        }}
-                          className="rounded-2xl bg-amber-300 px-6 py-4 text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                        >
-                          Play demo
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => {
-                            playMcBotVoice("choose-hug");
-                            setFocus("HUG selected", `${demo.title} is selected. Checkout is ready.`);
-                            setSelectedId(demo.id);
-                            setStep(3);
-                          }}
-                          className="rounded-2xl border border-amber-200/30 px-6 py-4 text-lg font-black text-amber-50 transition hover:bg-white/10"
-                        >
-                          Choose this HUG
-                        </button>
-                      </div>
-
-                      <EofSignatureAudio
-                        audioRef={(el) => {
-                          audioRefs.current[demo.id] = el;
-                        }}
-                        src={demo.audioSrc}
-                        className="mt-4 w-full"
-                        onPlay={(event) => {
-                          stopOtherDemoAudio(event.currentTarget);
-                          show(`You are hearing ${demo.title}.`);
-                        }}
-                        onEnded={() => show("Demo finished. Choose this HUG if it feels right.")}
-                      />
+                      <button
+                        type="button"
+                        onClick={() => chooseDemo(demo.id)}
+                        className={
+                          selected
+                            ? "rounded-2xl bg-amber-300 px-5 py-3 text-center text-sm font-black text-[#2a180d] transition hover:bg-amber-200"
+                            : "rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
+                        }
+                      >
+                        {selected ? "Selected HUG" : "Choose this HUG"}
+                      </button>
                     </div>
-                  );
-                })}
-              </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
 
-              <div className="mt-5">
-                <button
-                  type="button"
-                  onClick={() => {
-                    playMcBotVoice("start-hug");
-                    setFocus("Start the HUG", "Now choose how you want Mom to feel.");
-                    setStep(1);
-                  }}
-                  className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-                >
-                  Back
-                </button>
-              </div>
-            </section>
-          )}
+          <section className="mt-8 rounded-[1.5rem] border border-amber-300/30 bg-[#140904] p-6">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Checkout
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-amber-50">
+              Order the private HUG link.
+            </h2>
+            <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
+              Selected feeling: <span className="text-amber-200">{selectedIntent.label}</span>
+              <br />
+              Selected HUG: <span className="text-amber-200">{selectedDemo.title}</span>
+            </p>
 
-          {step === 3 && (
-            <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-              <h2 className="text-3xl font-black">Checkout</h2>
+            <div className="mt-6 rounded-2xl border border-amber-300/25 bg-black/25 p-5">
+              <p className="text-base font-black text-amber-100">
+                Delivery note
+              </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-amber-50/75">
+                SMS delivery is pending carrier approval. Until then, your private HUG
+                link can be delivered by email or sent manually by you through text, DM,
+                or social link.
+              </p>
+            </div>
 
-              <div className="mt-5 rounded-2xl bg-black/20 p-5">
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                  Your chosen HUG
-                </p>
-                <h3 className="mt-2 text-3xl font-black">{selectedDemo.title}</h3>
-                <p className="mt-2 text-base leading-7 text-amber-50/75">
-                  {selectedDemo.description}
-                </p>
-              </div>
-
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <button
                 type="button"
                 onClick={startCheckout}
-                className="mt-5 inline-flex w-full justify-center rounded-2xl bg-amber-300 px-6 py-4 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+                className="rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                Checkout · $7.99
+                Checkout for this HUG
               </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStep(1);
+                  setTypedFeeling("");
+                  setFocusTitle("Choose the feeling first");
+                  setFocusBody("Pick the closest Mother’s Day intent. Then hear the matching HUG options before checkout.");
+                }}
+                className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
+              >
+                Start over
+              </button>
+            </div>
 
-              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => setStep(2)}
-                  className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-                >
-                  See options again
-                </button>
+            <p className="mt-5 text-sm leading-7 text-amber-50/65">
+              One HUG per order. If you want another HUG, return and choose another one.
+            </p>
+          </section>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setStep(1);
-                    setTypedFeeling("");
-                  }}
-                  className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-                >
-                  Start over
-                </button>
-              </div>
-
-              <p className="mt-5 text-sm leading-7 text-amber-50/65">
-                One HUG per order. If you want another HUG, return and choose another one.
-              </p>
-            </section>
-          )}
-        <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-4 text-center">
-          <p className="text-sm font-bold leading-6 text-amber-50/70">
-            A HUG uses a focused song moment. For full tracks, artists, and more music, visit{" "}
-            <a
-              href="https://www.gputnammusic.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-black text-amber-200 underline underline-offset-4"
-            >
-              G Putnam Music
-            </a>.
-          </p>
-        </div>
+          <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-4 text-center">
+            <p className="text-sm font-bold leading-6 text-amber-50/70">
+              A HUG uses a focused song moment. For full tracks, artists, and more music, visit{" "}
+              <a
+                href="https://www.gputnammusic.com"
+                target="_blank"
+                rel="noreferrer"
+                className="font-black text-amber-200 underline underline-offset-4"
+              >
+                G Putnam Music
+              </a>.
+            </p>
+          </div>
 
           <div className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
@@ -641,7 +668,6 @@ export default function HomePage() {
               </a>.
             </p>
           </div>
-
         </div>
       </section>
     </main>
