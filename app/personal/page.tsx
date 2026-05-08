@@ -49,24 +49,54 @@ export default function PersonalPage() {
           </div>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map(([slug, title, line]) => (
-              <Link
-                key={slug}
-                href={`/personal/${slug}`}
-                className="rounded-[1.5rem] border border-amber-300/20 bg-[#251209] p-5 shadow-xl transition hover:border-amber-300/50 hover:bg-[#30180c]"
-              >
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                  Personal HUG
-                </p>
-                <h3 className="mt-2 text-2xl font-black text-amber-50">{title}</h3>
-                <p className="mt-2 text-base font-bold leading-7 text-amber-50/75">
-                  {line}
-                </p>
-                <p className="mt-5 text-sm font-black text-amber-200">
-                  Open {title} →
-                </p>
-              </Link>
-            ))}
+            {categories.map(([slug, title, line]) => {
+              const isLiveThankYou = slug === "thank-you";
+
+              return (
+                <div
+                  key={slug}
+                  className={
+                    isLiveThankYou
+                      ? "rounded-[1.5rem] border border-amber-300/60 bg-[#331706] p-5 shadow-xl shadow-amber-900/20"
+                      : "rounded-[1.5rem] border border-amber-300/20 bg-[#251209] p-5 shadow-xl"
+                  }
+                >
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                    {isLiveThankYou ? "Live Personal HUG" : "Personal HUG"}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-black text-amber-50">{title}</h3>
+                  <p className="mt-2 text-base font-bold leading-7 text-amber-50/75">
+                    {line}
+                  </p>
+
+                  <div className="mt-5 flex flex-col gap-3">
+                    {isLiveThankYou ? (
+                      <>
+                        <Link
+                          href="/hug/mothers-day"
+                          className="rounded-2xl bg-amber-300 px-5 py-3 text-center text-sm font-black text-[#2a180d] transition hover:bg-amber-200"
+                        >
+                          Open live Thank You HUG →
+                        </Link>
+                        <Link
+                          href="/personal/thank-you"
+                          className="rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
+                        >
+                          See Thank You feeling paths
+                        </Link>
+                      </>
+                    ) : (
+                      <Link
+                        href={`/personal/${slug}`}
+                        className="rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
+                      >
+                        Open {title} →
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
