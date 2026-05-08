@@ -76,6 +76,41 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="border-t border-amber-300/25 px-7 py-6 sm:px-10">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Choose your path
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <a
+                href="/personal"
+                className="rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5 transition hover:border-amber-300/60 hover:bg-white/10"
+              >
+                <p className="text-2xl font-black text-amber-50">Personal</p>
+                <p className="mt-2 text-sm font-bold leading-6 text-amber-50/75">
+                  Year-round HUGs for love, thanks, birthdays, apology, comfort,
+                  friendship, family, encouragement, and real human moments.
+                </p>
+                <p className="mt-4 text-sm font-black text-amber-200">
+                  Open Personal →
+                </p>
+              </a>
+
+              <a
+                href="/holiday"
+                className="rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5 transition hover:border-amber-300/60 hover:bg-white/10"
+              >
+                <p className="text-2xl font-black text-amber-50">Holiday</p>
+                <p className="mt-2 text-sm font-bold leading-6 text-amber-50/75">
+                  Seasonal HUGs for Mother’s Day, Father’s Day, Valentine’s Day,
+                  Thanksgiving, Christmas, New Year’s, and more.
+                </p>
+                <p className="mt-4 text-sm font-black text-amber-200">
+                  Open Holiday →
+                </p>
+              </a>
+            </div>
+          </div>
+
           <div className="border-t border-amber-300/25 px-7 py-5 sm:px-10">
             <h2 className="text-2xl font-black">K-KUT HUGs &amp; TUGs</h2>
             <p className="mt-2 max-w-3xl text-sm font-bold text-amber-50/75">
