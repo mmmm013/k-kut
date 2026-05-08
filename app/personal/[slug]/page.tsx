@@ -89,6 +89,8 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
     notFound();
   }
 
+  const isThankYou = params.slug === "thank-you";
+
   return (
     <main className="min-h-screen bg-[#150b07] text-[#fff6e8]">
       <section className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
@@ -147,24 +149,52 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
           <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
             Next
           </p>
-          <h2 className="mt-2 text-2xl font-black">Featured HUG samples will go here.</h2>
-          <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-            This page is ready for curated PIX and K-KUT inventory.
-          </p>
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/find"
-              className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-            >
-              Find the Right Words
-            </Link>
-            <Link
-              href="/"
-              className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
-            >
-              Back home
-            </Link>
-          </div>
+
+          {isThankYou ? (
+            <>
+              <h2 className="mt-2 text-2xl font-black">
+                Thank You HUG is live now for Mother’s Day.
+              </h2>
+              <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
+                Start with gratitude, then open the live Mother’s Day HUG path to listen, choose, and send.
+              </p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/hug/mothers-day"
+                  className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                >
+                  Open live Thank You HUG
+                </Link>
+                <Link
+                  href="/holiday/mothers-day"
+                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
+                >
+                  See Mother’s Day feeling paths
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2 className="mt-2 text-2xl font-black">Featured HUG samples will go here.</h2>
+              <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
+                This page is ready for curated PIX and K-KUT inventory.
+              </p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/find"
+                  className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                >
+                  Find the Right Words
+                </Link>
+                <Link
+                  href="/"
+                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
+                >
+                  Back home
+                </Link>
+              </div>
+            </>
+          )}
         </section>
       </section>
     </main>
