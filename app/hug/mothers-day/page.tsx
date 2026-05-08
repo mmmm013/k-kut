@@ -159,7 +159,7 @@ export default function HomePage() {
   }, [step, gotFeeling, selectedDemo.title]);
 
   function show(_text: string) {
-    // No BOT guide. BB-BOT is visual guidance only.
+    // No BOT guide. Guide is visual guidance only.
   }
 
   function normalizeFeeling(input: string) {
@@ -292,7 +292,7 @@ export default function HomePage() {
 
   const progress = [
     { n: 1, label: "Learn" },
-    { n: 2, label: "Tell BB-BOT" },
+    { n: 2, label: "Tell Guide" },
     { n: 3, label: "See options" },
     { n: 4, label: "Checkout" },
   ];
@@ -329,7 +329,7 @@ export default function HomePage() {
 
           <div className="mt-6 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
             <p className="text-sm font-black uppercase tracking-[0.18em]">
-              BB-BOT
+              Guide
             </p>
             <p className="mt-2 text-2xl font-black leading-tight">{botMessage}</p>
 
@@ -338,7 +338,7 @@ export default function HomePage() {
                 onClick={() => playMcBotVoice("welcome")}
                 className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
               >
-                Play MC-BOT Guide
+                Play Guide
               </button>
           </div>
 
@@ -397,7 +397,7 @@ export default function HomePage() {
 
               <div className="mt-6 grid gap-3">
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
-                  ♪ Tell BB-BOT how Mom should feel.
+                  ♪ Tell Guide how Mom should feel.
                 </div>
                 <div className="rounded-2xl bg-black/20 px-4 py-4 text-lg">
                   2. See a few HUG options.
@@ -475,11 +475,11 @@ export default function HomePage() {
             <section className="mt-8">
               <h2 className="text-3xl font-black">Your HUG options</h2>
               <p className="mt-3 text-lg leading-8 text-amber-50/80">
-                BB-BOT got: <span className="font-black text-amber-200">{gotFeeling}</span>
+                Guide got: <span className="font-black text-amber-200">{gotFeeling}</span>
               </p>
 
               <p className="mt-4 rounded-2xl bg-black/25 px-4 py-3 text-base font-bold text-amber-100">
-                If this HUG does not feel right, tell BB-BOT.
+                If this HUG does not feel right, tell Guide.
               </p>
 
               <div className="mt-5 grid gap-4">
