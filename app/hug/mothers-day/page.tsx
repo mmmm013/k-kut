@@ -169,6 +169,12 @@ export default function MothersDayHugPage() {
     "Pick the closest Mother’s Day intent. Then hear the matching HUG options before checkout."
   );
 
+  const [recipientName, setRecipientName] = useState("Mom");
+  const [recipientMessage, setRecipientMessage] = useState(
+    "I picked this K-KUT HUG for you. Thank you for being there in ways words alone cannot fully carry."
+  );
+  const [privateHugLink, setPrivateHugLink] = useState("");
+
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
 
   const selectedIntent = useMemo(
@@ -317,7 +323,38 @@ export default function MothersDayHugPage() {
     playGuide("checkout");
   }
 
+  function makeRecipientSlug(name: string) {
+    const clean = name
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 32);
+
+    const stamp = Date.now().toString(36).slice(-5);
+    return `${clean || "mom"}-${selectedDemo.id}-${stamp}`;
+  }
+
+  function makePrivateHugLink() {
+    const slug = makeRecipientSlug(recipientName);
+    const base =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "https://www.k-kut.com";
+
+    return `${base}/hug/private?name=${encodeURIComponent(
+      recipientName || "Mom"
+    )}&msg=${encodeURIComponent(
+      recipientMessage
+    )}&demo=${encodeURIComponent(selectedDemo.id)}&audio=${encodeURIComponent(
+      selectedDemo.audioSrc
+    )}&slug=${encodeURIComponent(slug)}`;
+  }
+
   async function startCheckout() {
+    const generatedPrivateLink = makePrivateHugLink();
+    setPrivateHugLink(generatedPrivateLink);
+
     try {
       await fetch("/api/4pe/fulfillment", {
         method: "POST",
@@ -340,6 +377,10 @@ export default function MothersDayHugPage() {
           consent_sms: false,
           metadata: {
             checkout_handoff: true,
+            private_hug_link: generatedPrivateLink,
+            recipient_name: recipientName,
+            recipient_message: recipientMessage,
+            selected_hug_audio: selectedDemo.audioSrc,
             no_download: true,
             sms_enabled: false,
             sms_note: "SMS is pending A2P approval. Use email/manual private link delivery until verified.",
@@ -411,8 +452,8 @@ export default function MothersDayHugPage() {
               This is the order path — not the final HUG link.
             </h2>
             <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
-              Choose a HUG here and checkout. After checkout, the private recipient
-              HUG link is prepared separately. That recipient link is what Mom opens.
+              Choose a HUG here and checkout. This page creates the private recipient
+              HUG link before checkout. That recipient link is what Mom opens.
               The recipient page has no checkout, no searching, and no buying pressure.
             </p>
           </section>
@@ -620,6 +661,64 @@ export default function MothersDayHugPage() {
               >
                 Checkout for this HUG
               </button>
+              <div className="rounded-[1.5rem] border border-amber-300/25 bg-black/30 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200/70">
+                  Private recipient HUG link
+                </p>
+                <h3 className="mt-2 text-2xl font-black text-amber-50">
+                  Tell us who opens this HUG.
+                </h3>
+                <p className="mt-2 text-sm font-bold leading-6 text-amber-50/70">
+                  This creates the private link Mom opens after checkout. No checkout,
+                  no searching, and no buying pressure appears on the recipient page.
+                </p>
+
+                <label className="mt-5 block text-sm font-black text-amber-100">
+                  Recipient name
+                  <input
+                    value={recipientName}
+                    onChange={(event) => setRecipientName(event.target.value)}
+                    className="mt-2 w-full rounded-2xl border border-amber-200/20 bg-white px-4 py-3 text-base font-bold text-[#2a180d] outline-none"
+                    placeholder="Mom"
+                  />
+                </label>
+
+                <label className="mt-4 block text-sm font-black text-amber-100">
+                  Short message
+                  <textarea
+                    value={recipientMessage}
+                    onChange={(event) => setRecipientMessage(event.target.value)}
+                    className="mt-2 min-h-28 w-full rounded-2xl border border-amber-200/20 bg-white px-4 py-3 text-base font-bold text-[#2a180d] outline-none"
+                    placeholder="Write the note that appears with the HUG."
+                  />
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => setPrivateHugLink(makePrivateHugLink())}
+                  className="mt-4 w-full rounded-2xl bg-amber-300 px-5 py-4 text-base font-black text-[#2a180d] shadow-lg transition hover:-translate-y-0.5"
+                >
+                  Create private HUG link
+                </button>
+
+                {privateHugLink ? (
+                  <div className="mt-4 rounded-2xl border border-emerald-300/30 bg-emerald-300/10 p-4">
+                    <p className="text-sm font-black text-emerald-100">
+                      Private HUG link created:
+                    </p>
+                    <a
+                      href={privateHugLink}
+                      className="mt-2 block break-words text-sm font-bold text-amber-200 underline"
+                    >
+                      {privateHugLink}
+                    </a>
+                    <p className="mt-2 text-xs font-bold leading-5 text-amber-50/65">
+                      Keep this link for Mom. Checkout still completes the order.
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+
               <button
                 type="button"
                 onClick={() => {
