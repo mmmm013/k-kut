@@ -1,0 +1,231 @@
+{
+  "generated_at": "2026-05-09T05:29:10.318Z",
+  "rule": "Delivery-layer only. Official KK masters and natural outro KKs remain untouched.",
+  "count": 28,
+  "renders": [
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-001-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-001-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3",
+      "source_status": "POSSIBLE_COLD_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-002-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-002-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-003-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-003-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-004-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-004-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-005.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-005.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-005-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-005-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-006-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-006-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-007-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-007-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-008-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-008-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-009.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-009.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-009-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-009-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-010.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-010.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-010-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-010-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-011.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-011.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-011-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-011-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-013.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-013.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-013-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-013-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-014.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-014.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-014-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-014-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-015.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-015.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-015-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-015-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-016.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-016.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-016-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-016-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-017.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-017.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-017-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-017-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-018.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-018.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-018-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-018-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-019.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-019.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-019-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-019-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-020.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-020.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-020-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-020-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-cc-021.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-021.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-cc-021-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-cc-021-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-ch1-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-ch1-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-ch2-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-ch2-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-intro.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-intro.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-intro-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-intro-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-v1a-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-v1a-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-v1c-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-v1c-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-v1d-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-v1d-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-v2a-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-v2a-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    },
+    {
+      "source_file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "source_public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "source_status": "LIKELY_ABRUPT_CC_END",
+      "rendered_file": "public/mothers-day/thank-you/ii-softened/thank-you-sec-v2b-sustain-fade.mp3",
+      "rendered_public_url": "/mothers-day/thank-you/ii-softened/thank-you-sec-v2b-sustain-fade.mp3",
+      "treatment": "copy own final 0.45s note/chord, append short sustain, fade out"
+    }
+  ]
+}
