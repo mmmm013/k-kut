@@ -15,6 +15,8 @@ export default function Home() {
 
               <p className="mt-6 max-w-xl text-xl font-bold text-amber-50/85">
                 A historic audio greeting card.
+
+Mother’s Day is tomorrow — no shipping, no app. Send Mom a private music HUG today.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -44,11 +46,11 @@ export default function Home() {
                 href="/find"
                 className="mt-9 inline-flex items-center gap-4 rounded-full bg-amber-300 px-8 py-4 text-2xl font-black text-[#2a180d] shadow-lg shadow-amber-500/20 transition hover:bg-amber-200"
               >
-                Find the right words <span aria-hidden="true">→</span>
+                Send a Mother’s Day HUG <span aria-hidden="true">→</span>
               </Link>
 
               <div className="mt-9 border-t border-amber-300/25 pt-5 text-sm font-bold text-amber-50/75 sm:flex sm:items-center sm:justify-between">
-                <span>Send by text, DM, social link, or email.</span>
+                <span>No shipping. No app. Send by text, DM, social link, or email.</span>
                 <span className="mt-3 block tracking-[0.35em] text-amber-300 sm:mt-0">
                   k-kut.com
                 </span>
