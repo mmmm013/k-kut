@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AssuranceLink } from "@/components/gpex/AssuranceLink";
 import { notFound } from "next/navigation";
 
 const DEMOS = {
@@ -119,7 +120,10 @@ export default async function DemoContextPage({
             Back to demo home
           </Link>
         </div>
-      </section>
+                <div className="mt-8">
+            <AssuranceLink label="View GPEx Assurance" />
+          </div>
+        </section>
     </main>
   );
 }

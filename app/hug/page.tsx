@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { AssuranceLink, AssurancePermissionBlock } from "@/components/gpex/AssuranceLink";
 import { useEffect, useMemo, useState } from "react";
 
 type Stage =
@@ -14,15 +16,33 @@ type Stage =
 
 const STAGES: Stage[] = ["splash", "cover", "step1", "step2", "step3", "recap", "options", "backcover"];
 
+// PUBLIC BUYER RULE:
+ // /hug is buyer-facing.
+ // Visible guide identity = MC-BOT / BB-BOT / HUG Guide.
+ // GP-BOT may power internal systems, but GP-BOT must not be the public buyer-facing character.
+ // Splash/Cover must not fall back to short GP-BOT prompt audio, because this is the hook point.
 const BOT_AUDIO: Record<Stage, string> = {
-  splash: "/voices/gp-bot/prompts/start-hug.m4a",
-  cover: "/voices/gp-bot/prompts/choose-hug.m4a",
+  splash: "/voices/gp-bot/hug-flow/01-splash-hook.m4a",
+  cover: "/voices/gp-bot/hug-flow/02-cover-hook.m4a",
   step1: "/audio/kleigh/guide-final/07-choose-feel.m4a",
   step2: "/audio/kleigh/guide-final/24-press-play.m4a",
   step3: "/audio/kleigh/guide-final/03-best-hug.m4a",
   recap: "/audio/kleigh/guide-final/31-try-one-feeling.m4a",
   options: "/audio/kleigh/guide-final/22-one-hug-per-order.m4a",
   backcover: "/audio/kleigh/guide-final/28-start-hug.m4a",
+};
+
+const BOT_SCRIPTS: Record<Stage, string> = {
+  splash:
+    "Welcome to K-KUT HUG. This is a new way to send a feeling through real music and your own words. Not a card. Not a download. Not a playlist. A HUG is a private music moment chosen for someone, because sometimes words alone are not enough. I’ll walk you through it one page at a time. First, choose the feeling. Then hear the HUG options. Then add your words and choose how to send it. After you send the first HUG, you may already know who needs the second. Press Begin, and I’ll guide you.",
+  cover:
+    "Here is what makes this different. You are not just picking a song. You are choosing a feeling, hearing real music moments, and sending one as a private HUG. It can say thank you, I love you, I miss you, I’m sorry, I’m proud of you, or I’m here with you. This has not been shared like this before. The first HUG starts now. The second HUG can be for the same person, or for someone else who needs a moment too. Next is Step 1. Choose the feeling.",
+  step1: "Step 1. Choose the feeling you want to send.",
+  step2: "Step 2. Press play and choose the HUG that feels right.",
+  step3: "Step 3. Add your words and delivery details.",
+  recap: "Review complete. These are the steps you finished.",
+  options: "Choose the delivery option: email, text-ready link, or DM/social link.",
+  backcover: "Back cover. Your HUG is ready to move through the 4PE process.",
 };
 
 const FEELINGS = [
@@ -58,6 +78,10 @@ const HUG_OPTIONS = [
 let activeAudio: HTMLAudioElement | null = null;
 
 function stopAllAudio() {
+  if (typeof window !== "undefined" && "speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+
   if (activeAudio) {
     activeAudio.pause();
     activeAudio.currentTime = 0;
@@ -123,8 +147,8 @@ export default function HugPage() {
   );
 
   const guideText = useMemo(() => {
-    if (stage === "splash") return "Welcome. This starts the K-KUT HUG path.";
-    if (stage === "cover") return "A K-KUT HUG helps you send a real music moment with your words.";
+    if (stage === "splash") return "Welcome to K-KUT HUG. This is new, emotional, guided, and built around real music plus your own words.";
+    if (stage === "cover") return "This has not been shared like this before. You are not just picking a song — you are sending a private HUG.";
     if (stage === "step1") return "Step 1. Choose the feeling you want to send.";
     if (stage === "step2") return `Step 2. You chose ${selectedFeeling.label}. Press play and choose the HUG that feels right.`;
     if (stage === "step3") return "Step 3. Add your words and delivery details.";
@@ -207,7 +231,7 @@ export default function HugPage() {
                 and prepared as a private emotional link.
               </p>
               <p className="mt-4 max-w-2xl text-lg font-black text-amber-200">
-                First-time users: buy 1, get 1 free.
+                After you send the first HUG, you may already know who needs the second.
               </p>
               <NavButtons onBack={goBack} onNext={continueNext} nextLabel="Go to Step 1" />
             </Page>
@@ -215,6 +239,18 @@ export default function HugPage() {
 
           {stage === "step1" && (
             <Page title="Step 1 — Choose the feeling" eyebrow="Page 1 / Step 1">
+              <section className="mb-5 rounded-3xl bg-amber-300 p-5 text-[#211004]">
+                <p className="text-xs font-black uppercase tracking-[0.3em]">Permission promise</p>
+                <p className="mt-3 text-lg font-black leading-snug">
+                  We’ll use email or cell only for this HUG transaction. No spam. No hidden use.
+                </p>
+                <Link href="/gpex/assurance" className="mt-3 inline-block text-sm font-black underline underline-offset-4">
+                  View GPEx Assurance
+                </Link>
+              </section>
+
+              <AssurancePermissionBlock />
+
               <div className="grid gap-4 md:grid-cols-2">
                 {FEELINGS.map((feeling) => (
                   <button

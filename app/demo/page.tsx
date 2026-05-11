@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AssuranceLink } from "@/components/gpex/AssuranceLink";
 
 const DEMO_LINKS = [
   ["buyer", "Buyer", "Regular public HUG buyer demo."],
@@ -49,7 +50,10 @@ export default function DemoPage() {
         >
           Open regular HUG flow
         </Link>
-      </section>
+                <div className="mt-8">
+            <AssuranceLink label="View GPEx Assurance" />
+          </div>
+        </section>
     </main>
   );
 }
