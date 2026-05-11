@@ -30,9 +30,11 @@ export const personalCategories = {
       ],
       notes: [
         "Ceremonial, exciting, surprising, and pageant-like within GPMx.",
-        "Pricing and final package tiers must be approved before checkout goes live.",
+        "Wedding Track Pack is a reviewed package and must stay separate from routine $7.99 K-KUT checkout.",
+        "Final audio selections require GPM review before fulfillment.",
         "Future versions may use new KLEIGH / Michael Clay uploads.",
       ],
+      checkoutUrl: "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
     },
   },
   birthday: {

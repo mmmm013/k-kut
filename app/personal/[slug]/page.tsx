@@ -96,6 +96,23 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
               {featuredPackage.line}
             </p>
 
+            {"checkoutUrl" in featuredPackage ? (
+              <div className="mt-5 rounded-[1.25rem] border border-amber-300/25 bg-black/30 p-5">
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                  Package checkout
+                </p>
+                <p className="mt-2 text-base font-bold leading-7 text-amber-50/75">
+                  Wedding Track Pack is a reviewed package. Final audio selections require GPM review before fulfillment.
+                </p>
+                <a
+                  href={featuredPackage.checkoutUrl}
+                  className="mt-4 inline-flex rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                >
+                  Buy Wedding Track Pack
+                </a>
+              </div>
+            ) : null}
+
             <div className="mt-5 grid gap-4 lg:grid-cols-2">
               <div className="rounded-[1.25rem] border border-amber-300/20 bg-black/25 p-5">
                 <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
