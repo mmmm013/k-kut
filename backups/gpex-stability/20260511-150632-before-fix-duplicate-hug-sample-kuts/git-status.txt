@@ -1,0 +1,31 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   app/hug/page.tsx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	3-Factory Manufacturing Proposal..mht
+	Best KUT Facility Structure.mht
+	ChatGPT Image May 7, 2026, 09_39_04 PM.png
+	GPM HUG Chamber System.doc
+	Gpm Hug One Page Town Outreach Proposal.doc
+	Gpm Hug One Page Town Outreach Proposal.mht
+	Gpm Hug Three Shop Manufacturing Proposal.mht
+	Prospective Mfg Plan.mht
+	app/api/bot/moments/gpex-story.html
+	backups/gpex-stability/20260511-150516-before-restore-page-2-audio-correctly/
+	backups/gpex-stability/20260511-150616-before-fix-duplicate-hug-sample-kuts/
+	backups/gpex-stability/20260511-150632-before-fix-duplicate-hug-sample-kuts/
+	main
+	recovery-review/rejected-hug-designs/
+	~$M HUG Chamber System.doc
+	~$m Hug One Page Town Outreach Proposal.doc
+	~$m Hug Three Shop Manufacturing Proposal.mht
+	~$ospective Mfg Plan.mht
+	~$st KUT Facility Structure.mht
+
+no changes added to commit (use "git add" and/or "git commit -a")

@@ -28,17 +28,17 @@ const HUG_SAMPLE_KUTS = [
   },
   {
     kind: "Word KUT",
-    label: "Hear a word-sized HUG sample.",
+    label: "Hear a short word-sized HUG sample.",
     audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
   },
   {
     kind: "Exclamation KUT",
-    label: "Hear an expressive HUG sample.",
+    label: "Hear a short expressive HUG sample.",
     audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
   },
   {
     kind: "Singer Moment KUT",
-    label: "Hear a singer-moment HUG sample.",
+    label: "Hear a real singer-moment HUG sample.",
     audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
   },
 ] as const;
@@ -52,6 +52,59 @@ const KUT_OPTION_TYPES = [
   "Word",
   "Exclamation",
   "Singer laugh",
+];
+
+
+
+const HUG_SAMPLE_KUTS = [
+  {
+    lane: "music category 1",
+    type: "Chorus",
+    label: "Short broadcast-ready chorus sample",
+    audio: "/mothers-day/thank-you/kk1.mp3",
+  },
+  {
+    lane: "music category 2",
+    type: "Verse",
+    label: "Short broadcast-ready verse sample",
+    audio: "/mothers-day/thank-you/kk2.mp3",
+  },
+  {
+    lane: "music category 3",
+    type: "Bridge",
+    label: "Short broadcast-ready bridge sample",
+    audio: "/mothers-day/thank-you/kk3.mp3",
+  },
+  {
+    lane: "music category 4",
+    type: "Hook",
+    label: "Short broadcast-ready hook sample",
+    audio: "/mothers-day/thank-you/kk4.mp3",
+  },
+  {
+    lane: "music category 5",
+    type: "Phrase",
+    label: "Short broadcast-ready phrase sample",
+    audio: "/mothers-day/thank-you/kk5.mp3",
+  },
+  {
+    lane: "music category 6",
+    type: "Word / exclamation",
+    label: "Short broadcast-ready word or exclamation sample",
+    audio: "/mothers-day/thank-you/kk6.mp3",
+  },
+  {
+    lane: "music category 7",
+    type: "short song moment / short KUT",
+    label: "Short promo listen",
+    audio: "/mothers-day/thank-you/kk7.mp3",
+  },
+  {
+    lane: "music category 8",
+    type: "Singer moment",
+    label: "Short broadcast-ready singer moment sample",
+    audio: "/mothers-day/thank-you/kk8.mp3",
+  },
 ];
 
 

@@ -1,0 +1,53 @@
+diff --git a/app/hug/page.tsx b/app/hug/page.tsx
+index 5ba3eab..053e2fc 100644
+--- a/app/hug/page.tsx
++++ b/app/hug/page.tsx
+@@ -1,5 +1,48 @@
+ "use client";
+ 
++const HUG_SAMPLE_KUTS = [
++  {
++    kind: "Chorus KUT",
++    label: "Hear a chorus-sized HUG sample.",
++    audio: "/mothers-day/samples/thank-you-chorus-sample.mp3",
++  },
++  {
++    kind: "Verse KUT",
++    label: "Hear a verse-sized HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
++  },
++  {
++    kind: "Bridge KUT",
++    label: "Hear a bridge-style HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
++  },
++  {
++    kind: "Hook KUT",
++    label: "Hear a hook-style HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
++  },
++  {
++    kind: "Phrase KUT",
++    label: "Hear a phrase-sized HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-005.mp3",
++  },
++  {
++    kind: "Word KUT",
++    label: "Hear a short word-sized HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
++  },
++  {
++    kind: "Exclamation KUT",
++    label: "Hear a short expressive HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
++  },
++  {
++    kind: "Singer Moment KUT",
++    label: "Hear a real singer-moment HUG sample.",
++    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
++  },
++] as const;
++
+ const KUT_OPTION_TYPES = [
+   "Chorus",
+   "Verse",

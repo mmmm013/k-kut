@@ -56,6 +56,59 @@ const KUT_OPTION_TYPES = [
 
 
 
+const HUG_SAMPLE_KUTS = [
+  {
+    lane: "music category 1",
+    type: "Chorus",
+    label: "Short broadcast-ready chorus sample",
+    audio: "",
+  },
+  {
+    lane: "music category 2",
+    type: "Verse",
+    label: "Short broadcast-ready verse sample",
+    audio: "",
+  },
+  {
+    lane: "music category 3",
+    type: "Bridge",
+    label: "Short broadcast-ready bridge sample",
+    audio: "",
+  },
+  {
+    lane: "music category 4",
+    type: "Hook",
+    label: "Short broadcast-ready hook sample",
+    audio: "",
+  },
+  {
+    lane: "music category 5",
+    type: "Phrase",
+    label: "Short broadcast-ready phrase sample",
+    audio: "",
+  },
+  {
+    lane: "music category 6",
+    type: "Word / exclamation",
+    label: "Short broadcast-ready word or exclamation sample",
+    audio: "",
+  },
+  {
+    lane: "music category 7",
+    type: "short song moment / short KUT",
+    label: "Short promo listen",
+    audio: "",
+  },
+  {
+    lane: "music category 8",
+    type: "Singer moment",
+    label: "Short broadcast-ready singer moment sample",
+    audio: "",
+  },
+];
+
+
+
 import Link from "next/link";
 import { AssuranceLink, AssurancePermissionBlock } from "@/components/gpex/AssuranceLink";
 import { useEffect, useMemo, useState } from "react";
