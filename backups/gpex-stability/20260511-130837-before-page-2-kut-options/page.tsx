@@ -1,28 +1,5 @@
 "use client";
 
-const KUT_OPTION_TYPES = [
-  "Chorus",
-  "Verse",
-  "Bridge",
-  "Hook",
-  "Phrase",
-  "Word",
-  "Exclamation",
-  "Singer laugh",
-];
-
-const GPM_VARIETY_LANES = [
-  "Writer / performer lane 1",
-  "Writer / performer lane 2",
-  "Writer / performer lane 3",
-  "Writer / performer lane 4",
-  "Writer / performer lane 5",
-  "Writer / performer lane 6",
-  "Writer / performer lane 7",
-  "Writer / performer lane 8",
-];
-
-
 import Link from "next/link";
 import { AssuranceLink, AssurancePermissionBlock } from "@/components/gpex/AssuranceLink";
 import { useEffect, useMemo, useState } from "react";
@@ -144,7 +121,6 @@ function prevStage(stage: Stage): Stage {
 }
 
 export default function HugPage() {
-  const [activeVarietyLane, setActiveVarietyLane] = useState(0);
   const [stage, setStage] = useState<Stage>("splash");
   const [selectedFeeling, setSelectedFeeling] = useState(FEELINGS[0]);
   const [selectedHug, setSelectedHug] = useState(HUG_OPTIONS[0]);
@@ -187,17 +163,6 @@ export default function HugPage() {
       window.removeEventListener("touchstart", unlock);
     };
   }, [stage]);
-
-  useEffect(() => {
-    if (stage !== "cover") return;
-
-    const timer = window.setInterval(() => {
-      setActiveVarietyLane((current) => (current + 1) % GPM_VARIETY_LANES.length);
-    }, 1800);
-
-    return () => window.clearInterval(timer);
-  }, [stage]);
-
 
   function go(stageName: Stage) {
     stopAllAudio();
@@ -243,35 +208,16 @@ export default function HugPage() {
           )}
 
           {stage === "cover" && (
-            <Page title="What can a HUG send?">
-            <div className="rounded-2xl bg-amber-300 px-6 py-4 text-sm font-black leading-relaxed text-[#211004]">
-              All HUG music options come from broadcast-ready, ASCAP-registered GPM tracks.
-              A HUG can carry the part of a real performance that best matches the feeling.
-            </div>
-
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
-              {KUT_OPTION_TYPES.map((type) => (
-                <div key={type} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
-                  <p className="text-lg font-black text-amber-100">{type}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 rounded-2xl bg-amber-300 px-6 py-4 text-sm font-black leading-relaxed text-[#211004]">
-              MC-BOT will present variety from distinct GPM writer/performer lanes so the user understands
-              these are real broadcast-ready performances, not generic sounds.
-              <span className="mt-3 block rounded-xl bg-[#211004] px-4 py-3 text-amber-100">
-                Now showing: {GPM_VARIETY_LANES[activeVarietyLane]}
-              </span>
-            </div>
-
-            <button
-              onClick={nextStage}
-              className="mt-8 rounded-2xl bg-amber-300 px-8 py-4 text-lg font-black text-[#211004]"
-            >
-              Continue
-            </button>
-          </Page>
+            <Page title="Your HUG path" eyebrow="">
+              <p className="max-w-2xl text-lg font-bold leading-relaxed text-amber-100/80">
+                A K-KUT HUG is not a card. It is a focused music moment selected by feeling, paired with your words,
+                and prepared as a private emotional link.
+              </p>
+              <p className="mt-4 max-w-2xl text-lg font-black text-amber-200">
+                After you send the first HUG, you may already know who needs the second.
+              </p>
+              <NavButtons onBack={goBack} onNext={continueNext} nextLabel="Go to Step 1" />
+            </Page>
           )}
 
           {stage === "step1" && (
