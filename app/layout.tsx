@@ -53,10 +53,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Holiday
               </a>
               <a
-                href="/hug/mothers-day"
+                href="/som"
                 className="rounded-full bg-amber-300 px-3 py-2 text-[#2a180d] transition hover:bg-amber-200"
               >
-                Mother’s Day
+                Start
               </a>
             </div>
           </nav>
