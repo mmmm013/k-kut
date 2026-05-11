@@ -4,46 +4,44 @@ const HUG_SAMPLE_KUTS = [
   {
     kind: "Chorus KUT",
     label: "Hear a chorus-sized HUG sample.",
-    audio: "/hug/samples/chorus-kut-sample.mp3",
+    audio: "/mothers-day/samples/thank-you-chorus-sample.mp3",
   },
   {
     kind: "Verse KUT",
     label: "Hear a verse-sized HUG sample.",
-    audio: "/hug/samples/verse-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
   },
   {
     kind: "Bridge KUT",
     label: "Hear a bridge-style HUG sample.",
-    audio: "/hug/samples/bridge-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
   },
   {
     kind: "Hook KUT",
     label: "Hear a hook-style HUG sample.",
-    audio: "/hug/samples/hook-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
   },
   {
     kind: "Phrase KUT",
     label: "Hear a phrase-sized HUG sample.",
-    audio: "/hug/samples/phrase-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-005.mp3",
   },
   {
     kind: "Word KUT",
     label: "Hear a word-sized HUG sample.",
-    audio: "/hug/samples/word-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
   },
   {
     kind: "Exclamation KUT",
     label: "Hear an expressive HUG sample.",
-    audio: "/hug/samples/exclamation-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
   },
   {
     kind: "Singer Moment KUT",
     label: "Hear a singer-moment HUG sample.",
-    audio: "/hug/samples/singer-moment-kut-sample.mp3",
+    audio: "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
   },
 ] as const;
-
-
 
 const KUT_OPTION_TYPES = [
   "Chorus",
