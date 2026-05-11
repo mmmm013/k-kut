@@ -18,7 +18,7 @@ const STAGES: Stage[] = ["splash", "cover", "step1", "step2", "step3", "recap", 
 
 // PUBLIC BUYER RULE:
  // /hug is buyer-facing.
- // Visible guide identity = MC-BOT / BB-BOT / HUG Guide.
+ // Visible guide identity = MC-BOT / BB-BOT / K-KUT BOT.
  // GP-BOT may power internal systems, but GP-BOT must not be the public buyer-facing character.
  // Splash/Cover must not fall back to short GP-BOT prompt audio, because this is the hook point.
 const BOT_AUDIO: Record<Stage, string> = {
@@ -38,7 +38,7 @@ const BOT_SCRIPTS: Record<Stage, string> = {
   cover:
     "Here is what makes this different. You are not just picking a song. You are choosing a feeling, hearing real music moments, and sending one as a private HUG. It can say thank you, I love you, I miss you, I’m sorry, I’m proud of you, or I’m here with you. This has not been shared like this before. The first HUG starts now. The second HUG can be for the same person, or for someone else who needs a moment too. Next is Step 1. Choose the feeling.",
   step1: "Step 1. Choose the feeling you want to send.",
-  step2: "Step 2. Press play and choose the HUG that feels right.",
+  step2: "Step 2. Choose the HUG intent that feels closest.",
   step3: "Step 3. Add your words and delivery details.",
   recap: "Review complete. These are the steps you finished.",
   options: "Choose the delivery option: email, text-ready link, or DM/social link.",
@@ -107,20 +107,6 @@ function playBot(src: string) {
   });
 }
 
-function stopOtherAudio(current: HTMLAudioElement) {
-  if (activeAudio && activeAudio !== current) {
-    activeAudio.pause();
-    activeAudio.currentTime = 0;
-    activeAudio = null;
-  }
-
-  document.querySelectorAll("audio").forEach((audio) => {
-    if (audio !== current) {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-  });
-}
 
 function stageNumber(stage: Stage) {
   return STAGES.indexOf(stage) + 1;
@@ -146,11 +132,11 @@ export default function HugPage() {
     "I picked this K-KUT HUG for you because words alone did not feel like enough."
   );
 
-  const guideText = useMemo(() => {
+  const botText = useMemo(() => {
     if (stage === "splash") return "Welcome to K-KUT HUG. This is new, emotional, guided, and built around real music plus your own words.";
     if (stage === "cover") return "This has not been shared like this before. You are not just picking a song — you are sending a private HUG.";
     if (stage === "step1") return "Step 1. Choose the feeling you want to send.";
-    if (stage === "step2") return `Step 2. You chose ${selectedFeeling.label}. Press play and choose the HUG that feels right.`;
+    if (stage === "step2") return "Step 2. Choose the HUG intent that feels closest.";
     if (stage === "step3") return "Step 3. Add your words and delivery details.";
     if (stage === "recap") return "Review complete. These are the steps you finished.";
     if (stage === "options") return "Choose the delivery option: email, text-ready link, or DM/social link.";
@@ -198,7 +184,7 @@ export default function HugPage() {
         <header className="flex items-center justify-between border-b border-amber-200/10 bg-black/25 px-5 py-4">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">K-KUT</p>
-            <p className="mt-1 text-sm font-bold text-amber-100/70">Guided HUG delivery</p>
+            <p className="mt-1 text-sm font-bold text-amber-100/70">One-step HUG delivery</p>
           </div>
 
           <div className="rounded-full bg-amber-300 px-4 py-2 text-sm font-black text-[#211004]">
@@ -208,8 +194,8 @@ export default function HugPage() {
 
         <section className="p-6 md:p-10">
           <section className="mb-8 rounded-3xl bg-amber-300 p-5 text-[#211004]">
-            <p className="mb-2 text-xs font-black uppercase tracking-[0.3em]">MC-BOT / BB-BOT Guide</p>
-            <p className="text-xl font-black leading-snug">{guideText}</p>
+            <p className="mb-2 text-xs font-black uppercase tracking-[0.3em]">K-KUT BOT</p>
+            <p className="text-xl font-black leading-snug">{botText}</p>
           </section>
 
           {stage === "splash" && (
@@ -218,14 +204,14 @@ export default function HugPage() {
                 Send the right feeling through music and words.
               </p>
               <p className="mt-5 max-w-2xl text-lg font-bold text-amber-100/75">
-                This is a guided path. One page. One BOT vocal. One action. Then the next page opens.
+                One page. One BOT vocal. One action. Then the next page opens.
               </p>
               <PrimaryButton onClick={continueNext}>Begin</PrimaryButton>
             </Page>
           )}
 
           {stage === "cover" && (
-            <Page title="Your guided HUG path" eyebrow="Cover page">
+            <Page title="Your HUG path" eyebrow="Cover page">
               <p className="max-w-2xl text-lg font-bold leading-relaxed text-amber-100/80">
                 A K-KUT HUG is not a card. It is a focused music moment selected by feeling, paired with your words,
                 and prepared as a private emotional link.
@@ -281,7 +267,6 @@ export default function HugPage() {
                   <article key={hug.id} className="rounded-3xl border border-amber-200/15 bg-[#1f0d05] p-5">
                     <p className="text-xl font-black text-amber-100">{hug.label}</p>
                     <p className="mt-2 min-h-12 text-sm font-bold leading-relaxed text-amber-100/70">{hug.body}</p>
-                    <audio controls src={hug.audio} className="mt-4 w-full" onPlay={(event) => stopOtherAudio(event.currentTarget)} />
                     <button
                       type="button"
                       onClick={() => {
