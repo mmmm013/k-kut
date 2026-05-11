@@ -11,59 +11,6 @@ const KUT_OPTION_TYPES = [
   "Singer laugh",
 ];
 
-
-
-const HUG_SAMPLE_KUTS = [
-  {
-    lane: "GPM writer lane 1",
-    type: "Chorus",
-    label: "Short broadcast-ready chorus sample",
-    audio: "/mothers-day/thank-you/kk1.mp3",
-  },
-  {
-    lane: "GPM writer lane 2",
-    type: "Verse",
-    label: "Short broadcast-ready verse sample",
-    audio: "/mothers-day/thank-you/kk2.mp3",
-  },
-  {
-    lane: "GPM writer lane 3",
-    type: "Bridge",
-    label: "Short broadcast-ready bridge sample",
-    audio: "/mothers-day/thank-you/kk3.mp3",
-  },
-  {
-    lane: "GPM writer lane 4",
-    type: "Hook",
-    label: "Short broadcast-ready hook sample",
-    audio: "/mothers-day/thank-you/kk4.mp3",
-  },
-  {
-    lane: "GPM writer lane 5",
-    type: "Phrase",
-    label: "Short broadcast-ready phrase sample",
-    audio: "/mothers-day/thank-you/kk5.mp3",
-  },
-  {
-    lane: "GPM writer lane 6",
-    type: "Word / exclamation",
-    label: "Short broadcast-ready word or exclamation sample",
-    audio: "/mothers-day/thank-you/kk6.mp3",
-  },
-  {
-    lane: "GPM writer lane 7",
-    type: "mK / short KK",
-    label: "Every 7th listing: short promo listen",
-    audio: "/mothers-day/thank-you/kk7.mp3",
-  },
-  {
-    lane: "GPM writer lane 8",
-    type: "Singer moment",
-    label: "Short broadcast-ready singer moment sample",
-    audio: "/mothers-day/thank-you/kk8.mp3",
-  },
-];
-
 const GPM_VARIETY_LANES = [
   "Writer / performer lane 1",
   "Writer / performer lane 2",
@@ -306,25 +253,6 @@ export default function HugPage() {
               {KUT_OPTION_TYPES.map((type) => (
                 <div key={type} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
                   <p className="text-lg font-black text-amber-100">{type}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 rounded-2xl bg-amber-300 px-6 py-4 text-sm font-black leading-relaxed text-[#211004]">
-              Hear short proof-of-performance samples from GPM mKs and KKs. These are promo listens:
-              brief, eclectic, broadcast-ready, ASCAP-registered music moments that show the range before
-              the user chooses a HUG path.
-            </div>
-
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
-              {HUG_SAMPLE_KUTS.map((sample, index) => (
-                <div key={sample.lane} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
-                    {index === 6 ? "Every 7th listing promo listen" : sample.lane}
-                  </p>
-                  <p className="mt-2 text-lg font-black text-amber-100">{sample.type}</p>
-                  <p className="mt-2 text-sm font-bold leading-relaxed text-amber-100/70">{sample.label}</p>
-                  <audio controls preload="none" src={sample.audio} className="mt-4 w-full" />
                 </div>
               ))}
             </div>
