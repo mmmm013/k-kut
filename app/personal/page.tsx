@@ -3,6 +3,7 @@ import Link from "next/link";
 const categories = [
   ["thank-you", "Thank You", "Say thanks when ordinary words are not enough."],
   ["love", "Love", "Send a real music moment for love, romance, and devotion."],
+  ["wedding", "Wedding", "A ceremonial music package for first dance, forever love, and wedding-party thanks."],
   ["birthday", "Birthday", "Celebrate someone with a focused song moment."],
   ["anniversary", "Anniversary", "Mark another year, another memory, another reason."],
   ["apology", "Apology", "Send a careful music moment when sorry matters."],

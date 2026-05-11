@@ -14,6 +14,30 @@ const categories = {
     line: "Send a real music moment for love, romance, and devotion.",
     paths: ["I love you", "I choose you", "Still in love", "You are my person", "Deep devotion"],
   },
+  wedding: {
+    title: "Wedding",
+    question: "What should this wedding music moment carry?",
+    line: "A ceremonial music package for first dance, forever love, and wedding-party thanks.",
+    paths: ["First dance", "Forever love", "Bride’s choice", "Thank the wedding party", "Family blessing"],
+    featuredPackage: {
+      name: "Wedding Track Pack",
+      feature: "Forever and a Day",
+      line: "Feature Forever and a Day as the wedding song and build ceremonial K-KUT moments around it.",
+      includes: [
+        "One bride-preferred KUT from Forever and a Day",
+        "Forever and a Day PIX for first dance",
+        "Suggested clip feasibility: verse/chorus or two conjoined verses",
+        "mK thanks / thank-you phrase options for wedding party",
+        "12 KUPIDs / KPDs for the couple",
+        "Routine buy options remain available",
+      ],
+      notes: [
+        "Ceremonial, exciting, surprising, and pageant-like within GPMx.",
+        "Pricing and final package tiers must be approved before checkout goes live.",
+        "Future versions may use new KLEIGH / Michael Clay uploads.",
+      ],
+    },
+  },
   birthday: {
     title: "Birthday",
     question: "What kind of birthday feeling fits?",
@@ -90,6 +114,7 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
   }
 
   const isThankYou = params.slug === "thank-you";
+  const featuredPackage = "featuredPackage" in category ? category.featuredPackage : null;
 
   return (
     <main className="min-h-screen bg-[#150b07] text-[#fff6e8]">
@@ -144,6 +169,47 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
             ))}
           </div>
         </section>
+
+        {featuredPackage ? (
+          <section className="mt-8 rounded-[1.5rem] border border-amber-300/30 bg-[#301407] p-5 shadow-xl">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+              Featured package
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-amber-50">
+              {featuredPackage.name}
+            </h2>
+            <p className="mt-3 text-lg font-black text-amber-200">
+              Featured PIX: {featuredPackage.feature}
+            </p>
+            <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
+              {featuredPackage.line}
+            </p>
+
+            <div className="mt-5 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[1.25rem] border border-amber-300/20 bg-black/25 p-5">
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                  Includes
+                </p>
+                <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
+                  {featuredPackage.includes.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-[1.25rem] border border-amber-300/20 bg-black/25 p-5">
+                <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                  Package doctrine
+                </p>
+                <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
+                  {featuredPackage.notes.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="mt-8 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
           <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
