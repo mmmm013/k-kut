@@ -147,10 +147,6 @@ export default function GeneralHugPage() {
   const [selectedIntentId, setSelectedIntentId] = useState("always-there");
   const [selectedId, setSelectedId] = useState<DemoId>("chorus");
   const [optionIds, setOptionIds] = useState<DemoId[]>(["chorus", "opening", "outro"]);
-  const [focusTitle, setFocusTitle] = useState("Choose the feeling first");
-  const [focusBody, setFocusBody] = useState(
-    "Pick the closest HUG intent. Then hear the matching HUG options before checkout."
-  );
 
   const [recipientName, setRecipientName] = useState("");
   const [recipientMessage, setRecipientMessage] = useState(
@@ -180,14 +176,14 @@ export default function GeneralHugPage() {
 
   const guideMessage = useMemo(() => {
     if (step === 1) {
-      return "Step 1. Choose what they should feel.";
+      return "Step 1. Choose the feeling you want to send. Then I will show only the best music matches.";
     }
 
     if (step === 2) {
-      return `Step 2. You chose “${selectedIntent.label}.” Hear the matching HUG options.`;
+      return `Step 2. You chose “${selectedIntent.label}.” Press Play on the samples, then choose the HUG that feels right.`;
     }
 
-    return `Step 3. You selected “${selectedDemo.shortTitle}.” Checkout to order the private HUG link.`;
+    return `Step 3. Add your words, then checkout to send the private HUG link.`;
   }, [step, selectedIntent.label, selectedDemo.shortTitle]);
 
   function playGuide(kind: keyof typeof GUIDE_AUDIO = "welcome") {
@@ -234,8 +230,6 @@ export default function GeneralHugPage() {
     setSelectedIntentId(intent.id);
     setSelectedId(intent.demoId);
     setOptionIds(intent.order);
-    setFocusTitle(intent.label);
-    setFocusBody(intent.body);
     setStep(2);
     playGuide("choose");
   }
@@ -336,8 +330,6 @@ export default function GeneralHugPage() {
   function chooseDemo(id: DemoId) {
     const demo = DEMOS.find((item) => item.id === id) ?? DEMOS[0];
     setSelectedId(id);
-    setFocusTitle(`${demo.shortTitle} HUG selected`);
-    setFocusBody(demo.description);
     setStep(3);
     playGuide("checkout");
   }
@@ -443,7 +435,7 @@ export default function GeneralHugPage() {
               We walk you through it. Choose the feeling, hear the music, add your words, and send an emotional statement like never before.
             </p>
             <p className="mt-2 text-base font-bold leading-7 text-amber-50/80">
-              Sing a feeling forward. A K-KUT HUG helps you say what plain text cannot: gratitude, love, support, repair, memory, or happy tears. First-time users: buy 1, get 1 free.
+              Here is how it works: 1) choose the feeling you want to send, 2) hear real music matches, 3) add your words and send the private HUG link. We walk you through each step. First-time users: buy 1, get 1 free.
             </p>
           </div>
 
@@ -454,17 +446,9 @@ export default function GeneralHugPage() {
             <p className="mt-2 text-2xl font-black leading-tight">{guideMessage}</p>
           </div>
 
-          <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-              Current step
-            </p>
-            <h2 className="mt-2 text-3xl font-black text-amber-50">{focusTitle}</h2>
-            <p className="mt-3 text-lg leading-8 text-amber-50/80">{focusBody}</p>
-          </section>
-
           <div className="mt-6 rounded-[1.5rem] border border-amber-300 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
             <p className="text-xs font-black uppercase tracking-[0.2em]">
-              Active step {step} of 3
+              Step {step} of 3
             </p>
             <p className="mt-2 text-2xl font-black">
               {step === 1 ? "Choose feeling" : step === 2 ? "Hear options" : "Send HUG"}
@@ -479,15 +463,13 @@ export default function GeneralHugPage() {
                   Feeling choices
                 </p>
                 <h2 className="mt-2 text-3xl font-black">
-                  What feeling do you want to send?
+                  Step 1 — What feeling do you want to send?
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={() => {
                   setStep(1);
-                  setFocusTitle("Choose the feeling first");
-                  setFocusBody("Pick the closest HUG intent. Then hear the matching HUG options before checkout.");
                 }}
                 className="rounded-2xl border border-amber-200/20 px-5 py-3 text-sm font-black text-amber-50/80 transition hover:bg-white/10"
               >
@@ -549,7 +531,7 @@ export default function GeneralHugPage() {
               HUG options
             </p>
             <h2 className="mt-2 text-3xl font-black">
-              Hear the best matches for this feeling.
+              Step 2 — Hear the best music matches.
             </h2>
             <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
               Press Play first. Then choose the HUG that feels right.
@@ -624,7 +606,7 @@ export default function GeneralHugPage() {
               Checkout
             </p>
             <h2 className="mt-2 text-3xl font-black text-amber-50">
-              Order the private HUG link.
+              Step 3 — Add your words and send the HUG.
             </h2>
             <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
               Selected feeling: <span className="text-amber-200">{selectedIntent.label}</span>
@@ -649,7 +631,7 @@ export default function GeneralHugPage() {
                 onClick={startCheckout}
                 className="rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                Checkout for this HUG
+                Send this HUG
               </button>
               <div className="rounded-[1.5rem] border border-amber-300/25 bg-black/30 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200/70">
@@ -714,8 +696,6 @@ export default function GeneralHugPage() {
                 onClick={() => {
                   setStep(1);
                   setTypedFeeling("");
-                  setFocusTitle("Choose the feeling first");
-                  setFocusBody("Pick the closest HUG intent. Then hear the matching HUG options before checkout.");
                 }}
                 className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
               >
