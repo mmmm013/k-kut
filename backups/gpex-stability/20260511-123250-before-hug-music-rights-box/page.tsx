@@ -199,7 +199,7 @@ export default function HugPage() {
           </section>
 
           {stage === "splash" && (
-            <Page title="K-KUT HUG" eyebrow="">
+            <Page title="K-KUT HUG" eyebrow="Splash page">
               <p className="max-w-2xl text-2xl font-black leading-snug text-amber-100">
                 Send the right feeling through music and words.
               </p>
