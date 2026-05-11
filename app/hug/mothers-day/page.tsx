@@ -416,7 +416,7 @@ export default function MothersDayHugPage() {
           </div>
 
           <h1 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
-            Send Mom a real audio greeting card.
+            Send Mom a private music HUG.
           </h1>
 
           <div className="mt-5 rounded-[1.5rem] border border-amber-300/30 bg-black/25 p-5">
@@ -424,8 +424,7 @@ export default function MothersDayHugPage() {
               Start with what you want Mom to feel.
             </p>
             <p className="mt-2 text-base font-bold leading-7 text-amber-50/80">
-              Choose the emotional intent, hear real K-KUT song-section HUG options,
-              then checkout to order a private HUG link Mom can open. No app. No file download.
+              The Guide leads one step at a time. Choose the feeling, hear the best matches, then send the private HUG link. No app. No file download.
             </p>
           </div>
 
@@ -444,20 +443,6 @@ export default function MothersDayHugPage() {
             </button>
           </div>
 
-          <section className="mt-6 rounded-[1.5rem] border border-amber-300/35 bg-amber-300/10 p-5">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-              Important
-            </p>
-            <h2 className="mt-2 text-2xl font-black text-amber-50">
-              This is the order path — not the final HUG link.
-            </h2>
-            <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
-              Choose a HUG here and checkout. This page creates the private recipient
-              HUG link before checkout. That recipient link is what Mom opens.
-              The recipient page has no checkout, no searching, and no buying pressure.
-            </p>
-          </section>
-
           <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
               Current step
@@ -466,28 +451,16 @@ export default function MothersDayHugPage() {
             <p className="mt-3 text-lg leading-8 text-amber-50/80">{focusBody}</p>
           </section>
 
-          <div className="mt-6 grid grid-cols-3 gap-3">
-            {progress.map((item) => {
-              const active = step === item.n;
-
-              return (
-                <div
-                  key={item.n}
-                  className={`rounded-[1.25rem] border px-3 py-4 text-center ${
-                    active
-                      ? "border-amber-300 bg-amber-300 text-[#2a180d]"
-                      : "border-amber-200/20 bg-white/5 text-amber-50/70"
-                  }`}
-                >
-                  <p className="text-xs font-black uppercase tracking-[0.16em]">
-                    Step {item.n}
-                  </p>
-                  <p className="mt-2 text-base font-black">{item.label}</p>
-                </div>
-              );
-            })}
+          <div className="mt-6 rounded-[1.5rem] border border-amber-300 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
+            <p className="text-xs font-black uppercase tracking-[0.2em]">
+              Active step {step} of 3
+            </p>
+            <p className="mt-2 text-2xl font-black">
+              {step === 1 ? "Choose feeling" : step === 2 ? "Hear options" : "Send HUG"}
+            </p>
           </div>
 
+          {step === 1 ? (
           <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
               <div>
@@ -557,6 +530,9 @@ export default function MothersDayHugPage() {
             </div>
           </section>
 
+          ) : null}
+
+          {step === 2 ? (
           <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-black/25 p-6">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
               HUG options
@@ -629,6 +605,9 @@ export default function MothersDayHugPage() {
             </div>
           </section>
 
+          ) : null}
+
+          {step === 3 ? (
           <section className="mt-8 rounded-[1.5rem] border border-amber-300/30 bg-[#140904] p-6">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
               Checkout
@@ -737,6 +716,7 @@ export default function MothersDayHugPage() {
               One HUG per order. If you want another HUG, return and choose another one.
             </p>
           </section>
+          ) : null}
 
           <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-4 text-center">
             <p className="text-sm font-bold leading-6 text-amber-50/70">
@@ -767,6 +747,7 @@ export default function MothersDayHugPage() {
               </a>.
             </p>
           </div>
+
         </div>
       </section>
     </main>
