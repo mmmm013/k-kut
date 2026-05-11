@@ -303,14 +303,9 @@ export default function HugPage() {
             </div>
 
             <div className="mt-5 grid gap-3 md:grid-cols-2">
-              {HUG_SAMPLE_KUTS.map((sample, index) => (
-                <div key={sample.kind} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
-                    {index === 6 ? "Every 7th listing promo listen" : sample.lane}
-                  </p>
-                  <p className="mt-2 text-lg font-black text-amber-100">{sample.kind}</p>
-                  <p className="mt-2 text-sm font-bold leading-relaxed text-amber-100/70">{sample.label}</p>
-                  <audio controls preload="none" src={sample.audio} className="mt-4 w-full" />
+              {KUT_OPTION_TYPES.map((type) => (
+                <div key={type} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
+                  <p className="text-lg font-black text-amber-100">{type}</p>
                 </div>
               ))}
             </div>
