@@ -32,11 +32,29 @@ const holidays = {
     question: "What kind of celebration fits?",
     paths: ["Good luck", "Joy", "Friendship", "Playful", "Celebrate"],
   },
+  passover: {
+    title: "Passover",
+    line: "Send remembrance, freedom, family, blessing, and resilience.",
+    question: "What should this Passover HUG carry?",
+    paths: ["Freedom", "Family", "Blessing", "Resilience", "Remembering"],
+  },
   easter: {
     title: "Easter",
     line: "Send hope, renewal, faith, spring, and family warmth.",
     question: "What kind of renewal should this HUG carry?",
     paths: ["Hope", "Renewal", "Faith", "Family warmth", "Spring joy"],
+  },
+  "earth-day": {
+    title: "Earth Day",
+    line: "Send care for nature, renewal, gratitude, and shared responsibility.",
+    question: "What should this Earth Day moment hold?",
+    paths: ["Nature", "Renewal", "Gratitude", "Care", "Shared responsibility"],
+  },
+  "administrative-professionals-day": {
+    title: "Administrative Professionals Day",
+    line: "Recognize the people who keep work moving.",
+    question: "What kind of appreciation should this HUG carry?",
+    paths: ["Thank you", "You keep this going", "Respect", "Team gratitude", "You matter here"],
   },
   "mothers-day": {
     title: "Mother’s Day",
@@ -50,11 +68,24 @@ const holidays = {
     question: "What kind of remembrance is needed?",
     paths: ["Remembrance", "Sacrifice", "Gratitude", "Quiet honor", "Never forgotten"],
   },
+  "flag-day": {
+    title: "Flag Day",
+    line: "Mark country, memory, service, and civic reflection.",
+    question: "What kind of civic feeling fits?",
+    paths: ["Country", "Memory", "Service", "Reflection", "Home"],
+  },
   "fathers-day": {
     title: "Father’s Day",
     line: "Send thanks, respect, love, pride, or memory for Dad.",
     question: "What do you want Dad to feel?",
     paths: ["Thank you, Dad", "I love you, Dad", "Respect", "Proud of you", "Missing Dad"],
+    candidatePix: [
+      "Life’s a Test — Brandon Howard",
+      "That’s a Have To — Jade Lotzow",
+      "Have-To duet — Jade & Aaron Lotzow",
+      "That Empty Chair — Lloyd Miller",
+      "No Mystery — Billy Harper",
+    ],
   },
   juneteenth: {
     title: "Juneteenth",
@@ -74,17 +105,53 @@ const holidays = {
     question: "What kind of Labor Day moment fits?",
     paths: ["Rest", "Hard work", "Family time", "Summer close", "Gratitude"],
   },
+  "grandparents-day": {
+    title: "Grandparents Day",
+    line: "Send love, memory, gratitude, and family roots.",
+    question: "What should a grandparent feel?",
+    paths: ["Thank you", "Family roots", "Your love stayed", "Memory", "I love you"],
+  },
+  "patriot-day": {
+    title: "Patriot Day",
+    line: "Honor remembrance, courage, service, and national grief.",
+    question: "What kind of remembrance fits?",
+    paths: ["Remembering", "Courage", "Service", "National grief", "Never forgotten"],
+  },
+  "rosh-hashanah": {
+    title: "Rosh Hashanah",
+    line: "Send reflection, blessing, renewal, and hope for the year ahead.",
+    question: "What should the new year carry?",
+    paths: ["Blessing", "Renewal", "Reflection", "Hope", "Family"],
+  },
+  "yom-kippur": {
+    title: "Yom Kippur",
+    line: "Send reflection, repair, forgiveness, and solemn care.",
+    question: "What should this solemn moment hold?",
+    paths: ["Reflection", "Repair", "Forgiveness", "Care", "Peace"],
+  },
   "indigenous-peoples-day": {
     title: "Indigenous Peoples’ Day",
     line: "Honor memory, heritage, land, people, and respect.",
     question: "What should this observance hold?",
     paths: ["Respect", "Heritage", "Memory", "Land", "People"],
   },
+  "columbus-day": {
+    title: "Columbus Day",
+    line: "Mark history, civic memory, travel, and reflection.",
+    question: "What kind of historical reflection fits?",
+    paths: ["History", "Travel", "Civic memory", "Reflection", "Country"],
+  },
   halloween: {
     title: "Halloween",
     line: "Send playful, spooky, funny, dramatic, or mischievous moments.",
     question: "What kind of Halloween feeling fits?",
     paths: ["Spooky", "Playful", "Funny", "Dramatic", "Mischief"],
+  },
+  "dia-de-los-muertos": {
+    title: "Día de los Muertos",
+    line: "Honor memory, ancestors, love, color, and continuing bonds.",
+    question: "Who or what should this remembrance honor?",
+    paths: ["Ancestors", "Memory", "Continuing love", "Family", "Celebration"],
   },
   "veterans-day": {
     title: "Veterans Day",
@@ -97,6 +164,24 @@ const holidays = {
     line: "Send gratitude, family warmth, home, memory, and togetherness.",
     question: "What kind of gratitude fits?",
     paths: ["Thankful for you", "Family warmth", "Home", "Togetherness", "Blessing"],
+  },
+  "black-friday": {
+    title: "Black Friday",
+    line: "Send playful energy, surprise, deals, gifting, and holiday kickoff.",
+    question: "What kind of holiday kickoff fits?",
+    paths: ["Surprise", "Playful", "Gift energy", "Holiday kickoff", "Big reveal"],
+  },
+  "giving-tuesday": {
+    title: "Giving Tuesday",
+    line: "Send generosity, purpose, gratitude, and support.",
+    question: "What kind of giving moment fits?",
+    paths: ["Generosity", "Purpose", "Support", "Gratitude", "Cause"],
+  },
+  "christmas-eve": {
+    title: "Christmas Eve",
+    line: "Send anticipation, tenderness, family warmth, faith, and wonder.",
+    question: "What should Christmas Eve feel like?",
+    paths: ["Wonder", "Tenderness", "Family warmth", "Faith", "Almost Christmas"],
   },
   christmas: {
     title: "Christmas",
@@ -177,6 +262,19 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
               All Holiday HUGs
             </Link>
           </div>
+
+          {"candidatePix" in holiday ? (
+            <div className="mt-5 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                Candidate PIX pool
+              </p>
+              <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
+                {holiday.candidatePix.map((pix) => (
+                  <li key={pix}>• {pix}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {holiday.paths.map((path) => (
