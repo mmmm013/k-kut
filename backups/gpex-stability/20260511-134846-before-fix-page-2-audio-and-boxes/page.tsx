@@ -315,6 +315,12 @@ export default function HugPage() {
               ))}
             </div>
 
+            <div className="mt-5 rounded-2xl bg-amber-300 px-6 py-4 text-sm font-black leading-relaxed text-[#211004]">
+              Hear short proof-of-performance samples from GPM mKs and KKs. These are promo listens:
+              brief, eclectic, broadcast-ready, ASCAP-registered music moments that show the range before
+              the user chooses a HUG path.
+            </div>
+
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {HUG_SAMPLE_KUTS.map((sample, index) => (
                 <div key={sample.lane} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
@@ -326,6 +332,14 @@ export default function HugPage() {
                   <audio controls preload="none" src={sample.audio} className="mt-4 w-full" />
                 </div>
               ))}
+            </div>
+
+            <div className="mt-5 rounded-2xl bg-amber-300 px-6 py-4 text-sm font-black leading-relaxed text-[#211004]">
+              MC-BOT will present variety from distinct GPM writer/performer lanes so the user understands
+              these are real broadcast-ready performances, not generic sounds.
+              <span className="mt-3 block rounded-xl bg-[#211004] px-4 py-3 text-amber-100">
+                Now showing: {GPM_VARIETY_LANES[activeVarietyLane]}
+              </span>
             </div>
 
             <button
@@ -493,11 +507,6 @@ export default function HugPage() {
             </Page>
           )}
         </section>
-        <footer className="mt-8 flex flex-wrap gap-4 text-xs font-black text-amber-100/60">
-          <a className="underline underline-offset-4" href="/gpex/assurance">GPEx Assurance</a>
-          <a className="underline underline-offset-4" href="/privacy">Privacy</a>
-          <a className="underline underline-offset-4" href="/terms">Terms</a>
-        </footer>
       </section>
     </main>
   );
