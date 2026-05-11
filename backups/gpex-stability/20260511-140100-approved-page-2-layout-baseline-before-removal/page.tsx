@@ -15,55 +15,65 @@ const KUT_OPTION_TYPES = [
 
 const HUG_SAMPLE_KUTS = [
   {
-    lane: "music category 1",
+    lane: "GPM writer lane 1",
     type: "Chorus",
     label: "Short broadcast-ready chorus sample",
     audio: "/mothers-day/thank-you/kk1.mp3",
   },
   {
-    lane: "music category 2",
+    lane: "GPM writer lane 2",
     type: "Verse",
     label: "Short broadcast-ready verse sample",
     audio: "/mothers-day/thank-you/kk2.mp3",
   },
   {
-    lane: "music category 3",
+    lane: "GPM writer lane 3",
     type: "Bridge",
     label: "Short broadcast-ready bridge sample",
     audio: "/mothers-day/thank-you/kk3.mp3",
   },
   {
-    lane: "music category 4",
+    lane: "GPM writer lane 4",
     type: "Hook",
     label: "Short broadcast-ready hook sample",
     audio: "/mothers-day/thank-you/kk4.mp3",
   },
   {
-    lane: "music category 5",
+    lane: "GPM writer lane 5",
     type: "Phrase",
     label: "Short broadcast-ready phrase sample",
     audio: "/mothers-day/thank-you/kk5.mp3",
   },
   {
-    lane: "music category 6",
+    lane: "GPM writer lane 6",
     type: "Word / exclamation",
     label: "Short broadcast-ready word or exclamation sample",
     audio: "/mothers-day/thank-you/kk6.mp3",
   },
   {
-    lane: "music category 7",
-    type: "short song moment / short KUT",
-    label: "Short promo listen",
+    lane: "GPM writer lane 7",
+    type: "mK / short KK",
+    label: "Every 7th listing: short promo listen",
     audio: "/mothers-day/thank-you/kk7.mp3",
   },
   {
-    lane: "music category 8",
+    lane: "GPM writer lane 8",
     type: "Singer moment",
     label: "Short broadcast-ready singer moment sample",
     audio: "/mothers-day/thank-you/kk8.mp3",
   },
 ];
 
+const GPM_VARIETY_LANES = [
+  "Writer / performer lane 1",
+  "Writer / performer lane 2",
+  "Writer / performer lane 3",
+  "Writer / performer lane 4",
+  "Writer / performer lane 5",
+  "Writer / performer lane 6",
+  "Writer / performer lane 7",
+  "Writer / performer lane 8",
+];
 
 
 import Link from "next/link";
@@ -187,6 +197,7 @@ function prevStage(stage: Stage): Stage {
 }
 
 export default function HugPage() {
+  const [activeVarietyLane, setActiveVarietyLane] = useState(0);
   const [stage, setStage] = useState<Stage>("splash");
   const [selectedFeeling, setSelectedFeeling] = useState(FEELINGS[0]);
   const [selectedHug, setSelectedHug] = useState(HUG_OPTIONS[0]);
@@ -228,6 +239,16 @@ export default function HugPage() {
       window.removeEventListener("keydown", unlock);
       window.removeEventListener("touchstart", unlock);
     };
+  }, [stage]);
+
+  useEffect(() => {
+    if (stage !== "cover") return;
+
+    const timer = window.setInterval(() => {
+      setActiveVarietyLane((current) => (current + 1) % GPM_VARIETY_LANES.length);
+    }, 1800);
+
+    return () => window.clearInterval(timer);
   }, [stage]);
 
 
@@ -283,9 +304,22 @@ export default function HugPage() {
 
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {HUG_SAMPLE_KUTS.map((sample, index) => (
+                <div key={sample.kind} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
+                    {index === 6 ? "Every 7th listing promo listen" : sample.lane}
+                  </p>
+                  <p className="mt-2 text-lg font-black text-amber-100">{sample.kind}</p>
+                  <p className="mt-2 text-sm font-bold leading-relaxed text-amber-100/70">{sample.label}</p>
+                  <audio controls preload="none" src={sample.audio} className="mt-4 w-full" />
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {HUG_SAMPLE_KUTS.map((sample, index) => (
                 <div key={sample.lane} className="rounded-2xl border border-amber-200/15 bg-[#1f0d05] p-4">
                   <p className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
-                    {index === 6 ? "Short promo listen" : sample.lane}
+                    {index === 6 ? "Every 7th listing promo listen" : sample.lane}
                   </p>
                   <p className="mt-2 text-lg font-black text-amber-100">{sample.type}</p>
                   <p className="mt-2 text-sm font-bold leading-relaxed text-amber-100/70">{sample.label}</p>
