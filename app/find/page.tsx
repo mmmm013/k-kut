@@ -15,13 +15,7 @@ const GUIDE_PATHS = [
     href: "/holiday",
     cta: "Browse Holiday →",
   },
-  {
-    title: "Current Mother’s Day HUG",
-    description:
-      "Use the live Mother’s Day path now. Hear the song-section samples and choose the private HUG link to send.",
-    href: "/hug/mothers-day",
-    cta: "Open Mother’s Day →",
-  },
+
 ];
 
 const FEELING_PATHS = [
