@@ -4,17 +4,17 @@ const MOMENTS = [
   {
     label: "Send warmth",
     line: "For gratitude, love, care, and the quiet things people remember.",
-    href: "/hug/mothers-day",
+    href: "/personal/thank-you",
   },
   {
     label: "Send support",
     line: "For someone who needs to feel seen, heard, or carried.",
-    href: "/hug/mothers-day",
+    href: "/personal/encouragement",
   },
   {
     label: "Send repair",
     line: "For apology, longing, distance, and words that are hard to say.",
-    href: "/hug/mothers-day",
+    href: "/personal/apology",
   },
 ];
 
@@ -61,10 +61,10 @@ export default function SomPage() {
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/hug/mothers-day"
+                  href="/personal"
                   className="inline-flex items-center justify-center rounded-full bg-amber-300 px-7 py-4 text-lg font-black text-[#2a180d] shadow-lg shadow-amber-500/20 transition hover:bg-amber-200"
                 >
-                  Start with Mother’s Day <span className="ml-3">→</span>
+                  Start with Personal HUGs <span className="ml-3">→</span>
                 </Link>
 
                 <Link
