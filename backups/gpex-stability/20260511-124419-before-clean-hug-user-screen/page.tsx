@@ -182,7 +182,10 @@ export default function HugPage() {
     <main className="min-h-screen bg-[#140904] px-5 py-8 text-amber-50">
       <section className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-amber-200/15 bg-[#2a1308] shadow-2xl">
         <header className="flex items-center justify-between border-b border-amber-200/10 bg-black/25 px-5 py-4">
-          
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">K-KUT</p>
+            <p className="mt-1 text-sm font-bold text-amber-100/70">One-step HUG delivery</p>
+          </div>
 
           <div className="rounded-full bg-amber-300 px-4 py-2 text-sm font-black text-[#211004]">
             Page {stageNumber(stage)} of {STAGES.length}
@@ -208,7 +211,7 @@ export default function HugPage() {
           )}
 
           {stage === "cover" && (
-            <Page title="Your HUG path" eyebrow="">
+            <Page title="Your HUG path" eyebrow="Cover page">
               <p className="max-w-2xl text-lg font-bold leading-relaxed text-amber-100/80">
                 A K-KUT HUG is not a card. It is a focused music moment selected by feeling, paired with your words,
                 and prepared as a private emotional link.
