@@ -449,7 +449,7 @@ export default function MothersDayHugPage() {
             </p>
 
             <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BOT-guided listening path
+              BOT-guided path
             </div>
           </div>
 
@@ -459,7 +459,7 @@ export default function MothersDayHugPage() {
 
           <div className="mt-5 rounded-[1.5rem] border border-amber-300/30 bg-black/25 p-5">
             <p className="text-lg font-black text-amber-100">
-              BOT starts the path. Begin with what you want Mom to feel.
+              BOT guides the path automatically. Begin with what you want Mom to feel.
             </p>
             <p className="mt-2 text-base font-bold leading-7 text-amber-50/80">
               The Guide leads one step at a time. Choose the feeling, hear the best matches, then send the private HUG link. No app. No file download.
@@ -477,7 +477,7 @@ export default function MothersDayHugPage() {
               onClick={() => playGuide("welcome")}
               className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
             >
-              Start / Replay BOT Voice
+              
             </button>
           </div>
 
