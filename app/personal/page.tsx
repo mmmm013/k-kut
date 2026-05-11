@@ -1,35 +1,5 @@
 import Link from "next/link";
-
-const categories = [
-  ["thank-you", "Thank You", "Say thanks when ordinary words are not enough."],
-  ["love", "Love", "Send a real music moment for love, romance, and devotion."],
-  ["wedding", "Wedding", "A ceremonial music package for first dance, forever love, and wedding-party thanks."],
-  ["birthday", "Birthday", "Celebrate someone with a focused song moment."],
-  ["anniversary", "Anniversary", "Mark another year, another memory, another reason."],
-  ["apology", "Apology", "Send a careful music moment when sorry matters."],
-  ["encouragement", "Encouragement", "Help someone keep going."],
-  ["hang-tough", "Hang Tough", "Send strength for hard days, pressure, tests, and resolve."],
-  ["hope", "Hope", "Send belief, light, and a reason to keep going."],
-  ["self-esteem", "Self-Esteem", "Help someone feel worthy, stronger, and more themselves."],
-  ["thinking-of-you", "Thinking of You", "Send a small music moment that says you are on my mind."],
-  ["just-because", "Just Because", "Send joy, beauty, surprise, or warmth without needing a reason."],
-  ["missing-you", "Missing You", "Bridge distance with a personal music moment."],
-  ["friendship", "Friendship", "For the friends who stayed, helped, and mattered."],
-  ["best-friend", "Best Friend", "For the friend who feels like chosen family."],
-  ["family", "Family", "For the people who are part of you."],
-  ["new-baby", "New Baby", "Celebrate new life, family joy, and first memories."],
-  ["comfort", "Comfort", "Offer warmth, peace, and presence."],
-  ["get-well", "Get Well", "Send healing, care, and a better-days-ahead feeling."],
-  ["recovery", "Recovery", "Support someone rebuilding strength, health, or self."],
-  ["sympathy", "Sympathy", "Send gentle care when loss makes words difficult."],
-  ["grief", "Grief", "Hold space for missing, memory, and sorrow."],
-  ["memorial", "Memorial", "Honor memory, love, and what remains."],
-  ["celebration-of-life", "Celebration of Life", "Remember a life with warmth, beauty, and gratitude."],
-  ["reflection", "Reflection", "For memories, growth, healing, and looking back."],
-  ["graduation", "Graduation", "Honor a finish, a beginning, and the future ahead."],
-  ["retirement", "Retirement", "Celebrate work, rest, freedom, and a life chapter closing."],
-  ["congratulations", "Congratulations", "Honor a win, a beginning, or a milestone."],
-];
+import { personalCategoryList } from "@/lib/personalSeeds";
 
 export default function PersonalPage() {
   return (
@@ -65,7 +35,7 @@ export default function PersonalPage() {
           </div>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map(([slug, title, line]) => {
+            {personalCategoryList.map(({ slug, title, line }) => {
               const isLiveThankYou = slug === "thank-you";
 
               return (

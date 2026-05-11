@@ -1,40 +1,5 @@
 import Link from "next/link";
-
-const holidays = [
-  ["new-years-day", "New Year’s Day", "Begin again with hope, reflection, and renewal."],
-  ["martin-luther-king-jr-day", "Martin Luther King Jr. Day", "Honor courage, service, justice, and shared humanity."],
-  ["valentines-day", "Valentine’s Day", "Send love, devotion, longing, romance, or tenderness."],
-  ["presidents-day", "Presidents’ Day", "Mark leadership, history, civic memory, and reflection."],
-  ["st-patricks-day", "St. Patrick’s Day", "Send luck, joy, friendship, celebration, and warmth."],
-  ["passover", "Passover", "Send remembrance, freedom, family, blessing, and resilience."],
-  ["easter", "Easter", "Send hope, renewal, faith, spring, and family warmth."],
-  ["earth-day", "Earth Day", "Send care for nature, renewal, gratitude, and shared responsibility."],
-  ["administrative-professionals-day", "Administrative Professionals Day", "Recognize the people who keep work moving."],
-  ["mothers-day", "Mother’s Day", "Thank Mom with a focused music moment."],
-  ["memorial-day", "Memorial Day", "Honor remembrance, sacrifice, gratitude, and quiet reflection."],
-  ["flag-day", "Flag Day", "Mark country, memory, service, and civic reflection."],
-  ["fathers-day", "Father’s Day", "Send thanks, respect, love, pride, or memory for Dad."],
-  ["juneteenth", "Juneteenth", "Honor freedom, resilience, memory, and celebration."],
-  ["independence-day", "Independence Day", "Celebrate freedom, home, summer, family, and national pride."],
-  ["labor-day", "Labor Day", "Honor work, rest, effort, family, and the close of summer."],
-  ["grandparents-day", "Grandparents Day", "Send love, memory, gratitude, and family roots."],
-  ["patriot-day", "Patriot Day", "Honor remembrance, courage, service, and national grief."],
-  ["rosh-hashanah", "Rosh Hashanah", "Send reflection, blessing, renewal, and hope for the year ahead."],
-  ["yom-kippur", "Yom Kippur", "Send reflection, repair, forgiveness, and solemn care."],
-  ["indigenous-peoples-day", "Indigenous Peoples’ Day", "Honor memory, heritage, land, people, and respect."],
-  ["columbus-day", "Columbus Day", "Mark history, civic memory, travel, and reflection."],
-  ["halloween", "Halloween", "Send playful, spooky, funny, dramatic, or mischievous moments."],
-  ["dia-de-los-muertos", "Día de los Muertos", "Honor memory, ancestors, love, color, and continuing bonds."],
-  ["veterans-day", "Veterans Day", "Honor service, courage, gratitude, and sacrifice."],
-  ["thanksgiving", "Thanksgiving", "Send gratitude, family warmth, home, memory, and togetherness."],
-  ["black-friday", "Black Friday", "Send playful energy, surprise, deals, gifting, and holiday kickoff."],
-  ["giving-tuesday", "Giving Tuesday", "Send generosity, purpose, gratitude, and support."],
-  ["christmas-eve", "Christmas Eve", "Send anticipation, tenderness, family warmth, faith, and wonder."],
-  ["christmas", "Christmas", "Send joy, wonder, love, faith, nostalgia, or family warmth."],
-  ["hanukkah", "Hanukkah", "Send light, resilience, family, blessing, and celebration."],
-  ["kwanzaa", "Kwanzaa", "Send unity, culture, family, purpose, and celebration."],
-  ["new-years-eve", "New Year’s Eve", "Send reflection, goodbye, hope, celebration, and new beginnings."],
-];
+import { holidayList } from "@/lib/holidaySeeds";
 
 export default function HolidayPage() {
   return (
@@ -70,7 +35,7 @@ export default function HolidayPage() {
           </div>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {holidays.map(([slug, title, line]) => {
+            {holidayList.map(({ slug, title, line }) => {
               const isLiveMothersDay = slug === "mothers-day";
 
               return (
