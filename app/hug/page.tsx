@@ -1,8 +1,399 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
+const ACTIVE_BOT = "gp-bot";
+const WELCOME_KEY = "k-kut-gp-bot-founder-welcome-heard";
+const MIN_KK_OPTIONS = 10;
 const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
+
+type Purpose = {
+  id: string;
+  title: string;
+  line: string;
+};
+
+type ChoiceType = {
+  id: string;
+  title: string;
+  line: string;
+  songs: Song[];
+};
+
+type IntentChoice = {
+  id: string;
+  title: string;
+  line: string;
+  songs: Song[];
+};
+
+type Song = {
+  id: string;
+  title: string;
+  line: string;
+  kk: KKOption[];
+};
+
+type KKOption = {
+  id: string;
+  title: string;
+  line: string;
+  audio?: string;
+};
+
+// Hard Feelings user-friendly lanes: title: "Sorry", title: "Reflection", title: "Hurt", title: "Cry", title: "Sorrow / Break Up"
+const PURPOSES: Purpose[] = [
+  {
+    id: "love",
+    title: "Love",
+    line: "For romance, devotion, and heart-forward messages.",
+  },
+  {
+    id: "gratitude",
+    title: "Gratitude",
+    line: "For thanks, appreciation, and honoring someone.",
+  },
+  {
+    id: "hard-feelings",
+    title: "Hard Feelings",
+    line: "For apology, loss, hurt, truth, and repair.",
+  },
+  {
+    id: "celebration",
+    title: "Celebration",
+    line: "For birthdays, anniversaries, milestones, and joy.",
+  },
+  {
+    id: "comfort",
+    title: "Comfort",
+    line: "For care, support, healing, and presence.",
+  },
+];
+
+const SONGS = {
+  loveLikeThat: {
+    id: "a-love-like-that",
+    title: "A Love Like That",
+    line: "For a warm, direct love message.",
+    kk: [
+      { id: "love-1", title: "Soft opening", line: "A gentle first feeling." },
+      { id: "love-2", title: "Full-heart chorus", line: "The strongest love moment." },
+      { id: "love-3", title: "Lasting close", line: "A tender ending to send." },
+    ],
+  },
+  thankYou: {
+    id: "thank-you",
+    title: "Thank You",
+    line: "For appreciation that needs to feel real.",
+    kk: [
+      {
+        id: "thanks-1",
+        title: "Opening thanks",
+        line: "A clear first thank-you.",
+        audio: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
+      },
+      {
+        id: "thanks-2",
+        title: "Chorus thanks",
+        line: "The biggest emotional lift.",
+        audio: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
+      },
+      {
+        id: "thanks-3",
+        title: "Closing thanks",
+        line: "A softer final feeling.",
+        audio: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-outro.mp3",
+      },
+    ],
+  },
+  hurtLikeThis: {
+    id: "hurt-like-this",
+    title: "Hurt Like This",
+    line: "For heartbreak, disappointment, and emotional injury.",
+    kk: [
+      { id: "hurt-1", title: "Quiet hurt", line: "A restrained emotional opening." },
+      { id: "hurt-2", title: "Truth moment", line: "A direct feeling without over-explaining." },
+      { id: "hurt-3", title: "Release", line: "A closing moment for letting go." },
+    ],
+  },
+  changedYourMind: {
+    id: "changed-your-mind",
+    title: "Changed Your Mind",
+    line: "For regret, distance, and unresolved emotion.",
+    kk: [
+      { id: "changed-1", title: "Question", line: "A searching first moment." },
+      { id: "changed-2", title: "Realization", line: "The emotional center." },
+      { id: "changed-3", title: "Aftermath", line: "A reflective ending." },
+    ],
+  },
+  awesomeAnniversary: {
+    id: "awesome-anniversary",
+    title: "Awesome Anniversary",
+    line: "For celebration with heart.",
+    kk: [
+      { id: "aa-1", title: "Bright start", line: "A joyful first lift." },
+      { id: "aa-2", title: "Big chorus", line: "The celebration moment." },
+      { id: "aa-3", title: "Warm finish", line: "A final smile." },
+    ],
+  },
+  timeKeeps: {
+    id: "time-keeps-on-moving",
+    title: "Time Keeps On Movin’",
+    line: "For encouragement and staying with someone.",
+    kk: [
+      { id: "tkom-1", title: "Steady opening", line: "A calm first message." },
+      { id: "tkom-2", title: "Hold on", line: "A stronger support moment." },
+      { id: "tkom-3", title: "Keep going", line: "A hopeful close." },
+    ],
+  },
+} satisfies Record<string, Song>;
+
+const CHOICE_TYPES: Record<string, ChoiceType[]> = {
+  love: [
+    { id: "romance", title: "Romance", line: "For love, attraction, and closeness.", songs: [SONGS.loveLikeThat] },
+    { id: "devotion", title: "Devotion", line: "For lasting commitment and care.", songs: [SONGS.loveLikeThat] },
+    { id: "missing-you", title: "Missing You", line: "For distance, longing, and return.", songs: [SONGS.loveLikeThat] },
+    { id: "big-heart", title: "Big Heart", line: "For open, generous love.", songs: [SONGS.loveLikeThat] },
+  ],
+  gratitude: [
+    { id: "thank-you", title: "Thank You", line: "For direct thanks.", songs: [SONGS.thankYou] },
+    { id: "appreciation", title: "Appreciation", line: "For honoring what someone means.", songs: [SONGS.thankYou] },
+    { id: "mothers-day", title: "Mother’s Day", line: "For mom, mother figures, and gratitude.", songs: [SONGS.thankYou] },
+    { id: "tribute", title: "Tribute", line: "For respect, honor, and remembrance.", songs: [SONGS.thankYou] },
+  ],
+  "hard-feelings": [
+    { id: "apology", title: "Apology", line: "For regret and repair.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+    { id: "my-reality", title: "My Reality", line: "For reflection and telling the truth.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
+    { id: "pain-change", title: "Pain / Change", line: "For heartbreak, disappointment, and emotional injury.", songs: [SONGS.hurtLikeThis] },
+    { id: "tears-memory", title: "Tears / Memory", line: "For grief, tears, and memories that still hurt.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+    { id: "loss-ending", title: "Loss / Ending", line: "For endings, breakups, and release.", songs: [SONGS.changedYourMind, SONGS.hurtLikeThis] },
+  ],
+  celebration: [
+    { id: "anniversary", title: "Anniversary", line: "For lasting love and milestones.", songs: [SONGS.awesomeAnniversary] },
+    { id: "birthday", title: "Birthday", line: "For joy, thanks, and being remembered.", songs: [SONGS.awesomeAnniversary] },
+    { id: "milestone", title: "Milestone", line: "For big life moments.", songs: [SONGS.awesomeAnniversary] },
+    { id: "congratulations", title: "Congratulations", line: "For pride and celebration.", songs: [SONGS.awesomeAnniversary] },
+  ],
+  comfort: [
+    { id: "support", title: "Support", line: "For standing beside someone.", songs: [SONGS.timeKeeps] },
+    { id: "healing", title: "Healing", line: "For care during a hard moment.", songs: [SONGS.timeKeeps] },
+    { id: "hope", title: "Hope", line: "For encouragement and forward motion.", songs: [SONGS.timeKeeps] },
+    { id: "presence", title: "Presence", line: "For saying, I am here.", songs: [SONGS.timeKeeps] },
+  ],
+};
+
+const INTENT_CHOICES: Record<string, Record<string, IntentChoice[]>> = {
+  love: {
+    romance: [
+      { id: "new-love", title: "New Love", line: "For attraction, spark, and beginning.", songs: [SONGS.loveLikeThat] },
+      { id: "deep-love", title: "Deep Love", line: "For devotion and lasting feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "miss-you", title: "Missing You", line: "For distance, longing, and wanting closeness.", songs: [SONGS.loveLikeThat, SONGS.comeBack] },
+      { id: "say-it-clearly", title: "Say It Clearly", line: "For direct love with no hiding.", songs: [SONGS.loveLikeThat] },
+      { id: "soft-love", title: "Soft Love", line: "For gentle, tender feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "big-love", title: "Big Love", line: "For bold, open-hearted love.", songs: [SONGS.loveLikeThat] },
+    ],
+    devotion: [
+      { id: "promise", title: "Promise", line: "For loyalty, commitment, and staying.", songs: [SONGS.loveLikeThat] },
+      { id: "always", title: "Always", line: "For lasting care.", songs: [SONGS.loveLikeThat] },
+      { id: "thankful-love", title: "Thankful Love", line: "For gratitude inside love.", songs: [SONGS.loveLikeThat, SONGS.thankYou] },
+      { id: "protected", title: "Protected", line: "For safe, steady love.", songs: [SONGS.loveLikeThat] },
+      { id: "seen", title: "Seen", line: "For feeling known and chosen.", songs: [SONGS.loveLikeThat] },
+      { id: "forever-tone", title: "Forever Tone", line: "For long-haul devotion.", songs: [SONGS.loveLikeThat] },
+    ],
+    "missing-you": [
+      { id: "come-back-love", title: "Come Back", line: "For wanting return.", songs: [SONGS.comeBack, SONGS.loveLikeThat] },
+      { id: "distance", title: "Distance", line: "For love across space.", songs: [SONGS.loveLikeThat, SONGS.changedYourMind] },
+      { id: "lonely", title: "Lonely", line: "For missing presence.", songs: [SONGS.comeBack] },
+      { id: "still-here", title: "Still Here", line: "For love that remains.", songs: [SONGS.loveLikeThat] },
+      { id: "remember-us", title: "Remember Us", line: "For memory and longing.", songs: [SONGS.loveLikeThat, SONGS.lookingBack] },
+      { id: "reach-out", title: "Reach Out", line: "For one more message.", songs: [SONGS.comeBack] },
+    ],
+    "big-heart": [
+      { id: "open-heart", title: "Open Heart", line: "For generous feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "no-hiding", title: "No Hiding", line: "For honest love.", songs: [SONGS.loveLikeThat] },
+      { id: "warmth", title: "Warmth", line: "For warmth and care.", songs: [SONGS.loveLikeThat, SONGS.thankYou] },
+      { id: "lift-them", title: "Lift Them", line: "For making someone feel loved.", songs: [SONGS.loveLikeThat] },
+      { id: "whole-heart", title: "Whole Heart", line: "For all-in feeling.", songs: [SONGS.loveLikeThat] },
+      { id: "bright-love", title: "Bright Love", line: "For positive, joyful love.", songs: [SONGS.loveLikeThat, SONGS.awesomeAnniversary] },
+    ],
+  },
+
+  gratitude: {
+    "thank-you": [
+      { id: "simple-thanks", title: "Simple Thanks", line: "For clear appreciation.", songs: [SONGS.thankYou] },
+      { id: "deep-thanks", title: "Deep Thanks", line: "For bigger gratitude.", songs: [SONGS.thankYou] },
+      { id: "you-helped-me", title: "You Helped Me", line: "For support that mattered.", songs: [SONGS.thankYou] },
+      { id: "i-see-you", title: "I See You", line: "For being noticed and valued.", songs: [SONGS.thankYou] },
+      { id: "long-overdue", title: "Long Overdue", line: "For thanks that should have come sooner.", songs: [SONGS.thankYou, SONGS.imSorry] },
+      { id: "honor", title: "Honor", line: "For respect and appreciation.", songs: [SONGS.thankYou] },
+    ],
+    appreciation: [
+      { id: "value-you", title: "I Value You", line: "For honoring someone’s meaning.", songs: [SONGS.thankYou] },
+      { id: "grateful-heart", title: "Grateful Heart", line: "For warm thanks.", songs: [SONGS.thankYou, SONGS.loveLikeThat] },
+      { id: "seen-work", title: "I See Your Work", line: "For effort and care.", songs: [SONGS.thankYou] },
+      { id: "respect", title: "Respect", line: "For dignity and honor.", songs: [SONGS.thankYou] },
+      { id: "because-of-you", title: "Because of You", line: "For impact.", songs: [SONGS.thankYou] },
+      { id: "quiet-thanks", title: "Quiet Thanks", line: "For gentle appreciation.", songs: [SONGS.thankYou] },
+    ],
+    "mothers-day": [
+      { id: "mom-thanks", title: "Thank You, Mom", line: "For direct Mother’s Day gratitude.", songs: [SONGS.thankYou] },
+      { id: "mother-figure", title: "Mother Figure", line: "For someone who mothered you.", songs: [SONGS.thankYou] },
+      { id: "raised-me", title: "You Raised Me", line: "For care over time.", songs: [SONGS.thankYou] },
+      { id: "i-remember", title: "I Remember", line: "For memory and gratitude.", songs: [SONGS.thankYou, SONGS.lookingBack] },
+      { id: "love-and-thanks", title: "Love and Thanks", line: "For mixed love and appreciation.", songs: [SONGS.thankYou, SONGS.loveLikeThat] },
+      { id: "honor-mom", title: "Honor Mom", line: "For respect and tribute.", songs: [SONGS.thankYou] },
+    ],
+    tribute: [
+      { id: "honor-you", title: "Honor You", line: "For tribute and respect.", songs: [SONGS.thankYou] },
+      { id: "remembering", title: "Remembering", line: "For memory and gratitude.", songs: [SONGS.thankYou, SONGS.lookingBack] },
+      { id: "legacy", title: "Legacy", line: "For what someone leaves behind.", songs: [SONGS.thankYou] },
+      { id: "respectful", title: "Respectful", line: "For dignified appreciation.", songs: [SONGS.thankYou] },
+      { id: "because-they-matter", title: "Because They Matter", line: "For emotional recognition.", songs: [SONGS.thankYou] },
+      { id: "quiet-tribute", title: "Quiet Tribute", line: "For soft honor.", songs: [SONGS.thankYou] },
+    ],
+  },
+
+  "hard-feelings": {
+    sorry: [
+      { id: "i-am-sorry", title: "I’m Sorry", line: "For apology and regret.", songs: [SONGS.imSorry, SONGS.comeBack, SONGS.changedYourMind, SONGS.hurtLikeThis, SONGS.myRealitySong, SONGS.lookingBack] },
+      { id: "i-was-wrong", title: "I Was Wrong", line: "For owning the mistake.", songs: [SONGS.imSorry, SONGS.myRealitySong, SONGS.changedYourMind] },
+      { id: "please-hear-me", title: "Please Hear Me", line: "For trying to be understood.", songs: [SONGS.imSorry, SONGS.comeBack] },
+      { id: "try-again", title: "Try Again", line: "For repair and reconnection.", songs: [SONGS.comeBack, SONGS.imSorry] },
+      { id: "regret", title: "Regret", line: "For wishing it went differently.", songs: [SONGS.changedYourMind, SONGS.imSorry] },
+      { id: "make-it-right", title: "Make It Right", line: "For repair and humility.", songs: [SONGS.imSorry, SONGS.comeBack] },
+    ],
+    reflection: [
+      { id: "truth", title: "Truth", line: "For telling the truth.", songs: [SONGS.myRealitySong, SONGS.lookingBack, SONGS.changedYourMind, SONGS.hurtLikeThis, SONGS.imSorry, SONGS.comeBack] },
+      { id: "looking-back", title: "Looking Back", line: "For understanding what happened.", songs: [SONGS.lookingBack, SONGS.changedYourMind] },
+      { id: "my-side", title: "My Side", line: "For speaking your reality.", songs: [SONGS.myRealitySong, SONGS.changedYourMind] },
+      { id: "no-hiding", title: "No Hiding", line: "For honesty.", songs: [SONGS.myRealitySong, SONGS.imSorry] },
+      { id: "realization", title: "Realization", line: "For seeing it now.", songs: [SONGS.changedYourMind, SONGS.lookingBack] },
+      { id: "what-happened", title: "What Happened", line: "For naming the situation.", songs: [SONGS.lookingBack, SONGS.hurtLikeThis] },
+    ],
+    hurt: [
+      { id: "heartbreak", title: "Heartbreak", line: "For deep personal hurt.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind, SONGS.cry, SONGS.sorrowBreakUp, SONGS.comeBack, SONGS.imSorry] },
+      { id: "disappointment", title: "Disappointment", line: "For being let down.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind, SONGS.lookingBack] },
+      { id: "emotional-injury", title: "Emotional Injury", line: "For damage that still hurts.", songs: [SONGS.hurtLikeThis, SONGS.cry, SONGS.sorrowBreakUp] },
+      { id: "still-angry", title: "Still Angry", line: "For hurt with edge.", songs: [SONGS.hurtLikeThis, SONGS.changedYourMind] },
+      { id: "missing-them", title: "Missing Them", line: "For hurt mixed with longing.", songs: [SONGS.comeBack, SONGS.changedYourMind, SONGS.cry] },
+      { id: "letting-go", title: "Letting Go", line: "For release after pain.", songs: [SONGS.sorrowBreakUp, SONGS.cry, SONGS.changedYourMind] },
+    ],
+    cry: [
+      { id: "grief", title: "Grief", line: "For sadness and loss.", songs: [SONGS.cry, SONGS.hurtLikeThis, SONGS.sorrowBreakUp, SONGS.changedYourMind, SONGS.lookingBack, SONGS.comeBack] },
+      { id: "tears", title: "Tears", line: "For letting it out.", songs: [SONGS.cry, SONGS.hurtLikeThis] },
+      { id: "memory", title: "Memory", line: "For memories that still hurt.", songs: [SONGS.cry, SONGS.lookingBack] },
+      { id: "soft-sad", title: "Soft Sadness", line: "For quiet sadness.", songs: [SONGS.cry, SONGS.sorrowBreakUp] },
+      { id: "overwhelmed", title: "Overwhelmed", line: "For too much feeling.", songs: [SONGS.cry, SONGS.hurtLikeThis] },
+      { id: "missed-moments", title: "Missed Moments", line: "For what did not happen.", songs: [SONGS.lookingBack, SONGS.cry] },
+    ],
+    "sorrow-break-up": [
+      { id: "ending", title: "Ending", line: "For when something is over.", songs: [SONGS.sorrowBreakUp, SONGS.changedYourMind, SONGS.comeBack, SONGS.hurtLikeThis, SONGS.imSorry, SONGS.cry] },
+      { id: "breakup", title: "Break Up", line: "For separation and goodbye.", songs: [SONGS.sorrowBreakUp, SONGS.changedYourMind] },
+      { id: "goodbye", title: "Goodbye", line: "For finality.", songs: [SONGS.sorrowBreakUp, SONGS.cry] },
+      { id: "one-more-chance", title: "One More Chance", line: "For wanting repair before the end.", songs: [SONGS.comeBack, SONGS.imSorry] },
+      { id: "release", title: "Release", line: "For letting go.", songs: [SONGS.sorrowBreakUp, SONGS.cry] },
+      { id: "aftershock", title: "Aftershock", line: "For the pain after ending.", songs: [SONGS.hurtLikeThis, SONGS.sorrowBreakUp] },
+    ],
+  },
+
+  celebration: {
+    anniversary: [
+      { id: "years-together", title: "Years Together", line: "For lasting love.", songs: [SONGS.awesomeAnniversary, SONGS.loveLikeThat] },
+      { id: "still-us", title: "Still Us", line: "For choosing each other again.", songs: [SONGS.awesomeAnniversary] },
+      { id: "milestone-love", title: "Milestone Love", line: "For the big date.", songs: [SONGS.awesomeAnniversary] },
+      { id: "look-what-we-built", title: "Look What We Built", line: "For shared life.", songs: [SONGS.awesomeAnniversary] },
+      { id: "joyful-anniversary", title: "Joyful Anniversary", line: "For celebration.", songs: [SONGS.awesomeAnniversary] },
+      { id: "love-thanks", title: "Love and Thanks", line: "For romance plus gratitude.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+    ],
+    birthday: [
+      { id: "happy-birthday", title: "Happy Birthday", line: "For a joyful birthday.", songs: [SONGS.awesomeAnniversary] },
+      { id: "glad-you-exist", title: "Glad You Exist", line: "For celebrating the person.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+      { id: "big-day", title: "Big Day", line: "For birthday energy.", songs: [SONGS.awesomeAnniversary] },
+      { id: "wish-you-well", title: "Wish You Well", line: "For warm wishes.", songs: [SONGS.awesomeAnniversary] },
+      { id: "birthday-love", title: "Birthday Love", line: "For love on a birthday.", songs: [SONGS.awesomeAnniversary, SONGS.loveLikeThat] },
+      { id: "celebrate-you", title: "Celebrate You", line: "For making someone feel seen.", songs: [SONGS.awesomeAnniversary] },
+    ],
+    milestone: [
+      { id: "achievement", title: "Achievement", line: "For something earned.", songs: [SONGS.awesomeAnniversary] },
+      { id: "new-chapter", title: "New Chapter", line: "For moving forward.", songs: [SONGS.awesomeAnniversary] },
+      { id: "proud-of-you", title: "Proud of You", line: "For pride and honor.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+      { id: "big-moment", title: "Big Moment", line: "For a life moment.", songs: [SONGS.awesomeAnniversary] },
+      { id: "we-made-it", title: "We Made It", line: "For shared victory.", songs: [SONGS.awesomeAnniversary] },
+      { id: "bright-future", title: "Bright Future", line: "For hope and celebration.", songs: [SONGS.awesomeAnniversary] },
+    ],
+    congratulations: [
+      { id: "congrats", title: "Congratulations", line: "For direct celebration.", songs: [SONGS.awesomeAnniversary] },
+      { id: "you-did-it", title: "You Did It", line: "For accomplishment.", songs: [SONGS.awesomeAnniversary] },
+      { id: "well-earned", title: "Well Earned", line: "For deserved success.", songs: [SONGS.awesomeAnniversary] },
+      { id: "proud", title: "Proud", line: "For pride and support.", songs: [SONGS.awesomeAnniversary, SONGS.thankYou] },
+      { id: "joy", title: "Joy", line: "For happy energy.", songs: [SONGS.awesomeAnniversary] },
+      { id: "raise-it-up", title: "Raise It Up", line: "For big celebration.", songs: [SONGS.awesomeAnniversary] },
+    ],
+  },
+
+  comfort: {
+    support: [
+      { id: "i-am-here", title: "I’m Here", line: "For presence.", songs: [SONGS.timeKeeps] },
+      { id: "hold-on", title: "Hold On", line: "For encouragement.", songs: [SONGS.timeKeeps] },
+      { id: "not-alone", title: "Not Alone", line: "For support.", songs: [SONGS.timeKeeps] },
+      { id: "steady", title: "Steady", line: "For calm reassurance.", songs: [SONGS.timeKeeps] },
+      { id: "keep-going", title: "Keep Going", line: "For forward motion.", songs: [SONGS.timeKeeps] },
+      { id: "beside-you", title: "Beside You", line: "For standing with someone.", songs: [SONGS.timeKeeps] },
+    ],
+    healing: [
+      { id: "heal", title: "Healing", line: "For care during pain.", songs: [SONGS.timeKeeps] },
+      { id: "gentle-care", title: "Gentle Care", line: "For softness.", songs: [SONGS.timeKeeps] },
+      { id: "breathe", title: "Breathe", line: "For calming down.", songs: [SONGS.timeKeeps] },
+      { id: "time", title: "Time", line: "For healing over time.", songs: [SONGS.timeKeeps] },
+      { id: "safe", title: "Safe", line: "For reassurance.", songs: [SONGS.timeKeeps] },
+      { id: "soft-support", title: "Soft Support", line: "For quiet help.", songs: [SONGS.timeKeeps] },
+    ],
+    hope: [
+      { id: "hopeful", title: "Hopeful", line: "For hope.", songs: [SONGS.timeKeeps] },
+      { id: "forward", title: "Forward", line: "For moving ahead.", songs: [SONGS.timeKeeps] },
+      { id: "better-days", title: "Better Days", line: "For encouragement.", songs: [SONGS.timeKeeps] },
+      { id: "light", title: "Light", line: "For a brighter feeling.", songs: [SONGS.timeKeeps] },
+      { id: "keep-moving", title: "Keep Moving", line: "For persistence.", songs: [SONGS.timeKeeps] },
+      { id: "still-possible", title: "Still Possible", line: "For possibility.", songs: [SONGS.timeKeeps] },
+    ],
+    presence: [
+      { id: "with-you", title: "With You", line: "For presence.", songs: [SONGS.timeKeeps] },
+      { id: "i-care", title: "I Care", line: "For care.", songs: [SONGS.timeKeeps] },
+      { id: "check-in", title: "Check In", line: "For reaching out.", songs: [SONGS.timeKeeps] },
+      { id: "quiet-company", title: "Quiet Company", line: "For not leaving them alone.", songs: [SONGS.timeKeeps] },
+      { id: "steady-hand", title: "Steady Hand", line: "For grounding.", songs: [SONGS.timeKeeps] },
+      { id: "near", title: "Near", line: "For emotional closeness.", songs: [SONGS.timeKeeps] },
+    ],
+  },
+};
+
+function buildKKOptions(song: Song): KKOption[] {
+  const base = [...song.kk];
+
+  const optionNames = [
+    "Opening feeling",
+    "Soft lift",
+    "Clear message",
+    "Heart moment",
+    "Strongest hook",
+    "Gentle turn",
+    "Deep feeling",
+    "Warm close",
+    "Lasting echo",
+    "Best send",
+  ];
+
+  while (base.length < MIN_KK_OPTIONS) {
+    const next = base.length + 1;
+    base.push({
+      id: `${song.id}-kk-${next}`,
+      title: optionNames[next - 1] ?? `K-KUT Option ${next}`,
+      line: `A K-KUT moment for “${song.title}.”`,
+    });
+  }
+
+  return base;
+}
 
 let activeKkutAudio: HTMLAudioElement | null = null;
 
@@ -23,8 +414,8 @@ function stopAllAudio() {
   window.dispatchEvent(new Event("k-kut-stop-audio"));
 }
 
-function playOneAudio(src: string): Promise<boolean> {
-  if (typeof window === "undefined") return Promise.resolve(false);
+function playOneAudio(src: string) {
+  if (typeof window === "undefined") return;
 
   stopAllAudio();
 
@@ -42,727 +433,508 @@ function playOneAudio(src: string): Promise<boolean> {
   audio.addEventListener("ended", clearIfActive, { once: true });
   audio.addEventListener("pause", clearIfActive, { once: true });
 
-  return audio
-    .play()
-    .then(() => true)
-    .catch(() => {
-      clearIfActive();
-      console.log("BOT voice blocked until first user interaction:", src);
-      return false;
-    });
+  audio.play().catch(() => {
+    clearIfActive();
+    console.log("Audio blocked until user taps:", src);
+  });
 }
 
-const GUIDE_AUDIO = {
-  welcome: "/audio/kleigh/guide-final/33-welcome.m4a",
-  choose: "/audio/kleigh/guide-final/07-choose-feel.m4a",
-  play: "/audio/kleigh/guide-final/24-press-play.m4a",
-  checkout: "/audio/kleigh/guide-final/03-best-hug.m4a",
-} as const;
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", stopAllAudio);
+  window.addEventListener("beforeunload", stopAllAudio);
+}
 
-const DEMOS = [
-  {
-    id: "chorus",
-    feeling: "Big Heart",
-    title: "Thank You — Big Heart HUG",
-    shortTitle: "Big Heart",
-    description: "Warm, strong, and emotional. Best when the HUG should feel full, grateful, and loved.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
-  },
-  {
-    id: "opening",
-    feeling: "Gentle",
-    title: "Thank You — Gentle HUG",
-    shortTitle: "Gentle",
-    description: "Soft and tender. Best when the HUG should feel calm, kind, and close.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-opening.mp3",
-  },
-  {
-    id: "outro",
-    feeling: "Peaceful",
-    title: "Thank You — Peaceful HUG",
-    shortTitle: "Peaceful",
-    description: "A calm and warm closing. Best when the HUG should feel reflective, comforting, and complete.",
-    audioSrc: "/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-outro.mp3",
-  },
-] as const;
 
-type DemoId = (typeof DEMOS)[number]["id"];
 
-const INTENTS: {
-  id: string;
-  label: string;
-  body: string;
-  demoId: DemoId;
-  order: DemoId[];
-}[] = [
-  {
-    id: "thank-you",
-    label: "Thank you",
-    body: "For gratitude that needs more than plain words.",
-    demoId: "chorus",
-    order: ["chorus", "opening", "outro"],
-  },
-  {
-    id: "love",
-    label: "Love",
-    body: "For warmth, closeness, care, and a private emotional moment.",
-    demoId: "opening",
-    order: ["opening", "chorus", "outro"],
-  },
-  {
-    id: "support",
-    label: "Support",
-    body: "For encouragement, comfort, strength, or being there from a distance.",
-    demoId: "outro",
-    order: ["outro", "opening", "chorus"],
-  },
-  {
-    id: "sorry-repair",
-    label: "Sorry / repair",
-    body: "For apology, repair, longing, or a feeling that is hard to say directly.",
-    demoId: "opening",
-    order: ["opening", "outro", "chorus"],
-  },
-  {
-    id: "miss-you",
-    label: "I miss you",
-    body: "For distance, memory, longing, or wanting someone to feel remembered.",
-    demoId: "outro",
-    order: ["outro", "chorus", "opening"],
-  },
-  {
-    id: "proud",
-    label: "I’m proud of you",
-    body: "For recognition, celebration, belief, and emotional encouragement.",
-    demoId: "chorus",
-    order: ["chorus", "outro", "opening"],
-  },
-];
 
-type Step = 1 | 2 | 3;
-
-export default function GeneralHugPage() {
-  const [step, setStep] = useState<Step>(1);
-  const [typedFeeling, setTypedFeeling] = useState("");
-  const [selectedIntentId, setSelectedIntentId] = useState("always-there");
-  const [selectedId, setSelectedId] = useState<DemoId>("chorus");
-  const [optionIds, setOptionIds] = useState<DemoId[]>(["chorus", "opening", "outro"]);
-
-  const [recipientName, setRecipientName] = useState("");
-  const [recipientMessage, setRecipientMessage] = useState(
-    "I picked this K-KUT HUG for you because words alone did not feel like enough."
-  );
-  const [privateHugLink, setPrivateHugLink] = useState("");
-
-  const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
-
-  const selectedIntent = useMemo(
-    () => INTENTS.find((intent) => intent.id === selectedIntentId) ?? INTENTS[0],
-    [selectedIntentId]
-  );
-
-  const options = useMemo(
-    () =>
-      optionIds
-        .map((id) => DEMOS.find((demo) => demo.id === id))
-        .filter(Boolean) as typeof DEMOS,
-    [optionIds]
-  );
-
-  const selectedDemo = useMemo(
-    () => DEMOS.find((demo) => demo.id === selectedId) ?? DEMOS[0],
-    [selectedId]
-  );
-
-  const guideMessage = useMemo(() => {
-    if (step === 1) {
-      return "Step 1. Choose the feeling you want to send. Then I will show only the best music matches.";
-    }
-
-    if (step === 2) {
-      return `Step 2. You chose “${selectedIntent.label}.” Press Play on the samples, then choose the HUG that feels right.`;
-    }
-
-    return `Step 3. Add your words, then checkout to send the private HUG link.`;
-  }, [step, selectedIntent.label, selectedDemo.shortTitle]);
-
-  function playGuide(kind: keyof typeof GUIDE_AUDIO = "welcome") {
-    return playOneAudio(GUIDE_AUDIO[kind]);
-  }
-
-  function speakProactiveGuideScript() {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      return Promise.resolve(false);
-    }
-
-    const script =
-      "Welcome. A K-KUT HUG helps you send the right feeling through real music and your own words. Here is the simple three step path. First, choose the feeling you want to send. Second, press play and hear the best music matches. Third, add your words and send the private HUG link. I will lead you one step at a time. First time users get buy one, get one free.";
-
-    window.speechSynthesis.cancel();
-
-    return new Promise<boolean>((resolve) => {
-      const voice = new SpeechSynthesisUtterance(script);
-      voice.rate = 0.92;
-      voice.pitch = 0.9;
-      voice.volume = 1;
-
-      voice.onend = () => resolve(true);
-      voice.onerror = () => resolve(false);
-
-      window.speechSynthesis.speak(voice);
-    });
-  }
+export default function Home() {
+  const [screen, setScreen] = useState<"welcome" | "purpose" | "type" | "intent" | "song" | "kk" | "confirm" | "buy">("welcome");
+  const [purposeId, setPurposeId] = useState("");
+  const [typeId, setTypeId] = useState("");
+  const [intentId, setIntentId] = useState("");
+  const [songId, setSongId] = useState("");
+  const [kkId, setKkId] = useState("");
+  const [songBatchIndex, setSongBatchIndex] = useState(0);
+  const [hasHeardWelcome, setHasHeardWelcome] = useState(false);
 
   useEffect(() => {
-    let greetingPlayed = false;
-    let cancelled = false;
-
-    function cleanupGreetingListeners() {
-      window.removeEventListener("pointerdown", startGuideGreeting);
-      window.removeEventListener("keydown", startGuideGreeting);
-      window.removeEventListener("touchstart", startGuideGreeting);
-      window.removeEventListener("mousedown", startGuideGreeting);
-    }
-
-    function startGuideGreeting() {
-      if (greetingPlayed || cancelled) return;
-
-      speakProactiveGuideScript().then((played) => {
-        if (!played || cancelled) return;
-
-        greetingPlayed = true;
-        cleanupGreetingListeners();
-      });
-    }
-
-    const timer = window.setTimeout(startGuideGreeting, 800);
-
-    window.addEventListener("pointerdown", startGuideGreeting);
-    window.addEventListener("keydown", startGuideGreeting);
-    window.addEventListener("touchstart", startGuideGreeting);
-    window.addEventListener("mousedown", startGuideGreeting);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timer);
-      cleanupGreetingListeners();
-    };
+    setHasHeardWelcome(window.localStorage.getItem(WELCOME_KEY) === "yes");
   }, []);
 
-  function chooseIntent(intent: (typeof INTENTS)[number]) {
-    setSelectedIntentId(intent.id);
-    setSelectedId(intent.demoId);
-    setOptionIds(intent.order);
-    setStep(2);
-    playGuide("choose");
-  }
+  const purpose = useMemo(
+    () => PURPOSES.find((item) => item.id === purposeId) ?? null,
+    [purposeId]
+  );
 
-  function normalizeTypedFeeling(input: string) {
-    const raw = input.trim().toLowerCase();
+  const typeChoices = useMemo(
+    () => (purpose ? CHOICE_TYPES[purpose.id] ?? [] : []),
+    [purpose]
+  );
 
-    if (!raw) return INTENTS[0];
+  const choiceType = useMemo(
+    () => typeChoices.find((item) => item.id === typeId) ?? null,
+    [typeChoices, typeId]
+  );
 
-    if (
-      raw.includes("miss") ||
-      raw.includes("distance") ||
-      raw.includes("far") ||
-      raw.includes("gone") ||
-      raw.includes("memory")
-    ) {
-      return INTENTS.find((intent) => intent.id === "miss-you") ?? INTENTS[0];
+  const intentChoices = useMemo(
+    () => (purpose && choiceType ? INTENT_CHOICES[purpose.id]?.[choiceType.id] ?? [] : []),
+    [purpose, choiceType]
+  );
+
+  const intentChoice = useMemo(
+    () => intentChoices.find((item) => item.id === intentId) ?? null,
+    [intentChoices, intentId]
+  );
+
+  const visibleSongs = useMemo(() => {
+    if (!intentChoice) return [];
+
+    const start = songBatchIndex * SONG_BATCH_SIZE;
+    return intentChoice.songs.slice(start, start + SONG_BATCH_SIZE);
+  }, [intentChoice, songBatchIndex]);
+
+  const hasMoreSongSets = Boolean(
+    intentChoice && (songBatchIndex + 1) * SONG_BATCH_SIZE < intentChoice.songs.length
+  );
+
+  const song = useMemo(
+    () => intentChoice?.songs.find((item) => item.id === songId) ?? null,
+    [intentChoice, songId]
+  );
+
+  const kkOptions = useMemo(
+    () => (song ? buildKKOptions(song) : []),
+    [song]
+  );
+
+  const kk = useMemo(
+    () => kkOptions.find((item) => item.id === kkId) ?? null,
+    [kkOptions, kkId]
+  );
+
+  function playBotVoice(clip: string = "welcome") {
+    if (clip === "welcome" && typeof window !== "undefined") {
+      window.localStorage.setItem(WELCOME_KEY, "yes");
+      setHasHeardWelcome(true);
     }
 
-    if (
-      raw.includes("peace") ||
-      raw.includes("calm") ||
-      raw.includes("comfort") ||
-      raw.includes("gentle")
-    ) {
-      return INTENTS.find((intent) => intent.id === "peaceful") ?? INTENTS[0];
+    playOneAudio(
+      clip === "welcome"
+        ? "/audio/kleigh/guide-final/33-welcome.m4a"
+        : `/voices/${ACTIVE_BOT}/prompts/${clip}.m4a`
+    );
+  }
+
+  function startFlow() {
+    setScreen("purpose");
+    playBotVoice("pick-kind");
+  }
+
+  function choosePurpose(nextPurpose: Purpose) {
+    stopAllAudio();
+    setPurposeId(nextPurpose.id);
+    setTypeId("");
+    setIntentId("");
+    setSongId("");
+    setKkId("");
+    setScreen("type");
+  }
+
+  function chooseType(nextType: ChoiceType) {
+    stopAllAudio();
+    setTypeId(nextType.id);
+    setIntentId("");
+    setSongId("");
+    setKkId("");
+    setScreen("intent");
+  }
+
+  function chooseIntent(nextIntent: IntentChoice) {
+    stopAllAudio();
+    setIntentId(nextIntent.id);
+    setSongId("");
+    setKkId("");
+    setSongBatchIndex(0);
+    setScreen("song");
+  }
+
+  function chooseSong(nextSong: Song) {
+    stopAllAudio();
+    setSongId(nextSong.id);
+    setKkId("");
+    setScreen("kk");
+  }
+
+  function chooseKK(nextKK: KKOption) {
+    stopAllAudio();
+    setKkId(nextKK.id);
+    setScreen("confirm");
+  }
+
+  function playKK(nextKK: KKOption) {
+    if (!nextKK.audio) {
+      stopAllAudio();
+      return;
     }
 
-    if (
-      raw.includes("cry") ||
-      raw.includes("tears") ||
-      raw.includes("emotional") ||
-      raw.includes("big")
-    ) {
-      return INTENTS.find((intent) => intent.id === "happy-tears") ?? INTENTS[0];
-    }
-
-    if (
-      raw.includes("help") ||
-      raw.includes("there") ||
-      raw.includes("always") ||
-      raw.includes("support")
-    ) {
-      return INTENTS.find((intent) => intent.id === "always-there") ?? INTENTS[0];
-    }
-
-    if (
-      raw.includes("difference") ||
-      raw.includes("matter") ||
-      raw.includes("important")
-    ) {
-      return INTENTS.find((intent) => intent.id === "made-difference") ?? INTENTS[0];
-    }
-
-    if (
-      raw.includes("thank") ||
-      raw.includes("grateful") ||
-      raw.includes("appreciate") ||
-      raw.includes("love") ||
-      raw.includes("loved")
-    ) {
-      return INTENTS.find((intent) => intent.id === "appreciate-everything") ?? INTENTS[0];
-    }
-
-    return {
-      id: "typed",
-      label: input.trim(),
-      body: "A custom HUG feeling. Start with the strongest match, then hear the options.",
-      demoId: "chorus",
-      order: ["chorus", "opening", "outro"],
-    };
+    playOneAudio(nextKK.audio);
   }
 
-  function submitTypedFeeling() {
-    const intent = normalizeTypedFeeling(typedFeeling);
-    chooseIntent(intent);
-    setTypedFeeling("");
+  function goBack() {
+    stopAllAudio();
+
+    if (screen === "buy") setScreen("confirm");
+    else if (screen === "confirm") setScreen("kk");
+    else if (screen === "kk") setScreen("song");
+    else if (screen === "song") setScreen("intent");
+    else if (screen === "intent") setScreen("type");
+    else if (screen === "type") setScreen("purpose");
+    else if (screen === "purpose") setScreen("welcome");
   }
 
-  function stopOtherDemoAudio(current: HTMLAudioElement) {
-    for (const el of Object.values(audioRefs.current)) {
-      if (!el || el === current) continue;
-      el.pause();
-      el.currentTime = 0;
-    }
-  }
-
-  function playDemo(id: string) {
-    const el = audioRefs.current[id];
-    if (!el) return;
-
-    stopOtherDemoAudio(el);
-    el.currentTime = 0;
-    el.play().catch(() => {});
-    playGuide("play");
-  }
-
-  function chooseDemo(id: DemoId) {
-    const demo = DEMOS.find((item) => item.id === id) ?? DEMOS[0];
-    setSelectedId(id);
-    setStep(3);
-    playGuide("checkout");
-  }
-
-  function makeRecipientSlug(name: string) {
-    const clean = name
-      .trim()
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 32);
-
-    const stamp = Date.now().toString(36).slice(-5);
-    return `${clean || "recipient"}-${selectedDemo.id}-${stamp}`;
-  }
-
-  function makePrivateHugLink() {
-    const slug = makeRecipientSlug(recipientName);
-    const base =
-      typeof window !== "undefined"
-        ? window.location.origin
-        : "https://www.k-kut.com";
-
-    return `${base}/hug/private?name=${encodeURIComponent(
-      recipientName || "them"
-    )}&msg=${encodeURIComponent(
-      recipientMessage
-    )}&demo=${encodeURIComponent(selectedDemo.id)}&audio=${encodeURIComponent(
-      selectedDemo.audioSrc
-    )}&slug=${encodeURIComponent(slug)}`;
-  }
-
-  async function startCheckout() {
-    const generatedPrivateLink = makePrivateHugLink();
-    setPrivateHugLink(generatedPrivateLink);
-
-    try {
-      await fetch("/api/4pe/fulfillment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          selected_hug_id: selectedDemo.id,
-          selected_hug_title: selectedDemo.title,
-          selected_intent_id: selectedIntent.id,
-          selected_intent_label: selectedIntent.label,
-          source_page: "/hug/mothers-day",
-          product_family: "HUG",
-          holiday_set: "mothers_day",
-          source_song: "Thank You",
-          sentiment_product_type: "HUG",
-          typed_feeling: selectedIntent.label,
-          interpreted_feeling: selectedIntent.label,
-          delivery_preference: "private_link",
-          consent_sms: false,
-          metadata: {
-            checkout_handoff: true,
-            private_hug_link: generatedPrivateLink,
-            recipient_name: recipientName,
-            recipient_message: recipientMessage,
-            selected_hug_audio: selectedDemo.audioSrc,
-            no_download: true,
-            sms_enabled: false,
-            sms_note: "SMS is pending A2P approval. Use email/manual private link delivery until verified.",
-            buyer_page_is_not_recipient_page: true,
-          },
-        }),
-      });
-    } catch {
-      // Checkout remains available. 4PE can reconcile manually if capture fails.
-    }
-
-    window.location.href = STRIPE_URL;
-  }
-
-  const progress = [
-    { n: 1, label: "Choose feeling" },
-    { n: 2, label: "Hear options" },
-    { n: 3, label: "Checkout" },
-  ];
+  const label =
+    screen === "welcome"
+      ? "Welcome"
+      : screen === "purpose"
+        ? "Pick what this is for"
+        : screen === "type"
+          ? "Refine the choice"
+          : screen === "intent"
+            ? "Choose intent"
+            : screen === "song"
+              ? "Pick a song"
+            : screen === "kk"
+              ? "Choose a KK option"
+              : screen === "confirm"
+                ? "Confirm"
+                : "Buy / send";
 
   return (
-    <main className="min-h-screen bg-[#261208] text-[#fff6e8]">
-      <section className="mx-auto max-w-5xl px-5 py-8 sm:px-8 sm:py-12">
-        <div className="rounded-[2rem] border border-amber-300/20 bg-[#3a1f0f] p-6 shadow-2xl sm:p-8">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-amber-200">
-              K-KUT HUG
-            </p>
+    <main className="min-h-screen bg-[#2a1207] px-5 py-6 text-amber-50 sm:px-8">
+      <section className="mx-auto max-w-3xl">
+        <a href="/hug/mothers-day" className="text-sm font-bold text-amber-200 underline underline-offset-4">
+          I don’t understand — show me the demo
+        </a>
 
-            <div className="rounded-full border border-green-300/30 bg-green-400/10 px-4 py-2 text-sm font-bold text-green-100">
-              BOT-guided path
-            </div>
-          </div>
-
-          <h1 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
+        <header className="mt-8">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            K-KUT HUG
+          </p>
+          <h1 className="mt-3 text-5xl font-black leading-tight sm:text-6xl">
             Send the right feeling through music and words.
           </h1>
+          <p className="mt-4 text-xl font-bold leading-8 text-amber-50/75">
+            {label}
+          </p>
+        </header>
 
-          <div className="mt-5 rounded-[1.5rem] border border-amber-300/30 bg-black/25 p-5">
-            <p className="text-lg font-black text-amber-100">
-              We walk you through it. Choose the feeling, hear the music, add your words, and send an emotional statement like never before.
-            </p>
-            <p className="mt-2 text-base font-bold leading-7 text-amber-50/80">
-              Here is how it works: 1) choose the feeling you want to send, 2) hear real music matches, 3) add your words and send the private HUG link. We walk you through each step. First-time users: buy 1, get 1 free.
-            </p>
-          </div>
+        <section className="mt-8 rounded-[2rem] border border-amber-300/25 bg-[#3a1f0f] p-6 shadow-2xl sm:p-8">
+          {screen === "welcome" && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                One step at a time
+              </p>
 
-          <div className="mt-6 rounded-[1.5rem] border border-amber-300/30 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
-            <p className="text-sm font-black uppercase tracking-[0.18em]">
-              Guide
-            </p>
-            <p className="mt-2 text-2xl font-black leading-tight">{guideMessage}</p>
-          </div>
+              <h2 className="mt-3 text-3xl font-black leading-tight">
+                I’ll guide you through one clear step at a time. A HUG sends a focused song moment with your feeling and words.
+              </h2>
 
-          <div className="mt-6 rounded-[1.5rem] border border-amber-300 bg-amber-300 px-5 py-4 text-[#2a180d] shadow-lg">
-            <p className="text-xs font-black uppercase tracking-[0.2em]">
-              Step {step} of 3
-            </p>
-            <p className="mt-2 text-2xl font-black">
-              {step === 1 ? "Choose feeling" : step === 2 ? "Hear options" : "Send HUG"}
-            </p>
-          </div>
+              <p className="mt-5 rounded-2xl bg-black/25 p-4 text-base font-bold leading-7 text-amber-50/80">
+                Start with the regular HUG path. Holiday HUGs remain available in the holiday catalog when timely and appropriate.
+              </p>
 
-          {step === 1 ? (
-          <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-white/5 p-6">
-            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-              <div>
-                <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                  Feeling choices
-                </p>
-                <h2 className="mt-2 text-3xl font-black">
-                  Step 1 — What feeling do you want to send?
-                </h2>
+              <div className="mt-6 grid gap-3 text-lg font-bold leading-8 text-amber-50/90">
+                <p>♪ A HUG sends feeling through music and words.</p>
+                <p>♬ A HUG sends feeling through music.</p>
+                <p>♫ A HUG can be sent by text, DM, social link, or email.</p>
               </div>
+
               <button
                 type="button"
-                onClick={() => {
-                  setStep(1);
-                }}
-                className="rounded-2xl border border-amber-200/20 px-5 py-3 text-sm font-black text-amber-50/80 transition hover:bg-white/10"
+                onClick={() => playBotVoice()}
+                className="mt-6 rounded-2xl bg-black/40 px-6 py-4 text-base font-black text-amber-100 transition hover:bg-black/60"
               >
-                Start over
+                {hasHeardWelcome ? "Replay MC-BOT HUG Guide" : "Play MC-BOT HUG Guide"}
               </button>
-            </div>
 
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <input
-                value={typedFeeling}
-                onChange={(event) => setTypedFeeling(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    submitTypedFeeling();
-                  }
-                }}
-                placeholder="Example: I want her to feel appreciated"
-                className="min-h-[3.5rem] flex-1 rounded-2xl border border-amber-300/25 bg-black/30 px-5 py-4 text-base font-bold text-amber-50 outline-none placeholder:text-amber-50/45"
-              />
               <button
                 type="button"
-                onClick={submitTypedFeeling}
-                className="rounded-2xl bg-amber-300 px-6 py-4 text-base font-black text-[#2a180d] transition hover:bg-amber-200"
+                onClick={startFlow}
+                className="mt-6 w-full rounded-2xl bg-amber-300 px-8 py-6 text-2xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
               >
-                Match feeling
+                I understand — start
               </button>
+
+              <a
+                href="/hug/mothers-day"
+                className="mt-4 block w-full rounded-2xl border border-amber-300 bg-[#f6c453] px-8 py-5 text-center text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
+              >
+                Start regular HUG now
+              </a>
             </div>
+          )}
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {INTENTS.map((intent) => {
-                const active = selectedIntentId === intent.id;
+          {screen === "purpose" && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                One question
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Let’s start broad. Choose what this HUG is for.</h2>
 
-                return (
+              <div className="mt-6 grid gap-3">
+                {PURPOSES.map((item) => (
                   <button
-                    key={intent.id}
+                    key={item.id}
                     type="button"
-                    onClick={() => chooseIntent(intent)}
-                    className={`rounded-[1.25rem] border p-5 text-left transition ${
-                      active
-                        ? "border-amber-300 bg-amber-300 text-[#2a180d]"
-                        : "border-amber-300/20 bg-[#251209] text-amber-50 hover:border-amber-300/50 hover:bg-[#30180c]"
-                    }`}
+                    onClick={() => choosePurpose(item)}
+                    className="rounded-2xl border border-amber-300/25 bg-black/20 p-5 text-left transition hover:bg-amber-300 hover:text-[#2a180d]"
                   >
-                    <p className="text-lg font-black">{intent.label}</p>
-                    <p className={`mt-2 text-sm font-bold leading-6 ${active ? "text-[#2a180d]/75" : "text-amber-50/70"}`}>
-                      {intent.body}
-                    </p>
+                    <span className="text-2xl font-black">{item.title}</span>
+                    <span className="mt-2 block text-base font-bold opacity-80">{item.line}</span>
                   </button>
-                );
-              })}
-            </div>
-          </section>
+                ))}
+              </div>
 
-          ) : null}
-
-          {step === 2 ? (
-          <section className="mt-8 rounded-[1.5rem] border border-amber-200/20 bg-black/25 p-6">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-              HUG options
-            </p>
-            <h2 className="mt-2 text-3xl font-black">
-              Step 2 — Hear the best music matches.
-            </h2>
-            <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-              Press Play first. Then choose the HUG that feels right.
-            </p>
-
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
-              {options.map((demo) => {
-                const selected = selectedId === demo.id;
-
-                return (
-                  <article
-                    key={demo.id}
-                    className={`rounded-[1.5rem] border p-5 shadow-xl ${
-                      selected
-                        ? "border-amber-300 bg-[#3a1f0f]"
-                        : "border-amber-300/20 bg-[#251209]"
-                    }`}
-                  >
-                    <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                      {demo.feeling}
-                    </p>
-                    <h3 className="mt-2 text-2xl font-black text-amber-50">
-                      {demo.title}
-                    </h3>
-                    <p className="mt-3 text-sm font-bold leading-6 text-amber-50/75">
-                      {demo.description}
-                    </p>
-
-                    <audio
-                      ref={(el) => {
-                        audioRefs.current[demo.id] = el;
-                      }}
-                      src={demo.audioSrc}
-                      preload="metadata"
-                      className="mt-5 w-full"
-                      controls
-                      onPlay={(event) => stopOtherDemoAudio(event.currentTarget)}
-                    />
-
-                    <div className="mt-5 flex flex-col gap-3">
-                      <button
-                        type="button"
-                        onClick={() => playDemo(demo.id)}
-                        className="rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
-                      >
-                        Play {demo.shortTitle}
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => chooseDemo(demo.id)}
-                        className={
-                          selected
-                            ? "rounded-2xl bg-amber-300 px-5 py-3 text-center text-sm font-black text-[#2a180d] transition hover:bg-amber-200"
-                            : "rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
-                        }
-                      >
-                        {selected ? "Selected HUG" : "Choose this HUG"}
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-
-          ) : null}
-
-          {step === 3 ? (
-          <section className="mt-8 rounded-[1.5rem] border border-amber-300/30 bg-[#140904] p-6">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-              Checkout
-            </p>
-            <h2 className="mt-2 text-3xl font-black text-amber-50">
-              Step 3 — Add your words and send the HUG.
-            </h2>
-            <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
-              Selected feeling: <span className="text-amber-200">{selectedIntent.label}</span>
-              <br />
-              Selected HUG: <span className="text-amber-200">{selectedDemo.title}</span>
-            </p>
-
-            <div className="mt-6 rounded-2xl border border-amber-300/25 bg-black/25 p-5">
-              <p className="text-base font-black text-amber-100">
-                Delivery note
-              </p>
-              <p className="mt-2 text-sm font-bold leading-6 text-amber-50/75">
-                SMS delivery is pending carrier approval. Until then, your private HUG
-                link can be delivered by email or sent manually by you through text, DM,
-                or social link.
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <button
-                type="button"
-                onClick={startCheckout}
-                className="rounded-2xl bg-amber-300 px-8 py-5 text-xl font-black text-[#2a180d] shadow-lg transition hover:bg-amber-200"
-              >
-                Send this HUG
+              <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
               </button>
-              <div className="rounded-[1.5rem] border border-amber-300/25 bg-black/30 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200/70">
-                  Private recipient HUG link
-                </p>
-                <h3 className="mt-2 text-2xl font-black text-amber-50">
-                  Tell us who opens this HUG.
-                </h3>
-                <p className="mt-2 text-sm font-bold leading-6 text-amber-50/70">
-                  This creates the private link they open after checkout. No checkout,
-                  no searching, and no buying pressure appears on the recipient page.
-                </p>
+            </div>
+          )}
 
-                <label className="mt-5 block text-sm font-black text-amber-100">
-                  Recipient name
-                  <input
-                    value={recipientName}
-                    onChange={(event) => setRecipientName(event.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-amber-200/20 bg-white px-4 py-3 text-base font-bold text-[#2a180d] outline-none"
-                    placeholder="Recipient name"
-                  />
-                </label>
+          {screen === "type" && purpose && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                {purpose.title}
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Now narrow it. Choose the kind that fits best.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                This narrows the choices before you pick a song.
+              </p>
 
-                <label className="mt-4 block text-sm font-black text-amber-100">
-                  Short message
-                  <textarea
-                    value={recipientMessage}
-                    onChange={(event) => setRecipientMessage(event.target.value)}
-                    className="mt-2 min-h-28 w-full rounded-2xl border border-amber-200/20 bg-white px-4 py-3 text-base font-bold text-[#2a180d] outline-none"
-                    placeholder="Write the note that appears with the HUG."
-                  />
-                </label>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {typeChoices.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => chooseType(item)}
+                    className="rounded-2xl border border-amber-300/25 bg-black/20 p-5 text-left transition hover:bg-amber-300 hover:text-[#2a180d]"
+                  >
+                    <span className="text-xl font-black">{item.title}</span>
+                    <span className="mt-2 block text-sm font-bold opacity-80">{item.line}</span>
+                  </button>
+                ))}
+              </div>
 
+              <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
+              </button>
+            </div>
+          )}
+
+          {screen === "intent" && purpose && choiceType && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                {purpose.title} · {choiceType.title}
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Now get more specific.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                Choose the intent that feels closest. This is how I narrow the choices before songs.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {intentChoices.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => chooseIntent(item)}
+                    className="rounded-2xl border border-amber-300/25 bg-black/20 p-5 text-left transition hover:bg-amber-300 hover:text-[#2a180d]"
+                  >
+                    <span className="text-xl font-black">{item.title}</span>
+                    <span className="mt-2 block text-sm font-bold opacity-80">{item.line}</span>
+                  </button>
+                ))}
+              </div>
+
+              <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
+              </button>
+            </div>
+          )}
+
+          {screen === "song" && purpose && choiceType && intentChoice && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                {purpose.title} · {choiceType.title} · {intentChoice.title}
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Now pick a fitting song.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                Here are fitting songs for this intent. We only show songs that fit this choice.
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                {visibleSongs.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => chooseSong(item)}
+                    className="rounded-2xl border border-amber-300/25 bg-black/20 p-5 text-left transition hover:bg-amber-300 hover:text-[#2a180d]"
+                  >
+                    <span className="text-2xl font-black">{item.title}</span>
+                    <span className="mt-2 block text-base font-bold opacity-80">{item.line}</span>
+                  </button>
+                ))}
+              </div>
+
+              {hasMoreSongSets && (
                 <button
                   type="button"
-                  onClick={() => setPrivateHugLink(makePrivateHugLink())}
-                  className="mt-4 w-full rounded-2xl bg-amber-300 px-5 py-4 text-base font-black text-[#2a180d] shadow-lg transition hover:-translate-y-0.5"
+                  onClick={() => setSongBatchIndex((current) => current + 1)}
+                  className="mt-6 rounded-2xl bg-black/40 px-6 py-4 font-black text-amber-100"
                 >
-                  Create private HUG link
+                  Show me another set
                 </button>
+              )}
 
-                {privateHugLink ? (
-                  <div className="mt-4 rounded-2xl border border-emerald-300/30 bg-emerald-300/10 p-4">
-                    <p className="text-sm font-black text-emerald-100">
-                      Private HUG link created:
-                    </p>
-                    <a
-                      href={privateHugLink}
-                      className="mt-2 block break-words text-sm font-bold text-amber-200 underline"
-                    >
-                      {privateHugLink}
-                    </a>
-                    <p className="mt-2 text-xs font-bold leading-5 text-amber-50/65">
-                      Keep this link for them. Checkout still completes the order.
-                    </p>
-                  </div>
-                ) : null}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setStep(1);
-                  setTypedFeeling("");
-                }}
-                className="rounded-2xl border border-amber-200/20 px-6 py-4 text-lg font-black text-amber-50/80 transition hover:bg-white/10"
-              >
-                Start over
+              <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
               </button>
             </div>
+          )}
 
-            <p className="mt-5 text-sm leading-7 text-amber-50/65">
-              One HUG per order. If you want another HUG, return and choose another one.
-            </p>
-          </section>
-          ) : null}
+          {screen === "kk" && purpose && choiceType && intentChoice && song && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                {choiceType.title} · {song.title}
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Now choose your K-KUT moment.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                Listen to the options below. Choose the one that feels right.
+              </p>
+              <p className="mt-3 text-base font-bold leading-7 text-amber-50/65">
+                Song: {song.title} · Feeling: {purpose.title} · Type: {choiceType.title} · Intent: {intentChoice.title}
+              </p>
 
-          <div className="mt-6 rounded-2xl border border-amber-200/15 bg-black/20 p-4 text-center">
-            <p className="text-sm font-bold leading-6 text-amber-50/70">
-              A HUG uses a focused song recipientent. For full tracks, artists, and more music, visit{" "}
+              <div className="mt-6 grid gap-3">
+                {kkOptions.map((item, index) => (
+                  <div key={item.id} className="rounded-2xl border border-amber-300/25 bg-black/20 p-5">
+                    <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+                      K-KUT Option {index + 1}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-black">{item.title}</h3>
+                    <p className="mt-2 text-base font-bold text-amber-50/75">{item.line}</p>
+
+                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                      {item.audio ? (
+                        <button
+                          type="button"
+                          onClick={() => playKK(item)}
+                          className="rounded-xl bg-black/40 px-5 py-3 font-black text-amber-100"
+                        >
+                          Play
+                        </button>
+                      ) : (
+                        <p className="rounded-xl border border-amber-300/20 bg-black/20 px-5 py-3 text-center text-sm font-black text-amber-100/70">
+                          Preview loading
+                        </p>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => chooseKK(item)}
+                        className="rounded-xl bg-amber-300 px-5 py-3 font-black text-[#2a180d]"
+                      >
+                        Choose this one
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button type="button" onClick={goBack} className="mt-6 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
+              </button>
+            </div>
+          )}
+
+          {screen === "confirm" && purpose && choiceType && intentChoice && song && kk && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Confirm
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Review your HUG. Review your HUG. Is this the one?</h2>
+
+              <div className="mt-6 rounded-2xl bg-amber-300 p-5 text-[#2a180d]">
+                <p className="font-black">Purpose: {purpose.title}</p>
+                <p className="mt-2 font-black">Type: {choiceType.title}</p>
+                <p className="mt-2 font-black">Intent: {intentChoice.title}</p>
+                <p className="mt-2 text-3xl font-black">Song: {song.title}</p>
+                <p className="mt-2 text-xl font-black">K-KUT moment: {kk.title}</p>
+                <p className="mt-2 text-base font-bold">{kk.line}</p>
+              </div>
+
+              <p className="mt-5 text-lg font-bold leading-8 text-amber-50/80">
+                This order includes one selected HUG.
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    stopAllAudio();
+                    setScreen("buy");
+                  }}
+                  className="rounded-2xl bg-amber-300 px-8 py-6 text-2xl font-black text-[#2a180d]"
+                >
+                  Continue to checkout
+                </button>
+
+                <button type="button" onClick={goBack} className="rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                  Hear options again
+                </button>
+              </div>
+            </div>
+          )}
+
+          {screen === "buy" && purpose && choiceType && intentChoice && song && kk && (
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+                Checkout
+              </p>
+              <h2 className="mt-3 text-4xl font-black">Final step. Final step. Buy this HUG.</h2>
+              <p className="mt-4 text-lg font-bold leading-8 text-amber-50/80">
+                You selected one purpose, one feeling type, one intent, one song, and one K-KUT moment.
+              </p>
+              <p className="mt-3 text-lg font-bold leading-8 text-amber-50/80">
+                After checkout, G Putnam Music prepares your playable HUG link.
+              </p>
+
               <a
-                href="https://www.gputnammusic.com"
-                target="_blank"
-                rel="noreferrer"
-                className="font-black text-amber-200 underline underline-offset-4"
+                href={STRIPE_URL}
+                className="mt-6 block rounded-2xl bg-amber-300 px-8 py-6 text-center text-2xl font-black text-[#2a180d]"
               >
-                G Putnam Music
-              </a>.
-            </p>
-          </div>
+                Continue to checkout
+              </a>
 
-          <div className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-              K-KUT Admin Support
-            </p>
-            <p className="mt-3 text-base font-bold leading-7 text-amber-50/80">
-              Need help with an order, HUG link, audio playback, or delivery question?
-              Email{" "}
-              <a
-                className="text-amber-300 underline underline-offset-4"
-                href="mailto:reachus@gputnammusic.com?bcc=gputnam@gputnammusic.com&subject=K-KUT%20HUG%20Support"
-              >
-                reachus@gputnammusic.com
-              </a>.
-            </p>
-          </div>
+              <button type="button" onClick={goBack} className="mt-4 rounded-2xl border border-amber-200/25 px-6 py-4 font-black">
+                Back
+              </button>
+            </div>
+          )}
+        </section>
 
-        </div>
+        <footer className="mt-6 rounded-2xl border border-amber-300 bg-amber-300 p-4 text-center text-[#2a180d]">
+          <p className="text-sm font-bold leading-6 text-[#2a180d]/80">
+            A HUG uses a focused song moment. For full tracks, artists, and more music, visit{" "}
+            <a
+              href="https://www.gputnammusic.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-black text-[#2a180d] underline underline-offset-4"
+            >
+              G Putnam Music
+            </a>.
+          </p>
+        </footer>
       </section>
     </main>
   );
