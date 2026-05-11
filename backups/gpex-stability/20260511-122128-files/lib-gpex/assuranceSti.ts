@@ -1,0 +1,36 @@
+export const GPEX_ASSURANCE_STI = {
+  id: "gpex-certificate-of-assurance",
+  type: "STI",
+  scope: "GPMDs_ALL",
+  canonicalRoute: "/gpex/assurance",
+  label: "GPEx Assurance",
+  title: "Certificate of Assurance",
+  subtitle: "A founder promise from Gregory D. Putnam.",
+  doctrine: [
+    "One assurance source.",
+    "Many GPMD placements.",
+    "No scattered rewritten promises.",
+    "Always easy access.",
+    "Never distracting.",
+    "Prominent when permission, contact, payment, delivery, intake, demo, or trust is requested.",
+  ],
+  independence: [
+    "GPEx is independent.",
+    "GPEx is not a franchise.",
+    "No outside company tells GPEx what decisions to make.",
+    "GPEx is founder-operated, like a ma-and-pa store: personal, accountable, practical, and built to serve the customer directly.",
+    "At its core, GPEx is about love — love shown through clear work, fair process, useful tools, honest permission, and respect for the person using the system.",
+  ],
+  promise: [
+    "GPEx uses clear steps, limited permissions, and direct business purpose.",
+    "GPEx does not use email or cell numbers for spam.",
+    "GPEx does not hide the purpose of a request.",
+    "GPEx does not trap the user.",
+    "GPEx does not ask for unnecessary access.",
+    "The user stays in control.",
+    "The owner stays accountable.",
+    "The process stays visible.",
+  ],
+  hugPermissionLine:
+    "We’ll use email or cell only for this HUG transaction. No spam. No hidden use.",
+} as const;

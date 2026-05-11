@@ -34,7 +34,7 @@ const BOT_AUDIO: Record<Stage, string> = {
 
 const BOT_SCRIPTS: Record<Stage, string> = {
   splash:
-    "Welcome to K-KUT HUG. This is a new way to send a feeling through real music and your own words. Not a card. Not a download. Not a playlist. A HUG is a private music moment chosen for someone, because sometimes words alone are not enough. K-KUT BOT walks this through one page at a time. First, choose the feeling. Then hear the HUG options. Then add your words and choose how to send it. After you send the first HUG, you may already know who needs the second. Press start, and K-KUT BOT begins.",
+    "Welcome to K-KUT HUG. This is a new way to send a feeling through real music and your own words. Not a card. Not a download. Not a playlist. A HUG is a private music moment chosen for someone, because sometimes words alone are not enough. I’ll walk you through it one page at a time. First, choose the feeling. Then hear the HUG options. Then add your words and choose how to send it. After you send the first HUG, you may already know who needs the second. Press Begin, and I’ll guide you.",
   cover:
     "Here is what makes this different. You are not just picking a song. You are choosing a feeling, hearing real music moments, and sending one as a private HUG. It can say thank you, I love you, I miss you, I’m sorry, I’m proud of you, or I’m here with you. This has not been shared like this before. The first HUG starts now. The second HUG can be for the same person, or for someone else who needs a moment too. Next is Step 1. Choose the feeling.",
   step1: "Step 1. Choose the feeling you want to send.",
@@ -133,7 +133,7 @@ export default function HugPage() {
   );
 
   const botText = useMemo(() => {
-    if (stage === "splash") return "Welcome to K-KUT HUG. This is new, emotional, BOT-led, and built around real music plus your own words.";
+    if (stage === "splash") return "Welcome to K-KUT HUG. This is new, emotional, guided, and built around real music plus your own words.";
     if (stage === "cover") return "This has not been shared like this before. You are not just picking a song — you are sending a private HUG.";
     if (stage === "step1") return "Step 1. Choose the feeling you want to send.";
     if (stage === "step2") return "Step 2. Choose the HUG intent that feels closest.";
