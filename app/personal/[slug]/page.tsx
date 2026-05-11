@@ -14,7 +14,6 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
     notFound();
   }
 
-  const isThankYou = params.slug === "thank-you";
   const featuredPackage = "featuredPackage" in category ? category.featuredPackage : null;
   const candidatePix = "candidatePix" in category ? category.candidatePix : null;
 
@@ -40,6 +39,16 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
             </h2>
           </div>
         </div>
+
+        <section className="mt-5 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            Guide
+          </p>
+          <p className="mt-2 text-lg font-black leading-7 text-amber-50">
+            Listen first, then choose the closest intent.
+          </p>
+          <audio className="mt-4 w-full" controls preload="none" src="/audio/kleigh/guide-final/33-welcome.m4a" />
+        </section>
 
         <section className="mt-8">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
@@ -136,52 +145,26 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
           <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
             Next
           </p>
-
-          {isThankYou ? (
-            <>
-              <h2 className="mt-2 text-2xl font-black">
-                Thank You HUG is live now for Mother’s Day.
-              </h2>
-              <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                Start with gratitude, then open the live Mother’s Day HUG path to listen, choose, and send.
-              </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/hug/mothers-day"
-                  className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                >
-                  Open live Thank You HUG
-                </Link>
-                <Link
-                  href="/holiday/mothers-day"
-                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
-                >
-                  See Mother’s Day feeling paths
-                </Link>
-              </div>
-            </>
-          ) : (
-            <>
-              <h2 className="mt-2 text-2xl font-black">Featured HUG samples will go here.</h2>
-              <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                This page is ready for curated PIX and K-KUT inventory.
-              </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/find"
-                  className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                >
-                  Find the Right Words
-                </Link>
-                <Link
-                  href="/"
-                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
-                >
-                  Back home
-                </Link>
-              </div>
-            </>
-          )}
+          <h2 className="mt-2 text-2xl font-black">
+            Featured personal HUG samples will go here.
+          </h2>
+          <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
+            This page is ready for curated Personal PIX, KUT, mK, and LLF inventory.
+          </p>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/find"
+              className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+            >
+              Find the Right Words
+            </Link>
+            <Link
+              href="/personal"
+              className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
+            >
+              All Personal HUGs
+            </Link>
+          </div>
         </section>
       </section>
     </main>

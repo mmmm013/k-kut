@@ -14,7 +14,7 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
     notFound();
   }
 
-  const isLiveMothersDay = params.slug === "mothers-day";
+  const isMothersDay = params.slug === "mothers-day";
 
   return (
     <main className="min-h-screen bg-[#120b12] text-[#fff6e8]">
@@ -38,6 +38,16 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
             </h2>
           </div>
         </div>
+
+        <section className="mt-5 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            Guide
+          </p>
+          <p className="mt-2 text-lg font-black leading-7 text-amber-50">
+            Listen first, then choose the closest holiday intent.
+          </p>
+          <audio className="mt-4 w-full" controls preload="none" src="/audio/kleigh/guide-final/33-welcome.m4a" />
+        </section>
 
         <section className="mt-8">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
@@ -88,20 +98,20 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
             Next
           </p>
 
-          {isLiveMothersDay ? (
+          {isMothersDay ? (
             <>
               <h2 className="mt-2 text-2xl font-black">
-                Mother’s Day HUG is live now.
+                Mother’s Day HUG archive is available.
               </h2>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                Open the live Mother’s Day path to listen, choose the feeling, and send the HUG.
+                Open the Mother’s Day archive path to review the seasonal HUG flow.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/hug/mothers-day"
                   className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
                 >
-                  Open Mother’s Day HUG
+                  Open Mother’s Day archive
                 </Link>
                 <Link
                   href="/find"
