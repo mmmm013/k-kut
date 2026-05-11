@@ -190,6 +190,29 @@ export default function GeneralHugPage() {
     return playOneAudio(GUIDE_AUDIO[kind]);
   }
 
+  function speakProactiveGuideScript() {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      return Promise.resolve(false);
+    }
+
+    const script =
+      "Welcome. A K-KUT HUG helps you send the right feeling through real music and your own words. Here is the simple three step path. First, choose the feeling you want to send. Second, press play and hear the best music matches. Third, add your words and send the private HUG link. I will lead you one step at a time. First time users get buy one, get one free.";
+
+    window.speechSynthesis.cancel();
+
+    return new Promise<boolean>((resolve) => {
+      const voice = new SpeechSynthesisUtterance(script);
+      voice.rate = 0.92;
+      voice.pitch = 0.9;
+      voice.volume = 1;
+
+      voice.onend = () => resolve(true);
+      voice.onerror = () => resolve(false);
+
+      window.speechSynthesis.speak(voice);
+    });
+  }
+
   useEffect(() => {
     let greetingPlayed = false;
     let cancelled = false;
@@ -204,7 +227,7 @@ export default function GeneralHugPage() {
     function startGuideGreeting() {
       if (greetingPlayed || cancelled) return;
 
-      playGuide("welcome").then((played) => {
+      speakProactiveGuideScript().then((played) => {
         if (!played || cancelled) return;
 
         greetingPlayed = true;
