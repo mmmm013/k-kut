@@ -9,7 +9,7 @@ export default function MothersDayArchivePage() {
         </p>
         <h1 className="mt-4 text-3xl font-black">Mother’s Day archive</h1>
         <p className="mt-4 text-white/70">
-          This seasonal HUG path is archived. No public checkout or sample-audio flow is active here.
+          This seasonal HUG path is archived. Public ordering and listening flow are closed for this season.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link href="/holiday" className="rounded-full bg-white px-5 py-3 font-black text-black">
