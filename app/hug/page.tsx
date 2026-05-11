@@ -47,7 +47,7 @@ function playOneAudio(src: string): Promise<boolean> {
     .then(() => true)
     .catch(() => {
       clearIfActive();
-      console.log("Audio blocked until user taps:", src);
+      console.log("BOT voice blocked until first user interaction:", src);
       return false;
     });
 }
@@ -202,6 +202,7 @@ export default function GeneralHugPage() {
       window.removeEventListener("pointerdown", startGuideGreeting);
       window.removeEventListener("keydown", startGuideGreeting);
       window.removeEventListener("touchstart", startGuideGreeting);
+      window.removeEventListener("mousedown", startGuideGreeting);
     }
 
     function startGuideGreeting() {
@@ -220,6 +221,7 @@ export default function GeneralHugPage() {
     window.addEventListener("pointerdown", startGuideGreeting);
     window.addEventListener("keydown", startGuideGreeting);
     window.addEventListener("touchstart", startGuideGreeting);
+    window.addEventListener("mousedown", startGuideGreeting);
 
     return () => {
       cancelled = true;
@@ -450,14 +452,6 @@ export default function GeneralHugPage() {
               Guide
             </p>
             <p className="mt-2 text-2xl font-black leading-tight">{guideMessage}</p>
-
-            <button
-              type="button"
-              onClick={() => playGuide("welcome")}
-              className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
-            >
-              
-            </button>
           </div>
 
           <section className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
