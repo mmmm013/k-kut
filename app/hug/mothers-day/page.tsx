@@ -23,8 +23,8 @@ function stopAllAudio() {
   window.dispatchEvent(new Event("k-kut-stop-audio"));
 }
 
-function playOneAudio(src: string) {
-  if (typeof window === "undefined") return;
+function playOneAudio(src: string): Promise<boolean> {
+  if (typeof window === "undefined") return Promise.resolve(false);
 
   stopAllAudio();
 
@@ -42,10 +42,14 @@ function playOneAudio(src: string) {
   audio.addEventListener("ended", clearIfActive, { once: true });
   audio.addEventListener("pause", clearIfActive, { once: true });
 
-  audio.play().catch(() => {
-    clearIfActive();
-    console.log("Audio blocked until user taps:", src);
-  });
+  return audio
+    .play()
+    .then(() => true)
+    .catch(() => {
+      clearIfActive();
+      console.log("Audio blocked until user taps:", src);
+      return false;
+    });
 }
 
 const GUIDE_AUDIO = {
@@ -208,38 +212,40 @@ export default function MothersDayHugPage() {
   }, [step, selectedIntent.label, selectedDemo.shortTitle]);
 
   function playGuide(kind: keyof typeof GUIDE_AUDIO = "welcome") {
-    playOneAudio(GUIDE_AUDIO[kind]);
+    return playOneAudio(GUIDE_AUDIO[kind]);
   }
 
   useEffect(() => {
-    let greetingStarted = false;
+    let greetingPlayed = false;
+    let cancelled = false;
 
-    function startGuideGreeting() {
-      if (greetingStarted) return;
-      greetingStarted = true;
-
-      try {
-        playGuide("welcome");
-      } catch {
-        // Browser may block autoplay until first user interaction.
-      }
-
+    function cleanupGreetingListeners() {
       window.removeEventListener("pointerdown", startGuideGreeting);
       window.removeEventListener("keydown", startGuideGreeting);
       window.removeEventListener("touchstart", startGuideGreeting);
     }
 
+    function startGuideGreeting() {
+      if (greetingPlayed || cancelled) return;
+
+      playGuide("welcome").then((played) => {
+        if (!played || cancelled) return;
+
+        greetingPlayed = true;
+        cleanupGreetingListeners();
+      });
+    }
+
     const timer = window.setTimeout(startGuideGreeting, 800);
 
-    window.addEventListener("pointerdown", startGuideGreeting, { once: true });
-    window.addEventListener("keydown", startGuideGreeting, { once: true });
-    window.addEventListener("touchstart", startGuideGreeting, { once: true });
+    window.addEventListener("pointerdown", startGuideGreeting);
+    window.addEventListener("keydown", startGuideGreeting);
+    window.addEventListener("touchstart", startGuideGreeting);
 
     return () => {
+      cancelled = true;
       window.clearTimeout(timer);
-      window.removeEventListener("pointerdown", startGuideGreeting);
-      window.removeEventListener("keydown", startGuideGreeting);
-      window.removeEventListener("touchstart", startGuideGreeting);
+      cleanupGreetingListeners();
     };
   }, []);
 
@@ -471,7 +477,7 @@ export default function MothersDayHugPage() {
               onClick={() => playGuide("welcome")}
               className="mt-4 rounded-2xl bg-[#2a180d] px-5 py-3 text-base font-black text-amber-100 transition hover:opacity-90"
             >
-              Replay BOT Greeting
+              Start / Replay BOT Voice
             </button>
           </div>
 
