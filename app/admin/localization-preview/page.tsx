@@ -1,6 +1,9 @@
+import { notFound } from "next/navigation";
 import hugLanguages from "../../../data/localization/hug-languages.json";
 import hugCopy from "../../../data/localization/hug-copy.en.json";
 import pricingTiers from "../../../data/pricing/global-pricing-tiers.json";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "K-KUT Localization Preview",
@@ -31,7 +34,25 @@ type PricingTier = {
   allowed_product_families: string[];
 };
 
-export default function LocalizationPreviewPage() {
+type LocalizationPreviewPageProps = {
+  searchParams?: Promise<{
+    token?: string | string[];
+  }>;
+};
+
+export default async function LocalizationPreviewPage({
+  searchParams,
+}: LocalizationPreviewPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const suppliedToken = Array.isArray(resolvedSearchParams?.token)
+    ? resolvedSearchParams?.token[0]
+    : resolvedSearchParams?.token;
+  const expectedToken = process.env.ADMIN_PREVIEW_TOKEN;
+
+  if (!expectedToken || suppliedToken !== expectedToken) {
+    notFound();
+  }
+
   const languages = hugLanguages.languages as LanguageRecord[];
   const tiers = pricingTiers.tiers as PricingTier[];
   const enabledLanguages = languages.filter((language) => language.public_enabled);
