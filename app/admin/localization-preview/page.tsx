@@ -44,10 +44,12 @@ export default async function LocalizationPreviewPage({
   searchParams,
 }: LocalizationPreviewPageProps) {
   const resolvedSearchParams = await searchParams;
-  const suppliedToken = Array.isArray(resolvedSearchParams?.token)
-    ? resolvedSearchParams?.token[0]
-    : resolvedSearchParams?.token;
-  const expectedToken = process.env.ADMIN_PREVIEW_TOKEN;
+  const suppliedToken = (
+    Array.isArray(resolvedSearchParams?.token)
+      ? resolvedSearchParams?.token[0]
+      : resolvedSearchParams?.token
+  )?.trim();
+  const expectedToken = process.env.ADMIN_PREVIEW_TOKEN?.trim();
 
   if (!expectedToken || suppliedToken !== expectedToken) {
     notFound();
