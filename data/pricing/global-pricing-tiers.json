@@ -1,0 +1,69 @@
+{
+  "rule": "Pricing may adjust by country, currency, purchasing-power tier, partner program, or manual hardship review. Pricing must not adjust by language alone.",
+  "public_default_tier": "tier_a_standard",
+  "first_version_checkout_rule": "No automatic live checkout price changes until country, currency, Stripe, support, and abuse controls are approved.",
+  "tiers": [
+    {
+      "tier_id": "tier_a_standard",
+      "public_label": "Standard",
+      "internal_label": "Tier A — Standard",
+      "checkout_enabled": true,
+      "manual_review_required": false,
+      "suggested_multiplier": 1.0,
+      "description": "Default K-KUT / HUG pricing for standard checkout and unknown or unsupported regions.",
+      "allowed_product_families": ["HUG", "K-KUT"],
+      "notes": "Use as the safe default."
+    },
+    {
+      "tier_id": "tier_b_access",
+      "public_label": "Access",
+      "internal_label": "Tier B — Access",
+      "checkout_enabled": false,
+      "manual_review_required": true,
+      "suggested_multiplier": 0.75,
+      "description": "Adjusted access pricing for reviewed regional affordability contexts.",
+      "allowed_product_families": ["HUG"],
+      "notes": "Do not enable publicly until pricing and Stripe behavior are reviewed."
+    },
+    {
+      "tier_id": "tier_c_community_access",
+      "public_label": "Community Access",
+      "internal_label": "Tier C — Community Access",
+      "checkout_enabled": false,
+      "manual_review_required": true,
+      "suggested_multiplier": 0.55,
+      "description": "Deeper adjusted pricing for community, school, ministry, nonprofit, memorial, or special campaign access.",
+      "allowed_product_families": ["HUG"],
+      "notes": "Manual review recommended."
+    },
+    {
+      "tier_id": "tier_d_sponsored_manual",
+      "public_label": "Sponsored / Manual",
+      "internal_label": "Tier D — Sponsored / Manual",
+      "checkout_enabled": false,
+      "manual_review_required": true,
+      "suggested_multiplier": null,
+      "description": "Manual-only sponsored, hardship, partner, nonprofit, grief, memorial, or donor-supported access.",
+      "allowed_product_families": ["HUG"],
+      "notes": "Never fully automate in first version."
+    }
+  ],
+  "country_rules": {
+    "default_unknown_country": "tier_a_standard",
+    "language_is_not_pricing_basis": true,
+    "manual_review_for_deep_access": true,
+    "local_currency_requires_payment_review": true
+  },
+  "public_copy": {
+    "fair_access_available": "Fair-access pricing may be available by country.",
+    "manual_review": "Some access pricing requests may require manual review.",
+    "no_language_discount": "Language selection does not determine price."
+  },
+  "hard_stops": {
+    "no_language_only_discount": true,
+    "no_public_internal_tier_logic": true,
+    "no_auto_deep_discount": true,
+    "no_checkout_change_without_stripe_review": true,
+    "no_translated_audio_promise": true
+  }
+}
