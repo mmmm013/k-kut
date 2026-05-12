@@ -56,10 +56,10 @@
     },
     {
       "id": "christmas-2026",
-      "holiday_slug": "christmas",
+      "holiday_slug": "christmas-day",
       "public_title": "Christmas HUGs",
       "status": "dormant",
-      "landing_path": "/holiday/christmas",
+      "landing_path": "/holiday/christmas-day",
       "campaign_path": "/campaign/christmas-2026",
       "archive_path": "/archive/christmas-2026",
       "open_date": "",
