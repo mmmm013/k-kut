@@ -68,7 +68,7 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
           {"candidatePix" in holiday ? (
             <div className="mt-5 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
               <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                Candidate song moments
+                Candidate PIX pool
               </p>
               <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
                 {holiday.candidatePix.map((pix) => (
@@ -86,7 +86,7 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
               >
                 <p className="text-xl font-black text-amber-50">{path}</p>
                 <p className="mt-2 text-sm font-bold leading-6 text-amber-50/70">
-                  A focused music HUG path for this holiday moment.
+                  A focused K-KUT HUG path for this holiday intent.
                 </p>
               </div>
             ))}
@@ -127,7 +127,7 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
                 Featured holiday HUG samples will go here.
               </h2>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                This page is ready for curated holiday HUG moments.
+                This page is ready for curated holiday PIX and K-KUT inventory.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Link

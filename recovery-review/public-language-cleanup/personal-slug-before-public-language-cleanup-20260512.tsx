@@ -90,7 +90,7 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
               {featuredPackage.name}
             </h2>
             <p className="mt-3 text-lg font-black text-amber-200">
-              Featured song moment: {featuredPackage.feature}
+              Featured PIX: {featuredPackage.feature}
             </p>
             <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
               {featuredPackage.line}
@@ -127,7 +127,7 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
 
               <div className="rounded-[1.25rem] border border-amber-300/20 bg-black/25 p-5">
                 <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                  Package notes
+                  Package doctrine
                 </p>
                 <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
                   {featuredPackage.notes.map((item) => (
@@ -142,10 +142,10 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
         {candidatePix ? (
           <section className="mt-8 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-              Curated options
+              Candidate inventory
             </p>
             <h2 className="mt-2 text-2xl font-black text-amber-50">
-              Curated song moments
+              KUT-first source pool
             </h2>
             <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
               {candidatePix.map((pix) => (
@@ -153,7 +153,7 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
               ))}
             </ul>
             <p className="mt-4 text-sm font-bold leading-6 text-amber-50/60">
-              Final song-moment matches are reviewed before being featured.
+              Final KUT, mK, and LLF matches still require listening review before promotion.
             </p>
           </section>
         ) : null}
@@ -166,7 +166,7 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
             Featured personal HUG samples will go here.
           </h2>
           <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-            This page is ready for curated personal HUG moments.
+            This page is ready for curated Personal PIX, KUT, mK, and LLF inventory.
           </p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <Link
