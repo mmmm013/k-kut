@@ -74,7 +74,7 @@ export default function PersonalCategoryPage({ params }: { params: { slug: strin
               >
                 <p className="text-xl font-black text-amber-50">{path}</p>
                 <p className="mt-2 text-sm font-bold leading-6 text-amber-50/70">
-                  A focused music HUG path for this emotional intent.
+                  A focused K-KUT HUG path for this emotional intent.
                 </p>
               </div>
             ))}
