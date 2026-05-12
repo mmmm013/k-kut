@@ -86,3 +86,29 @@ Optional: choose timed delivery as a TUG.
 Public language sells the feeling.
 
 Internal language protects the invention.
+
+## HUG Product Ladder Rule
+
+Public buyers should see one main product: HUG.
+
+The HUG may include one song-moment size:
+
+- mini kut
+- kut
+- featured kut
+
+Use mini kut only as plain public size language for an extra-short song moment.
+
+Do not use mK, mini-KUT, MiniKut, or minikut on buyer-facing pages unless specifically approved.
+
+Preferred buyer phrase:
+
+Send a HUG with a real song moment inside. Choose a mini kut, kut, or featured kut.
+
+Add-ons may include:
+
+- Keepsake Page
+- TUG / timed delivery
+- extra recipient or private share
+
+Cost differences should be explained by song-moment size, delivery timing, and add-ons, not by internal processor terms.
