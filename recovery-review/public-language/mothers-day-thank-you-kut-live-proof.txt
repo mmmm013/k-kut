@@ -1,0 +1,15 @@
+Public Language Live Proof
+
+Route: https://www.k-kut.com/mothers-day/thank-you
+Purpose: Verify public buyer titles use Kut instead of internal KK.
+
+Live grep proof:
+Thank You Kut 1
+Thank You Kut 2
+Thank You Kut 3
+Thank You Kut 4
+Thank You Kut 5
+Thank You Kut 6
+Thank You Kut 7
+
+Result: PASS. Public page uses buyer-safe Kut titles.
