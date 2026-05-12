@@ -1,0 +1,64 @@
+{
+  "locale": "en",
+  "locale_name": "English",
+  "rule": "This is the controlled English source copy for HUG localization. Translate the HUG experience only. Do not imply translated audio.",
+  "public_promises": {
+    "primary": "Write your message in the language that feels right.",
+    "secondary": "We help shape the HUG experience for the recipient.",
+    "audio_control": "The music moment remains source-controlled.",
+    "timed_delivery": "You can choose when the HUG should be prepared for delivery."
+  },
+  "navigation": {
+    "find_hug": "Find a HUG",
+    "personal_hug": "Personal HUG",
+    "holiday_hug": "Holiday HUG",
+    "private_hug_link": "Private HUG link",
+    "schedule_hug": "Schedule a HUG"
+  },
+  "buyer_prompts": {
+    "feeling": "What do you want them to feel?",
+    "recipient": "Who is this for?",
+    "occasion": "What is the occasion?",
+    "message": "What would you like to say?",
+    "language": "What language should the recipient-facing message use?",
+    "delivery_time": "When should this HUG be prepared for delivery?"
+  },
+  "feeling_options": {
+    "gratitude": "Gratitude",
+    "love": "Love",
+    "missing_you": "Missing you",
+    "apology": "I’m sorry",
+    "encouragement": "Encouragement",
+    "pride": "Proud of you",
+    "comfort": "Comfort",
+    "memory": "Remembering",
+    "celebration": "Celebration",
+    "romance": "Romance"
+  },
+  "review_messages": {
+    "standard": "This HUG may be reviewed before delivery.",
+    "sensitive": "Sensitive messages may need extra review before delivery.",
+    "translation": "Translated recipient-facing messages require review before public use.",
+    "audio": "Translation applies to the HUG message experience, not the song audio."
+  },
+  "delivery_status": {
+    "draft": "Draft",
+    "paid_needs_manual_fulfillment": "Paid — needs manual fulfillment",
+    "scheduled_needs_review": "Scheduled — needs review",
+    "ready_to_deliver": "Ready to deliver",
+    "delivered": "Delivered",
+    "missed_or_needs_attention": "Needs attention",
+    "cancelled": "Cancelled"
+  },
+  "checkout_support": {
+    "manual_fulfillment": "Your HUG will be reviewed and prepared.",
+    "no_download": "This HUG is delivered through a private link, not a public download.",
+    "no_sms_auto": "Automatic text delivery is not enabled yet.",
+    "private_link": "A private HUG link may be prepared after review."
+  },
+  "hard_stops": {
+    "no_fake_audio": "Do not create or imply translated song audio.",
+    "no_auto_sensitive": "Do not automatically deliver sensitive translated messages without review.",
+    "no_public_internal_terms": "Do not expose internal routing or source terms to buyers."
+  }
+}
