@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import seasonalCampaigns from "@/data/campaigns/seasonal-campaigns.json";
 import { holidays, type HolidaySlug } from "@/lib/holidaySeeds";
 
 
@@ -15,9 +14,7 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
     notFound();
   }
 
-  const campaign = seasonalCampaigns.campaigns.find(
-    (item) => item.holiday_slug === params.slug,
-  );
+  const isMothersDay = params.slug === "mothers-day";
 
   return (
     <main className="min-h-screen bg-[#120b12] text-[#fff6e8]">
@@ -101,34 +98,21 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
             Next
           </p>
 
-          {campaign ? (
+          {isMothersDay ? (
             <>
               <h2 className="mt-2 text-2xl font-black">
-                {campaign.public_title}
+                Mother’s Day HUG archive is available.
               </h2>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                {campaign.public_note}
-              </p>
-              <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-amber-200">
-                Season status: {campaign.status}
+                Open the Mother’s Day archive path to review the seasonal HUG flow.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                {campaign.status === "archived" ? (
-                  <Link
-                    href={campaign.archive_path}
-                    className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                  >
-                    Open archive
-                  </Link>
-                ) : null}
-                {campaign.status === "active" && campaign.checkout_enabled ? (
-                  <Link
-                    href={campaign.campaign_path}
-                    className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
-                  >
-                    Open active collection
-                  </Link>
-                ) : null}
+                <Link
+                  href="/hug/mothers-day"
+                  className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                >
+                  Open Mother’s Day archive
+                </Link>
                 <Link
                   href="/find"
                   className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
@@ -140,10 +124,10 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
           ) : (
             <>
               <h2 className="mt-2 text-2xl font-black">
-                Featured holiday HUG collections will go here.
+                Featured holiday HUG samples will go here.
               </h2>
               <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                This holiday page is available, but no seasonal campaign is active yet.
+                This page is ready for curated holiday HUG moments.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Link
