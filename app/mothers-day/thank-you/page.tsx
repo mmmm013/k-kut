@@ -8,7 +8,7 @@ const kks = [
   {
     id: "thank-you-kk1",
     tier: "featured",
-    title: "Thank You KK1",
+    title: "Thank You Kut 1",
     section: "Intro + V1A",
     priceTier: "premium",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
@@ -16,7 +16,7 @@ const kks = [
   {
     id: "thank-you-kk2",
     tier: "featured",
-    title: "Thank You KK2",
+    title: "Thank You Kut 2",
     section: "V1C + V1D + Chorus 1",
     priceTier: "premium",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk2.mp3",
@@ -24,7 +24,7 @@ const kks = [
   {
     id: "thank-you-kk3",
     tier: "section",
-    title: "Thank You KK3",
+    title: "Thank You Kut 3",
     section: "Chorus 1",
     priceTier: "standard",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk3.mp3",
@@ -32,7 +32,7 @@ const kks = [
   {
     id: "thank-you-kk4",
     tier: "featured",
-    title: "Thank You KK4",
+    title: "Thank You Kut 4",
     section: "Intro through Chorus 1",
     priceTier: "premium",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk4.mp3",
@@ -40,7 +40,7 @@ const kks = [
   {
     id: "thank-you-kk5",
     tier: "section",
-    title: "Thank You KK5",
+    title: "Thank You Kut 5",
     section: "V2A",
     priceTier: "standard",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk5.mp3",
@@ -48,7 +48,7 @@ const kks = [
   {
     id: "thank-you-kk6",
     tier: "featured",
-    title: "Thank You KK6",
+    title: "Thank You Kut 6",
     section: "V2B through Outro",
     priceTier: "premium",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk6.mp3",
@@ -56,7 +56,7 @@ const kks = [
   {
     id: "thank-you-kk7",
     tier: "featured",
-    title: "Thank You KK7",
+    title: "Thank You Kut 7",
     section: "Chorus 2 through Outro",
     priceTier: "premium",
     audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-kk7.mp3",
