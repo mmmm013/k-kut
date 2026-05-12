@@ -26,7 +26,7 @@ export default function DemoPage() {
         <p className="mt-5 max-w-3xl text-lg font-bold leading-relaxed text-amber-100/75">
           Public buyers get simple HUG demos. Holiday buyers get timely venues.
           Partners, attorneys, manufacturers, and internal helpers get purpose-routed
-          access without exposing restricted PIX, mKs, KPDs, LLFs, or chamber-system detail.
+          access without exposing restricted internal catalog, processor, delivery-page, or chamber-system detail.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">

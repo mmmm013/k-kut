@@ -38,7 +38,7 @@ const DEMOS = {
   attorney: {
     label: "Attorney / IP Demo Access",
     audience: "Patent attorney, legal reviewer, or invention advisor",
-    purpose: "Shows invention-facing context without making protected PIX, mKs, KPDs, LLFs, or chamber details public.",
+    purpose: "Shows invention-facing context without making protected catalog, processor, delivery-page, or chamber details public.",
     access: "Restricted",
     next: "/invention",
     nextLabel: "Open invention overview",
@@ -54,7 +54,7 @@ const DEMOS = {
   internal: {
     label: "Admin / Internal Demo Access",
     audience: "Gregory / internal helpers",
-    purpose: "Inventory, audio health, KKr review, PIX, mK, KPD, LLF, and fulfillment readiness.",
+    purpose: "Inventory, audio health, internal review, catalog, delivery-page, and fulfillment readiness.",
     access: "Internal only",
     next: "/admin/hug-health",
     nextLabel: "Open HUG health",
@@ -101,7 +101,7 @@ export default async function DemoContextPage({
           <p className="mt-3 text-xl font-black leading-snug">
             Demo access is routed by client need. Public buyers see simple HUG demos.
             Purpose viewers get tailored demos. Restricted viewers do not receive public
-            PIX, mK, KPD, LLF, or chamber-system detail unless approved.
+            catalog, processor, delivery-page, or chamber-system detail unless approved.
           </p>
         </section>
 
