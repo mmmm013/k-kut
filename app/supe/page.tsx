@@ -86,7 +86,7 @@ Sent from k-kut.com/supe`
       {/* Hero */}
       <section className="mx-auto max-w-4xl px-6 py-16">
         <p className="text-sm uppercase tracking-[0.3em] text-[#C8A882]">
-          Powered by 4PE PROMOTER
+          Powered by GPEx music placement
         </p>
 
         <h1 className="mt-4 text-4xl font-bold">
@@ -304,7 +304,7 @@ Sent from k-kut.com/supe`
 
       {/* Footer */}
       <footer className="border-t border-[#D4A017]/20 px-6 py-6 text-sm text-[#C8A882] text-center">
-        SUPE Specialties — Powered by 4PE PROMOTER
+        SUPE Specialties — Powered by GPEx music placement
       </footer>
     </main>
   );
