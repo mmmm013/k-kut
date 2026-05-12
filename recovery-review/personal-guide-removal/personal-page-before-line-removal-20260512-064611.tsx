@@ -18,6 +18,15 @@ export default function PersonalPage() {
           </p>
         </div>
 
+        <section className="mt-5 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
+          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            Guide
+          </p>
+          <p className="mt-2 text-lg font-black leading-7 text-amber-50">
+            Start with the kind of moment. Then narrow by feeling.
+          </p>
+          <audio className="mt-4 w-full" controls preload="none" src="/audio/kleigh/guide-final/33-welcome.m4a" />
+        </section>
 
         <section className="mt-8">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
