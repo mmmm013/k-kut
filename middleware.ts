@@ -1,21 +1,31 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+const CUSTOMER_PRIVATE_PREFIXES = [
+  "/pix",
+  "/mkut",
+];
 
 export function middleware(request: NextRequest) {
-  const expectedToken = process.env.ADMIN_PREVIEW_TOKEN?.trim();
-  const suppliedToken = request.nextUrl.searchParams.get("token")?.trim();
+  const { pathname } = request.nextUrl;
 
-  if (!expectedToken || suppliedToken !== expectedToken) {
-    return new NextResponse("Not found", {
-      status: 404,
-      headers: {
-        "content-type": "text/plain; charset=utf-8",
-      },
-    });
+  const isCustomerPrivatePath = CUSTOMER_PRIVATE_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
+  );
+
+  if (isCustomerPrivatePath) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/find";
+    url.search = "";
+    return NextResponse.redirect(url);
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/pix", "/pix/:path*", "/invention"],
+  matcher: [
+    "/pix/:path*",
+    "/mkut/:path*",
+  ],
 };

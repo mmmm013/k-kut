@@ -7,14 +7,14 @@ export default function Home() {
         <div className="w-full overflow-hidden rounded-[2rem] border border-amber-300/40 bg-gradient-to-br from-[#24100b] via-[#160c0a] to-black shadow-2xl shadow-amber-900/30">
           <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="p-7 sm:p-10 lg:p-12">
-              <p className="tracking-[0.45em] text-amber-300">K-KUT HUG</p>
+              <p className="tracking-[0.45em] text-amber-300">New. Digital. Historic HUGs.</p>
 
               <h1 className="mt-7 max-w-2xl text-5xl font-black leading-[0.95] text-cyan-100 sm:text-6xl lg:text-7xl">
-                Send feeling through music.
+                Send feeling musically.
               </h1>
 
               <p className="mt-6 max-w-xl text-xl font-bold text-amber-50/85">
-                A historic audio greeting card.
+                K-KUT turns real song sections into sendable emotional HUGs.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-amber-300/25 px-7 py-5 sm:px-10">
-            <h2 className="text-2xl font-black">K-KUT HUGs &amp; TUGs</h2>
+            <h2 className="text-2xl font-black">New. Digital. Historic HUGs.s &amp; TUGs</h2>
             <p className="mt-2 max-w-3xl text-sm font-bold text-amber-50/75">
               HUGs are for warmth, gratitude, love, and support. TUGs are for
               the feelings that pull harder — apology, longing, repair, grief,
