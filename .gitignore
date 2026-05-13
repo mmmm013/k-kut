@@ -41,3 +41,16 @@ scripts/report-kk-objectified-ii-ci-json.mjs
 scripts/report-kk-objectified-ii-ci.mjs
 scripts/report-thank-you-linefeel-candidates.mjs
 scripts/test-magic-tail-on-lu-long.mjs
+
+# Business docs
+*.mht
+*.doc
+*.docx
+~$*
+
+# Local recovery/backups
+backups/
+recovery-review/
+
+# Local generated images
+*.png
