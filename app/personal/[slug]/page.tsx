@@ -114,11 +114,19 @@ function pickDiverseRows(rows: KKRow[], count: number) {
   return chosen;
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const slug = params?.slug ?? "personal";
-  const supabase = createClient();
-  const copy = copyForSlug(slug);
+async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string) {
+  const { data } = await supabase
+    .from("k_kut_launch_audio")
+    .select("kut_id, delivered_url_or_path, track_id")
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .order("sort_order", { ascending: true })
+    .limit(4);
 
+  return pickDiverseRows((data ?? []) as KKRow[], 4);
+}
+
+async function fetchImmutableRows(supabase: ReturnType<typeof createClient>) {
   const { data, error } = await supabase
     .from("k_kuts")
     .select("kut_id, delivered_url_or_path, pass_type, track_id")
@@ -127,7 +135,17 @@ export default async function Page({ params }: { params: { slug: string } }) {
     .not("delivered_url_or_path", "is", null)
     .limit(500);
 
-  const rows = pickDiverseRows((data ?? []) as KKRow[], 4);
+  return { rows: pickDiverseRows((data ?? []) as KKRow[], 4), error };
+}
+
+export default async function Page({ params }: { params: { slug: string } }) {
+  const slug = params?.slug ?? "personal";
+  const supabase = createClient();
+  const copy = copyForSlug(slug);
+  const launchRows = await fetchLaunchRows(supabase, slug);
+  const immutableResult = launchRows.length >= 4 ? { rows: [], error: null } : await fetchImmutableRows(supabase);
+  const rows = launchRows.length >= 4 ? launchRows : immutableResult.rows;
+  const error = immutableResult.error;
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
