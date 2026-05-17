@@ -5,7 +5,6 @@ import { createClient } from "@/lib/supabase/server";
 
 type KKRow = {
   kut_id: string | null;
-  id?: string | null;
   delivered_url_or_path: string | null;
   pass_type: string | null;
   track_id: string | null;
@@ -75,7 +74,7 @@ function pickDiverseRows(rows: KKRow[], count: number) {
 
   for (const row of rows) {
     if (!row.delivered_url_or_path) continue;
-    const family = row.track_id ?? row.kut_id ?? row.id ?? row.delivered_url_or_path;
+    const family = row.track_id ?? row.kut_id ?? row.delivered_url_or_path;
     if (usedTrack.has(family)) continue;
     chosen.push(row);
     usedTrack.add(family);
@@ -85,8 +84,8 @@ function pickDiverseRows(rows: KKRow[], count: number) {
   if (chosen.length < count) {
     for (const row of rows) {
       if (!row.delivered_url_or_path) continue;
-      const key = row.kut_id ?? row.id ?? row.delivered_url_or_path;
-      if (chosen.some((item) => (item.kut_id ?? item.id ?? item.delivered_url_or_path) === key)) continue;
+      const key = row.kut_id ?? row.delivered_url_or_path;
+      if (chosen.some((item) => (item.kut_id ?? item.delivered_url_or_path) === key)) continue;
       chosen.push(row);
       if (chosen.length >= count) break;
     }
@@ -102,7 +101,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const { data, error } = await supabase
     .from("k_kuts")
-    .select("kut_id, id, delivered_url_or_path, pass_type, track_id")
+    .select("kut_id, delivered_url_or_path, pass_type, track_id")
     .eq("pass_type", "LT-PIX")
     .eq("generated_by", "gpmx-first-pass-process.mjs")
     .not("delivered_url_or_path", "is", null)
@@ -150,7 +149,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 name: `K-KUT HUG option ${index + 1}`,
                 helper: "Listen, then choose if it fits.",
               };
-              const kkId = kk.kut_id ?? kk.id ?? "";
+              const kkId = kk.kut_id ?? "";
 
               return (
                 <div
