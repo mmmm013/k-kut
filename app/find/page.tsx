@@ -39,7 +39,7 @@ export default function FindPage() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">
-            Choose one need. Next, MC-BOT will show HUG options with playable music moments.
+            Pick one need. MC-BOT will show matching HUG options with music you can hear next.
           </p>
 
           <div className="mt-8 flex flex-col gap-4">
@@ -59,7 +59,7 @@ export default function FindPage() {
                     </p>
                   </div>
                   <span className="shrink-0 rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] group-hover:bg-[#D4A017]/10">
-                    Show HUG options
+                    Options
                   </span>
                 </div>
               </Link>
@@ -69,7 +69,7 @@ export default function FindPage() {
 
         <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
           <p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-            MC-BOT keeps this simple: choose the need, hear HUG options, pick the one that fits, then continue.
+            MC-BOT keeps this simple: pick the need, review HUG options, hear the music, then choose what fits.
           </p>
         </div>
       </section>
