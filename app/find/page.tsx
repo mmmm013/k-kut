@@ -33,11 +33,11 @@ export default function FindPage() {
           </p>
 
           <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-7xl">
-            What do you need this music to say?
+            What do you need this HUG to say?
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">
-            Choose one answer. MC-BOT will narrow the next step after this.
+            Choose one need. Next, MC-BOT will show HUG options with playable music moments.
           </p>
 
           <div className="mt-8 flex flex-col gap-4">
@@ -57,7 +57,7 @@ export default function FindPage() {
                     </p>
                   </div>
                   <span className="shrink-0 rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] group-hover:bg-[#D4A017]/10">
-                    Choose
+                    Show HUG options
                   </span>
                 </div>
               </Link>
@@ -67,7 +67,7 @@ export default function FindPage() {
 
         <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
           <p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-            MC-BOT shows one decision layer at a time: need, feeling, music moment, then HUG.
+            MC-BOT keeps this simple: choose the need, hear HUG options, pick the one that fits, then continue.
           </p>
         </div>
       </section>
