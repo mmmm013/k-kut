@@ -1,96 +1,83 @@
 "use client";
+
 import EofSignatureAudio from "@/components/EofSignatureAudio";
+import { use, useEffect, useState } from "react";
+import Link from "next/link";
+import { createClient } from "../../../lib/supabase/browser";
 
-/**
- * mini-KUT View Page — /mkut/[id]
- *
- * Calls the `play-m-kut` Supabase edge function with the mini-KUT asset ID.
- * mini-KUTs are text micro-assets tied to song sections; the edge function
- * resolves the associated audio (K-KUT or K-kut variant) and returns a signed URL.
- *
- * REQUIRED for audio to work:
- *   1. Supabase edge function `play-m-kut` must be deployed.
- *      (Supabase Dashboard → Edge Functions → play-m-kut)
- *   2. The m_kut_asset row must exist and be linked to an active k_kut_asset.
- *   3. The linked k_kut_asset must have audio_qc_status = 'pass'.
- *   4. NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY
- *      must be set in Vercel env vars.
- *
- * Request body sent to play-m-kut: { mk_id: <m_kut_asset_id> }
- */
-
-import { use, useEffect, useState } from 'react';
-import Link from 'next/link';
-import { createClient } from '../../../lib/supabase/browser';
-
-interface MKutResponse {
-  signed_url: string;
-  expires_in: number;
-  structure_tag: string;
-  duration_ms: number | null;
-  mime_type: string | null;
+type MKutAsset = {
+  id: string;
+  mk_type: string | null;
+  content: string | null;
+  structure_tag: string | null;
+  audio_qc_status: string | null;
+  audio_url: string | null;
+  mp3_url: string | null;
   title: string | null;
   artist: string | null;
-  theme: string;
-  gift_note: string | null;
-  gifted_by: string | null;
-  meta: {
-    id: string;
-    variant: string;
-    structure_tag: string;
-    pix_pck_id: string;
-    mime_type: string | null;
-    duration_ms: number | null;
-  };
-}
+};
 
 export default function MiniKutPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const [data, setData] = useState<MKutResponse | null>(null);
+  const [asset, setAsset] = useState<MKutAsset | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchSignedUrl() {
+    async function loadMiniKut() {
       try {
         const supabase = createClient();
-        const { data: { session } } = await supabase.auth.getSession();
+        const decodedId = decodeURIComponent(id);
 
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/play-m-kut`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${session?.access_token ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-            },
-            // mk_id: the mini-KUT asset ID — play-m-kut resolves the associated audio from this
-            body: JSON.stringify({ mk_id: id }),
-          }
-        );
+        const { data, error } = await supabase
+          .from("m_kut_assets")
+          .select("id, mk_type, content, structure_tag, audio_qc_status, audio_url, mp3_url, title, artist")
+          .eq("id", decodedId)
+          .maybeSingle();
 
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({ error: 'Unknown error' }));
-          setError(body.error ?? `Error ${res.status}`);
+        if (error) {
+          setError(error.message);
           return;
         }
 
-        setData(await res.json());
+        if (!data) {
+          setError("mini-KUT not found");
+          return;
+        }
+
+        const row = data as MKutAsset;
+
+        if (row.audio_qc_status !== "pass") {
+          setError(`mini-KUT is not playable yet: ${row.audio_qc_status ?? "pending"}`);
+          return;
+        }
+
+        if (!row.audio_url && !row.mp3_url) {
+          setError("mini-KUT has no audio URL");
+          return;
+        }
+
+        setAsset(row);
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Failed to load mini-KUT');
+        setError(e instanceof Error ? e.message : "Failed to load mini-KUT");
       } finally {
         setLoading(false);
       }
     }
 
-    fetchSignedUrl();
+    loadMiniKut();
   }, [id]);
+
+  const audioSrc = asset?.audio_url ?? asset?.mp3_url ?? "";
+  const title = asset?.title ?? asset?.content ?? asset?.id;
+  const structure = asset?.structure_tag ?? asset?.mk_type ?? "mini-KUT";
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* ── Header ── */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-        <Link href="/" className="text-[#D4A017] font-bold text-lg hover:opacity-80">← K-KUT</Link>
+        <Link href="/" className="text-[#D4A017] font-bold text-lg hover:opacity-80">
+          ← K-KUT
+        </Link>
         <span className="text-xs uppercase tracking-widest text-[#C8A882]">mini-KUT</span>
       </header>
 
@@ -110,50 +97,29 @@ export default function MiniKutPage({ params }: { params: Promise<{ id: string }
             </div>
           )}
 
-          {data && (
+          {asset && (
             <div className="rounded-xl border border-[#C8A882]/30 bg-[#111] p-6 flex flex-col gap-6">
-              {/* Meta */}
               <div>
                 <p className="text-xs uppercase tracking-widest text-[#C8A882] mb-1">mini-KUT</p>
-                <p className="text-xl font-bold text-[#F5e6c8]">{data.structure_tag}</p>
-                {data.title && (
-                  <p className="text-sm text-[#C8A882] mt-1">
-                    {data.title}{data.artist ? ` · ${data.artist}` : ''}
-                  </p>
-                )}
-                {data.gift_note && (
-                  <p className="text-sm text-[#D4A017] mt-2 italic">"{data.gift_note}"</p>
-                )}
-                {data.gifted_by && (
-                  <p className="text-xs text-[#C8A882]/60 mt-1">from {data.gifted_by}</p>
-                )}
+                <p className="text-xl font-bold text-[#F5e6c8]">{structure}</p>
+                <p className="text-sm text-[#C8A882] mt-1">
+                  {title}{asset.artist ? ` · ${asset.artist}` : ""}
+                </p>
               </div>
 
-              {/* Audio player */}
-              <EofSignatureAudio
-                src={data.signed_url}
-                className="w-full rounded"
-              />
+              <EofSignatureAudio src={audioSrc} className="w-full rounded" />
 
-              {data.duration_ms && (
-                <p className="text-xs text-[#C8A882]/60 text-center">
-                  {Math.round(data.duration_ms / 1000)}s · {data.meta.variant}
-                </p>
-              )}
-
-              <p className="text-xs text-[#C8A882]/60 text-center">
-                Link valid for {Math.round(data.expires_in / 60)} minutes
-              </p>
+              <p className="text-xs text-[#C8A882]/60 text-center">Audio ready</p>
             </div>
           )}
         </div>
       </main>
 
       <footer className="border-t border-white/10 px-6 py-6 text-center text-xs text-[#C8A882]">
-        K-KUT is a{' '}
+        K-KUT is a{" "}
         <a href="https://gputnammusic.com" className="text-[#D4A017] hover:underline">
           G Putnam Music
-        </a>{' '}
+        </a>{" "}
         invention. All rights reserved.
       </footer>
     </div>
