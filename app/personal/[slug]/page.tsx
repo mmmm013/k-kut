@@ -8,26 +8,57 @@ type MKRow = {
   pix_pck_id: string | null;
 };
 
-const STEP_COPY: Record<string, { title: string; prompt: string; tones: string[] }> = {
+type StepCopy = {
+  title: string;
+  prompt: string;
+  intro: string;
+  options: { name: string; helper: string }[];
+};
+
+const STEP_COPY: Record<string, StepCopy> = {
   "thank-you": {
     title: "Thank you",
-    prompt: "Pick the feeling closest to what you want them to receive.",
-    tones: ["Warm and grateful", "Quiet appreciation", "Big-hearted thanks", "Simple and sincere"],
+    prompt: "MC-BOT found four HUG options for saying thanks.",
+    intro: "Listen to each option. Choose the one that feels closest to the thank-you you want to send.",
+    options: [
+      { name: "A warm thank-you HUG", helper: "Feels personal, kind, and grateful." },
+      { name: "A quiet appreciation HUG", helper: "Feels gentle, sincere, and not too big." },
+      { name: "A big-hearted thanks HUG", helper: "Feels fuller, brighter, and more expressive." },
+      { name: "A simple sincere HUG", helper: "Feels direct, clean, and easy to send." },
+    ],
   },
   birthday: {
     title: "Celebrate someone",
-    prompt: "Pick the kind of lift this moment should carry.",
-    tones: ["Bright celebration", "Sweet and personal", "Fun and upbeat", "Proud and joyful"],
+    prompt: "MC-BOT found four HUG options for celebrating them.",
+    intro: "Listen to each option. Choose the one that best fits their moment.",
+    options: [
+      { name: "A bright celebration HUG", helper: "Feels happy, open, and energetic." },
+      { name: "A sweet personal HUG", helper: "Feels close, caring, and specific." },
+      { name: "A fun upbeat HUG", helper: "Feels playful and easy to enjoy." },
+      { name: "A proud joyful HUG", helper: "Feels supportive and big-hearted." },
+    ],
   },
   apology: {
     title: "Repair or reconnect",
-    prompt: "Pick the tone that fits the repair.",
-    tones: ["Soft apology", "Missing you", "Open-hearted repair", "Gentle reconnection"],
+    prompt: "MC-BOT found four HUG options for repair.",
+    intro: "Listen to each option. Choose the one that says it the way you mean it.",
+    options: [
+      { name: "A soft apology HUG", helper: "Feels gentle, careful, and accountable." },
+      { name: "A missing-you HUG", helper: "Feels tender, honest, and close." },
+      { name: "An open-hearted repair HUG", helper: "Feels direct, human, and hopeful." },
+      { name: "A gentle reconnection HUG", helper: "Feels calm, patient, and safe." },
+    ],
   },
   personal: {
     title: "Love or comfort",
-    prompt: "Pick the feeling closest to the message.",
-    tones: ["Comforting", "Loving", "Steady support", "Close and warm"],
+    prompt: "MC-BOT found four HUG options for care and comfort.",
+    intro: "Listen to each option. Choose the one that feels right for the person receiving it.",
+    options: [
+      { name: "A comforting HUG", helper: "Feels steady, soft, and reassuring." },
+      { name: "A loving HUG", helper: "Feels warm, close, and personal." },
+      { name: "A steady-support HUG", helper: "Feels grounding and dependable." },
+      { name: "A close-and-warm HUG", helper: "Feels intimate, kind, and present." },
+    ],
   },
 };
 
@@ -90,6 +121,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
             {copy.prompt}
           </p>
 
+          <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
+            <p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">
+              {copy.intro}
+            </p>
+          </div>
+
           {error && (
             <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">
               Audio list failed: {error.message}
@@ -98,42 +135,57 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
           {!error && rows.length === 0 && (
             <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">
-              No playable mKs found for this path yet.
+              No playable HUG options found for this path yet.
             </div>
           )}
 
           <div className="mt-8 flex flex-col gap-4">
-            {rows.map((mk, index) => (
-              <div
-                key={mk.id}
-                className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5"
-              >
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <h2 className="text-xl font-black text-[#FFD36A]">
-                      {copy.tones[index] ?? `Music moment ${index + 1}`}
-                    </h2>
-                    <p className="mt-2 text-sm font-bold text-[#F5E6C8]/65">
-                      Play this moment. If it fits, continue with it.
-                    </p>
+            {rows.map((mk, index) => {
+              const option = copy.options[index] ?? {
+                name: `HUG option ${index + 1}`,
+                helper: "Listen, then choose if it fits.",
+              };
+
+              return (
+                <div
+                  key={mk.id}
+                  className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5"
+                >
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">
+                        HUG option {index + 1} of {rows.length}
+                      </p>
+                      <h2 className="mt-2 text-2xl font-black text-[#FFD36A]">
+                        {option.name}
+                      </h2>
+                      <p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">
+                        {option.helper}
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">
+                        Listen here
+                      </p>
+                      <audio
+                        controls
+                        preload="metadata"
+                        src={mk.audio_url ?? undefined}
+                        className="w-full"
+                      />
+                    </div>
+
+                    <Link
+                      href={`/mkut/${encodeURIComponent(mk.id)}`}
+                      className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
+                    >
+                      Use this HUG option
+                    </Link>
                   </div>
-
-                  <audio
-                    controls
-                    preload="metadata"
-                    src={mk.audio_url ?? undefined}
-                    className="w-full"
-                  />
-
-                  <Link
-                    href={`/mkut/${encodeURIComponent(mk.id)}`}
-                    className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
-                  >
-                    Use this moment
-                  </Link>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
