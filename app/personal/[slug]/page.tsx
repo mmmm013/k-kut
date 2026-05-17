@@ -1,39 +1,76 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
-const SLUG_TERMS: Record<string, string[]> = {
-  "thank-you": ["thank", "better", "blue"],
-  birthday: ["dance", "celebrate", "night", "heart"],
-  apology: ["sorry", "better", "deep", "memories"],
+type MKRow = {
+  id: string;
+  audio_url: string | null;
+  audio_qc_status: string | null;
+  pix_pck_id: string | null;
 };
 
-function titleForSlug(slug: string) {
-  if (slug === "thank-you") return "Thank you";
-  if (slug === "birthday") return "Celebrate someone";
-  if (slug === "apology") return "Repair or reconnect";
-  return "Love or comfort";
+const STEP_COPY: Record<string, { title: string; prompt: string; tones: string[] }> = {
+  "thank-you": {
+    title: "Thank you",
+    prompt: "Pick the feeling closest to what you want them to receive.",
+    tones: ["Warm and grateful", "Quiet appreciation", "Big-hearted thanks", "Simple and sincere"],
+  },
+  birthday: {
+    title: "Celebrate someone",
+    prompt: "Pick the kind of lift this moment should carry.",
+    tones: ["Bright celebration", "Sweet and personal", "Fun and upbeat", "Proud and joyful"],
+  },
+  apology: {
+    title: "Repair or reconnect",
+    prompt: "Pick the tone that fits the repair.",
+    tones: ["Soft apology", "Missing you", "Open-hearted repair", "Gentle reconnection"],
+  },
+  personal: {
+    title: "Love or comfort",
+    prompt: "Pick the feeling closest to the message.",
+    tones: ["Comforting", "Loving", "Steady support", "Close and warm"],
+  },
+};
+
+function copyForSlug(slug: string) {
+  return STEP_COPY[slug] ?? STEP_COPY.personal;
+}
+
+function pickDiverseRows(rows: MKRow[], count: number) {
+  const chosen: MKRow[] = [];
+  const usedPix = new Set<string>();
+
+  for (const row of rows) {
+    const family = row.pix_pck_id ?? row.id;
+    if (usedPix.has(family)) continue;
+    chosen.push(row);
+    usedPix.add(family);
+    if (chosen.length >= count) break;
+  }
+
+  if (chosen.length < count) {
+    for (const row of rows) {
+      if (chosen.some((item) => item.id === row.id)) continue;
+      chosen.push(row);
+      if (chosen.length >= count) break;
+    }
+  }
+
+  return chosen;
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const slug = params?.slug ?? "personal";
   const supabase = createClient();
-  const terms = SLUG_TERMS[slug] ?? ["kleigh", "music", "heart", "memories"];
+  const copy = copyForSlug(slug);
 
-  let query = supabase
+  const { data, error } = await supabase
     .from("m_kut_assets")
-    .select("id, content, structure_tag, audio_url, audio_qc_status")
+    .select("id, audio_url, audio_qc_status, pix_pck_id")
     .eq("audio_qc_status", "pass")
     .not("audio_url", "is", null)
-    .limit(12);
+    .limit(500);
 
-  const orFilter = terms
-    .map((term) => `id.ilike.%${term}%,content.ilike.%${term}%,structure_tag.ilike.%${term}%`)
-    .join(",");
-
-  query = query.or(orFilter);
-
-  const { data, error } = await query;
-  const rows = data ?? [];
+  const rows = pickDiverseRows((data ?? []) as MKRow[], 4);
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
@@ -44,11 +81,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
           </p>
 
           <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">
-            {titleForSlug(slug)}
+            {copy.title}
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">
-            Choose one playable music moment. Every option below is connected to a passed MP3 audio row.
+            {copy.prompt}
           </p>
 
           {error && (
@@ -64,7 +101,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           )}
 
           <div className="mt-8 flex flex-col gap-4">
-            {rows.map((mk) => (
+            {rows.map((mk, index) => (
               <Link
                 key={mk.id}
                 href={`/mkut/${encodeURIComponent(mk.id)}`}
@@ -73,13 +110,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h2 className="text-xl font-black text-[#FFD36A]">
-                      {mk.content || mk.id}
+                      {copy.tones[index] ?? `Music moment ${index + 1}`}
                     </h2>
-                    {mk.structure_tag && (
-                      <p className="mt-2 text-sm font-bold text-[#F5E6C8]/65">
-                        {mk.structure_tag}
-                      </p>
-                    )}
+                    <p className="mt-2 text-sm font-bold text-[#F5E6C8]/65">
+                      Play this moment, then choose if it fits.
+                    </p>
                   </div>
                   <span className="shrink-0 rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A]">
                     Play
