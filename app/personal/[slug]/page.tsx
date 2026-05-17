@@ -64,38 +64,19 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
 };
 
-const CATALOG_KK: KKRow[] = [
-  { kut_id: "kkut-gratitude-01", delivered_url_or_path: "wanna-know-you.mp3", track_id: "catalog-gratitude" },
-  { kut_id: "kkut-love-01", delivered_url_or_path: "perfect-day.mp3", track_id: "catalog-love" },
-  { kut_id: "kkut-hope-01", delivered_url_or_path: "kleigh--solace.mp3", track_id: "catalog-hope" },
-  { kut_id: "kkut-apology-01", delivered_url_or_path: "jump.mp3", track_id: "catalog-apology" },
-  { kut_id: "kkut-energy-01", delivered_url_or_path: "kleigh--waterfall.mp3", track_id: "catalog-energy" },
-  { kut_id: "kkut-hurt-01", delivered_url_or_path: "kleigh--nightfall.mp3", track_id: "catalog-hurt" },
-];
-
 function copyForSlug(slug: string) {
   return STEP_COPY[slug] ?? STEP_COPY.personal;
 }
 
-function catalogRowsForSlug(slug: string) {
-  if (slug === "thank-you") return [CATALOG_KK[0], CATALOG_KK[1], CATALOG_KK[2], CATALOG_KK[4]];
-  if (slug === "birthday") return [CATALOG_KK[4], CATALOG_KK[1], CATALOG_KK[0], CATALOG_KK[2]];
-  if (slug === "apology") return [CATALOG_KK[3], CATALOG_KK[5], CATALOG_KK[2], CATALOG_KK[1]];
-  return [CATALOG_KK[1], CATALOG_KK[2], CATALOG_KK[0], CATALOG_KK[4]];
-}
-
 function encodePath(path: string) {
-  return path
-    .split("/")
-    .map((part) => encodeURIComponent(part))
-    .join("/");
+  return path.split("/").map((part) => encodeURIComponent(part)).join("/");
 }
 
 function isAllowedKKutAudio(rawValue: string | null) {
   const raw = rawValue?.trim().toLowerCase();
   if (!raw) return false;
 
-  if (raw.includes("mk-products") || raw.includes("/mks/") || raw.includes("mini")) return false;
+  if (raw.includes("instro") || raw.includes("instrumental") || raw.includes("mk-products") || raw.includes("/mks/") || raw.includes("mini")) return false;
   if (raw.endsWith(".wav")) return false;
 
   const currentHost = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase();
@@ -112,31 +93,13 @@ function toAudioSrc(rawValue: string | null) {
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
 
-  if (raw.startsWith("/storage/v1/object/public/")) {
-    return supabaseUrl ? `${supabaseUrl}${encodeURI(raw)}` : encodeURI(raw);
-  }
-
-  if (raw.startsWith("storage/v1/object/public/")) {
-    return supabaseUrl ? `${supabaseUrl}/${encodeURI(raw)}` : `/${encodeURI(raw)}`;
-  }
-
-  if (raw.startsWith("public/")) {
-    return encodeURI(raw.replace(/^public/, ""));
-  }
-
-  if (raw.startsWith("/audio/") || raw.startsWith("/assets/")) {
-    return encodeURI(raw);
-  }
-
-  if (raw.startsWith("audio/") || raw.startsWith("assets/")) {
-    return `/${encodeURI(raw)}`;
-  }
-
+  if (raw.startsWith("/storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}${encodeURI(raw)}` : encodeURI(raw);
+  if (raw.startsWith("storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}/${encodeURI(raw)}` : `/${encodeURI(raw)}`;
+  if (raw.startsWith("public/")) return encodeURI(raw.replace(/^public/, ""));
+  if (raw.startsWith("/audio/") || raw.startsWith("/assets/")) return encodeURI(raw);
+  if (raw.startsWith("audio/") || raw.startsWith("assets/")) return `/${encodeURI(raw)}`;
   if (!supabaseUrl) return encodeURI(raw);
-
-  if (raw.startsWith("tracks/")) {
-    return `${supabaseUrl}/storage/v1/object/public/${encodePath(raw)}`;
-  }
+  if (raw.startsWith("tracks/")) return `${supabaseUrl}/storage/v1/object/public/${encodePath(raw)}`;
 
   return `${supabaseUrl}/storage/v1/object/public/tracks/${encodePath(raw)}`;
 }
@@ -152,16 +115,6 @@ function pickDiverseRows(rows: KKRow[], count: number) {
     chosen.push(row);
     usedTrack.add(family);
     if (chosen.length >= count) break;
-  }
-
-  if (chosen.length < count) {
-    for (const row of rows) {
-      if (!toAudioSrc(row.delivered_url_or_path)) continue;
-      const key = row.kut_id ?? row.delivered_url_or_path ?? "";
-      if (chosen.some((item) => (item.kut_id ?? item.delivered_url_or_path) === key)) continue;
-      chosen.push(row);
-      if (chosen.length >= count) break;
-    }
   }
 
   return chosen;
@@ -180,103 +133,51 @@ export default async function Page({ params }: { params: { slug: string } }) {
     .not("delivered_url_or_path", "is", null)
     .limit(500);
 
-  const dbRows = pickDiverseRows((data ?? []) as KKRow[], 4);
-  const rows = dbRows.length >= 4 ? dbRows : catalogRowsForSlug(slug);
-  const usingCatalogFallback = dbRows.length < 4;
+  const rows = pickDiverseRows((data ?? []) as KKRow[], 4);
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
       <section className="mx-auto max-w-4xl">
         <div className="rounded-[2rem] border border-[#D4A017]/35 bg-[#24180F] p-7 shadow-2xl sm:p-10">
-          <p className="text-sm font-black uppercase tracking-[0.3em] text-[#D4A017]">
-            MC-BOT step 2 of 4
-          </p>
-
-          <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">
-            {copy.title}
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">
-            {copy.prompt}
-          </p>
-
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-[#D4A017]">MC-BOT step 2 of 4</p>
+          <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">{copy.title}</h1>
+          <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">{copy.prompt}</p>
           <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
-            <p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">
-              {copy.intro}
-            </p>
+            <p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p>
           </div>
 
-          {error && (
-            <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">
-              K-KUT list failed: {error.message}
-            </div>
-          )}
-
-          {usingCatalogFallback && (
-            <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5 text-sm font-bold text-[#F5E6C8]/75">
-              MC-BOT is using verified K-KUT catalog options while the full K-KUT table is repaired.
+          {error && <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">K-KUT list failed: {error.message}</div>}
+          {!error && rows.length === 0 && (
+            <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">
+              No playable vocal K-KUT HUG options are available for this path yet.
             </div>
           )}
 
           <div className="mt-8 flex flex-col gap-4">
             {rows.map((kk, index) => {
-              const option = copy.options[index] ?? {
-                name: `K-KUT HUG option ${index + 1}`,
-                helper: "Listen, then choose if it fits.",
-              };
+              const option = copy.options[index] ?? { name: `K-KUT HUG option ${index + 1}`, helper: "Listen, then choose if it fits." };
               const kkId = kk.kut_id ?? "";
               const audioSrc = toAudioSrc(kk.delivered_url_or_path);
-
               return (
-                <div
-                  key={kkId || kk.delivered_url_or_path || index}
-                  className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5"
-                >
+                <div key={kkId || kk.delivered_url_or_path || index} className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">
-                        K-KUT HUG option {index + 1} of {rows.length}
-                      </p>
-                      <h2 className="mt-2 text-2xl font-black text-[#FFD36A]">
-                        {option.name}
-                      </h2>
-                      <p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">
-                        {option.helper}
-                      </p>
+                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">K-KUT HUG option {index + 1} of {rows.length}</p>
+                      <h2 className="mt-2 text-2xl font-black text-[#FFD36A]">{option.name}</h2>
+                      <p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">{option.helper}</p>
                     </div>
-
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">
-                        Listen here
-                      </p>
-                      <audio
-                        controls
-                        preload="metadata"
-                        src={audioSrc ?? undefined}
-                        className="w-full"
-                      />
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Listen here</p>
+                      <audio controls preload="metadata" src={audioSrc ?? undefined} className="w-full" />
                     </div>
-
-                    {kkId && (
-                      <Link
-                        href={`/k/${encodeURIComponent(kkId)}`}
-                        className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
-                      >
-                        Use this K-KUT HUG
-                      </Link>
-                    )}
+                    {kkId && <Link href={`/k/${encodeURIComponent(kkId)}`} className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>}
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
-
-        <div className="mt-6">
-          <Link href="/find" className="text-sm font-black text-[#FFD36A] hover:underline">
-            Back to MC-BOT step 1
-          </Link>
-        </div>
+        <div className="mt-6"><Link href="/find" className="text-sm font-black text-[#FFD36A] hover:underline">Back to MC-BOT step 1</Link></div>
       </section>
     </main>
   );
