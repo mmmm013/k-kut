@@ -40,6 +40,7 @@ function pickDiverseRows(rows: MKRow[], count: number) {
   const usedPix = new Set<string>();
 
   for (const row of rows) {
+    if (!row.audio_url) continue;
     const family = row.pix_pck_id ?? row.id;
     if (usedPix.has(family)) continue;
     chosen.push(row);
@@ -49,6 +50,7 @@ function pickDiverseRows(rows: MKRow[], count: number) {
 
   if (chosen.length < count) {
     for (const row of rows) {
+      if (!row.audio_url) continue;
       if (chosen.some((item) => item.id === row.id)) continue;
       chosen.push(row);
       if (chosen.length >= count) break;
@@ -102,25 +104,35 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
           <div className="mt-8 flex flex-col gap-4">
             {rows.map((mk, index) => (
-              <Link
+              <div
                 key={mk.id}
-                href={`/mkut/${encodeURIComponent(mk.id)}`}
-                className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 transition hover:border-[#FFD36A] hover:bg-[#2A180D]"
+                className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col gap-4">
                   <div>
                     <h2 className="text-xl font-black text-[#FFD36A]">
                       {copy.tones[index] ?? `Music moment ${index + 1}`}
                     </h2>
                     <p className="mt-2 text-sm font-bold text-[#F5E6C8]/65">
-                      Play this moment, then choose if it fits.
+                      Play this moment. If it fits, continue with it.
                     </p>
                   </div>
-                  <span className="shrink-0 rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A]">
-                    Play
-                  </span>
+
+                  <audio
+                    controls
+                    preload="metadata"
+                    src={mk.audio_url ?? undefined}
+                    className="w-full"
+                  />
+
+                  <Link
+                    href={`/mkut/${encodeURIComponent(mk.id)}`}
+                    className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
+                  >
+                    Use this moment
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
