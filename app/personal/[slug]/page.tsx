@@ -72,27 +72,24 @@ function encodePath(path: string) {
   return path.split("/").map((part) => encodeURIComponent(part)).join("/");
 }
 
+function isHttpUrl(value: string) {
+  return value.startsWith("https://") || value.startsWith("http://");
+}
+
 function isAllowedKKutAudio(rawValue: string | null) {
   const raw = rawValue?.trim().toLowerCase();
   if (!raw) return false;
-
   if (raw.includes("instro") || raw.includes("instrumental") || raw.includes("mk-products") || raw.includes("/mks/") || raw.includes("mini")) return false;
   if (raw.endsWith(".wav")) return false;
-
-  const currentHost = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase();
-  if (raw.startsWith("http") && currentHost && !raw.includes(currentHost)) return false;
-
   return raw.includes("/tracks/") || raw.includes("tracks/") || raw.endsWith(".mp3") || raw.endsWith(".m4a");
 }
 
 function toAudioSrc(rawValue: string | null) {
   const raw = rawValue?.trim();
   if (!raw || !isAllowedKKutAudio(raw)) return null;
-
-  if (/^https?:\/\//i.test(raw)) return encodeURI(raw);
+  if (isHttpUrl(raw)) return encodeURI(raw);
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
-
   if (raw.startsWith("/storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}${encodeURI(raw)}` : encodeURI(raw);
   if (raw.startsWith("storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}/${encodeURI(raw)}` : `/${encodeURI(raw)}`;
   if (raw.startsWith("public/")) return encodeURI(raw.replace(/^public/, ""));
@@ -100,14 +97,12 @@ function toAudioSrc(rawValue: string | null) {
   if (raw.startsWith("audio/") || raw.startsWith("assets/")) return `/${encodeURI(raw)}`;
   if (!supabaseUrl) return encodeURI(raw);
   if (raw.startsWith("tracks/")) return `${supabaseUrl}/storage/v1/object/public/${encodePath(raw)}`;
-
   return `${supabaseUrl}/storage/v1/object/public/tracks/${encodePath(raw)}`;
 }
 
 function pickDiverseRows(rows: KKRow[], count: number) {
   const chosen: KKRow[] = [];
   const usedTrack = new Set<string>();
-
   for (const row of rows) {
     if (!toAudioSrc(row.delivered_url_or_path)) continue;
     const family = row.track_id ?? row.kut_id ?? row.delivered_url_or_path ?? "";
@@ -116,7 +111,6 @@ function pickDiverseRows(rows: KKRow[], count: number) {
     usedTrack.add(family);
     if (chosen.length >= count) break;
   }
-
   return chosen;
 }
 
@@ -142,17 +136,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#D4A017]">MC-BOT step 2 of 4</p>
           <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">{copy.title}</h1>
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">{copy.prompt}</p>
-          <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
-            <p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p>
-          </div>
-
+          <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
           {error && <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">K-KUT list failed: {error.message}</div>}
-          {!error && rows.length === 0 && (
-            <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">
-              No playable vocal K-KUT HUG options are available for this path yet.
-            </div>
-          )}
-
+          {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No playable vocal K-KUT HUG options are available for this path yet.</div>}
           <div className="mt-8 flex flex-col gap-4">
             {rows.map((kk, index) => {
               const option = copy.options[index] ?? { name: `K-KUT HUG option ${index + 1}`, helper: "Listen, then choose if it fits." };
@@ -161,15 +147,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
               return (
                 <div key={kkId || kk.delivered_url_or_path || index} className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
                   <div className="flex flex-col gap-4">
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">K-KUT HUG option {index + 1} of {rows.length}</p>
-                      <h2 className="mt-2 text-2xl font-black text-[#FFD36A]">{option.name}</h2>
-                      <p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">{option.helper}</p>
-                    </div>
-                    <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Listen here</p>
-                      <audio controls preload="metadata" src={audioSrc ?? undefined} className="w-full" />
-                    </div>
+                    <div><p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">K-KUT HUG option {index + 1} of {rows.length}</p><h2 className="mt-2 text-2xl font-black text-[#FFD36A]">{option.name}</h2><p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">{option.helper}</p></div>
+                    <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4"><p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Listen here</p><audio controls preload="metadata" src={audioSrc ?? undefined} className="w-full" /></div>
                     {kkId && <Link href={`/k/${encodeURIComponent(kkId)}`} className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>}
                   </div>
                 </div>
