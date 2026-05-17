@@ -6,8 +6,8 @@ import { createClient } from "@/lib/supabase/server";
 type KKRow = {
   kut_id: string | null;
   delivered_url_or_path: string | null;
-  pass_type: string | null;
-  track_id: string | null;
+  pass_type?: string | null;
+  track_id?: string | null;
 };
 
 type StepCopy = {
@@ -64,8 +64,24 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
 };
 
+const CATALOG_KK: KKRow[] = [
+  { kut_id: "kkut-gratitude-01", delivered_url_or_path: "wanna-know-you.mp3", track_id: "catalog-gratitude" },
+  { kut_id: "kkut-love-01", delivered_url_or_path: "perfect-day.mp3", track_id: "catalog-love" },
+  { kut_id: "kkut-hope-01", delivered_url_or_path: "kleigh--solace.mp3", track_id: "catalog-hope" },
+  { kut_id: "kkut-apology-01", delivered_url_or_path: "jump.mp3", track_id: "catalog-apology" },
+  { kut_id: "kkut-energy-01", delivered_url_or_path: "kleigh--waterfall.mp3", track_id: "catalog-energy" },
+  { kut_id: "kkut-hurt-01", delivered_url_or_path: "kleigh--nightfall.mp3", track_id: "catalog-hurt" },
+];
+
 function copyForSlug(slug: string) {
   return STEP_COPY[slug] ?? STEP_COPY.personal;
+}
+
+function catalogRowsForSlug(slug: string) {
+  if (slug === "thank-you") return [CATALOG_KK[0], CATALOG_KK[1], CATALOG_KK[2], CATALOG_KK[4]];
+  if (slug === "birthday") return [CATALOG_KK[4], CATALOG_KK[1], CATALOG_KK[0], CATALOG_KK[2]];
+  if (slug === "apology") return [CATALOG_KK[3], CATALOG_KK[5], CATALOG_KK[2], CATALOG_KK[1]];
+  return [CATALOG_KK[1], CATALOG_KK[2], CATALOG_KK[0], CATALOG_KK[4]];
 }
 
 function encodePath(path: string) {
@@ -85,7 +101,7 @@ function isAllowedKKutAudio(rawValue: string | null) {
   const currentHost = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase();
   if (raw.startsWith("http") && currentHost && !raw.includes(currentHost)) return false;
 
-  return raw.includes("/tracks/") || raw.includes("tracks/") || raw.includes(".mp3") || raw.includes(".m4a");
+  return raw.includes("/tracks/") || raw.includes("tracks/") || raw.endsWith(".mp3") || raw.endsWith(".m4a");
 }
 
 function toAudioSrc(rawValue: string | null) {
@@ -164,7 +180,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
     .not("delivered_url_or_path", "is", null)
     .limit(500);
 
-  const rows = pickDiverseRows((data ?? []) as KKRow[], 4);
+  const dbRows = pickDiverseRows((data ?? []) as KKRow[], 4);
+  const rows = dbRows.length >= 4 ? dbRows : catalogRowsForSlug(slug);
+  const usingCatalogFallback = dbRows.length < 4;
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
@@ -194,9 +212,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
           )}
 
-          {!error && rows.length === 0 && (
-            <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">
-              No playable K-KUT HUG options found for this path yet.
+          {usingCatalogFallback && (
+            <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5 text-sm font-bold text-[#F5E6C8]/75">
+              MC-BOT is using verified K-KUT catalog options while the full K-KUT table is repaired.
             </div>
           )}
 
