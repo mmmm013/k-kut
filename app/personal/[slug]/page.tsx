@@ -75,9 +75,22 @@ function encodePath(path: string) {
     .join("/");
 }
 
+function isAllowedKKutAudio(rawValue: string | null) {
+  const raw = rawValue?.trim().toLowerCase();
+  if (!raw) return false;
+
+  if (raw.includes("mk-products") || raw.includes("/mks/") || raw.includes("mini")) return false;
+  if (raw.endsWith(".wav")) return false;
+
+  const currentHost = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase();
+  if (raw.startsWith("http") && currentHost && !raw.includes(currentHost)) return false;
+
+  return raw.includes("/tracks/") || raw.includes("tracks/") || raw.includes(".mp3") || raw.includes(".m4a");
+}
+
 function toAudioSrc(rawValue: string | null) {
   const raw = rawValue?.trim();
-  if (!raw) return null;
+  if (!raw || !isAllowedKKutAudio(raw)) return null;
 
   if (/^https?:\/\//i.test(raw)) return encodeURI(raw);
 
@@ -105,14 +118,7 @@ function toAudioSrc(rawValue: string | null) {
 
   if (!supabaseUrl) return encodeURI(raw);
 
-  const knownBucketPrefixes = [
-    "tracks/",
-    "audio-stream/",
-    "site-catalog/",
-    "media-exports/",
-  ];
-
-  if (knownBucketPrefixes.some((prefix) => raw.startsWith(prefix))) {
+  if (raw.startsWith("tracks/")) {
     return `${supabaseUrl}/storage/v1/object/public/${encodePath(raw)}`;
   }
 
