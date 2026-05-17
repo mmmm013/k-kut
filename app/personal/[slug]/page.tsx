@@ -68,13 +68,64 @@ function copyForSlug(slug: string) {
   return STEP_COPY[slug] ?? STEP_COPY.personal;
 }
 
+function encodePath(path: string) {
+  return path
+    .split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
+}
+
+function toAudioSrc(rawValue: string | null) {
+  const raw = rawValue?.trim();
+  if (!raw) return null;
+
+  if (/^https?:\/\//i.test(raw)) return encodeURI(raw);
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
+
+  if (raw.startsWith("/storage/v1/object/public/")) {
+    return supabaseUrl ? `${supabaseUrl}${encodeURI(raw)}` : encodeURI(raw);
+  }
+
+  if (raw.startsWith("storage/v1/object/public/")) {
+    return supabaseUrl ? `${supabaseUrl}/${encodeURI(raw)}` : `/${encodeURI(raw)}`;
+  }
+
+  if (raw.startsWith("public/")) {
+    return encodeURI(raw.replace(/^public/, ""));
+  }
+
+  if (raw.startsWith("/audio/") || raw.startsWith("/assets/")) {
+    return encodeURI(raw);
+  }
+
+  if (raw.startsWith("audio/") || raw.startsWith("assets/")) {
+    return `/${encodeURI(raw)}`;
+  }
+
+  if (!supabaseUrl) return encodeURI(raw);
+
+  const knownBucketPrefixes = [
+    "tracks/",
+    "audio-stream/",
+    "site-catalog/",
+    "media-exports/",
+  ];
+
+  if (knownBucketPrefixes.some((prefix) => raw.startsWith(prefix))) {
+    return `${supabaseUrl}/storage/v1/object/public/${encodePath(raw)}`;
+  }
+
+  return `${supabaseUrl}/storage/v1/object/public/tracks/${encodePath(raw)}`;
+}
+
 function pickDiverseRows(rows: KKRow[], count: number) {
   const chosen: KKRow[] = [];
   const usedTrack = new Set<string>();
 
   for (const row of rows) {
-    if (!row.delivered_url_or_path) continue;
-    const family = row.track_id ?? row.kut_id ?? row.delivered_url_or_path;
+    if (!toAudioSrc(row.delivered_url_or_path)) continue;
+    const family = row.track_id ?? row.kut_id ?? row.delivered_url_or_path ?? "";
     if (usedTrack.has(family)) continue;
     chosen.push(row);
     usedTrack.add(family);
@@ -83,8 +134,8 @@ function pickDiverseRows(rows: KKRow[], count: number) {
 
   if (chosen.length < count) {
     for (const row of rows) {
-      if (!row.delivered_url_or_path) continue;
-      const key = row.kut_id ?? row.delivered_url_or_path;
+      if (!toAudioSrc(row.delivered_url_or_path)) continue;
+      const key = row.kut_id ?? row.delivered_url_or_path ?? "";
       if (chosen.some((item) => (item.kut_id ?? item.delivered_url_or_path) === key)) continue;
       chosen.push(row);
       if (chosen.length >= count) break;
@@ -150,6 +201,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 helper: "Listen, then choose if it fits.",
               };
               const kkId = kk.kut_id ?? "";
+              const audioSrc = toAudioSrc(kk.delivered_url_or_path);
 
               return (
                 <div
@@ -176,7 +228,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                       <audio
                         controls
                         preload="metadata"
-                        src={kk.delivered_url_or_path ?? undefined}
+                        src={audioSrc ?? undefined}
                         className="w-full"
                       />
                     </div>
