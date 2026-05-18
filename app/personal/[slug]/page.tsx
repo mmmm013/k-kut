@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { createClient as createSupabaseCatalogClient } from "@supabase/supabase-js";
 
 type KKMeta = Record<string, unknown>;
 
@@ -60,7 +61,7 @@ type StepCopy = {
 const STEP_COPY: Record<string, StepCopy> = {
   "thank-you": {
     title: "Send a thank-you HUG",
-    prompt: "MC-BOT found verified playable K-KUT Thank-you HUG options for saying thanks.",
+    prompt: "Choose the kind of thank-you you want to send, then listen for the K-KUT that says it best.",
     intro: "This is thank-you music. Listen to each Thank-you HUG, then choose the one that says thanks the way you mean it.",
     options: [
       { name: "Warm Thank-you HUG", helper: "Thank-you-specific: personal, kind, and grateful." },
@@ -82,7 +83,7 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   apology: {
     title: "Send an apology HUG",
-    prompt: "MC-BOT found verified playable K-KUT Apology HUG options for repair and reconnection.",
+    prompt: "Choose the kind of apology or repair you want to send, then listen for the K-KUT that says it best.",
     intro: "This is apology and repair music. Listen to each Apology HUG, then choose the one that says it the way you mean it.",
     options: [
       { name: "Soft Apology HUG", helper: "Apology-specific: gentle, careful, and accountable." },
@@ -93,7 +94,7 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   personal: {
     title: "Send a love or comfort HUG",
-    prompt: "MC-BOT found verified playable K-KUT Love and Comfort HUG options for care and support.",
+    prompt: "Choose the kind of love or comfort you want to send, then listen for the K-KUT that says it best.",
     intro: "This is love and comfort music. Listen to each Love or Comfort HUG, then choose the one that fits the person receiving it.",
     options: [
       { name: "Comfort HUG", helper: "Comfort-specific: steady, soft, and reassuring." },
@@ -113,6 +114,21 @@ const PURPOSE_TERMS: Record<string, string[]> = {
 
 function copyForSlug(slug: string) {
   return STEP_COPY[slug] ?? STEP_COPY.personal;
+}
+
+
+function createAudioCatalogClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) return null;
+
+  return createSupabaseCatalogClient(supabaseUrl, supabaseKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  });
 }
 
 function encodePath(path: string) {
@@ -255,7 +271,7 @@ async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slu
 
 export default async function Page({ params, searchParams }: { params: { slug: string }; searchParams?: { intent?: string } }) {
   const slug = params?.slug ?? "personal";
-  const supabase = createClient();
+  const supabase = createAudioCatalogClient() ?? createClient();
   const copy = copyForSlug(slug);
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
   const selectedIntent = intents.find((item) => item.id === searchParams?.intent) ?? null;
