@@ -214,14 +214,61 @@ function displayMetaLine(row: KKRow, slug: string) {
   return pieces.join(" • ");
 }
 
+
+function pixKey(row: KKRow) {
+  return [
+    pickFirstText(row.meta, ["source_master_id", "source_master_filename", "track_id"]),
+    row.track_id ?? "",
+    row.storage_object_name ?? "",
+  ].find(Boolean) || row.kut_id || "";
+}
+
+function diversifyByPix(rows: KKRow[], maxPerPix = 2) {
+  const groups = new Map<string, KKRow[]>();
+
+  for (const row of rows) {
+    const key = pixKey(row);
+    const group = groups.get(key) ?? [];
+    group.push(row);
+    groups.set(key, group);
+  }
+
+  const picked: KKRow[] = [];
+
+  for (let pass = 0; pass < maxPerPix; pass += 1) {
+    for (const group of groups.values()) {
+      const row = group[pass];
+      if (row) picked.push(row);
+    }
+  }
+
+  return picked;
+}
+
 function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: IntentChoice | null) {
   const playable = rows.filter(isVerifiedPlayable);
-  const scored = playable
-    .map((row, index) => ({ row, index, score: purposeScore(row, slug, intent) }))
-    .sort((a, b) => b.score - a.score || a.index - b.index);
-  const purposeMatches = scored.filter((item) => item.score > 0).map((item) => item.row);
-  const source = purposeMatches.length > 0 ? purposeMatches : scored.map((item) => item.row);
-  return source.slice(0, count);
+
+  const scoreTerms = (terms: string[]) =>
+    playable
+      .map((row, index) => ({
+        row,
+        index,
+        score: terms.reduce((score, term) => score + (metadataBlob(row).includes(term.toLowerCase()) ? 1 : 0), 0),
+      }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || a.index - b.index)
+      .map((item) => item.row);
+
+  const exactTerms = intent?.terms ?? [];
+  const exactMatches = scoreTerms(exactTerms);
+  if (exactMatches.length > 0) return diversifyByPix(exactMatches, 2).slice(0, count);
+
+  const samePurposeTerms = (INTENT_CHOICES[slug] ?? []).flatMap((choice) => choice.terms);
+  const samePurposeMatches = scoreTerms(samePurposeTerms);
+  if (samePurposeMatches.length > 0) return diversifyByPix(samePurposeMatches, 2).slice(0, count);
+
+  const purposeMatches = scoreTerms(PURPOSE_TERMS[slug] ?? PURPOSE_TERMS.personal);
+  return diversifyByPix(purposeMatches, 2).slice(0, count);
 }
 
 async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: KKRow[]) {
