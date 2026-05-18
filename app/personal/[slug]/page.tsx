@@ -177,12 +177,15 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
   const ids = rows.map((row) => row.kut_id).filter(Boolean) as string[];
   if (ids.length === 0) return rows;
 
-  const { data } = await supabase.from("k_kuts").select("*").in("kut_id", ids);
   const metas = new Map<string, KKMeta>();
 
-  for (const item of (data ?? []) as KKMeta[]) {
+  for (let i = 0; i < ids.length; i += 100) {
+    const { data } = await supabase.from("k_kuts").select("*").in("kut_id", ids.slice(i, i + 100));
+
+    for (const item of (data ?? []) as KKMeta[]) {
     const id = valueAsText(item.kut_id) || valueAsText(item.id);
-    if (id) metas.set(id, item);
+      if (id) metas.set(id, item);
+    }
   }
 
   return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? null : null }));
