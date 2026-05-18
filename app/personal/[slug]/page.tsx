@@ -143,8 +143,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const supabase = createClient();
   const copy = copyForSlug(slug);
   const launchRows = await fetchLaunchRows(supabase, slug);
-  const immutableResult = launchRows.length >= 4 ? { rows: [], error: null } : await fetchImmutableRows(supabase);
-  const rows = launchRows.length >= 4 ? launchRows : immutableResult.rows;
+  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase);
+  const rows = launchRows.length > 0 ? launchRows : immutableResult.rows;
   const error = immutableResult.error;
 
   return (
