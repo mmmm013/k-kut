@@ -6,6 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const LIMIT = Number(process.env.AUDIO_QC_LIMIT || process.argv[2] || 50);
+const VERBOSE = process.env.AUDIO_QC_VERBOSE === "1";
 
 const DISALLOWED_RE = /(instro|instrumental|mk-products|\/mks\/|mini|\.wav)/i;
 
@@ -59,7 +60,7 @@ async function checkUrl(url) {
       redirect: "follow",
       signal: AbortSignal.timeout(12000),
     });
-  } catch (headError) {
+  } catch (_headError) {
     try {
       res = await fetch(url, {
         method: "GET",
@@ -119,7 +120,7 @@ async function main() {
           notes: result.note,
         });
         playable += 1;
-        console.log(`PLAYABLE ${row.kut_id} ${row.storage_object_name || ""}`);
+        console.log(VERBOSE ? `PLAYABLE ${row.kut_id} ${row.storage_object_name || ""}` : `PLAYABLE ${row.kut_id}`);
       } else {
         await updateQc(row.kut_id, {
           audio_status: "blocked",
