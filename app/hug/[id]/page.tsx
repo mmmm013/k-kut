@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import EofSignatureAudio from "@/components/EofSignatureAudio";
+
 type HugRecord = {
   id?: string;
   audio_url?: string;
@@ -13,6 +13,8 @@ type HugRecord = {
   sender_name?: string;
   recipient_name?: string;
   remaining_forwards?: number;
+  audio_status?: string;
+  audio_verified_at?: string;
 };
 
 type HugResponse = {
@@ -21,6 +23,15 @@ type HugResponse = {
   hug?: HugRecord;
   error?: string;
 };
+
+function isSafePlayableUrl(value: string | null) {
+  const raw = value?.trim().toLowerCase();
+  if (!raw) return false;
+  if (!raw.startsWith("https://")) return false;
+  if (!raw.includes(".mp3")) return false;
+  if (raw.includes("instro") || raw.includes("instrumental") || raw.includes("mk-products") || raw.includes("/mks/") || raw.includes("mini") || raw.endsWith(".wav")) return false;
+  return true;
+}
 
 export default function HugPage({ params }: { params: { id: string } }) {
   const [payload, setPayload] = useState<HugResponse | null>(null);
@@ -50,19 +61,10 @@ export default function HugPage({ params }: { params: { id: string } }) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#160d08] px-6 text-[#fff3cf]">
         <section className="max-w-xl rounded-3xl border border-[#d6a400]/40 bg-[#24180f] p-8 text-center shadow-2xl">
-          <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">
-            GPM HUG
-          </p>
+          <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">GPM HUG</p>
           <h1 className="mt-4 text-3xl font-black">This HUG is not ready yet.</h1>
-          <p className="mt-4 text-[#e8cf9f]">
-            {payload.error || "The HUG link could not be loaded."}
-          </p>
-          <a
-            href="/"
-            className="mt-6 inline-block rounded-full bg-[#d6a400] px-6 py-3 font-black text-[#160d08] hover:bg-[#f0bf28]"
-          >
-            Back to K-KUT
-          </a>
+          <p className="mt-4 text-[#e8cf9f]">{payload.error || "The HUG link could not be loaded."}</p>
+          <a href="/" className="mt-6 inline-block rounded-full bg-[#d6a400] px-6 py-3 font-black text-[#160d08] hover:bg-[#f0bf28]">Back to K-KUT</a>
         </section>
       </main>
     );
@@ -73,46 +75,31 @@ export default function HugPage({ params }: { params: { id: string } }) {
   const note = hug.delivery_note || hug.message || "Someone sent you a real-audio GPM HUG.";
   const sender = hug.sender_name || "Someone";
   const recipient = hug.recipient_name || "you";
+  const isPlayable = hug.audio_status === "playable" && isSafePlayableUrl(audioUrl);
 
   return (
     <main className="min-h-screen bg-[#160d08] px-6 py-12 text-[#fff3cf]">
       <section className="mx-auto max-w-2xl rounded-3xl border border-[#d6a400]/40 bg-[#24180f] p-8 text-center shadow-2xl">
-        <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">
-          You received a GPM HUG
-        </p>
+        <p className="text-sm font-black uppercase tracking-[0.24em] text-[#ffd36a]">You received a GPM HUG</p>
 
-        <h1 className="mt-4 text-4xl font-black">
-          💛 {recipient}, this is for you.
-        </h1>
+        <h1 className="mt-4 text-4xl font-black">💛 {recipient}, this is for you.</h1>
 
-        <p className="mt-4 text-lg leading-relaxed text-[#e8cf9f]">
-          {sender} sent you a real-audio K-KUT HUG.
-        </p>
+        <p className="mt-4 text-lg leading-relaxed text-[#e8cf9f]">{sender} sent you a real-audio K-KUT HUG.</p>
 
-        {audioUrl ? (
-          <EofSignatureAudio
-                src={audioUrl}
-                className="mt-8 w-full"
-              />
+        {isPlayable ? (
+          <EofSignatureAudio src={audioUrl} className="mt-8 w-full" />
         ) : (
           <div className="mt-8 rounded-2xl border border-[#d6a400]/30 bg-[#160d08] p-5 text-[#ffd36a]">
-            Audio is being prepared for this HUG.
+            Audio is being verified for this HUG.
           </div>
         )}
 
-        <p className="mt-8 rounded-2xl border border-[#d6a400]/25 bg-[#160d08] p-5 text-lg leading-relaxed text-[#fff3cf]">
-          {note}
-        </p>
+        <p className="mt-8 rounded-2xl border border-[#d6a400]/25 bg-[#160d08] p-5 text-lg leading-relaxed text-[#fff3cf]">{note}</p>
 
-        {typeof hug.remaining_forwards === "number" && (
-          <p className="mt-4 text-sm text-[#b99759]">
-            Remaining forwards: {hug.remaining_forwards}
-          </p>
-        )}
+        {typeof hug.remaining_forwards === "number" && <p className="mt-4 text-sm text-[#b99759]">Remaining forwards: {hug.remaining_forwards}</p>}
 
         <p className="mt-8 text-sm leading-relaxed text-[#b99759]">
-          A GPM HUG is a real, human-made audio gift object. No download required.
-          Just press play.
+          A GPM HUG is a real, human-made audio gift object. No download required. Just press play.
         </p>
       </section>
     </main>
