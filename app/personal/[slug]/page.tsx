@@ -311,7 +311,7 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
   const { data, error } = await supabase
     .from("k_kut_audio_qc")
-    .select("kut_id, delivered_url_or_path, storage_object_name, audio_status, capture_start_sec, capture_end_sec")
+    .select("kut_id, delivered_url_or_path, storage_object_name, audio_status")
     .eq("audio_status", "playable")
     .not("delivered_url_or_path", "is", null)
     .order("checked_at", { ascending: false })
