@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import KKSectionAudio from "@/components/KKSectionAudio";
 import { createClient as createSupabaseCatalogClient } from "@supabase/supabase-js";
 
 type KKMeta = Record<string, unknown>;
@@ -13,6 +14,8 @@ type KKRow = {
   pass_type?: string | null;
   track_id?: string | null;
   audio_status?: string | null;
+  capture_start_sec?: number | null;
+  capture_end_sec?: number | null;
   meta?: KKMeta | null;
 };
 
@@ -294,7 +297,7 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
 async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
   const { data } = await supabase
     .from("k_kut_launch_audio")
-    .select("kut_id, delivered_url_or_path, track_id, audio_status")
+    .select("kut_id, delivered_url_or_path, track_id, audio_status, capture_start_sec, capture_end_sec")
     .eq("slug", slug)
     .eq("is_active", true)
     .eq("audio_status", "playable")
@@ -308,7 +311,7 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
   const { data, error } = await supabase
     .from("k_kut_audio_qc")
-    .select("kut_id, delivered_url_or_path, storage_object_name, audio_status")
+    .select("kut_id, delivered_url_or_path, storage_object_name, audio_status, capture_start_sec, capture_end_sec")
     .eq("audio_status", "playable")
     .not("delivered_url_or_path", "is", null)
     .order("checked_at", { ascending: false })
@@ -377,13 +380,14 @@ export default async function Page({ params, searchParams }: { params: { slug: s
                       {metaLine && <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#C8A882]">{metaLine}</p>}
                     </div>
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Full K-KUT audio</p>
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">K-KUT section audio</p>
                       {audioSrc ? (
                         <>
-                          <audio key={audioSrc} controls preload="auto" className="w-full">
-                            <source src={audioSrc} type="audio/mpeg" />
-                            Your browser does not support audio playback.
-                          </audio>
+                          <KKSectionAudio
+                            src={audioSrc}
+                            startSec={kk.capture_start_sec ?? Number(pickFirstText(kk.meta, ["capture_start_sec"]))}
+                            endSec={kk.capture_end_sec ?? Number(pickFirstText(kk.meta, ["capture_end_sec"]))}
+                          />
                           <a href={audioSrc} target="_blank" rel="noreferrer" className="mt-3 inline-block text-xs font-black text-[#FFD36A] underline">Open audio directly</a>
                         </>
                       ) : (
