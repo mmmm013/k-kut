@@ -3,12 +3,16 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
+type KKMeta = Record<string, unknown>;
+
 type KKRow = {
   kut_id: string | null;
   delivered_url_or_path: string | null;
+  storage_object_name?: string | null;
   pass_type?: string | null;
   track_id?: string | null;
   audio_status?: string | null;
+  meta?: KKMeta | null;
 };
 
 type StepCopy = {
@@ -65,6 +69,13 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
 };
 
+const PURPOSE_TERMS: Record<string, string[]> = {
+  "thank-you": ["thank", "thanks", "grateful", "gratitude", "appreciat"],
+  birthday: ["birthday", "bday", "born", "celebrat"],
+  apology: ["sorry", "apolog", "forgive", "miss", "repair", "reconnect", "regret"],
+  personal: ["love", "heart", "comfort", "care", "hope", "hold on", "angel", "believe", "always", "support"],
+};
+
 function copyForSlug(slug: string) {
   return STEP_COPY[slug] ?? STEP_COPY.personal;
 }
@@ -105,8 +116,76 @@ function isVerifiedPlayable(row: KKRow) {
   return row.audio_status === "playable" && Boolean(toAudioSrc(row.delivered_url_or_path));
 }
 
-function pickPlayableRows(rows: KKRow[], count: number) {
-  return rows.filter(isVerifiedPlayable).slice(0, count);
+function valueAsText(value: unknown) {
+  if (typeof value === "string") return value.trim();
+  if (typeof value === "number") return String(value);
+  return "";
+}
+
+function pickFirstText(meta: KKMeta | null | undefined, keys: string[]) {
+  if (!meta) return "";
+  for (const key of keys) {
+    const text = valueAsText(meta[key]);
+    if (text) return text;
+  }
+  return "";
+}
+
+function metadataBlob(row: KKRow) {
+  return `${JSON.stringify(row.meta ?? {})} ${row.storage_object_name ?? ""} ${row.track_id ?? ""}`.toLowerCase();
+}
+
+function purposeScore(row: KKRow, slug: string) {
+  const terms = PURPOSE_TERMS[slug] ?? PURPOSE_TERMS.personal;
+  const blob = metadataBlob(row);
+  return terms.reduce((score, term) => score + (blob.includes(term) ? 1 : 0), 0);
+}
+
+function displayTitle(row: KKRow, fallback: string) {
+  const title = pickFirstText(row.meta, [
+    "kkr_title",
+    "kk_title",
+    "kut_title",
+    "public_title",
+    "title",
+    "track_title",
+    "song_title",
+    "display_title",
+    "name",
+  ]);
+  return title || fallback;
+}
+
+function displayMetaLine(row: KKRow, slug: string) {
+  const purpose = pickFirstText(row.meta, ["purpose", "occasion", "emotion", "mood", "use_case", "category"]);
+  const section = pickFirstText(row.meta, ["section", "section_label", "structure_tag", "part", "segment", "lyric_hook"]);
+  const pieces = [purpose || copyForSlug(slug).title.replace(/^Send a /i, ""), section].filter(Boolean);
+  return pieces.join(" • ");
+}
+
+function sortAndPickRows(rows: KKRow[], slug: string, count: number) {
+  const playable = rows.filter(isVerifiedPlayable);
+  const scored = playable
+    .map((row, index) => ({ row, index, score: purposeScore(row, slug) }))
+    .sort((a, b) => b.score - a.score || a.index - b.index);
+  const purposeMatches = scored.filter((item) => item.score > 0).map((item) => item.row);
+  const source = purposeMatches.length > 0 ? purposeMatches : scored.map((item) => item.row);
+  return source.slice(0, count);
+}
+
+async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: KKRow[]) {
+  const ids = rows.map((row) => row.kut_id).filter(Boolean) as string[];
+  if (ids.length === 0) return rows;
+
+  const { data } = await supabase.from("k_kuts").select("*").in("kut_id", ids);
+  const metas = new Map<string, KKMeta>();
+
+  for (const item of (data ?? []) as KKMeta[]) {
+    const id = valueAsText(item.kut_id) || valueAsText(item.id);
+    if (id) metas.set(id, item);
+  }
+
+  return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? null : null }));
 }
 
 async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string) {
@@ -119,19 +198,21 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
     .order("sort_order", { ascending: true })
     .limit(4);
 
-  return pickPlayableRows((data ?? []) as KKRow[], 4);
+  const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
+  return sortAndPickRows(rows, slug, 4);
 }
 
-async function fetchImmutableRows(supabase: ReturnType<typeof createClient>) {
+async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string) {
   const { data, error } = await supabase
     .from("k_kut_audio_qc")
-    .select("kut_id, delivered_url_or_path, audio_status")
+    .select("kut_id, delivered_url_or_path, storage_object_name, audio_status")
     .eq("audio_status", "playable")
     .not("delivered_url_or_path", "is", null)
     .order("checked_at", { ascending: false })
-    .limit(500);
+    .limit(1901);
 
-  return { rows: pickPlayableRows((data ?? []) as KKRow[], 4), error };
+  const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
+  return { rows: sortAndPickRows(rows, slug, 4), error };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -139,7 +220,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const supabase = createClient();
   const copy = copyForSlug(slug);
   const launchRows = await fetchLaunchRows(supabase, slug);
-  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase);
+  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase, slug);
   const rows = launchRows.length > 0 ? launchRows : immutableResult.rows;
   const error = immutableResult.error;
 
@@ -158,12 +239,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
               const option = copy.options[index] ?? { name: `K-KUT HUG option ${index + 1}`, helper: "Listen, then choose if it fits." };
               const kkId = kk.kut_id ?? "";
               const audioSrc = toAudioSrc(kk.delivered_url_or_path);
+              const title = displayTitle(kk, option.name);
+              const metaLine = displayMetaLine(kk, slug);
               return (
                 <div key={kkId || kk.delivered_url_or_path || index} className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
                   <div className="flex flex-col gap-4">
-                    <div><p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">K-KUT HUG option {index + 1} of {rows.length}</p><h2 className="mt-2 text-2xl font-black text-[#FFD36A]">{option.name}</h2><p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">{option.helper}</p></div>
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">{option.name} · option {index + 1} of {rows.length}</p>
+                      <h2 className="mt-2 text-2xl font-black text-[#FFD36A]">{title}</h2>
+                      <p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">{option.helper}</p>
+                      {metaLine && <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#C8A882]">{metaLine}</p>}
+                    </div>
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Listen here</p>
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Full K-KUT audio</p>
                       {audioSrc ? (
                         <>
                           <audio key={audioSrc} controls preload="auto" className="w-full">
