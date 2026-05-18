@@ -15,6 +15,41 @@ type KKRow = {
   meta?: KKMeta | null;
 };
 
+
+type IntentChoice = {
+  id: string;
+  label: string;
+  helper: string;
+  terms: string[];
+};
+
+const INTENT_CHOICES: Record<string, IntentChoice[]> = {
+  apology: [
+    { id: "im-sorry", label: "I’m sorry", helper: "Gentle accountability.", terms: ["sorry", "apolog", "regret"] },
+    { id: "i-was-wrong", label: "I was wrong", helper: "Owning the mistake.", terms: ["wrong", "sorry", "regret"] },
+    { id: "please-hear-me", label: "Please hear me", helper: "Trying to be understood.", terms: ["hear", "understand", "sorry"] },
+    { id: "i-miss-you", label: "I miss you", helper: "Tender distance and longing.", terms: ["miss", "missing", "come back"] },
+    { id: "repair-this", label: "Can we repair this?", helper: "Repair and reconnection.", terms: ["repair", "reconnect", "forgive"] },
+    { id: "make-it-right", label: "I want to make it right", helper: "Direct repair.", terms: ["make it right", "repair", "sorry"] },
+  ],
+  "thank-you": [
+    { id: "simple-thanks", label: "Simple thanks", helper: "Clear appreciation.", terms: ["thank", "thanks"] },
+    { id: "deep-thanks", label: "Deep thanks", helper: "Bigger gratitude.", terms: ["grateful", "gratitude", "appreciat"] },
+    { id: "you-helped-me", label: "You helped me", helper: "Support that mattered.", terms: ["help", "support", "thank"] },
+    { id: "i-see-you", label: "I see what you did", helper: "Noticing effort.", terms: ["see", "appreciat", "thank"] },
+  ],
+  personal: [
+    { id: "love", label: "I love you", helper: "Warm and close.", terms: ["love", "heart", "always"] },
+    { id: "comfort", label: "Comfort", helper: "Soft reassurance.", terms: ["comfort", "care", "hold on"] },
+    { id: "support", label: "Support", helper: "Grounding and dependable.", terms: ["support", "believe", "hope"] },
+    { id: "not-alone", label: "You’re not alone", helper: "Presence.", terms: ["not alone", "angel", "care"] },
+  ],
+  birthday: [
+    { id: "birthday", label: "Birthday", helper: "Celebrate them.", terms: ["birthday", "bday", "celebrat"] },
+    { id: "glad-you-exist", label: "Glad you exist", helper: "Warm personal birthday.", terms: ["birthday", "love", "thank"] },
+  ],
+};
+
 type StepCopy = {
   title: string;
   prompt: string;
@@ -135,8 +170,8 @@ function metadataBlob(row: KKRow) {
   return `${JSON.stringify(row.meta ?? {})} ${row.storage_object_name ?? ""} ${row.track_id ?? ""}`.toLowerCase();
 }
 
-function purposeScore(row: KKRow, slug: string) {
-  const terms = PURPOSE_TERMS[slug] ?? PURPOSE_TERMS.personal;
+function purposeScore(row: KKRow, slug: string, intent?: IntentChoice | null) {
+  const terms = intent?.terms?.length ? intent.terms : PURPOSE_TERMS[slug] ?? PURPOSE_TERMS.personal;
   const blob = metadataBlob(row);
   return terms.reduce((score, term) => score + (blob.includes(term) ? 1 : 0), 0);
 }
@@ -163,10 +198,10 @@ function displayMetaLine(row: KKRow, slug: string) {
   return pieces.join(" • ");
 }
 
-function sortAndPickRows(rows: KKRow[], slug: string, count: number) {
+function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: IntentChoice | null) {
   const playable = rows.filter(isVerifiedPlayable);
   const scored = playable
-    .map((row, index) => ({ row, index, score: purposeScore(row, slug) }))
+    .map((row, index) => ({ row, index, score: purposeScore(row, slug, intent) }))
     .sort((a, b) => b.score - a.score || a.index - b.index);
   const purposeMatches = scored.filter((item) => item.score > 0).map((item) => item.row);
   const source = purposeMatches.length > 0 ? purposeMatches : scored.map((item) => item.row);
@@ -191,7 +226,7 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
   return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? null : null }));
 }
 
-async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string) {
+async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null) {
   const { data } = await supabase
     .from("k_kut_launch_audio")
     .select("kut_id, delivered_url_or_path, track_id, audio_status")
@@ -202,10 +237,10 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
     .limit(4);
 
   const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
-  return sortAndPickRows(rows, slug, 4);
+  return sortAndPickRows(rows, slug, 4, intent);
 }
 
-async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string) {
+async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null) {
   const { data, error } = await supabase
     .from("k_kut_audio_qc")
     .select("kut_id, delivered_url_or_path, storage_object_name, audio_status")
@@ -215,15 +250,17 @@ async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slu
     .limit(1901);
 
   const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
-  return { rows: sortAndPickRows(rows, slug, 4), error };
+  return { rows: sortAndPickRows(rows, slug, 4, intent), error };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params, searchParams }: { params: { slug: string }; searchParams?: { intent?: string } }) {
   const slug = params?.slug ?? "personal";
   const supabase = createClient();
   const copy = copyForSlug(slug);
-  const launchRows = await fetchLaunchRows(supabase, slug);
-  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase, slug);
+  const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
+  const selectedIntent = intents.find((item) => item.id === searchParams?.intent) ?? null;
+  const launchRows = await fetchLaunchRows(supabase, slug, selectedIntent);
+  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase, slug, selectedIntent);
   const rows = launchRows.length > 0 ? launchRows : immutableResult.rows;
   const error = immutableResult.error;
 
@@ -235,6 +272,26 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">{copy.title}</h1>
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">{copy.prompt}</p>
           <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
+
+          <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">What are you trying to say?</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {intents.map((intent) => (
+                <Link
+                  key={intent.id}
+                  href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(intent.id)}`}
+                  className={`rounded-2xl border p-4 text-left transition ${
+                    selectedIntent?.id === intent.id
+                      ? "border-[#FFD36A] bg-[#D4A017]/20 text-[#FFD36A]"
+                      : "border-[#D4A017]/25 bg-black/20 text-[#F5E6C8] hover:bg-[#D4A017]/10"
+                  }`}
+                >
+                  <span className="block text-lg font-black">{intent.label}</span>
+                  <span className="mt-1 block text-sm font-bold opacity-75">{intent.helper}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
           {error && <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">K-KUT list failed: {error.message}</div>}
           {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No verified playable vocal K-KUT audio is available for this path yet.</div>}
           <div className="mt-8 flex flex-col gap-4">
