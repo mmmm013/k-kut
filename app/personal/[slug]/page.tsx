@@ -383,11 +383,18 @@ export default async function Page({ params, searchParams }: { params: { slug: s
                       <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Full K-KUT audio</p>
                       {audioSrc ? (
                         <>
-                          <KKSectionAudio
-                            src={audioSrc}
-                            startSec={kk.capture_start_sec ?? Number(pickFirstText(kk.meta, ["capture_start_sec"]))}
-                            endSec={kk.capture_end_sec ?? Number(pickFirstText(kk.meta, ["capture_end_sec"]))}
-                          />
+                          {audioSrc.includes("/mk-products/") ? (
+                            <audio key={audioSrc} controls preload="metadata" className="w-full">
+                              <source src={audioSrc} type="audio/mpeg" />
+                              Your browser does not support audio playback.
+                            </audio>
+                          ) : (
+                            <KKSectionAudio
+                              src={audioSrc}
+                              startSec={kk.capture_start_sec ?? Number(pickFirstText(kk.meta, ["capture_start_sec"]))}
+                              endSec={kk.capture_end_sec ?? Number(pickFirstText(kk.meta, ["capture_end_sec"]))}
+                            />
+                          )}
                           <a href={audioSrc} target="_blank" rel="noreferrer" className="mt-3 inline-block text-xs font-black text-[#FFD36A] underline">Open audio directly</a>
                         </>
                       ) : (
