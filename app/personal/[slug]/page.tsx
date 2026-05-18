@@ -245,11 +245,13 @@ function diversifyByPix(rows: KKRow[], maxPerPix = 2) {
   return picked;
 }
 
-function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: IntentChoice | null) {
+function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: IntentChoice | null, sourcePix?: string | null) {
   const playable = rows.filter(isVerifiedPlayable);
 
+  const pool = sourcePix ? playable.filter((row) => pixKey(row) === sourcePix) : playable;
+
   const scoreTerms = (terms: string[]) =>
-    playable
+    pool
       .map((row, index) => ({
         row,
         index,
@@ -289,7 +291,7 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
   return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? null : null }));
 }
 
-async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null) {
+async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
   const { data } = await supabase
     .from("k_kut_launch_audio")
     .select("kut_id, delivered_url_or_path, track_id, audio_status")
@@ -300,10 +302,10 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
     .limit(4);
 
   const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
-  return sortAndPickRows(rows, slug, 4, intent);
+  return sortAndPickRows(rows, slug, 4, intent, sourcePix);
 }
 
-async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null) {
+async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
   const { data, error } = await supabase
     .from("k_kut_audio_qc")
     .select("kut_id, delivered_url_or_path, storage_object_name, audio_status")
@@ -313,17 +315,18 @@ async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slu
     .limit(1901);
 
   const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
-  return { rows: sortAndPickRows(rows, slug, 4, intent), error };
+  return { rows: sortAndPickRows(rows, slug, 4, intent, sourcePix), error };
 }
 
-export default async function Page({ params, searchParams }: { params: { slug: string }; searchParams?: { intent?: string } }) {
+export default async function Page({ params, searchParams }: { params: { slug: string }; searchParams?: { intent?: string; sourcePix?: string } }) {
   const slug = params?.slug ?? "personal";
   const supabase = createAudioCatalogClient() ?? createClient();
   const copy = copyForSlug(slug);
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
   const selectedIntent = intents.find((item) => item.id === searchParams?.intent) ?? null;
-  const launchRows = await fetchLaunchRows(supabase, slug, selectedIntent);
-  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase, slug, selectedIntent);
+  const sourcePix = searchParams?.sourcePix ?? null;
+  const launchRows = await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
+  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
   const rows = launchRows.length > 0 ? launchRows : immutableResult.rows;
   const error = immutableResult.error;
 
@@ -387,7 +390,15 @@ export default async function Page({ params, searchParams }: { params: { slug: s
                         <p className="text-sm font-bold text-red-200">Audio source unavailable.</p>
                       )}
                     </div>
-                    {kkId && <Link href={`/k/${encodeURIComponent(kkId)}`} className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>}
+                    <div className="flex flex-wrap gap-3">
+                      {kkId && <Link href={`/k/${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>}
+                      <Link
+                        href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(selectedIntent?.id ?? "")}&sourcePix=${encodeURIComponent(pixKey(kk))}`}
+                        className="rounded-full border border-[#D4A017]/30 px-4 py-2 text-sm font-black text-[#F5E6C8] hover:bg-[#D4A017]/10"
+                      >
+                        More from this same song
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
