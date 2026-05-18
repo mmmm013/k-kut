@@ -380,7 +380,7 @@ export default async function Page({ params, searchParams }: { params: { slug: s
                       {metaLine && <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#C8A882]">{metaLine}</p>}
                     </div>
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">K-KUT section audio</p>
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Full K-KUT audio</p>
                       {audioSrc ? (
                         <>
                           <KKSectionAudio
