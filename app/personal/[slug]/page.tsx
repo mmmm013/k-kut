@@ -8,6 +8,7 @@ type KKRow = {
   delivered_url_or_path: string | null;
   pass_type?: string | null;
   track_id?: string | null;
+  audio_status?: string | null;
 };
 
 type StepCopy = {
@@ -20,8 +21,8 @@ type StepCopy = {
 const STEP_COPY: Record<string, StepCopy> = {
   "thank-you": {
     title: "Thank you",
-    prompt: "MC-BOT found K-KUT HUG options for saying thanks.",
-    intro: "Listen to each K-KUT option. Choose the one that feels closest to the thank-you you want to send.",
+    prompt: "MC-BOT found verified playable K-KUT HUG options for saying thanks.",
+    intro: "Listen to each verified K-KUT option. Choose the one that feels closest to the thank-you you want to send.",
     options: [
       { name: "A warm thank-you HUG", helper: "Feels personal, kind, and grateful." },
       { name: "A quiet appreciation HUG", helper: "Feels gentle, sincere, and not too big." },
@@ -31,8 +32,8 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   birthday: {
     title: "Celebrate someone",
-    prompt: "MC-BOT found K-KUT HUG options for celebrating them.",
-    intro: "Listen to each K-KUT option. Choose the one that best fits their moment.",
+    prompt: "MC-BOT found verified playable K-KUT HUG options for celebrating them.",
+    intro: "Listen to each verified K-KUT option. Choose the one that best fits their moment.",
     options: [
       { name: "A bright celebration HUG", helper: "Feels happy, open, and energetic." },
       { name: "A sweet personal HUG", helper: "Feels close, caring, and specific." },
@@ -42,8 +43,8 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   apology: {
     title: "Repair or reconnect",
-    prompt: "MC-BOT found K-KUT HUG options for repair.",
-    intro: "Listen to each K-KUT option. Choose the one that says it the way you mean it.",
+    prompt: "MC-BOT found verified playable K-KUT HUG options for repair.",
+    intro: "Listen to each verified K-KUT option. Choose the one that says it the way you mean it.",
     options: [
       { name: "A soft apology HUG", helper: "Feels gentle, careful, and accountable." },
       { name: "A missing-you HUG", helper: "Feels tender, honest, and close." },
@@ -53,8 +54,8 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   personal: {
     title: "Love or comfort",
-    prompt: "MC-BOT found K-KUT HUG options for care and comfort.",
-    intro: "Listen to each K-KUT option. Choose the one that feels right for the person receiving it.",
+    prompt: "MC-BOT found verified playable K-KUT HUG options for care and comfort.",
+    intro: "Listen to each verified K-KUT option. Choose the one that feels right for the person receiving it.",
     options: [
       { name: "A comforting HUG", helper: "Feels steady, soft, and reassuring." },
       { name: "A loving HUG", helper: "Feels warm, close, and personal." },
@@ -100,42 +101,38 @@ function toAudioSrc(rawValue: string | null) {
   return `${supabaseUrl}/storage/v1/object/public/tracks/${encodePath(raw)}`;
 }
 
-function pickDiverseRows(rows: KKRow[], count: number) {
-  const chosen: KKRow[] = [];
-  const usedTrack = new Set<string>();
-  for (const row of rows) {
-    if (!toAudioSrc(row.delivered_url_or_path)) continue;
-    const family = row.track_id ?? row.kut_id ?? row.delivered_url_or_path ?? "";
-    if (usedTrack.has(family)) continue;
-    chosen.push(row);
-    usedTrack.add(family);
-    if (chosen.length >= count) break;
-  }
-  return chosen;
+function isVerifiedPlayable(row: KKRow) {
+  return row.audio_status === "playable" && Boolean(toAudioSrc(row.delivered_url_or_path));
+}
+
+function pickPlayableRows(rows: KKRow[], count: number) {
+  return rows.filter(isVerifiedPlayable).slice(0, count);
 }
 
 async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string) {
   const { data } = await supabase
     .from("k_kut_launch_audio")
-    .select("kut_id, delivered_url_or_path, track_id")
+    .select("kut_id, delivered_url_or_path, track_id, audio_status")
     .eq("slug", slug)
     .eq("is_active", true)
+    .eq("audio_status", "playable")
     .order("sort_order", { ascending: true })
     .limit(4);
 
-  return pickDiverseRows((data ?? []) as KKRow[], 4);
+  return pickPlayableRows((data ?? []) as KKRow[], 4);
 }
 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>) {
   const { data, error } = await supabase
     .from("k_kuts")
-    .select("kut_id, delivered_url_or_path, pass_type, track_id")
+    .select("kut_id, delivered_url_or_path, pass_type, track_id, audio_status")
     .eq("pass_type", "LT-PIX")
     .eq("generated_by", "gpmx-first-pass-process.mjs")
+    .eq("audio_status", "playable")
     .not("delivered_url_or_path", "is", null)
     .limit(500);
 
-  return { rows: pickDiverseRows((data ?? []) as KKRow[], 4), error };
+  return { rows: pickPlayableRows((data ?? []) as KKRow[], 4), error };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -156,7 +153,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">{copy.prompt}</p>
           <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
           {error && <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">K-KUT list failed: {error.message}</div>}
-          {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No playable vocal K-KUT HUG options are available for this path yet.</div>}
+          {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No verified playable vocal K-KUT audio is available for this path yet.</div>}
           <div className="mt-8 flex flex-col gap-4">
             {rows.map((kk, index) => {
               const option = copy.options[index] ?? { name: `K-KUT HUG option ${index + 1}`, helper: "Listen, then choose if it fits." };
