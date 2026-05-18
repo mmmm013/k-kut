@@ -31,14 +31,14 @@ const STEP_COPY: Record<string, StepCopy> = {
     ],
   },
   birthday: {
-    title: "Celebrate someone",
-    prompt: "MC-BOT found verified playable K-KUT HUG options for celebrating them.",
-    intro: "Listen to each verified K-KUT option. Choose the one that best fits their moment.",
+    title: "Send a birthday HUG",
+    prompt: "MC-BOT found verified playable K-KUT Birthday HUG options for their birthday.",
+    intro: "This is birthday music. Listen to the full birthday HUG and the short birthday HUG, then choose the one that fits their birthday moment.",
     options: [
-      { name: "A bright celebration HUG", helper: "Feels happy, open, and energetic." },
-      { name: "A sweet personal HUG", helper: "Feels close, caring, and specific." },
-      { name: "A fun upbeat HUG", helper: "Feels playful and easy to enjoy." },
-      { name: "A proud joyful HUG", helper: "Feels supportive and big-hearted." },
+      { name: "Best Birthday HUG", helper: "Full birthday version. Built for the main birthday send." },
+      { name: "Short Birthday HUG", helper: "Short birthday version. Built for a quick birthday send." },
+      { name: "Upbeat Birthday HUG", helper: "Birthday-specific, bright, and celebratory." },
+      { name: "Personal Birthday HUG", helper: "Birthday-specific, warm, and close." },
     ],
   },
   apology: {
