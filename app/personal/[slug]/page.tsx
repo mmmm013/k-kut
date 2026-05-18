@@ -297,15 +297,15 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
 async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
   const { data } = await supabase
     .from("k_kut_launch_audio")
-    .select("kut_id, delivered_url_or_path, track_id, audio_status, capture_start_sec, capture_end_sec")
+    .select("kut_id, delivered_url_or_path, track_id, audio_status")
     .eq("slug", slug)
     .eq("is_active", true)
-    .eq("audio_status", "playable")
     .order("sort_order", { ascending: true })
-    .limit(4);
+    .limit(8);
 
-  const rows = await attachMetadata(supabase, (data ?? []) as KKRow[]);
-  return sortAndPickRows(rows, slug, 4, intent, sourcePix);
+  const launchRows = ((data ?? []) as KKRow[]).map((row) => ({ ...row, audio_status: "playable" }));
+  const rows = await attachMetadata(supabase, launchRows);
+  return sortAndPickRows(rows, slug, 6, intent, sourcePix);
 }
 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
