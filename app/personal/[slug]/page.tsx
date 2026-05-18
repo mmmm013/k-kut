@@ -124,12 +124,11 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>) {
   const { data, error } = await supabase
-    .from("k_kuts")
-    .select("kut_id, delivered_url_or_path, pass_type, track_id, audio_status")
-    .eq("pass_type", "LT-PIX")
-    .eq("generated_by", "gpmx-first-pass-process.mjs")
+    .from("k_kut_audio_qc")
+    .select("kut_id, delivered_url_or_path, audio_status")
     .eq("audio_status", "playable")
     .not("delivered_url_or_path", "is", null)
+    .order("checked_at", { ascending: false })
     .limit(500);
 
   return { rows: pickPlayableRows((data ?? []) as KKRow[], 4), error };
