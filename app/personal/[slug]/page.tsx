@@ -88,15 +88,15 @@ function isAllowedKKutAudio(rawValue: string | null) {
 function toAudioSrc(rawValue: string | null) {
   const raw = rawValue?.trim();
   if (!raw || !isAllowedKKutAudio(raw)) return null;
-  if (isHttpUrl(raw)) return encodeURI(raw);
+  if (isHttpUrl(raw)) return raw;
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
-  if (raw.startsWith("/storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}${encodeURI(raw)}` : encodeURI(raw);
-  if (raw.startsWith("storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}/${encodeURI(raw)}` : `/${encodeURI(raw)}`;
-  if (raw.startsWith("public/")) return encodeURI(raw.replace(/^public/, ""));
-  if (raw.startsWith("/audio/") || raw.startsWith("/assets/")) return encodeURI(raw);
-  if (raw.startsWith("audio/") || raw.startsWith("assets/")) return `/${encodeURI(raw)}`;
-  if (!supabaseUrl) return encodeURI(raw);
+  if (raw.startsWith("/storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}${raw}` : raw;
+  if (raw.startsWith("storage/v1/object/public/")) return supabaseUrl ? `${supabaseUrl}/${raw}` : `/${raw}`;
+  if (raw.startsWith("public/")) return raw.replace(/^public/, "");
+  if (raw.startsWith("/audio/") || raw.startsWith("/assets/")) return raw;
+  if (raw.startsWith("audio/") || raw.startsWith("assets/")) return `/${raw}`;
+  if (!supabaseUrl) return raw;
   if (raw.startsWith("tracks/")) return `${supabaseUrl}/storage/v1/object/public/${encodePath(raw)}`;
   return `${supabaseUrl}/storage/v1/object/public/tracks/${encodePath(raw)}`;
 }
@@ -162,7 +162,20 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div key={kkId || kk.delivered_url_or_path || index} className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
                   <div className="flex flex-col gap-4">
                     <div><p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">K-KUT HUG option {index + 1} of {rows.length}</p><h2 className="mt-2 text-2xl font-black text-[#FFD36A]">{option.name}</h2><p className="mt-2 text-sm font-bold text-[#F5E6C8]/70">{option.helper}</p></div>
-                    <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4"><p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Listen here</p><audio controls preload="metadata" src={audioSrc ?? undefined} className="w-full" /></div>
+                    <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Listen here</p>
+                      {audioSrc ? (
+                        <>
+                          <audio key={audioSrc} controls preload="auto" className="w-full">
+                            <source src={audioSrc} type="audio/mpeg" />
+                            Your browser does not support audio playback.
+                          </audio>
+                          <a href={audioSrc} target="_blank" rel="noreferrer" className="mt-3 inline-block text-xs font-black text-[#FFD36A] underline">Open audio directly</a>
+                        </>
+                      ) : (
+                        <p className="text-sm font-bold text-red-200">Audio source unavailable.</p>
+                      )}
+                    </div>
                     {kkId && <Link href={`/k/${encodeURIComponent(kkId)}`} className="self-start rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>}
                   </div>
                 </div>
