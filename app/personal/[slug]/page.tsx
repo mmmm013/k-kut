@@ -328,10 +328,17 @@ export default async function Page({ params, searchParams }: { params: { slug: s
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
   const selectedIntent = intents.find((item) => item.id === searchParams?.intent) ?? null;
   const sourcePix = searchParams?.sourcePix ?? null;
-  const launchRows = await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
-  const immutableResult = launchRows.length > 0 ? { rows: [], error: null } : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
-  const rows = launchRows.length > 0 ? launchRows : immutableResult.rows;
-  const error = immutableResult.error;
+  const launchRowsRaw = await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
+  const launchRows = Array.isArray(launchRowsRaw) ? launchRowsRaw : [];
+
+  const immutableResult =
+    launchRows.length > 0
+      ? { rows: [], error: null }
+      : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
+
+  const immutableRows = Array.isArray(immutableResult?.rows) ? immutableResult.rows : [];
+  const rows = launchRows.length > 0 ? launchRows : immutableRows;
+  const error = immutableResult?.error ?? null;
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
