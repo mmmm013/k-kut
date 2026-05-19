@@ -305,7 +305,9 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
 
   const launchRows = ((data ?? []) as KKRow[]).map((row) => ({ ...row, audio_status: "playable" }));
   const rows = await attachMetadata(supabase, launchRows);
-  return sortAndPickRows(rows, slug, 6, intent, sourcePix);
+
+  // Curated launch rows are governor-approved inventory. Do not pad/repeat them.
+  return rows;
 }
 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
