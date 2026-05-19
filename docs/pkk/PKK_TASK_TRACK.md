@@ -11,7 +11,7 @@ Rules:
 - KK only.
 - No mKs.
 - No mini-KUTs.
-- No BB-BOT Story duplicate.
+- No MC-BOT Story duplicate.
 - No public exposure until audio proof passes.
 - No deploy until approved public page/audio change exists.
 

@@ -1,8 +1,8 @@
 const functionPoints = [
   "Landing page loads",
-  "BB-BOT message appears",
-  "Play BB-BOT voice button appears",
-  "BB-BOT voice files exist",
+  "MC-BOT message appears",
+  "Play MC-BOT voice button appears",
+  "MC-BOT voice files exist",
   "Step 1 family cards work",
   "Step 2 HUG-kind cards work",
   "Step 3 song buttons work",

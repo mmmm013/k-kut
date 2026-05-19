@@ -28,7 +28,7 @@ for (const file of files) {
 const home = fs.readFileSync("app/page.tsx", "utf8");
 
 check("Homepage keeps one-step screens", home.includes('screen === "welcome"') && home.includes('screen === "purpose"') && home.includes('screen === "type"') && home.includes('screen === "song"') && home.includes('screen === "kk"') && home.includes('screen === "confirm"') && home.includes('screen === "buy"'));
-check("Homepage has no dashboard panels", !home.includes("Current Action") && !home.includes("Progress") && !home.includes("BB-BOT guide"));
+check("Homepage has no dashboard panels", !home.includes("Current Action") && !home.includes("Progress") && !home.includes("MC-BOT guide"));
 check("Homepage keeps full options per step", home.includes("PURPOSES.map") && home.includes("typeChoices.map") && home.includes("visibleSongs.map") && home.includes("kkOptions.map"));
 
 console.log("\nSUMMARY");

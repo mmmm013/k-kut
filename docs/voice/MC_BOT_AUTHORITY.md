@@ -15,7 +15,7 @@ MC-BOT voice assets may be developed from approved Michael Clay / KLEIGH / Clayt
 
 ## Voice Product Goal
 
-MC-BOT is the real-source voice layer for BB-BOT guided HUG experiences.
+MC-BOT is the real-source voice layer for MC-BOT guided HUG experiences.
 
-BB-BOT = visual guide / customer helper.
+MC-BOT = visual guide / customer helper.
 MC-BOT = authorized voice layer.

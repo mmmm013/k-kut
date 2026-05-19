@@ -10,7 +10,7 @@ LineFeels are not K-KUTs.
 
 LineFeels are not mKs.
 
-LineFeels are text/meaning candidates used by KKR, BB-BOT, reports, and future product selection.
+LineFeels are text/meaning candidates used by KKR, MC-BOT, reports, and future product selection.
 
 ## Public Name
 
@@ -46,7 +46,7 @@ LineFeels may support:
 
 - Short KUT candidate discovery
 - HUG recommendation copy
-- BB-BOT guidance
+- MC-BOT guidance
 - recipient DP captions
 - social/share text
 - product descriptions

@@ -46,7 +46,7 @@ check("No 18A internal label", !home.includes("18A") && !mothers.includes("18A")
 check("No ASCAP in user choice flow", !home.includes("ASCAP"));
 check("No Current Action panel", !home.includes("CURRENT ACTION") && !home.includes("Current Action"));
 check("No Progress panel", !home.includes("PROGRESS") && !home.includes("Progress"));
-check("No decorative BOT badge", !home.includes("BB-BOT guide"));
+check("No decorative BOT badge", !home.includes("MC-BOT guide"));
 check("No fake coming soon dead end", !home.includes("This one is coming soon. Try Mother"));
 
 check("One-audio helper exists", home.includes("stopAllAudio") && home.includes("playOneAudio"));

@@ -33,7 +33,7 @@ check("Homepage avoids 18A", !home.includes("18A"));
 check("Homepage avoids ASCAP in choice flow", !home.includes("ASCAP"));
 check("Homepage avoids current-action panel", !home.includes("CURRENT ACTION") && !home.includes("Current Action"));
 check("Homepage avoids progress panel", !home.includes("PROGRESS") && !home.includes("Progress"));
-check("Homepage avoids decorative BOT badge", !home.includes("BB-BOT guide"));
+check("Homepage avoids decorative BOT badge", !home.includes("MC-BOT guide"));
 check("Homepage avoids false coming soon dead end", !home.includes("This one is coming soon. Try Mother"));
 check("Homepage enforces one audio at a time", home.includes("stopAllAudio") && home.includes("playOneAudio"));
 

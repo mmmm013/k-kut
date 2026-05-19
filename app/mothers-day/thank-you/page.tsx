@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import MothersDayBBBot from "@/components/MothersDayBBBot";
+import MothersDayMCBot from "@/components/MothersDayMCBot";
 import EofSignatureAudio from "@/components/EofSignatureAudio";
 
 const kks = [
@@ -380,7 +380,7 @@ export default function MothersDayThankYouPage() {
           </h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-[#e4c89b]">
-            Play the Mother’s Day song, choose the feeling you want to send, and let BB-BOT help you pick a Short KUT, HUG, or Big HUG.
+            Play the Mother’s Day song, choose the feeling you want to send, and let MC-BOT help you pick a Short KUT, HUG, or Big HUG.
           </p>
 
           <div className="mt-8 rounded-2xl border border-[#4b3212] bg-[#0f0f0f] p-5">
@@ -415,7 +415,7 @@ export default function MothersDayThankYouPage() {
         </div>
 
 
-        <MothersDayBBBot />
+        <MothersDayMCBot />
 
         <section className="mt-10 grid gap-5 md:grid-cols-2">
           {kks.map((kk) => (

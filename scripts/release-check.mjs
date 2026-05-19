@@ -17,7 +17,7 @@ const requiredHomepageText = [
   "A GPM HUG is a new kind",
   "Hear Mother’s Day KK Samples",
   "One K-KUT per purchase per day",
-  "BB-BOT Story: Why Thank You matters",
+  "MC-BOT Story: Why Thank You matters",
 ];
 
 const forbiddenPublicText = [
