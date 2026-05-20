@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-05-20",
+  "digest": "GPMx / K-KUT / 4PE Daily AI Digest",
+  "core_strategy": "Build public proof narrowly while preserving private invention architecture.",
+  "public_priority": "k-kut.com HUG/KUT buyer path",
+  "private_priority": "4P / 4PE patent-family preservation",
+  "ai_stack": [
+    {
+      "rank": 1,
+      "tool": "ChatGPT / GPT-5.5 Thinking",
+      "role": "Mission control, doctrine, sequencing, repo-safe commands, daily digest"
+    },
+    {
+      "rank": 2,
+      "tool": "Perplexity",
+      "role": "External research, prior art, patent-family pressure testing, market scan"
+    },
+    {
+      "rank": 3,
+      "tool": "Claude / long-form drafting AI",
+      "role": "Grant prose, patent narrative, disclosure expansion"
+    },
+    {
+      "rank": 4,
+      "tool": "Codex / code AI",
+      "role": "Narrow repo patches, Vercel fixes, MC-BOT UI, checkout preservation"
+    },
+    {
+      "rank": 5,
+      "tool": "Voice/audio AI",
+      "role": "MC-BOT voice grooming and buyer-flow audio mapping"
+    },
+    {
+      "rank": 6,
+      "tool": "Image/design AI",
+      "role": "Conceptual HUG Chamber, jewelry, grant, and manufacturing visuals"
+    },
+    {
+      "rank": 7,
+      "tool": "Spreadsheet/data AI",
+      "role": "PIX inventory, release matrices, grant budgets, proof tables"
+    }
+  ],
+  "patent_tracks": [
+    "4P core segmentation and monetization",
+    "MSC / time-plus-structure playback floors",
+    "Catalog-commerce mirror",
+    "K-KUT / HUG communications replacement",
+    "HUG Chamber / jewelry / physical artifact system",
+    "4P-Verified civic / compliance / safety systems"
+  ],
+  "release_bar": "A real user can land on k-kut.com, understand HUG, trust MC-BOT, hear a KUT, pay, and receive the correct private playable result.",
+  "hard_rules": {
+    "cc_is_product": false,
+    "public_site_exposes_backend_machinery": false,
+    "users_rearrange_sections": false,
+    "ai_renames_terms": false,
+    "single_mega_patent": false
+  }
+}
