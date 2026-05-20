@@ -1,0 +1,114 @@
+{
+  "created_at": "2026-05-20",
+  "purpose": "KUT-first sales readiness registry for immediate personal and wedding offers.",
+  "doctrine": {
+    "these_are_kuts": true,
+    "cc_is_not_product": true,
+    "pix_pck_backend_only": true,
+    "customer_buys_one_governed_kut_or_package": true,
+    "frontend_obeys_script_only": true
+  },
+  "routine_checkout": {
+    "status": "needs_mapping_confirmation",
+    "known_generic_checkout_route": "/checkout?kk=<selected_kut_id>",
+    "known_generic_stripe_link": "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p",
+    "warning": "Current /checkout route appears Mother’s Day/section-KK oriented. Confirm before using as routine personal KUT checkout."
+  },
+  "products": [
+    {
+      "slug": "anniversary",
+      "product_name": "Awesome Anniversary KUT HUG",
+      "page_path": "/personal/anniversary",
+      "kut_assets": [
+        {
+          "title": "Awesome Anniversary",
+          "bucket": "tracks",
+          "object_path": "Awesome Anniversary.mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Awesome%20Anniversary.mp3",
+          "role": "KUT_or_PIX_source_needs_product_row_confirmation"
+        }
+      ],
+      "stripe_link": null,
+      "stripe_status": "needs_routine_checkout_mapping",
+      "release_status": "audio_source_proven_needs_product_row_and_checkout_preservation"
+    },
+    {
+      "slug": "birthday",
+      "product_name": "Best Birthday KUT HUG",
+      "page_path": "/personal/birthday",
+      "kut_assets": [
+        {
+          "title": "Best Birthday",
+          "bucket": "tracks",
+          "object_path": "Best Birthday (1).mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Best%20Birthday%20(1).mp3",
+          "role": "KUT_or_PIX_source_needs_product_row_confirmation"
+        },
+        {
+          "title": "Best Birthday - Long",
+          "bucket": "tracks",
+          "object_path": "Best Birthday - Long.mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Best%20Birthday%20-%20Long.mp3",
+          "role": "KUT_or_PIX_source_needs_product_row_confirmation"
+        }
+      ],
+      "stripe_link": null,
+      "stripe_status": "needs_routine_checkout_mapping",
+      "release_status": "audio_source_proven_needs_product_row_and_checkout_preservation"
+    },
+    {
+      "slug": "apology",
+      "product_name": "I'm Sorry KUT HUG",
+      "page_path": "/personal/apology?intent=im-sorry",
+      "kut_assets": [
+        {
+          "title": "KLEIGH - Sorry 1",
+          "bucket": "kuts",
+          "object_path": "kk/native/apology/kleigh-sorry-1-23a9539e9a376951.mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/kk/native/apology/kleigh-sorry-1-23a9539e9a376951.mp3",
+          "role": "native_final_kut"
+        },
+        {
+          "title": "KLEIGH - Sorry 2",
+          "bucket": "kuts",
+          "object_path": "kk/native/apology/kleigh-sorry-2-56c16fe47db161b0.mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/kk/native/apology/kleigh-sorry-2-56c16fe47db161b0.mp3",
+          "role": "native_final_kut"
+        },
+        {
+          "title": "KLEIGH - Sorry 3",
+          "bucket": "kuts",
+          "object_path": "kk/native/apology/kleigh-sorry-3-42b9a34be02d90a2.mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/kk/native/apology/kleigh-sorry-3-42b9a34be02d90a2.mp3",
+          "role": "native_final_kut"
+        }
+      ],
+      "source_pix_reference": {
+        "title": "I'm Sorry-RHONDA VERSION",
+        "bucket": "tracks",
+        "object_path": "I'm Sorry-RHONDA VERSION.wav",
+        "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/I'm%20Sorry-RHONDA%20VERSION.wav"
+      },
+      "stripe_link": null,
+      "stripe_status": "needs_routine_checkout_mapping",
+      "release_status": "native_kuts_proven_and_seeded_needs_checkout_preservation"
+    },
+    {
+      "slug": "wedding",
+      "product_name": "Forever & A Day Wedding Track Pack",
+      "page_path": "/personal/wedding",
+      "kut_assets": [
+        {
+          "title": "Forever & A Day",
+          "bucket": "tracks",
+          "object_path": "Forever & A Day.mp3",
+          "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Forever%20&%20A%20Day.mp3",
+          "role": "wedding_pix_or_kut_package_source"
+        }
+      ],
+      "stripe_link": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
+      "stripe_status": "dedicated_link_found_needs_open_test",
+      "release_status": "package_audio_source_and_stripe_link_proven_needs_page_and_fulfillment_verification"
+    }
+  ]
+}
