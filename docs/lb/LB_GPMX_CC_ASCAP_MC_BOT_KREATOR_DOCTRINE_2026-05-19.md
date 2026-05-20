@@ -19,7 +19,7 @@ GPMx preserves separate lanes:
 1. PIX — canonical full source master.
 2. KK — approved K-KUT / section object.
 3. KK-Combo — approved contiguous sequence of KKs from the same PIX.
-4. CC — exact excerpt / copy-capture from an exact source audio SSOT URL.
+4. CC — backend exact excerpt / copy-capture record from an exact source audio SSOT URL. CC is not a product.
 5. BOT Voice / MC-BOT — guided conversational product flow.
 
 These lanes must not be collapsed.
@@ -162,7 +162,7 @@ Free upload does not mean:
 - free publication
 - automatic PIX creation
 - automatic KK creation
-- automatic CC creation
+- automatic backend CC record creation
 
 Flow:
 
@@ -175,8 +175,8 @@ Flow:
    - private raw
    - PIX candidate
    - MC/BOT asset candidate
-   - CC candidate
-5. Only Admin-approved assets can become PIX, KK, KK-Combo, CC, or public product.
+   - backend CC record candidate
+5. Only Admin-approved assets can become PIX, KK, KK-Combo, or public product. CC records may be created only as backend exact-source capture records tied to SSOT URL and locator.
 
 ## Acceptance Tests
 
@@ -188,3 +188,12 @@ Flow:
 - Users can purchase one governed KK or KK-Combo only.
 - Kreator upload is private by default.
 - No uploaded file becomes public without Admin approval.
+
+
+## Hard Clarification
+
+CC / Copy-Capture is not a product.
+
+CC is backend infrastructure: an exact excerpt capture record from an exact SSOT audio URL with exact locator and lineage.
+
+CC may support KK, KK-Combo, HUG/TUG, QA, rights, matching, and audit workflows, but CC itself is never the customer product.
