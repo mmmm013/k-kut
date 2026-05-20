@@ -1,0 +1,142 @@
+{
+  "created_at": "2026-05-20T01:35:43.666Z",
+  "brief": {
+    "name": "async-placement",
+    "meaning": [
+      "asynchronous message",
+      "not live conversation",
+      "sendable emotional communication",
+      "user sends feeling later",
+      "guided placement",
+      "digital audio card",
+      "message delivery",
+      "one selected emotional moment",
+      "playable link",
+      "recipient receives later",
+      "personal communication",
+      "human feeling through music"
+    ],
+    "positive": [
+      "message",
+      "words",
+      "talk",
+      "talking",
+      "phone",
+      "hear",
+      "listen",
+      "send",
+      "sent",
+      "wait",
+      "later",
+      "time",
+      "moment",
+      "memory",
+      "remember",
+      "inside",
+      "heart",
+      "feeling",
+      "feel",
+      "friend",
+      "together",
+      "hope",
+      "believe",
+      "trust",
+      "home",
+      "side",
+      "around",
+      "with you",
+      "for you",
+      "to you",
+      "know"
+    ],
+    "negative": [
+      "cover",
+      "instro",
+      "instrumental",
+      "christmas",
+      "birthday",
+      "demo",
+      "test",
+      "snippet",
+      "stomp",
+      "war",
+      "vengeance",
+      "death",
+      "devil",
+      "fight",
+      "pirates",
+      "nascAR"
+    ]
+  },
+  "doctrine": {
+    "bot_dialog_separate_forever": true,
+    "pix_source_pool": "Supabase storage bucket tracks only / GPMC canonical PIX catalog",
+    "kk_source_pool": "KK inventory only",
+    "kk_min_duration_sec": 80,
+    "no_bot_prompt_assets": true,
+    "no_local_voice_prompt_assets": true
+  },
+  "top_pix": [
+    {
+      "source_pool": "canonical_tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "A FEELING TO ME.mp3",
+      "size": 9673518,
+      "score": 9,
+      "hits": [
+        "feeling",
+        "feel"
+      ],
+      "blocks": []
+    },
+    {
+      "source_pool": "canonical_tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "MORE THAN A FEELING TO ME.mp3",
+      "size": 9673204,
+      "score": 9,
+      "hits": [
+        "feeling",
+        "feel"
+      ],
+      "blocks": []
+    },
+    {
+      "source_pool": "canonical_tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "REMEMBER A TIME.mp3",
+      "size": 7787391,
+      "score": 7,
+      "hits": [
+        "time",
+        "remember"
+      ],
+      "blocks": []
+    },
+    {
+      "source_pool": "canonical_tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "YOU STOP TALKING - 1988.wav",
+      "size": 57154090,
+      "score": 7,
+      "hits": [
+        "talk",
+        "talking"
+      ],
+      "blocks": []
+    },
+    {
+      "source_pool": "canonical_tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "You Stop Talking - East Houston 1988 (1).mp3",
+      "size": 4375989,
+      "score": 7,
+      "hits": [
+        "talk",
+        "talking"
+      ],
+      "blocks": []
+    }
+  ],
+  "top_kks_min_80_sec": []
+}

@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-05-20T01:52:24.515Z",
+  "doctrine": {
+    "async_brief_only": true,
+    "bot_dialog_separate_forever": true,
+    "individual_kk_can_be_short": true,
+    "offer_can_be_contiguous_combo": true,
+    "combo_rule": "contiguous sections only; original source order preserved; no non-adjacent stitching",
+    "min_combo_sec": 80,
+    "only_hard_time_floor": "SWSPs must be 13+ seconds; KK/combo length follows structure, meaning, fullness, and beauty."
+  },
+  "audit": {
+    "kk_rows_examined": 1000,
+    "kk_rows_with_duration": 1000,
+    "individual_kk_rows_80_sec_or_more": 0,
+    "all_contiguous_combo_spans_80_sec_or_more": 0,
+    "scored_contiguous_combo_candidates_80_sec_or_more": 0
+  },
+  "top_contiguous_combos": [],
+  "additional_combos": []
+}

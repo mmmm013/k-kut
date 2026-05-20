@@ -1,0 +1,174 @@
+{
+  "created_at": "2026-05-20T02:28:35.698Z",
+  "pix": "Sandman's Comin'",
+  "doctrine": {
+    "allowed_object_types": [
+      "PIX",
+      "KK",
+      "KK_COMBO"
+    ],
+    "excluded_object_types": [
+      "mK",
+      "mini-KUT",
+      "BOT_DIALOG",
+      "prompt_asset"
+    ],
+    "selected_combo_count": 3,
+    "combo_rule": "contiguous KK sections only; source order preserved; no skipped sections; no mK products",
+    "whoa_rule": "Whoa sections are connective song structure inside selected combos when present; not standalone mKs in this lane."
+  },
+  "selected_first_3_kk_combos": [
+    {
+      "materialize_order": 1,
+      "combo_id": "sandman_combo_02",
+      "pix": "Sandman's Comin'",
+      "product_or_offer": "KK_COMBO",
+      "object_lane": "PIX_KK_ONLY",
+      "mk_allowed": false,
+      "mini_kut_allowed": false,
+      "bot_dialog_allowed": false,
+      "title": "Intro → Whoa Whoa → V1a → Break / Bridge",
+      "role": "opening_drive",
+      "start_section": "intro",
+      "end_section": "break_1",
+      "section_count": 4,
+      "kk_section_count": 3,
+      "connective_whoa_section_count": 1,
+      "boundary_basis": "contiguous_song_sections_meaning_structure",
+      "order_rule": "original source order preserved",
+      "skip_rule": "no skipped sections inside selected span",
+      "time_rule": "no arbitrary time boundary; materialize exact section span after audio locator review",
+      "approval_status": "selected_for_audio_locator_review",
+      "sections": [
+        {
+          "id": "intro",
+          "label": "Intro",
+          "lane": "kk"
+        },
+        {
+          "id": "whoa_1",
+          "label": "Whoa Whoa",
+          "lane": "mk_optional"
+        },
+        {
+          "id": "v1a",
+          "label": "V1a",
+          "lane": "kk"
+        },
+        {
+          "id": "break_1",
+          "label": "Break / Bridge",
+          "lane": "kk"
+        }
+      ]
+    },
+    {
+      "materialize_order": 2,
+      "combo_id": "sandman_combo_28",
+      "pix": "Sandman's Comin'",
+      "product_or_offer": "KK_COMBO",
+      "object_lane": "PIX_KK_ONLY",
+      "mk_allowed": false,
+      "mini_kut_allowed": false,
+      "bot_dialog_allowed": false,
+      "title": "V1a → Break / Bridge → Whoa Whoa → V1b → Echo — so I can claim the crown → Ch1",
+      "role": "first_act_claim_the_crown",
+      "start_section": "v1a",
+      "end_section": "ch1",
+      "section_count": 6,
+      "kk_section_count": 5,
+      "connective_whoa_section_count": 1,
+      "boundary_basis": "contiguous_song_sections_meaning_structure",
+      "order_rule": "original source order preserved",
+      "skip_rule": "no skipped sections inside selected span",
+      "time_rule": "no arbitrary time boundary; materialize exact section span after audio locator review",
+      "approval_status": "selected_for_audio_locator_review",
+      "sections": [
+        {
+          "id": "v1a",
+          "label": "V1a",
+          "lane": "kk"
+        },
+        {
+          "id": "break_1",
+          "label": "Break / Bridge",
+          "lane": "kk"
+        },
+        {
+          "id": "whoa_2",
+          "label": "Whoa Whoa",
+          "lane": "mk_optional"
+        },
+        {
+          "id": "v1b",
+          "label": "V1b",
+          "lane": "kk"
+        },
+        {
+          "id": "echo_1",
+          "label": "Echo — so I can claim the crown",
+          "lane": "kk"
+        },
+        {
+          "id": "ch1",
+          "label": "Ch1",
+          "lane": "kk"
+        }
+      ]
+    },
+    {
+      "materialize_order": 3,
+      "combo_id": "sandman_combo_77",
+      "pix": "Sandman's Comin'",
+      "product_or_offer": "KK_COMBO",
+      "object_lane": "PIX_KK_ONLY",
+      "mk_allowed": false,
+      "mini_kut_allowed": false,
+      "bot_dialog_allowed": false,
+      "title": "V2 → Echo — the only fear I have → Ch2 → Whoa Whoa / I’m goin’ for the prize → Ch3 → Outro",
+      "role": "battle_body",
+      "start_section": "v2",
+      "end_section": "outro",
+      "section_count": 6,
+      "kk_section_count": 5,
+      "connective_whoa_section_count": 1,
+      "boundary_basis": "contiguous_song_sections_meaning_structure",
+      "order_rule": "original source order preserved",
+      "skip_rule": "no skipped sections inside selected span",
+      "time_rule": "no arbitrary time boundary; materialize exact section span after audio locator review",
+      "approval_status": "selected_for_audio_locator_review",
+      "sections": [
+        {
+          "id": "v2",
+          "label": "V2",
+          "lane": "kk"
+        },
+        {
+          "id": "echo_2",
+          "label": "Echo — the only fear I have",
+          "lane": "kk"
+        },
+        {
+          "id": "ch2",
+          "label": "Ch2",
+          "lane": "kk"
+        },
+        {
+          "id": "whoa_3",
+          "label": "Whoa Whoa / I’m goin’ for the prize",
+          "lane": "mk_optional"
+        },
+        {
+          "id": "ch3",
+          "label": "Ch3",
+          "lane": "kk"
+        },
+        {
+          "id": "outro",
+          "label": "Outro",
+          "lane": "kk"
+        }
+      ]
+    }
+  ]
+}

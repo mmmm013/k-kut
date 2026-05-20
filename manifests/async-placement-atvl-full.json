@@ -1,0 +1,263 @@
+{
+  "created_at": "2026-05-20T01:38:03.357Z",
+  "brief": {
+    "slug": "async-placement",
+    "description": "Asynchronous emotional placement: a sendable, later-received, human-feeling audio placement/message. Not bot dialog. Not live conversation.",
+    "required_separation": {
+      "pix_pool": "GPMC canonical PIX only: Supabase tracks bucket and source catalog rows",
+      "kk_pool": "KK inventory only",
+      "forbidden": [
+        "bot dialog",
+        "voice prompt",
+        "UI prompt",
+        "public/voices",
+        "public/audio guide-final",
+        "local Downloads prompts"
+      ]
+    }
+  },
+  "atvl_weights": {
+    "title": 0.2,
+    "catalogMetadata": 0.2,
+    "lyricsMeaning": 0.25,
+    "audioStructure": 0.2,
+    "reviewEvidence": 0.15
+  },
+  "doctrine": {
+    "title_gets_only_1_of_5": true,
+    "title_max_points": 20,
+    "bot_dialog_separate_forever": true,
+    "pix_only_source_pool": "canonical GPMC/tracks",
+    "kk_min_duration_sec": 80,
+    "title_only_is_hold_not_approval": true
+  },
+  "audit": {
+    "pix_examined": 660,
+    "catalog_tables_read": [
+      {
+        "table": "tracks",
+        "rows": 709
+      }
+    ],
+    "kk_table": "k_kuts",
+    "kk_rows_examined": 1000,
+    "kk_rows_with_duration": 1000,
+    "kk_rows_80_sec_or_more": 0
+  },
+  "top_pix": [
+    {
+      "source_pool": "tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "I'll Always Be Around.mp3",
+      "size": 10291222,
+      "atvl": 41,
+      "status": "weak_candidate_needs_review",
+      "evidence": [
+        "title",
+        "metadata",
+        "lyrics_meaning",
+        "audio_structure"
+      ],
+      "title_points": 14,
+      "metadata_points": 20,
+      "lyrics_meaning_points": 14,
+      "audio_structure_points": 3,
+      "review_points": 0,
+      "hits": {
+        "title": [
+          "always",
+          "i'll always be around",
+          "around"
+        ],
+        "metadata": [
+          "always",
+          "i'll always be around",
+          "around",
+          "delivery",
+          "link"
+        ],
+        "lyrics_meaning": [
+          "always",
+          "i'll always be around",
+          "around"
+        ],
+        "audio_structure": [
+          "lt-pix"
+        ],
+        "review": []
+      },
+      "blocks": [
+        "ui"
+      ]
+    },
+    {
+      "source_pool": "tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "Hope You Know.mp3",
+      "size": 8499187,
+      "atvl": 25,
+      "status": "reject",
+      "evidence": [
+        "title",
+        "metadata",
+        "lyrics_meaning",
+        "audio_structure"
+      ],
+      "title_points": 8.5,
+      "metadata_points": 14.5,
+      "lyrics_meaning_points": 8.5,
+      "audio_structure_points": 3,
+      "review_points": 0,
+      "hits": {
+        "title": [
+          "hope you know",
+          "hope"
+        ],
+        "metadata": [
+          "hope you know",
+          "hope",
+          "delivery",
+          "link"
+        ],
+        "lyrics_meaning": [
+          "hope you know",
+          "hope"
+        ],
+        "audio_structure": [
+          "lt-pix"
+        ],
+        "review": []
+      },
+      "blocks": [
+        "ui"
+      ]
+    },
+    {
+      "source_pool": "tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "HOPE YOU KNOW.mp3",
+      "size": 8612244,
+      "atvl": 25,
+      "status": "reject",
+      "evidence": [
+        "title",
+        "metadata",
+        "lyrics_meaning",
+        "audio_structure"
+      ],
+      "title_points": 8.5,
+      "metadata_points": 14.5,
+      "lyrics_meaning_points": 8.5,
+      "audio_structure_points": 3,
+      "review_points": 0,
+      "hits": {
+        "title": [
+          "hope you know",
+          "hope"
+        ],
+        "metadata": [
+          "hope you know",
+          "hope",
+          "delivery",
+          "link"
+        ],
+        "lyrics_meaning": [
+          "hope you know",
+          "hope"
+        ],
+        "audio_structure": [
+          "lt-pix"
+        ],
+        "review": []
+      },
+      "blocks": [
+        "ui"
+      ]
+    },
+    {
+      "source_pool": "tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "BY YOUR SIDE 1.mp3",
+      "size": 7438871,
+      "atvl": 23,
+      "status": "reject",
+      "evidence": [
+        "title",
+        "metadata",
+        "lyrics_meaning",
+        "audio_structure"
+      ],
+      "title_points": 8,
+      "metadata_points": 14,
+      "lyrics_meaning_points": 8,
+      "audio_structure_points": 3,
+      "review_points": 0,
+      "hits": {
+        "title": [
+          "by your side",
+          "side"
+        ],
+        "metadata": [
+          "by your side",
+          "side",
+          "delivery",
+          "link"
+        ],
+        "lyrics_meaning": [
+          "by your side",
+          "side"
+        ],
+        "audio_structure": [
+          "lt-pix"
+        ],
+        "review": []
+      },
+      "blocks": [
+        "ui"
+      ]
+    },
+    {
+      "source_pool": "tracks_bucket",
+      "source_role": "PIX_ONLY",
+      "name": "BY YOUR SIDE.mp3",
+      "size": 7506573,
+      "atvl": 23,
+      "status": "reject",
+      "evidence": [
+        "title",
+        "metadata",
+        "lyrics_meaning",
+        "audio_structure"
+      ],
+      "title_points": 8,
+      "metadata_points": 14,
+      "lyrics_meaning_points": 8,
+      "audio_structure_points": 3,
+      "review_points": 0,
+      "hits": {
+        "title": [
+          "by your side",
+          "side"
+        ],
+        "metadata": [
+          "by your side",
+          "side",
+          "delivery",
+          "link"
+        ],
+        "lyrics_meaning": [
+          "by your side",
+          "side"
+        ],
+        "audio_structure": [
+          "lt-pix"
+        ],
+        "review": []
+      },
+      "blocks": [
+        "ui"
+      ]
+    }
+  ],
+  "top_kks_min_80_sec": []
+}

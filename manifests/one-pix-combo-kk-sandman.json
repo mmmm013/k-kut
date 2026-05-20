@@ -1,0 +1,791 @@
+{
+  "created_at": "2026-05-20T02:00:55.972Z",
+  "pix_query": "Sandman",
+  "doctrine": {
+    "one_pix_at_a_time": true,
+    "pix_must_squire_at_least_3_combo_kks": true,
+    "min_required_combo_kks": 3,
+    "combo_rule": "contiguous source sections only; original order preserved; no skipped/out-of-place section",
+    "swsp_min_sec": 13,
+    "no_arbitrary_max_time": true,
+    "bot_dialog_excluded_forever": true
+  },
+  "audit": {
+    "total_k_kuts_rows_read": 42971,
+    "matched_rows_for_pix_query": 165,
+    "matched_source_groups": 5,
+    "best_group_has_required_3_combos": true
+  },
+  "best_source_group": {
+    "source": "sandman's comin' mp3",
+    "row_count": 33,
+    "first_start": 0,
+    "last_end": 166,
+    "total_section_duration_sec": 328,
+    "combo_candidates_13_sec_plus": 43,
+    "picked_combo_count": 3,
+    "picked_combos": [
+      {
+        "combo_slot": 1,
+        "candidate_role": "early_opening_combo",
+        "total_duration_sec": 45,
+        "start_sec": 0,
+        "end_sec": 47,
+        "section_count": 4,
+        "combo_title": "SANDMAN'S COMIN'  — mK 1.1 + SANDMAN'S COMIN'  — mK 1.2 + SANDMAN'S COMIN'  — mK 1.3 + SANDMAN'S COMIN'  — KK 2",
+        "parts": [
+          {
+            "order": 1,
+            "kut_id": "cf4d372e-df52-4047-9c55-495a5686e728",
+            "title": "SANDMAN'S COMIN'  — mK 1.1",
+            "start_sec": 0,
+            "end_sec": 7,
+            "duration_sec": 7,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+            "status": null
+          },
+          {
+            "order": 2,
+            "kut_id": "d7aad290-240d-4277-9986-4f8e8d459783",
+            "title": "SANDMAN'S COMIN'  — mK 1.2",
+            "start_sec": 7,
+            "end_sec": 14,
+            "duration_sec": 7,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk2-7s-14s-f044f1b1d7.mp3",
+            "status": null
+          },
+          {
+            "order": 3,
+            "kut_id": "3a64db5d-481a-4e8d-ba39-b95e170417bb",
+            "title": "SANDMAN'S COMIN'  — mK 1.3",
+            "start_sec": 15,
+            "end_sec": 22,
+            "duration_sec": 7,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk3-15s-22s-cc9592e757.mp3",
+            "status": null
+          },
+          {
+            "order": 4,
+            "kut_id": "0c23eb38-2009-410f-857c-13e06114a3c2",
+            "title": "SANDMAN'S COMIN'  — KK 2",
+            "start_sec": 23,
+            "end_sec": 47,
+            "duration_sec": 24,
+            "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' .mp3",
+            "status": null
+          }
+        ]
+      },
+      {
+        "combo_slot": 2,
+        "candidate_role": "middle_body_combo",
+        "total_duration_sec": 29,
+        "start_sec": 65,
+        "end_sec": 94,
+        "section_count": 2,
+        "combo_title": "SANDMAN'S COMIN'  — mK 3.4 + SANDMAN'S COMIN'  — KK 4",
+        "parts": [
+          {
+            "order": 1,
+            "kut_id": "93db0ab5-5135-49bd-8d23-d2cfd80cf977",
+            "title": "SANDMAN'S COMIN'  — mK 3.4",
+            "start_sec": 65,
+            "end_sec": 71,
+            "duration_sec": 6,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk3-mk4-65s-71s-ed05ecaaa2.mp3",
+            "status": null
+          },
+          {
+            "order": 2,
+            "kut_id": "6f1c1365-077d-43a2-942b-323bcc7d2a9f",
+            "title": "SANDMAN'S COMIN'  — KK 4",
+            "start_sec": 71,
+            "end_sec": 94,
+            "duration_sec": 23,
+            "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' .mp3",
+            "status": null
+          }
+        ]
+      },
+      {
+        "combo_slot": 3,
+        "candidate_role": "late_resolution_combo",
+        "total_duration_sec": 48,
+        "start_sec": 23,
+        "end_sec": 71,
+        "section_count": 5,
+        "combo_title": "SANDMAN'S COMIN'  — mK 2.1 + SANDMAN'S COMIN'  — mK 2.2 + SANDMAN'S COMIN'  — mK 2.3 + SANDMAN'S COMIN'  — mK 2.4 + SANDMAN'S COMIN'  — KK 3",
+        "parts": [
+          {
+            "order": 1,
+            "kut_id": "9374aac4-7b1a-47c9-9560-62743b4a3357",
+            "title": "SANDMAN'S COMIN'  — mK 2.1",
+            "start_sec": 23,
+            "end_sec": 29,
+            "duration_sec": 6,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk2-mk1-23s-29s-9108dc57a1.mp3",
+            "status": null
+          },
+          {
+            "order": 2,
+            "kut_id": "a6d9a887-0558-4462-87cb-c7b4f342573d",
+            "title": "SANDMAN'S COMIN'  — mK 2.2",
+            "start_sec": 29,
+            "end_sec": 35,
+            "duration_sec": 6,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk2-mk2-29s-35s-0397cb90c3.mp3",
+            "status": null
+          },
+          {
+            "order": 3,
+            "kut_id": "6fc587b6-c818-4347-bd36-d6c0716189f5",
+            "title": "SANDMAN'S COMIN'  — mK 2.3",
+            "start_sec": 35,
+            "end_sec": 41,
+            "duration_sec": 6,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk2-mk3-35s-41s-c993c28640.mp3",
+            "status": null
+          },
+          {
+            "order": 4,
+            "kut_id": "70a80786-9635-4c1a-b35c-b8b8791c1e43",
+            "title": "SANDMAN'S COMIN'  — mK 2.4",
+            "start_sec": 41,
+            "end_sec": 47,
+            "duration_sec": 6,
+            "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk2-mk4-41s-47s-c1fc6a8500.mp3",
+            "status": null
+          },
+          {
+            "order": 5,
+            "kut_id": "e683322a-ae4c-49ad-ad6b-06049621c4f4",
+            "title": "SANDMAN'S COMIN'  — KK 3",
+            "start_sec": 47,
+            "end_sec": 71,
+            "duration_sec": 24,
+            "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' .mp3",
+            "status": null
+          }
+        ]
+      }
+    ]
+  },
+  "alternate_source_groups": [
+    {
+      "source": "sandman's comin' 90bpm wav",
+      "row_count": 33,
+      "first_start": 0,
+      "last_end": 166,
+      "total_section_duration_sec": 328,
+      "combo_candidates_13_sec_plus": 43,
+      "picked_combo_count": 3,
+      "picked_combos": [
+        {
+          "combo_slot": 1,
+          "candidate_role": "early_opening_combo",
+          "total_duration_sec": 45,
+          "start_sec": 0,
+          "end_sec": 47,
+          "section_count": 4,
+          "combo_title": "SANDMAN'S COMIN' - 90bpm — mK 1.1 + SANDMAN'S COMIN' - 90bpm — mK 1.2 + SANDMAN'S COMIN' - 90bpm — mK 1.3 + SANDMAN'S COMIN' - 90bpm — KK 2",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "b0a32eb7-0cba-4dd4-8ddb-a73afb85a9af",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 1.1",
+              "start_sec": 0,
+              "end_sec": 7,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk1-mk1-0s-7s-93bd777a45.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "af21721d-96d0-4e2c-91f3-9ae8fddc1ea0",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 1.2",
+              "start_sec": 7,
+              "end_sec": 14,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk1-mk2-7s-14s-053622e2bc.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "756c7288-7896-487b-870d-6dbd856739a3",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 1.3",
+              "start_sec": 15,
+              "end_sec": 22,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk1-mk3-15s-22s-6531aff7ba.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "8b419320-fd49-48ac-a752-092a3720f083",
+              "title": "SANDMAN'S COMIN' - 90bpm — KK 2",
+              "start_sec": 23,
+              "end_sec": 47,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - 90bpm.wav",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 2,
+          "candidate_role": "middle_body_combo",
+          "total_duration_sec": 29,
+          "start_sec": 65,
+          "end_sec": 94,
+          "section_count": 2,
+          "combo_title": "SANDMAN'S COMIN' - 90bpm — mK 3.4 + SANDMAN'S COMIN' - 90bpm — KK 4",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "61488b12-d6cf-483b-9e65-a8ff81e92eda",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 3.4",
+              "start_sec": 65,
+              "end_sec": 71,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk3-mk4-65s-71s-f0aeeba329.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "12022864-ca9a-4cca-b478-6cf22e1bc7cc",
+              "title": "SANDMAN'S COMIN' - 90bpm — KK 4",
+              "start_sec": 71,
+              "end_sec": 94,
+              "duration_sec": 23,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - 90bpm.wav",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 3,
+          "candidate_role": "late_resolution_combo",
+          "total_duration_sec": 48,
+          "start_sec": 23,
+          "end_sec": 71,
+          "section_count": 5,
+          "combo_title": "SANDMAN'S COMIN' - 90bpm — mK 2.1 + SANDMAN'S COMIN' - 90bpm — mK 2.2 + SANDMAN'S COMIN' - 90bpm — mK 2.3 + SANDMAN'S COMIN' - 90bpm — mK 2.4 + SANDMAN'S COMIN' - 90bpm — KK 3",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "1e1e72ff-21b4-40b0-9d8d-55c8af598c6a",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 2.1",
+              "start_sec": 23,
+              "end_sec": 29,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk2-mk1-23s-29s-3a72cb3d1d.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "a8a9f2a3-9cf5-4316-b453-f2b1b7c879a2",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 2.2",
+              "start_sec": 29,
+              "end_sec": 35,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk2-mk2-29s-35s-92a7bef929.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "1ec5e786-bc51-40f6-97ac-18cf26f9553a",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 2.3",
+              "start_sec": 35,
+              "end_sec": 41,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk2-mk3-35s-41s-2ace3a37c1.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "3b2bbd48-57f0-4d53-982e-a50bbdfab1c2",
+              "title": "SANDMAN'S COMIN' - 90bpm — mK 2.4",
+              "start_sec": 41,
+              "end_sec": 47,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-90bpm-kk2-mk4-41s-47s-f2646f9e82.mp3",
+              "status": null
+            },
+            {
+              "order": 5,
+              "kut_id": "78256dba-7611-4021-95ea-906f9e32e119",
+              "title": "SANDMAN'S COMIN' - 90bpm — KK 3",
+              "start_sec": 47,
+              "end_sec": 71,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - 90bpm.wav",
+              "status": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "sandman's comin' instro mp3",
+      "row_count": 33,
+      "first_start": 0,
+      "last_end": 166,
+      "total_section_duration_sec": 328,
+      "combo_candidates_13_sec_plus": 43,
+      "picked_combo_count": 3,
+      "picked_combos": [
+        {
+          "combo_slot": 1,
+          "candidate_role": "early_opening_combo",
+          "total_duration_sec": 45,
+          "start_sec": 0,
+          "end_sec": 47,
+          "section_count": 4,
+          "combo_title": "SANDMAN'S COMIN' - INSTRO — mK 1.1 + SANDMAN'S COMIN' - INSTRO — mK 1.2 + SANDMAN'S COMIN' - INSTRO — mK 1.3 + SANDMAN'S COMIN' - INSTRO — KK 2",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "eeb1a215-3880-44c0-8803-8c1810c65f4b",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+              "start_sec": 0,
+              "end_sec": 7,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk1-mk1-0s-7s-4ab540a5cd.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "cddc0e41-3f02-43c2-a640-75e4a506f758",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+              "start_sec": 7,
+              "end_sec": 14,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk1-mk2-7s-14s-a6b61328c2.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "e355c6a7-0bd9-464f-85b4-adb147a4b58c",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+              "start_sec": 15,
+              "end_sec": 22,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk1-mk3-15s-22s-d153ed32a9.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "20a9d936-dd65-4347-b6bc-50017576c95b",
+              "title": "SANDMAN'S COMIN' - INSTRO — KK 2",
+              "start_sec": 23,
+              "end_sec": 47,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - INSTRO.mp3",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 2,
+          "candidate_role": "middle_body_combo",
+          "total_duration_sec": 29,
+          "start_sec": 65,
+          "end_sec": 94,
+          "section_count": 2,
+          "combo_title": "SANDMAN'S COMIN' - INSTRO — mK 3.4 + SANDMAN'S COMIN' - INSTRO — KK 4",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "d029bc41-5341-478f-966f-c4c569389d11",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+              "start_sec": 65,
+              "end_sec": 71,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk3-mk4-65s-71s-6140388b00.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "40555e51-69b7-4bc3-b9da-14d618211eec",
+              "title": "SANDMAN'S COMIN' - INSTRO — KK 4",
+              "start_sec": 71,
+              "end_sec": 94,
+              "duration_sec": 23,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - INSTRO.mp3",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 3,
+          "candidate_role": "late_resolution_combo",
+          "total_duration_sec": 48,
+          "start_sec": 23,
+          "end_sec": 71,
+          "section_count": 5,
+          "combo_title": "SANDMAN'S COMIN' - INSTRO — mK 2.1 + SANDMAN'S COMIN' - INSTRO — mK 2.2 + SANDMAN'S COMIN' - INSTRO — mK 2.3 + SANDMAN'S COMIN' - INSTRO — mK 2.4 + SANDMAN'S COMIN' - INSTRO — KK 3",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "5348c049-98f9-45ed-8229-53b732d76206",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 2.1",
+              "start_sec": 23,
+              "end_sec": 29,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk2-mk1-23s-29s-5bb4351529.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "8f710d32-8df6-4879-afc2-57b717c60cc5",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+              "start_sec": 29,
+              "end_sec": 35,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk2-mk2-29s-35s-e377470ec1.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "8f909504-23d0-418e-9561-31e23e1b1fff",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+              "start_sec": 35,
+              "end_sec": 41,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk2-mk3-35s-41s-cddc16b1d8.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "0450d7c4-8f12-4460-a7d2-09a1960bf819",
+              "title": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+              "start_sec": 41,
+              "end_sec": 47,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-kk2-mk4-41s-47s-6c5164e952.mp3",
+              "status": null
+            },
+            {
+              "order": 5,
+              "kut_id": "9e961f98-7140-4d78-892f-91ad17df8da4",
+              "title": "SANDMAN'S COMIN' - INSTRO — KK 3",
+              "start_sec": 47,
+              "end_sec": 71,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - INSTRO.mp3",
+              "status": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "sandman's comin' instro plus whoa's 90bpm wav",
+      "row_count": 33,
+      "first_start": 0,
+      "last_end": 166,
+      "total_section_duration_sec": 328,
+      "combo_candidates_13_sec_plus": 43,
+      "picked_combo_count": 3,
+      "picked_combos": [
+        {
+          "combo_slot": 1,
+          "candidate_role": "early_opening_combo",
+          "total_duration_sec": 45,
+          "start_sec": 0,
+          "end_sec": 47,
+          "section_count": 4,
+          "combo_title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "fceed096-00a5-4bae-8d0f-2c7f908167a7",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+              "start_sec": 0,
+              "end_sec": 7,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk1-mk1-0s-7s-a1e4da5321.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "a3169653-e6b8-499e-901d-72659c507ecb",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+              "start_sec": 7,
+              "end_sec": 14,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk1-mk2-7s-14s-c6fe4b69a9.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "92fff20f-cf9b-4c24-bc28-438600e5b12b",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+              "start_sec": 15,
+              "end_sec": 22,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk1-mk3-15s-22s-bfa83aa826.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "5bb54166-6ab5-4390-82ed-e14ebd079b30",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+              "start_sec": 23,
+              "end_sec": 47,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm.wav",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 2,
+          "candidate_role": "middle_body_combo",
+          "total_duration_sec": 29,
+          "start_sec": 65,
+          "end_sec": 94,
+          "section_count": 2,
+          "combo_title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "6c9e6d5b-ad16-45c1-a6a4-284399c25af4",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+              "start_sec": 65,
+              "end_sec": 71,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk3-mk4-65s-71s-7ff99dc6f4.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "c7edbf5a-b049-4225-8693-92f2d9d78efb",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+              "start_sec": 71,
+              "end_sec": 94,
+              "duration_sec": 23,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm.wav",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 3,
+          "candidate_role": "late_resolution_combo",
+          "total_duration_sec": 48,
+          "start_sec": 23,
+          "end_sec": 71,
+          "section_count": 5,
+          "combo_title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4 + SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "c63d9abe-0f0d-4aee-8d1d-f93a882fac2c",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+              "start_sec": 23,
+              "end_sec": 29,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk2-mk1-23s-29s-bc80d820b0.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "176b9945-e4dd-4ab9-a915-14d14f027974",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+              "start_sec": 29,
+              "end_sec": 35,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk2-mk2-29s-35s-ed3ef51a57.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "1a6b9727-f2dd-4cdc-86c0-07942f33082c",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+              "start_sec": 35,
+              "end_sec": 41,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk2-mk3-35s-41s-f841d882da.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "15b97cb4-1d88-4284-b57d-f6543c78d1ac",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+              "start_sec": 41,
+              "end_sec": 47,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-INSTRO-PLUS-WHOA-S-90bpm-kk2-mk4-41s-47s-a42db9c5bb.mp3",
+              "status": null
+            },
+            {
+              "order": 5,
+              "kut_id": "752dcd8a-40a9-4b45-9f2a-69bf782ff36a",
+              "title": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+              "start_sec": 47,
+              "end_sec": 71,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm.wav",
+              "status": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "sandman's comin' rock sports life mp3",
+      "row_count": 33,
+      "first_start": 0,
+      "last_end": 166,
+      "total_section_duration_sec": 328,
+      "combo_candidates_13_sec_plus": 43,
+      "picked_combo_count": 3,
+      "picked_combos": [
+        {
+          "combo_slot": 1,
+          "candidate_role": "early_opening_combo",
+          "total_duration_sec": 45,
+          "start_sec": 0,
+          "end_sec": 47,
+          "section_count": 4,
+          "combo_title": "Sandman's Comin' - Rock - Sports_Life — mK 1.1 + Sandman's Comin' - Rock - Sports_Life — mK 1.2 + Sandman's Comin' - Rock - Sports_Life — mK 1.3 + Sandman's Comin' - Rock - Sports_Life — KK 2",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "7bef4c85-dd9e-44c6-acb9-e3f18e59ea65",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+              "start_sec": 0,
+              "end_sec": 7,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk1-mk1-0s-7s-0d77982da7.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "92cf6e68-375a-4a5f-9e4b-8ec28bbc2c71",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+              "start_sec": 7,
+              "end_sec": 14,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk1-mk2-7s-14s-100321a250.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "8b876063-4661-47cd-b5b4-8493a3cb5cfa",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+              "start_sec": 15,
+              "end_sec": 22,
+              "duration_sec": 7,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk1-mk3-15s-22s-7b9a20b032.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "e7085765-5152-4cd6-bc66-ee9addf03b9b",
+              "title": "Sandman's Comin' - Rock - Sports_Life — KK 2",
+              "start_sec": 23,
+              "end_sec": 47,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/Sandman's Comin' - Rock - Sports_Life.mp3",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 2,
+          "candidate_role": "middle_body_combo",
+          "total_duration_sec": 29,
+          "start_sec": 65,
+          "end_sec": 94,
+          "section_count": 2,
+          "combo_title": "Sandman's Comin' - Rock - Sports_Life — mK 3.4 + Sandman's Comin' - Rock - Sports_Life — KK 4",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "d9a6a402-4cd4-4076-bc51-944388206251",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+              "start_sec": 65,
+              "end_sec": 71,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk3-mk4-65s-71s-aaac4a97f1.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "c9112bea-5e24-4d7a-97fc-b2cc8327eacf",
+              "title": "Sandman's Comin' - Rock - Sports_Life — KK 4",
+              "start_sec": 71,
+              "end_sec": 94,
+              "duration_sec": 23,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/Sandman's Comin' - Rock - Sports_Life.mp3",
+              "status": null
+            }
+          ]
+        },
+        {
+          "combo_slot": 3,
+          "candidate_role": "late_resolution_combo",
+          "total_duration_sec": 48,
+          "start_sec": 23,
+          "end_sec": 71,
+          "section_count": 5,
+          "combo_title": "Sandman's Comin' - Rock - Sports_Life — mK 2.1 + Sandman's Comin' - Rock - Sports_Life — mK 2.2 + Sandman's Comin' - Rock - Sports_Life — mK 2.3 + Sandman's Comin' - Rock - Sports_Life — mK 2.4 + Sandman's Comin' - Rock - Sports_Life — KK 3",
+          "parts": [
+            {
+              "order": 1,
+              "kut_id": "47554593-a60e-44ca-b6c6-423f909472a8",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 2.1",
+              "start_sec": 23,
+              "end_sec": 29,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk2-mk1-23s-29s-c12a9dc6a7.mp3",
+              "status": null
+            },
+            {
+              "order": 2,
+              "kut_id": "4ae5aeea-c73f-4f2e-a5de-ae5b92d776d9",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+              "start_sec": 29,
+              "end_sec": 35,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk2-mk2-29s-35s-763b370ea3.mp3",
+              "status": null
+            },
+            {
+              "order": 3,
+              "kut_id": "12ec963d-fe41-48f2-b72c-9588edf1ae71",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+              "start_sec": 35,
+              "end_sec": 41,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk2-mk3-35s-41s-d34cbf1ae0.mp3",
+              "status": null
+            },
+            {
+              "order": 4,
+              "kut_id": "6da0dbf8-48b7-40af-b1c8-418f4e12f29f",
+              "title": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+              "start_sec": 41,
+              "end_sec": 47,
+              "duration_sec": 6,
+              "delivered_url_or_path": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/Sandman-s-Comin-Rock-Sports-Life-kk2-mk4-41s-47s-a2fd803471.mp3",
+              "status": null
+            },
+            {
+              "order": 5,
+              "kut_id": "56640772-66ee-4634-9b75-82661aacf409",
+              "title": "Sandman's Comin' - Rock - Sports_Life — KK 3",
+              "start_sec": 47,
+              "end_sec": 71,
+              "duration_sec": 24,
+              "delivered_url_or_path": "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/Sandman's Comin' - Rock - Sports_Life.mp3",
+              "status": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
