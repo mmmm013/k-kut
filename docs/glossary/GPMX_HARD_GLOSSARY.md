@@ -6,9 +6,9 @@
 
 PIX is the canonical source master audio object.
 
-PIX lives in the source/SSOT layer, normally Supabase `tracks`.
+PIX lives in the source / SSOT layer, normally Supabase `tracks`.
 
-PIX is source, not product packaging.
+PIX is the full source master, not the customer-facing product.
 
 ### PIX-PCK
 
@@ -19,26 +19,6 @@ PIX-PCK is backend/admin governance packaging around one PIX.
 PIX-PCK is not customer-facing.
 
 PIX-PCK may contain source metadata, rights metadata, section maps, backend IIs, KK relationships, KK-Combo relationships, CC records, approval states, and audit lineage.
-
-### KK / K-KUT
-
-KK is a governed K-KUT product object.
-
-A KK is an approved section or complete governed K-KUT derived from a PIX or native original KUT source.
-
-A KK may be customer-facing when approved.
-
-### KK-Combo
-
-KK-Combo is a governed product object made from contiguous approved KKs from the same PIX.
-
-Rules:
-- same PIX only
-- contiguous only
-- original source order only
-- no skipped sections inside selected span
-- no user rearrangement
-- one governed selection per purchase
 
 ### CC / Copy-Capture
 
@@ -52,34 +32,101 @@ CC is NOT frontend-visible by default.
 
 CC is NOT copywriting.
 
-CC is NOT an invented description.
+CC is NOT invented description text.
 
 CC is NOT a caption written by AI.
 
-CC is NOT a KUT, KK, mK, HUG, or TUG.
+CC is NOT itself a KUT, KK, mK, HUG, or TUG.
 
-CC is a backend exact-excerpt capture record from an actual SSOT audio URL.
+CC is the precision capture mechanism.
 
-A valid CC must include or link to:
-- exact SSOT audio URL
+CC grabs exact excerpts from the exact PIX SSOT audio URL.
+
+CC is like a photographing tool: it captures, carries, and anchors exact source truth.
+
+A CC must carry or link to:
+
+- exact PIX SSOT audio URL
 - source bucket
 - source object path
 - exact start locator
 - exact end locator
+- full source audio linkage
 - source metadata
 - backend II linkage
 - audit lineage
 - rights/reporting support fields where applicable
 
-CC may support products, auditing, matching, QA, rights, and internal review, but CC itself is not a product.
+CC may include deliberate same-source pre/post padding as part of the exact capture locator.
 
-### mK
+Padding cannot introduce external audio.
+Padding cannot invent text.
+Padding cannot detach from SSOT.
+Padding cannot break source lineage.
+
+### II / Inventory Item
+
+II means Inventory Item.
+
+IIs are produced, anchored, or governed through CC.
+
+An II is the backend identity for a captured object or governed excerpt.
+
+Every II must remain tied to its CC basis and PIX SSOT lineage.
+
+### kut / kut types
+
+“kut” in the broad/internal sense refers to governed captured excerpt forms.
+
+Possible kut types include:
+
+- SWSP
+- K-KUT / KK
+- K-UPID
+- mini-KUT / mK
+- LineFeel
+- other governed excerpt forms
+
+CC is the mechanism that captures and carries source truth for these IIs.
+
+### KK / K-KUT
+
+KK is a governed K-KUT product object.
+
+A KK is an approved K-KUT / section / excerpt object derived from a PIX through governed capture and review.
+
+A KK may be customer-facing when approved.
+
+A KK must remain tied to its PIX, CC basis, II identity, source metadata, and approval state.
+
+### KK-Combo
+
+KK-Combo is a governed product object made from contiguous approved KKs from the same PIX.
+
+Rules:
+
+- same PIX only
+- contiguous only
+- original source order only
+- no skipped sections inside selected span
+- no user rearrangement
+- one governed selection per purchase
+
+### mK / mini-KUT
 
 mK means mini-KUT.
 
-mK is separate from the PIX/KK/KK-Combo product lane unless explicitly invoked.
+mK is a governed kut type, but it is separate from the KK / KK-Combo lane unless explicitly invoked.
 
-mKs are not allowed in KK-Combo construction.
+mKs are not allowed inside KK-Combo construction unless a separate doctrine explicitly permits a different lane.
+
+### LineFeel
+
+LineFeel is a governed captured feel/line object.
+
+A LineFeel is not automatically a KK.
+
+A LineFeel must still be tied to source lineage through CC/II if it is source-derived.
 
 ### BOT Dialog / MC-BOT Assets
 
@@ -96,6 +143,7 @@ They are not CCs unless a specific backend exact-source capture record is intent
 Frontend obeys approved script only.
 
 Frontend must not expose:
+
 - PIX-PCK internals
 - raw IIs
 - backend CC machinery
@@ -107,11 +155,13 @@ Frontend must not expose:
 ## Product Rule
 
 Customers may receive or purchase:
+
 - one KK
 - or one approved KK-Combo
 - or a governed delivery experience such as HUG/TUG
 
 Customers may not:
+
 - rearrange song sections
 - build custom edits
 - stitch non-contiguous KKs
