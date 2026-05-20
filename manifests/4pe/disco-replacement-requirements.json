@@ -1,0 +1,33 @@
+{
+  "purpose": "Define 4PE requirements needed to replace DISCO for GPMx operations.",
+  "disco_role_now": "paid reference/catalog/share/playback infrastructure",
+  "four_pe_role_target": "owned governed media architecture and replacement infrastructure",
+  "must_match_disco": [
+    "audio_upload",
+    "audio_playback",
+    "share_links",
+    "embed_or_share_pages",
+    "download_permissions",
+    "playlist_or_package_grouping",
+    "artwork",
+    "lyrics_metadata_notes",
+    "private_public_access_states",
+    "catalog_management"
+  ],
+  "must_exceed_disco": [
+    "pix_pck_backend_package",
+    "cc_copy_capture_mechanism",
+    "ii_production_anchoring",
+    "kk_governance",
+    "kk_combo_contiguous_governance",
+    "one_governed_selection_per_purchase",
+    "no_user_rearrangement",
+    "hug_tug_delivery",
+    "mc_bot_guided_selection",
+    "admin_promotion_gates",
+    "rights_lineage_audit",
+    "ascap_aligned_reporting_support"
+  ],
+  "frontend_rule": "Frontend obeys approved script only and must not expose PIX-PCK, CC machinery, raw IIs, rights/audit metadata, or unapproved candidates.",
+  "backend_chain": "PIX -> PIX-PCK -> CC -> II -> governed kut/product state"
+}
