@@ -1,0 +1,50 @@
+{
+  "created_at": "2026-05-20",
+  "system": "4PE-BIZ-MSC",
+  "purpose": "Business mission control for K-KUT / 4PE / GPMx sales readiness and operations.",
+  "current_answer_to_can_we_sell": "yes_controlled_beta_manual_fulfillment",
+  "primary_offer": {
+    "slug": "apology",
+    "name": "I'm Sorry KUT HUG",
+    "price_usd_beta": 9,
+    "status": "strongest_immediate_sales_candidate",
+    "fulfillment": "manual_private_playable_link_until_checkout_preservation_is_proven"
+  },
+  "secondary_offer": {
+    "slug": "wedding",
+    "name": "Forever & A Day Wedding Track Pack",
+    "price_usd_initial": 49,
+    "status": "reviewed_package_lane",
+    "fulfillment": "manual_reviewed_package_delivery"
+  },
+  "near_live_offers": [
+    {
+      "slug": "birthday",
+      "name": "Best Birthday KUT HUG",
+      "status": "audio_and_route_proven_needs_checkout_preservation"
+    },
+    {
+      "slug": "anniversary",
+      "name": "Awesome Anniversary KUT HUG",
+      "status": "audio_and_route_proven_needs_checkout_preservation"
+    }
+  ],
+  "hard_rules": {
+    "cc_is_product": false,
+    "pix_pck_frontend_visible": false,
+    "users_can_rearrange_sections": false,
+    "downloads_default": false,
+    "manual_beta_allowed": true
+  },
+  "critical_blockers": [
+    "Proofpoint/GoDaddy Advanced Email Security dashboard access",
+    "Quarantine/message log review for gputnam@gputnammusic.com and gputnam@2gdp.com",
+    "Checkout preservation proof for selected KUT"
+  ],
+  "do_not_do_while_exhausted": [
+    "change MX",
+    "delete keychain",
+    "edit MFA/security defaults",
+    "touch unrelated dirty repo files"
+  ]
+}
