@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-05-20T05:05:44.701Z",
+  "pix_title": "You Stop Talking",
+  "selected_pix_filename": "YOU STOP TALKING - 1988.wav",
+  "selected_pix_bucket": "tracks",
+  "selected_pix_ssot_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/YOU%20STOP%20TALKING%20-%201988.wav",
+  "selected_pix_size": 57154090,
+  "alternate_reference_files": [
+    "You Stop Talking - East Houston 1988 (1).mp3",
+    "You Stop Talking - East Houston 1988.mp3"
+  ],
+  "source_role": "PIX_SSOT",
+  "disco_reference": {
+    "short_share_url": "https://s.disco.ac/ellhzvoycaau",
+    "embed_playlist_id": "23705238",
+    "embed_url": "https://musicmaykers.disco.ac/e/p/23705238?download=true&s=lkb6q_pByz00TUB39wNs_IVvWJg%3AJ8bq8By4&artwork=true&color=%234E98FF&theme=white"
+  },
+  "doctrine": {
+    "disco_is_reference_not_ssot": true,
+    "supabase_tracks_is_current_pix_ssot": true,
+    "cc_is_capture_mechanism_not_product": true,
+    "cc_produces_or_anchors_iis": true,
+    "pix_pck_required": true,
+    "frontend_obeys_script_only": true
+  },
+  "status": "pix_ssot_selected_needs_pix_pck_build"
+}
