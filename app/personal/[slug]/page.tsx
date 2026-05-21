@@ -413,13 +413,15 @@ async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slu
   return { rows: sortAndPickRows(rows, slug, 4, intent, sourcePix), error };
 }
 
-export default async function Page({ params, searchParams }: { params: { slug: string }; searchParams?: { intent?: string; sourcePix?: string } }) {
-  const slug = params?.slug ?? "personal";
+export default async function Page({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams?: Promise<{ intent?: string; sourcePix?: string }> }) {
+  const resolvedParams = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const slug = resolvedParams?.slug ?? "personal";
   const supabase = createAudioCatalogClient() ?? createClient();
   const copy = copyForSlug(slug);
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
-  const selectedIntent = intents.find((item) => item.id === searchParams?.intent) ?? null;
-  const sourcePix = searchParams?.sourcePix ?? null;
+  const selectedIntent = intents.find((item) => item.id === resolvedSearchParams?.intent) ?? null;
+  const sourcePix = resolvedSearchParams?.sourcePix ?? null;
   const launchRowsRaw = await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
   const launchRows = Array.isArray(launchRowsRaw) ? launchRowsRaw : [];
 
