@@ -52,6 +52,14 @@ const INTENT_CHOICES: Record<string, IntentChoice[]> = {
     { id: "birthday", label: "Birthday", helper: "Celebrate them.", terms: ["birthday", "bday", "celebrat"] },
     { id: "glad-you-exist", label: "Glad you exist", helper: "Warm personal birthday.", terms: ["birthday", "love", "thank"] },
   ],
+  anniversary: [
+    { id: "still-us", label: "Still us", helper: "Romantic and steady.", terms: ["anniversary", "love", "always"] },
+    { id: "remember-why", label: "Remember why", helper: "A shared-memory HUG.", terms: ["anniversary", "memory", "forever"] },
+  ],
+  wedding: [
+    { id: "for-the-couple", label: "For the couple", helper: "A ceremonial music moment.", terms: ["wedding", "forever", "love"] },
+    { id: "first-dance", label: "First dance feeling", helper: "Romantic and lasting.", terms: ["wedding", "dance", "forever"] },
+  ],
 };
 
 type StepCopy = {
@@ -74,9 +82,9 @@ const STEP_COPY: Record<string, StepCopy> = {
     ],
   },
   birthday: {
-    title: "Send a birthday HUG",
-    prompt: "MC-BOT found verified playable K-KUT Birthday HUG options for their birthday.",
-    intro: "This is birthday music. Listen to the full birthday HUG and the short birthday HUG, then choose the one that fits their birthday moment.",
+    title: "Send a real birthday song moment",
+    prompt: "Hear the birthday audio first. Then choose the Birthday HUG that feels right.",
+    intro: "K-KUT Birthday HUGs are private music moments for making someone feel celebrated, remembered, and glad to be here.",
     options: [
       { name: "Best Birthday HUG", helper: "Birthday-specific full version. Built for the main birthday send." },
       { name: "Short Birthday HUG", helper: "Birthday-specific short version. Built for a quick birthday send." },
@@ -93,6 +101,24 @@ const STEP_COPY: Record<string, StepCopy> = {
       { name: "Missing-you Apology HUG", helper: "Apology-specific: tender, honest, and close." },
       { name: "Open-hearted Repair HUG", helper: "Repair-specific: direct, human, and hopeful." },
       { name: "Gentle Reconnection HUG", helper: "Reconnection-specific: calm, patient, and safe." },
+    ],
+  },
+  anniversary: {
+    title: "Send a real anniversary song moment",
+    prompt: "Hear the anniversary audio first. Then choose the HUG that carries the feeling.",
+    intro: "K-KUT Anniversary HUGs are private music moments for remembering why it still matters.",
+    options: [
+      { name: "Awesome Anniversary HUG", helper: "Anniversary-specific: warm, direct, and easy to send." },
+      { name: "Still Us HUG", helper: "Anniversary-specific: romantic, steady, and personal." },
+    ],
+  },
+  wedding: {
+    title: "Send a real wedding song moment",
+    prompt: "Hear the wedding audio first. Then choose the HUG or wedding track moment that fits the couple.",
+    intro: "K-KUT Wedding HUGs are private music moments for ceremonies, first dances, couples, families, and wedding-day memories.",
+    options: [
+      { name: "Forever & A Day Wedding HUG", helper: "Wedding-specific: romantic, lasting, and ceremonial." },
+      { name: "Wedding Track Pack HUG", helper: "Built for couple, family, ceremony, and first-dance moments." },
     ],
   },
   personal: {
@@ -112,7 +138,70 @@ const PURPOSE_TERMS: Record<string, string[]> = {
   "thank-you": ["thank", "thanks", "grateful", "gratitude", "appreciat"],
   birthday: ["birthday", "bday", "born", "celebrat"],
   apology: ["sorry", "apolog", "forgive", "miss", "repair", "reconnect", "regret"],
+  anniversary: ["anniversary", "love", "always", "forever"],
+  wedding: ["wedding", "forever", "dance", "ceremony", "love"],
   personal: ["love", "heart", "comfort", "care", "hope", "hold on", "angel", "believe", "always", "support"],
+};
+
+const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
+  birthday: [
+    {
+      kut_id: "source-backed-best-birthday-short",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Best%20Birthday%20(1).mp3",
+      storage_object_name: "Best Birthday (1).mp3",
+      track_id: "Best Birthday (1).mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "Best Birthday HUG",
+        purpose: "Birthday HUG",
+        source_status: "PIX / source-backed sales candidate",
+        release_note: "Source-backed Birthday HUG while governed Birthday KUT is materialized.",
+      },
+    },
+    {
+      kut_id: "source-backed-best-birthday-long",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Best%20Birthday%20-%20Long.mp3",
+      storage_object_name: "Best Birthday - Long.mp3",
+      track_id: "Best Birthday - Long.mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "Best Birthday Long HUG",
+        purpose: "Birthday HUG",
+        source_status: "PIX / source-backed sales candidate",
+        release_note: "Source-backed Birthday HUG while governed Birthday KUT is materialized.",
+      },
+    },
+  ],
+  anniversary: [
+    {
+      kut_id: "source-backed-awesome-anniversary",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Awesome%20Anniversary.mp3",
+      storage_object_name: "Awesome Anniversary.mp3",
+      track_id: "Awesome Anniversary.mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "Awesome Anniversary HUG",
+        purpose: "Anniversary HUG",
+        source_status: "PIX / source-backed sales candidate",
+        release_note: "Source-backed Anniversary HUG while governed Anniversary KUT is materialized.",
+      },
+    },
+  ],
+  wedding: [
+    {
+      kut_id: "source-backed-forever-and-a-day",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Forever%20&%20A%20Day.mp3",
+      storage_object_name: "Forever & A Day.mp3",
+      track_id: "Forever & A Day.mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "Forever & A Day Wedding HUG",
+        purpose: "Wedding HUG",
+        source_status: "PIX / source-backed sales candidate",
+        release_note: "Source-backed Wedding HUG while governed Wedding KUT is materialized. INSTRO path is reserved separately.",
+      },
+    },
+  ],
 };
 
 function copyForSlug(slug: string) {
@@ -213,7 +302,8 @@ function displayTitle(row: KKRow, fallback: string) {
 function displayMetaLine(row: KKRow, slug: string) {
   const purpose = pickFirstText(row.meta, ["purpose", "occasion", "emotion", "mood", "use_case", "category"]);
   const section = pickFirstText(row.meta, ["section", "section_label", "structure_tag", "part", "segment", "lyric_hook"]);
-  const pieces = [purpose || copyForSlug(slug).title.replace(/^Send a /i, ""), section].filter(Boolean);
+  const sourceStatus = pickFirstText(row.meta, ["source_status"]);
+  const pieces = [purpose || copyForSlug(slug).title.replace(/^Send a /i, ""), section, sourceStatus].filter(Boolean);
   return pieces.join(" • ");
 }
 
@@ -291,7 +381,7 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
     }
   }
 
-  return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? null : null }));
+  return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? row.meta ?? null : row.meta ?? null }));
 }
 
 async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
@@ -339,7 +429,9 @@ export default async function Page({ params, searchParams }: { params: { slug: s
       : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
 
   const immutableRows = Array.isArray(immutableResult?.rows) ? immutableResult.rows : [];
-  const rows = launchRows.length > 0 ? launchRows : immutableRows;
+  const sourceBackedRows = SOURCE_BACKED_FALLBACKS[slug] ?? [];
+  const rows = launchRows.length > 0 ? launchRows : immutableRows.length > 0 ? immutableRows : sourceBackedRows;
+  const isSourceBackedFallback = launchRows.length === 0 && immutableRows.length === 0 && sourceBackedRows.length > 0;
   const error = immutableResult?.error ?? null;
 
   return (
@@ -350,6 +442,12 @@ export default async function Page({ params, searchParams }: { params: { slug: s
           <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">{copy.title}</h1>
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">{copy.prompt}</p>
           <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
+          {isSourceBackedFallback && (
+            <div className="mt-5 rounded-2xl border border-[#FFD36A]/30 bg-[#D4A017]/10 p-5">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#FFD36A]">Hear it first</p>
+              <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/85">This path is using real source-backed HUG audio while the governed KUT record is being materialized behind the scenes.</p>
+            </div>
+          )}
 
           <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
             <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">What are you trying to say?</p>
@@ -371,11 +469,12 @@ export default async function Page({ params, searchParams }: { params: { slug: s
             </div>
           </div>
           {error && <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">K-KUT list failed: {error.message}</div>}
-          {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No verified playable vocal K-KUT audio is available for this path yet.</div>}
+          {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No verified playable K-KUT or source-backed HUG audio is available for this path yet.</div>}
           <div className="mt-8 flex flex-col gap-4">
             {rows.map((kk, index) => {
               const option = copy.options[index] ?? { name: `K-KUT HUG option ${index + 1}`, helper: "Listen, then choose if it fits." };
               const kkId = kk.kut_id ?? "";
+              const isSourceBacked = kkId.startsWith("source-backed-");
               const audioSrc = toAudioSrc(kk.delivered_url_or_path);
               const title = displayTitle(kk, option.name);
               const metaLine = displayMetaLine(kk, slug);
@@ -389,7 +488,7 @@ export default async function Page({ params, searchParams }: { params: { slug: s
                       {metaLine && <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#C8A882]">{metaLine}</p>}
                     </div>
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">Full K-KUT audio</p>
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">{isSourceBacked ? "Real HUG audio" : "Full K-KUT audio"}</p>
                       {audioSrc ? (
                         <>
                           {audioSrc.includes("/mk-products/") ? (
@@ -411,7 +510,13 @@ export default async function Page({ params, searchParams }: { params: { slug: s
                       )}
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      {kkId && <Link href={`/k/${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>}
+                      {kkId && (
+                        isSourceBacked ? (
+                          <Link href={`/checkout?product=${encodeURIComponent(slug)}&source=${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this {slug === "birthday" ? "Birthday" : slug === "anniversary" ? "Anniversary" : slug === "wedding" ? "Wedding" : "K-KUT"} HUG</Link>
+                        ) : (
+                          <Link href={`/k/${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>
+                        )
+                      )}
                       <Link
                         href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(selectedIntent?.id ?? "")}&sourcePix=${encodeURIComponent(pixKey(kk))}`}
                         className="rounded-full border border-[#D4A017]/30 px-4 py-2 text-sm font-black text-[#F5E6C8] hover:bg-[#D4A017]/10"
