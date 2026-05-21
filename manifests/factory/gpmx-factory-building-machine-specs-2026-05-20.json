@@ -1,0 +1,66 @@
+{
+  "created_at": "2026-05-20",
+  "title": "GPMx Factory, Building, and HUG Chamber Manufacturing Specs",
+  "source_files": [
+    "Prospective Mfg Plan.mht",
+    "3-Factory Manufacturing Proposal..mht",
+    "Gpm Hug Three Shop Manufacturing Proposal.mht"
+  ],
+  "raw_extracts": [
+    "docs/factory/raw/Prospective_Mfg_Plan.mht.txt",
+    "docs/factory/raw/3-Factory_Manufacturing_Proposal..mht.txt",
+    "docs/factory/raw/Gpm_Hug_Three_Shop_Manufacturing_Proposal.mht.txt"
+  ],
+  "manufacturing_model": {
+    "type": "clean light assembly",
+    "not_heavy_manufacturing": true,
+    "shops": [
+      {
+        "name": "HUG Charm Shop",
+        "priority": 1,
+        "primary_product": "HUG Charm + HUG Card",
+        "why_first": "lowest cost, fastest assembly, easiest shipping, simplest packaging, repeat seasonal drops"
+      },
+      {
+        "name": "HUG Locket Shop",
+        "priority": 2,
+        "primary_product": "HUG Locket",
+        "why": "flagship romance, wedding, memorial, and premium keepsake product"
+      },
+      {
+        "name": "HUG Bracelet Shop",
+        "priority": 3,
+        "primary_product": "HUG Bracelet Starter",
+        "why": "repeat-purchase modular product that can carry multiple HUG moments over time"
+      }
+    ]
+  },
+  "facility_targets": {
+    "pilot_shop_sq_ft": "1000-2500 per shop",
+    "growth_shop_sq_ft": "5000-10000 per shop",
+    "combined_minimum_sq_ft": "3000-5000",
+    "combined_target_sq_ft": "5000-15000",
+    "combined_ideal_sq_ft": "8000-12000",
+    "combined_growth_sq_ft": "15000-25000+"
+  },
+  "pilot_staff": "2-6 workers per shop",
+  "growth_staff": "10-25 workers per shop",
+  "equipment_path": [
+    "laser engraver / cutter",
+    "CNC router / desktop CNC",
+    "3D printer / resin printer",
+    "UV printer / direct-to-object printer",
+    "audio / electronics assembly station",
+    "heat press / packaging / label-finishing station",
+    "QA / imaging / catalog capture station"
+  ],
+  "core_doctrine": "The shell may vary. The chamber system is the invention.",
+  "public_private_rules": {
+    "frontend_exposes_pix_pck": false,
+    "frontend_exposes_raw_iis": false,
+    "frontend_exposes_cc_machinery": false,
+    "users_can_rearrange_sections": false,
+    "cc_is_product": false
+  },
+  "first_move": "small, clean, local proof shop for HUG Charm + HUG Card"
+}
