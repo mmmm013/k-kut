@@ -54,3 +54,4 @@ recovery-review/
 
 # Local generated images
 *.png
+.env*.local
