@@ -1,66 +1,107 @@
 {
-  "status": "draft_review_required",
+  "status": "draft_v2_finishing_standard_review_required",
   "source_pix": "Forever & A Day.mp3",
   "source_local_path": "incoming/wedding-forever-and-a-day/Forever & A Day.mp3",
-  "duration_sec": 324.30,
+  "duration_sec": 324.3,
   "product_rule": "Wedding Song Promo uses Forever & A Day only. Wedding Pack may offer multiple approved KUT choices cut from this one source.",
-  "warning": "These timings are first-pass draft cuts inferred from embedded lyrics and song duration. Human listening/review required before launch/checkout.",
+  "finishing_standard": "docs/process/GPMX_KUT_FINISHING_STANDARD_2026-05-21.md",
+  "warning": "These are draft v2 phrase-complete candidate cuts. They must pass human listening review before upload, launch seeding, checkout, or fulfillment.",
+  "v1_review": {
+    "status": "rejected",
+    "reason": "dry mechanical cuts did not fulfill sound and/or left out resolving end lines",
+    "control_action": "do not upload or seed v1 cuts"
+  },
+  "processing_rule": {
+    "front_padding_sec": 2.5,
+    "back_padding_sec": 5.0,
+    "fade_in_sec": 0.3,
+    "fade_out_sec": 2.5,
+    "twinkle_mode": "page_twinkle_only",
+    "audio_twinkle_status": "not_approved",
+    "rule": "Preserve complete musical/lyric thought first. Padding/fade polish second. Page Twinkle belongs in delivery UI until an approved audio Twinkle asset exists."
+  },
+  "review_checklist": [
+    "first sound is clean",
+    "first lyric is not clipped",
+    "section starts musically",
+    "final line is complete",
+    "hook/payoff lands",
+    "ending has enough musical tail",
+    "fade feels natural if used",
+    "no unrelated section leaks in",
+    "title matches what the user hears",
+    "option feels complete enough to send"
+  ],
   "kuts": [
     {
-      "id": "forever-and-a-day-intro",
-      "title": "Intro",
+      "id": "forever-and-a-day-opening-vow-moment",
+      "internal_section": "intro_plus_opening_verse",
+      "public_title": "Opening Vow Moment",
+      "buyer_intent": "A gentle opening wedding moment that introduces the promise.",
       "start_sec": 0,
-      "end_sec": 14,
-      "status": "draft_review_required"
+      "end_sec": 72,
+      "status": "phrase_complete_review_required",
+      "review_note": "Must include opening forever motif and enough of the first verse to feel like an intentional sendable moment."
     },
     {
-      "id": "forever-and-a-day-v1",
-      "title": "Verse 1",
-      "start_sec": 14,
-      "end_sec": 58,
-      "status": "draft_review_required"
+      "id": "forever-and-a-day-first-forever-chorus",
+      "internal_section": "first_chorus_complete",
+      "public_title": "First Forever Chorus",
+      "buyer_intent": "A direct romantic chorus option centered on the title promise.",
+      "start_sec": 52,
+      "end_sec": 118,
+      "status": "phrase_complete_review_required",
+      "review_note": "Must include the full chorus and resolving forever-and-a-day payoff."
     },
     {
-      "id": "forever-and-a-day-ch1",
-      "title": "Chorus 1",
-      "start_sec": 58,
-      "end_sec": 95,
-      "status": "draft_review_required"
+      "id": "forever-and-a-day-verse-one-chorus",
+      "internal_section": "verse_1_plus_chorus_1_complete",
+      "public_title": "First Story + Forever Chorus",
+      "buyer_intent": "A fuller short-form option with setup plus the first chorus payoff.",
+      "start_sec": 12,
+      "end_sec": 118,
+      "status": "phrase_complete_review_required",
+      "review_note": "Must not stop before the chorus lands emotionally."
     },
     {
-      "id": "forever-and-a-day-v1-ch1",
-      "title": "Verse 1 + Chorus 1",
-      "start_sec": 14,
-      "end_sec": 95,
-      "status": "draft_review_required"
+      "id": "forever-and-a-day-second-story-moment",
+      "internal_section": "verse_2_plus_resolution",
+      "public_title": "Second Story Moment",
+      "buyer_intent": "A reflective wedding option about history, memory, and where love is going.",
+      "start_sec": 102,
+      "end_sec": 188,
+      "status": "phrase_complete_review_required",
+      "review_note": "Must include second verse and enough following resolution to avoid sounding unfinished."
     },
     {
-      "id": "forever-and-a-day-v2",
-      "title": "Verse 2",
-      "start_sec": 105,
-      "end_sec": 150,
-      "status": "draft_review_required"
+      "id": "forever-and-a-day-through-it-all",
+      "internal_section": "bridge_plus_final_chorus",
+      "public_title": "Through It All",
+      "buyer_intent": "A committed-love option built around staying together through stumbles and falls.",
+      "start_sec": 182,
+      "end_sec": 288,
+      "status": "phrase_complete_review_required",
+      "review_note": "Must include the bridge line and full final chorus payoff."
     },
     {
-      "id": "forever-and-a-day-bridge-to-chorus",
-      "title": "Bridge to Chorus",
-      "start_sec": 180,
-      "end_sec": 238,
-      "status": "draft_review_required"
+      "id": "forever-and-a-day-final-forever-chorus",
+      "internal_section": "final_chorus_complete",
+      "public_title": "Final Forever Chorus",
+      "buyer_intent": "A strong closing hook for a wedding send.",
+      "start_sec": 206,
+      "end_sec": 292,
+      "status": "phrase_complete_review_required",
+      "review_note": "Must carry through final forever-and-a-day line, not fade before the title phrase resolves."
     },
     {
-      "id": "forever-and-a-day-final-chorus",
-      "title": "Final Chorus",
-      "start_sec": 210,
-      "end_sec": 265,
-      "status": "draft_review_required"
-    },
-    {
-      "id": "forever-and-a-day-final-chorus-outro",
-      "title": "Final Chorus + Outro",
-      "start_sec": 210,
+      "id": "forever-and-a-day-closing-moment",
+      "internal_section": "final_chorus_plus_outro_complete",
+      "public_title": "Forever & A Day Closing Moment",
+      "buyer_intent": "The fullest closing wedding KUT candidate, carrying through the ending.",
+      "start_sec": 206,
       "end_sec": 324.3,
-      "status": "draft_review_required"
+      "status": "phrase_complete_review_required",
+      "review_note": "Must keep enough tail to feel complete and premium."
     }
   ]
 }
