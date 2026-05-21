@@ -1,0 +1,66 @@
+{
+  "status": "draft_review_required",
+  "source_pix": "Forever & A Day.mp3",
+  "source_local_path": "incoming/wedding-forever-and-a-day/Forever & A Day.mp3",
+  "duration_sec": 324.30,
+  "product_rule": "Wedding Song Promo uses Forever & A Day only. Wedding Pack may offer multiple approved KUT choices cut from this one source.",
+  "warning": "These timings are first-pass draft cuts inferred from embedded lyrics and song duration. Human listening/review required before launch/checkout.",
+  "kuts": [
+    {
+      "id": "forever-and-a-day-intro",
+      "title": "Intro",
+      "start_sec": 0,
+      "end_sec": 14,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-v1",
+      "title": "Verse 1",
+      "start_sec": 14,
+      "end_sec": 58,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-ch1",
+      "title": "Chorus 1",
+      "start_sec": 58,
+      "end_sec": 95,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-v1-ch1",
+      "title": "Verse 1 + Chorus 1",
+      "start_sec": 14,
+      "end_sec": 95,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-v2",
+      "title": "Verse 2",
+      "start_sec": 105,
+      "end_sec": 150,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-bridge-to-chorus",
+      "title": "Bridge to Chorus",
+      "start_sec": 180,
+      "end_sec": 238,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-final-chorus",
+      "title": "Final Chorus",
+      "start_sec": 210,
+      "end_sec": 265,
+      "status": "draft_review_required"
+    },
+    {
+      "id": "forever-and-a-day-final-chorus-outro",
+      "title": "Final Chorus + Outro",
+      "start_sec": 210,
+      "end_sec": 324.3,
+      "status": "draft_review_required"
+    }
+  ]
+}
