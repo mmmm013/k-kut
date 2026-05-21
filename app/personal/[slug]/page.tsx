@@ -114,11 +114,11 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   wedding: {
     title: "Send a real wedding song moment",
-    prompt: "Hear the wedding audio first. Then choose the HUG or wedding track moment that fits the couple.",
-    intro: "K-KUT Wedding HUGs are private music moments for ceremonies, first dances, couples, families, and wedding-day memories.",
+    prompt: "Hear Forever & A Day first. It is the only current Wedding Song Promo.",
+    intro: "The current K-KUT Wedding Song Promo is Forever & A Day only. Other wedding-labeled songs stay out until specifically approved.",
     options: [
       { name: "Forever & A Day Wedding HUG", helper: "Wedding-specific: romantic, lasting, and ceremonial." },
-      { name: "Wedding Track Pack HUG", helper: "Built for couple, family, ceremony, and first-dance moments." },
+      
     ],
   },
   personal: {
@@ -422,18 +422,31 @@ export default async function Page({ params, searchParams }: { params: Promise<{
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
   const selectedIntent = intents.find((item) => item.id === resolvedSearchParams?.intent) ?? null;
   const sourcePix = resolvedSearchParams?.sourcePix ?? null;
-  const launchRowsRaw = await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
+  const sourceBackedRows = SOURCE_BACKED_FALLBACKS[slug] ?? [];
+
+  // Hard gate: current Wedding Promo is ONLY Forever & A Day.
+  // Do not let broad wedding-tagged launch/QC rows display other songs here.
+  const isWeddingOnlyPromo = slug === "wedding";
+
+  const launchRowsRaw = isWeddingOnlyPromo
+    ? []
+    : await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
   const launchRows = Array.isArray(launchRowsRaw) ? launchRowsRaw : [];
 
   const immutableResult =
-    launchRows.length > 0
+    isWeddingOnlyPromo || launchRows.length > 0
       ? { rows: [], error: null }
       : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
 
   const immutableRows = Array.isArray(immutableResult?.rows) ? immutableResult.rows : [];
-  const sourceBackedRows = SOURCE_BACKED_FALLBACKS[slug] ?? [];
-  const rows = launchRows.length > 0 ? launchRows : immutableRows.length > 0 ? immutableRows : sourceBackedRows;
-  const isSourceBackedFallback = launchRows.length === 0 && immutableRows.length === 0 && sourceBackedRows.length > 0;
+  const rows = isWeddingOnlyPromo
+    ? sourceBackedRows
+    : launchRows.length > 0
+      ? launchRows
+      : immutableRows.length > 0
+        ? immutableRows
+        : sourceBackedRows;
+  const isSourceBackedFallback = sourceBackedRows.length > 0 && (isWeddingOnlyPromo || (launchRows.length === 0 && immutableRows.length === 0));
   const error = immutableResult?.error ?? null;
 
   return (
@@ -519,12 +532,14 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                           <Link href={`/k/${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>
                         )
                       )}
-                      <Link
-                        href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(selectedIntent?.id ?? "")}&sourcePix=${encodeURIComponent(pixKey(kk))}`}
-                        className="rounded-full border border-[#D4A017]/30 px-4 py-2 text-sm font-black text-[#F5E6C8] hover:bg-[#D4A017]/10"
-                      >
-                        More from this same song
-                      </Link>
+                      {!isWeddingOnlyPromo && (
+                        <Link
+                          href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(selectedIntent?.id ?? "")}&sourcePix=${encodeURIComponent(pixKey(kk))}`}
+                          className="rounded-full border border-[#D4A017]/30 px-4 py-2 text-sm font-black text-[#F5E6C8] hover:bg-[#D4A017]/10"
+                        >
+                          More from this same song
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
