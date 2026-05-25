@@ -142,13 +142,34 @@ const PURPOSE_TERMS: Record<string, string[]> = {
 };
 
 const WEDDING_PENDING_SECTIONS = [
-  { title: "Opening Vow Moment", helper: "Opening motif plus first promise; waiting for approved finishing-review audio." },
-  { title: "First Forever Chorus", helper: "Direct title-hook chorus; waiting for approved finishing-review audio." },
-  { title: "First Story + Forever Chorus", helper: "Fuller short-form setup plus payoff; waiting for approved finishing-review audio." },
-  { title: "Second Story Moment", helper: "Reflective memory/life-forward section; waiting for approved finishing-review audio." },
-  { title: "Through It All", helper: "Bridge into commitment payoff; waiting for approved finishing-review audio." },
-  { title: "Final Forever Chorus", helper: "Strong closing hook; waiting for approved finishing-review audio." },
-  { title: "Forever & A Day Closing Moment", helper: "Full closing moment through the ending; waiting for approved finishing-review audio." },
+  {
+    title: "FEATURED: V2 + Ch2 — Best KK-Kombo",
+    helper: "The priority Wedding Pack path: Verse 2 resolving into Chorus 2. Finish and approve this first.",
+  },
+  {
+    title: "NEXT FEATURED: V2-End",
+    helper: "Verse 2 + Chorus 2 + Bridge + Final Chorus + Outro. The full closing KK-Kombo path.",
+  },
+  {
+    title: "Opening Vow Moment",
+    helper: "Opening motif plus first promise; lower priority after featured combos.",
+  },
+  {
+    title: "First Forever Chorus",
+    helper: "Direct title-hook chorus; lower priority after featured combos.",
+  },
+  {
+    title: "First Story + Forever Chorus",
+    helper: "Fuller short-form setup plus payoff; lower priority after featured combos.",
+  },
+  {
+    title: "Through It All",
+    helper: "Bridge into commitment payoff; lower priority after V2-End is reviewed.",
+  },
+  {
+    title: "Final Forever Chorus",
+    helper: "Strong closing hook; lower priority after V2-End is reviewed.",
+  },
 ];
 
 const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
@@ -559,9 +580,9 @@ export default async function Page({ params, searchParams }: { params: Promise<{
 
           {isWeddingOnlyPromo && (
             <div className="mt-8 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">Wedding Pack KUTs pending finishing review</p>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">Wedding Pack KUTs — featured review order</p>
               <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-                These are the intended Forever & A Day section choices. They will become playable/sellable only after each cut passes padding, Twinkle/page presentation, phrase-completion, and listening review.
+                Focus one path at a time. First finish V2 + Ch2. Next finish V2-End. Nothing becomes playable, sellable, or checkout-ready until the exact KUT audio passes padding, Twinkle/page presentation, phrase-completion, and listening review.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {WEDDING_PENDING_SECTIONS.map((section) => (
