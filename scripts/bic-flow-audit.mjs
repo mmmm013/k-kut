@@ -118,7 +118,7 @@ function actionWordsInNonAnchorHtml(html) {
 }
 
 async function auditPage(page) {
-  const { response, text } = await request(page.path, { redirect: "manual" });
+  const { response, text } = await request(page.path, { redirect: "follow" });
   if (!response.ok) {
     fail(`${page.name} status`, `${response.status} ${response.statusText}`);
     return null;
@@ -148,7 +148,7 @@ async function auditLinkTargets(pageName, hrefs) {
 
   for (const href of localLinks) {
     if (href.startsWith("#")) continue;
-    const { response } = await request(href, { redirect: "manual", readText: false });
+    const { response } = await request(href, { redirect: "follow", readText: false });
     if (response.ok || [301, 302, 303, 307, 308].includes(response.status)) {
       pass(`${pageName} link`, `${href} -> ${response.status}`);
     } else {
