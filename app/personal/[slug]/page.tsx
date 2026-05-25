@@ -258,6 +258,21 @@ const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
       },
     },
   ],
+  apology: [
+    {
+      kut_id: "source-backed-im-sorry-rhonda",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/I'm%20Sorry-RHONDA%20VERSION.wav",
+      storage_object_name: "I'm Sorry-RHONDA VERSION.wav",
+      track_id: "I'm Sorry-RHONDA VERSION.wav",
+      audio_status: "playable",
+      meta: {
+        kut_title: "I'm Sorry — Apology HUG",
+        purpose: "Apology HUG",
+        source_status: "PIX / source-backed sales candidate",
+        release_note: "Source-backed Apology HUG while governed Apology KUT is materialized.",
+      },
+    },
+  ],
   wedding: [
     {
       kut_id: "source-backed-forever-and-a-day-reference",
@@ -305,7 +320,6 @@ function isAllowedKKutAudio(rawValue: string | null) {
   const raw = rawValue?.trim().toLowerCase();
   if (!raw) return false;
   if (raw.includes("instro") || raw.includes("instrumental") || raw.includes("mk-products") || raw.includes("/mks/") || raw.includes("mini")) return false;
-  if (raw.endsWith(".wav")) return false;
   return raw.includes("/tracks/") || raw.includes("tracks/") || raw.endsWith(".mp3") || raw.endsWith(".m4a");
 }
 

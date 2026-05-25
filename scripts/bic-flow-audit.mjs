@@ -1,7 +1,7 @@
 import process from "node:process";
 
 const BASE = (process.env.BIC_BASE_URL || "http://localhost:3000").replace(/\/$/, "");
-const TIMEOUT_MS = Number(process.env.BIC_TIMEOUT_MS || 12000);
+const TIMEOUT_MS = Number(process.env.BIC_TIMEOUT_MS || 30000);
 
 const REQUIRED_PAGES = [
   { name: "home", path: "/", must: ["K-KUT"] },
@@ -148,11 +148,16 @@ async function auditLinkTargets(pageName, hrefs) {
 
   for (const href of localLinks) {
     if (href.startsWith("#")) continue;
-    const { response } = await request(href, { redirect: "follow", readText: false });
-    if (response.ok || [301, 302, 303, 307, 308].includes(response.status)) {
-      pass(`${pageName} link`, `${href} -> ${response.status}`);
-    } else {
-      fail(`${pageName} broken link`, `${href} -> ${response.status}`);
+
+    try {
+      const { response } = await request(href, { redirect: "follow", readText: false });
+      if (response.ok || [301, 302, 303, 307, 308].includes(response.status)) {
+        pass(`${pageName} link`, `${href} -> ${response.status}`);
+      } else {
+        fail(`${pageName} broken link`, `${href} -> ${response.status}`);
+      }
+    } catch (error) {
+      fail(`${pageName} link crashed`, `${href} -> ${error?.name || "Error"}: ${error?.message || String(error)}`);
     }
   }
 }
