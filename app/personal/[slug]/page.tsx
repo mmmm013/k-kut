@@ -56,45 +56,8 @@ const INTENT_CHOICES: Record<string, IntentChoice[]> = {
     { id: "remember-why", label: "Remember why", helper: "A shared-memory HUG.", terms: ["anniversary", "memory", "forever"] },
   ],
   wedding: [
-    {
-      kut_id: "wedding-review-v2-ch2-best-kombo",
-      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/wedding/forever-and-a-day-v2-ch2-best-kombo.mp3",
-      storage_object_name: "wedding/forever-and-a-day-v2-ch2-best-kombo.mp3",
-      track_id: "Forever & A Day.mp3",
-      audio_status: "playable",
-      meta: {
-        kut_title: "FEATURED: V2 + Ch2 — Best KK-Kombo",
-        purpose: "Wedding Pack KK review audio",
-        source_status: "KK review audio",
-        release_note: "Playable review KK. Checkout locked until final listening approval.",
-      },
-    },
-    {
-      kut_id: "wedding-review-v2-end",
-      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/wedding/forever-and-a-day-v2-end.mp3",
-      storage_object_name: "wedding/forever-and-a-day-v2-end.mp3",
-      track_id: "Forever & A Day.mp3",
-      audio_status: "playable",
-      meta: {
-        kut_title: "NEXT FEATURED: V2-End",
-        purpose: "Wedding Pack KK review audio",
-        source_status: "KK review audio",
-        release_note: "Playable review KK. Checkout locked until final listening approval.",
-      },
-    },
-    {
-      kut_id: "source-backed-forever-and-a-day-reference",
-      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Forever%20&%20A%20Day.mp3",
-      storage_object_name: "Forever & A Day.mp3",
-      track_id: "Forever & A Day.mp3",
-      audio_status: "playable",
-      meta: {
-        kut_title: "Forever & A Day — Full Reference Listen",
-        purpose: "Wedding Pack source reference",
-        source_status: "PIX / source reference only",
-        release_note: "This is the full source reference. Section KUTs remain locked from checkout until finishing review approval.",
-      },
-    },
+    { id: "for-the-couple", label: "For the couple", helper: "A ceremonial music moment.", terms: ["wedding", "forever", "love"] },
+    { id: "first-dance", label: "First dance feeling", helper: "Romantic and lasting.", terms: ["wedding", "dance", "forever"] },
   ],
 };
 
@@ -150,12 +113,10 @@ const STEP_COPY: Record<string, StepCopy> = {
   },
   wedding: {
     title: "Forever & A Day Wedding Pack",
-    prompt: "Hear the full Forever & A Day reference now. Section KUT choices open only after finishing review approves the audio.",
-    intro: "Wedding is hard-gated to Forever & A Day only. No other song can appear here, and no section can be sold until its KUT audio is approved.",
+    prompt: "Hear the full Forever & A Day first. Then MC-BOT recommends the best KKs while still showing the complete governed menu.",
+    intro: "Wedding is hard-gated to Forever & A Day only. The full song stays first because users need context before choosing the exact KUT.",
     options: [
-      { name: "FEATURED: V2 + Ch2", helper: "Playable KK review audio. Checkout locked until final approval." },
-      { name: "NEXT FEATURED: V2-End", helper: "Playable KK review audio. Checkout locked until final approval." },
-      { name: "Full reference listen", helper: "Source reference only — not a checkout-ready KUT." },
+      { name: "Full song first", helper: "Hear the entire Forever & A Day before choosing a KK." },
     ],
   },
   personal: {
@@ -182,32 +143,74 @@ const PURPOSE_TERMS: Record<string, string[]> = {
 
 const WEDDING_PENDING_SECTIONS = [
   {
-    title: "FEATURED: V2 + Ch2 — Best KK-Kombo",
-    helper: "The priority Wedding Pack path: Verse 2 resolving into Chorus 2. Finish and approve this first.",
+    title: "RECOMMENDED: V2 + Ch2 — Best KK-Kombo",
+    helper: "Start here. Verse 2 resolving into Chorus 2 is the strongest first Wedding KK recommendation.",
   },
   {
-    title: "NEXT FEATURED: V2-End",
-    helper: "Verse 2 + Chorus 2 + Bridge + Final Chorus + Outro. The full closing KK-Kombo path.",
+    title: "RECOMMENDED NEXT: V2-End",
+    helper: "Verse 2 + Chorus 2 + Bridge + Final Chorus + Outro. Best fuller closing Wedding KK-Kombo.",
+  },
+
+  {
+    title: "SOLO: Intro",
+    helper: "Opening mood-setter.",
   },
   {
-    title: "Opening Vow Moment",
-    helper: "Opening motif plus first promise; lower priority after featured combos.",
+    title: "SOLO: Verse 1",
+    helper: "First story section.",
   },
   {
-    title: "First Forever Chorus",
-    helper: "Direct title-hook chorus; lower priority after featured combos.",
+    title: "SOLO: Chorus 1",
+    helper: "First title-hook chorus.",
   },
   {
-    title: "First Story + Forever Chorus",
-    helper: "Fuller short-form setup plus payoff; lower priority after featured combos.",
+    title: "SOLO: Verse 2",
+    helper: "Second story section.",
   },
   {
-    title: "Through It All",
-    helper: "Bridge into commitment payoff; lower priority after V2-End is reviewed.",
+    title: "SOLO: Chorus 2",
+    helper: "Second chorus payoff.",
   },
   {
-    title: "Final Forever Chorus",
-    helper: "Strong closing hook; lower priority after V2-End is reviewed.",
+    title: "SOLO: Bridge",
+    helper: "Through-it-all commitment turn.",
+  },
+  {
+    title: "SOLO: Final Chorus",
+    helper: "Final hook payoff.",
+  },
+  {
+    title: "SOLO: Outro",
+    helper: "Closing tail / ending moment.",
+  },
+
+  {
+    title: "KOMBO: Intro + Verse 1",
+    helper: "Contiguous opening setup.",
+  },
+  {
+    title: "KOMBO: Verse 1 + Chorus 1",
+    helper: "First story plus first hook.",
+  },
+  {
+    title: "KOMBO: Verse 2 + Chorus 2",
+    helper: "Same as recommended V2 + Ch2; listed here as the formal contiguous combo.",
+  },
+  {
+    title: "KOMBO: Verse 2 + Chorus 2 + Bridge",
+    helper: "Second story through commitment turn.",
+  },
+  {
+    title: "KOMBO: Bridge + Final Chorus",
+    helper: "Through-it-all moment into final payoff.",
+  },
+  {
+    title: "KOMBO: Final Chorus + Outro",
+    helper: "Final hook through ending.",
+  },
+  {
+    title: "KOMBO: V2-End",
+    helper: "Verse 2 through Outro. Same as recommended fuller closing combo.",
   },
 ];
 
@@ -263,10 +266,10 @@ const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
       track_id: "Forever & A Day.mp3",
       audio_status: "playable",
       meta: {
-        kut_title: "Forever & A Day — Full Reference Listen",
-        purpose: "Wedding Pack source reference",
-        source_status: "PIX / source reference only",
-        release_note: "This is the full source reference. Section KUTs remain pending until finishing review approval.",
+        kut_title: "Forever & A Day — Full Song Reference",
+        purpose: "Wedding Pack full-song reference",
+        source_status: "PIX / full source reference",
+        release_note: "Users must hear the full song before choosing a KK.",
       },
     },
   ],
@@ -515,6 +518,14 @@ export default async function Page({ params, searchParams }: { params: Promise<{
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#D4A017]">MC-BOT step 2 of 4</p>
           <h1 className="mt-4 max-w-3xl text-5xl font-black leading-[0.95] text-[#FFD36A] sm:text-6xl">{copy.title}</h1>
           <p className="mt-6 max-w-2xl text-lg font-bold leading-relaxed text-[#F5E6C8]/85">{copy.prompt}</p>
+          {isWeddingOnlyPromo && (
+            <div className="mt-5 rounded-2xl border border-[#FFD36A]/30 bg-black/20 p-5">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#FFD36A]">MC-BOT Wedding Path</p>
+              <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/80">
+                Step 1: hear the full song. Step 2: compare V2 + Ch2 and V2-End. Step 3: checkout opens only after the selected KK passes final approval.
+              </p>
+            </div>
+          )}
           <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
           {isSourceBackedFallback && (
             <div className="mt-5 rounded-2xl border border-[#FFD36A]/30 bg-[#D4A017]/10 p-5">
@@ -622,16 +633,16 @@ export default async function Page({ params, searchParams }: { params: Promise<{
 
           {isWeddingOnlyPromo && (
             <div className="mt-8 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">More Wedding KUTs — lower-priority review queue</p>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">Wedding KK Menu — recommended first</p>
               <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-                The first two featured KK-Kombos now have playable review audio above. These remaining paths stay queued until their exact KUT audio is materialized and reviewed.
+                MC-BOT recommends the first two KKs first, but the full governed menu is available below: solo sections and contiguous KK-Kombos only. No non-contiguous stitching.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {WEDDING_PENDING_SECTIONS.map((section) => (
                   <div key={section.title} className="rounded-2xl border border-[#D4A017]/25 bg-black/20 p-4">
                     <p className="text-lg font-black text-[#FFD36A]">{section.title}</p>
                     <p className="mt-1 text-sm font-bold text-[#F5E6C8]/70">{section.helper}</p>
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-[#C8A882]">Pending approved KUT audio — no checkout yet</p>
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-[#C8A882]">Menu option — audio/checkout opens after exact KK is approved</p>
                   </div>
                 ))}
               </div>
