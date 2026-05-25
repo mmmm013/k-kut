@@ -435,7 +435,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
   const immutableResult =
     isWeddingOnlyPromo || launchRows.length > 0 || !supabase
       ? { rows: [], error: null }
-      : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
+      : await fetchImmutableRows(supabase!, slug, selectedIntent, sourcePix);
 
   const immutableRows = Array.isArray(immutableResult?.rows) ? immutableResult.rows : [];
   const rows = isWeddingOnlyPromo
