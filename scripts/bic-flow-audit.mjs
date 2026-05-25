@@ -94,10 +94,20 @@ async function request(pathOrUrl, options = {}) {
   }
 }
 
+function decodeHtmlAttribute(value) {
+  return value
+    .replaceAll("&amp;", "&")
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&#39;", "'")
+    .replaceAll("&quot;", "\"")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">");
+}
+
 function extractAttributes(html, tag, attr) {
   const values = [];
   const re = new RegExp(`<${tag}\\b[^>]*\\s${attr}=["']([^"']+)["'][^>]*>`, "gi");
-  for (const match of html.matchAll(re)) values.push(match[1].replaceAll("&amp;", "&"));
+  for (const match of html.matchAll(re)) values.push(decodeHtmlAttribute(match[1]));
   return values;
 }
 
