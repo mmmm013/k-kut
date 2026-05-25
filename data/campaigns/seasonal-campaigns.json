@@ -26,6 +26,22 @@
         "gentle-gratitude"
       ]
     },
+        
+      "id": "memorial-day-2026",
+      "holiday_slug": "memorial-day",
+      "public_title": "Memorial Day HUGs",
+      "status": "active",
+      "landing_path": "/holiday/memorial-day",
+      "campaign_path": "/campaign/memorial-day-2026",
+      "archive_path": "/hug/memorial-day",
+      "open_date": "2026-05-22",
+      "close_date": "2026-05-26",
+      "checkout_enabled": true,
+      "public_note": "Honor remembrance, sacrifice, and gratitude this Memorial Day.",
+      "featured_collections": [
+        "quiet-honor"
+      ]
+    },
     {
       "id": "fathers-day-2026",
       "holiday_slug": "fathers-day",
