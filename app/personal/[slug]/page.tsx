@@ -500,26 +500,42 @@ export default async function Page({ params, searchParams }: { params: Promise<{
   const sourcePix = resolvedSearchParams?.sourcePix ?? null;
   const sourceBackedRows = SOURCE_BACKED_FALLBACKS[slug] ?? [];
   const isWeddingOnlyPromo = slug === "wedding";
-  const supabase = isWeddingOnlyPromo ? null : (createAudioCatalogClient() ?? createClient());
 
-  const launchRowsRaw = isWeddingOnlyPromo || !supabase ? [] : await fetchLaunchRows(supabase, slug);
-  const launchRows = Array.isArray(launchRowsRaw) ? launchRowsRaw : [];
+  // BIC public-page rule:
+  // Public Personal/HUG pages must never hard-fail because Supabase launch/QC tables are absent,
+  // stale, malformed, or temporarily unavailable. Source-backed rows render first.
+  // Supabase may enhance later, but it may not own customer page uptime.
+  const useSourceBackedPublicPath = sourceBackedRows.length > 0 || isWeddingOnlyPromo;
 
-  const immutableResult =
-    isWeddingOnlyPromo || launchRows.length > 0 || !supabase
-      ? { rows: [], error: null }
-      : await fetchImmutableRows(supabase!, slug, selectedIntent, sourcePix);
+  let launchRows: KKRow[] = [];
+  let immutableRows: KKRow[] = [];
+  let error: { message?: string } | null = null;
 
-  const immutableRows = Array.isArray(immutableResult?.rows) ? immutableResult.rows : [];
-  const rows = isWeddingOnlyPromo
+  if (!useSourceBackedPublicPath) {
+    try {
+      const supabase = createAudioCatalogClient() ?? createClient();
+      const launchRowsRaw = await fetchLaunchRows(supabase, slug);
+      launchRows = Array.isArray(launchRowsRaw) ? launchRowsRaw : [];
+
+      if (launchRows.length === 0) {
+        const immutableResult = await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
+        immutableRows = Array.isArray(immutableResult?.rows) ? immutableResult.rows : [];
+        error = immutableResult?.error ?? null;
+      }
+    } catch (caught) {
+      error = {
+        message: caught instanceof Error ? caught.message : String(caught),
+      };
+    }
+  }
+
+  const rows = sourceBackedRows.length > 0
     ? sourceBackedRows
     : launchRows.length > 0
       ? launchRows
-      : immutableRows.length > 0
-        ? immutableRows
-        : sourceBackedRows;
-  const isSourceBackedFallback = sourceBackedRows.length > 0 && (isWeddingOnlyPromo || (launchRows.length === 0 && immutableRows.length === 0));
-  const error = immutableResult?.error ?? null;
+      : immutableRows;
+
+  const isSourceBackedFallback = sourceBackedRows.length > 0;
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
