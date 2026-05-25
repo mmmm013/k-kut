@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const PERSONAL_HUG_STRIPE_LINK =
-  "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
+  "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r";
 
 const WEDDING_TRACK_PACK_STRIPE_LINK =
   "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q";
