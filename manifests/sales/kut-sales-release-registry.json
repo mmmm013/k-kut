@@ -29,7 +29,7 @@
         }
       ],
       "stripe_link": null,
-      "stripe_status": "needs_routine_checkout_mapping",
+      "stripe_status": "confirmed_routes_via_routine_checkout_2026-05-25",
       "release_status": "audio_source_proven_needs_product_row_and_checkout_preservation"
     },
     {
@@ -53,7 +53,7 @@
         }
       ],
       "stripe_link": null,
-      "stripe_status": "needs_routine_checkout_mapping",
+      "stripe_status": "confirmed_routes_via_routine_checkout_2026-05-25",
       "release_status": "audio_source_proven_needs_product_row_and_checkout_preservation"
     },
     {
@@ -90,7 +90,7 @@
         "url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/I'm%20Sorry-RHONDA%20VERSION.wav"
       },
       "stripe_link": null,
-      "stripe_status": "needs_routine_checkout_mapping",
+      "stripe_status": "confirmed_routes_via_routine_checkout_2026-05-25",
       "release_status": "native_kuts_proven_and_seeded_needs_checkout_preservation"
     },
     {
@@ -107,7 +107,7 @@
         }
       ],
       "stripe_link": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
-      "stripe_status": "dedicated_link_found_needs_open_test",
+      "stripe_status": "confirmed_opens_2026-05-25",
       "release_status": "package_audio_source_and_stripe_link_proven_needs_page_and_fulfillment_verification"
     }
   ]
