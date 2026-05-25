@@ -19,7 +19,6 @@ type KKRow = {
   meta?: KKMeta | null;
 };
 
-
 type IntentChoice = {
   id: string;
   label: string;
@@ -113,12 +112,11 @@ const STEP_COPY: Record<string, StepCopy> = {
     ],
   },
   wedding: {
-    title: "Send a real wedding song moment",
-    prompt: "Hear Forever & A Day first. It is the only current Wedding Song Promo.",
-    intro: "The current K-KUT Wedding Song Promo is Forever & A Day only. Other wedding-labeled songs stay out until specifically approved.",
+    title: "Forever & A Day Wedding Pack",
+    prompt: "Hear the full Forever & A Day reference now. Section KUT choices open only after finishing review approves the audio.",
+    intro: "Wedding is hard-gated to Forever & A Day only. No other song can appear here, and no section can be sold until its KUT audio is approved.",
     options: [
-      { name: "Forever & A Day Wedding HUG", helper: "Wedding-specific: romantic, lasting, and ceremonial." },
-      
+      { name: "Full reference listen", helper: "Source reference only — not a checkout-ready KUT." },
     ],
   },
   personal: {
@@ -142,6 +140,16 @@ const PURPOSE_TERMS: Record<string, string[]> = {
   wedding: ["wedding", "forever", "dance", "ceremony", "love"],
   personal: ["love", "heart", "comfort", "care", "hope", "hold on", "angel", "believe", "always", "support"],
 };
+
+const WEDDING_PENDING_SECTIONS = [
+  { title: "Opening Vow Moment", helper: "Opening motif plus first promise; waiting for approved finishing-review audio." },
+  { title: "First Forever Chorus", helper: "Direct title-hook chorus; waiting for approved finishing-review audio." },
+  { title: "First Story + Forever Chorus", helper: "Fuller short-form setup plus payoff; waiting for approved finishing-review audio." },
+  { title: "Second Story Moment", helper: "Reflective memory/life-forward section; waiting for approved finishing-review audio." },
+  { title: "Through It All", helper: "Bridge into commitment payoff; waiting for approved finishing-review audio." },
+  { title: "Final Forever Chorus", helper: "Strong closing hook; waiting for approved finishing-review audio." },
+  { title: "Forever & A Day Closing Moment", helper: "Full closing moment through the ending; waiting for approved finishing-review audio." },
+];
 
 const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
   birthday: [
@@ -189,16 +197,16 @@ const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
   ],
   wedding: [
     {
-      kut_id: "source-backed-forever-and-a-day",
+      kut_id: "source-backed-forever-and-a-day-reference",
       delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Forever%20&%20A%20Day.mp3",
       storage_object_name: "Forever & A Day.mp3",
       track_id: "Forever & A Day.mp3",
       audio_status: "playable",
       meta: {
-        kut_title: "Forever & A Day Wedding HUG",
-        purpose: "Wedding HUG",
-        source_status: "PIX / source-backed sales candidate",
-        release_note: "Source-backed Wedding HUG while governed Wedding KUT is materialized. INSTRO path is reserved separately.",
+        kut_title: "Forever & A Day — Full Reference Listen",
+        purpose: "Wedding Pack source reference",
+        source_status: "PIX / source reference only",
+        release_note: "This is the full source reference. Section KUTs remain pending until finishing review approval.",
       },
     },
   ],
@@ -207,7 +215,6 @@ const SOURCE_BACKED_FALLBACKS: Record<string, KKRow[]> = {
 function copyForSlug(slug: string) {
   return STEP_COPY[slug] ?? STEP_COPY.personal;
 }
-
 
 function createAudioCatalogClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -278,12 +285,6 @@ function metadataBlob(row: KKRow) {
   return `${JSON.stringify(row.meta ?? {})} ${row.storage_object_name ?? ""} ${row.track_id ?? ""}`.toLowerCase();
 }
 
-function purposeScore(row: KKRow, slug: string, intent?: IntentChoice | null) {
-  const terms = intent?.terms?.length ? intent.terms : PURPOSE_TERMS[slug] ?? PURPOSE_TERMS.personal;
-  const blob = metadataBlob(row);
-  return terms.reduce((score, term) => score + (blob.includes(term) ? 1 : 0), 0);
-}
-
 function displayTitle(row: KKRow, fallback: string) {
   const title = pickFirstText(row.meta, [
     "kkr_title",
@@ -306,7 +307,6 @@ function displayMetaLine(row: KKRow, slug: string) {
   const pieces = [purpose || copyForSlug(slug).title.replace(/^Send a /i, ""), section, sourceStatus].filter(Boolean);
   return pieces.join(" • ");
 }
-
 
 function pixKey(row: KKRow) {
   return [
@@ -340,7 +340,6 @@ function diversifyByPix(rows: KKRow[], maxPerPix = 2) {
 
 function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: IntentChoice | null, sourcePix?: string | null) {
   const playable = rows.filter(isVerifiedPlayable);
-
   const pool = sourcePix ? playable.filter((row) => pixKey(row) === sourcePix) : playable;
 
   const scoreTerms = (terms: string[]) =>
@@ -376,7 +375,7 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
     const { data } = await supabase.from("k_kuts").select("*").in("kut_id", ids.slice(i, i + 100));
 
     for (const item of (data ?? []) as KKMeta[]) {
-    const id = valueAsText(item.kut_id) || valueAsText(item.id);
+      const id = valueAsText(item.kut_id) || valueAsText(item.id);
       if (id) metas.set(id, item);
     }
   }
@@ -384,7 +383,7 @@ async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: K
   return rows.map((row) => ({ ...row, meta: row.kut_id ? metas.get(row.kut_id) ?? row.meta ?? null : row.meta ?? null }));
 }
 
-async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
+async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: string) {
   const { data } = await supabase
     .from("k_kut_launch_audio")
     .select("kut_id, delivered_url_or_path, track_id, audio_status")
@@ -394,10 +393,7 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
     .limit(8);
 
   const launchRows = ((data ?? []) as KKRow[]).map((row) => ({ ...row, audio_status: "playable" }));
-  const rows = await attachMetadata(supabase, launchRows);
-
-  // Curated launch rows are governor-approved inventory. Do not pad/repeat them.
-  return rows;
+  return attachMetadata(supabase, launchRows);
 }
 
 async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slug: string, intent?: IntentChoice | null, sourcePix?: string | null) {
@@ -413,28 +409,31 @@ async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slu
   return { rows: sortAndPickRows(rows, slug, 4, intent, sourcePix), error };
 }
 
+function PendingButton({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="rounded-full border border-[#D4A017]/25 bg-black/25 px-4 py-2 text-sm font-black text-[#C8A882]">
+      {children}
+    </span>
+  );
+}
+
 export default async function Page({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams?: Promise<{ intent?: string; sourcePix?: string }> }) {
   const resolvedParams = await params;
   const resolvedSearchParams = searchParams ? await searchParams : {};
   const slug = resolvedParams?.slug ?? "personal";
-  const supabase = createAudioCatalogClient() ?? createClient();
   const copy = copyForSlug(slug);
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
   const selectedIntent = intents.find((item) => item.id === resolvedSearchParams?.intent) ?? null;
   const sourcePix = resolvedSearchParams?.sourcePix ?? null;
   const sourceBackedRows = SOURCE_BACKED_FALLBACKS[slug] ?? [];
-
-  // Hard gate: current Wedding Promo is ONLY Forever & A Day.
-  // Do not let broad wedding-tagged launch/QC rows display other songs here.
   const isWeddingOnlyPromo = slug === "wedding";
+  const supabase = isWeddingOnlyPromo ? null : (createAudioCatalogClient() ?? createClient());
 
-  const launchRowsRaw = isWeddingOnlyPromo
-    ? []
-    : await fetchLaunchRows(supabase, slug, selectedIntent, sourcePix);
+  const launchRowsRaw = isWeddingOnlyPromo || !supabase ? [] : await fetchLaunchRows(supabase, slug);
   const launchRows = Array.isArray(launchRowsRaw) ? launchRowsRaw : [];
 
   const immutableResult =
-    isWeddingOnlyPromo || launchRows.length > 0
+    isWeddingOnlyPromo || launchRows.length > 0 || !supabase
       ? { rows: [], error: null }
       : await fetchImmutableRows(supabase, slug, selectedIntent, sourcePix);
 
@@ -460,31 +459,39 @@ export default async function Page({ params, searchParams }: { params: Promise<{
           {isSourceBackedFallback && (
             <div className="mt-5 rounded-2xl border border-[#FFD36A]/30 bg-[#D4A017]/10 p-5">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#FFD36A]">Hear it first</p>
-              <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/85">This path is using real source-backed HUG audio while the governed KUT record is being materialized behind the scenes.</p>
+              <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/85">
+                {isWeddingOnlyPromo
+                  ? "This is the full Forever & A Day source reference. Wedding section KUTs are not sellable until finishing review approves the audio."
+                  : "This path is using real source-backed HUG audio while the governed KUT record is being materialized behind the scenes."}
+              </p>
             </div>
           )}
 
-          <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">What are you trying to say?</p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {intents.map((intent) => (
-                <Link
-                  key={intent.id}
-                  href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(intent.id)}`}
-                  className={`rounded-2xl border p-4 text-left transition ${
-                    selectedIntent?.id === intent.id
-                      ? "border-[#FFD36A] bg-[#D4A017]/20 text-[#FFD36A]"
-                      : "border-[#D4A017]/25 bg-black/20 text-[#F5E6C8] hover:bg-[#D4A017]/10"
-                  }`}
-                >
-                  <span className="block text-lg font-black">{intent.label}</span>
-                  <span className="mt-1 block text-sm font-bold opacity-75">{intent.helper}</span>
-                </Link>
-              ))}
+          {!isWeddingOnlyPromo && (
+            <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">What are you trying to say?</p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {intents.map((intent) => (
+                  <Link
+                    key={intent.id}
+                    href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(intent.id)}`}
+                    className={`rounded-2xl border p-4 text-left transition ${
+                      selectedIntent?.id === intent.id
+                        ? "border-[#FFD36A] bg-[#D4A017]/20 text-[#FFD36A]"
+                        : "border-[#D4A017]/25 bg-black/20 text-[#F5E6C8] hover:bg-[#D4A017]/10"
+                    }`}
+                  >
+                    <span className="block text-lg font-black">{intent.label}</span>
+                    <span className="mt-1 block text-sm font-bold opacity-75">{intent.helper}</span>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
           {error && <div className="mt-6 rounded-2xl border border-red-500/40 bg-red-500/10 p-5 text-red-200">K-KUT list failed: {error.message}</div>}
           {!error && rows.length === 0 && <div className="mt-6 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5 text-[#F5E6C8]/80">No verified playable K-KUT or source-backed HUG audio is available for this path yet.</div>}
+
           <div className="mt-8 flex flex-col gap-4">
             {rows.map((kk, index) => {
               const option = copy.options[index] ?? { name: `K-KUT HUG option ${index + 1}`, helper: "Listen, then choose if it fits." };
@@ -493,6 +500,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
               const audioSrc = toAudioSrc(kk.delivered_url_or_path);
               const title = displayTitle(kk, option.name);
               const metaLine = displayMetaLine(kk, slug);
+              const isReferenceOnly = isWeddingOnlyPromo || kkId.endsWith("-reference");
               return (
                 <div key={kkId || kk.delivered_url_or_path || index} className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
                   <div className="flex flex-col gap-4">
@@ -503,10 +511,10 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                       {metaLine && <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#C8A882]">{metaLine}</p>}
                     </div>
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">{isSourceBacked ? "Real HUG audio" : "Full K-KUT audio"}</p>
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">{isReferenceOnly ? "Full source reference audio" : isSourceBacked ? "Real HUG audio" : "Full K-KUT audio"}</p>
                       {audioSrc ? (
                         <>
-                          {audioSrc.includes("/mk-products/") ? (
+                          {isSourceBacked || audioSrc.includes("/mk-products/") ? (
                             <audio key={audioSrc} controls preload="metadata" className="w-full">
                               <source src={audioSrc} type="audio/mpeg" />
                               Your browser does not support audio playback.
@@ -514,8 +522,8 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                           ) : (
                             <KKSectionAudio
                               src={audioSrc}
-                              startSec={kk.capture_start_sec ?? Number(pickFirstText(kk.meta, ["capture_start_sec"]))}
-                              endSec={kk.capture_end_sec ?? Number(pickFirstText(kk.meta, ["capture_end_sec"]))}
+                              startSec={kk.capture_start_sec ?? undefined}
+                              endSec={kk.capture_end_sec ?? undefined}
                             />
                           )}
                           <a href={audioSrc} target="_blank" rel="noreferrer" className="mt-3 inline-block text-xs font-black text-[#FFD36A] underline">Open audio directly</a>
@@ -525,13 +533,15 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                       )}
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      {kkId && (
+                      {isReferenceOnly ? (
+                        <PendingButton>Checkout disabled until approved KUTs exist</PendingButton>
+                      ) : kkId ? (
                         isSourceBacked ? (
-                          <Link href={`/checkout?product=${encodeURIComponent(slug)}&source=${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this {slug === "birthday" ? "Birthday" : slug === "anniversary" ? "Anniversary" : slug === "wedding" ? "Wedding" : "K-KUT"} HUG</Link>
+                          <Link href={`/checkout?product=${encodeURIComponent(slug)}&source=${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this {slug === "birthday" ? "Birthday" : slug === "anniversary" ? "Anniversary" : "K-KUT"} HUG</Link>
                         ) : (
                           <Link href={`/k/${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>
                         )
-                      )}
+                      ) : null}
                       {!isWeddingOnlyPromo && (
                         <Link
                           href={`/personal/${encodeURIComponent(slug)}?intent=${encodeURIComponent(selectedIntent?.id ?? "")}&sourcePix=${encodeURIComponent(pixKey(kk))}`}
@@ -546,6 +556,24 @@ export default async function Page({ params, searchParams }: { params: Promise<{
               );
             })}
           </div>
+
+          {isWeddingOnlyPromo && (
+            <div className="mt-8 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">Wedding Pack KUTs pending finishing review</p>
+              <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
+                These are the intended Forever & A Day section choices. They will become playable/sellable only after each cut passes padding, Twinkle/page presentation, phrase-completion, and listening review.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {WEDDING_PENDING_SECTIONS.map((section) => (
+                  <div key={section.title} className="rounded-2xl border border-[#D4A017]/25 bg-black/20 p-4">
+                    <p className="text-lg font-black text-[#FFD36A]">{section.title}</p>
+                    <p className="mt-1 text-sm font-bold text-[#F5E6C8]/70">{section.helper}</p>
+                    <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-[#C8A882]">Pending approved KUT audio — no checkout yet</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
         <div className="mt-6"><Link href="/find" className="text-sm font-black text-[#FFD36A] hover:underline">Back to MC-BOT step 1</Link></div>
       </section>
