@@ -417,9 +417,9 @@ function diversifyByPix(rows: KKRow[], maxPerPix = 2) {
 
 function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: IntentChoice | null, sourcePix?: string | null) {
   const playable = rows.filter(isVerifiedPlayable);
-  const pool = sourcePix ? playable.filter((row) => pixKey(row) === sourcePix) : playable;
+  const pool = sourcePix ? playable.filter((row) => pixKey(row) === sourcePix) : playable;   const hasBlobs = pool.some((row) => metadataBlob(row).trim().length > 0);   if (!hasBlobs) return diversifyByPix(pool, PIX_DEPTH[slug] ?? 2).slice(0, count);
 
-  const scoreTerms = (terms: string[]) =>
+  const scoreTerms = (terms: string[], weight = 1) =>
     pool
       .map((row, index) => ({
         row,
@@ -431,15 +431,15 @@ function sortAndPickRows(rows: KKRow[], slug: string, count: number, intent?: In
       .map((item) => item.row);
 
   const exactTerms = intent?.terms ?? [];
-  const exactMatches = scoreTerms(exactTerms);
-  if (exactMatches.length > 0) return diversifyByPix(exactMatches, 2).slice(0, count);
+  const exactMatches = scoreTerms(exactTerms, 3);
+  if (exactMatches.length > 0) return diversifyByPix(exactMatches, PIX_DEPTH[slug] ?? 2).slice(0, count);
 
   const samePurposeTerms = (INTENT_CHOICES[slug] ?? []).flatMap((choice) => choice.terms);
-  const samePurposeMatches = scoreTerms(samePurposeTerms);
-  if (samePurposeMatches.length > 0) return diversifyByPix(samePurposeMatches, 2).slice(0, count);
+  const samePurposeMatches = scoreTerms(samePurposeTerms, 2);
+  if (samePurposeMatches.length > 0) return diversifyByPix(samePurposeMatches, PIX_DEPTH[slug] ?? 2).slice(0, count);
 
   const purposeMatches = scoreTerms(PURPOSE_TERMS[slug] ?? PURPOSE_TERMS.personal);
-  return diversifyByPix(purposeMatches, 2).slice(0, count);
+  return diversifyByPix(purposeMatches, PIX_DEPTH[slug] ?? 2).slice(0, count);
 }
 
 async function attachMetadata(supabase: ReturnType<typeof createClient>, rows: KKRow[]) {
@@ -467,7 +467,7 @@ async function fetchLaunchRows(supabase: ReturnType<typeof createClient>, slug: 
     .eq("slug", slug)
     .eq("is_active", true)
     .order("sort_order", { ascending: true })
-    .limit(8);
+    .limit(20);
 
   const launchRows = ((data ?? []) as KKRow[]).map((row) => ({ ...row, audio_status: "playable" }));
   return attachMetadata(supabase, launchRows);
