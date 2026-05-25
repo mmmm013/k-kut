@@ -472,6 +472,15 @@ async function fetchImmutableRows(supabase: ReturnType<typeof createClient>, slu
   return { rows: sortAndPickRows(rows, slug, 4, intent, sourcePix), error };
 }
 
+function weddingKKSlug(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/\+/g, " plus ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function PendingButton({ children }: { children: React.ReactNode }) {
   return (
     <span className="rounded-full border border-[#D4A017]/25 bg-black/25 px-4 py-2 text-sm font-black text-[#C8A882]">
@@ -487,6 +496,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
   const copy = copyForSlug(slug);
   const intents = INTENT_CHOICES[slug] ?? INTENT_CHOICES.personal;
   const selectedIntent = intents.find((item) => item.id === resolvedSearchParams?.intent) ?? null;
+  const selectedWeddingKK = resolvedSearchParams?.kk ?? null;
   const sourcePix = resolvedSearchParams?.sourcePix ?? null;
   const sourceBackedRows = SOURCE_BACKED_FALLBACKS[slug] ?? [];
   const isWeddingOnlyPromo = slug === "wedding";
@@ -632,19 +642,52 @@ export default async function Page({ params, searchParams }: { params: Promise<{
           </div>
 
           {isWeddingOnlyPromo && (
-            <div className="mt-8 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
+            <div id="wedding-kk-menu" className="mt-8 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">Wedding KK Menu — recommended first</p>
               <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
                 MC-BOT recommends the first two KKs first, but the full governed menu is available below: solo sections and contiguous KK-Kombos only. No non-contiguous stitching.
               </p>
+              {selectedWeddingKK && (
+                <div className="mt-4 rounded-2xl border border-[#FFD36A]/30 bg-[#D4A017]/10 p-4">
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-[#FFD36A]">Selected Wedding KK</p>
+                  <p className="mt-1 text-sm font-bold text-[#F5E6C8]/80">{selectedWeddingKK}</p>
+                </div>
+              )}
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {WEDDING_PENDING_SECTIONS.map((section) => (
-                  <div key={section.title} className="rounded-2xl border border-[#D4A017]/25 bg-black/20 p-4">
-                    <p className="text-lg font-black text-[#FFD36A]">{section.title}</p>
-                    <p className="mt-1 text-sm font-bold text-[#F5E6C8]/70">{section.helper}</p>
-                    <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-[#C8A882]">Menu option — audio/checkout opens after exact KK is approved</p>
-                  </div>
-                ))}
+                {WEDDING_PENDING_SECTIONS.map((section) => {
+                  const kkSlug = weddingKKSlug(section.title);
+                  const isSelected = selectedWeddingKK === kkSlug;
+
+                  return (
+                    <div
+                      key={section.title}
+                      className={`rounded-2xl border p-4 ${
+                        isSelected
+                          ? "border-[#FFD36A] bg-[#D4A017]/20"
+                          : "border-[#D4A017]/25 bg-black/20"
+                      }`}
+                    >
+                      <p className="text-lg font-black text-[#FFD36A]">{section.title}</p>
+                      <p className="mt-1 text-sm font-bold text-[#F5E6C8]/70">{section.helper}</p>
+                      <p className="mt-3 text-xs font-black uppercase tracking-[0.16em] text-[#C8A882]">
+                        {isSelected ? "Selected KK path — checkout/audio opens after exact KK is approved" : "Menu option — audio/checkout opens after exact KK is approved"}
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <Link
+                          href={`/personal/wedding?kk=${encodeURIComponent(kkSlug)}#wedding-kk-menu`}
+                          className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
+                        >
+                          {isSelected ? "Selected" : "Choose this KK"}
+                        </Link>
+                        {isSelected && (
+                          <span className="rounded-full border border-[#D4A017]/25 bg-black/25 px-4 py-2 text-sm font-black text-[#C8A882]">
+                            Checkout locked until approved audio exists
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
