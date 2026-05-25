@@ -1,0 +1,230 @@
+K-KUT BIC FLOW AUDIT
+====================
+Base URL: https://www.k-kut.com
+
+
+PAGE: home
+----------------------------------------
+PASS - home status :: 200
+PASS - home contains :: K-KUT
+PASS - home no dead action text detected
+PASS - home link :: / -> 200
+PASS - home link :: /find -> 200
+PASS - home link :: /personal -> 200
+PASS - home link :: /holiday -> 200
+WARN - home audio :: no source tags found
+
+PAGE: hug
+----------------------------------------
+PASS - hug status :: 200
+PASS - hug contains :: K-KUT
+PASS - hug no dead action text detected
+PASS - hug link :: / -> 200
+PASS - hug link :: /find -> 200
+PASS - hug link :: /personal -> 200
+PASS - hug link :: /holiday -> 200
+WARN - hug audio :: no source tags found
+
+PAGE: find
+----------------------------------------
+PASS - find status :: 200
+PASS - find contains :: K-KUT
+PASS - find no dead action text detected
+PASS - find link :: / -> 200
+PASS - find link :: /find -> 200
+PASS - find link :: /personal -> 200
+PASS - find link :: /holiday -> 200
+PASS - find link :: /personal/thank-you -> 200
+PASS - find link :: /personal/birthday -> 200
+PASS - find link :: /personal/apology -> 200
+WARN - find audio :: no source tags found
+
+PAGE: personal index
+----------------------------------------
+PASS - personal index status :: 200
+PASS - personal index contains :: Birthday
+PASS - personal index contains :: Anniversary
+PASS - personal index contains :: Wedding
+PASS - personal index no dead action text detected
+PASS - personal index link :: / -> 200
+PASS - personal index link :: /find -> 200
+PASS - personal index link :: /personal -> 200
+PASS - personal index link :: /holiday -> 200
+PASS - personal index link :: /personal/birthday -> 200
+PASS - personal index link :: /hug -> 200
+PASS - personal index link :: /personal/apology?intent=im-sorry -> 200
+PASS - personal index link :: /personal/wedding -> 200
+PASS - personal index link :: /personal/anniversary -> 200
+PASS - personal index link :: /personal/thank-you -> 200
+PASS - personal index link :: /personal/apology -> 200
+PASS - personal index link :: /personal/encouragement -> 200
+PASS - personal index link :: /personal/thinking-of-you -> 200
+PASS - personal index link :: /personal/just-because -> 200
+PASS - personal index link :: /personal/love -> 200
+PASS - personal index link :: /personal/missing-you -> 200
+PASS - personal index link :: /personal/new-baby -> 200
+PASS - personal index link :: /personal/graduation -> 200
+PASS - personal index link :: /personal/retirement -> 200
+PASS - personal index link :: /personal/congratulations -> 200
+PASS - personal index link :: /personal/comfort -> 200
+PASS - personal index link :: /personal/sympathy -> 200
+PASS - personal index link :: /personal/grief -> 200
+PASS - personal index link :: /personal/memorial -> 200
+PASS - personal index link :: /personal/celebration-of-life -> 200
+PASS - personal index link :: /personal/get-well -> 200
+PASS - personal index link :: /personal/recovery -> 200
+PASS - personal index link :: /personal/hang-tough -> 200
+PASS - personal index link :: /personal/hope -> 200
+PASS - personal index link :: /personal/self-esteem -> 200
+PASS - personal index link :: /personal/friendship -> 200
+PASS - personal index link :: /personal/best-friend -> 200
+PASS - personal index link :: /personal/family -> 200
+WARN - personal index audio :: no source tags found
+
+PAGE: wedding
+----------------------------------------
+PASS - wedding status :: 200
+PASS - wedding contains :: MC-BOT Wedding Path
+PASS - wedding contains :: Full song first
+PASS - wedding contains :: Wedding KK Menu
+PASS - wedding contains :: RECOMMENDED: V2 + Ch2
+PASS - wedding contains :: RECOMMENDED NEXT: V2-End
+PASS - wedding contains :: SOLO: Intro
+PASS - wedding contains :: KOMBO: V2-End
+WARN - wedding has action-looking text outside anchors :: Choose this KK, Checkout
+PASS - wedding link :: / -> 200
+PASS - wedding link :: /find -> 200
+PASS - wedding link :: /personal -> 200
+PASS - wedding link :: /holiday -> 200
+PASS - wedding link :: /personal/wedding?kk=recommended-v2-plus-ch2-best-kk-kombo#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=recommended-next-v2-end#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-intro#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-verse-1#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-chorus-1#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-verse-2#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-chorus-2#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-bridge#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-final-chorus#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=solo-outro#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-intro-plus-verse-1#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-verse-1-plus-chorus-1#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-verse-2-plus-chorus-2#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-verse-2-plus-chorus-2-plus-bridge#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-bridge-plus-final-chorus#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-final-chorus-plus-outro#wedding-kk-menu -> 200
+PASS - wedding link :: /personal/wedding?kk=kombo-v2-end#wedding-kk-menu -> 200
+PASS - wedding audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Forever%20&%20A%20Day.mp3 -> 200 audio/mpeg
+
+PAGE: birthday
+----------------------------------------
+PASS - birthday status :: 200
+PASS - birthday contains :: Birthday
+WARN - birthday has action-looking text outside anchors :: Use this
+PASS - birthday link :: / -> 200
+PASS - birthday link :: /find -> 200
+PASS - birthday link :: /personal -> 200
+PASS - birthday link :: /holiday -> 200
+PASS - birthday link :: /personal/birthday?intent=birthday -> 200
+PASS - birthday link :: /personal/birthday?intent=glad-you-exist -> 200
+PASS - birthday link :: /checkout?product=birthday&source=source-backed-best-birthday-short -> 200
+PASS - birthday link :: /personal/birthday?intent=&sourcePix=Best%20Birthday%20(1).mp3 -> 200
+PASS - birthday link :: /checkout?product=birthday&source=source-backed-best-birthday-long -> 200
+PASS - birthday link :: /personal/birthday?intent=&sourcePix=Best%20Birthday%20-%20Long.mp3 -> 200
+PASS - birthday audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Best%20Birthday%20(1).mp3 -> 200 audio/mpeg
+PASS - birthday audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Best%20Birthday%20-%20Long.mp3 -> 200 audio/mpeg
+
+PAGE: anniversary
+----------------------------------------
+PASS - anniversary status :: 200
+PASS - anniversary contains :: Anniversary
+WARN - anniversary has action-looking text outside anchors :: Use this
+PASS - anniversary link :: / -> 200
+PASS - anniversary link :: /find -> 200
+PASS - anniversary link :: /personal -> 200
+PASS - anniversary link :: /holiday -> 200
+PASS - anniversary link :: /personal/anniversary?intent=still-us -> 200
+PASS - anniversary link :: /personal/anniversary?intent=remember-why -> 200
+PASS - anniversary link :: /checkout?product=anniversary&source=source-backed-awesome-anniversary -> 200
+PASS - anniversary link :: /personal/anniversary?intent=&sourcePix=Awesome%20Anniversary.mp3 -> 200
+PASS - anniversary audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Awesome%20Anniversary.mp3 -> 200 audio/mpeg
+
+PAGE: apology
+----------------------------------------
+PASS - apology status :: 200
+PASS - apology contains :: Apology
+WARN - apology has action-looking text outside anchors :: Use this
+PASS - apology link :: / -> 200
+PASS - apology link :: /find -> 200
+PASS - apology link :: /personal -> 200
+PASS - apology link :: /holiday -> 200
+PASS - apology link :: /personal/apology?intent=im-sorry -> 200
+PASS - apology link :: /personal/apology?intent=i-was-wrong -> 200
+PASS - apology link :: /personal/apology?intent=please-hear-me -> 200
+PASS - apology link :: /personal/apology?intent=i-miss-you -> 200
+PASS - apology link :: /personal/apology?intent=repair-this -> 200
+PASS - apology link :: /personal/apology?intent=make-it-right -> 200
+PASS - apology link :: /checkout?product=apology&source=source-backed-im-sorry-rhonda -> 200
+PASS - apology link :: /personal/apology?intent=&sourcePix=I'm%20Sorry-RHONDA%20VERSION.wav -> 200
+PASS - apology audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/I%27m%20Sorry-RHONDA%20VERSION.wav -> 200 audio/wav
+
+PAGE: thank-you
+----------------------------------------
+PASS - thank-you status :: 200
+PASS - thank-you contains :: thank
+WARN - thank-you has action-looking text outside anchors :: Use this
+PASS - thank-you link :: / -> 200
+PASS - thank-you link :: /find -> 200
+PASS - thank-you link :: /personal -> 200
+PASS - thank-you link :: /holiday -> 200
+PASS - thank-you link :: /personal/thank-you?intent=simple-thanks -> 200
+PASS - thank-you link :: /personal/thank-you?intent=deep-thanks -> 200
+PASS - thank-you link :: /personal/thank-you?intent=you-helped-me -> 200
+PASS - thank-you link :: /personal/thank-you?intent=i-see-you -> 200
+PASS - thank-you link :: /k/launch-thank-you-01 -> 200
+PASS - thank-you link :: /personal/thank-you?intent=&sourcePix=launch-thank-you -> 200
+PASS - thank-you link :: /k/launch-thank-you-02 -> 200
+PASS - thank-you link :: /k/launch-thank-you-03 -> 200
+PASS - thank-you link :: /k/launch-thank-you-04 -> 200
+FAIL - thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Hang%20On.mp3 -> 400 application/json; charset=utf-8
+FAIL - thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/HOPE%20YOU%20KNOW.mp3 -> 400 application/json; charset=utf-8
+FAIL - thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/I%20WANT%20YOU%20-%2070s%20-%20Neil%20YoungISH.mp3 -> 400 application/json; charset=utf-8
+PASS - thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/SUNSHINE%20IN%20THE%20MEADOW.mp3 -> 200 audio/mpeg
+
+WEDDING KK MENU
+----------------------------------------
+PASS - wedding KK selectable link :: recommended-v2-plus-ch2-best-kk-kombo
+PASS - wedding KK selectable link :: recommended-next-v2-end
+PASS - wedding KK selectable link :: solo-intro
+PASS - wedding KK selectable link :: solo-verse-1
+PASS - wedding KK selectable link :: solo-chorus-1
+PASS - wedding KK selectable link :: solo-verse-2
+PASS - wedding KK selectable link :: solo-chorus-2
+PASS - wedding KK selectable link :: solo-bridge
+PASS - wedding KK selectable link :: solo-final-chorus
+PASS - wedding KK selectable link :: solo-outro
+PASS - wedding KK selectable link :: kombo-intro-plus-verse-1
+PASS - wedding KK selectable link :: kombo-verse-1-plus-chorus-1
+PASS - wedding KK selectable link :: kombo-verse-2-plus-chorus-2
+PASS - wedding KK selectable link :: kombo-verse-2-plus-chorus-2-plus-bridge
+PASS - wedding KK selectable link :: kombo-bridge-plus-final-chorus
+PASS - wedding KK selectable link :: kombo-final-chorus-plus-outro
+PASS - wedding KK selectable link :: kombo-v2-end
+PASS - wedding menu order :: recommended, solos, kombos
+PASS - wedding KK selection state :: /personal/wedding?kk=recommended-v2-plus-ch2-best-kk-kombo
+
+CHECKOUT / PAYMENT HANDOFFS
+----------------------------------------
+PASS - birthday checkout :: 307 -> https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p
+PASS - anniversary checkout :: 307 -> https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p
+PASS - generic personal checkout :: 307 -> https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p
+PASS - wedding direct checkout guard :: 307 -> https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q
+
+SUMMARY
+=======
+Failures: 3
+Warnings: 9
+
+FAILURES
+- thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Hang%20On.mp3 -> 400 application/json; charset=utf-8
+- thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/HOPE%20YOU%20KNOW.mp3 -> 400 application/json; charset=utf-8
+- thank-you audio source :: https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/I%20WANT%20YOU%20-%2070s%20-%20Neil%20YoungISH.mp3 -> 400 application/json; charset=utf-8
