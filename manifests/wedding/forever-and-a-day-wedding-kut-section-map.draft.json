@@ -34,6 +34,16 @@
   ],
   "kuts": [
     {
+      "id": "forever-and-a-day-v2-ch2-best-kombo",
+      "internal_section": "verse_2_plus_chorus_2_complete",
+      "public_title": "V2 + Ch2 — Best KK-Kombo",
+      "buyer_intent": "Featured best Wedding Pack combo: the second story resolves into the second chorus payoff.",
+      "start_sec": 102,
+      "end_sec": 206,
+      "status": "featured_phrase_complete_review_required",
+      "review_note": "FEATURE FIRST. This is the best KK-Kombo candidate. Must include Verse 2 and Chorus 2 completely, with the full resolving end line and enough musical tail. Adjust timing after listening review."
+    },
+    {
       "id": "forever-and-a-day-opening-vow-moment",
       "internal_section": "intro_plus_opening_verse",
       "public_title": "Opening Vow Moment",
