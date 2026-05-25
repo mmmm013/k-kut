@@ -132,8 +132,7 @@ export default function KupidPage() {
             </p>
             <p className="text-[#C8A882] text-sm leading-relaxed">{active.desc}</p>
             <a
-              href="https://gputnammusic.com"
-              target="_blank"
+            href="https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s"              target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 rounded-full font-bold text-[#0a0a0a] transition-opacity hover:opacity-80"
               style={{ background: active.color }}
