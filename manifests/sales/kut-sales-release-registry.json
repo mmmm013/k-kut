@@ -9,10 +9,10 @@
     "frontend_obeys_script_only": true
   },
   "routine_checkout": {
-    "status": "needs_mapping_confirmation",
+    "status": "confirmed_mapped_2026-05-25",
     "known_generic_checkout_route": "/checkout?kk=<selected_kut_id>",
-    "known_generic_stripe_link": "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p",
-    "warning": "Current /checkout route appears Mother’s Day/section-KK oriented. Confirm before using as routine personal KUT checkout."
+    "known_generic_stripe_link": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+        "warning": "Resolved 2026-05-25: PERSONAL_HUG_STRIPE_LINK updated to generic Personal K-KUT HUG product (plink_1Tb6mRCumnbT1kxIZXrWwFU1)."
   },
   "products": [
     {
