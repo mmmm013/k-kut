@@ -566,18 +566,15 @@ export default async function Page({ params, searchParams }: { params: Promise<{
               </p>
             </div>
           )}
-          <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
-          {isSourceBackedFallback && (
-            <div className="mt-5 rounded-2xl border border-[#FFD36A]/30 bg-[#D4A017]/10 p-5">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#FFD36A]">Hear it first</p>
-              <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/85">
-                {isWeddingOnlyPromo
-                  ? "This is the full Forever & A Day source reference. Wedding section KUTs are not sellable until finishing review approves the audio."
-                  : "This path is using real source-backed HUG audio while the governed KUT record is being materialized behind the scenes."}
-              </p>
-            </div>
-          )}
-
+          {slug === "love" ? (
+              <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#D4A017]">Love HUGs — Choose carefully</p>
+                <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/85">These are personal. Each carries a different weight. Listen before you decide — the right one will feel different from the rest.</p>
+              </div>
+            ) : (
+              <div className="mt-5 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5"><p className="text-sm font-bold leading-relaxed text-[#F5E6C8]/80">{copy.intro}</p></div>
+            )}
+          
           {!isWeddingOnlyPromo && (
             <div className="mt-6 rounded-2xl border border-[#D4A017]/25 bg-[#160D08] p-5">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">What are you trying to say?</p>
