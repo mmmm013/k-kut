@@ -650,7 +650,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                         isSourceBacked ? (
                           <Link href={`/checkout?product=${encodeURIComponent(slug)}&source=${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this {slug === "birthday" ? "Birthday" : slug === "anniversary" ? "Anniversary" : "K-KUT"} HUG</Link>
                         ) : (
-                          <Link href={`/k/${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>
+                          <Link href={`/checkout?product=${encodeURIComponent(slug)}&source=${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this K-KUT HUG</Link>
                         )
                       ) : null}
                       {!isWeddingOnlyPromo && (
