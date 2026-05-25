@@ -42,7 +42,7 @@ const INTENT_CHOICES: Record<string, IntentChoice[]> = {
     { id: "i-see-you", label: "I see what you did", helper: "Noticing effort.", terms: ["see", "appreciat", "thank"] },
   ],
   personal: [
-    { id: "love", label: "I love you", helper: "Warm and close.", terms: ["love", "heart", "always"] },
+    { id: "love", label: "I love you", helper: "Personal, close, and built to last.", terms: ["love", "heart", "always"] },
     { id: "comfort", label: "Comfort", helper: "Soft reassurance.", terms: ["comfort", "care", "hold on"] },
     { id: "support", label: "Support", helper: "Grounding and dependable.", terms: ["support", "believe", "hope"] },
     { id: "not-alone", label: "You’re not alone", helper: "Presence.", terms: ["not alone", "angel", "care"] },
@@ -120,9 +120,9 @@ const STEP_COPY: Record<string, StepCopy> = {
     ],
   },
   personal: {
-    title: "Send a love or comfort HUG",
-    prompt: "Choose the kind of love or comfort you want to send, then listen for the K-KUT that says it best.",
-    intro: "This is love and comfort music. Listen to each Love or Comfort HUG, then choose the one that fits the person receiving it.",
+    title: "Send a Love HUG",
+    prompt: "Listen first. Choose the kind that fits exactly., then listen for the K-KUT that says it best.",
+    intro: "Each HUG here carries something specific. Listen before you choose.",
     options: [
       { name: "Comfort HUG", helper: "Comfort-specific: steady, soft, and reassuring." },
       { name: "Love HUG", helper: "Love-specific: warm, close, and personal." },
