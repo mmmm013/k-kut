@@ -56,8 +56,45 @@ const INTENT_CHOICES: Record<string, IntentChoice[]> = {
     { id: "remember-why", label: "Remember why", helper: "A shared-memory HUG.", terms: ["anniversary", "memory", "forever"] },
   ],
   wedding: [
-    { id: "for-the-couple", label: "For the couple", helper: "A ceremonial music moment.", terms: ["wedding", "forever", "love"] },
-    { id: "first-dance", label: "First dance feeling", helper: "Romantic and lasting.", terms: ["wedding", "dance", "forever"] },
+    {
+      kut_id: "wedding-review-v2-ch2-best-kombo",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/wedding/forever-and-a-day-v2-ch2-best-kombo.mp3",
+      storage_object_name: "wedding/forever-and-a-day-v2-ch2-best-kombo.mp3",
+      track_id: "Forever & A Day.mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "FEATURED: V2 + Ch2 — Best KK-Kombo",
+        purpose: "Wedding Pack KK review audio",
+        source_status: "KK review audio",
+        release_note: "Playable review KK. Checkout locked until final listening approval.",
+      },
+    },
+    {
+      kut_id: "wedding-review-v2-end",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/kuts/wedding/forever-and-a-day-v2-end.mp3",
+      storage_object_name: "wedding/forever-and-a-day-v2-end.mp3",
+      track_id: "Forever & A Day.mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "NEXT FEATURED: V2-End",
+        purpose: "Wedding Pack KK review audio",
+        source_status: "KK review audio",
+        release_note: "Playable review KK. Checkout locked until final listening approval.",
+      },
+    },
+    {
+      kut_id: "source-backed-forever-and-a-day-reference",
+      delivered_url_or_path: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/Forever%20&%20A%20Day.mp3",
+      storage_object_name: "Forever & A Day.mp3",
+      track_id: "Forever & A Day.mp3",
+      audio_status: "playable",
+      meta: {
+        kut_title: "Forever & A Day — Full Reference Listen",
+        purpose: "Wedding Pack source reference",
+        source_status: "PIX / source reference only",
+        release_note: "This is the full source reference. Section KUTs remain locked from checkout until finishing review approval.",
+      },
+    },
   ],
 };
 
@@ -116,6 +153,8 @@ const STEP_COPY: Record<string, StepCopy> = {
     prompt: "Hear the full Forever & A Day reference now. Section KUT choices open only after finishing review approves the audio.",
     intro: "Wedding is hard-gated to Forever & A Day only. No other song can appear here, and no section can be sold until its KUT audio is approved.",
     options: [
+      { name: "FEATURED: V2 + Ch2", helper: "Playable KK review audio. Checkout locked until final approval." },
+      { name: "NEXT FEATURED: V2-End", helper: "Playable KK review audio. Checkout locked until final approval." },
       { name: "Full reference listen", helper: "Source reference only — not a checkout-ready KUT." },
     ],
   },
@@ -521,7 +560,8 @@ export default async function Page({ params, searchParams }: { params: Promise<{
               const audioSrc = toAudioSrc(kk.delivered_url_or_path);
               const title = displayTitle(kk, option.name);
               const metaLine = displayMetaLine(kk, slug);
-              const isReferenceOnly = isWeddingOnlyPromo || kkId.endsWith("-reference");
+              const isReferenceOnly = kkId.endsWith("-reference");
+              const isWeddingReviewKut = isWeddingOnlyPromo && !isReferenceOnly;
               return (
                 <div key={kkId || kk.delivered_url_or_path || index} className="rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
                   <div className="flex flex-col gap-4">
@@ -532,7 +572,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                       {metaLine && <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#C8A882]">{metaLine}</p>}
                     </div>
                     <div className="rounded-xl border border-[#D4A017]/20 bg-black/25 p-4">
-                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">{isReferenceOnly ? "Full source reference audio" : isSourceBacked ? "Real HUG audio" : "Full K-KUT audio"}</p>
+                      <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#C8A882]">{isReferenceOnly ? "Full source reference audio" : isWeddingReviewKut ? "Playable KK review audio" : isSourceBacked ? "Real HUG audio" : "Full K-KUT audio"}</p>
                       {audioSrc ? (
                         <>
                           {isSourceBacked || audioSrc.includes("/mk-products/") ? (
@@ -556,6 +596,8 @@ export default async function Page({ params, searchParams }: { params: Promise<{
                     <div className="flex flex-wrap gap-3">
                       {isReferenceOnly ? (
                         <PendingButton>Checkout disabled until approved KUTs exist</PendingButton>
+                      ) : isWeddingReviewKut ? (
+                        <PendingButton>Playable KK audio — checkout locked until final approval</PendingButton>
                       ) : kkId ? (
                         isSourceBacked ? (
                           <Link href={`/checkout?product=${encodeURIComponent(slug)}&source=${encodeURIComponent(kkId)}`} className="rounded-full border border-[#D4A017]/40 px-4 py-2 text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10">Use this {slug === "birthday" ? "Birthday" : slug === "anniversary" ? "Anniversary" : "K-KUT"} HUG</Link>
@@ -580,9 +622,9 @@ export default async function Page({ params, searchParams }: { params: Promise<{
 
           {isWeddingOnlyPromo && (
             <div className="mt-8 rounded-2xl border border-[#D4A017]/30 bg-[#160D08] p-5">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">Wedding Pack KUTs — featured review order</p>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#D4A017]">More Wedding KUTs — lower-priority review queue</p>
               <p className="mt-2 text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-                Focus one path at a time. First finish V2 + Ch2. Next finish V2-End. Nothing becomes playable, sellable, or checkout-ready until the exact KUT audio passes padding, Twinkle/page presentation, phrase-completion, and listening review.
+                The first two featured KK-Kombos now have playable review audio above. These remaining paths stay queued until their exact KUT audio is materialized and reviewed.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {WEDDING_PENDING_SECTIONS.map((section) => (
