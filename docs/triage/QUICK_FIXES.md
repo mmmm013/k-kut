@@ -1,108 +1,82 @@
 # K-KUT Quick Fixes Triage Bucket
 
-Purpose: capture non-blocking BIC audit warnings and small defects without derailing the main release path.
-
-## Current gate status
+## Current Gate
 
 Local BIC audit: PASS with warnings.
 
-- Build: PASS
-- Local page/link/audio/payment throughput: PASS
-- Wedding KK selection links: PASS
-- Wedding full-song audio: PASS
-- Birthday audio: PASS
-- Anniversary audio: PASS
-- Apology audio: PASS
-- Payment handoffs: PASS
+Production audit: core paths pass; Thank-you has broken audio candidates.
 
-Production audit: mostly PASS, with Thank-you audio failures to triage.
+## QF-001 — Thank-you production audio failures
 
-## Quick-fix queue
-
-### QF-001: Thank-you production audio candidates
-
-Status: OPEN.
-
-Production audit reports three Thank-you audio objects returning 400:
+Production returns 400 for:
 
 - Hang On.mp3
 - HOPE YOU KNOW.mp3
 - I WANT YOU - 70s - Neil YoungISH.mp3
 
-`SUNSHINE IN THE MEADOW.mp3` returns 200.
+Production returns 200 for:
+
+- SUNSHINE IN THE MEADOW.mp3
 
 Action:
-- Remove or replace broken Thank-you source rows.
-- Keep only reachable source-backed audio on public pages.
-- Do not use unrelated songs simply to clear the audit.
+- Remove broken Thank-you source rows or replace them with reachable approved assets.
+- Do not fake Thank-you with unrelated audio.
+- Keep only reachable public audio on /personal/thank-you.
 
 Acceptance:
-- /personal/thank-you has no broken audio source URLs.
-- BIC audit reports no Thank-you audio failures.
+- BIC audit shows zero Thank-you audio failures.
 
-### QF-002: Audit false positives for action-looking text
+## QF-002 — Audit CTA false positives
 
-Status: OPEN.
-
-Audit warns on words like Choose this KK, Use this, and Checkout even when they are inside valid anchors or locked-status labels.
+Audit warns on action text like Choose this KK, Use this, Checkout.
 
 Action:
-- Tighten actionWordsInNonAnchorHtml.
-- Ignore valid linked button text.
-- Ignore approved locked-status labels.
-- Keep warnings for truly dead CTAs.
+- Update audit to ignore valid linked CTAs and approved locked-status text.
+- Keep warnings for real dead CTAs.
 
 Acceptance:
+- Linked buttons do not warn.
 - Real dead CTAs still warn/fail.
-- Valid linked buttons do not warn.
 
-### QF-003: Navigation pages without audio tags
-
-Status: OPEN.
+## QF-003 — Navigation pages without audio
 
 Home, Hug, Find, and Personal index may intentionally have no audio tags.
 
 Action:
-- Mark browse/navigation pages as audioOptional in the audit.
-- Keep strict audio checks for listen/buy pages.
+- Mark browse/navigation pages as audioOptional in bic-flow-audit.mjs.
+- Keep strict audio checks for product/listen pages.
 
 Acceptance:
-- Audit distinguishes browse pages from playable product pages.
+- Navigation pages no longer create misleading audio warnings.
 
-### QF-004: Missing Supabase anon env warning
+## QF-004 — Supabase anon env warning
 
-Status: OPEN.
-
-Build warns NEXT_PUBLIC_SUPABASE_ANON_KEY is missing locally.
+Build warns NEXT_PUBLIC_SUPABASE_ANON_KEY is missing.
 
 Action:
-- Confirm local .env.local has the value if needed.
-- Confirm Vercel env has required Supabase vars.
-- Keep public source-backed pages independent of Supabase table uptime.
+- Confirm local .env.local.
+- Confirm Vercel env.
+- Keep public source-backed pages independent from Supabase table uptime.
 
 Acceptance:
-- Build warning is either resolved or documented as non-blocking.
+- Warning resolved or documented non-blocking.
 
-### QF-005: Wedding KK audio materialization
+## QF-005 — Wedding KK audio materialization
 
-Status: OPEN.
-
-Wedding selection flow is working. Full-song reference works. Exact KK audio for V2 + Ch2 and V2-End still needs final materialization/listening approval before checkout unlocks.
+Wedding selection flow is working. Full song works. Exact KK audio still needs final approval.
 
 Action:
-- Cut V2 + Ch2 first.
+- Materialize V2 + Ch2 first.
+- Then materialize V2-End.
 - Apply padding, Twinkle/page presentation, phrase-completion, and listening review.
-- Then cut V2-End.
 
 Acceptance:
-- Featured KKs become playable.
-- Checkout remains locked until exact approved audio exists.
+- Featured KKs are playable.
+- Checkout unlocks only after exact approved KK audio exists.
 
-## Standing BIC rules
+## Rules
 
 - No visible choice without a working selection link.
 - No play claim without reachable audio.
-- No buy claim without a checkout handoff.
-- No public route depends on Supabase table health to render.
-- Failures block release only when they affect customer action, audio, payment, or page availability.
-- Non-blocking warnings go here.
+- No buy claim without checkout handoff.
+- No public page depends on Supabase table health to render.
