@@ -46,16 +46,16 @@
       "id": "fathers-day-2026",
       "holiday_slug": "fathers-day",
       "public_title": "Father’s Day HUGs",
-      "status": "planning",
+      "status": "preview",
       "landing_path": "/holiday/fathers-day",
       "campaign_path": "/campaign/fathers-day-2026",
       "archive_path": "/archive/fathers-day-2026",
-      "open_date": "",
-      "close_date": "",
+      "open_date": "2026-05-26",
+      "close_date": "2026-06-16",
       "checkout_enabled": false,
-      "public_note": "Father’s Day HUG collections are being prepared.",
-      "featured_collections": []
-    },
+      "public_note": "Father's Day HUG collections — coming June 15, 2026.",
+            "featured_collections": []
+          },
     {
       "id": "thanksgiving-2026",
       "holiday_slug": "thanksgiving",
