@@ -25,10 +25,9 @@ K-KUT is a G Putnam Music / GPEx invention platform for real-audio gifts and exa
 ## Current live promo
 - `https://k-kut.com`
 - `https://www.k-kut.com`
-- Mother’s Day GPM HUG promo is live.
-- Buyers can hear `Thank You — Source Preview`.
-- Buyers can click `Order Mother’s Day HUG — $9.99`.
-
+- Memorial Day HUG promo is live.
+- Buyers can hear selected audio sections.
+- Buyers can click `Order Memorial Day HUG — $7.99`.
 ## Preferred work style
 - Make small, reviewable commits.
 - Explain exactly what changed.
