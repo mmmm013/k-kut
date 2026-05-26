@@ -38,6 +38,15 @@ const featuredPromos = [
     cta: "Hear Anniversary HUGs",
     proof: "Audio-backed: Awesome Anniversary",
   },
+    {
+    slug: "romance",
+    label: "New invention",
+    title: "K-kUpId",
+    line: "Pick the romance level. A signed audio excerpt, chosen for exactly this moment.",
+    href: "/kupid",
+    cta: "Pick a Level",
+    proof: "Signed · Traceable · Permanent",
+  },
 ];
 
 const promoGroups = [
