@@ -1,16 +1,15 @@
 'use client';
 
 /**
- * K-kUpId Romance-Level Picker — /kupid
+ * Kupid Romance-Level Picker — /kupid
  *
- * K-kUpId is a standalone K-KUT invention (NOT a delivery vehicle).
+ * Kupid is a standalone K-KUT invention (NOT a delivery vehicle).
  * Same exact-excerpt audio strategy as K-KUT, curated for 5 romance levels:
  *   Interest → Date → Love → Sex → Forever
  *
  * GPM box-opening UX: 3 panels, 3-letter codes.
  * Every share is cryptographically signed, traceable, and monetizable.
  */
-
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -54,7 +53,6 @@ const LEVELS = [
 
 export default function KupidPage() {
   const [selected, setSelected] = useState<number | null>(null);
-
   const active = LEVELS.find((l) => l.id === selected);
 
   return (
@@ -63,22 +61,21 @@ export default function KupidPage() {
       <header className="flex items-center justify-between px-6 py-4 border-b border-white/10">
         <Link href="/" className="text-[#D4A017] font-bold text-lg hover:opacity-80">← K-KUT</Link>
         <nav className="flex gap-4 text-sm text-[#C8A882]">
-          <Link href="/invention#k-kupid" className="hover:text-[#D4A017] transition-colors">
-            About K-kUpId
+          <Link href="/invention#kupid" className="hover:text-[#D4A017] transition-colors">
+            About Kupid
           </Link>
         </nav>
       </header>
 
       <main className="max-w-2xl mx-auto px-6 py-16 w-full flex flex-col gap-12">
-
         {/* ── Intro ── */}
         <section className="text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#C0392B] mb-3">K-kUpId</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-[#C0392B] mb-3">Kupid</p>
           <h2 className="text-4xl font-extrabold text-[#F5e6c8] mb-4 leading-tight">
             Pick the Level
           </h2>
           <p className="text-[#C8A882] leading-relaxed max-w-md mx-auto">
-            K-kUpId is a K-KUT curated for romance. Choose your level —
+            Kupid is a K-KUT curated for romance. Choose your level —
             a signed audio excerpt will be selected for that exact moment.
             Shareable. Giftable. Permanent.
           </p>
@@ -132,19 +129,18 @@ export default function KupidPage() {
             </p>
             <p className="text-[#C8A882] text-sm leading-relaxed">{active.desc}</p>
             <a
-            href="https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s"              target="_blank"
+              href="https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s" target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 rounded-full font-bold text-[#0a0a0a] transition-opacity hover:opacity-80"
               style={{ background: active.color }}
             >
-              Get K-kUpId · {active.label}
+              Get Kupid · {active.label}
             </a>
             <p className="text-xs text-[#C8A882]/50">
               Cryptographically signed · Traceable · Permanent
             </p>
           </section>
         )}
-
       </main>
 
       <footer className="mt-auto border-t border-white/10 px-6 py-6 text-center text-xs text-[#C8A882]">
