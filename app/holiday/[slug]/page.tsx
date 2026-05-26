@@ -1,23 +1,66 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import seasonalCampaigns from "@/data/campaigns/seasonal-campaigns.json";
 import { holidays, type HolidaySlug } from "@/lib/holidaySeeds";
 
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
+// ─── Static Params ──────────────────────────────────────────────────────────────────────────────
 export function generateStaticParams() {
   return Object.keys(holidays).map((slug) => ({ slug }));
 }
 
-export default function HolidayCategoryPage({ params }: { params: { slug: string } }) {
-  const holiday = holidays[params.slug as HolidaySlug];
+// ─── SEO Metadata ─────────────────────────────────────────────────────────────────────────────────
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const holiday = holidays[slug as HolidaySlug];
+
+  if (!holiday) {
+    return {
+      title: "Holiday HUG | K-KUT",
+      description: "Discover focused music moments for every holiday.",
+    };
+  }
+
+  return {
+    title: `${holiday.title} HUG | K-KUT`,
+    description: holiday.line,
+    openGraph: {
+      title: `${holiday.title} HUG | K-KUT`,
+      description: holiday.line,
+      url: `https://k-kut.com/holiday/${slug}`,
+      siteName: "K-KUT",
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: `${holiday.title} HUG | K-KUT`,
+      description: holiday.line,
+    },
+  };
+}
+
+// ─── Page ──────────────────────────────────────────────────────────────────────────────────────
+export default async function HolidayCategoryPage({ params }: Props) {
+  const { slug } = await params;
+  const holiday = holidays[slug as HolidaySlug];
 
   if (!holiday) {
     notFound();
   }
 
   const campaign = seasonalCampaigns.campaigns.find(
-    (item) => item.holiday_slug === params.slug,
+    (item) => item.holiday_slug === slug,
   );
+
+  // Derive per-holiday audio src; fall back to the universal welcome track
+  const audioSrc =
+    "audioSrc" in holiday && holiday.audioSrc
+      ? (holiday.audioSrc as string)
+      : "/audio/kleigh/guide-final/33-welcome.m4a";
 
   return (
     <main className="min-h-screen bg-[#120b12] text-[#fff6e8]">
@@ -49,7 +92,12 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
           <p className="mt-2 text-lg font-black leading-7 text-amber-50">
             Listen first, then choose the closest holiday intent.
           </p>
-          <audio className="mt-4 w-full" controls preload="none" src="/audio/kleigh/guide-final/33-welcome.m4a" />
+          <audio
+            className="mt-4 w-full"
+            controls
+            preload="none"
+            src={audioSrc}
+          />
         </section>
 
         <section className="mt-8">
@@ -58,110 +106,123 @@ export default function HolidayCategoryPage({ params }: { params: { slug: string
               <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Feeling paths
               </p>
-              <h2 className="mt-2 text-3xl font-black">Choose the closest intent.</h2>
+              <h2 className="mt-2 text-3xl font-black">
+                Choose the closest intent.
+              </h2>
             </div>
             <Link
               href="/holiday"
-              className="rounded-2xl border border-amber-200/25 px-5 py-3 text-center text-sm font-black text-amber-100 transition hover:bg-white/10"
+              className="text-sm font-black uppercase tracking-[0.18em] text-amber-400 underline underline-offset-4"
             >
               All Holiday HUGs
             </Link>
           </div>
 
           {"candidatePix" in holiday ? (
-            <div className="mt-5 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+            <div className="mt-6 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
                 Candidate song moments
               </p>
-              <ul className="mt-3 space-y-2 text-sm font-bold leading-6 text-amber-50/80">
+              <ul className="mt-3 space-y-1 text-amber-50/80">
                 {holiday.candidatePix.map((pix) => (
-                  <li key={pix}>• {pix}</li>
+                  <li key={pix} className="text-sm">
+                    &bull; {pix}
+                  </li>
                 ))}
               </ul>
             </div>
           ) : null}
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {holiday.paths.map((path) => (
-              <div
+              <Link
                 key={path}
-                className="rounded-[1.25rem] border border-amber-300/20 bg-[#23111d] p-5 shadow-lg"
+                href={`/holiday/${slug}/${encodeURIComponent(
+                  path.toLowerCase().replace(/\s+/g, "-"),
+                )}`}
+                className="rounded-[1.5rem] border border-amber-300/20 bg-[#22101f] p-5 transition hover:border-amber-300/50 hover:bg-[#2e1628]"
               >
                 <p className="text-xl font-black text-amber-50">{path}</p>
-                <p className="mt-2 text-sm font-bold leading-6 text-amber-50/70">
+                <p className="mt-1 text-sm text-amber-200/70">
                   A focused music HUG path for this holiday moment.
                 </p>
-              </div>
+              </Link>
             ))}
+          </div>
+
+          <div className="mt-8">
+            <Link
+              href={`/holiday/${slug}/next`}
+              className="inline-block rounded-full bg-amber-400 px-8 py-3 text-sm font-black uppercase tracking-[0.2em] text-black transition hover:bg-amber-300"
+            >
+              Next
+            </Link>
           </div>
         </section>
 
-        <section className="mt-8 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
-          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-            Next
-          </p>
-
-          {campaign ? (
-            <>
-              <h2 className="mt-2 text-2xl font-black">
+        {campaign ? (
+          <>
+            <section className="mt-10 rounded-[1.5rem] border border-amber-300/20 bg-[#22101f] p-6 sm:p-9">
+              <h2 className="text-2xl font-black text-amber-50">
                 {campaign.public_title}
               </h2>
-              <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                {campaign.public_note}
-              </p>
-              <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-amber-200">
+              <p className="mt-2 text-amber-200/80">{campaign.public_note}</p>
+              <p className="mt-4 text-sm font-black uppercase tracking-[0.18em] text-amber-400">
                 Season status: {campaign.status}
               </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-4 flex gap-4">
                 {campaign.status === "archived" ? (
                   <Link
-                    href={campaign.archive_path}
-                    className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                    href={`/archive/${campaign.holiday_slug}`}
+                    className="rounded-full border border-amber-300/40 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-amber-300 transition hover:border-amber-300"
                   >
                     Open archive
                   </Link>
                 ) : null}
                 {campaign.status === "active" && campaign.checkout_enabled ? (
                   <Link
-                    href={campaign.campaign_path}
-                    className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                    href={`/collection/${campaign.holiday_slug}`}
+                    className="rounded-full bg-amber-400 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-black transition hover:bg-amber-300"
                   >
                     Open active collection
                   </Link>
                 ) : null}
                 <Link
                   href="/find"
-                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
+                  className="rounded-full border border-amber-300/40 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-amber-300 transition hover:border-amber-300"
                 >
                   Find the Right Words
                 </Link>
               </div>
-            </>
-          ) : (
-            <>
-              <h2 className="mt-2 text-2xl font-black">
+            </section>
+          </>
+        ) : (
+          <>
+            <section className="mt-10 rounded-[1.5rem] border border-amber-300/20 bg-[#22101f] p-6 sm:p-9">
+              <h2 className="text-2xl font-black text-amber-50">
                 Featured holiday HUG collections will go here.
               </h2>
-              <p className="mt-3 text-base font-bold leading-7 text-amber-50/75">
-                This holiday page is available, but no seasonal campaign is active yet.
+              <p className="mt-2 text-amber-200/80">
+                This holiday page is available, but no seasonal campaign is
+                active yet.
               </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-4 flex gap-4">
                 <Link
                   href="/find"
-                  className="rounded-2xl bg-amber-300 px-6 py-4 text-center text-lg font-black text-[#2a180d] transition hover:bg-amber-200"
+                  className="rounded-full bg-amber-400 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-black transition hover:bg-amber-300"
                 >
                   Find the Right Words
                 </Link>
                 <Link
                   href="/"
-                  className="rounded-2xl border border-amber-200/25 px-6 py-4 text-center text-lg font-black text-amber-100 transition hover:bg-white/10"
+                  className="rounded-full border border-amber-300/40 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-amber-300 transition hover:border-amber-300"
                 >
                   Back home
                 </Link>
               </div>
-            </>
-          )}
-        </section>
+            </section>
+          </>
+        )}
       </section>
     </main>
   );
