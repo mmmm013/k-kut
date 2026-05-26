@@ -41,7 +41,7 @@ const featuredPromos = [
     {
     slug: "romance",
     label: "New invention",
-    title: "K-kUpId",
+        title: "Kupid",
     line: "Pick the romance level. A signed audio excerpt, chosen for exactly this moment.",
     href: "/kupid",
     cta: "Pick a Level",
