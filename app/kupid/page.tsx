@@ -20,6 +20,7 @@ const LEVELS = [
     code: 'INT',
     desc: 'A spark. Something that says "I notice you" without saying a word.',
     color: '#C8A882',
+    stripeUrl: 'https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s', // TODO: replace with INT-specific link
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ const LEVELS = [
     code: 'DAT',
     desc: 'The moment worth marking. Music that fits the beginning of something real.',
     color: '#D4A017',
+    stripeUrl: 'https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s', // TODO: replace with DAT-specific link
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const LEVELS = [
     code: 'LUV',
     desc: "Deep and deliberate. A section chosen because it says what words can't.",
     color: '#E07B54',
+    stripeUrl: 'https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s', // TODO: replace with LUV-specific link
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ const LEVELS = [
     code: 'SEX',
     desc: 'Raw. Present. The exact beat that belongs to exactly this moment.',
     color: '#C0392B',
+    stripeUrl: 'https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s', // TODO: replace with SEX-specific link
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ const LEVELS = [
     code: 'FVR',
     desc: 'Not a moment — a monument. The section that plays at every anniversary.',
     color: '#8B5CF6',
+    stripeUrl: 'https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s', // TODO: replace with FVR-specific link
   },
 ] as const;
 
@@ -129,7 +134,8 @@ export default function KupidPage() {
             </p>
             <p className="text-[#C8A882] text-sm leading-relaxed">{active.desc}</p>
             <a
-              href="https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s" target="_blank"
+              href={active.stripeUrl}
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 rounded-full font-bold text-[#0a0a0a] transition-opacity hover:opacity-80"
               style={{ background: active.color }}
