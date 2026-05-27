@@ -64,27 +64,23 @@ const kutCandidatesByKind: Record<HugKind, KutCandidate[]> = {
   ],
 };
 
-function UserControlledAudio({
-  src,
-  label,
-}: {
-  src?: string;
-  label: string;
-}) {
+function KutAudio({ src }: { src?: string }) {
   if (!src) {
     return (
-      <div className="rounded-2xl border border-pink-200/30 bg-pink-200/10 p-4">
-        <p className="text-sm font-black text-pink-100">{label}</p>
+      <div className="mt-4 rounded-2xl border border-pink-200/30 bg-pink-200/10 p-4">
+        <p className="text-sm font-black text-pink-100">
+          Audio not connected yet.
+        </p>
         <p className="mt-2 text-xs leading-5 text-neutral-300">
-          Approved kut audio required here. Do not use an instrumental. Do not autoplay.
+          This kut cannot be sold until approved user-controlled audio is connected.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-      <p className="mb-3 text-sm font-black">{label}</p>
+    <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+      <p className="mb-3 text-sm font-black">Preview this kut</p>
       <audio controls preload="none" controlsList="nodownload" className="w-full">
         <source src={src} />
         Your browser does not support audio playback.
@@ -99,30 +95,21 @@ function UserControlledAudio({
 export default function HugPage() {
   const [step, setStep] = useState<KkutFlowStepId>("start");
   const [kind, setKind] = useState<HugKind | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [showFullTrackFor, setShowFullTrackFor] = useState<string | null>(null);
+  const [selectedKut, setSelectedKut] = useState<KutCandidate | null>(null);
 
   const candidates = useMemo(() => {
     return kind ? kutCandidatesByKind[kind] : [];
   }, [kind]);
 
-  const activeKut = candidates[activeIndex];
-
   function chooseKind(nextKind: HugKind) {
     setKind(nextKind);
-    setActiveIndex(0);
-    setShowFullTrackFor(null);
+    setSelectedKut(null);
     setStep("choose");
   }
 
-  function nextKut() {
-    setShowFullTrackFor(null);
-    setActiveIndex((current) => Math.min(current + 1, candidates.length - 1));
-  }
-
-  function previousKut() {
-    setShowFullTrackFor(null);
-    setActiveIndex((current) => Math.max(current - 1, 0));
+  function selectKut(kut: KutCandidate) {
+    setSelectedKut(kut);
+    setStep("send");
   }
 
   return (
@@ -136,7 +123,7 @@ export default function HugPage() {
             Send a private music HUG.
           </h1>
           <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Choose the kind of HUG. MC-BOT walks you through the kuts. You preview, choose, and send privately.
+            Choose the kind of HUG. MC-BOT shows 8 kuts. Preview each one. Choose the kut that fits.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black uppercase tracking-wide text-neutral-300">
             <span className="rounded-full border border-white/10 px-3 py-2">Simple</span>
@@ -173,127 +160,73 @@ export default function HugPage() {
                   </button>
                 ))}
               </div>
-
-              <p className="mt-5 text-sm text-neutral-400">
-                No audio plays on this step. First click chooses meaning only.
-              </p>
             </>
           )}
 
-          {step === "choose" && activeKut && (
+          {step === "choose" && kind && (
             <>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-pink-200">
-                Kut candidates
+                8 KUT options
               </p>
               <h2 className="mt-3 text-3xl font-black">
-                Listen to each kut in order.
+                Preview the kuts. Then choose one.
               </h2>
               <p className="mt-3 text-sm leading-6 text-neutral-300">
-                Start with the strongest suggested moment. Usually that is final chorus + outro.
-                Choose any kut immediately, or ask MC-BOT for the full track only when you want more context.
+                Start with the final chorus + outro options first. Every kut must have visible user-controlled audio before it can be selected or sold.
               </p>
 
-              <div className="mt-6 rounded-3xl border border-white/10 bg-neutral-950 p-5">
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-neutral-400">
-                      Kut {activeIndex + 1} of {candidates.length}
-                    </p>
-                    <h3 className="mt-1 text-2xl font-black">{activeKut.label}</h3>
-                    <p className="mt-2 text-sm text-neutral-300">{activeKut.fit}</p>
-                    <p className="mt-2 text-sm font-black text-pink-200">
-                      Section: {activeKut.section}
-                    </p>
-                  </div>
+              <div className="mt-8 grid gap-5 lg:grid-cols-2">
+                {candidates.map((kut, index) => {
+                  const audioReady = Boolean(kut.previewSrc);
+                  return (
+                    <article
+                      key={kut.id}
+                      className="rounded-3xl border border-white/10 bg-neutral-950 p-5"
+                    >
+                      <div className="flex flex-wrap items-start justify-between gap-4">
+                        <div>
+                          <p className="text-xs font-black uppercase tracking-wide text-pink-200">
+                            Kut {index + 1} of 8
+                          </p>
+                          <h3 className="mt-2 text-2xl font-black">{kut.label}</h3>
+                          <p className="mt-2 text-sm text-neutral-300">{kut.fit}</p>
+                          <p className="mt-2 text-sm font-black text-pink-200">
+                            Section: {kut.section}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          disabled={!audioReady}
+                          onClick={() => selectKut(kut)}
+                          className="rounded-2xl bg-white px-5 py-4 font-black text-neutral-950 disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                          {audioReady ? "Choose this kut" : "Audio needed"}
+                        </button>
+                      </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setStep("send")}
-                    className="rounded-2xl bg-white px-5 py-4 font-black text-neutral-950"
-                  >
-                    Choose this kut
-                  </button>
-                </div>
+                      <KutAudio src={kut.previewSrc} />
 
-                <div className="mt-5">
-                  <UserControlledAudio
-                    src={activeKut.previewSrc}
-                    label="Preview this kut"
-                  />
-                </div>
-
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={previousKut}
-                    disabled={activeIndex === 0}
-                    className="rounded-2xl border border-white/10 px-5 py-3 font-black disabled:opacity-40"
-                  >
-                    Previous kut
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextKut}
-                    disabled={activeIndex === candidates.length - 1}
-                    className="rounded-2xl border border-white/10 px-5 py-3 font-black disabled:opacity-40"
-                  >
-                    Next kut
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setShowFullTrackFor(showFullTrackFor === activeKut.id ? null : activeKut.id)
-                    }
-                    className="rounded-2xl border border-white/10 px-5 py-3 font-black"
-                  >
-                    {showFullTrackFor === activeKut.id ? "Hide MC-BOT full track" : "Ask MC-BOT to play full track"}
-                  </button>
-                </div>
-
-                {showFullTrackFor === activeKut.id && (
-                  <div className="mt-5">
-                    <UserControlledAudio
-                      src={activeKut.fullTrackSrc}
-                      label="MC-BOT listen-only full track"
-                    />
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {candidates.map((candidate, index) => (
-                  <button
-                    key={candidate.id}
-                    type="button"
-                    onClick={() => {
-                      setActiveIndex(index);
-                      setShowFullTrackFor(null);
-                    }}
-                    className={[
-                      "rounded-2xl border p-4 text-left",
-                      index === activeIndex
-                        ? "border-pink-200 bg-pink-200 text-neutral-950"
-                        : "border-white/10 bg-neutral-900 text-white",
-                    ].join(" ")}
-                  >
-                    <p className="text-xs font-black uppercase tracking-wide">
-                      Kut {index + 1}
-                    </p>
-                    <p className="mt-1 font-black">{candidate.label}</p>
-                    <p className="mt-1 text-xs opacity-75">{candidate.section}</p>
-                  </button>
-                ))}
+                      <button
+                        type="button"
+                        disabled={!kut.fullTrackSrc}
+                        className="mt-4 rounded-2xl border border-white/10 px-5 py-3 text-sm font-black text-white disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        Ask MC-BOT to play full track
+                      </button>
+                    </article>
+                  );
+                })}
               </div>
             </>
           )}
 
-          {step === "send" && activeKut && (
+          {step === "send" && selectedKut && (
             <>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-pink-200">
                 K-KUT private delivery
               </p>
               <h2 className="mt-3 text-3xl font-black">
-                Selected HUG kut: {activeKut.label}
+                Selected HUG kut: {selectedKut.label}
               </h2>
               <p className="mt-4 max-w-3xl text-neutral-300">
                 Choose this kut, request help choosing the right HUG, or buy a prepaid HUG as a gift.
@@ -301,7 +234,7 @@ export default function HugPage() {
 
               <div className="mt-8 grid gap-4 lg:grid-cols-3">
                 <a
-                  href={`mailto:reachus@gputnammusic.com?subject=K-KUT HUG — ${encodeURIComponent(activeKut.label)}&body=I want to send this K-KUT HUG:%0A%0A${encodeURIComponent(activeKut.label)}%0A%0APrice: $7.99%0A%0APlease send payment and delivery instructions.`}
+                  href={`mailto:reachus@gputnammusic.com?subject=K-KUT HUG — ${encodeURIComponent(selectedKut.label)}&body=I want to send this K-KUT HUG:%0A%0A${encodeURIComponent(selectedKut.label)}%0A%0APrice: $7.99%0A%0APlease send payment and delivery instructions.`}
                   className="rounded-3xl bg-white p-5 text-neutral-950 shadow-2xl transition hover:-translate-y-1"
                 >
                   <p className="text-sm font-black uppercase tracking-wide text-neutral-500">
@@ -315,7 +248,7 @@ export default function HugPage() {
                 </a>
 
                 <a
-                  href={`mailto:reachus@gputnammusic.com?subject=Reviewed K-KUT HUG request&body=I want a reviewed K-KUT HUG.%0A%0ASelected kut candidate: ${encodeURIComponent(activeKut.label)}%0A%0APrice: $24.99%0A%0APlease help match the right HUG before delivery.`}
+                  href={`mailto:reachus@gputnammusic.com?subject=Reviewed K-KUT HUG request&body=I want a reviewed K-KUT HUG.%0A%0ASelected kut candidate: ${encodeURIComponent(selectedKut.label)}%0A%0APrice: $24.99%0A%0APlease help match the right HUG before delivery.`}
                   className="rounded-3xl border border-pink-200 bg-pink-200 p-5 text-neutral-950 shadow-2xl transition hover:-translate-y-1"
                 >
                   <p className="text-sm font-black uppercase tracking-wide text-neutral-700">
@@ -342,10 +275,6 @@ export default function HugPage() {
                   </p>
                 </a>
               </div>
-
-              <p className="mt-5 text-xs leading-5 text-neutral-400">
-                Gift HUGs are normal prepaid gift purchases. They are not donations, sponsorships, charitable HUGs, or community funds.
-              </p>
             </>
           )}
         </div>
