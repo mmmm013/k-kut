@@ -130,14 +130,20 @@ export default function HugPage() {
       <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pink-200">
-            K-KUT HUGs
+            K-KUT by G Putnam Music
           </p>
           <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
-            HUGs are private music moments you can send as personal audio keepsakes.
+            Send a private music HUG.
           </h1>
           <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Pick the kind of HUG. Listen through the kut candidates in order. Choose the one that fits.
+            Choose the kind of HUG. MC-BOT walks you through the kuts. You preview, choose, and send privately.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black uppercase tracking-wide text-neutral-300">
+            <span className="rounded-full border border-white/10 px-3 py-2">Simple</span>
+            <span className="rounded-full border border-white/10 px-3 py-2">Easy</span>
+            <span className="rounded-full border border-white/10 px-3 py-2">Accurate</span>
+            <span className="rounded-full border border-white/10 px-3 py-2">Quick</span>
+          </div>
         </div>
 
         <div className="mt-10">
@@ -284,10 +290,10 @@ export default function HugPage() {
           {step === "send" && activeKut && (
             <>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-pink-200">
-                Send privately
+                K-KUT private delivery
               </p>
               <h2 className="mt-3 text-3xl font-black">
-                Selected: {activeKut.label}
+                Selected HUG kut: {activeKut.label}
               </h2>
               <p className="mt-4 max-w-3xl text-neutral-300">
                 Choose this kut, request help choosing the right HUG, or buy a prepaid HUG as a gift.
@@ -301,7 +307,7 @@ export default function HugPage() {
                   <p className="text-sm font-black uppercase tracking-wide text-neutral-500">
                     Fast send
                   </p>
-                  <p className="mt-2 text-2xl font-black">Choose this kut</p>
+                  <p className="mt-2 text-2xl font-black">Send this K-KUT</p>
                   <p className="mt-2 text-3xl font-black">$7.99</p>
                   <p className="mt-3 text-sm leading-6 text-neutral-600">
                     Pick this kut and send it privately.
@@ -315,7 +321,7 @@ export default function HugPage() {
                   <p className="text-sm font-black uppercase tracking-wide text-neutral-700">
                     Best help
                   </p>
-                  <p className="mt-2 text-2xl font-black">Request reviewed HUG</p>
+                  <p className="mt-2 text-2xl font-black">MC-BOT reviewed HUG</p>
                   <p className="mt-2 text-3xl font-black">$24.99</p>
                   <p className="mt-3 text-sm leading-6 text-neutral-700">
                     Get help choosing the right kut for the moment.
@@ -329,7 +335,7 @@ export default function HugPage() {
                   <p className="text-sm font-black uppercase tracking-wide text-pink-200">
                     Gift certificate
                   </p>
-                  <p className="mt-2 text-2xl font-black">Gift a HUG</p>
+                  <p className="mt-2 text-2xl font-black">Gift a K-KUT HUG</p>
                   <p className="mt-2 text-3xl font-black">$7.99+</p>
                   <p className="mt-3 text-sm leading-6 text-neutral-300">
                     Buy a prepaid HUG for someone else.
@@ -342,6 +348,15 @@ export default function HugPage() {
               </p>
             </>
           )}
+        </div>
+
+        <div className="mt-8 rounded-[2rem] border border-white/10 bg-neutral-950 p-5 text-center">
+          <p className="text-sm font-black uppercase tracking-[0.25em] text-pink-200">
+            K-KUT • HUGs • kuts • MC-BOT
+          </p>
+          <p className="mt-3 text-sm leading-6 text-neutral-400">
+            A G Putnam Music private audio-gift experience. No autoplay. No hidden audio. You control the preview and the send.
+          </p>
         </div>
       </section>
     </main>
