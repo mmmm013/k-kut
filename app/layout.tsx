@@ -58,6 +58,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 Kupid
               </a>
+                              <a
+                  href="/wedding"
+                  className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
+                >
+                  Wedding
+                </a>
             </div>
           </nav>
         </header>
