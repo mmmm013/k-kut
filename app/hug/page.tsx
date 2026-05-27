@@ -76,7 +76,7 @@ function UserControlledAudio({
       <div className="rounded-2xl border border-pink-200/30 bg-pink-200/10 p-4">
         <p className="text-sm font-black text-pink-100">{label}</p>
         <p className="mt-2 text-xs leading-5 text-neutral-300">
-          Approved vocal/message-led audio source required here. Do not use an instrumental.
+          Approved kut audio required here. Do not use an instrumental. Do not autoplay.
         </p>
       </div>
     );
@@ -184,7 +184,7 @@ export default function HugPage() {
               </h2>
               <p className="mt-3 text-sm leading-6 text-neutral-300">
                 Start with the strongest suggested moment. Usually that is final chorus + outro.
-                Choose any kut immediately, or hear the full track only when you ask for it.
+                Choose any kut immediately, or ask MC-BOT for the full track only when you want more context.
               </p>
 
               <div className="mt-6 rounded-3xl border border-white/10 bg-neutral-950 p-5">
@@ -240,7 +240,7 @@ export default function HugPage() {
                     }
                     className="rounded-2xl border border-white/10 px-5 py-3 font-black"
                   >
-                    {showFullTrackFor === activeKut.id ? "Hide full track" : "Hear full track"}
+                    {showFullTrackFor === activeKut.id ? "Hide MC-BOT full track" : "Ask MC-BOT to play full track"}
                   </button>
                 </div>
 
@@ -248,7 +248,7 @@ export default function HugPage() {
                   <div className="mt-5">
                     <UserControlledAudio
                       src={activeKut.fullTrackSrc}
-                      label="Listen-only full track"
+                      label="MC-BOT listen-only full track"
                     />
                   </div>
                 )}
