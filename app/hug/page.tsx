@@ -289,8 +289,56 @@ export default function HugPage() {
               <h2 className="mt-3 text-3xl font-black">
                 Selected: {activeKut.label}
               </h2>
-              <p className="mt-4 text-neutral-300">
-                Checkout opens only after the selected kut is approved for delivery.
+              <p className="mt-4 max-w-3xl text-neutral-300">
+                Choose this kut, request help choosing the right HUG, or buy a prepaid HUG as a gift.
+              </p>
+
+              <div className="mt-8 grid gap-4 lg:grid-cols-3">
+                <a
+                  href={`mailto:reachus@gputnammusic.com?subject=K-KUT HUG — ${encodeURIComponent(activeKut.label)}&body=I want to send this K-KUT HUG:%0A%0A${encodeURIComponent(activeKut.label)}%0A%0APrice: $7.99%0A%0APlease send payment and delivery instructions.`}
+                  className="rounded-3xl bg-white p-5 text-neutral-950 shadow-2xl transition hover:-translate-y-1"
+                >
+                  <p className="text-sm font-black uppercase tracking-wide text-neutral-500">
+                    Fast send
+                  </p>
+                  <p className="mt-2 text-2xl font-black">Choose this kut</p>
+                  <p className="mt-2 text-3xl font-black">$7.99</p>
+                  <p className="mt-3 text-sm leading-6 text-neutral-600">
+                    Pick this kut and send it privately.
+                  </p>
+                </a>
+
+                <a
+                  href={`mailto:reachus@gputnammusic.com?subject=Reviewed K-KUT HUG request&body=I want a reviewed K-KUT HUG.%0A%0ASelected kut candidate: ${encodeURIComponent(activeKut.label)}%0A%0APrice: $24.99%0A%0APlease help match the right HUG before delivery.`}
+                  className="rounded-3xl border border-pink-200 bg-pink-200 p-5 text-neutral-950 shadow-2xl transition hover:-translate-y-1"
+                >
+                  <p className="text-sm font-black uppercase tracking-wide text-neutral-700">
+                    Best help
+                  </p>
+                  <p className="mt-2 text-2xl font-black">Request reviewed HUG</p>
+                  <p className="mt-2 text-3xl font-black">$24.99</p>
+                  <p className="mt-3 text-sm leading-6 text-neutral-700">
+                    Get help choosing the right kut for the moment.
+                  </p>
+                </a>
+
+                <a
+                  href="mailto:reachus@gputnammusic.com?subject=Gift a K-KUT HUG&body=I want to buy a prepaid K-KUT HUG as a gift.%0A%0AThis is a gift purchase, not a donation or sponsorship.%0A%0APlease send payment and gift instructions."
+                  className="rounded-3xl border border-white/10 bg-neutral-950 p-5 text-white shadow-2xl transition hover:-translate-y-1"
+                >
+                  <p className="text-sm font-black uppercase tracking-wide text-pink-200">
+                    Gift certificate
+                  </p>
+                  <p className="mt-2 text-2xl font-black">Gift a HUG</p>
+                  <p className="mt-2 text-3xl font-black">$7.99+</p>
+                  <p className="mt-3 text-sm leading-6 text-neutral-300">
+                    Buy a prepaid HUG for someone else.
+                  </p>
+                </a>
+              </div>
+
+              <p className="mt-5 text-xs leading-5 text-neutral-400">
+                Gift HUGs are normal prepaid gift purchases. They are not donations, sponsorships, charitable HUGs, or community funds.
               </p>
             </>
           )}
