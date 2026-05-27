@@ -118,7 +118,7 @@ export default function HugPage() {
                 Preview the kuts. Then choose one.
               </h2>
               <p className="mt-3 text-sm leading-6 text-[#F5E6C8]/80">
-                These are real pre-made KUTs with real MP3 audio. No placeholders.
+                These are real pre-made KUTs with real MP3 audio.
               </p>
 
               <div className="mt-8 grid gap-5 lg:grid-cols-2">

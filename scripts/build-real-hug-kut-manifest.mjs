@@ -27,7 +27,10 @@ const rows = walk(json)
   .filter((row) => {
     const url = row.audio_url;
     const lower = url.toLowerCase();
-    if (lower.includes("instro") || lower.includes("instrumental")) return false;
+
+    if (lower.includes("instro")) return false;
+    if (lower.includes("instrumental")) return false;
+
     const publicPath = path.join("public", url.replace(/^\//, ""));
     return fs.existsSync(publicPath);
   })
@@ -38,7 +41,7 @@ if (rows.length < 8) {
   process.exit(1);
 }
 
-const labels = [
+const fallback = [
   ["Warm thank-you kut", "Best first choice for gratitude.", "Final chorus + outro"],
   ["Simple appreciation kut", "Clean, direct thank-you.", "Hook / refrain"],
   ["Family support kut", "For someone who showed up.", "Verse lift"],
@@ -50,11 +53,11 @@ const labels = [
 ];
 
 const manifest = rows.map((row, index) => ({
-  id: row.id || row.kut_id || `thanks-${String(index + 1).padStart(2, "0")}`,
-  label: row.title || row.label || labels[index][0],
-  fit: row.fit || row.description || labels[index][1],
-  section: row.section || labels[index][2],
-  previewSrc: row.audio_url,
+  id: String(row.id || row.kut_id || `thanks-${String(index + 1).padStart(2, "0")}`),
+  label: String(row.title || row.label || fallback[index][0]),
+  fit: String(row.fit || row.description || fallback[index][1]),
+  section: String(row.section || fallback[index][2]),
+  previewSrc: String(row.audio_url),
 }));
 
 fs.writeFileSync(

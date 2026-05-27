@@ -23,7 +23,7 @@ export function KkutStepMap({
   const currentIndex = KKUT_FLOW_STEPS.findIndex((step) => step.id === currentStep);
 
   return (
-    <nav aria-label="K-KUT HUG progress" className="rounded-3xl border border-white/10 bg-white/5 p-4">
+    <nav aria-label="K-KUT HUG progress" className="rounded-3xl border border-[#D4A017]/25 bg-[#24180F] p-4">
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
         {KKUT_FLOW_STEPS.map((step, index) => {
           const active = step.id === currentStep;
@@ -36,10 +36,10 @@ export function KkutStepMap({
               className={[
                 "rounded-2xl border p-3 text-left transition",
                 active
-                  ? "border-pink-200 bg-pink-200 text-neutral-950"
+                  ? "border-[#D4A017] bg-[#D4A017] text-[#1A120B]"
                   : done
-                    ? "border-white/20 bg-white/10 text-white"
-                    : "border-white/10 bg-neutral-900 text-neutral-300",
+                    ? "border-[#D4A017]/40 bg-[#D4A017]/10 text-[#F5E6C8]"
+                    : "border-[#D4A017]/25 bg-[#1A120B] text-[#F5E6C8]/70",
               ].join(" ")}
               aria-current={active ? "step" : undefined}
             >
