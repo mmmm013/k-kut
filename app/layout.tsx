@@ -3,9 +3,9 @@ import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'K-KUT HUGs — Audio Greeting Cards',
+  title: 'HUGs — Private Music Moments',
   description:
-    'K-KUT is a G Putnam Music invention. Own an exact excerpt of a song section — legally, permanently, and playably.',
+    'A HUG is a private music moment you choose by feeling, then send to someone.',
   icons: { icon: '/logo.png', apple: '/logo.png' },
   appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'K-KUT' },
 };
