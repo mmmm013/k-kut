@@ -106,4 +106,30 @@ for (const key of requiredEnv) {
   }
 }
 
+
+// Current customer law: intro-only KKs are banned.
+// Every customer-facing KK must contain vocals.
+const hugManifestText = fs.existsSync("lib/hugRealKutManifest.ts")
+  ? fs.readFileSync("lib/hugRealKutManifest.ts", "utf8").toLowerCase()
+  : "";
+
+for (const banned of [
+  "intro",
+  "intro only",
+  "intro-only",
+  "instrumental",
+  "instro",
+  "no vocal",
+  "non-vocal",
+  "non vocal",
+  "\"vocals\":false",
+  "\"has_vocals\":false",
+  "\"contains_vocals\":false"
+]) {
+  if (hugManifestText.includes(banned)) {
+    console.error(`BIC FAIL: banned non-vocal/intro KK marker found in HUG manifest: ${banned}`);
+    process.exit(1);
+  }
+}
+
 console.log("BIC HUG GATE PASS");

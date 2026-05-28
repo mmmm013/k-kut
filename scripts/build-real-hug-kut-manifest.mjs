@@ -16,6 +16,34 @@ function walk(value, rows = []) {
   return rows;
 }
 
+
+function isIntroOnlyOrNonVocal(row) {
+  const blob = JSON.stringify(row || {}).toLowerCase();
+
+  // Current customer law:
+  // No intro-only KKs.
+  // Every customer-facing KK must contain vocals.
+  // Later we may allow intro use, but not now.
+  if (blob.includes("intro only")) return true;
+  if (blob.includes("intro-only")) return true;
+  if (blob.includes("section:intro")) return true;
+  if (blob.includes('"section":"intro"')) return true;
+  if (blob.includes('"section": "intro"')) return true;
+  if (blob.includes("intro")) return true;
+
+  if (blob.includes("instrumental")) return true;
+  if (blob.includes("instro")) return true;
+  if (blob.includes("no vocal")) return true;
+  if (blob.includes("non-vocal")) return true;
+  if (blob.includes("non vocal")) return true;
+  if (blob.includes("vocals:false")) return true;
+  if (blob.includes('"vocals":false')) return true;
+  if (blob.includes('"has_vocals":false')) return true;
+  if (blob.includes('"contains_vocals":false')) return true;
+
+  return false;
+}
+
 if (!fs.existsSync(source)) {
   console.error(`STOP: missing ${source}`);
   process.exit(1);
@@ -30,6 +58,7 @@ const rows = walk(json)
 
     if (lower.includes("instro")) return false;
     if (lower.includes("instrumental")) return false;
+    if (isIntroOnlyOrNonVocal(row)) return false;
 
     const local = path.join("public", url.replace(/^\//, ""));
     return fs.existsSync(local);
