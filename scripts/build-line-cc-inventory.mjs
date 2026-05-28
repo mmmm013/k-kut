@@ -10,8 +10,8 @@ const SCAN_ROOTS = [
 ];
 
 const OUT_DIR = "manifests/kkr/line-cc";
-const OUT_JSON = `${OUT_DIR}/linepair-trio-rhyme-cc-inventory.json`;
-const OUT_MD = `reports/linepair-trio-rhyme-cc-inventory.md`;
+const OUT_JSON = `${OUT_DIR}/lnduo-lntrio-rmst-cc-inventory.json`;
+const OUT_MD = `reports/lnduo-lntrio-rmst-cc-inventory.md`;
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.mkdirSync("reports", { recursive: true });
@@ -32,7 +32,7 @@ function walkFiles(dir, acc = []) {
     // Never scan generated inventory/report outputs as source input.
     if (
       p.includes("manifests/kkr/line-cc") ||
-      p.includes("reports/linepair-trio-rhyme-cc-inventory") ||
+      p.includes("reports/lnduo-lntrio-rmst-cc-inventory") ||
       p.includes("reports/ii-inventory-rounded-totals")
     ) {
       continue;
@@ -147,8 +147,12 @@ function duration(a, b) {
   return Math.round((b - a) * 1000) / 1000;
 }
 
-function suitableDuration(seconds) {
-  return seconds >= 3 && seconds <= 24;
+function suitableDuration(_seconds) {
+  // GPEx LAW:
+  // Time is not a CC creation eligibility factor for LT-PIX or KKs.
+  // Exact start/end remains required metadata.
+  // Only SWSP has a 13-second floor, handled separately.
+  return true;
 }
 
 function makeCandidate({ type, lines, sourceFile, audioUrl }) {
@@ -187,7 +191,7 @@ function makeCandidate({ type, lines, sourceFile, audioUrl }) {
     suitability: {
       has_audio_url: Boolean(audioUrl),
       non_instrumental: audioUrl ? !isBadAudioUrl(audioUrl) : false,
-      duration_ok: suitableDuration(dur),
+      duration_recorded_not_eligibility: dur,
       word_count: words,
     },
   };
@@ -211,7 +215,7 @@ for (const file of files) {
 
   for (let i = 0; i < lines.length - 1; i++) {
     candidates.push(makeCandidate({
-      type: "LINE_PAIR_CC",
+      type: "LNDUO_CC",
       lines: [lines[i], lines[i + 1]],
       sourceFile: file,
       audioUrl,
@@ -220,7 +224,7 @@ for (const file of files) {
 
   for (let i = 0; i < lines.length - 2; i++) {
     candidates.push(makeCandidate({
-      type: "LINE_TRIO_CC",
+      type: "LNTRIO_CC",
       lines: [lines[i], lines[i + 1], lines[i + 2]],
       sourceFile: file,
       audioUrl,
@@ -232,7 +236,7 @@ for (const file of files) {
     const b = lastWord(lines[i + 1].text);
     if (a && b && rhymeKey(a) && rhymeKey(a) === rhymeKey(b)) {
       candidates.push(makeCandidate({
-        type: "RHYMING_LINE_PAIR_CC",
+        type: "RMST_CC",
         lines: [lines[i], lines[i + 1]],
         sourceFile: file,
         audioUrl,
@@ -267,6 +271,7 @@ const payload = {
     no_guessed_timing: true,
     cc_requires_ssot_audio_url: true,
     cc_requires_exact_start_end: true,
+    time_is_not_creation_eligibility_except_swsp_13s_floor: true,
     instrumental_rejected: true,
     ready_for_cc_is_not_auto_release: true,
   },
@@ -279,7 +284,7 @@ fs.writeFileSync(OUT_JSON, JSON.stringify(payload, null, 2));
 const ready = rows.filter((r) => r.status === "READY_FOR_CC");
 const hold = rows.filter((r) => r.status !== "READY_FOR_CC");
 
-let md = `# LinePair / LineTrio / Rhyming-Line CC Inventory\n\n`;
+let md = `# LineDuo / LineTrio / RhymeSet CC Inventory\n\n`;
 md += `Generated: ${payload.generated_at}\n\n`;
 md += `## Totals\n\n`;
 md += `- Total candidates: ${totals.total}\n`;

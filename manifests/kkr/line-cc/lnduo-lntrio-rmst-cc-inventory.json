@@ -1,23 +1,3292 @@
 {
-  "generated_at": "2026-05-28T02:44:10.455Z",
+  "generated_at": "2026-05-28T02:44:10.421Z",
   "doctrine": {
-    "no_auto_release": true,
     "no_placeholders": true,
+    "no_guessed_timing": true,
     "cc_requires_ssot_audio_url": true,
     "cc_requires_exact_start_end": true,
+    "time_is_not_creation_eligibility_except_swsp_13s_floor": true,
     "instrumental_rejected": true,
-    "ready_for_cc_requires_final_materialization_or_existing_delivery_path": true
+    "ready_for_cc_is_not_auto_release": true
   },
   "totals": {
-    "ready_total": 118,
-    "hold_total": 102,
-    "ready_by_type": {
-      "LNDUO_CC": 57,
-      "LNTRIO_CC": 48,
-      "RMST_CC": 13
+    "total": 220,
+    "by_status": {
+      "HOLD_REVIEW": 102,
+      "READY_FOR_CC": 118
+    },
+    "by_type": {
+      "LNDUO_CC": 91,
+      "LNTRIO_CC": 89,
+      "RMST_CC": 40
     }
   },
-  "ready_ccs": [
+  "candidates": [
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1 / SANDMAN'S COMIN' - INSTRO — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1 / Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-7075626c69632f6d",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
+      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
+      "start": 0,
+      "end": 10,
+      "duration_sec": 10,
+      "line_count": 2,
+      "text": "Intro / Opening Moment",
+      "lines": [
+        {
+          "text": "Intro",
+          "start": 0,
+          "end": 20
+        },
+        {
+          "text": "Opening Moment",
+          "start": 0,
+          "end": 10
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 10,
+        "word_count": 3
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2 / SANDMAN'S COMIN' - INSTRO — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2 / Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3 / SANDMAN'S COMIN' - INSTRO — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3 / Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 47,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.1 / SANDMAN'S COMIN' - INSTRO — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 11
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 29,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 2 / SANDMAN'S COMIN' - INSTRO — mK 2.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1",
+          "start": 23,
+          "end": 29
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 11
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 47,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 14
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 29,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 47,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1 / Sandman's Comin' - Rock - Sports_Life — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 16
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2 / SANDMAN'S COMIN' - INSTRO — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2 / Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3 / SANDMAN'S COMIN' - INSTRO — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3 / Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4 / SANDMAN'S COMIN' - INSTRO — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4 / Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 3 / SANDMAN'S COMIN' - INSTRO — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 10
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 13
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3 / Sandman's Comin' - Rock - Sports_Life — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4 / SANDMAN'S COMIN' - INSTRO — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4 / Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 4 / SANDMAN'S COMIN' - INSTRO — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 10
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 13
+      }
+    },
+    {
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4 / Sandman's Comin' - Rock - Sports_Life — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "LNDUO_CC-7075626c69632f6d",
+      "type": "LNDUO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
+      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
+      "start": 283,
+      "end": 300,
+      "duration_sec": 17,
+      "line_count": 2,
+      "text": "Outro / Outro Opening",
+      "lines": [
+        {
+          "text": "Outro",
+          "start": 283,
+          "end": 325.8
+        },
+        {
+          "text": "Outro Opening",
+          "start": 283,
+          "end": 300
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 17,
+        "word_count": 3
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 1.1 / SANDMAN'S COMIN' - 90bpm — mK 1.1 / SANDMAN'S COMIN' - INSTRO — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1 / SANDMAN'S COMIN' - INSTRO — mK 1.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1 / Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 14,
+      "duration_sec": 14,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1 / Sandman's Comin' - Rock - Sports_Life — mK 1.1 / SANDMAN'S COMIN'  — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 14,
+        "word_count": 22
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 1.2 / SANDMAN'S COMIN' - 90bpm — mK 1.2 / SANDMAN'S COMIN' - INSTRO — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2 / SANDMAN'S COMIN' - INSTRO — mK 1.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2 / Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 22,
+      "duration_sec": 15,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2 / Sandman's Comin' - Rock - Sports_Life — mK 1.2 / SANDMAN'S COMIN'  — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 15,
+        "word_count": 22
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 1.3 / SANDMAN'S COMIN' - 90bpm — mK 1.3 / SANDMAN'S COMIN' - INSTRO — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3 / SANDMAN'S COMIN' - INSTRO — mK 1.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3 / Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 47,
+      "duration_sec": 32,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3 / Sandman's Comin' - Rock - Sports_Life — mK 1.3 / SANDMAN'S COMIN'  — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 32,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 47,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 2 / SANDMAN'S COMIN' - 90bpm — mK 2.1 / SANDMAN'S COMIN' - INSTRO — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 16
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 29,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.1 / SANDMAN'S COMIN' - INSTRO — KK 2 / SANDMAN'S COMIN' - INSTRO — mK 2.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1",
+          "start": 23,
+          "end": 29
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 47,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 2 / SANDMAN'S COMIN' - INSTRO — mK 2.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 19
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 29,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 47,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1 / Sandman's Comin' - Rock - Sports_Life — KK 2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 2",
+          "start": 23,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 24
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 23,
+      "end": 29,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1 / Sandman's Comin' - Rock - Sports_Life — KK 2 / Sandman's Comin' - Rock - Sports_Life — mK 2.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.1",
+          "start": 23,
+          "end": 29
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 2",
+          "start": 23,
+          "end": 47
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.1",
+          "start": 23,
+          "end": 29
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 24
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 2.2 / SANDMAN'S COMIN' - 90bpm — mK 2.2 / SANDMAN'S COMIN' - INSTRO — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2 / SANDMAN'S COMIN' - INSTRO — mK 2.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2 / Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 41,
+      "duration_sec": 12,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2 / Sandman's Comin' - Rock - Sports_Life — mK 2.2 / SANDMAN'S COMIN'  — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 12,
+        "word_count": 22
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 2.3 / SANDMAN'S COMIN' - 90bpm — mK 2.3 / SANDMAN'S COMIN' - INSTRO — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3 / SANDMAN'S COMIN' - INSTRO — mK 2.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3 / Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 47,
+      "duration_sec": 12,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3 / Sandman's Comin' - Rock - Sports_Life — mK 2.3 / SANDMAN'S COMIN'  — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 12,
+        "word_count": 22
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 2.4 / SANDMAN'S COMIN' - 90bpm — mK 2.4 / SANDMAN'S COMIN' - INSTRO — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4 / SANDMAN'S COMIN' - INSTRO — mK 2.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4 / Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 71,
+      "duration_sec": 30,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4 / Sandman's Comin' - Rock - Sports_Life — mK 2.4 / SANDMAN'S COMIN'  — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 30,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — KK 3 / SANDMAN'S COMIN' - 90bpm — KK 3 / SANDMAN'S COMIN' - INSTRO — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 14
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 3 / SANDMAN'S COMIN' - INSTRO — KK 3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 18
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3 / Sandman's Comin' - Rock - Sports_Life — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 20
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3 / Sandman's Comin' - Rock - Sports_Life — KK 3 / SANDMAN'S COMIN'  — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 20
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — mK 3.4 / SANDMAN'S COMIN' - 90bpm — mK 3.4 / SANDMAN'S COMIN' - INSTRO — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4 / SANDMAN'S COMIN' - INSTRO — mK 3.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4 / Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 23
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 94,
+      "duration_sec": 29,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4 / Sandman's Comin' - Rock - Sports_Life — mK 3.4 / SANDMAN'S COMIN'  — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN'  — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 29,
+        "word_count": 21
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN'  — KK 4 / SANDMAN'S COMIN' - 90bpm — KK 4 / SANDMAN'S COMIN' - INSTRO — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN'  — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 14
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 4 / SANDMAN'S COMIN' - INSTRO — KK 4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 18
+      }
+    },
+    {
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 3,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4 / Sandman's Comin' - Rock - Sports_Life — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 20
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1 / SANDMAN'S COMIN' - INSTRO — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 0,
+      "end": 7,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1 / Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.1",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.1",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2 / SANDMAN'S COMIN' - INSTRO — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 7,
+      "end": 14,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2 / Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.2",
+          "start": 7,
+          "end": 14
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.2",
+          "start": 7,
+          "end": 14
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3 / SANDMAN'S COMIN' - INSTRO — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 15,
+      "end": 22,
+      "duration_sec": 7,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3 / Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 1.3",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.3",
+          "start": 15,
+          "end": 22
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 7,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2 / SANDMAN'S COMIN' - INSTRO — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 29,
+      "end": 35,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2 / Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.2",
+          "start": 29,
+          "end": 35
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.2",
+          "start": 29,
+          "end": 35
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3 / SANDMAN'S COMIN' - INSTRO — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 35,
+      "end": 41,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3 / Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.3",
+          "start": 35,
+          "end": 41
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.3",
+          "start": 35,
+          "end": 41
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4 / SANDMAN'S COMIN' - INSTRO — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 41,
+      "end": 47,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4 / Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 2.4",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
+          "start": 41,
+          "end": 47
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 3 / SANDMAN'S COMIN' - INSTRO — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 10
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 3 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 13
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 47,
+      "end": 71,
+      "duration_sec": 24,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3 / Sandman's Comin' - Rock - Sports_Life — KK 3",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 3",
+          "start": 47,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 3",
+          "start": 47,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 24,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4 / SANDMAN'S COMIN' - INSTRO — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 12
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 15
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 65,
+      "end": 71,
+      "duration_sec": 6,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4 / Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — mK 3.4",
+          "start": 65,
+          "end": 71
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
+          "start": 65,
+          "end": 71
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 6,
+        "word_count": 17
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - 90bpm — KK 4 / SANDMAN'S COMIN' - INSTRO — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 10
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO — KK 4 / SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 13
+      }
+    },
+    {
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
+      "status": "HOLD_REVIEW",
+      "source_file": "manifests/one-pix-combo-kk-sandman.json",
+      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
+      "start": 71,
+      "end": 94,
+      "duration_sec": 23,
+      "line_count": 2,
+      "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4 / Sandman's Comin' - Rock - Sports_Life — KK 4",
+      "lines": [
+        {
+          "text": "SANDMAN'S COMIN' - INSTRO PLUS WHOA'S 90bpm — KK 4",
+          "start": 71,
+          "end": 94
+        },
+        {
+          "text": "Sandman's Comin' - Rock - Sports_Life — KK 4",
+          "start": 71,
+          "end": 94
+        }
+      ],
+      "suitability": {
+        "has_audio_url": true,
+        "non_instrumental": true,
+        "duration_recorded_not_eligibility": 23,
+        "word_count": 15
+      }
+    },
     {
       "id": "LNDUO_CC-6d616e6966657374",
       "type": "LNDUO_CC",

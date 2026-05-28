@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-05-28T02:25:04.795Z",
+  "generated_at": "2026-05-28T02:44:10.456Z",
   "doctrine": {
     "rejected_not_deleted": true,
     "hold_requires_review_reason": true
   },
   "totals": {
-    "hold_total": 159
+    "hold_total": 102
   },
   "hold_review": [
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -34,13 +34,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -64,13 +64,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -94,43 +94,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 0,
-      "end": 163,
-      "duration_sec": 163,
-      "line_count": 2,
-      "text": "Thank You KK1 / Thank You KK4",
-      "lines": [
-        {
-          "text": "Thank You KK1",
-          "start": 0,
-          "end": 52.5
-        },
-        {
-          "text": "Thank You KK4",
-          "start": 0,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-7075626c69632f6d",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
       "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
@@ -154,13 +124,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 10,
         "word_count": 3
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -184,13 +154,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -214,13 +184,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -244,43 +214,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 10,
-      "end": 52.5,
-      "duration_sec": 42.5,
-      "line_count": 2,
-      "text": "Intro Lift / Verse 1A",
-      "lines": [
-        {
-          "text": "Intro Lift",
-          "start": 10,
-          "end": 20
-        },
-        {
-          "text": "Verse 1A",
-          "start": 20,
-          "end": 52.5
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 4
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -304,13 +244,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -334,13 +274,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -364,43 +304,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "manifests/one-pix-combo-kk-sandman.json",
-      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
-      "start": 15,
-      "end": 47,
-      "duration_sec": 32,
-      "line_count": 2,
-      "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.3 / SANDMAN'S COMIN'  — KK 2",
-      "lines": [
-        {
-          "text": "Sandman's Comin' - Rock - Sports_Life — mK 1.3",
-          "start": 15,
-          "end": 22
-        },
-        {
-          "text": "SANDMAN'S COMIN'  — KK 2",
-          "start": 23,
-          "end": 47
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 12
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -424,13 +334,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 11
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -454,13 +364,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 11
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -484,13 +394,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 14
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -514,13 +424,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -544,13 +454,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 16
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -574,13 +484,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -604,13 +514,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -634,13 +544,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -664,13 +574,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -694,13 +604,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -724,13 +634,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -754,13 +664,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -784,13 +694,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -814,73 +724,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "manifests/one-pix-combo-kk-sandman.json",
-      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
-      "start": 41,
-      "end": 71,
-      "duration_sec": 30,
-      "line_count": 2,
-      "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4 / SANDMAN'S COMIN'  — KK 3",
-      "lines": [
-        {
-          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
-          "start": 41,
-          "end": 47
-        },
-        {
-          "text": "SANDMAN'S COMIN'  — KK 3",
-          "start": 47,
-          "end": 71
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 12
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 44,
-      "end": 163,
-      "duration_sec": 119,
-      "line_count": 2,
-      "text": "V1A Close / Thank You KK2",
-      "lines": [
-        {
-          "text": "V1A Close",
-          "start": 44,
-          "end": 52.5
-        },
-        {
-          "text": "Thank You KK2",
-          "start": 52,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -904,13 +754,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 10
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -934,13 +784,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 13
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -964,73 +814,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 52,
-      "end": 80,
-      "duration_sec": 28,
-      "line_count": 2,
-      "text": "Thank You KK2 / Verse 1C",
-      "lines": [
-        {
-          "text": "Thank You KK2",
-          "start": 52,
-          "end": 163
-        },
-        {
-          "text": "Verse 1C",
-          "start": 52,
-          "end": 80
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 52,
-      "end": 80,
-      "duration_sec": 28,
-      "line_count": 2,
-      "text": "V1C First Moment / V1C Second Moment",
-      "lines": [
-        {
-          "text": "V1C First Moment",
-          "start": 52,
-          "end": 66
-        },
-        {
-          "text": "V1C Second Moment",
-          "start": 66,
-          "end": 80
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1054,13 +844,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1084,13 +874,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1114,73 +904,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "manifests/one-pix-combo-kk-sandman.json",
-      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
-      "start": 65,
-      "end": 94,
-      "duration_sec": 29,
-      "line_count": 2,
-      "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4 / SANDMAN'S COMIN'  — KK 4",
-      "lines": [
-        {
-          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
-          "start": 65,
-          "end": 71
-        },
-        {
-          "text": "SANDMAN'S COMIN'  — KK 4",
-          "start": 71,
-          "end": 94
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 12
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 66,
-      "end": 114,
-      "duration_sec": 48,
-      "line_count": 2,
-      "text": "V1C Second Moment / Verse 1D",
-      "lines": [
-        {
-          "text": "V1C Second Moment",
-          "start": 66,
-          "end": 80
-        },
-        {
-          "text": "Verse 1D",
-          "start": 80,
-          "end": 114
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1204,13 +934,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 10
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1234,13 +964,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 13
       }
     },
     {
-      "id": "LINE_PAIR_CC-6d616e6966657374",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-6d616e6966657374",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1264,463 +994,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 15
       }
     },
     {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 80,
-      "end": 114,
-      "duration_sec": 34,
-      "line_count": 2,
-      "text": "V1D First Moment / V1D Second Moment",
-      "lines": [
-        {
-          "text": "V1D First Moment",
-          "start": 80,
-          "end": 97
-        },
-        {
-          "text": "V1D Second Moment",
-          "start": 97,
-          "end": 114
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 97,
-      "end": 163,
-      "duration_sec": 66,
-      "line_count": 2,
-      "text": "V1D Second Moment / Thank You KK3",
-      "lines": [
-        {
-          "text": "V1D Second Moment",
-          "start": 97,
-          "end": 114
-        },
-        {
-          "text": "Thank You KK3",
-          "start": 114,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 114,
-      "end": 163,
-      "duration_sec": 49,
-      "line_count": 2,
-      "text": "Thank You KK3 / Chorus 1",
-      "lines": [
-        {
-          "text": "Thank You KK3",
-          "start": 114,
-          "end": 163
-        },
-        {
-          "text": "Chorus 1",
-          "start": 114,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 114,
-      "end": 146,
-      "duration_sec": 32,
-      "line_count": 2,
-      "text": "Chorus 1 Opening / Chorus 1 Middle",
-      "lines": [
-        {
-          "text": "Chorus 1 Opening",
-          "start": 114,
-          "end": 130
-        },
-        {
-          "text": "Chorus 1 Middle",
-          "start": 130,
-          "end": 146
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 130,
-      "end": 163,
-      "duration_sec": 33,
-      "line_count": 2,
-      "text": "Chorus 1 Middle / Chorus 1 Close",
-      "lines": [
-        {
-          "text": "Chorus 1 Middle",
-          "start": 130,
-          "end": 146
-        },
-        {
-          "text": "Chorus 1 Close",
-          "start": 146,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 146,
-      "end": 184,
-      "duration_sec": 38,
-      "line_count": 2,
-      "text": "Chorus 1 Close / Thank You KK5",
-      "lines": [
-        {
-          "text": "Chorus 1 Close",
-          "start": 146,
-          "end": 163
-        },
-        {
-          "text": "Thank You KK5",
-          "start": 163,
-          "end": 184
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 163,
-      "end": 326,
-      "duration_sec": 163,
-      "line_count": 2,
-      "text": "V2A Moment / Thank You KK6",
-      "lines": [
-        {
-          "text": "V2A Moment",
-          "start": 163,
-          "end": 184
-        },
-        {
-          "text": "Thank You KK6",
-          "start": 184,
-          "end": 326
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 184,
-      "end": 228,
-      "duration_sec": 44,
-      "line_count": 2,
-      "text": "Thank You KK6 / Verse 2B",
-      "lines": [
-        {
-          "text": "Thank You KK6",
-          "start": 184,
-          "end": 326
-        },
-        {
-          "text": "Verse 2B",
-          "start": 184,
-          "end": 228
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 184,
-      "end": 214,
-      "duration_sec": 30,
-      "line_count": 2,
-      "text": "V2B Opening / V2B Middle",
-      "lines": [
-        {
-          "text": "V2B Opening",
-          "start": 184,
-          "end": 199
-        },
-        {
-          "text": "V2B Middle",
-          "start": 199,
-          "end": 214
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 4
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 199,
-      "end": 228,
-      "duration_sec": 29,
-      "line_count": 2,
-      "text": "V2B Middle / V2B Close",
-      "lines": [
-        {
-          "text": "V2B Middle",
-          "start": 199,
-          "end": 214
-        },
-        {
-          "text": "V2B Close",
-          "start": 214,
-          "end": 228
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 4
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 214,
-      "end": 326,
-      "duration_sec": 112,
-      "line_count": 2,
-      "text": "V2B Close / Thank You KK7",
-      "lines": [
-        {
-          "text": "V2B Close",
-          "start": 214,
-          "end": 228
-        },
-        {
-          "text": "Thank You KK7",
-          "start": 228,
-          "end": 326
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 228,
-      "end": 283,
-      "duration_sec": 55,
-      "line_count": 2,
-      "text": "Thank You KK7 / Chorus 2",
-      "lines": [
-        {
-          "text": "Thank You KK7",
-          "start": 228,
-          "end": 326
-        },
-        {
-          "text": "Chorus 2",
-          "start": 228,
-          "end": 283
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 228,
-      "end": 264,
-      "duration_sec": 36,
-      "line_count": 2,
-      "text": "Chorus 2 Opening / Chorus 2 Middle",
-      "lines": [
-        {
-          "text": "Chorus 2 Opening",
-          "start": 228,
-          "end": 246
-        },
-        {
-          "text": "Chorus 2 Middle",
-          "start": 246,
-          "end": 264
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 246,
-      "end": 283,
-      "duration_sec": 37,
-      "line_count": 2,
-      "text": "Chorus 2 Middle / Chorus 2 Close",
-      "lines": [
-        {
-          "text": "Chorus 2 Middle",
-          "start": 246,
-          "end": 264
-        },
-        {
-          "text": "Chorus 2 Close",
-          "start": 264,
-          "end": 283
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 264,
-      "end": 325.8,
-      "duration_sec": 61.8,
-      "line_count": 2,
-      "text": "Chorus 2 Close / Outro",
-      "lines": [
-        {
-          "text": "Chorus 2 Close",
-          "start": 264,
-          "end": 283
-        },
-        {
-          "text": "Outro",
-          "start": 283,
-          "end": 325.8
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 4
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
+      "id": "LNDUO_CC-7075626c69632f6d",
+      "type": "LNDUO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
       "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
@@ -1744,73 +1024,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 17,
         "word_count": 3
       }
     },
     {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 283,
-      "end": 313,
-      "duration_sec": 30,
-      "line_count": 2,
-      "text": "Outro Opening / Outro Middle",
-      "lines": [
-        {
-          "text": "Outro Opening",
-          "start": 283,
-          "end": 300
-        },
-        {
-          "text": "Outro Middle",
-          "start": 300,
-          "end": 313
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 4
-      }
-    },
-    {
-      "id": "LINE_PAIR_CC-7075626c69632f6d",
-      "type": "LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 300,
-      "end": 325.8,
-      "duration_sec": 25.8,
-      "line_count": 2,
-      "text": "Outro Middle / Final Thank You",
-      "lines": [
-        {
-          "text": "Outro Middle",
-          "start": 300,
-          "end": 313
-        },
-        {
-          "text": "Final Thank You",
-          "start": 313,
-          "end": 325.8
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1839,13 +1059,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1874,13 +1094,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1909,13 +1129,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -1944,48 +1164,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 14,
         "word_count": 22
       }
     },
     {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 0,
-      "end": 52.5,
-      "duration_sec": 52.5,
-      "line_count": 3,
-      "text": "Opening Moment / Intro Lift / Verse 1A",
-      "lines": [
-        {
-          "text": "Opening Moment",
-          "start": 0,
-          "end": 10
-        },
-        {
-          "text": "Intro Lift",
-          "start": 10,
-          "end": 20
-        },
-        {
-          "text": "Verse 1A",
-          "start": 20,
-          "end": 52.5
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2014,13 +1199,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2049,13 +1234,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2084,13 +1269,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2119,13 +1304,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 15,
         "word_count": 22
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2154,13 +1339,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2189,13 +1374,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2224,13 +1409,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2259,48 +1444,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": false,
+        "duration_recorded_not_eligibility": 32,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 20,
-      "end": 52.5,
-      "duration_sec": 32.5,
-      "line_count": 3,
-      "text": "V1A First Moment / V1A Second Moment / V1A Close",
-      "lines": [
-        {
-          "text": "V1A First Moment",
-          "start": 20,
-          "end": 32
-        },
-        {
-          "text": "V1A Second Moment",
-          "start": 32,
-          "end": 44
-        },
-        {
-          "text": "V1A Close",
-          "start": 44,
-          "end": 52.5
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2329,13 +1479,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 16
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2364,13 +1514,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2399,13 +1549,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 19
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2434,13 +1584,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2469,13 +1619,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 24
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2504,13 +1654,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 24
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2539,13 +1689,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2574,13 +1724,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2609,13 +1759,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2644,48 +1794,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 12,
         "word_count": 22
       }
     },
     {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 32,
-      "end": 163,
-      "duration_sec": 131,
-      "line_count": 3,
-      "text": "V1A Second Moment / V1A Close / Thank You KK2",
-      "lines": [
-        {
-          "text": "V1A Second Moment",
-          "start": 32,
-          "end": 44
-        },
-        {
-          "text": "V1A Close",
-          "start": 44,
-          "end": 52.5
-        },
-        {
-          "text": "Thank You KK2",
-          "start": 52,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2714,13 +1829,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2749,13 +1864,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2784,13 +1899,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2819,13 +1934,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 12,
         "word_count": 22
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2854,13 +1969,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2889,13 +2004,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2924,13 +2039,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -2959,83 +2074,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": false,
+        "duration_recorded_not_eligibility": 30,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "manifests/one-pix-combo-kk-sandman.json",
-      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
-      "start": 41,
-      "end": 71,
-      "duration_sec": 30,
-      "line_count": 3,
-      "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4 / SANDMAN'S COMIN'  — KK 3 / SANDMAN'S COMIN' - 90bpm — KK 3",
-      "lines": [
-        {
-          "text": "Sandman's Comin' - Rock - Sports_Life — mK 2.4",
-          "start": 41,
-          "end": 47
-        },
-        {
-          "text": "SANDMAN'S COMIN'  — KK 3",
-          "start": 47,
-          "end": 71
-        },
-        {
-          "text": "SANDMAN'S COMIN' - 90bpm — KK 3",
-          "start": 47,
-          "end": 71
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 17
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 44,
-      "end": 80,
-      "duration_sec": 36,
-      "line_count": 3,
-      "text": "V1A Close / Thank You KK2 / Verse 1C",
-      "lines": [
-        {
-          "text": "V1A Close",
-          "start": 44,
-          "end": 52.5
-        },
-        {
-          "text": "Thank You KK2",
-          "start": 52,
-          "end": 163
-        },
-        {
-          "text": "Verse 1C",
-          "start": 52,
-          "end": 80
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3064,13 +2109,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 14
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3099,13 +2144,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 18
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3134,13 +2179,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 20
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3169,83 +2214,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 20
       }
     },
     {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 52,
-      "end": 80,
-      "duration_sec": 28,
-      "line_count": 3,
-      "text": "Verse 1C / V1C First Moment / V1C Second Moment",
-      "lines": [
-        {
-          "text": "Verse 1C",
-          "start": 52,
-          "end": 80
-        },
-        {
-          "text": "V1C First Moment",
-          "start": 52,
-          "end": 66
-        },
-        {
-          "text": "V1C Second Moment",
-          "start": 66,
-          "end": 80
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 52,
-      "end": 114,
-      "duration_sec": 62,
-      "line_count": 3,
-      "text": "V1C First Moment / V1C Second Moment / Verse 1D",
-      "lines": [
-        {
-          "text": "V1C First Moment",
-          "start": 52,
-          "end": 66
-        },
-        {
-          "text": "V1C Second Moment",
-          "start": 66,
-          "end": 80
-        },
-        {
-          "text": "Verse 1D",
-          "start": 80,
-          "end": 114
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3274,13 +2249,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3309,13 +2284,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3344,13 +2319,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 23
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3379,83 +2354,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": false,
+        "duration_recorded_not_eligibility": 29,
         "word_count": 21
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "manifests/one-pix-combo-kk-sandman.json",
-      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
-      "start": 65,
-      "end": 94,
-      "duration_sec": 29,
-      "line_count": 3,
-      "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4 / SANDMAN'S COMIN'  — KK 4 / SANDMAN'S COMIN' - 90bpm — KK 4",
-      "lines": [
-        {
-          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
-          "start": 65,
-          "end": 71
-        },
-        {
-          "text": "SANDMAN'S COMIN'  — KK 4",
-          "start": 71,
-          "end": 94
-        },
-        {
-          "text": "SANDMAN'S COMIN' - 90bpm — KK 4",
-          "start": 71,
-          "end": 94
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 17
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 66,
-      "end": 97,
-      "duration_sec": 31,
-      "line_count": 3,
-      "text": "V1C Second Moment / Verse 1D / V1D First Moment",
-      "lines": [
-        {
-          "text": "V1C Second Moment",
-          "start": 66,
-          "end": 80
-        },
-        {
-          "text": "Verse 1D",
-          "start": 80,
-          "end": 114
-        },
-        {
-          "text": "V1D First Moment",
-          "start": 80,
-          "end": 97
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3484,13 +2389,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 14
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3519,13 +2424,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 18
       }
     },
     {
-      "id": "LINE_TRIO_CC-6d616e6966657374",
-      "type": "LINE_TRIO_CC",
+      "id": "LNTRIO_CC-6d616e6966657374",
+      "type": "LNTRIO_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -3554,678 +2459,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 20
       }
     },
     {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 80,
-      "end": 114,
-      "duration_sec": 34,
-      "line_count": 3,
-      "text": "Verse 1D / V1D First Moment / V1D Second Moment",
-      "lines": [
-        {
-          "text": "Verse 1D",
-          "start": 80,
-          "end": 114
-        },
-        {
-          "text": "V1D First Moment",
-          "start": 80,
-          "end": 97
-        },
-        {
-          "text": "V1D Second Moment",
-          "start": 97,
-          "end": 114
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 80,
-      "end": 163,
-      "duration_sec": 83,
-      "line_count": 3,
-      "text": "V1D First Moment / V1D Second Moment / Thank You KK3",
-      "lines": [
-        {
-          "text": "V1D First Moment",
-          "start": 80,
-          "end": 97
-        },
-        {
-          "text": "V1D Second Moment",
-          "start": 97,
-          "end": 114
-        },
-        {
-          "text": "Thank You KK3",
-          "start": 114,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 9
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 97,
-      "end": 163,
-      "duration_sec": 66,
-      "line_count": 3,
-      "text": "V1D Second Moment / Thank You KK3 / Chorus 1",
-      "lines": [
-        {
-          "text": "V1D Second Moment",
-          "start": 97,
-          "end": 114
-        },
-        {
-          "text": "Thank You KK3",
-          "start": 114,
-          "end": 163
-        },
-        {
-          "text": "Chorus 1",
-          "start": 114,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 114,
-      "end": 146,
-      "duration_sec": 32,
-      "line_count": 3,
-      "text": "Chorus 1 / Chorus 1 Opening / Chorus 1 Middle",
-      "lines": [
-        {
-          "text": "Chorus 1",
-          "start": 114,
-          "end": 163
-        },
-        {
-          "text": "Chorus 1 Opening",
-          "start": 114,
-          "end": 130
-        },
-        {
-          "text": "Chorus 1 Middle",
-          "start": 130,
-          "end": 146
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 114,
-      "end": 163,
-      "duration_sec": 49,
-      "line_count": 3,
-      "text": "Chorus 1 Opening / Chorus 1 Middle / Chorus 1 Close",
-      "lines": [
-        {
-          "text": "Chorus 1 Opening",
-          "start": 114,
-          "end": 130
-        },
-        {
-          "text": "Chorus 1 Middle",
-          "start": 130,
-          "end": 146
-        },
-        {
-          "text": "Chorus 1 Close",
-          "start": 146,
-          "end": 163
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 9
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 130,
-      "end": 184,
-      "duration_sec": 54,
-      "line_count": 3,
-      "text": "Chorus 1 Middle / Chorus 1 Close / Thank You KK5",
-      "lines": [
-        {
-          "text": "Chorus 1 Middle",
-          "start": 130,
-          "end": 146
-        },
-        {
-          "text": "Chorus 1 Close",
-          "start": 146,
-          "end": 163
-        },
-        {
-          "text": "Thank You KK5",
-          "start": 163,
-          "end": 184
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 9
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 146,
-      "end": 184,
-      "duration_sec": 38,
-      "line_count": 3,
-      "text": "Chorus 1 Close / Thank You KK5 / Verse 2A",
-      "lines": [
-        {
-          "text": "Chorus 1 Close",
-          "start": 146,
-          "end": 163
-        },
-        {
-          "text": "Thank You KK5",
-          "start": 163,
-          "end": 184
-        },
-        {
-          "text": "Verse 2A",
-          "start": 163,
-          "end": 184
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 163,
-      "end": 326,
-      "duration_sec": 163,
-      "line_count": 3,
-      "text": "Verse 2A / V2A Moment / Thank You KK6",
-      "lines": [
-        {
-          "text": "Verse 2A",
-          "start": 163,
-          "end": 184
-        },
-        {
-          "text": "V2A Moment",
-          "start": 163,
-          "end": 184
-        },
-        {
-          "text": "Thank You KK6",
-          "start": 184,
-          "end": 326
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 163,
-      "end": 228,
-      "duration_sec": 65,
-      "line_count": 3,
-      "text": "V2A Moment / Thank You KK6 / Verse 2B",
-      "lines": [
-        {
-          "text": "V2A Moment",
-          "start": 163,
-          "end": 184
-        },
-        {
-          "text": "Thank You KK6",
-          "start": 184,
-          "end": 326
-        },
-        {
-          "text": "Verse 2B",
-          "start": 184,
-          "end": 228
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 184,
-      "end": 214,
-      "duration_sec": 30,
-      "line_count": 3,
-      "text": "Verse 2B / V2B Opening / V2B Middle",
-      "lines": [
-        {
-          "text": "Verse 2B",
-          "start": 184,
-          "end": 228
-        },
-        {
-          "text": "V2B Opening",
-          "start": 184,
-          "end": 199
-        },
-        {
-          "text": "V2B Middle",
-          "start": 199,
-          "end": 214
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 184,
-      "end": 228,
-      "duration_sec": 44,
-      "line_count": 3,
-      "text": "V2B Opening / V2B Middle / V2B Close",
-      "lines": [
-        {
-          "text": "V2B Opening",
-          "start": 184,
-          "end": 199
-        },
-        {
-          "text": "V2B Middle",
-          "start": 199,
-          "end": 214
-        },
-        {
-          "text": "V2B Close",
-          "start": 214,
-          "end": 228
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 199,
-      "end": 326,
-      "duration_sec": 127,
-      "line_count": 3,
-      "text": "V2B Middle / V2B Close / Thank You KK7",
-      "lines": [
-        {
-          "text": "V2B Middle",
-          "start": 199,
-          "end": 214
-        },
-        {
-          "text": "V2B Close",
-          "start": 214,
-          "end": 228
-        },
-        {
-          "text": "Thank You KK7",
-          "start": 228,
-          "end": 326
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 214,
-      "end": 283,
-      "duration_sec": 69,
-      "line_count": 3,
-      "text": "V2B Close / Thank You KK7 / Chorus 2",
-      "lines": [
-        {
-          "text": "V2B Close",
-          "start": 214,
-          "end": 228
-        },
-        {
-          "text": "Thank You KK7",
-          "start": 228,
-          "end": 326
-        },
-        {
-          "text": "Chorus 2",
-          "start": 228,
-          "end": 283
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 228,
-      "end": 264,
-      "duration_sec": 36,
-      "line_count": 3,
-      "text": "Chorus 2 / Chorus 2 Opening / Chorus 2 Middle",
-      "lines": [
-        {
-          "text": "Chorus 2",
-          "start": 228,
-          "end": 283
-        },
-        {
-          "text": "Chorus 2 Opening",
-          "start": 228,
-          "end": 246
-        },
-        {
-          "text": "Chorus 2 Middle",
-          "start": 246,
-          "end": 264
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 8
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 228,
-      "end": 283,
-      "duration_sec": 55,
-      "line_count": 3,
-      "text": "Chorus 2 Opening / Chorus 2 Middle / Chorus 2 Close",
-      "lines": [
-        {
-          "text": "Chorus 2 Opening",
-          "start": 228,
-          "end": 246
-        },
-        {
-          "text": "Chorus 2 Middle",
-          "start": 246,
-          "end": 264
-        },
-        {
-          "text": "Chorus 2 Close",
-          "start": 264,
-          "end": 283
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 9
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 246,
-      "end": 325.8,
-      "duration_sec": 79.8,
-      "line_count": 3,
-      "text": "Chorus 2 Middle / Chorus 2 Close / Outro",
-      "lines": [
-        {
-          "text": "Chorus 2 Middle",
-          "start": 246,
-          "end": 264
-        },
-        {
-          "text": "Chorus 2 Close",
-          "start": 264,
-          "end": 283
-        },
-        {
-          "text": "Outro",
-          "start": 283,
-          "end": 325.8
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 264,
-      "end": 300,
-      "duration_sec": 36,
-      "line_count": 3,
-      "text": "Chorus 2 Close / Outro / Outro Opening",
-      "lines": [
-        {
-          "text": "Chorus 2 Close",
-          "start": 264,
-          "end": 283
-        },
-        {
-          "text": "Outro",
-          "start": 283,
-          "end": 325.8
-        },
-        {
-          "text": "Outro Opening",
-          "start": 283,
-          "end": 300
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 283,
-      "end": 313,
-      "duration_sec": 30,
-      "line_count": 3,
-      "text": "Outro / Outro Opening / Outro Middle",
-      "lines": [
-        {
-          "text": "Outro",
-          "start": 283,
-          "end": 325.8
-        },
-        {
-          "text": "Outro Opening",
-          "start": 283,
-          "end": 300
-        },
-        {
-          "text": "Outro Middle",
-          "start": 300,
-          "end": 313
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 5
-      }
-    },
-    {
-      "id": "LINE_TRIO_CC-7075626c69632f6d",
-      "type": "LINE_TRIO_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 283,
-      "end": 325.8,
-      "duration_sec": 42.8,
-      "line_count": 3,
-      "text": "Outro Opening / Outro Middle / Final Thank You",
-      "lines": [
-        {
-          "text": "Outro Opening",
-          "start": 283,
-          "end": 300
-        },
-        {
-          "text": "Outro Middle",
-          "start": 300,
-          "end": 313
-        },
-        {
-          "text": "Final Thank You",
-          "start": 313,
-          "end": 325.8
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 7
-      }
-    },
-    {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4249,13 +2489,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4279,13 +2519,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4309,13 +2549,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4339,13 +2579,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4369,13 +2609,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4399,13 +2639,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4429,13 +2669,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4459,13 +2699,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4489,13 +2729,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 7,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4519,13 +2759,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4549,13 +2789,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4579,13 +2819,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4609,13 +2849,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4639,13 +2879,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4669,13 +2909,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4699,13 +2939,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4729,13 +2969,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4759,13 +2999,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4789,13 +3029,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 10
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4819,13 +3059,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 13
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4849,43 +3089,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 24,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-7075626c69632f6d",
-      "type": "RHYMING_LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 52,
-      "end": 80,
-      "duration_sec": 28,
-      "line_count": 2,
-      "text": "V1C First Moment / V1C Second Moment",
-      "lines": [
-        {
-          "text": "V1C First Moment",
-          "start": 52,
-          "end": 66
-        },
-        {
-          "text": "V1C Second Moment",
-          "start": 66,
-          "end": 80
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
-      }
-    },
-    {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4909,13 +3119,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 12
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4939,13 +3149,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 15
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -4969,43 +3179,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 6,
         "word_count": 17
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "manifests/one-pix-combo-kk-sandman.json",
-      "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
-      "start": 65,
-      "end": 94,
-      "duration_sec": 29,
-      "line_count": 2,
-      "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4 / SANDMAN'S COMIN'  — KK 4",
-      "lines": [
-        {
-          "text": "Sandman's Comin' - Rock - Sports_Life — mK 3.4",
-          "start": 65,
-          "end": 71
-        },
-        {
-          "text": "SANDMAN'S COMIN'  — KK 4",
-          "start": 71,
-          "end": 94
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 12
-      }
-    },
-    {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -5029,13 +3209,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 10
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -5059,13 +3239,13 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 13
       }
     },
     {
-      "id": "RHYMING_LINE_PAIR_CC-6d616e6966657374",
-      "type": "RHYMING_LINE_PAIR_CC",
+      "id": "RMST_CC-6d616e6966657374",
+      "type": "RMST_CC",
       "status": "HOLD_REVIEW",
       "source_file": "manifests/one-pix-combo-kk-sandman.json",
       "ssot_audio_url": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/mk-products/first-pass/SANDMAN-S-COMIN-kk1-mk1-0s-7s-a08c419f80.mp3",
@@ -5089,38 +3269,8 @@
       "suitability": {
         "has_audio_url": true,
         "non_instrumental": true,
-        "duration_ok": true,
+        "duration_recorded_not_eligibility": 23,
         "word_count": 15
-      }
-    },
-    {
-      "id": "RHYMING_LINE_PAIR_CC-7075626c69632f6d",
-      "type": "RHYMING_LINE_PAIR_CC",
-      "status": "HOLD_REVIEW",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "ssot_audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
-      "start": 80,
-      "end": 114,
-      "duration_sec": 34,
-      "line_count": 2,
-      "text": "V1D First Moment / V1D Second Moment",
-      "lines": [
-        {
-          "text": "V1D First Moment",
-          "start": 80,
-          "end": 97
-        },
-        {
-          "text": "V1D Second Moment",
-          "start": 97,
-          "end": 114
-        }
-      ],
-      "suitability": {
-        "has_audio_url": true,
-        "non_instrumental": true,
-        "duration_ok": false,
-        "word_count": 6
       }
     }
   ]

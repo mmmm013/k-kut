@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-const source = "manifests/kkr/line-cc/linepair-trio-rhyme-cc-inventory.json";
+const source = "manifests/kkr/line-cc/lnduo-lntrio-rmst-cc-inventory.json";
 const outReady = "manifests/kkr/line-cc/line-cc-ready-registry.json";
 const outHold = "manifests/kkr/line-cc/line-cc-hold-review.json";
 const outTotals = "reports/ii-inventory-rounded-totals.md";
