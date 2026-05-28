@@ -59,8 +59,22 @@ const requiredEnv = [
 ];
 
 for (const key of requiredEnv) {
-  if (!process.env[key] || !process.env[key].startsWith("https://")) {
-    console.error(`BIC FAIL: missing real Stripe/payment URL env ${key}`);
+  const value = process.env[key] || "";
+  const lower = value.toLowerCase();
+
+  if (!value.startsWith("https://buy.stripe.com/")) {
+    console.error(`BIC FAIL: missing real Stripe payment link env ${key}`);
+    process.exit(1);
+  }
+
+  if (
+    lower.includes("your_real") ||
+    lower.includes("paste") ||
+    lower.includes("replace") ||
+    lower.includes("example") ||
+    lower.includes("test_link")
+  ) {
+    console.error(`BIC FAIL: placeholder Stripe payment link env ${key}`);
     process.exit(1);
   }
 }
