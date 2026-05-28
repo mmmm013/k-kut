@@ -358,7 +358,7 @@ export default function HugPage() {
             HUG
           </p>
           <p className="mt-3 text-sm leading-6 text-[#F5E6C8]/60">
-            No autoplay. No hidden audio. You control the preview and the send.
+            MC-BOT can help guide the choice. No autoplay. No hidden audio. You control the preview and the send.
           </p>
         </div>
       </section>
