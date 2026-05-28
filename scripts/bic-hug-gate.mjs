@@ -233,6 +233,7 @@ if (
   process.exit(1);
 }
 
+execFileSync("node", ["scripts/kkr-prosecute-dispatch-audit.mjs"], { stdio: "inherit" });
 execFileSync("node", ["scripts/audit-kkr-structure-bindings.mjs"], { stdio: "inherit" });
 execFileSync("node", ["scripts/audit-kkr-no-structure-audio-split.mjs"], { stdio: "inherit" });
 
