@@ -28,6 +28,16 @@ function walkFiles(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, ent.name);
+
+    // Never scan generated inventory/report outputs as source input.
+    if (
+      p.includes("manifests/kkr/line-cc") ||
+      p.includes("reports/linepair-trio-rhyme-cc-inventory") ||
+      p.includes("reports/ii-inventory-rounded-totals")
+    ) {
+      continue;
+    }
+
     if (ent.isDirectory()) {
       if ([".git", ".next", "node_modules"].includes(ent.name)) continue;
       walkFiles(p, acc);
@@ -147,11 +157,14 @@ function makeCandidate({ type, lines, sourceFile, audioUrl }) {
   const dur = duration(start, end);
 
   const text = lines.map((l) => l.text).join(" / ");
+  const lowerText = text.toLowerCase();
   const words = normalizeLine(text).split(" ").filter(Boolean).length;
 
   const ready =
     audioUrl &&
     !isBadAudioUrl(audioUrl) &&
+    !lowerText.includes("instro") &&
+    !lowerText.includes("instrumental") &&
     suitableDuration(dur) &&
     words >= 4;
 
