@@ -84,9 +84,9 @@ function isBrObject(obj) {
   const songSection = String(obj.song_section || "").trim().toLowerCase();
 
   if (id === "thank-you-sec-br") return true;
-  if (songSection === "br") return true;
-  if (section === "Br") return true;
-  if (title === "Br") return true;
+  if (songSection === "br" || songSection === "bridge") return true;
+  if (section === "Br" || section === "Bridge" || section.toLowerCase() === "bridge") return true;
+  if (title === "Br" || title === "Bridge" || title.toLowerCase() === "bridge") return true;
 
   const blob = JSON.stringify(obj || "").toLowerCase();
   return (

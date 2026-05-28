@@ -87,6 +87,12 @@ function localPath(url) {
   return url;
 }
 
+function canonicalStructure(value) {
+  const s = String(value || "").trim().toLowerCase();
+  if (s === "bridge" || s === "br") return "br";
+  return s;
+}
+
 function hasStructure(row) {
   return Boolean(row?.section || row?.song_section || row?.structure || row?.role);
 }

@@ -1,0 +1,23 @@
+{
+  "status": "LOCKED",
+  "rule": "Structure aliases normalize before KKr prosecution and dispatch.",
+  "aliases": {
+    "br": "br",
+    "bridge": "br",
+    "Bridge": "br",
+    "Br": "br",
+    "chorus 1": "ch1",
+    "Chorus 1": "ch1",
+    "chorus 2": "ch2",
+    "Chorus 2": "ch2",
+    "pre chorus 1": "prech1",
+    "PreCh1": "prech1",
+    "pre-ch1": "prech1"
+  },
+  "canonical_display": {
+    "br": "Br",
+    "ch1": "Ch1",
+    "ch2": "Ch2",
+    "prech1": "PreCh1"
+  }
+}

@@ -58,3 +58,21 @@ V2b
 Br
 Ch2
 Outro
+
+## Bridge / Br Alias Law
+
+Bridge and Br are the same song-structure item.
+
+Canonical delivery label: Br.
+
+Accepted input aliases:
+- Br
+- Bridge
+- bridge
+
+Required delivery id for Thank You:
+thank-you-sec-br
+
+Required delivery file:
+public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3
+
