@@ -1,5 +1,33 @@
 import fs from "node:fs";
 
+function loadDotEnvLocal() {
+  const file = ".env.local";
+  if (!fs.existsSync(file)) return;
+
+  const text = fs.readFileSync(file, "utf8");
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const idx = line.indexOf("=");
+    if (idx === -1) continue;
+
+    const key = line.slice(0, idx).trim();
+    let value = line.slice(idx + 1).trim();
+
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+
+    if (!process.env[key]) process.env[key] = value;
+  }
+}
+
+loadDotEnvLocal();
+
+
 const files = [
   "app/hug/page.tsx",
   "components/KkutStepMap.tsx",
@@ -55,7 +83,6 @@ for (const url of urls) {
 const requiredEnv = [
   "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL",
   "NEXT_PUBLIC_KKUT_REVIEWED_HUG_PAYMENT_URL",
-  "NEXT_PUBLIC_KKUT_GIFT_HUG_PAYMENT_URL",
 ];
 
 for (const key of requiredEnv) {
