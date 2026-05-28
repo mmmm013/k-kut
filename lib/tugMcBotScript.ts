@@ -1,10 +1,21 @@
 export type TugMcBotLine = {
   id: string;
-  step: "start" | "listen" | "choose" | "compare" | "checkout" | "back" | "reassure" | "seasonal" | "wedding";
+  step:
+    | "start"
+    | "listen"
+    | "choose"
+    | "compare"
+    | "checkout"
+    | "back"
+    | "reassure"
+    | "seasonal"
+    | "wedding";
   label: string;
   line: string;
-  audioSrc?: string;
 };
+
+export const tugMcBotWholeAudioSrc =
+  "/audio/mc-bot/tug/script-whole-2.m4a";
 
 export const tugMcBotScript: TugMcBotLine[] = [
   {
@@ -112,10 +123,11 @@ export const tugMcBotScript: TugMcBotLine[] = [
 ];
 
 export const tugMcBotDoctrine = {
-  source: "Most recent Clayton Gunn MC-BOT script email",
-  audioAttachmentName: "Script whole edit all lines.m4a",
+  source: "Clayton Gunn / Michael Clay MC-BOT recording",
+  audioAttachmentName: "Script whole 2.m4a",
+  wholeAudioSrc: tugMcBotWholeAudioSrc,
   noGeneratedVoiceFallback: true,
   noAutoplay: true,
-  textCanDisplayBeforeAudio: true,
-  audioRequiresRealApprovedFile: true,
+  userControlledAudioOnly: true,
+  lineLevelClipsRequireFutureSegmentation: true,
 } as const;
