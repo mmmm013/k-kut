@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'A HUG is a private music moment you choose by feeling, then send to someone.',
   icons: { icon: '/logo.png', apple: '/logo.png' },
-  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'K-KUT' },
+  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'GPM' },
 };
 
 export const viewport: Viewport = {
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="sticky top-0 z-50 border-b border-amber-300/20 bg-[#0a0a0a]/90 px-5 py-3 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
             <a href="/" className="text-lg font-black tracking-[0.22em] text-amber-200">
-              K-KUT
+              GPM
             </a>
 
             <div className="flex flex-wrap items-center gap-2 text-sm font-black">
