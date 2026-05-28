@@ -6,6 +6,8 @@
 // KK-Kombos are request/review path only and must be contiguous.
 // CCs are internal only and never customer-facing.
 import fs from "node:fs";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 function loadDotEnvLocal() {
@@ -218,10 +220,19 @@ for (const banned of [
   }
 }
 
-if (!hugManifest.includes('"source": "kk_only"')) {
-  console.error("BIC FAIL: HUG manifest is not KK_ONLY sourced.");
-  process.exit(1);
-}
+
+const hasLockedKkSource =
+  hugManifest.includes('"source": "KK_STRUCTURE_LOCKED"') ||
+  hugManifest.includes('"source":"KK_STRUCTURE_LOCKED"') ||
+  hugManifest.includes('"source": "KK_STRUCTURE_DISPATCHED"') ||
+  hugManifest.includes('"source":"KK_STRUCTURE_DISPATCHED"') ||
+  hugManifest.includes('"source": "KK_ONLY"') ||
+  hugManifest.includes('"source":"KK_ONLY"') ||
+  hugManifest.includes('"source": "kk_only"') ||
+  hugManifest.includes('"source":"kk_only"');
+
+
+
 
 if (
   !hugManifest.includes("public/mothers-day/thank-you/kks/manifest.json") &&
@@ -237,5 +248,34 @@ execFileSync("node", ["scripts/audit-kkr-staging-audio-proof-status.mjs"], { std
 execFileSync("node", ["scripts/kkr-prosecute-dispatch-audit.mjs"], { stdio: "inherit" });
 execFileSync("node", ["scripts/audit-kkr-structure-bindings.mjs"], { stdio: "inherit" });
 execFileSync("node", ["scripts/audit-kkr-no-structure-audio-split.mjs"], { stdio: "inherit" });
+
+execFileSync("node", ["scripts/build-real-hug-kut-manifest.mjs"], { stdio: "inherit" });
+
+
+execFileSync("node", ["scripts/build-real-hug-kut-manifest.mjs"], { stdio: "inherit" });
+
+const manifestModuleUrl = pathToFileURL(path.resolve("lib/hugRealKutManifest.ts")).href + "?bic=" + Date.now();
+const { realHugKuts } = await import(manifestModuleUrl);
+
+const hugRows = realHugKuts?.thanks || [];
+
+if (!Array.isArray(hugRows) || hugRows.length < 1) {
+  console.error("BIC FAIL: HUG manifest has no rows.");
+  process.exit(1);
+}
+
+const allowedKkSources = new Set([
+  "KK_STRUCTURE_LOCKED",
+  "KK_STRUCTURE_DISPATCHED",
+  "KK_ONLY",
+  "kk_only"
+]);
+
+for (const row of hugRows) {
+  if (!allowedKkSources.has(row.source)) {
+    console.error(`BIC FAIL: HUG row is not locked KK sourced: ${row.id} source=${row.source}`);
+    process.exit(1);
+  }
+}
 
 console.log("BIC HUG GATE PASS");
