@@ -22,6 +22,12 @@ const hugKinds: Array<{ id: HugKind; label: string; helper: string }> = [
   },
 ];
 
+const paymentLinks = {
+  hug: process.env.NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL || "",
+  reviewed: process.env.NEXT_PUBLIC_KKUT_REVIEWED_HUG_PAYMENT_URL || "",
+  gift: process.env.NEXT_PUBLIC_KKUT_GIFT_HUG_PAYMENT_URL || "",
+};
+
 function KutAudio({ src }: { src: string }) {
   return (
     <div className="mt-4 rounded-2xl border border-[#D4A017]/25 bg-[#24180F] p-4">
@@ -68,8 +74,7 @@ export default function HugPage() {
             Send a private music HUG.
           </h1>
           <p className="mt-6 text-lg leading-8 text-[#F5E6C8]/80">
-            Choose the kind of HUG. MC-BOT shows real pre-made kuts with working audio.
-            Preview each one. Choose the kut that fits.
+            Choose the kind of HUG. See all steps. Preview real pre-made kuts. Choose one and send privately.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black uppercase tracking-wide text-[#F5E6C8]/70">
             <span className="rounded-full border border-[#D4A017]/25 px-3 py-2">Simple</span>
@@ -118,7 +123,7 @@ export default function HugPage() {
                 Preview the kuts. Then choose one.
               </h2>
               <p className="mt-3 text-sm leading-6 text-[#F5E6C8]/80">
-                These are real pre-made KUTs with real MP3 audio.
+                These are real pre-made KUTs with real MP3 audio. No autoplay.
               </p>
 
               <div className="mt-8 grid gap-5 lg:grid-cols-2">
@@ -163,12 +168,12 @@ export default function HugPage() {
                 Selected HUG kut: {selectedKut.label}
               </h2>
               <p className="mt-4 max-w-3xl text-[#F5E6C8]/80">
-                Choose this kut, request help choosing the right HUG, or buy a prepaid HUG as a gift.
+                Send this K-KUT, request MC-BOT reviewed help, or buy a prepaid HUG as a gift.
               </p>
 
               <div className="mt-8 grid gap-4 lg:grid-cols-3">
                 <a
-                  href={`mailto:reachus@gputnammusic.com?subject=K-KUT HUG — ${encodeURIComponent(selectedKut.label)}&body=I want to send this K-KUT HUG:%0A%0A${encodeURIComponent(selectedKut.label)}%0A%0APrice: $7.99%0A%0APlease send payment and delivery instructions.`}
+                  href={paymentLinks.hug}
                   className="rounded-3xl bg-[#F5E6C8] p-5 text-[#1A120B] shadow-2xl transition hover:-translate-y-1"
                 >
                   <p className="text-sm font-black uppercase tracking-wide text-[#8A5A12]">
@@ -182,21 +187,21 @@ export default function HugPage() {
                 </a>
 
                 <a
-                  href={`mailto:reachus@gputnammusic.com?subject=Reviewed K-KUT HUG request&body=I want a reviewed K-KUT HUG.%0A%0ASelected kut candidate: ${encodeURIComponent(selectedKut.label)}%0A%0APrice: $24.99%0A%0APlease help match the right HUG before delivery.`}
+                  href={paymentLinks.reviewed}
                   className="rounded-3xl border border-[#D4A017] bg-[#D4A017] p-5 text-[#1A120B] shadow-2xl transition hover:-translate-y-1"
                 >
                   <p className="text-sm font-black uppercase tracking-wide text-[#3A220F]">
-                    Best help
+                    Paid guidance
                   </p>
                   <p className="mt-2 text-2xl font-black">MC-BOT reviewed HUG</p>
                   <p className="mt-2 text-3xl font-black">$24.99</p>
                   <p className="mt-3 text-sm leading-6 text-[#3A220F]">
-                    Get help choosing the right kut for the moment.
+                    Paid help choosing the right kut for the moment.
                   </p>
                 </a>
 
                 <a
-                  href="mailto:reachus@gputnammusic.com?subject=Gift a K-KUT HUG&body=I want to buy a prepaid K-KUT HUG as a gift.%0A%0AThis is a gift purchase, not a donation or sponsorship.%0A%0APlease send payment and gift instructions."
+                  href={paymentLinks.gift}
                   className="rounded-3xl border border-[#D4A017]/25 bg-[#1A120B] p-5 text-[#F5E6C8] shadow-2xl transition hover:-translate-y-1"
                 >
                   <p className="text-sm font-black uppercase tracking-wide text-[#D4A017]">

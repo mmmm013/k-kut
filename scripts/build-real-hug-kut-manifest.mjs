@@ -31,13 +31,13 @@ const rows = walk(json)
     if (lower.includes("instro")) return false;
     if (lower.includes("instrumental")) return false;
 
-    const publicPath = path.join("public", url.replace(/^\//, ""));
-    return fs.existsSync(publicPath);
+    const local = path.join("public", url.replace(/^\//, ""));
+    return fs.existsSync(local);
   })
   .slice(0, 8);
 
 if (rows.length < 8) {
-  console.error(`STOP: only ${rows.length} real MP3-backed KUTs found. Need 8. No placeholders allowed.`);
+  console.error(`STOP: only ${rows.length} real MP3-backed KUTs found. Need 8. No fake rows.`);
   process.exit(1);
 }
 
