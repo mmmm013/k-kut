@@ -100,13 +100,14 @@
     {
       "id": "thank-you-sec-v1a",
       "tier": "section",
-      "title": "Verse 1A",
-      "section": "V1A",
+      "title": "V1a",
+      "section": "V1a",
       "start": 20.0,
       "end": 52.5,
       "price_tier": "standard",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
-      "notes": "Section cut"
+      "notes": "Section cut",
+      "song_section": "v1a"
     },
     {
       "id": "thank-you-sec-v1c",
@@ -133,46 +134,50 @@
     {
       "id": "thank-you-sec-ch1",
       "tier": "section",
-      "title": "Chorus 1",
-      "section": "Chorus 1",
+      "title": "Ch1",
+      "section": "Ch1",
       "start": 114.0,
       "end": 163.0,
       "price_tier": "standard",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
-      "notes": "Section cut"
+      "notes": "Section cut",
+      "song_section": "ch1"
     },
     {
       "id": "thank-you-sec-v2a",
       "tier": "section",
-      "title": "Verse 2A",
-      "section": "V2A",
+      "title": "V2a",
+      "section": "V2a",
       "start": 163.0,
       "end": 184.0,
       "price_tier": "small",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
-      "notes": "Short section cut"
+      "notes": "Short section cut",
+      "song_section": "v2a"
     },
     {
       "id": "thank-you-sec-v2b",
       "tier": "section",
-      "title": "Verse 2B",
-      "section": "V2B",
+      "title": "V2b",
+      "section": "V2b",
       "start": 184.0,
       "end": 228.0,
       "price_tier": "standard",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
-      "notes": "Section cut"
+      "notes": "Section cut",
+      "song_section": "v2b"
     },
     {
       "id": "thank-you-sec-ch2",
       "tier": "section",
-      "title": "Chorus 2",
-      "section": "Chorus 2",
+      "title": "Ch2",
+      "section": "Ch2",
       "start": 228.0,
       "end": 283.0,
       "price_tier": "standard",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
-      "notes": "Section cut"
+      "notes": "Section cut",
+      "song_section": "ch2"
     },
     {
       "id": "thank-you-sec-outro",
@@ -183,7 +188,8 @@
       "end": 325.8,
       "price_tier": "standard",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
-      "notes": "Ending cut"
+      "notes": "Ending cut",
+      "song_section": "outro"
     },
     {
       "id": "thank-you-cc-001",
@@ -426,6 +432,30 @@
       "price_tier": "small",
       "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3",
       "notes": "Final ending moment"
+    },
+    {
+      "id": "thank-you-sec-br",
+      "title": "Br",
+      "section": "Br",
+      "song_section": "br",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "notes": "Canonical Br KK from Thank You SSOT."
+    },
+    {
+      "id": "thank-you-sec-v1b",
+      "title": "V1b",
+      "section": "V1b",
+      "song_section": "v1b",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "notes": "Canonical V1b KK from legacy V1C delivery name."
+    },
+    {
+      "id": "thank-you-sec-prech1",
+      "title": "PreCh1",
+      "section": "PreCh1",
+      "song_section": "prech1",
+      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "notes": "Canonical PreCh1 KK from legacy V1D delivery name."
     }
   ]
 }

@@ -6,6 +6,7 @@
 // KK-Kombos are request/review path only and must be contiguous.
 // CCs are internal only and never customer-facing.
 import fs from "node:fs";
+import { execFileSync } from "node:child_process";
 
 function loadDotEnvLocal() {
   const file = ".env.local";
@@ -231,5 +232,8 @@ if (
   console.error("BIC FAIL: HUG manifest does not reference allowed KK source manifests.");
   process.exit(1);
 }
+
+execFileSync("node", ["scripts/audit-kkr-structure-bindings.mjs"], { stdio: "inherit" });
+execFileSync("node", ["scripts/audit-kkr-no-structure-audio-split.mjs"], { stdio: "inherit" });
 
 console.log("BIC HUG GATE PASS");

@@ -1,0 +1,10 @@
+{
+  "status": "BLOCKED_UNTIL_RESOLVED",
+  "failure_class": "STRUCTURE_DELIVERY_BINDING_MISSING",
+  "pix": "Thank You",
+  "song_structure_item": "Br",
+  "locked_kk_id": "thank-you-sec-br",
+  "required_delivery_audio": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+  "required_manifest": "public/mothers-day/thank-you/kks-expanded/manifest.json",
+  "rule": "Run targeted KKr-BIZ-MSC delivery export for this one structure item only. Do not run all GPMC PIXs."
+}
