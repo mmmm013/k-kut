@@ -3,211 +3,149 @@ import path from "node:path";
 
 const OUT = "lib/hugRealKutManifest.ts";
 
-const ALLOWED_KK_SOURCES = [
-  "public/mothers-day/thank-you/kks/manifest.json",
+const SOURCES = [
   "public/mothers-day/thank-you/kks-expanded/manifest.json",
-  "data/holiday-kks/mothers-day-thank-you-kks.json",
-  "data/holiday-kks/mothers-day-promo-sets.json",
+  "public/mothers-day/thank-you/kks/manifest.json",
 ];
 
-const BANNED_SOURCE_MARKERS = [
-  "line-cc",
-  "cc-ready",
-  "cc-hold",
-  "lnduo",
-  "lntrio",
-  "pime",
-  "rmst",
-  "mkut",
-  "m-kut",
-  "micro",
-  "micros",
+const THANK_YOU_ROLES = [
+  {
+    role: "VERSE_1",
+    label: "Verse 1 K-KUT",
+    allow: [/verse 1|v1a|v1b|v1c|v1d/i],
+    rejectExactIntroOnly: true,
+  },
+  {
+    role: "CHORUS_1",
+    label: "Chorus 1 K-KUT",
+    allow: [/chorus 1|ch1/i],
+    reject: [/intro through/i],
+  },
+  {
+    role: "VERSE_2",
+    label: "Verse 2 K-KUT",
+    allow: [/verse 2|v2a|v2b/i],
+    reject: [/through outro/i],
+  },
+  {
+    role: "BRIDGE",
+    label: "Bridge K-KUT",
+    allow: [/bridge/i],
+  },
+  {
+    role: "CHORUS_2",
+    label: "Chorus 2 K-KUT",
+    allow: [/chorus 2|ch2/i],
+    reject: [/through outro/i],
+  },
+  {
+    role: "OUTRO",
+    label: "Outro K-KUT",
+    allow: [/outro/i],
+    reject: [/verse 2.*through outro|v2b through outro|chorus 2 through outro/i],
+  },
+  {
+    role: "KOMBO_INTRO_V1_CH1",
+    label: "KK-Kombo: Intro + Verse 1 + Chorus 1",
+    allow: [/intro.*chorus 1|intro through chorus 1|intro.*v1.*ch1/i],
+    kombo: true,
+  },
+  {
+    role: "KOMBO_V2_CH2_OUTRO",
+    label: "KK-Kombo: Verse 2 + Chorus 2 + Outro",
+    allow: [/verse 2.*outro|v2.*outro|chorus 2 through outro|v2b through outro/i],
+    kombo: true,
+  },
 ];
 
-const BANNED_ITEM_MARKERS = [
-  "intro",
-  "intro-only",
-  "intro only",
-  "instrumental",
-  "instro",
-  "no vocal",
-  "non-vocal",
-  "non vocal",
-];
-
-function readJson(file) {
-  try {
-    return JSON.parse(fs.readFileSync(file, "utf8"));
-  } catch {
-    return null;
-  }
+function readRows(file) {
+  if (!fs.existsSync(file)) return [];
+  const data = JSON.parse(fs.readFileSync(file, "utf8"));
+  return (data.kks || []).map((row) => ({ ...row, kkSourceFile: file }));
 }
 
-function flatten(x, out = []) {
-  if (!x) return out;
-  if (Array.isArray(x)) {
-    for (const item of x) flatten(item, out);
-    return out;
-  }
-  if (typeof x === "object") {
-    out.push(x);
-    for (const v of Object.values(x)) {
-      if (v && typeof v === "object") flatten(v, out);
-    }
-  }
-  return out;
-}
-
-function findAudioUrl(row) {
-  const keys = [
-    "previewSrc",
-    "preview_src",
-    "audioSrc",
-    "audio_src",
-    "audioUrl",
-    "audio_url",
-    "url",
-    "src",
-    "publicUrl",
-    "public_url",
-    "file",
-    "path",
-  ];
-
-  for (const key of keys) {
-    const value = row?.[key];
-    if (typeof value === "string" && /\.(mp3|m4a|wav)(\?|$)/i.test(value)) {
-      return value.startsWith("/") ? value : "/" + value.replace(/^public\//, "");
-    }
-  }
-
-  for (const value of Object.values(row || {})) {
-    if (typeof value === "string" && /\.(mp3|m4a|wav)(\?|$)/i.test(value)) {
-      return value.startsWith("/") ? value : "/" + value.replace(/^public\//, "");
-    }
-  }
-
-  return null;
-}
-
-function localPublicFile(url) {
-  return path.join("public", url.replace(/^\//, ""));
-}
-
-function textBlob(row, sourceFile) {
-  return `${sourceFile}\n${JSON.stringify(row || {})}`.toLowerCase();
-}
-
-function isAllowedSource(file) {
-  const lower = file.toLowerCase();
-  return !BANNED_SOURCE_MARKERS.some((x) => lower.includes(x));
-}
-
-function isTrueKK(row, sourceFile) {
-  const blob = textBlob(row, sourceFile);
-
-  if (!isAllowedSource(sourceFile)) return false;
-  if (BANNED_SOURCE_MARKERS.some((x) => blob.includes(x))) return false;
-  if (BANNED_ITEM_MARKERS.some((x) => blob.includes(x))) return false;
-
-  // Must come from an allowed KK source file.
-  if (!ALLOWED_KK_SOURCES.includes(sourceFile)) return false;
-
-  // Must identify as KK/K-KUT/KUT, not a generic audio/micro/CC.
-  const identityOk =
-    blob.includes("kk") ||
-    blob.includes("k-kut") ||
-    blob.includes("kut") ||
-    sourceFile.includes("/kks/") ||
-    sourceFile.includes("/kks-expanded/") ||
-    sourceFile.includes("holiday-kks");
-
-  if (!identityOk) return false;
-
-  const url = findAudioUrl(row);
+function audioExists(url) {
   if (!url) return false;
-
-  const local = localPublicFile(url);
-  if (!fs.existsSync(local)) return false;
-
-  // Avoid tiny lead-ins.
-  if (fs.statSync(local).size < 200_000) return false;
-
-  return true;
+  const local = path.join("public", url.replace(/^\//, ""));
+  return fs.existsSync(local) && fs.statSync(local).size > 200_000;
 }
 
-function pickLabel(row, i) {
-  return (
-    row.label ||
-    row.title ||
-    row.name ||
-    row.kut_label ||
-    row.kk_label ||
-    `Thank-you K-KUT ${i + 1}`
-  );
+function blob(row) {
+  return `${row.id || ""} ${row.title || ""} ${row.section || ""} ${row.notes || ""}`;
 }
 
-function pickFit(row) {
-  return (
-    row.fit ||
-    row.description ||
-    row.intent ||
-    row.use ||
-    "Vocal K-KUT thank-you option."
-  );
+function isInternalWrongClass(row) {
+  const s = JSON.stringify(row).toLowerCase();
+  return [
+    "cc",
+    "feelline",
+    "linefeel",
+    "lnduo",
+    "lntrio",
+    "pime",
+    "rmst",
+    "mkut",
+    "m-kut",
+    "micro",
+    "instrumental",
+    "instro",
+    "non-vocal",
+    "non vocal",
+    "no vocal",
+  ].some((x) => s.includes(x));
 }
 
-function pickSection(row) {
-  const value =
-    row.section ||
-    row.section_label ||
-    row.excerpt ||
-    row.part ||
-    row.structure ||
-    "Vocal K-KUT excerpt";
-
-  return String(value).replace(/\bintro\b/gi, "").trim() || "Vocal K-KUT excerpt";
+function isIntroOnly(row) {
+  const section = String(row.section || "").trim().toLowerCase();
+  return section === "intro" || section === "introduction" || section === "intro only" || section === "intro-only";
 }
 
-const rows = [];
+function findForRole(role, rows) {
+  const found = rows.filter((row) => {
+    if (isInternalWrongClass(row)) return false;
+    if (isIntroOnly(row)) return false;
+    if (!audioExists(row.audio_url)) return false;
 
-for (const sourceFile of ALLOWED_KK_SOURCES) {
-  if (!fs.existsSync(sourceFile)) continue;
+    const text = blob(row);
+    const ok = role.allow.some((rx) => rx.test(text));
+    const rejected = (role.reject || []).some((rx) => rx.test(text));
+    return ok && !rejected;
+  });
 
-  const data = readJson(sourceFile);
-  const objects = flatten(data);
+  found.sort((a, b) => {
+    const ae = a.kkSourceFile.includes("kks-expanded") ? 0 : 1;
+    const be = b.kkSourceFile.includes("kks-expanded") ? 0 : 1;
+    return ae - be;
+  });
 
-  for (const row of objects) {
-    if (!isTrueKK(row, sourceFile)) continue;
+  return found[0] || null;
+}
 
-    const previewSrc = findAudioUrl(row);
-    rows.push({
-      id: row.id || row.kk_id || row.kut_id || `kk-${rows.length + 1}`,
-      label: pickLabel(row, rows.length),
-      fit: pickFit(row),
-      section: pickSection(row),
-      previewSrc,
-      source: "KK_ONLY",
-      kkSourceFile: sourceFile,
-    });
+const allRows = SOURCES.flatMap(readRows);
+const selected = [];
+
+for (const role of THANK_YOU_ROLES) {
+  const row = findForRole(role, allRows);
+  if (!row) {
+    console.error(`STOP: missing required Thank You KK role ${role.role}`);
+    console.error("Available KK sections:");
+    for (const r of allRows) console.error(`- ${r.id}: ${r.section}`);
+    process.exit(1);
   }
-}
 
-const dedup = new Map();
-for (const row of rows) {
-  const key = row.previewSrc;
-  if (!dedup.has(key)) dedup.set(key, row);
-}
-
-const selected = [...dedup.values()].slice(0, 8);
-
-if (selected.length < 8) {
-  console.error(`STOP: only ${selected.length} valid KK-only HUG options found. Need 8.`);
-  console.error("Found:");
-  for (const row of selected) {
-    console.error(`- ${row.label} :: ${row.previewSrc} :: ${row.kkSourceFile}`);
-  }
-  process.exit(1);
+  selected.push({
+    id: `${row.id}-${role.role.toLowerCase()}`,
+    kkId: row.id,
+    role: role.role,
+    label: role.label,
+    fit: role.kombo
+      ? "Contiguous KK-Kombo from the SSOT track."
+      : "Song-section K-KUT from the SSOT track.",
+    section: row.section,
+    previewSrc: row.audio_url,
+    source: role.kombo ? "KK_KOMBO_CONTIGUOUS" : "KK_SECTION_ONLY",
+    kkSourceFile: row.kkSourceFile,
+  });
 }
 
 const output = `export const realHugKuts = {
@@ -218,7 +156,7 @@ export type RealHugKut = typeof realHugKuts.thanks[number];
 `;
 
 fs.writeFileSync(OUT, output);
-console.log(`WROTE ${OUT} with 8 KK-only vocal HUG options`);
+console.log(`WROTE ${OUT} with ${selected.length} curated Thank You KKs/Kombos`);
 for (const row of selected) {
-  console.log(`${row.id}: ${row.label} — ${row.previewSrc} — ${row.kkSourceFile}`);
+  console.log(`${row.role}: ${row.section} — ${row.previewSrc}`);
 }
