@@ -260,7 +260,7 @@ export default function HugPage() {
                       <div className="flex flex-wrap items-start justify-between gap-4">
                         <div>
                           <p className="text-xs font-black uppercase tracking-wide text-[#D4A017]">
-                            Kut {index + 1} of 8
+                            K-KUT {index + 1} of {candidates.length}
                           </p>
                           <h3 className="mt-2 text-2xl font-black">{kut.label}</h3>
                           <p className="mt-2 text-sm text-[#F5E6C8]/80">{kut.fit}</p>

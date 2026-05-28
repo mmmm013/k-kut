@@ -1,3 +1,10 @@
+
+// KK SLOT LAW:
+// Full LT-PIX with SSOT track: prefer 8 real customer-facing KKs.
+// Phantom PIX / original-element sets: show only real available KKs, even if 4-7.
+// Never fake-fill to 8.
+// KK-Kombos are request/review path only and must be contiguous.
+// CCs are internal only and never customer-facing.
 import fs from "node:fs";
 
 function loadDotEnvLocal() {
