@@ -132,4 +132,97 @@ for (const banned of [
   }
 }
 
+
+// K-KUT LAW:
+// Customer-facing HUG options must be KKs only.
+// Do not allow mKs, mKUTs, micros, generic CCs, intro-only, or arbitrary audio-folder pulls.
+const kkManifest = fs.existsSync("lib/hugRealKutManifest.ts")
+  ? fs.readFileSync("lib/hugRealKutManifest.ts", "utf8").toLowerCase()
+  : "";
+
+for (const banned of [
+  "mkut",
+  "m-kut",
+  "/mk/",
+  "/mks/",
+  "micro",
+  "micros",
+  "intro",
+  "intro-only",
+  "intro only",
+  "instrumental",
+  "instro",
+  "non-vocal",
+  "non vocal",
+  "no vocal"
+]) {
+  if (kkManifest.includes(banned)) {
+    console.error(`BIC FAIL: HUG manifest contains banned non-KK marker: ${banned}`);
+    process.exit(1);
+  }
+}
+
+// Every customer-facing record must identify as KK/K-KUT/KUT-Kandidate.
+// This is intentionally strict. If it fails, the manifest is not customer-safe.
+if (
+  !kkManifest.includes("k-kut") &&
+  !kkManifest.includes("kk") &&
+  !kkManifest.includes("kut-kandidate") &&
+  !kkManifest.includes("kut_kandidate")
+) {
+  console.error("BIC FAIL: HUG manifest does not identify options as KK/K-KUT/KUT-Kandidate inventory.");
+  process.exit(1);
+}
+
+
+// CUSTOMER-FACING HUG LAW:
+// HUG options must be KKs only.
+// CCs are internal inventory and can never be pulled or used directly by users.
+// mKs/mKUTs/micros/generic audio are also banned.
+const hugManifest = fs.existsSync("lib/hugRealKutManifest.ts")
+  ? fs.readFileSync("lib/hugRealKutManifest.ts", "utf8").toLowerCase()
+  : "";
+
+for (const banned of [
+  "line-cc",
+  "cc_ready",
+  "cc-ready",
+  "line-cc-ready",
+  "lnduo",
+  "lntrio",
+  "pime",
+  "rmst",
+  "mkut",
+  "m-kut",
+  "micro",
+  "micros",
+  "public/audio/",
+  "intro",
+  "instrumental",
+  "instro",
+  "non-vocal",
+  "non vocal",
+  "no vocal"
+]) {
+  if (hugManifest.includes(banned)) {
+    console.error(`BIC FAIL: HUG manifest contains banned non-KK/internal marker: ${banned}`);
+    process.exit(1);
+  }
+}
+
+if (!hugManifest.includes('"source": "kk_only"')) {
+  console.error("BIC FAIL: HUG manifest is not KK_ONLY sourced.");
+  process.exit(1);
+}
+
+if (
+  !hugManifest.includes("public/mothers-day/thank-you/kks/manifest.json") &&
+  !hugManifest.includes("public/mothers-day/thank-you/kks-expanded/manifest.json") &&
+  !hugManifest.includes("data/holiday-kks/mothers-day-thank-you-kks.json") &&
+  !hugManifest.includes("data/holiday-kks/mothers-day-promo-sets.json")
+) {
+  console.error("BIC FAIL: HUG manifest does not reference allowed KK source manifests.");
+  process.exit(1);
+}
+
 console.log("BIC HUG GATE PASS");
