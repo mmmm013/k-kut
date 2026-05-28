@@ -11,7 +11,7 @@ Status: LOCKED
 
 ## Usage Rules
 
-- Use LNDUO instead of LinePair.
+- Use LNDUO instead of prior two-line term.
 - Use LNTRIO instead of generic LineTrio.
 - Use PIME when the pair is contiguous.
 - Use RMST when rhyme logic groups one or more rhyme pairs.
