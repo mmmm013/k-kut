@@ -1,0 +1,31 @@
+{
+  "status": "TARGETED_EXPORT_REQUIRED",
+  "system": "KKr-BIZ-MSC",
+  "pix": "Thank You",
+  "source_audio": "public/mothers-day/thank-you/song/thank-you-song.mp3",
+  "legacy_structure_id": "KK8",
+  "legacy_title": "Bridge",
+  "canonical_structure": "Br",
+  "canonical_delivery_id": "thank-you-sec-br",
+  "canonical_delivery_audio": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+  "canonical_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+  "lyric_structure": {
+    "label": "Br",
+    "text": [
+      "Oh, we've been through valleys",
+      "We've scaled mountains",
+      "And we've had fun",
+      "Along the way",
+      "But at the end of the day",
+      "Your love will always remain"
+    ]
+  },
+  "rules": [
+    "Bridge and Br are aliases.",
+    "Canonical delivery label is Br.",
+    "KK identity is based on text, lyric, and text-structure.",
+    "Audio is delivery binding only.",
+    "No CC, mK, micro, generic audio, Sandman, magic-tail, or sample fallback.",
+    "Use targeted KKr-BIZ-MSC controlled generation path for KK8 only."
+  ]
+}
