@@ -116,13 +116,13 @@ export default function HugPage() {
       <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#D4A017]">
-            K-KUT by G Putnam Music
+            G Putnam Music
           </p>
           <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
             Send a private music HUG.
           </h1>
           <p className="mt-6 text-lg leading-8 text-[#F5E6C8]/80">
-            Follow six simple steps. Preview real pre-made kuts. Choose one and send privately.
+            A HUG is a private music moment you choose by feeling, then send to someone.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black uppercase tracking-wide text-[#F5E6C8]/70">
             <span className="rounded-full border border-[#D4A017]/25 px-3 py-2">Simple</span>
@@ -355,10 +355,10 @@ export default function HugPage() {
 
         <div className="mt-8 rounded-[2rem] border border-[#D4A017]/25 bg-[#1A120B] p-5 text-center">
           <p className="text-sm font-black uppercase tracking-[0.25em] text-[#D4A017]">
-            K-KUT • HUGs • kuts • MC-BOT
+            HUG
           </p>
           <p className="mt-3 text-sm leading-6 text-[#F5E6C8]/60">
-            A G Putnam Music private audio-gift experience. No autoplay. No hidden audio. You control the preview and the send.
+            No autoplay. No hidden audio. You control the preview and the send.
           </p>
         </div>
       </section>
