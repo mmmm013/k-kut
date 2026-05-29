@@ -1,0 +1,30 @@
+{
+  "law": "k-kut-candidate-laws",
+  "rules": [
+    {
+      "id": "NO_INSTRO_FOR_KKUT_BUYER_OR_DELIVERY",
+      "status": "active",
+      "rule": "INSTRO / instrumental-only material is forbidden for K-KUT buyer flow, HUG customer selection, and II delivery paths."
+    },
+    {
+      "id": "NO_DIRECT_HOLIDAY_LT_PIX_FOR_SAME_HOLIDAY",
+      "status": "active",
+      "rule": "Holiday LT-PIX is forbidden when directly used for that same specific holiday buyer path."
+    },
+    {
+      "id": "NO_PUBLIC_INTERNAL_SOURCE_LABELS",
+      "status": "active",
+      "rule": "Music Maykers, LT-PIX, internal source labels, and internal inventory names must not display on public UI."
+    },
+    {
+      "id": "NO_DUPLICATE_II",
+      "status": "active",
+      "rule": "Do not create the same II twice unless ADMIN explicitly directs it."
+    },
+    {
+      "id": "MKS_ADMIN_OVERRIDE_ONLY",
+      "status": "active",
+      "rule": "mKs / mini-KUTs are forbidden in public buyer flow unless ADMIN override is active."
+    }
+  ]
+}

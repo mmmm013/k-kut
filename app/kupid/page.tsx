@@ -44,7 +44,7 @@ const LEVELS = [
     code: 'SEX',
     desc: 'Raw. Present. The exact beat that belongs to exactly this moment.',
     color: '#C0392B',
-    stripeUrl: 'https://buy.stripe.com/cNi28qfQW4wi41C7Js4ow0s', // TODO: replace with SEX-specific link
+    stripeUrl: 'https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k', // K-UPID / Valentine reuse fulfillment
   },
   {
     id: 5,

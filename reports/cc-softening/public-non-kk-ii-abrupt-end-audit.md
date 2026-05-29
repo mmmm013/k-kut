@@ -38,12 +38,16 @@ Rule: KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive
 | LIKELY_ABRUPT_CC_END | 21 | public/mothers-day/thank-you/kks-expanded/thank-you-kk5.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-kk5.mp3 | -2.288156 | -11.222854 | -2.288156 | -11.222854 |
 | REVIEW_NO_STATS | 141.878 | public/mothers-day/thank-you/kks-expanded/thank-you-kk6.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-kk6.mp3 |  |  |  |  |
 | REVIEW_NO_STATS | 97.878 | public/mothers-day/thank-you/kks-expanded/thank-you-kk7.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-kk7.mp3 |  |  |  |  |
+| LIKELY_ABRUPT_CC_END | 20 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3 | -0.020871 | -10.163238 | -0.020871 | -10.163238 |
 | LIKELY_ABRUPT_CC_END | 49 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3 | -5.684569 | -12.239292 | -5.684569 | -12.239292 |
 | LIKELY_ABRUPT_CC_END | 55 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3 | 0.056379 | -8.098062 | 0.056379 | -8.098062 |
 | LIKELY_ABRUPT_CC_END | 20 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-intro.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-intro.mp3 | -10.281299 | -19.699485 | -10.281299 | -19.699485 |
 | REVIEW_NO_STATS | 42.8 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3 |  |  |  |  |
+| LIKELY_ABRUPT_CC_END | 34 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3 | -2.774495 | -12.543387 | -2.774495 | -12.543387 |
 | LIKELY_ABRUPT_CC_END | 32.5 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3 | -8.035827 | -14.203718 | -8.035827 | -14.203718 |
+| LIKELY_ABRUPT_CC_END | 28 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3 | -0.790674 | -10.565655 | -0.790674 | -10.565655 |
 | LIKELY_ABRUPT_CC_END | 28 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3 | -0.790674 | -10.565655 | -0.790674 | -10.565655 |
 | LIKELY_ABRUPT_CC_END | 34 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3 | -2.774495 | -12.543387 | -2.774495 | -12.543387 |
 | LIKELY_ABRUPT_CC_END | 21 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3 | -2.288156 | -11.222854 | -2.288156 | -11.222854 |
 | LIKELY_ABRUPT_CC_END | 44 | public/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3 | /mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3 | -0.078735 | -9.857724 | -0.078735 | -9.857724 |
+| LIKELY_SOFT_OR_NATURAL | 7 | public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3 | /mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3 | -84.347395 | -93.8011 | -84.347395 | -93.8011 |

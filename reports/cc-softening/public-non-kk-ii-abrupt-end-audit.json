@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-09T05:27:43.754Z",
+  "generated_at": "2026-05-29T05:25:04.272Z",
   "scope": "public/mothers-day/thank-you non-KK II candidates only; excludes full song, KK masters, kks-long, magic tests, and softened renders",
-  "count": 41,
+  "count": 45,
   "rows": [
     {
       "file": "public/mothers-day/thank-you/kkr-study/kk-approved-candidates/thank-you-kk-chorus.mp3",
@@ -356,6 +356,17 @@
       "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
     },
     {
+      "file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "duration_seconds": 20,
+      "final_1s_peak_db": -0.020871,
+      "final_1s_rms_db": -10.163238,
+      "final_025s_peak_db": -0.020871,
+      "final_025s_rms_db": -10.163238,
+      "status": "LIKELY_ABRUPT_CC_END",
+      "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
+    },
+    {
       "file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
       "public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
       "duration_seconds": 49,
@@ -400,6 +411,17 @@
       "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
     },
     {
+      "file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "duration_seconds": 34,
+      "final_1s_peak_db": -2.774495,
+      "final_1s_rms_db": -12.543387,
+      "final_025s_peak_db": -2.774495,
+      "final_025s_rms_db": -12.543387,
+      "status": "LIKELY_ABRUPT_CC_END",
+      "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
+    },
+    {
       "file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
       "public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
       "duration_seconds": 32.5,
@@ -407,6 +429,17 @@
       "final_1s_rms_db": -14.203718,
       "final_025s_peak_db": -8.035827,
       "final_025s_rms_db": -14.203718,
+      "status": "LIKELY_ABRUPT_CC_END",
+      "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
+    },
+    {
+      "file": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "public_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "duration_seconds": 28,
+      "final_1s_peak_db": -0.790674,
+      "final_1s_rms_db": -10.565655,
+      "final_025s_peak_db": -0.790674,
+      "final_025s_rms_db": -10.565655,
       "status": "LIKELY_ABRUPT_CC_END",
       "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
     },
@@ -452,6 +485,17 @@
       "final_025s_peak_db": -0.078735,
       "final_025s_rms_db": -9.857724,
       "status": "LIKELY_ABRUPT_CC_END",
+      "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
+    },
+    {
+      "file": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3",
+      "public_url": "/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3",
+      "duration_seconds": 7,
+      "final_1s_peak_db": -84.347395,
+      "final_1s_rms_db": -93.8011,
+      "final_025s_peak_db": -84.347395,
+      "final_025s_rms_db": -93.8011,
+      "status": "LIKELY_SOFT_OR_NATURAL",
       "rule": "KK masters and natural KKs remain immutable. Abrupt non-KK IIs may receive copied-note sustain fade delivery render."
     }
   ]

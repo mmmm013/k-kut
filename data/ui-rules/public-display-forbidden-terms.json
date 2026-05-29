@@ -1,0 +1,17 @@
+{
+  "rule": "public-display-forbidden-terms",
+  "forbidden_public_artist_or_internal_terms": [
+    "Music Maykers",
+    "MUSIC MAYKERS",
+    "LT-PIX",
+    "mK",
+    "mini-KUT",
+    "mini"
+  ],
+  "doctrine": [
+    "Music Maykers may remain in internal source inventory only.",
+    "Music Maykers must not display on public UI.",
+    "mKs / mini-KUTs are forbidden in public buyer flow unless ADMIN override is active.",
+    "Public UI should show HUG / K-KUT / Moment / Feeling language, not internal source labels."
+  ]
+}

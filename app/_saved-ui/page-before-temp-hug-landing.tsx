@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 const ACTIVE_BOT = "gp-bot";
 const WELCOME_KEY = "k-kut-gp-bot-founder-welcome-heard";
 const MIN_KK_OPTIONS = 10;
-const STRIPE_URL = "https://buy.stripe.com/14AeVcawC9QCaq04xg4ow0p";
+const STRIPE_URL = "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r";
 
 type Purpose = {
   id: string;
