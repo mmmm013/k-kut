@@ -1,6 +1,6 @@
 {
   "registry": "romance-reusable-ii-records",
-  "status": "ready_for_admin_audio_review",
+  "status": "customer_delivery_audio_materialized",
   "doctrine": [
     "Same KK across multiple buyer routes creates one reusable II, not duplicate II records.",
     "Buyer routes can point to the same reusable II.",
@@ -46,13 +46,32 @@
       "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
       "duplicate_policy": "do_not_create_duplicate_ii",
       "public_inventory_type": "K-KUT / HUG Moment",
-      "delivery_status": "needs_bookend_twinkle_materialization",
+      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
       "delivery_requirements": {
         "front_padding_required": true,
         "back_padding_required": true,
         "twinkle_required": true
       },
-      "admin_override_required": false
+      "admin_override_required": false,
+      "local_source_path": "/Users/gregoryputnam/GPM STL MP3s/A LOVE LIKE THAT.mp3",
+      "source_resolution": {
+        "method": "local_gpmc_source_first",
+        "local_source_path": "/Users/gregoryputnam/GPM STL MP3s/A LOVE LIKE THAT.mp3",
+        "remote_supabase_url_not_required_for_customer_delivery": true,
+        "no_instrumental_allowed": true
+      },
+      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "delivery_materialization": {
+        "law": "front_padding_and_back_padding_and_twinkle_travel_together",
+        "front_padding_seconds": 1,
+        "back_padding_seconds": 1,
+        "twinkle_path": "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
+        "source_kk_audio_is_raw_not_customer_delivery": true,
+        "source_resolution": "local_gpmc_source",
+        "local_source_path": "/Users/gregoryputnam/GPM STL MP3s/A LOVE LIKE THAT.mp3",
+        "output_path": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+        "materialized_at": "2026-05-29T22:05:57.509Z"
+      }
     },
     {
       "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
@@ -71,13 +90,32 @@
       "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
       "duplicate_policy": "do_not_create_duplicate_ii",
       "public_inventory_type": "K-KUT / HUG Moment",
-      "delivery_status": "needs_bookend_twinkle_materialization",
+      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
       "delivery_requirements": {
         "front_padding_required": true,
         "back_padding_required": true,
         "twinkle_required": true
       },
-      "admin_override_required": false
+      "admin_override_required": false,
+      "local_source_path": "/Users/gregoryputnam/Movies/G Putnam Music, LLC - Shine the Light (STL) - GPM Inventory 12 2025/YOUR HEART POUNDIN' .mp3",
+      "source_resolution": {
+        "method": "local_gpmc_source_first",
+        "local_source_path": "/Users/gregoryputnam/Movies/G Putnam Music, LLC - Shine the Light (STL) - GPM Inventory 12 2025/YOUR HEART POUNDIN' .mp3",
+        "remote_supabase_url_not_required_for_customer_delivery": true,
+        "no_instrumental_allowed": true
+      },
+      "delivery_audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+      "delivery_materialization": {
+        "law": "front_padding_and_back_padding_and_twinkle_travel_together",
+        "front_padding_seconds": 1,
+        "back_padding_seconds": 1,
+        "twinkle_path": "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
+        "source_kk_audio_is_raw_not_customer_delivery": true,
+        "source_resolution": "local_gpmc_source",
+        "local_source_path": "/Users/gregoryputnam/Movies/G Putnam Music, LLC - Shine the Light (STL) - GPM Inventory 12 2025/YOUR HEART POUNDIN' .mp3",
+        "output_path": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+        "materialized_at": "2026-05-29T22:05:58.066Z"
+      }
     },
     {
       "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
@@ -96,13 +134,45 @@
       "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
       "duplicate_policy": "do_not_create_duplicate_ii",
       "public_inventory_type": "K-KUT / HUG Moment",
-      "delivery_status": "needs_bookend_twinkle_materialization",
+      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
       "delivery_requirements": {
         "front_padding_required": true,
         "back_padding_required": true,
         "twinkle_required": true
       },
-      "admin_override_required": false
+      "admin_override_required": false,
+      "local_source_path": "/Users/gregoryputnam/Music/DON'T CALL IT LOVE -.mp3",
+      "source_resolution": {
+        "method": "local_gpmc_source_first",
+        "local_source_path": "/Users/gregoryputnam/Music/DON'T CALL IT LOVE -.mp3",
+        "remote_supabase_url_not_required_for_customer_delivery": true,
+        "no_instrumental_allowed": true
+      },
+      "delivery_audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+      "delivery_materialization": {
+        "law": "front_padding_and_back_padding_and_twinkle_travel_together",
+        "front_padding_seconds": 1,
+        "back_padding_seconds": 1,
+        "twinkle_path": "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
+        "source_kk_audio_is_raw_not_customer_delivery": true,
+        "source_resolution": "local_gpmc_source",
+        "local_source_path": "/Users/gregoryputnam/Music/DON'T CALL IT LOVE -.mp3",
+        "output_path": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+        "materialized_at": "2026-05-29T22:05:58.602Z"
+      }
     }
-  ]
+  ],
+  "source_resolution_doctrine": [
+    "Use local GPMC PIX/source files first.",
+    "Supabase source URLs are not required for customer delivery materialization.",
+    "No INSTRO / instrumental sources.",
+    "Padding and Twinkle travel together for all customer delivery II records."
+  ],
+  "delivery_law": {
+    "twinkle_and_padding_travel_together": true,
+    "applies_to_all_customer_delivery_ii_records": true,
+    "no_raw_kk_customer_delivery": true,
+    "no_instrumental_customer_delivery": true
+  },
+  "updated_at": "2026-05-29T22:05:58.602Z"
 }
