@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
+import SingleAudioPlaybackGuard from "@/components/SingleAudioPlaybackGuard";
 
 export const metadata: Metadata = {
   title: 'HUGs — Private Music Moments',
