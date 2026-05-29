@@ -1,0 +1,67 @@
+{
+  "system": "4PE-BIZ-MSC",
+  "date": "2026-05-28",
+  "event_type": "business_operations_digest",
+  "status": "active",
+  "tracks": {
+    "k_kut": {
+      "status": "finish_before_flagship_handoff",
+      "lessons": [
+        "single audio playback must be global",
+        "MC-BOT remains guide and shield",
+        "HUG is the public user term",
+        "candidate cards must avoid internal NVA doctrine"
+      ],
+      "next_actions": [
+        "verify SingleAudioPlaybackGuard import",
+        "run local build",
+        "deploy after build passes",
+        "confirm live one-audio-at-a-time behavior",
+        "seed Personal and Holiday candidates"
+      ]
+    },
+    "sbdc_iwu": {
+      "contact": "Molly Cavazos",
+      "status": "meeting_hold_created",
+      "meeting": "2026-06-03T10:00:00-05:00",
+      "mode": "virtual preferred",
+      "needs": [
+        "commercialization",
+        "customer acquisition",
+        "business plan",
+        "financial projections",
+        "funding readiness",
+        "manufacturing assembly facility planning",
+        "referrals"
+      ]
+    },
+    "cisbdc": {
+      "contact": "Judy Tavernor",
+      "status": "no_cost_advising_requested",
+      "mode": "Zoom or phone preferred",
+      "needs": [
+        "commercialization planning",
+        "financial projections",
+        "funding readiness",
+        "customer acquisition",
+        "facility planning",
+        "legal patent university economic development referrals"
+      ]
+    },
+    "city_manufacturing": {
+      "greenfield": "strongest active city lead",
+      "bnedc": "active regional support lane",
+      "other_cities": "requires next status pass"
+    },
+    "calendar_control": {
+      "daily_event_notification": true,
+      "daily_action_item_gathering": true,
+      "missed_event_risk": "must be checked daily"
+    }
+  },
+  "carryover": [
+    "USPTO support/account emails found; no substantive filing response found",
+    "A2P/Twilio monitoring active",
+    "flagship gputnammusic.com update next after K-KUT handoff"
+  ]
+}
