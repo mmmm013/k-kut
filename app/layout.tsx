@@ -69,7 +69,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         {children}
-        <Analytics />
+        <SingleAudioPlaybackGuard />
+          <Analytics />
       </body>
     </html>
   );
