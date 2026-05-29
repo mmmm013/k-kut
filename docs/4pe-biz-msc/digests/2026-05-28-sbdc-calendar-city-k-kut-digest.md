@@ -14,20 +14,11 @@ GPM / K-KUT / HUG work is moving across several active tracks at once:
 5. Calendar and missed-event risk.
 6. Transfer of live K-KUT learning into flagship gputnammusic.com.
 
-The risk is not lack of work. The risk is fragmentation.
+The risk is fragmentation.
 
 ## LL — Learned Lessons
 
-### K-KUT operational lesson
-
-Single-audio playback is required as a customer-facing rule:
-- fewer than two previews may play at the same time
-- only one audio preview may be active
-- this must be global, not page-specific
-
-A failed deploy occurred when `SingleAudioPlaybackGuard` was referenced during prerender without being correctly bound/imported in the build path. The failure hit multiple prerendered routes, proving it was a global shell issue, not an isolated HUG page issue.
-
-### HUG language lesson
+Single-audio playback is required globally.
 
 Public customer language should lead with:
 - HUG
@@ -35,28 +26,16 @@ Public customer language should lead with:
 - choice
 - send
 
-Public candidate cards should not expose internal/NVA phrases:
+Candidate cards should not expose internal/NVA phrases:
 - locked SSOT language
 - raw KKr doctrine
 - unnecessary structure terms when they do not help the user
 
 MC-BOT stays visible as guide / usher / shield.
 
-### Business-support lesson
+SBDC and CISBDC are active support lanes.
 
-SBDC and CISBDC are active support lanes and should be treated as external development partners.
-
-The user needs help with:
-- commercialization planning
-- business plan / projections
-- funding-readiness
-- customer acquisition
-- manufacturing / assembly / facility planning
-- local / legal / university / economic-development referrals
-
-### Calendar lesson
-
-The user needs daily event protection:
+Daily event protection is required:
 - check today
 - check current week
 - warn about conflicts
@@ -64,59 +43,43 @@ The user needs daily event protection:
 - track unsent replies
 - preserve carryover
 
-## BP→DO — Current Decisions
-
-### SBDC / IWU
+## Current Decisions
 
 Molly Cavazos / Illinois Wesleyan SBDC:
 - meeting hold created for Wednesday, June 3, 2026, 10:00–10:45 AM Central
 - virtual preferred
 - official link may still come from Molly
-- user must be reminded daily until complete
-
-### Central Illinois SBDC
+- daily reminders active
 
 Judy Tavernor / CISBDC:
-- positive support lane
 - no-cost advising requested
 - Zoom or phone preferred
 - registration may be required before appointment
 
-### City / manufacturing
+Greenfield:
+- strongest active city lead
 
-Greenfield remains the clearest city lead.
-BNEDC remains an active regional support path.
-Other cities require follow-up / status pass.
+BNEDC:
+- active regional support lane
 
-### K-KUT.com
+K-KUT.com:
+- finish enough for customer use before flagship transfer
 
-K-KUT.com must be finished enough for customer use before flagship transfer.
+## Next Actions
 
-Immediate K-KUT finish priorities:
-1. Confirm global single-audio guard is correctly imported and build-safe.
-2. Confirm one-preview-at-a-time behavior live.
+1. Verify SingleAudioPlaybackGuard build-safe import.
+2. Confirm only one audio preview plays at a time.
 3. Seed Personal and Holiday candidate lanes.
 4. Remove NVA internal phrases from candidate cards.
 5. Keep MC-BOT guide language.
 6. Keep HUG-first user language.
 7. Maintain BIC gates.
-
-## DO — Next Actions
-
-1. Fix/verify `SingleAudioPlaybackGuard` global import.
-2. Run build locally before deploy.
-3. Deploy only after successful build.
-4. Confirm `/hug` live.
-5. Confirm one audio preview only.
-6. Confirm Personal and Holiday visible.
-7. Confirm MC-BOT visible.
-8. Confirm no customer-facing “Locked Thank You text-structure K-KUT from SSOT.”
-9. Prepare for SBDC meeting.
-10. Follow up with Greenfield / BNEDC after K-KUT finish.
+8. Prepare for SBDC meeting.
+9. Follow up with Greenfield / BNEDC after K-KUT finish.
 
 ## Carryover
 
-- USPTO account/support emails exist, but no substantive patent filing response found yet.
+- USPTO support/account emails exist, but no substantive patent filing response found yet.
 - A2P/Twilio monitoring remains active.
 - Daily morning action-item gathering is active.
 - Daily event notification is active.

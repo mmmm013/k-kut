@@ -24,29 +24,12 @@
       "contact": "Molly Cavazos",
       "status": "meeting_hold_created",
       "meeting": "2026-06-03T10:00:00-05:00",
-      "mode": "virtual preferred",
-      "needs": [
-        "commercialization",
-        "customer acquisition",
-        "business plan",
-        "financial projections",
-        "funding readiness",
-        "manufacturing assembly facility planning",
-        "referrals"
-      ]
+      "mode": "virtual preferred"
     },
     "cisbdc": {
       "contact": "Judy Tavernor",
       "status": "no_cost_advising_requested",
-      "mode": "Zoom or phone preferred",
-      "needs": [
-        "commercialization planning",
-        "financial projections",
-        "funding readiness",
-        "customer acquisition",
-        "facility planning",
-        "legal patent university economic development referrals"
-      ]
+      "mode": "Zoom or phone preferred"
     },
     "city_manufacturing": {
       "greenfield": "strongest active city lead",
