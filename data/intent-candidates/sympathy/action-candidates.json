@@ -1,0 +1,493 @@
+{
+  "status": "action_candidate_pool_generated_non_public",
+  "intent": "sympathy",
+  "publication_allowed": false,
+  "generated_at": "2026-05-30T23:25:39.963Z",
+  "source_files_scanned": [
+    "reports/kkr-linefeels/human-expression-linefeel-candidates.md",
+    "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+    "reports/kkr-linefeels/human-expression-linefeel-dispositions.md",
+    "reports/title-blind-kut-konotation-packet.md",
+    "reports/title-blind-kut-review-outcomes.md",
+    "reports/kk-derivation-inventory-from-active-lt-pix.md"
+  ],
+  "rule": "Action/verb candidate pool only. Candidate rows cannot publish or take payment.",
+  "rows": [
+    {
+      "id": "sym_action_0001",
+      "action_verb": "carry",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a Star",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Guide My Way\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Carry Me Through Darker Days\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "meaning_context": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Guide My Way\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: ",
+      "positive_evidence_terms": [
+        "carry",
+        "through",
+        "dark",
+        "days"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0002",
+      "action_verb": "endure",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a Star",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Guide My Way\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Carry Me Through Darker Days\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "meaning_context": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Guide My Way\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: ",
+      "positive_evidence_terms": [
+        "through",
+        "dark",
+        "day"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0003",
+      "action_verb": "honor",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a River",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Sustaining Love\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Road May Lead\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_",
+      "meaning_context": "- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Sustaining Love\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candi",
+      "positive_evidence_terms": [
+        "giving",
+        "chance",
+        "life",
+        "way",
+        "best",
+        "today"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0004",
+      "action_verb": "walk_beside",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a River",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Sustaining Love\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Road May Lead\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_",
+      "meaning_context": "- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Sustaining Love\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candi",
+      "positive_evidence_terms": [
+        "walk",
+        "beside",
+        "road",
+        "lead"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0005",
+      "action_verb": "honor",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Chance in This Life",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me the Best\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me Today\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "meaning_context": "- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "positive_evidence_terms": [
+        "giving",
+        "chance",
+        "life",
+        "way",
+        "best",
+        "today"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0006",
+      "action_verb": "remember",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a Star",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Dark Nights / Bright Days\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE",
+      "meaning_context": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: L",
+      "positive_evidence_terms": [
+        "remain",
+        "love",
+        "life",
+        "days",
+        "always"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0007",
+      "action_verb": "honor",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a Star",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Dark Nights / Bright Days\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE",
+      "meaning_context": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: L",
+      "positive_evidence_terms": [
+        "giving",
+        "chance",
+        "life",
+        "way",
+        "best",
+        "today",
+        "remain"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0008",
+      "action_verb": "walk_beside",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Like a Star",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Dark Nights / Bright Days\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE",
+      "meaning_context": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: L",
+      "positive_evidence_terms": [
+        "walk",
+        "beside",
+        "always"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0009",
+      "action_verb": "sit_with",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Best Friend",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Best Friend\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Always Listening\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "meaning_context": "- Candidate: Best Friend\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Always Listening\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "positive_evidence_terms": [
+        "listen",
+        "listening",
+        "always",
+        "friend"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0010",
+      "action_verb": "honor",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Tree to Her Garden",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me the Best\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me Today\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SING",
+      "meaning_context": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
+      "positive_evidence_terms": [
+        "giving",
+        "chance",
+        "life",
+        "way",
+        "best",
+        "today"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0011",
+      "action_verb": "shelter",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Tree to Her Garden",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me the Best\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me Today\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SING",
+      "meaning_context": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
+      "positive_evidence_terms": [
+        "shelter",
+        "wind",
+        "rain",
+        "tree",
+        "garden"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0012",
+      "action_verb": "remember",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Valleys and Mountains",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Valleys and Mountains\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Fun Along the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "meaning_context": "- Candidate: Valleys and Mountains\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Fun Along the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
+      "positive_evidence_terms": [
+        "remain",
+        "love",
+        "always"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0013",
+      "action_verb": "endure",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Valleys and Mountains",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Valleys and Mountains\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Fun Along the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
+      "meaning_context": "- Candidate: Valleys and Mountains\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Fun Along the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
+      "positive_evidence_terms": [
+        "remain",
+        "valley",
+        "love",
+        "always",
+        "mountain"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0014",
+      "action_verb": "remember",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Tree to Her Garden",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Valleys and Mountains\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: R",
+      "meaning_context": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
+      "positive_evidence_terms": [
+        "remain",
+        "love",
+        "life",
+        "always"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    },
+    {
+      "id": "sym_action_0015",
+      "action_verb": "endure",
+      "human_situation": "sympathy_grief_support_candidate",
+      "title_backend_label": "- Candidate: Tree to Her Garden",
+      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
+      "source_section_or_paragraph": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Valleys and Mountains\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: R",
+      "meaning_context": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
+      "positive_evidence_terms": [
+        "remain",
+        "valley",
+        "love",
+        "always",
+        "day",
+        "mountain"
+      ],
+      "negative_evidence_terms": [],
+      "pov_scores": {
+        "admin_intent": 1,
+        "song_meaning": 2,
+        "section_context": 2,
+        "recipient_risk": 2,
+        "buyer_promise": 1,
+        "payment_safety": 0
+      },
+      "total_score": 8,
+      "risk_flags": [],
+      "publication_allowed": false,
+      "payment_allowed": false,
+      "human_approved": false,
+      "sampling_status": "HOLD",
+      "sampling_notes": ""
+    }
+  ]
+}

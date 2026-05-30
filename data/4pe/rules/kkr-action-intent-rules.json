@@ -1,0 +1,72 @@
+{
+  "status": "locked_rule",
+  "rule_name": "KKr Action Intent Rules",
+  "core_law": [
+    "All buyer-facing intent options must be verbs/actions.",
+    "No one-term search.",
+    "Titles are backend labels only.",
+    "Title terms may not qualify a candidate.",
+    "Paragraphical or section meaning is required.",
+    "Instrumentals are excluded from lyric-intent categories unless explicitly instrumental-safe.",
+    "Holiday lane terms are excluded unless the target intent is holiday."
+  ],
+  "required_candidate_shape": [
+    "action_verb",
+    "human_situation",
+    "meaning_context",
+    "source_section_or_paragraph",
+    "positive_evidence_terms",
+    "negative_evidence_terms",
+    "pov_scores",
+    "risk_flags",
+    "sampling_status"
+  ],
+  "sympathy_action_verbs": [
+    "comfort",
+    "hold",
+    "remember",
+    "honor",
+    "grieve",
+    "miss",
+    "carry",
+    "support",
+    "sit_with",
+    "walk_beside",
+    "shelter",
+    "reassure",
+    "soften",
+    "release",
+    "endure",
+    "say_goodbye",
+    "keep_near"
+  ],
+  "required_povs": [
+    "admin_intent",
+    "song_meaning",
+    "section_context",
+    "recipient_risk",
+    "buyer_promise",
+    "payment_safety"
+  ],
+  "hard_exclusions": [
+    "instro",
+    "instrumental",
+    "christmas",
+    "holiday",
+    "birthday",
+    "anniversary",
+    "valentine",
+    "kupid",
+    "wedding",
+    "romance",
+    "heart pound",
+    "kiss",
+    "desire",
+    "lover",
+    "baby i miss you",
+    "baby we're through",
+    "test example",
+    "mk",
+    "mini-kut"
+  ]
+}
