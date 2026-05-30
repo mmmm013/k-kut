@@ -56,3 +56,6 @@ recovery-review/
 *.png
 .env*.local
 .tmp/
+
+# Internal review/proof audio; never commit/deploy.
+ops/
