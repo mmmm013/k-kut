@@ -1,0 +1,121 @@
+{
+  "system": "theme-feed-system",
+  "status": "draft_operational_doctrine",
+  "locked_rule": "All public buyer themes must be fed by governed KKr / II / MC-BOT metadata, not one-off page guesses.",
+  "roles": {
+    "PIX": "Parent/source object. Useful metadata, but partial.",
+    "KK": "Primary buyer-match unit. KK labeling must carry most match weight.",
+    "II": "Reusable delivery/matching object. One II may support many routes.",
+    "KKr": "Runs multiple metadata/labeling loops and candidate selection.",
+    "MC-BOT": "Buyer-facing guide that narrows intent, explains choices, and routes to Featured, More, or More-like-this.",
+    "BIC": "Production release authority."
+  },
+  "theme_layers": [
+    "occasion",
+    "holiday",
+    "calendar_season",
+    "relationship",
+    "POV",
+    "buyer_identity",
+    "emotion_level",
+    "phrase_meaning",
+    "life_stage",
+    "use_case",
+    "promo_suitability",
+    "exclusion_law",
+    "weekly_exposure"
+  ],
+  "stable_buyer_routes": [
+    "/personal",
+    "/holiday",
+    "/romance",
+    "/kupid",
+    "/wedding"
+  ],
+  "theme_groups": [
+    {
+      "id": "fathers-day",
+      "public_label": "Father\u2019s Day",
+      "route_family": "/holiday/fathers-day",
+      "status": "admin_pipeline",
+      "mc_bot_role": "Ask what kind of dad moment this is: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad."
+    },
+    {
+      "id": "mothers-day",
+      "public_label": "Mother\u2019s Day",
+      "route_family": "/holiday/mothers-day",
+      "status": "independent_released_prototype",
+      "mc_bot_role": "Guide gratitude, repair, mom support, warmth, and thank-you paths."
+    },
+    {
+      "id": "birthday",
+      "public_label": "Birthday",
+      "route_family": "/personal/birthday",
+      "status": "needs_depth",
+      "mc_bot_role": "Narrow age, tone, relationship, fun vs heartfelt, family vs friend."
+    },
+    {
+      "id": "thank-you",
+      "public_label": "Thank You",
+      "route_family": "/personal/thank-you",
+      "status": "near_ready_pool_exists",
+      "mc_bot_role": "Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks."
+    },
+    {
+      "id": "apology",
+      "public_label": "Apology",
+      "route_family": "/personal/apology",
+      "status": "needs_depth",
+      "mc_bot_role": "Narrow soft apology, repair, still care, hard to say, no pressure."
+    },
+    {
+      "id": "encouragement",
+      "public_label": "Encouragement",
+      "route_family": "/personal/encouragement",
+      "status": "needs_depth",
+      "mc_bot_role": "Narrow keep going, believe in you, strength, hope, battle, calm."
+    },
+    {
+      "id": "comfort-grief",
+      "public_label": "Comfort / Grief",
+      "route_family": "/personal/comfort",
+      "status": "needs_depth",
+      "mc_bot_role": "Narrow presence, missing them, empty chair, no words, gentle support."
+    },
+    {
+      "id": "romance",
+      "public_label": "Romance",
+      "route_family": "/romance",
+      "status": "starter_bic_released",
+      "mc_bot_role": "Narrow romance level: gentle, new, committed, longtime, missing, repair, desire, anniversary, vow-level, private."
+    },
+    {
+      "id": "wedding",
+      "public_label": "Wedding",
+      "route_family": "/wedding",
+      "status": "minimum_bic_released",
+      "mc_bot_role": "Narrow vow-level, first dance, forever, ceremony-safe, wedding-party thanks."
+    }
+  ],
+  "mc_bot_decision_model": {
+    "first_question": "What kind of feeling are you trying to send?",
+    "second_question": "Who is it for?",
+    "third_question": "Should it feel simple, deep, funny, tender, strong, romantic, or private?",
+    "routing_outputs": [
+      "Featured",
+      "More",
+      "More like this",
+      "Ask one more question",
+      "Not ready / admin review"
+    ]
+  },
+  "candidate_laws": [
+    "No INSTRO.",
+    "No direct same-holiday LT-PIX by default.",
+    "No Music Maykers in public UI.",
+    "No mKs / mini-KUTs in public buyer flow unless ADMIN override is active.",
+    "No duplicate II unless ADMIN explicitly directs it.",
+    "Customer-ready delivery audio requires padding + Twinkle together.",
+    "BIC-level release = production audit pass, not local build pass."
+  ]
+}
