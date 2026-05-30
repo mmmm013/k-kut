@@ -73,6 +73,28 @@
         "https://buy.stripe.com/bJeaEW8ou2oa0PqfbU4ow0u",
         "https://buy.stripe.com/dRm6oG34agf0dCcaVE4ow0v"
       ]
+    },
+    {
+      "route": "/holiday",
+      "name": "HOLIDAY",
+      "requiredText": [
+        "Holiday K-KUT HUGs",
+        "G Putnam Music",
+        "Holiday Matching",
+        "Warmth / Care",
+        "Gratitude / Support",
+        "Repair / Still Care",
+        "A Love Like That",
+        "Don't Call It Love",
+        "Send this Holiday HUG"
+      ],
+      "expectedAudio": [
+        "https://www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+        "https://www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+      ],
+      "expectedStripe": [
+        "https://buy.stripe.com/aFadR8eMS5Am55G2p84ow0x"
+      ]
     }
   ]
 }
