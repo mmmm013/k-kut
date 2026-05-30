@@ -28,7 +28,7 @@ const READY_HUGS = [
     checkoutUrl: "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
   },
   {
-    level: "Desire / Passion",
+    level: "Desire / Passion / Physical Spark",
     title: "Your Heart Poundin'",
     description:
       "Bold, intimate, charged, and routed for K-UPID-style romantic energy.",
