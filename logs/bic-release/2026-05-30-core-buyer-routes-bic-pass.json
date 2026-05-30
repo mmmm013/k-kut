@@ -1,0 +1,38 @@
+{
+  "date": "2026-05-30",
+  "release_level": "BIC",
+  "locked_rule": "BIC-level release = production audit pass, not local build pass.",
+  "routes_passed": [
+    "/romance",
+    "/kupid",
+    "/wedding",
+    "/holiday",
+    "/personal"
+  ],
+  "release_system": {
+    "route_config": "data/bic-routes/routes.json",
+    "production_audit_engine": "scripts/bic-route-production-audit.mjs",
+    "automated_release_command": "scripts/bic-release-route.mjs"
+  },
+  "confirmed_gates": [
+    "approved Stripe links",
+    "delivery padding + Twinkle audit",
+    "Next build",
+    "production route 200",
+    "required buyer text present",
+    "forbidden public terms absent",
+    "expected audio 200 audio/mpeg",
+    "expected Stripe links 200",
+    "page links acceptable",
+    "audio src links acceptable"
+  ],
+  "doctrine": [
+    "Do not judge release by local build alone.",
+    "Do not write one-off BIC scripts unless a route has special behavior.",
+    "Default BIC path is route config plus reusable production audit.",
+    "Customer delivery audio requires padding and Twinkle together.",
+    "No raw KK customer delivery.",
+    "No INSTRO.",
+    "No mKs in public buyer flow unless ADMIN override is active."
+  ]
+}
