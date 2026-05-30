@@ -1,10 +1,16 @@
 import fs from "node:fs";
 
 let failed = false;
+let warned = false;
 
 function fail(msg) {
   console.error("FAIL:", msg);
   failed = true;
+}
+
+function warn(msg) {
+  console.warn("WARN:", msg);
+  warned = true;
 }
 
 function read(file) {
@@ -43,20 +49,21 @@ for (const file of publicFiles) {
   const lower = file.toLowerCase();
 
   if (!lower.includes("bookend-twinkle")) {
-    fail(`II file missing bookend-twinkle marker: ${file}`);
+    fail(`Public II file missing bookend-twinkle marker: ${file}`);
   }
 
   if (!lower.includes("public/ii-delivery/")) {
-    fail(`II file outside public/ii-delivery: ${file}`);
+    fail(`Public II file outside public/ii-delivery: ${file}`);
   }
 
   const stat = fs.statSync(file);
   if (stat.size <= 0) {
-    fail(`II file is empty: ${file}`);
+    fail(`Public II file is empty: ${file}`);
   }
 }
 
 const appFiles = walk("app").filter((file) => /\.(tsx|ts|jsx|js)$/i.test(file));
+
 const publicBuyerFiles = appFiles.filter((file) =>
   file.includes("app/personal") ||
   file.includes("app/holiday") ||
@@ -70,7 +77,7 @@ for (const file of publicBuyerFiles) {
   const lower = text.toLowerCase();
 
   if (lower.includes("supabase.co/storage")) {
-    fail(`Public buyer page references Supabase storage audio/source URL: ${file}`);
+    fail(`Public buyer page references Supabase storage/source URL: ${file}`);
   }
 
   if (lower.includes("mk-products")) {
@@ -81,11 +88,22 @@ for (const file of publicBuyerFiles) {
     fail(`Public buyer page appears to append Twinkle at runtime: ${file}`);
   }
 
-  if (lower.includes("front padding") && lower.includes("audio") && !lower.includes("/ii-delivery/")) {
-    fail(`Public buyer page appears to describe padding without II delivery source: ${file}`);
+  const hasAudio = lower.includes("<audio") || lower.includes("audioUrl".toLowerCase()) || lower.includes("src=");
+  const hasIi = lower.includes("/ii-delivery/");
+
+  if (hasAudio && !hasIi) {
+    fail(`Public buyer page has audio but no /ii-delivery/ source: ${file}`);
   }
 }
 
+/*
+  Candidate registries are allowed to contain "needs_bookend_twinkle".
+  That means: not finished yet. Not public yet.
+
+  Finished public II proof comes from:
+  - public/ii-delivery files
+  - buyer pages referencing only /ii-delivery/*bookend-twinkle*
+*/
 const registryFiles = walk("data/ii-delivery-registry").filter((file) =>
   /\.(json|md)$/i.test(file)
 );
@@ -95,7 +113,7 @@ for (const file of registryFiles) {
   const lower = text.toLowerCase();
 
   if (lower.includes("delivery_status") && lower.includes("needs_bookend_twinkle")) {
-    fail(`Registry still contains delivery_status needs_bookend_twinkle: ${file}`);
+    warn(`Candidate registry contains needs_bookend_twinkle, not finished II: ${file}`);
   }
 
   if (lower.includes("ii_delivery_src") && !lower.includes("bookend-twinkle")) {
@@ -104,11 +122,14 @@ for (const file of registryFiles) {
 }
 
 if (failed) {
-  console.error("\nII FINISHED DELIVERY OBJECT AUDIT: FAIL");
+  console.error("");
+  console.error("II FINISHED DELIVERY OBJECT AUDIT: FAIL");
   process.exit(1);
 }
 
-console.log(`II FINISHED DELIVERY OBJECT AUDIT: PASS`);
+console.log("");
+console.log("II FINISHED DELIVERY OBJECT AUDIT: PASS");
 console.log(`Public II files checked: ${publicFiles.length}`);
 console.log(`Public buyer files checked: ${publicBuyerFiles.length}`);
 console.log(`Registry files checked: ${registryFiles.length}`);
+console.log(`Candidate registry warnings: ${warned ? "YES" : "NO"}`);
