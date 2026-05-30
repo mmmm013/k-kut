@@ -75,7 +75,7 @@ const kks = [
     title: "Verse 1A",
     section: "V1A",
     priceTier: "standard",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-v1a-ii-delivery.mp3",
   },
   {
     id: "thank-you-sec-v1c",
@@ -99,7 +99,7 @@ const kks = [
     title: "Thank You Chorus",
     section: "Chorus 1",
     priceTier: "standard",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-ch1-ii-delivery.mp3",
   },
   {
     id: "thank-you-sec-v2a",
@@ -107,7 +107,7 @@ const kks = [
     title: "Verse 2A",
     section: "V2A",
     priceTier: "small",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-v2a-ii-delivery.mp3",
   },
   {
     id: "thank-you-sec-v2b",
@@ -115,7 +115,7 @@ const kks = [
     title: "Verse 2B",
     section: "V2B",
     priceTier: "standard",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-v2b-ii-delivery.mp3",
   },
   {
     id: "thank-you-sec-ch2",
@@ -123,7 +123,7 @@ const kks = [
     title: "Chorus 2",
     section: "Chorus 2",
     priceTier: "standard",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-ch2-ii-delivery.mp3",
   },
   {
     id: "thank-you-sec-outro",
@@ -131,7 +131,7 @@ const kks = [
     title: "Outro",
     section: "Outro",
     priceTier: "standard",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-outro-ii-delivery.mp3",
   },
   {
     id: "thank-you-cc-001",
@@ -328,7 +328,7 @@ const bbBotSamples = [
     description: "A fuller audio greeting with the heart of the song.",
     id: "thank-you-sec-ch1",
     title: "Thank You Chorus",
-    audioUrl: "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+    audioUrl: "/hug-delivery/thank-you/thank-you-sec-ch1-ii-delivery.mp3",
   },
   {
     label: "Big HUG",
