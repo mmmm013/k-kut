@@ -49,6 +49,37 @@ const featuredPromos = [
   },
 ];
 
+
+const PERSONAL_READY_HUGS = [
+  {
+    label: "Personal Warmth",
+    title: "A Love Like That",
+    description:
+      "A warm personal HUG for love, care, thanks, support, or a simple human moment.",
+    audioUrl:
+      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+  },
+  {
+    label: "Repair / Still Care",
+    title: "Don't Call It Love",
+    description:
+      "A tender personal HUG when the feeling is complicated, careful, or not easy to say.",
+    audioUrl:
+      "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+  },
+  {
+    label: "Romance / Physical Spark",
+    title: "Your Heart Poundin'",
+    description:
+      "A bold personal romance HUG for desire, passion, and private intimate energy.",
+    audioUrl:
+      "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+    checkoutUrl: "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+  },
+];
+
 const promoGroups = [
   {
     title: "Core personal HUGs",
@@ -141,6 +172,48 @@ export default function PersonalPage() {
                   {promo.cta} →
                 </Link>
               </div>
+            ))}
+          </div>
+        </section>
+
+
+        <section className="mt-8">
+          <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-amber-200">
+            Ready Now
+          </p>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {PERSONAL_READY_HUGS.map((hug) => (
+              <article
+                key={hug.label}
+                className="rounded-[1.75rem] border border-amber-300/20 bg-[#251209] p-5 shadow-xl"
+              >
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-200">
+                  {hug.label}
+                </p>
+
+                <h2 className="mt-3 text-2xl font-black text-amber-50">
+                  {hug.title}
+                </h2>
+
+                <p className="mt-3 min-h-[78px] text-sm font-bold leading-6 text-amber-50/70">
+                  {hug.description}
+                </p>
+
+                <audio
+                  className="mt-5 w-full"
+                  controls
+                  preload="metadata"
+                  src={hug.audioUrl}
+                />
+
+                <a
+                  className="mt-5 block rounded-2xl bg-amber-200 px-5 py-3 text-center text-sm font-black text-[#150b07] transition hover:bg-amber-100"
+                  href={hug.checkoutUrl}
+                >
+                  Send this Personal HUG
+                </a>
+              </article>
             ))}
           </div>
         </section>
