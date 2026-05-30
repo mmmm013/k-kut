@@ -42,6 +42,12 @@ These are combos because they contain more than one KK.
 
 They are valid only because every included KK is contiguous.
 
+## Public Flow Current Rule
+
+Public Father’s Day flow should prioritize lone-section KKs.
+
+KK-Kombos may be held for MC-BOT request, backend selection, or later packaging unless ADMIN approves public display.
+
 ## Matching Rule
 
 PIX title is not a buyer-match signal.

@@ -41,22 +41,13 @@ if (!fs.existsSync(file)) {
     const kk = kks[i];
     if (!kk) continue;
 
-    if (kk.kk_number !== i + 1) {
-      fail(`KK ${i + 1} has wrong kk_number: ${kk.kk_number}`);
-    }
-
-    if (kk.label !== expectedLabels[i]) {
-      fail(`KK ${i + 1} expected ${expectedLabels[i]}, found ${kk.label}`);
-    }
-
-    if (kk.type !== "lone_section_kk") {
-      fail(`${kk.label} must be lone_section_kk`);
-    }
+    if (kk.kk_number !== i + 1) fail(`KK ${i + 1} has wrong kk_number: ${kk.kk_number}`);
+    if (kk.label !== expectedLabels[i]) fail(`KK ${i + 1} expected ${expectedLabels[i]}, found ${kk.label}`);
+    if (kk.type !== "lone_section_kk") fail(`${kk.label} must be lone_section_kk`);
   }
 
-  if (!expectedLabels.includes("V2")) {
-    fail("V2 missing from expected labels");
-  }
+  const labels = kks.map((k) => k.label);
+  if (!labels.includes("V2")) fail("V2 missing from No Mystery lone-section KKs");
 
   const requiredCombos = [
     "Intro + V1 + Ch1",
@@ -69,15 +60,11 @@ if (!fs.existsSync(file)) {
   const comboLabels = combos.map((c) => c.label);
 
   for (const label of requiredCombos) {
-    if (!comboLabels.includes(label)) {
-      fail(`Missing approved contiguous KK-Kombo: ${label}`);
-    }
+    if (!comboLabels.includes(label)) fail(`Missing approved contiguous KK-Kombo: ${label}`);
   }
 
   for (const combo of combos) {
-    if (combo.type !== "contiguous_kk_kombo") {
-      fail(`${combo.label} must be contiguous_kk_kombo`);
-    }
+    if (combo.type !== "contiguous_kk_kombo") fail(`${combo.label} must be contiguous_kk_kombo`);
 
     if (!Array.isArray(combo.kk_numbers) || combo.kk_numbers.length < 2) {
       fail(`${combo.label} must contain at least two KK numbers`);

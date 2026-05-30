@@ -7,7 +7,7 @@
   "kk_law": {
     "kk_definition": "one natural song section",
     "intro_rule": "Intro may be included with V1 when that is the natural song unit.",
-    "outro_rule": "Outro stays separate from final chorus because final chorus usually has broader emotional/sales range.",
+    "outro_rule": "Outro stays separate from Final Chorus because Final Chorus usually has broader emotional/sales range.",
     "combo_definition": "two or more KKs joined together",
     "combo_contiguity_law": "All KKs used in a KK-Kombo must be contiguous. Non-contiguous KK-Kombos are forbidden."
   },
@@ -87,6 +87,7 @@
       "type": "contiguous_kk_kombo"
     }
   ],
+  "public_flow_current_rule": "Public Father’s Day flow should prioritize lone-section KKs. KK-Kombos may be held for MC-BOT request, backend selection, or later packaging unless ADMIN approves public display.",
   "delivery_law": {
     "raw": "source/proof only",
     "delivery": "finished II with padding and Twinkle baked in",
