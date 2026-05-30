@@ -1,0 +1,56 @@
+{
+  "status": "locked_authority",
+  "theme": "fathers-day",
+  "rule": "Father’s Day KK extraction must be title-authority first. Count KKs, not PIXs. Do not use broad emotional matching as authority.",
+  "approved_sources": [
+    {
+      "canonical": "i'M NO MYSTERY",
+      "display": "No Mystery",
+      "artist_hint": "Billy Harper",
+      "variants": ["i'M NO MYSTERY", "I'M NO MYSTERY", "I'm No Mystery", "I’m No Mystery", "No Mystery"]
+    },
+    {
+      "canonical": "Life’s a Test",
+      "display": "Life’s a Test",
+      "artist_hint": "Brandon Howard",
+      "variants": ["Life’s a Test", "Life's a Test", "Lifes a Test"]
+    },
+    {
+      "canonical": "That’s a Have To",
+      "display": "That’s a Have To",
+      "artist_hint": "Jade Lotzow",
+      "variants": ["That’s a Have To", "That's a Have To", "Thats a Have To", "That Have To"]
+    },
+    {
+      "canonical": "Have-To",
+      "display": "Have-To duet",
+      "artist_hint": "Jade & Aaron Lotzow",
+      "variants": ["Have-To", "Have To", "Have-To duet"]
+    },
+    {
+      "canonical": "That Empty Chair",
+      "display": "That Empty Chair",
+      "artist_hint": "Lloyd Miller",
+      "variants": ["That Empty Chair", "The Empty Chair", "THAT EMPTY CHAIR"]
+    }
+  ],
+  "excluded_titles": [
+    "A Love Like That",
+    "A LOVE LIKE THAT",
+    "Don’t Call It Love",
+    "Don't Call It Love",
+    "DON'T CALL IT LOVE",
+    "Your Heart Poundin",
+    "YOUR HEART POUNDIN",
+    "Your Heart Pounding",
+    "YOUR HEART POUNDING",
+    "Your Touch",
+    "YOUR TOUCH"
+  ],
+  "hard_excluded_sources": [
+    "data/ii-delivery-registry/romance-router.json",
+    "data/ii-delivery-registry/romance-reusable-ii-records.json",
+    "reports/ii-candidates/romance-sales-shortlist.public.json",
+    "reports/ii-candidates/kupid-heart-poundin-candidates.json"
+  ]
+}
