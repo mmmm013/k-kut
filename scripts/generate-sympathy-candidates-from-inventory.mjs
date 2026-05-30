@@ -58,7 +58,13 @@ const forbiddenSignals = [
   "birthday",
   "anniversary",
   "valentine",
-  "kupid"
+  "kupid",
+  "baby i miss you",
+  "baby we're through",
+  "baby we are through",
+  "breakup",
+  "ex ",
+  "test example"
 ];
 
 function parseCsv(text) {
@@ -127,6 +133,43 @@ function hits(text, terms) {
   return terms.filter((term) => text.includes(term));
 }
 
+function hardRejectRow(obj, text) {
+  const title = String(
+    obj.title ||
+      obj.track_title ||
+      obj.pix_title ||
+      obj.song_title ||
+      obj.name ||
+      ""
+  ).toLowerCase();
+
+  const typeText = String(
+    obj.type ||
+      obj.kut_type ||
+      obj.asset_type ||
+      obj.kind ||
+      ""
+  ).toLowerCase();
+
+  // Public buyer flow is KK-only. For high-risk Sympathy sampling,
+  // keep candidate review KK-only too unless admin explicitly opens mK review.
+  if (title.includes("— mk") || title.includes(" mK ".toLowerCase()) || /\bmk\b/i.test(title)) {
+    return "reject_mk";
+  }
+
+  if (typeText.includes("mk") || typeText.includes("mini")) {
+    return "reject_mk";
+  }
+
+  if (title.includes("test example")) return "reject_test_example";
+
+  if (title.includes("baby i miss you")) return "reject_romance_missing";
+  if (title.includes("baby we're through") || title.includes("baby we are through")) return "reject_breakup";
+  if (text.includes("breakup")) return "reject_breakup";
+
+  return "";
+}
+
 const candidates = [];
 const seen = new Set();
 
@@ -139,6 +182,9 @@ for (const file of sourceFiles) {
   for (const row of rows.slice(1)) {
     const obj = rowToObject(headers, row);
     const h = haystack(obj);
+
+    const hardRejectReason = hardRejectRow(obj, h);
+    if (hardRejectReason) continue;
 
     const positiveHits = hits(h, positiveSignals);
     if (positiveHits.length === 0) continue;
