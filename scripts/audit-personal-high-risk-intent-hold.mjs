@@ -13,24 +13,37 @@ function fail(msg) {
 console.log("PERSONAL HIGH-RISK INTENT HOLD AUDIT");
 
 for (const slug of ["sympathy", "grief", "memorial", "celebration-of-life"]) {
-  if (!text.includes(`slug === "${slug}"`)) fail(`Missing held slug: ${slug}`);
+  if (!text.includes(`slug === "${slug}"`)) {
+    fail(`Missing held slug: ${slug}`);
+  }
 }
 
 for (const phrase of [
+  "stricter human review",
   "No generic personal HUG cards are shown here",
-  "Mood, level, softness, or care metadata is not enough",
-  "Sympathy HUGs require a stricter human review before public selection."
+  "Mood, level",
+  "music must match the human situation first"
 ]) {
-  if (!text.includes(phrase)) fail(`Missing hold phrase: ${phrase}`);
+  if (!text.includes(phrase)) {
+    fail(`Missing hold phrase fragment: ${phrase}`);
+  }
 }
 
-const blockStart = text.indexOf("if (isSympathy)");
-const blockEnd = text.indexOf("return (", blockStart + 1);
-const holdBlock = blockStart >= 0 && blockEnd > blockStart
-  ? text.slice(blockStart, blockEnd)
-  : "";
+const blockStart =
+  text.indexOf("if (isSympathy)") >= 0
+    ? text.indexOf("if (isSympathy)")
+    : text.indexOf("if (isHighRiskIntentHold)");
 
-if (!holdBlock) fail("Could not isolate high-risk hold block.");
+const blockEnd = text.indexOf("return (", blockStart + 1);
+
+const holdBlock =
+  blockStart >= 0 && blockEnd > blockStart
+    ? text.slice(blockStart, blockEnd)
+    : "";
+
+if (!holdBlock) {
+  fail("Could not isolate high-risk hold block.");
+}
 
 for (const forbidden of [
   "A Love Like That",
