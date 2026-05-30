@@ -1,0 +1,33 @@
+{
+  "status": "locked_operating_model",
+  "rule": "MC adds assets to a simple shared folder / upload inbox. Greg/GPM reviews and imports. Vercel is not the easy asset explorer.",
+  "roles": {
+    "MC": "asset contributor",
+    "shared_folder": "upload inbox",
+    "GPM": "reviewer/importer",
+    "KKr": "classification, matching, candidate routing, reuse governance",
+    "BIC": "public release gate",
+    "Vercel": "deployment system, not casual asset storage"
+  },
+  "folder_structure": [
+    "00_READ_ME_FIRST",
+    "01_MC-BOT Voice",
+    "02_KLEIGH Audio",
+    "03_K-KUT Candidate Audio",
+    "04_Photos",
+    "05_Video",
+    "06_Lyrics Notes Scripts",
+    "07_Artwork",
+    "08_Father’s Day",
+    "09_Holiday Rotation",
+    "99_Archive Superseded"
+  ],
+  "mc_instruction": [
+    "Open the shared folder.",
+    "Drag files into the correct folder.",
+    "Use clear names when possible.",
+    "Message Greg what was uploaded, what it is for, and whether it is final, rough, or idea-only.",
+    "Do not edit Vercel, domains, deployments, env vars, or production settings."
+  ],
+  "release_gate": "Uploaded assets are not public until GPM review, KKr classification, required delivery materialization, and BIC production audit PASS."
+}
