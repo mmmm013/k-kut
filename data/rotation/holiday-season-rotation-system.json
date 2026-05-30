@@ -1,0 +1,91 @@
+{
+  "system": "holiday-season-rotation-system",
+  "status": "draft_operational_doctrine",
+  "locked_context": {
+    "mothers_day": "Mother's Day was the prototype and is independently released as planned.",
+    "core_rule": "Holiday promos are not one-off hacks. They rotate through a governed seasonal system.",
+    "release_rule": "BIC-level release = production audit pass, not local build pass."
+  },
+  "rotation_layers": [
+    {
+      "id": "specific_holiday",
+      "purpose": "Direct holiday buyer demand windows such as Father's Day, Mother's Day, Valentine's Day, Christmas, Thanksgiving.",
+      "examples": [
+        "Father's Day",
+        "Mother's Day",
+        "Valentine's Day",
+        "Thanksgiving",
+        "Christmas"
+      ],
+      "rule": "Use holiday-specific entry points only during relevant buyer windows. Avoid direct same-holiday LT-PIX unless explicitly cleared."
+    },
+    {
+      "id": "calendar_season",
+      "purpose": "Between holiday windows, promote broader contemporary seasonal emotions.",
+      "examples": [
+        "Winter reset",
+        "Spring renewal",
+        "Summer connection",
+        "Fall reflection",
+        "Back-to-school",
+        "Graduation season",
+        "Wedding season",
+        "Grief and remembrance season",
+        "New year / new chapter"
+      ],
+      "rule": "Calendar seasons are traditional enough for buyers to understand, but copy and matching should feel contemporary, evolving, and emotionally specific."
+    },
+    {
+      "id": "evergreen_use_case",
+      "purpose": "Always-on buyer needs that should never disappear.",
+      "examples": [
+        "Birthday",
+        "Thank You",
+        "Apology",
+        "Encouragement",
+        "Comfort",
+        "Grief",
+        "Hope",
+        "Friendship",
+        "Family",
+        "Romance",
+        "Wedding",
+        "Anniversary"
+      ],
+      "rule": "Evergreen pages stay active while holiday and season features rotate above them."
+    },
+    {
+      "id": "weekly_exposure_balancer",
+      "purpose": "Prevent the same few IIs from dominating every route.",
+      "rule": "Search-to-Match has no hard limit, but weekly rotation should expose all qualified tracks/IIs over time when helpful."
+    }
+  ],
+  "candidate_laws": [
+    "No INSTRO / instrumental-only K-KUT buyer delivery.",
+    "No direct same-holiday LT-PIX by default.",
+    "No Music Maykers in public UI.",
+    "No mKs / mini-KUTs in public buyer flow unless ADMIN override is active.",
+    "No duplicate II unless ADMIN explicitly directs it.",
+    "Customer delivery audio requires padding + Twinkle together."
+  ],
+  "metadata_policy": {
+    "pix_metadata": "PIX labels and source metadata are useful but partial.",
+    "kk_metadata": "KK labels must carry most buyer-match weight and must be robust.",
+    "kkr_loops": [
+      "occasion labeling",
+      "relationship labeling",
+      "POV labeling",
+      "emotional level labeling",
+      "phrase / lyric meaning labeling",
+      "buyer intent labeling",
+      "promo suitability labeling",
+      "exclusion-law labeling",
+      "weekly exposure balancing"
+    ]
+  },
+  "current_priority": {
+    "active_focus": "Father's Day",
+    "reason": "Upcoming revenue window and previously identified candidate pool.",
+    "next_required_state": "strict Father’s Day candidate records with real deliverable audio candidates, then padding + Twinkle materialization, then BIC production audit."
+  }
+}
