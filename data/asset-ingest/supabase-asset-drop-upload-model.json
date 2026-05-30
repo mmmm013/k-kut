@@ -1,0 +1,33 @@
+
+{
+  "status": "locked_operating_model",
+  "asset_system": "Supabase Storage",
+  "bucket": "asset-drop",
+  "bucket_privacy": "private",
+  "upload_page": "/asset-drop",
+  "path_pattern": "pending-review/<folder>/<date>/<timestamp>-<filename>",
+  "approval_rule": "Uploaded = received. Received does not mean accepted. Accepted does not mean public.",
+  "mc_role": [
+    "upload files",
+    "choose folder",
+    "describe purpose",
+    "message Greg after upload"
+  ],
+  "mc_not_allowed": [
+    "approve",
+    "publish",
+    "delete production assets",
+    "edit Vercel",
+    "edit environment variables",
+    "edit domains",
+    "bypass Greg/GPM review"
+  ],
+  "greg_gpm_role": [
+    "review",
+    "thank MC",
+    "silently approve or reject",
+    "classify with KKr",
+    "import approved assets",
+    "release only after BIC"
+  ]
+}
