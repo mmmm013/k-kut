@@ -64,6 +64,13 @@ export default function HugPage() {
             Customer delivery audio is finished before public use.
           </p>
 
+          <a
+            className="mt-6 inline-flex rounded-2xl bg-[#FFD54F] px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-[#160A05] transition hover:bg-white"
+            href="/checkout"
+          >
+            Start HUG Order
+          </a>
+
           <div className="mt-6 rounded-[1.5rem] border border-[#8D6E63]/35 bg-black/25 p-4">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#FFD54F]">
               One sample
