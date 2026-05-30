@@ -1,0 +1,22 @@
+{
+  "status": "locked_standard",
+  "rule": "Holiday depth is seasonal. Audio law is never relaxed.",
+  "audio_law": "AUDIO CAN NEVER LEAVE AN II. Public buyer audio must be /ii-delivery/*bookend-twinkle*.",
+  "personal_min_distinct_ii": 8,
+  "offseason_holiday_min_distinct_ii": 2,
+  "active_holiday_min_distinct_ii": 8,
+  "current_active_holidays": [
+    "fathers-day"
+  ],
+  "offseason_holidays": [
+    "mothers-day",
+    "memorial-day",
+    "flag-day",
+    "juneteenth",
+    "independence-day",
+    "labor-day",
+    "grandparents-day",
+    "thanksgiving",
+    "christmas"
+  ]
+}
