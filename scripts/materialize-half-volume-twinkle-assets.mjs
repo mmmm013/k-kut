@@ -32,26 +32,20 @@ for (const source of audioFiles) {
   const base = path.basename(source).replace(/\.(mp3|wav|m4a)$/i, "");
   const out = path.join(outDir, `${base}-twinkle-50.mp3`);
 
-  try {
-    execFileSync("ffmpeg", [
-      "-y",
-      "-i",
-      source,
-      "-filter:a",
-      `volume=${gain}`,
-      "-codec:a",
-      "libmp3lame",
-      "-q:a",
-      "2",
-      out
-    ], { stdio: "ignore" });
+  execFileSync("ffmpeg", [
+    "-y",
+    "-i",
+    source,
+    "-filter:a",
+    `volume=${gain}`,
+    "-codec:a",
+    "libmp3lame",
+    "-q:a",
+    "2",
+    out
+  ], { stdio: "ignore" });
 
-    materialized.push({ source, out, gain });
-  } catch (error) {
-    console.error(`FAILED ${source}`);
-    console.error(error.message);
-    process.exit(1);
-  }
+  materialized.push({ source, out, gain });
 }
 
 fs.writeFileSync(
