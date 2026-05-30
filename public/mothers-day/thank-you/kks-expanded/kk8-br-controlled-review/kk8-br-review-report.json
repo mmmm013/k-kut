@@ -1,0 +1,44 @@
+{
+  "status": "OWNER_REVIEW_REQUIRED",
+  "pix": "Thank You",
+  "legacy_structure_id": "KK8",
+  "legacy_title": "Bridge",
+  "canonical_structure": "Br",
+  "final_required_delivery_audio": "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+  "instruction": "Listen to candidates. The approved candidate must contain only KK8 / Bridge / Br, then copy it to final delivery path.",
+  "lyric_structure": [
+    "Oh, we've been through valleys",
+    "We've scaled mountains",
+    "And we've had fun",
+    "Along the way",
+    "But at the end of the day",
+    "Your love will always remain"
+  ],
+  "candidates": [
+    {
+      "id": "kk8-br-candidate-a",
+      "label": "KK8 Bridge / Br candidate A",
+      "review_audio": "public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review/kk8-br-candidate-a.mp3",
+      "approve_command": "cp public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review/kk8-br-candidate-a.mp3 public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3"
+    },
+    {
+      "id": "kk8-br-candidate-b",
+      "label": "KK8 Bridge / Br candidate B",
+      "review_audio": "public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review/kk8-br-candidate-b.mp3",
+      "approve_command": "cp public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review/kk8-br-candidate-b.mp3 public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3"
+    },
+    {
+      "id": "kk8-br-candidate-c",
+      "label": "KK8 Bridge / Br candidate C",
+      "review_audio": "public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review/kk8-br-candidate-c.mp3",
+      "approve_command": "cp public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review/kk8-br-candidate-c.mp3 public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3"
+    }
+  ],
+  "doctrine": [
+    "Bridge and Br are aliases.",
+    "Canonical delivery label is Br.",
+    "This is controlled generation for KK8 only.",
+    "Time here is locator metadata for rendering audio, not KK qualification.",
+    "No CC, mK, micro, Sandman, magic-tail, or generic sample fallback."
+  ]
+}
