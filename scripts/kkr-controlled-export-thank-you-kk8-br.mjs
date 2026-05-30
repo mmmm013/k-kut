@@ -4,7 +4,7 @@ import { execFileSync } from "node:child_process";
 
 const orderPath = "manifests/kkr/dispatch/thank-you-kk8-bridge-br-materialization.json";
 const sourceAudio = "public/mothers-day/thank-you/song/thank-you-song.mp3";
-const reviewDir = "public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review";
+const reviewDir = "public/_review/kkr/thank-you-kk8-br";
 const finalAudio = "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3";
 
 if (!fs.existsSync(orderPath)) {
@@ -81,6 +81,7 @@ const report = {
     "Bridge and Br are aliases.",
     "Canonical delivery label is Br.",
     "This is controlled generation for KK8 only.",
+    "Review/proof audio must use neutral system paths, not holiday/promo/customer-facing paths.",
     "Time here is locator metadata for rendering audio, not KK qualification.",
     "No CC, mK, micro, Sandman, magic-tail, or generic sample fallback."
   ]
