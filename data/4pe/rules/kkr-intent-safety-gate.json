@@ -1,0 +1,42 @@
+{
+  "status": "locked_rule",
+  "rule_name": "KKr Intent Safety Gate",
+  "core_law": [
+    "Levels are not intent.",
+    "Mood is not use-case.",
+    "Slow is not sympathy.",
+    "Thoughtful is not grief-safe.",
+    "Warm is not automatically comfort.",
+    "Love is not automatically sympathy-safe."
+  ],
+  "high_risk_intents": [
+    "sympathy",
+    "grief",
+    "memorial",
+    "celebration-of-life"
+  ],
+  "required_release_conditions": [
+    "approved_registry_row",
+    "human_approved",
+    "audio_delivery_safe",
+    "buyer_copy_safe",
+    "receiver_risk_reviewed",
+    "payment_allowed"
+  ],
+  "sympathy_forbidden_signals": [
+    "heart pound",
+    "call it love",
+    "love like that",
+    "spark",
+    "romance",
+    "wedding",
+    "kiss",
+    "desire",
+    "lover",
+    "sexy",
+    "party",
+    "confidence",
+    "celebration"
+  ],
+  "publication_rule": "High-risk intent pages may not publish buyer cards, audio players, send buttons, or payment links until approved registry rows exist."
+}

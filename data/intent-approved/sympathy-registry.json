@@ -1,0 +1,23 @@
+{
+  "status": "empty_pending_human_approval",
+  "intent": "sympathy",
+  "publication_allowed": false,
+  "rule": "No approved registry row means no cards, no audio, no send button, and no payment path.",
+  "required_fields_for_future_rows": [
+    "id",
+    "title",
+    "source_pix",
+    "section_context",
+    "ii_delivery_audio_url",
+    "intent",
+    "forbidden_intent_absent",
+    "human_approved",
+    "audio_delivery_safe",
+    "buyer_copy_safe",
+    "receiver_risk_reviewed",
+    "payment_allowed",
+    "sampling_status",
+    "sampling_notes"
+  ],
+  "rows": []
+}

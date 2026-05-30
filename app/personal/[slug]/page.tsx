@@ -43,6 +43,47 @@ export default async function PersonalUseCasePage({
 }) {
   const { slug } = await params;
   const title = titleFromSlug(slug);
+  const isSympathy = slug === "sympathy" || slug === "grief" || slug === "memorial" || slug === "celebration-of-life";
+
+  if (isSympathy) {
+    return (
+      <main className="min-h-screen bg-[#09070b] text-white">
+        <section className="mx-auto flex max-w-4xl flex-col gap-8 px-5 py-10">
+          <header className="rounded-[2rem] border border-[#FFD54F]/25 bg-gradient-to-br from-[#241223] via-[#120816] to-[#050307] p-6 shadow-2xl md:p-9">
+            <p className="text-xs font-black uppercase tracking-[0.42em] text-[#FFD54F]">
+              G Putnam Music
+            </p>
+
+            <h1 className="mt-4 text-4xl font-black tracking-tight md:text-6xl">
+              {title} K-KUT HUGs
+            </h1>
+
+            <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-pink-100">
+              Sympathy HUGs require a stricter human review before public selection.
+            </p>
+
+            <p className="mt-4 max-w-3xl text-sm leading-6 text-white/68">
+              This category is being held until each music moment is confirmed grief-safe,
+              remembrance-safe, and free from romance, spark, celebration, or mixed-intent routing.
+            </p>
+          </header>
+
+          <section className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 text-sm leading-7 text-white/70">
+            <p className="font-bold text-white">
+              No generic personal HUG cards are shown here.
+            </p>
+            <p className="mt-3">
+              For sympathy, the music must match the human situation first. Mood, level,
+              softness, or care metadata is not enough.
+            </p>
+            <a className="mt-6 inline-flex font-black text-[#FFD54F]" href="/personal">
+              Back to Personal HUGs
+            </a>
+          </section>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-[#09070b] text-white">
