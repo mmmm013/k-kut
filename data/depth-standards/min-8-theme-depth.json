@@ -1,0 +1,20 @@
+{
+  "status": "locked_standard",
+  "rule": "Every public buyer theme must provide a minimum of 8 customer-ready options.",
+  "safety_floor": 3,
+  "buyer_choice_floor": 8,
+  "strong_theme_floor": 12,
+  "mature_theme_floor": 20,
+  "audio_law": "AUDIO CAN NEVER LEAVE AN II. Public buyer audio must be /ii-delivery/*bookend-twinkle*.",
+  "do_not_fake_depth": "Eight cards reusing the same 3 audio files is not real depth.",
+  "priority_themes": [
+    "fathers-day",
+    "birthday",
+    "thank-you",
+    "apology",
+    "encouragement-hope-hang-tough",
+    "comfort-sympathy-grief-memorial",
+    "friendship-best-friend-family",
+    "love-missing-you"
+  ]
+}
