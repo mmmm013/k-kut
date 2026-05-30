@@ -1,0 +1,43 @@
+{
+  "status": "locked_transfer_record",
+  "date": "2026-05-30",
+  "source_system": "4PE-BIZ-MSC",
+  "translator": "4PE-BIZ-TT",
+  "target_system": "4PE-BIZ-BIZ",
+  "msc_case": "K-KUT production audio-law cleanup",
+  "msc_findings": [
+    "Review/proof audio must not be public.",
+    "Private staging proof must not be required by production deployment.",
+    "Finished II delivery audio may be public only after padding/bookends and Twinkle are baked in.",
+    "Buyer-facing audio needs BIC-level QA/QC before release."
+  ],
+  "tt_translations": [
+    {
+      "msc_language": "AUDIO CAN NEVER LEAVE AN II.",
+      "biz_language": "A customer-facing deliverable cannot leave containment until it is finished, packaged, traceable, QA-approved, and delivery-safe."
+    },
+    {
+      "msc_language": "Review/proof audio leaked into public paths.",
+      "biz_language": "Internal work-in-process must not be accessible as a customer deliverable."
+    },
+    {
+      "msc_language": "Vercel build depended on private staging.",
+      "biz_language": "Production systems must not depend on private working files."
+    }
+  ],
+  "biz_doctrine": [
+    "Separate working proof, review proof, and customer delivery.",
+    "Only BIC-passed delivery objects may reach the customer.",
+    "Production release gates must test customer-ready outputs, not private workbench materials.",
+    "QA/QC standards must be traceable and repeatable."
+  ],
+  "dmaic_map": {
+    "define": "Customer-facing audio must be safe, finished, traceable, and playable.",
+    "measure": "Audit public paths, II manifests, audio file availability, and Stripe/buyer routes.",
+    "analyze": "Identify leaks, missing manifests, stale deploys, and staging/build dependency failures.",
+    "improve": "Materialize finished II audio, block public proof leaks, and fix production build gates.",
+    "control": "Keep audits in prebuild/deploy flow and document the transfer lesson."
+  },
+  "bic_result": "Finished II delivery package live; public review leak removed; production deploy passed.",
+  "next_controlled_cleanup": "Patch buyer-facing Thank You structure cards to use finished II delivery URLs before mass-changing older CC/archive audio."
+}
