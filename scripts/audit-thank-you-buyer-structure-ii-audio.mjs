@@ -1,7 +1,24 @@
 import fs from "node:fs";
 
 const pagePath = "app/mothers-day/thank-you/page.tsx";
-const manifestPath = "public/hug-delivery/thank-you/ii-delivery-manifest.json";
+
+const required = [
+  ["thank-you-sec-v1a", "V1a"],
+  ["thank-you-sec-v1b", "V1b"],
+  ["thank-you-sec-prech1", "PreCh1"],
+  ["thank-you-sec-ch1", "Ch1"],
+  ["thank-you-sec-v2a", "V2a"],
+  ["thank-you-sec-v2b", "V2b"],
+  ["thank-you-sec-br", "Bridge"],
+  ["thank-you-sec-ch2", "Ch2"],
+  ["thank-you-sec-outro", "Outro"]
+];
+
+const forbiddenLockedLabels = [
+  "thank-you-sec-intro",
+  "thank-you-sec-v1c",
+  "thank-you-sec-v1d"
+];
 
 let failed = false;
 
@@ -13,29 +30,24 @@ function fail(msg) {
 console.log("THANK YOU BUYER STRUCTURE II AUDIO AUDIT");
 
 const page = fs.readFileSync(pagePath, "utf8");
-const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-const rows = manifest.rows || [];
 
-for (const row of rows) {
-  const raw = row.raw_preview_src;
-  const ii = row.ii_delivery_src;
+for (const [id, section] of required) {
+  const ii = `/hug-delivery/thank-you/${id}-ii-delivery.mp3`;
+  const file = `public/hug-delivery/thank-you/${id}-ii-delivery.mp3`;
 
-  if (page.includes(raw)) {
-    fail(`Buyer-facing page still uses raw locked structure audio for ${row.id}: ${raw}`);
-  }
+  if (!page.includes(`id: "${id}"`)) fail(`Missing locked structure card: ${id}`);
+  if (!page.includes(`section: "${section}"`)) fail(`Missing/incorrect section label for ${id}: ${section}`);
+  if (!page.includes(`audioUrl: "${ii}"`)) fail(`Missing finished II delivery URL for ${id}: ${ii}`);
+  if (!fs.existsSync(file)) fail(`Finished II file missing: ${file}`);
+}
 
-  const file = "public/" + String(ii || "").replace(/^\//, "");
-  if (!fs.existsSync(file)) {
-    fail(`Finished II delivery file missing for ${row.id}: ${file}`);
+for (const id of forbiddenLockedLabels) {
+  if (page.includes(`id: "${id}"`)) {
+    fail(`Obsolete locked structure card still present: ${id}`);
   }
 }
 
-const requiredAtLeastOne = rows.some((row) => page.includes(row.ii_delivery_src));
-if (!requiredAtLeastOne) {
-  fail("Buyer-facing Thank You page does not use any finished II delivery URLs.");
-}
-
-console.log(`Checked ${rows.length} locked Thank You II delivery row(s).`);
+console.log(`Checked ${required.length} locked Thank You buyer structure card(s).`);
 
 if (failed) {
   console.error("THANK YOU BUYER STRUCTURE II AUDIO AUDIT: FAIL");
