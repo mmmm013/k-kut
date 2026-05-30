@@ -68,55 +68,65 @@ function hasHardReject(text) {
   return HARD_REJECT.some((term) => n.includes(norm(term)));
 }
 
-function variantRegex(variant) {
-  const v = escRegex(variant)
+function titlePattern(title) {
+  return escRegex(title)
     .replace(/['’]/g, "['’]")
     .replace(/\s+/g, "\\s+");
-  return new RegExp(v, "i");
 }
 
-function isActualTitleKKRow(windowText, variants) {
-  const text = windowText.replace(/\s+/g, " ");
+function rowIsExactTitleKK(row, variants) {
+  const clean = row.replace(/\s+/g, " ").trim();
+
+  if (hasHardReject(clean)) return false;
 
   for (const variant of variants) {
-    const title = escRegex(variant)
-      .replace(/['’]/g, "['’]")
-      .replace(/\s+/g, "\\s+");
+    const t = titlePattern(variant);
 
     const patterns = [
-      new RegExp(`${title}\\s*\\|\\s*${title}\\s*[—-]\\s*KK\\s*\\d+`, "i"),
-      new RegExp(`${title}\\s*[—-]\\s*KK\\s*\\d+`, "i"),
-      new RegExp(`\\|\\s*${title}\\s*\\|\\s*${title}\\s*[—-]\\s*KK\\s*\\d+`, "i")
+      new RegExp(`(?:^|\\|)\\s*${t}\\s*\\|\\s*${t}\\s*[—-]\\s*KK\\s*\\d+\\b`, "i"),
+      new RegExp(`(?:^|\\|)\\s*${t}\\s*[—-]\\s*KK\\s*\\d+\\b`, "i")
     ];
 
-    if (patterns.some((rx) => rx.test(text))) return true;
+    if (patterns.some((rx) => rx.test(clean))) return true;
   }
 
   return false;
 }
 
-function findWindows(text, variants) {
-  const windows = [];
+function splitRows(text) {
+  const flat = text
+    .replace(/\r/g, "")
+    .replace(/\\n/g, "\n");
 
-  for (const variant of variants) {
-    const rx = variantRegex(variant);
-    let offset = 0;
+  const roughRows = [];
 
-    while (offset < text.length) {
-      const slice = text.slice(offset);
-      const m = rx.exec(slice);
-      if (!m) break;
+  for (const line of flat.split(/\n/)) {
+    const parts = line
+      .split(/\s+-\s+(?=(?:active_kk_|tbkk_|\d{6}\s*\||[A-Za-z0-9'’"() ]+\s*\|\s*[A-Za-z0-9'’"() ]+\s*[—-]\s*KK))/g)
+      .map((s) => s.trim())
+      .filter(Boolean);
 
-      const absolute = offset + m.index;
-      const start = Math.max(0, absolute - 260);
-      const end = Math.min(text.length, absolute + 420);
+    roughRows.push(...parts);
+  }
 
-      windows.push(text.slice(start, end));
-      offset = absolute + Math.max(variant.length, 1);
+  const expanded = [];
+
+  for (const row of roughRows) {
+    const matches = [...row.matchAll(/(?:active_kk_\d+|tbkk_\d+|\d{6}\s*\|)/g)];
+
+    if (matches.length <= 1) {
+      expanded.push(row);
+      continue;
+    }
+
+    for (let i = 0; i < matches.length; i++) {
+      const start = matches[i].index ?? 0;
+      const end = i + 1 < matches.length ? matches[i + 1].index ?? row.length : row.length;
+      expanded.push(row.slice(start, end).trim());
     }
   }
 
-  return windows;
+  return expanded.filter(Boolean);
 }
 
 const authority = JSON.parse(read(authorityPath));
@@ -132,27 +142,21 @@ for (const file of SEARCH_FILES) {
   const text = read(file);
   if (!text) continue;
 
+  const rows = splitRows(text);
+
   for (const source of authority.approved_sources) {
     const variants = [source.canonical, source.display, ...(source.variants || [])].filter(Boolean);
 
-    for (const windowText of findWindows(text, variants)) {
-      const clean = windowText.replace(/\s+/g, " ").trim();
+    for (const row of rows) {
+      const clean = row.replace(/\s+/g, " ").trim();
 
-      if (hasHardReject(clean)) {
+      if (!variants.some((v) => norm(clean).includes(norm(v)))) continue;
+
+      if (!rowIsExactTitleKK(clean, variants)) {
         rejected.push({
           source: source.display,
           file,
-          reason: "hard_reject_term",
-          evidence: clean.slice(0, 260)
-        });
-        continue;
-      }
-
-      if (!isActualTitleKKRow(clean, variants)) {
-        rejected.push({
-          source: source.display,
-          file,
-          reason: "not_actual_title_kk_row",
+          reason: hasHardReject(clean) ? "hard_reject_term" : "not_exact_title_kk_row",
           evidence: clean.slice(0, 260)
         });
         continue;
@@ -162,7 +166,7 @@ for (const file of SEARCH_FILES) {
         source: source.display,
         canonical: source.canonical,
         file,
-        evidence_type: "CLEAN_KK_ROW",
+        evidence_type: "EXACT_TITLE_KK_ROW",
         queue: extractQueue(clean),
         kk_id: extractUuid(clean),
         audio_url: extractUrl(clean),
@@ -190,13 +194,13 @@ for (const source of Object.keys(groups)) {
   });
 
   if (groups[source].length === 0) {
-    unresolved.push(`${source}: no clean title-authority KK rows found yet.`);
+    unresolved.push(`${source}: no exact title-authority KK rows found yet.`);
   }
 }
 
 const result = {
-  status: "strict_clean_fathers_day_kk_pool",
-  rule: "Only actual title-authority KK rows are included. Source evidence, nearby text, INSTRO, Music Maykers, romance, KUPID, and unrelated rows are rejected.",
+  status: "strict_exact_fathers_day_kk_pool",
+  rule: "Only exact title-authority KK rows are included. Nearby source evidence, adjacent row bleed, INSTRO, Music Maykers, romance, KUPID, and unrelated rows are rejected.",
   approved_sources: authority.approved_sources.map((s) => s.display),
   groups,
   unresolved,
@@ -207,35 +211,35 @@ const result = {
 fs.mkdirSync("reports/fathers-day", { recursive: true });
 fs.writeFileSync(OUT_JSON, JSON.stringify(result, null, 2) + "\n");
 
-let md = "# Father’s Day KK Pool — STRICT CLEAN KK ROWS ONLY\n\n";
+let md = "# Father’s Day KK Pool — STRICT EXACT TITLE KK ROWS ONLY\n\n";
 md += `${result.rule}\n\n`;
 
-md += "## Clean KK Row Counts\n\n";
+md += "## Exact KK Row Counts\n\n";
 for (const [source, rows] of Object.entries(groups)) {
-  md += `- ${source}: ${rows.length} clean KK rows\n`;
+  md += `- ${source}: ${rows.length} exact KK rows\n`;
 }
 
 md += "\n## Unresolved Sources\n\n";
 if (unresolved.length) {
   for (const item of unresolved) md += `- ${item}\n`;
 } else {
-  md += "PASS: all approved sources have clean KK rows.\n";
+  md += "PASS: all approved sources have exact KK rows.\n";
 }
 
 md += "\n## Rejected Evidence Count\n\n";
-md += `Rejected noisy / unsafe / non-title rows: ${rejected.length}\n`;
+md += `Rejected noisy / unsafe / non-exact rows: ${rejected.length}\n`;
 
-md += "\n## Clean Detail\n\n";
+md += "\n## Exact Detail\n\n";
 for (const [source, rows] of Object.entries(groups)) {
   md += `### ${source}\n\n`;
 
   if (!rows.length) {
-    md += "- No clean KK rows found yet.\n\n";
+    md += "- No exact KK rows found yet.\n\n";
     continue;
   }
 
   for (const row of rows.slice(0, 80)) {
-    md += `- CLEAN_KK_ROW`;
+    md += `- EXACT_TITLE_KK_ROW`;
     if (row.queue) md += ` | queue=${row.queue}`;
     if (row.kk_id) md += ` | kk=${row.kk_id}`;
     if (row.audio_url) md += ` | audio=${row.audio_url}`;
@@ -248,13 +252,13 @@ for (const [source, rows] of Object.entries(groups)) {
 
 fs.writeFileSync(OUT_MD, md);
 
-console.log("Strict clean Father’s Day KK pool written.");
+console.log("Strict exact Father’s Day KK pool written.");
 console.log("JSON:", OUT_JSON);
 console.log("MD:", OUT_MD);
 console.log("Rejected:", rejected.length);
 console.log("Unresolved:", unresolved.length);
 
 if (Object.values(groups).every((rows) => rows.length === 0)) {
-  console.error("FAIL: no clean KK rows found for any approved Father’s Day source.");
+  console.error("FAIL: no exact KK rows found for any approved Father’s Day source.");
   process.exit(1);
 }
