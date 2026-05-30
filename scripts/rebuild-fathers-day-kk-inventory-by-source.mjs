@@ -11,6 +11,13 @@ const SEARCH_FILES = [
 ];
 
 const HARD_REJECT = [
+  "instro",
+  "instrumental",
+  "music maykers",
+  "i am a fighter",
+  "salt of the earth",
+  "best of the nights of our lives",
+  "why does life have to be this hard",
   "a love like that",
   "don't call it love",
   "don’t call it love",
@@ -291,8 +298,8 @@ const unresolved = Object.entries(inventory)
   .map(([source]) => `${source}: no source-identity KK inventory rows found yet.`);
 
 const result = {
-  status: "fathers_day_source_identity_kk_inventory",
-  rule: "PIX title is not a buyer match signal. Source authority locates allowed source material. KK rows are inventoried by source identity/provenance only.",
+  status: "fathers_day_source_identity_kk_inventory_qa",
+  rule: "PIX title is not a buyer match signal. Source authority locates allowed source material. Rows are inventoried only when source identity is supported; suspect linkage is separated from confirmed inventory.",
   source_registry: sourceRegistry,
   inventory,
   unresolved,
@@ -303,7 +310,7 @@ const result = {
 fs.mkdirSync("reports/fathers-day", { recursive: true });
 fs.writeFileSync("reports/fathers-day/fathers-day-source-identity-kk-inventory.json", JSON.stringify(result, null, 2) + "\n");
 
-let md = "# Father’s Day KK Inventory — Source Identity Rebuild\n\n";
+let md = "# Father’s Day KK Inventory — Source Identity QA Rebuild\n\n";
 md += "PIX title is not a buyer match signal. It is used only for authority, provenance, lookup, labeling, and backend tracking.\n\n";
 md += "Raw KK proof remains separate from customer II delivery audio.\n\n";
 
