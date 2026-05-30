@@ -1,228 +1,107 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import seasonalCampaigns from "@/data/campaigns/seasonal-campaigns.json";
-import { holidays, type HolidaySlug } from "@/lib/holidaySeeds";
+const HOLIDAY_II_OPTIONS = [
+  {
+    label: "Warmth / Care",
+    title: "A Love Like That",
+    description:
+      "A warm holiday HUG for care, connection, family, friendship, and simple support.",
+    audioUrl:
+      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+    checkoutUrl: "https://buy.stripe.com/aFadR8eMS5Am55G2p84ow0x",
+  },
+  {
+    label: "Repair / Still Care",
+    title: "Don't Call It Love",
+    description:
+      "A tender holiday HUG for complicated feelings, repair, missing someone, or quiet support.",
+    audioUrl:
+      "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+    checkoutUrl: "https://buy.stripe.com/aFadR8eMS5Am55G2p84ow0x",
+  },
+];
 
-type Props = {
+function titleFromSlug(slug: string) {
+  return slug
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+export default async function HolidayUseCasePage({
+  params,
+}: {
   params: Promise<{ slug: string }>;
-};
-
-// ─── Static Params ──────────────────────────────────────────────────────────────────────────────
-export function generateStaticParams() {
-  return Object.keys(holidays).map((slug) => ({ slug }));
-}
-
-// ─── SEO Metadata ─────────────────────────────────────────────────────────────────────────────────
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+}) {
   const { slug } = await params;
-  const holiday = holidays[slug as HolidaySlug];
-
-  if (!holiday) {
-    return {
-      title: "Holiday HUG | K-KUT",
-      description: "Discover focused music moments for every holiday.",
-    };
-  }
-
-  return {
-    title: `${holiday.title} HUG | K-KUT`,
-    description: holiday.line,
-    openGraph: {
-      title: `${holiday.title} HUG | K-KUT`,
-      description: holiday.line,
-      url: `https://k-kut.com/holiday/${slug}`,
-      siteName: "K-KUT",
-      type: "website",
-    },
-    twitter: {
-      card: "summary",
-      title: `${holiday.title} HUG | K-KUT`,
-      description: holiday.line,
-    },
-  };
-}
-
-// ─── Page ──────────────────────────────────────────────────────────────────────────────────────
-export default async function HolidayCategoryPage({ params }: Props) {
-  const { slug } = await params;
-  const holiday = holidays[slug as HolidaySlug];
-
-  if (!holiday) {
-    notFound();
-  }
-
-  const campaign = seasonalCampaigns.campaigns.find(
-    (item) => item.holiday_slug === slug,
-  );
-
-  // Derive per-holiday audio src; fall back to the universal welcome track
-  const audioSrc =
-    "audioSrc" in holiday && holiday.audioSrc
-      ? (holiday.audioSrc as string)
-      : "/audio/kleigh/guide-final/33-welcome.m4a";
+  const title = titleFromSlug(slug);
 
   return (
-    <main className="min-h-screen bg-[#120b12] text-[#fff6e8]">
-      <section className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
-        <div className="rounded-[2rem] border border-amber-300/20 bg-[#22101f] p-6 shadow-2xl sm:p-9">
-          <p className="text-sm font-black uppercase tracking-[0.24em] text-amber-200">
-            K-KUT Holiday HUG
+    <main className="min-h-screen bg-[#08090b] text-white">
+      <section className="mx-auto flex max-w-5xl flex-col gap-8 px-5 py-10">
+        <header className="rounded-[2rem] border border-[#FFD54F]/25 bg-gradient-to-br from-[#102118] via-[#07120d] to-[#030403] p-6 shadow-2xl md:p-9">
+          <p className="text-xs font-black uppercase tracking-[0.42em] text-[#FFD54F]">
+            G Putnam Music
           </p>
-          <h1 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
-            {holiday.title}
+
+          <h1 className="mt-4 text-4xl font-black tracking-tight md:text-6xl">
+            {title} Holiday HUGs
           </h1>
-          <p className="mt-5 max-w-3xl text-lg font-bold leading-8 text-amber-50/80">
-            {holiday.line}
+
+          <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-emerald-100">
+            Choose a holiday-ready music HUG with customer-safe II delivery
+            audio.
           </p>
-          <div className="mt-6 rounded-[1.5rem] border border-amber-300/25 bg-black/25 p-5">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-              Current step
-            </p>
-            <h2 className="mt-2 text-3xl font-black text-amber-50">
-              {holiday.question}
-            </h2>
-          </div>
-        </div>
 
-        <section className="mt-5 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
-          <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-            Guide
+          <p className="mt-4 max-w-3xl text-sm leading-6 text-white/68">
+            Holiday use-case pages only expose approved delivery audio with
+            padding and the GPM signature end sound.
           </p>
-          <p className="mt-2 text-lg font-black leading-7 text-amber-50">
-            Listen first, then choose the closest holiday intent.
+        </header>
+
+        <section>
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.35em] text-[#FFD54F]">
+            Ready Now
           </p>
-          <audio
-            className="mt-4 w-full"
-            controls
-            preload="none"
-            src={audioSrc}
-          />
-        </section>
 
-        <section className="mt-8">
-          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Feeling paths
-              </p>
-              <h2 className="mt-2 text-3xl font-black">
-                Choose the closest intent.
-              </h2>
-            </div>
-            <Link
-              href="/holiday"
-              className="text-sm font-black uppercase tracking-[0.18em] text-amber-400 underline underline-offset-4"
-            >
-              All Holiday HUGs
-            </Link>
-          </div>
-
-          {"candidatePix" in holiday ? (
-            <div className="mt-6 rounded-[1.5rem] border border-amber-300/20 bg-black/25 p-5">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-200">
-                Candidate song moments
-              </p>
-              <ul className="mt-3 space-y-1 text-amber-50/80">
-                {holiday.candidatePix.map((pix) => (
-                  <li key={pix} className="text-sm">
-                    &bull; {pix}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {holiday.paths.map((path) => (
-              <Link
-                key={path}
-                href={`/holiday/${slug}/${encodeURIComponent(
-                  path.toLowerCase().replace(/\s+/g, "-"),
-                )}`}
-                className="rounded-[1.5rem] border border-amber-300/20 bg-[#22101f] p-5 transition hover:border-amber-300/50 hover:bg-[#2e1628]"
+          <div className="grid gap-5 md:grid-cols-2">
+            {HOLIDAY_II_OPTIONS.map((hug) => (
+              <article
+                key={hug.label}
+                className="rounded-[1.75rem] border border-emerald-200/15 bg-[#07110c] p-5 shadow-xl"
               >
-                <p className="text-xl font-black text-amber-50">{path}</p>
-                <p className="mt-1 text-sm text-amber-200/70">
-                  A focused music HUG path for this holiday moment.
+                <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
+                  {hug.label}
                 </p>
-              </Link>
+
+                <h2 className="mt-3 text-2xl font-black">{hug.title}</h2>
+
+                <p className="mt-3 min-h-[88px] text-sm leading-6 text-white/68">
+                  {hug.description}
+                </p>
+
+                <audio
+                  className="mt-5 w-full"
+                  controls
+                  preload="metadata"
+                  src={hug.audioUrl}
+                />
+
+                <a
+                  className="mt-5 block rounded-2xl bg-[#FFD54F] px-5 py-3 text-center font-black text-black transition hover:bg-white"
+                  href={hug.checkoutUrl}
+                >
+                  Send this Holiday HUG
+                </a>
+              </article>
             ))}
           </div>
-
-          <div className="mt-8">
-            <Link
-              href={`/holiday/${slug}/next`}
-              className="inline-block rounded-full bg-amber-400 px-8 py-3 text-sm font-black uppercase tracking-[0.2em] text-black transition hover:bg-amber-300"
-            >
-              Next
-            </Link>
-          </div>
         </section>
 
-        {campaign ? (
-          <>
-            <section className="mt-10 rounded-[1.5rem] border border-amber-300/20 bg-[#22101f] p-6 sm:p-9">
-              <h2 className="text-2xl font-black text-amber-50">
-                {campaign.public_title}
-              </h2>
-              <p className="mt-2 text-amber-200/80">{campaign.public_note}</p>
-              <p className="mt-4 text-sm font-black uppercase tracking-[0.18em] text-amber-400">
-                Season status: {campaign.status}
-              </p>
-              <div className="mt-4 flex gap-4">
-                {campaign.status === "archived" ? (
-                  <Link
-                    href={`/archive/${campaign.holiday_slug}`}
-                    className="rounded-full border border-amber-300/40 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-amber-300 transition hover:border-amber-300"
-                  >
-                    Open archive
-                  </Link>
-                ) : null}
-                {campaign.status === "active" && campaign.checkout_enabled ? (
-                  <Link
-                    href={`/collection/${campaign.holiday_slug}`}
-                    className="rounded-full bg-amber-400 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-black transition hover:bg-amber-300"
-                  >
-                    Open active collection
-                  </Link>
-                ) : null}
-                <Link
-                  href="/find"
-                  className="rounded-full border border-amber-300/40 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-amber-300 transition hover:border-amber-300"
-                >
-                  Find the Right Words
-                </Link>
-              </div>
-            </section>
-          </>
-        ) : (
-          <>
-            <section className="mt-10 rounded-[1.5rem] border border-amber-300/20 bg-[#22101f] p-6 sm:p-9">
-              <h2 className="text-2xl font-black text-amber-50">
-                Featured holiday HUG collections will go here.
-              </h2>
-              <p className="mt-2 text-amber-200/80">
-                This holiday page is available, but no seasonal campaign is
-                active yet.
-              </p>
-              <div className="mt-4 flex gap-4">
-                <Link
-                  href="/find"
-                  className="rounded-full bg-amber-400 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-black transition hover:bg-amber-300"
-                >
-                  Find the Right Words
-                </Link>
-                <Link
-                  href="/"
-                  className="rounded-full border border-amber-300/40 px-6 py-2 text-sm font-black uppercase tracking-[0.18em] text-amber-300 transition hover:border-amber-300"
-                >
-                  Back home
-                </Link>
-              </div>
-            </section>
-          </>
-        )}
+        <footer className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 text-sm leading-6 text-white/62">
+          <a className="font-black text-[#FFD54F]" href="/holiday">
+            Back to Holiday HUGs
+          </a>
+        </footer>
       </section>
     </main>
   );
