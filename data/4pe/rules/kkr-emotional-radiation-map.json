@@ -1,0 +1,292 @@
+{
+  "status": "locked_rule",
+  "rule_name": "KKr Emotional Radiation Map",
+  "core_law": [
+    "No verb alone.",
+    "No noun alone.",
+    "No title alone.",
+    "No one-term match.",
+    "No page category alone.",
+    "Every match needs verb + emotional direction + situation + evidence + anti-meaning check."
+  ],
+  "matching_stack": [
+    "source_identity_lane_control",
+    "song_section_or_paragraph_context",
+    "action_verb",
+    "positive_emotional_direction",
+    "negative_emotional_direction",
+    "human_situation_fit",
+    "recipient_risk",
+    "opposite_meaning_blocker",
+    "sampling_decision",
+    "registry_approval",
+    "public_payment_gate"
+  ],
+  "sympathy": {
+    "intent": "sympathy",
+    "positive_directions": [
+      "comfort",
+      "steady",
+      "honor",
+      "remember",
+      "keep_near",
+      "carry_through",
+      "shelter",
+      "sit_with",
+      "walk_beside",
+      "soften",
+      "reassure",
+      "release_gently",
+      "endure"
+    ],
+    "negative_directions": [
+      "romantic_longing",
+      "breakup",
+      "holiday_nostalgia",
+      "celebration",
+      "confidence_pump_up",
+      "sexual_or_spark",
+      "religious_presumption",
+      "toxic_positivity",
+      "move_on_too_fast",
+      "pity",
+      "melodrama",
+      "instrumental_title_guess"
+    ],
+    "verbs": {
+      "comfort": {
+        "positive_radiation": [
+          "soothe",
+          "steady",
+          "support",
+          "make_less_alone"
+        ],
+        "negative_radiation": [
+          "pity",
+          "minimize",
+          "fix_too_fast",
+          "romance_comfort"
+        ],
+        "common_use_situations": [
+          "grief",
+          "loss",
+          "hard_day",
+          "quiet_support",
+          "receiver_needs_presence"
+        ],
+        "forbidden_use_situations": [
+          "romance",
+          "breakup_longing",
+          "sexual_care",
+          "celebration"
+        ],
+        "evidence_needs": [
+          "comfort_or_support_action",
+          "human_difficulty_context",
+          "no_romance_context"
+        ]
+      },
+      "hold": {
+        "positive_radiation": [
+          "stay_with",
+          "protect",
+          "give_presence"
+        ],
+        "negative_radiation": [
+          "possess",
+          "cling",
+          "romantic_embrace",
+          "control"
+        ],
+        "common_use_situations": [
+          "grief",
+          "fear",
+          "loneliness",
+          "support_without_fixing"
+        ],
+        "forbidden_use_situations": [
+          "romantic_possession",
+          "dependency",
+          "sexual_hold"
+        ],
+        "evidence_needs": [
+          "presence_action",
+          "recipient_needs_support",
+          "non_romantic_context"
+        ]
+      },
+      "remember": {
+        "positive_radiation": [
+          "honor",
+          "memorialize",
+          "keep_near",
+          "gratitude"
+        ],
+        "negative_radiation": [
+          "nostalgia_only",
+          "romance_longing",
+          "holiday_memory"
+        ],
+        "common_use_situations": [
+          "memorial",
+          "loss",
+          "legacy",
+          "continuing_bond",
+          "gratitude_for_life"
+        ],
+        "forbidden_use_situations": [
+          "holiday",
+          "romantic_missing",
+          "anniversary_romance"
+        ],
+        "evidence_needs": [
+          "memory_or_remain_evidence",
+          "life_or_legacy_context",
+          "no_holiday_bleed"
+        ]
+      },
+      "miss": {
+        "positive_radiation": [
+          "absence",
+          "grief",
+          "keeping_close"
+        ],
+        "negative_radiation": [
+          "breakup",
+          "romantic_longing",
+          "baby_i_miss_you",
+          "obsession"
+        ],
+        "common_use_situations": [
+          "loss",
+          "absence_after_death",
+          "distance_with_care"
+        ],
+        "forbidden_use_situations": [
+          "breakup",
+          "romance",
+          "flirtation",
+          "ex_relationship"
+        ],
+        "evidence_needs": [
+          "absence_context",
+          "grief_or_remembrance_context",
+          "explicit_non_romance_context"
+        ]
+      },
+      "carry": {
+        "positive_radiation": [
+          "help_through_darkness",
+          "sustain",
+          "lift_burden"
+        ],
+        "negative_radiation": [
+          "savior_complex",
+          "dependency",
+          "melodrama"
+        ],
+        "common_use_situations": [
+          "hard_season",
+          "grief",
+          "dark_days",
+          "support_through_pain"
+        ],
+        "forbidden_use_situations": [
+          "romantic_rescue",
+          "hero_fantasy",
+          "dependency"
+        ],
+        "evidence_needs": [
+          "carry_or_through_evidence",
+          "difficulty_context",
+          "recipient_supported_not_possessed"
+        ]
+      },
+      "shelter": {
+        "positive_radiation": [
+          "protect_from_storm",
+          "safe_harbor",
+          "cover"
+        ],
+        "negative_radiation": [
+          "romantic_rescue",
+          "parent_only_unless_intended",
+          "control"
+        ],
+        "common_use_situations": [
+          "wind_and_rain",
+          "storm",
+          "danger",
+          "need_for_safety"
+        ],
+        "forbidden_use_situations": [
+          "romance_rescue",
+          "sexual_safety",
+          "wedding"
+        ],
+        "evidence_needs": [
+          "shelter_or_protection_evidence",
+          "storm_or_difficulty_context",
+          "non_romantic_frame"
+        ]
+      },
+      "release": {
+        "positive_radiation": [
+          "let_grief_breathe",
+          "say_goodbye",
+          "soft_departure"
+        ],
+        "negative_radiation": [
+          "abandonment",
+          "move_on_too_soon",
+          "dismiss_grief"
+        ],
+        "common_use_situations": [
+          "farewell",
+          "memorial",
+          "acceptance",
+          "gentle_goodbye"
+        ],
+        "forbidden_use_situations": [
+          "breakup_dismissal",
+          "toxic_positivity",
+          "forget_them"
+        ],
+        "evidence_needs": [
+          "goodbye_or_release_context",
+          "gentle_tone",
+          "no_move_on_pressure"
+        ]
+      },
+      "endure": {
+        "positive_radiation": [
+          "survive",
+          "continue",
+          "remain"
+        ],
+        "negative_radiation": [
+          "hopelessness",
+          "suffering_only",
+          "despair"
+        ],
+        "common_use_situations": [
+          "long_grief",
+          "hard_road",
+          "dark_night",
+          "continuing_love"
+        ],
+        "forbidden_use_situations": [
+          "nihilism",
+          "despair_without_support",
+          "melodrama"
+        ],
+        "evidence_needs": [
+          "remain_or_through_evidence",
+          "hard_context",
+          "presence_or_love_context"
+        ]
+      }
+    }
+  },
+  "publication_rule": "Emotional radiation is required before candidate approval. A verb/action candidate cannot publish until positive direction, negative direction, situation fit, evidence, and opposite meaning risk are recorded."
+}
