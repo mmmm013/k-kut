@@ -241,7 +241,15 @@ if (
   process.exit(1);
 }
 
-execFileSync("node", ["scripts/audit-kkr-staging-audio-proof-status.mjs"], { stdio: "inherit" });
+if (process.env.VERCEL) {
+  console.log("VERCEL BUILD: skipping private staging audio proof audit because staging/ is intentionally excluded from deploy.");
+  console.log("VERCEL BUILD: enforcing finished II delivery + public leak gates instead.");
+
+  execFileSync("node", ["scripts/audit-ii-delivery-bookend-twinkle.mjs"], { stdio: "inherit" });
+  execFileSync("node", ["scripts/audit-public-review-proof-leaks.mjs"], { stdio: "inherit" });
+} else {
+  execFileSync("node", ["scripts/audit-kkr-staging-audio-proof-status.mjs"], { stdio: "inherit" });
+}
 execFileSync("node", ["scripts/kkr-prosecute-dispatch-audit.mjs"], { stdio: "inherit" });
 execFileSync("node", ["scripts/audit-kkr-structure-bindings.mjs"], { stdio: "inherit" });
 execFileSync("node", ["scripts/audit-kkr-no-structure-audio-split.mjs"], { stdio: "inherit" });
