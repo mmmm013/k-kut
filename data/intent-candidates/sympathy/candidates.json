@@ -2,7 +2,7 @@
   "status": "candidate_pool_generated_non_public",
   "intent": "sympathy",
   "publication_allowed": false,
-  "generated_at": "2026-05-30T23:15:08.999Z",
+  "generated_at": "2026-05-30T23:16:19.027Z",
   "source_files_scanned": [
     "reports/kk-inventory/k_kuts.auto.csv",
     "reports/title-blind-kut-batch-scoring-csvs/tbkk_batch_0001.csv",
