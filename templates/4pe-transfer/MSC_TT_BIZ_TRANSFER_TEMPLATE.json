@@ -1,0 +1,33 @@
+{
+  "status": "draft_transfer_template",
+  "date": "YYYY-MM-DD",
+  "source_system": "4PE-BIZ-MSC",
+  "translator": "4PE-BIZ-TT",
+  "target_system": "4PE-BIZ-BIZ",
+  "msc_case": "Describe the live MSC case or pressure event.",
+  "voc_focus": [
+    "What customer/user/client expectation was at risk?",
+    "What would cause disappointment, confusion, failure, or lost trust?"
+  ],
+  "msc_findings": [
+    "Specific music-sector / K-KUT / HUG / KKr finding."
+  ],
+  "tt_translations": [
+    {
+      "msc_language": "Exact MSC phrase or rule.",
+      "biz_language": "Generalized business rule without music-only jargon."
+    }
+  ],
+  "dmaic_map": {
+    "define": "Define the customer-facing problem.",
+    "measure": "State what was measured or audited.",
+    "analyze": "State the root cause or failure mode.",
+    "improve": "State the fix or improved process.",
+    "control": "State the gate/audit/doc that prevents regression."
+  },
+  "bic_result": "State whether the output reached BIC-level customer readiness.",
+  "biz_doctrine": [
+    "Reusable business doctrine promoted from the MSC case."
+  ],
+  "next_controlled_cleanup": "Smallest next safe action."
+}
