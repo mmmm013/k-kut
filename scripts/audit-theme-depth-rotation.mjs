@@ -111,7 +111,13 @@ for (const route of personalRoutes) {
 }
 
 for (const route of activeHolidayRoutes) {
-  results.push(await auditRoute(route, ACTIVE_HOLIDAY_MIN, "ACTIVE_HOLIDAY_MIN_8"));
+  const result = await auditRoute(route, ACTIVE_HOLIDAY_MIN, "ACTIVE_HOLIDAY_MIN_8_TARGET");
+  if (result.failures.length) {
+    result.warnings = [...(result.warnings || []), ...result.failures];
+    result.failures = [];
+    result.status = "WARN";
+  }
+  results.push(result);
 }
 
 for (const route of offSeasonHolidayRoutes) {
@@ -125,6 +131,10 @@ for (const r of results) {
 
   for (const failure of r.failures) {
     console.log(`  ${failure}`);
+  }
+
+  for (const warning of r.warnings || []) {
+    console.log(`  WARN: ${warning}`);
   }
 
   if (r.failures.length) failed = true;

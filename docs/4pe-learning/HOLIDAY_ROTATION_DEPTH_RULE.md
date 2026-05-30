@@ -31,8 +31,9 @@ Off-season holiday:
 - no placeholder public buyer text
 
 Active / promoted holiday:
-- MIN-8 applies
-- minimum 8 distinct customer-ready II delivery options
+- MIN-8 is the campaign depth target
+- MIN-8 is not a customer-send blocker when the page is otherwise buyer-safe
+- minimum safe starter may be promoted when links, audio, Stripe, and public language pass
 - Featured + More should be available
 - under-layers may deepen appeal, such as Cowboy / Western Dad
 
@@ -48,4 +49,6 @@ Mature holiday:
 
 Father’s Day is active / promoted.
 
-Father’s Day must move toward MIN-8 first.
+Father’s Day may be promoted when buyer-safety audits pass.
+
+Father’s Day must continue moving toward MIN-8, but MIN-8 is a depth target, not a launch blocker.
