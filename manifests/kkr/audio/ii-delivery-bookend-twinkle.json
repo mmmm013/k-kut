@@ -1,0 +1,11 @@
+{
+  "status": "active",
+  "purpose": "Materialize Thank You HUG KK preview audio into finished II delivery files with front/back padding and Signature End Sound / Twinkle baked in.",
+  "source_manifest": "lib/hugRealKutManifest.ts",
+  "delivery_root": "public/hug-delivery/thank-you",
+  "front_bookend_seconds": 1.0,
+  "back_bookend_seconds": 1.0,
+  "signature_end_sound_name": "Twinkle / Signature End Sound",
+  "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3",
+  "public_audio_rule": "AUDIO CAN NEVER LEAVE AN II. Public buyer delivery audio must be finished II audio with padding and Twinkle baked in."
+}

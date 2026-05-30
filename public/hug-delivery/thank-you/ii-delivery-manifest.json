@@ -1,0 +1,95 @@
+{
+  "status": "materialized",
+  "rows": [
+    {
+      "id": "thank-you-sec-v1a",
+      "label": "V1a",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-v1a-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-v1b",
+      "label": "V1b",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-v1b-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-prech1",
+      "label": "PreCh1",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-prech1-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-ch1",
+      "label": "Ch1",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-ch1-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-v2a",
+      "label": "V2a",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-v2a-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-v2b",
+      "label": "V2b",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-v2b-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-br",
+      "label": "Br",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-br-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-ch2",
+      "label": "Ch2",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-ch2-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    },
+    {
+      "id": "thank-you-sec-outro",
+      "label": "Outro",
+      "raw_preview_src": "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+      "ii_delivery_src": "/hug-delivery/thank-you/thank-you-sec-outro-ii-delivery.mp3",
+      "front_bookend_seconds": 1,
+      "back_bookend_seconds": 1,
+      "signature_end_sound_name": "Twinkle / Signature End Sound",
+      "signature_end_sound_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3"
+    }
+  ]
+}
