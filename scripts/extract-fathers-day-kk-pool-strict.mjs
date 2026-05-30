@@ -96,37 +96,32 @@ function rowIsExactTitleKK(row, variants) {
 function splitRows(text) {
   const flat = text
     .replace(/\r/g, "")
-    .replace(/\\n/g, "\n");
+    .replace(/\\n/g, "\n")
+    .replace(/\s+-\s+(?=active_kk_\d+)/g, "\nactive_kk_")
+    .replace(/\s+-\s+(?=tbkk_\d+)/g, "\ntbkk_")
+    .replace(/\s+-\s+(?=\d{6}\s*\|)/g, "\n");
 
-  const roughRows = [];
+  const rows = [];
 
   for (const line of flat.split(/\n/)) {
-    const parts = line
-      .split(/\s+-\s+(?=(?:active_kk_|tbkk_|\d{6}\s*\||[A-Za-z0-9'’"() ]+\s*\|\s*[A-Za-z0-9'’"() ]+\s*[—-]\s*KK))/g)
-      .map((s) => s.trim())
-      .filter(Boolean);
+    const clean = line.trim();
+    if (!clean) continue;
 
-    roughRows.push(...parts);
-  }
+    const markers = [...clean.matchAll(/(?:active_kk_\d+|tbkk_\d+|\b\d{6}\s*\|)/g)];
 
-  const expanded = [];
-
-  for (const row of roughRows) {
-    const matches = [...row.matchAll(/(?:active_kk_\d+|tbkk_\d+|\d{6}\s*\|)/g)];
-
-    if (matches.length <= 1) {
-      expanded.push(row);
+    if (markers.length <= 1) {
+      rows.push(clean);
       continue;
     }
 
-    for (let i = 0; i < matches.length; i++) {
-      const start = matches[i].index ?? 0;
-      const end = i + 1 < matches.length ? matches[i + 1].index ?? row.length : row.length;
-      expanded.push(row.slice(start, end).trim());
+    for (let i = 0; i < markers.length; i++) {
+      const start = markers[i].index ?? 0;
+      const end = i + 1 < markers.length ? markers[i + 1].index ?? clean.length : clean.length;
+      rows.push(clean.slice(start, end).trim());
     }
   }
 
-  return expanded.filter(Boolean);
+  return rows.filter(Boolean);
 }
 
 const authority = JSON.parse(read(authorityPath));
@@ -157,6 +152,20 @@ for (const file of SEARCH_FILES) {
           source: source.display,
           file,
           reason: hasHardReject(clean) ? "hard_reject_term" : "not_exact_title_kk_row",
+          evidence: clean.slice(0, 260)
+        });
+        continue;
+      }
+
+      const titleFields = clean.split("|").map((x) => x.trim()).slice(0, 3).join(" | ");
+      const variantsNorm = variants.map(norm);
+      const hasExactTitleInLeadFields = variantsNorm.some((v) => norm(titleFields).includes(v));
+
+      if (!hasExactTitleInLeadFields) {
+        rejected.push({
+          source: source.display,
+          file,
+          reason: "approved_title_not_in_lead_fields",
           evidence: clean.slice(0, 260)
         });
         continue;
