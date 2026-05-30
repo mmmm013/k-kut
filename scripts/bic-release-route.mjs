@@ -7,13 +7,9 @@ if (!route || !route.startsWith("/")) {
   process.exit(1);
 }
 
-function run(label, cmd, args, opts = {}) {
+function run(label, cmd, args) {
   console.log(`\n---- ${label} ----`);
-  const res = spawnSync(cmd, args, {
-    stdio: "inherit",
-    shell: false,
-    ...opts,
-  });
+  const res = spawnSync(cmd, args, { stdio: "inherit", shell: false });
 
   if (res.status !== 0) {
     console.error(`\nFAIL: ${label}`);
@@ -25,19 +21,21 @@ function sleep(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
 
-const slug = route.replace(/^\//, "").replace(/\//g, "-");
+const pagePath = `app${route}/page.tsx`;
 
 run("approved Stripe audit", "node", ["scripts/audit-approved-stripe-links.mjs"]);
+
 run("delivery padding + Twinkle audit", "node", [
   "scripts/audit-all-ii-delivery-bookend-twinkle.mjs",
 ]);
+
 run("build", "npm", ["run", "build"]);
 
 run("git status before commit", "git", ["status", "--short"]);
 
-run("git add route release files", "git", [
+run("git add BIC release files", "git", [
   "add",
-  `app${route}/page.tsx`,
+  pagePath,
   "data/bic-routes/routes.json",
   "scripts/bic-release-route.mjs",
 ]);
