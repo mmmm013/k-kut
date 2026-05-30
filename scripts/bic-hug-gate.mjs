@@ -44,14 +44,11 @@ const files = [
   "lib/hugRealKutManifest.ts",
 ];
 
+// Brand rule:
+// Brown / amber / tan / warm black / gold are the base K-KUT colors.
+// Decorative, celebratory, romance, holiday, and excitement colors are allowed.
+// BIC bans unsafe content/audio states, not colors.
 const banned = [
-  /pink/i,
-  /rose/i,
-  /red/i,
-  /purple/i,
-  /violet/i,
-  /lavender/i,
-  /fuchsia/i,
   /placeholder/i,
   /Audio needed/i,
   /Audio not connected/i,
