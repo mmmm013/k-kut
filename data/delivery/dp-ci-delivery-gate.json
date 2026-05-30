@@ -1,0 +1,29 @@
+{
+  "status": "locked_delivery_model",
+  "system": "4PE-BIZ-KKr",
+  "rule": "Incoming user requests cue DP selection. Payment finalizes DP. DP fulfillment proceeds through QA/QC and proof.",
+  "audio_law": "AUDIO CAN NEVER LEAVE AN II.",
+  "terms": {
+    "LT_PIX": "source-level inventory",
+    "KK": "selected/cut music moment, not automatically public product",
+    "II": "finished customer-ready delivery audio object with front padding, KK audio, back padding, and Twinkle baked in",
+    "CI": "Cost Item; financial/sellable item tied to a customer-satisfying II or II-based offer",
+    "DP": "Delivery Package; sovereign governed fulfillment package"
+  },
+  "delivery_request_gate": [
+    "buyer intent captured",
+    "CI selected",
+    "finished II selected",
+    "payment confirmed",
+    "QA/QC status recorded",
+    "delivery status recorded",
+    "fulfillment proof recorded"
+  ],
+  "dmaic_qaqc": {
+    "define": ["buyer intent", "use case", "DP type", "CI / II selection"],
+    "measure": ["II file exists", "bookend-twinkle marker", "Stripe path", "route audit"],
+    "analyze": ["fit", "depth", "reuse", "risk"],
+    "improve": ["materialize missing IIs", "deepen inventory", "improve labels"],
+    "control": ["production audit", "finished-II audit", "depth audit", "fulfillment proof log"]
+  }
+}
