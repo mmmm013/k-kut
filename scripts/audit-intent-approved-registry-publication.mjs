@@ -42,12 +42,6 @@ if (!page.includes("No generic personal HUG cards are shown here")) {
   fail("High-risk page does not show hold state while registry is empty.");
 }
 
-if (page.includes("getPublishableIntentRows(slug)")) {
-  console.log("Registry helper is already wired into page.");
-} else {
-  console.log("NOTE: Registry helper exists but page is still in hold-only phase.");
-}
-
 if (registry.publication_allowed !== false) {
   fail("Initial sympathy registry must keep publication_allowed false.");
 }
