@@ -1,0 +1,26 @@
+{
+  "status": "locked_level_set",
+  "system": "GPMC / 4PE-BIZ-MSC / KKr",
+  "rule": "Re-process ALL PIX / LT-PIX inventory at KK depth. Count KKs, not PIXs.",
+  "all_lt_pix": true,
+  "always_on_depth": true,
+  "public_k_kut_rule": {
+    "kk_kombos_public": false,
+    "reason": "Avoid KK-Kombos on k-kut.com until sales take hold and ADMIN explicitly approves.",
+    "allowed_public_audio": "finished II delivery audio only",
+    "audio_law": "AUDIO CAN NEVER LEAVE AN II"
+  },
+  "pipeline": [
+    "refresh PIX / LT-PIX source record",
+    "scan musical structure",
+    "identify all plausible KKs",
+    "separate KKs from KK-Kombos",
+    "label KKs by buyer use case / feeling / intent",
+    "classify public-readiness",
+    "mark II materialization need",
+    "materialize approved KKs into finished IIs",
+    "connect finished IIs to CI",
+    "fulfill through DP gate after payment"
+  ],
+  "father_day_correction": "Father’s Day depth is counted by KKs across sources, not by number of PIXs."
+}
