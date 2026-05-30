@@ -9,15 +9,12 @@ function fail(msg) {
 
 function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out;
-
   for (const name of fs.readdirSync(dir)) {
     const full = `${dir}/${name}`;
     const stat = fs.statSync(full);
-
     if (stat.isDirectory()) walk(full, out);
     else out.push(full);
   }
-
   return out;
 }
 
