@@ -1,0 +1,68 @@
+{
+  "status": "draft_collecting",
+  "rule": "Email MC only when there is enough coherent MC-BOT script/phrase material to warrant review.",
+  "recipient_role": "MC / Michael Clay voice-review source",
+  "send_state": "do_not_email_yet",
+  "threshold_to_email": {
+    "minimum_phrase_count": 20,
+    "minimum_theme_branches": 3,
+    "must_include": [
+      "purpose note",
+      "buyer-facing phrase set",
+      "tone direction",
+      "what MC is being asked to review",
+      "what is not being asked"
+    ]
+  },
+  "tone_law": [
+    "Natural Michael Clay pace.",
+    "Human, grounded, plainspoken.",
+    "No generic AI/browser voice tone.",
+    "Guide the buyer without sounding salesy.",
+    "Keep phrases short enough to speak naturally.",
+    "Never expose internal labels, forbidden inventory, or unreleased candidates."
+  ],
+  "current_theme_branches": [
+    {
+      "id": "fathers-day",
+      "status": "collecting",
+      "mc_bot_role": "Help buyers choose the kind of dad moment: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad.",
+      "phrases": [
+        "What kind of Dad moment are you trying to send?",
+        "Is this more thank you, strength, missing him, or hard to say?",
+        "Some dads are quiet. Some are funny. Some are cowboy all the way.",
+        "Let\u2019s start with the feeling, then find the music.",
+        "You can hear it first. Then send the one that feels right."
+      ]
+    },
+    {
+      "id": "more-layer",
+      "status": "collecting",
+      "mc_bot_role": "Explain Featured, More, and More like this without overwhelming the buyer.",
+      "phrases": [
+        "Here are the strongest fits first.",
+        "Want more like this?",
+        "I can show you a few deeper options.",
+        "More does not mean random. It means still qualified, just more specific.",
+        "We can stay close to this feeling or widen the search."
+      ]
+    },
+    {
+      "id": "browse-return",
+      "status": "collecting",
+      "mc_bot_role": "Help buyers know where they are and how to return.",
+      "phrases": [
+        "You are still in Father\u2019s Day HUGs.",
+        "You can go back to all Holiday HUGs anytime.",
+        "This is a deeper path, not a dead end.",
+        "Back up one step, or keep browsing this feeling.",
+        "Start over if you want a different kind of HUG."
+      ]
+    }
+  ],
+  "email_when_ready": {
+    "subject": "MC-BOT phrase review packet",
+    "draft_only_first": true,
+    "do_not_send_without_user_approval": true
+  }
+}
