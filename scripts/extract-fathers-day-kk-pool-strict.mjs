@@ -63,11 +63,6 @@ function extractUrl(text) {
   return m ? m[0] : "";
 }
 
-function extractTiming(text) {
-  const m = text.match(/\b(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)s\b/i);
-  return m ? { start_seconds: m[1], end_seconds: m[2] } : { start_seconds: "", end_seconds: "" };
-}
-
 function hasHardReject(text) {
   const n = norm(text);
   return HARD_REJECT.some((term) => n.includes(norm(term)));
@@ -102,24 +97,22 @@ function isActualTitleKKRow(windowText, variants) {
 
 function findWindows(text, variants) {
   const windows = [];
-  const normalizedText = text;
 
   for (const variant of variants) {
     const rx = variantRegex(variant);
-    let remaining = normalizedText;
     let offset = 0;
 
-    while (true) {
-      const m = rx.exec(remaining);
+    while (offset < text.length) {
+      const slice = text.slice(offset);
+      const m = rx.exec(slice);
       if (!m) break;
 
       const absolute = offset + m.index;
       const start = Math.max(0, absolute - 260);
-      const end = Math.min(normalizedText.length, absolute + 420);
-      windows.push(normalizedText.slice(start, end));
+      const end = Math.min(text.length, absolute + 420);
 
+      windows.push(text.slice(start, end));
       offset = absolute + Math.max(variant.length, 1);
-      remaining = normalizedText.slice(offset);
     }
   }
 
@@ -127,7 +120,6 @@ function findWindows(text, variants) {
 }
 
 const authority = JSON.parse(read(authorityPath));
-
 const groups = {};
 const rejected = [];
 const unresolved = [];
@@ -141,8 +133,7 @@ for (const file of SEARCH_FILES) {
   if (!text) continue;
 
   for (const source of authority.approved_sources) {
-    const variants = [source.canonical, source.display, ...(source.variants || [])]
-      .filter(Boolean);
+    const variants = [source.canonical, source.display, ...(source.variants || [])].filter(Boolean);
 
     for (const windowText of findWindows(text, variants)) {
       const clean = windowText.replace(/\s+/g, " ").trim();
@@ -167,8 +158,6 @@ for (const file of SEARCH_FILES) {
         continue;
       }
 
-      const timing = extractTiming(clean);
-
       groups[source.display].push({
         source: source.display,
         canonical: source.canonical,
@@ -177,8 +166,6 @@ for (const file of SEARCH_FILES) {
         queue: extractQueue(clean),
         kk_id: extractUuid(clean),
         audio_url: extractUrl(clean),
-        start_seconds: timing.start_seconds,
-        end_seconds: timing.end_seconds,
         raw_evidence: clean.slice(0, 500)
       });
     }
@@ -187,14 +174,13 @@ for (const file of SEARCH_FILES) {
 
 for (const source of Object.keys(groups)) {
   const seen = new Set();
+
   groups[source] = groups[source].filter((row) => {
     const key = [
       row.source,
       row.queue,
       row.kk_id,
       row.audio_url,
-      row.start_seconds,
-      row.end_seconds,
       row.raw_evidence
     ].join("|");
 
@@ -253,7 +239,6 @@ for (const [source, rows] of Object.entries(groups)) {
     if (row.queue) md += ` | queue=${row.queue}`;
     if (row.kk_id) md += ` | kk=${row.kk_id}`;
     if (row.audio_url) md += ` | audio=${row.audio_url}`;
-    if (row.start_seconds !== "") md += ` | ${row.start_seconds}-${row.end_seconds}s`;
     md += ` | file=${row.file}`;
     md += ` | evidence=${row.raw_evidence.replace(/\s+/g, " ").slice(0, 240)}\n`;
   }
