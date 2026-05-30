@@ -1,0 +1,7 @@
+{
+  "status": "candidate_pool_empty",
+  "intent": "sympathy",
+  "publication_allowed": false,
+  "note": "Candidate rows may be analyzed here, but nothing publishes until copied into data/intent-approved/sympathy-registry.json with all approval gates true.",
+  "rows": []
+}
