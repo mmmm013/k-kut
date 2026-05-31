@@ -1,0 +1,60 @@
+{
+  "status": "locked_seed",
+  "name": "K-KUT Inventory-to-Public Publication Bridge",
+  "purpose": "Define the required bridge from PIX/KK/II inventory to public buyer-facing K-KUT options.",
+  "core_rule": "Inventory does not equal public. Candidate does not equal approved. Approved meaning does not equal payable. Public buyer options require a complete publish-safe bridge record.",
+  "required_bridge_fields": [
+    "source_pix_id_or_track_id",
+    "kk_id_or_delivery_object_id",
+    "interpretation_summary",
+    "action_object_meaning",
+    "positive_connotations",
+    "negative_connotations",
+    "neutral_connotations",
+    "shared_emotion_ids",
+    "buyer_scenario_ids",
+    "intent_lane",
+    "risk_level",
+    "approval_status",
+    "audio_delivery_url",
+    "audio_proof_status",
+    "payment_allowed",
+    "stripe_url_if_payment_allowed",
+    "public_route",
+    "more_for_this_feeling_allowed",
+    "more_from_this_track_allowed"
+  ],
+  "publication_laws": [
+    "No raw inventory item may publish directly to buyer UI.",
+    "No one-term search may publish directly to buyer UI.",
+    "No title-only match may publish directly to buyer UI.",
+    "No mood-only match may publish directly to buyer UI.",
+    "No payment appears until approval_status is public_approved and payment_allowed is true.",
+    "No audio player appears until audio_proof_status is pass.",
+    "High-risk lanes require human-approved intent registry before cards, audio, send buttons, or Stripe links.",
+    "More for this feeling expands across approved bridge records only.",
+    "More from this track expands within the same source track or PIX only, and only across approved bridge records.",
+    "After two More pages, the user should be guided to refine instead of receiving weaker matches."
+  ],
+  "known_inputs": [
+    "data/kkr/per-pix-interpretation-index.json",
+    "data/kkr/per-kk-interpretation-index.json",
+    "data/kkr/kk-interpretation-registry.json",
+    "data/emotions/top-100-shared-emotions.json",
+    "data/theme-feed/theme-feed-system.json",
+    "data/4pe/rules/kkr-intent-safety-gate.json",
+    "data/ii-delivery-registry/romance-router.json",
+    "data/ii-delivery-registry/romance-reusable-ii-records.json",
+    "manifests/sales/kut-sales-release-registry.json"
+  ],
+  "known_public_routes": [
+    "/find",
+    "/hug",
+    "/personal",
+    "/holiday",
+    "/kupid",
+    "/wedding",
+    "/romance"
+  ],
+  "next_build_target": "Create governed public option records that power Find/Search and More without exposing raw inventory."
+}
