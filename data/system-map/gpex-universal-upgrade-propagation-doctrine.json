@@ -1,0 +1,111 @@
+{
+  "status": "locked_doctrine",
+  "name": "GPEx Universal Upgrade Propagation Doctrine",
+  "purpose": "Ensure that improvements, fixes, naming conventions, safety rules, and BIC-level patterns established in one GPEx subsystem can propagate responsibly across all related systems.",
+  "core_law": "One truth improves. All dependent systems learn. Nothing buyer-facing changes until audited.",
+  "scope": [
+    "GPEx",
+    "4PE",
+    "GPMC",
+    "K-KUT",
+    "KKr",
+    "PIX",
+    "PIX MetaGrab",
+    "Buyer Flow",
+    "HUG",
+    "GPMx",
+    "future products",
+    "future personalization systems"
+  ],
+  "why_this_exists": [
+    "Avoid isolated fixes that improve one lane while leaving related lanes behind.",
+    "Preserve BIC-level conventions across the enterprise.",
+    "Prevent public buyer flow from drifting away from internal doctrine.",
+    "Allow platform learning without unsafe auto-publication.",
+    "Turn every proven fix into reusable enterprise knowledge."
+  ],
+  "propagation_lanes": {
+    "doctrine": {
+      "description": "Rules, ethics, naming conventions, safety principles, and operating laws.",
+      "examples": [
+        "No public bridge language",
+        "No mKs in buyer flow",
+        "Revenue is allowed. Harm is not.",
+        "Remember to care better. Never remember to manipulate."
+      ]
+    },
+    "data_shape": {
+      "description": "Schemas, record templates, required fields, and registry formats.",
+      "examples": [
+        "public option records",
+        "sensory-emotional records",
+        "per-user caring history records",
+        "K-KUT system map records"
+      ]
+    },
+    "audit": {
+      "description": "Repeatable proof scripts that prevent regression.",
+      "examples": [
+        "public bridge rollup",
+        "no-public-bridge-language audit",
+        "dedicated personal pages audit",
+        "sensory doctrine audit"
+      ]
+    },
+    "buyer_flow": {
+      "description": "User-facing routes, wording, audio, purchase, and delivery logic.",
+      "examples": [
+        "/find",
+        "/personal/anniversary",
+        "/personal/apology",
+        "/checkout",
+        "approved HUG options"
+      ]
+    },
+    "sensory_interpretation": {
+      "description": "How PIX/K-KUT/KKr records become emotionally safe, sensory-aware, human-use objects.",
+      "examples": [
+        "good_use_cases",
+        "bad_use_cases",
+        "risk_notes",
+        "receiver_safe_words",
+        "do_not_say"
+      ]
+    },
+    "platform_process": {
+      "description": "How 4PE process improvements become reusable GPEx operating practice.",
+      "examples": [
+        "LL to BP to DO",
+        "audit before publish",
+        "proof before expansion",
+        "route-specific buyer safety"
+      ]
+    }
+  },
+  "propagation_gate": [
+    "Identify source improvement.",
+    "Classify affected systems.",
+    "Check whether the improvement is doctrine, data shape, audit, buyer flow, sensory interpretation, or platform process.",
+    "Create or update internal doctrine first.",
+    "Add an audit before public use.",
+    "Run rollup proof.",
+    "Build successfully.",
+    "Only then allow buyer-facing propagation."
+  ],
+  "do_not_propagate_automatically": [
+    "raw inventory",
+    "unreviewed emotional candidates",
+    "grief-related records",
+    "private user history",
+    "receiver assumptions",
+    "mKs into buyer flow",
+    "internal proof language",
+    "test/staging language",
+    "anything that increases pressure, manipulation, or emotional harm"
+  ],
+  "healthy_upgrade_law": "Healthy is purposeful. A GPEx upgrade is valid only when it increases clarity, care, safety, usefulness, or BIC-level reliability.",
+  "biconvention_law": "BIC-level conventions must become reusable enterprise doctrine, not one-off patches.",
+  "human_care_law": "Technical propagation must never outrun human care.",
+  "buyer_safety_law": "Buyer-facing surfaces receive only approved, audited, route-safe, human-meaningful improvements.",
+  "future_target": "Create a GPEx propagation registry that records every major fix, the systems it affects, audit status, public status, and next propagation target."
+}
