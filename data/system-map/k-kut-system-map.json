@@ -9,8 +9,15 @@
       "user_goal": "Understand HUGs and buy a regular/basic HUG.",
       "payment_allowed": true,
       "audio_allowed": true,
-      "must_not_show": ["internal candidate language", "debug copy", "unapproved Sympathy cards"],
-      "proof": ["HTTP 200", "checkout link present or route available"]
+      "must_not_show": [
+        "internal candidate language",
+        "debug copy",
+        "unapproved Sympathy cards"
+      ],
+      "proof": [
+        "HTTP 200",
+        "checkout link present or route available"
+      ]
     },
     {
       "path": "/checkout",
@@ -18,21 +25,30 @@
       "user_goal": "Go to Stripe checkout.",
       "payment_allowed": true,
       "required_target": "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y",
-      "proof": ["HTTP 307", "location is regular HUG Stripe link"]
+      "proof": [
+        "HTTP 307",
+        "location is regular HUG Stripe link"
+      ]
     },
     {
       "path": "/find",
       "purpose": "Find/Search entry for KKs and HUG use cases.",
       "user_goal": "Find suitable KKs by feeling, theme, or scenario.",
       "payment_allowed": "only after approved option selection",
-      "must_not_show": ["weak keyword matches", "unapproved high-risk results"]
+      "must_not_show": [
+        "weak keyword matches",
+        "unapproved high-risk results"
+      ]
     },
     {
       "path": "/personal",
       "purpose": "Personal HUG lane index.",
       "user_goal": "Choose a personal use case.",
       "payment_allowed": "lane-dependent",
-      "must_not_show": ["mK language", "unsafe high-risk lane cards"]
+      "must_not_show": [
+        "mK language",
+        "unsafe high-risk lane cards"
+      ]
     },
     {
       "path": "/personal/sympathy",
@@ -40,8 +56,16 @@
       "user_goal": "Understand this lane is under human review.",
       "payment_allowed": false,
       "audio_allowed": false,
-      "must_show": ["stricter human review", "No generic personal HUG cards"],
-      "must_not_show": ["Send this Personal HUG", "audio", "Stripe", "romance cards"]
+      "must_show": [
+        "stricter human review",
+        "No generic personal HUG cards"
+      ],
+      "must_not_show": [
+        "Send this Personal HUG",
+        "audio",
+        "Stripe",
+        "romance cards"
+      ]
     }
   ],
   "commercial_paths": [
@@ -97,6 +121,8 @@
     "Approved does not mean published unless all gates pass.",
     "Published does not mean payable unless payment_allowed is true.",
     "High-risk intent lanes cannot publish from raw title, one-term search, or mood metadata.",
-    "Public buyer UI must not expose mK / mini-KUT / mini language by default."
+    "Public buyer UI must not expose mK / mini-KUT / mini language by default.",
+    "No one-term search.",
+    "No title-only search."
   ]
 }
