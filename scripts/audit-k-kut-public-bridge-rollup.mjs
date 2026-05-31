@@ -12,6 +12,7 @@ const audits = [
   "scripts/audit-find-pathway.mjs",
   "scripts/audit-audio-pathway.mjs",
   "scripts/audit-checkout-payment-pathway.mjs",
+  "scripts/audit-thank-you-fixture-doctrine.mjs",
   "scripts/audit-approved-stripe-links-quiet.mjs"
 ];
 
