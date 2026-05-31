@@ -142,6 +142,49 @@ function radiationRisk(rowText, radiation) {
   return risks;
 }
 
+function inferActionObject(actionVerb, rowText) {
+  const objectMap = sympathyRadiation.sympathy_action_objects || {};
+  const allowedObjects = objectMap[actionVerb] || [];
+  const blockedObjects = sympathyRadiation.blocked_action_objects || [];
+
+  const blockedHits = blockedObjects.filter((obj) => {
+    const phrase = String(obj).replaceAll("_", " ");
+    return rowText.includes(phrase);
+  });
+
+  if (blockedHits.length > 0) {
+    return {
+      action_object: "",
+      object_evidence_terms: [],
+      object_blockers: blockedHits
+    };
+  }
+
+  const objectHits = allowedObjects.filter((obj) => {
+    const phrase = String(obj).replaceAll("_", " ");
+    return rowText.includes(phrase);
+  });
+
+  const fallbackObjects = [];
+
+  if (rowText.includes("dark") || rowText.includes("dark days")) fallbackObjects.push("dark_days");
+  if (rowText.includes("road")) fallbackObjects.push("hard_road");
+  if (rowText.includes("wind") || rowText.includes("rain")) fallbackObjects.push("wind_and_rain");
+  if (rowText.includes("life")) fallbackObjects.push("a_life");
+  if (rowText.includes("remain") || rowText.includes("always")) fallbackObjects.push("what_remains");
+  if (rowText.includes("beside")) fallbackObjects.push("someone");
+  if (rowText.includes("listen") || rowText.includes("listening")) fallbackObjects.push("someone_grieving");
+  if (rowText.includes("valley") || rowText.includes("mountain")) fallbackObjects.push("hard_road");
+
+  const combined = [...new Set([...objectHits, ...fallbackObjects])];
+
+  return {
+    action_object: combined[0] || "",
+    object_evidence_terms: combined,
+    object_blockers: []
+  };
+}
+
 function extractTitle(paragraph) {
   const lines = paragraph.split("\n").map((l) => l.trim()).filter(Boolean);
   const first = lines[0] || "";
@@ -184,7 +227,13 @@ for (const file of sourceFiles) {
       const radiation = getRadiationForVerb(pattern.action_verb);
       if (!radiation) continue;
 
-      const oppositeMeaningRisks = radiationRisk(text, radiation);
+      const objectResult = inferActionObject(pattern.action_verb, text);
+      if (!objectResult.action_object) continue;
+
+      const oppositeMeaningRisks = [
+        ...radiationRisk(text, radiation),
+        ...objectResult.object_blockers.map((blocker) => `blocked_object:${blocker}`)
+      ];
 
       const pov_scores = {
         admin_intent: 1,
@@ -201,6 +250,8 @@ for (const file of sourceFiles) {
       candidates.push({
         id: `sym_action_${String(candidates.length + 1).padStart(4, "0")}`,
         action_verb: pattern.action_verb,
+        action_object: objectResult.action_object,
+        object_evidence_terms: objectResult.object_evidence_terms,
         human_situation: "sympathy_grief_support_candidate",
         title_backend_label: title,
         source_file: file,
@@ -255,11 +306,11 @@ fs.writeFileSync(
 let md = "# Sympathy Action Candidate Report\n\n";
 md += "Status: non-public, non-payable, verb/action candidate review only.\n\n";
 md += `Candidates: ${limited.length}\n\n`;
-md += "| # | Action | Score | Radiation | Risk | Backend Label | Evidence | Source |\n";
-md += "|---:|---|---:|---|---|---|---|---|\n";
+md += "| # | Action | Object | Score | Radiation | Risk | Backend Label | Evidence | Source |\n";
+md += "|---:|---|---|---:|---|---|---|---|---|\n";
 
 limited.forEach((row, index) => {
-  md += `| ${index + 1} | ${row.action_verb} | ${row.total_score} | ${(row.positive_directions || []).slice(0, 3).join(", ")} | ${(row.opposite_meaning_risk || []).join(", ") || "none"} | ${String(row.title_backend_label).replaceAll("|", "/")} | ${row.positive_evidence_terms.join(", ")} | ${path.basename(row.source_file)} |\n`;
+  md += `| ${index + 1} | ${row.action_verb} | ${row.action_object || ""} | ${row.total_score} | ${(row.positive_directions || []).slice(0, 3).join(", ")} | ${(row.opposite_meaning_risk || []).join(", ") || "none"} | ${String(row.title_backend_label).replaceAll("|", "/")} | ${row.positive_evidence_terms.join(", ")} | ${path.basename(row.source_file)} |\n`;
 });
 
 fs.writeFileSync(outMd, md);

@@ -2,7 +2,7 @@
   "status": "action_candidate_pool_generated_non_public",
   "intent": "sympathy",
   "publication_allowed": false,
-  "generated_at": "2026-05-31T01:30:43.223Z",
+  "generated_at": "2026-05-31T02:33:36.146Z",
   "source_files_scanned": [
     "reports/kkr-linefeels/human-expression-linefeel-candidates.md",
     "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -16,6 +16,10 @@
     {
       "id": "sym_action_0001",
       "action_verb": "carry",
+      "action_object": "dark_days",
+      "object_evidence_terms": [
+        "dark_days"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a Star",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -76,6 +80,10 @@
     {
       "id": "sym_action_0002",
       "action_verb": "endure",
+      "action_object": "dark_days",
+      "object_evidence_terms": [
+        "dark_days"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a Star",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -135,6 +143,12 @@
     {
       "id": "sym_action_0003",
       "action_verb": "walk_beside",
+      "action_object": "hard_road",
+      "object_evidence_terms": [
+        "hard_road",
+        "a_life",
+        "someone"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a River",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -194,6 +208,13 @@
     {
       "id": "sym_action_0004",
       "action_verb": "remember",
+      "action_object": "dark_days",
+      "object_evidence_terms": [
+        "dark_days",
+        "a_life",
+        "what_remains",
+        "someone"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a Star",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -257,6 +278,13 @@
     {
       "id": "sym_action_0005",
       "action_verb": "walk_beside",
+      "action_object": "dark_days",
+      "object_evidence_terms": [
+        "dark_days",
+        "a_life",
+        "what_remains",
+        "someone"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a Star",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -315,6 +343,11 @@
     {
       "id": "sym_action_0006",
       "action_verb": "sit_with",
+      "action_object": "what_remains",
+      "object_evidence_terms": [
+        "what_remains",
+        "someone_grieving"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Best Friend",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -374,6 +407,11 @@
     {
       "id": "sym_action_0007",
       "action_verb": "shelter",
+      "action_object": "wind_and_rain",
+      "object_evidence_terms": [
+        "wind_and_rain",
+        "a_life"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Tree to Her Garden",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -435,6 +473,11 @@
     {
       "id": "sym_action_0008",
       "action_verb": "remember",
+      "action_object": "what_remains",
+      "object_evidence_terms": [
+        "what_remains",
+        "hard_road"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Valleys and Mountains",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -496,6 +539,11 @@
     {
       "id": "sym_action_0009",
       "action_verb": "endure",
+      "action_object": "what_remains",
+      "object_evidence_terms": [
+        "what_remains",
+        "hard_road"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Valleys and Mountains",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -557,6 +605,13 @@
     {
       "id": "sym_action_0010",
       "action_verb": "remember",
+      "action_object": "wind_and_rain",
+      "object_evidence_terms": [
+        "wind_and_rain",
+        "a_life",
+        "what_remains",
+        "hard_road"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Tree to Her Garden",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -619,6 +674,13 @@
     {
       "id": "sym_action_0011",
       "action_verb": "endure",
+      "action_object": "wind_and_rain",
+      "object_evidence_terms": [
+        "wind_and_rain",
+        "a_life",
+        "what_remains",
+        "hard_road"
+      ],
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Tree to Her Garden",
       "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",

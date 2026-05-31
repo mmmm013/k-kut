@@ -33,6 +33,10 @@ if (data.publication_allowed !== false) fail("Action candidates must not allow p
 
 for (const row of data.rows || []) {
   if (!row.action_verb) fail(`Missing action_verb: ${row.id}`);
+  if (!row.action_object) fail(`Missing action_object: ${row.id}`);
+  if (!Array.isArray(row.object_evidence_terms) || row.object_evidence_terms.length === 0) {
+    fail(`Missing object_evidence_terms: ${row.id}`);
+  }
   if (!row.source_section_or_paragraph || row.source_section_or_paragraph.length < 80) {
     fail(`Missing paragraphical context: ${row.id}`);
   }
