@@ -14,6 +14,7 @@ const audits = [
   "scripts/audit-checkout-payment-pathway.mjs",
   "scripts/audit-dedicated-personal-option-pages.mjs",
   "scripts/audit-per-user-caring-history-doctrine.mjs",
+  "scripts/audit-gpex-universal-upgrade-propagation-doctrine.mjs",
   "scripts/audit-gpmc-pix-sensory-emotional-doctrine.mjs",
   "scripts/audit-thank-you-fixture-doctrine.mjs",
   "scripts/audit-approved-stripe-links-quiet.mjs"
