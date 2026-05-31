@@ -1,0 +1,26 @@
+{
+  "status": "locked_seed",
+  "name": "KKr KK Interpretation Registry",
+  "rule": "KKr maintains readings per PIX and per KK. LT-PIX-IIs derive from KK interpretations. Buyer lanes derive from approved suitability.",
+  "row_shape": {
+    "pix_id": "",
+    "kk_id": "",
+    "source_trace": "",
+    "reading_type": "metagrab | review | linefeel | ii_ci | human | ai_assist",
+    "theme": "",
+    "action_verb": "",
+    "action_object": "",
+    "human_situation": "",
+    "shared_emotion_ids": [],
+    "positive_connotations": [],
+    "negative_connotations": [],
+    "neutral_connotations": [],
+    "suitable_user_scenarios": [],
+    "blocked_user_scenarios": [],
+    "buyer_lanes": [],
+    "risk_flags": [],
+    "evidence_span": "",
+    "approval_status": "candidate | hold | approved | rejected"
+  },
+  "rows": []
+}

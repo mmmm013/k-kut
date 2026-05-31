@@ -1,0 +1,8 @@
+{
+  "status": "locked_seed",
+  "name": "Top 100 Shared Emotions",
+  "purpose": "Shared emotional language for mapping KK interpretations to user scenarios, buyer themes, and safe public lanes.",
+  "rule": "Emotions are maintained as reusable shared targets. KKs map to emotions through interpretations, not title-only or one-term search.",
+  "source_note": "Seeded from GPM/Hallmark/common-situation study. Must be groomed over time.",
+  "emotions": []
+}
