@@ -32,6 +32,10 @@ if (!fs.existsSync(worksheetPath)) {
   ]) {
     if (!text.includes(phrase)) fail(`Missing worksheet phrase: ${phrase}`);
   }
+
+  if (text.includes("NO_OBJECT")) {
+    fail("Worksheet contains NO_OBJECT. Step 30 object inference is incomplete.");
+  }
 }
 
 if (failed) {

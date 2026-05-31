@@ -15,7 +15,7 @@ md += "Sampling rule: approve the full match, not the title. The match must incl
 md += "Locked doctrine: Verb starts the match. Object focuses the match. Situation humanizes the match. Direction colors the match. Opposite meaning protects the match. Evidence proves the match. Sampling measures the match. Registry publishes the match.\n\n";
 
 for (const [index, row] of rows.entries()) {
-  md += `## ${index + 1}. ${row.action_verb} + ${row.action_object} — ${row.title_backend_label}\n\n`;
+  md += `## ${index + 1}. ${row.action_verb} + ${row.action_object || "NO_OBJECT"} — ${row.title_backend_label}\n\n`;
   md += `**Score:** ${row.total_score}\n\n`;
   md += `**Human situation:** ${row.human_situation || ""}\n\n`;
   md += `**Positive directions:** ${(row.positive_directions || []).join(", ")}\n\n`;
