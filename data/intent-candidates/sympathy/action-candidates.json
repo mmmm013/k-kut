@@ -75,7 +75,21 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "being_carried",
+        "comfort_after_loss",
+        "support",
+        "resilience",
+        "continuing_love",
+        "patience"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0002",
@@ -138,7 +152,25 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "being_carried",
+        "comfort_after_loss",
+        "support",
+        "resilience",
+        "continuing_love",
+        "patience",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0003",
@@ -203,7 +235,17 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "walking_beside",
+        "support",
+        "quiet_presence",
+        "loyalty"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "support"
+      ]
     },
     {
       "id": "sym_action_0004",
@@ -273,7 +315,25 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "being_carried",
+        "comfort_after_loss",
+        "support",
+        "resilience",
+        "continuing_love",
+        "patience",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0005",
@@ -338,7 +398,28 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "being_carried",
+        "comfort_after_loss",
+        "support",
+        "resilience",
+        "continuing_love",
+        "patience",
+        "walking_beside",
+        "quiet_presence",
+        "loyalty",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0006",
@@ -402,7 +483,27 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "continuing_love",
+        "resilience",
+        "patience",
+        "support",
+        "quiet_presence",
+        "being_heard",
+        "comfort_after_loss",
+        "supporting_friend",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0007",
@@ -468,7 +569,19 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "sheltered_from_hurt",
+        "protection",
+        "comfort_after_loss",
+        "support"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0008",
@@ -534,7 +647,23 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "continuing_love",
+        "resilience",
+        "patience",
+        "support",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0009",
@@ -600,7 +729,25 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "being_carried",
+        "comfort_after_loss",
+        "support",
+        "resilience",
+        "continuing_love",
+        "patience",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0010",
@@ -669,7 +816,26 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "continuing_love",
+        "resilience",
+        "patience",
+        "support",
+        "sheltered_from_hurt",
+        "protection",
+        "comfort_after_loss",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     },
     {
       "id": "sym_action_0011",
@@ -738,7 +904,32 @@
       "payment_allowed": false,
       "human_approved": false,
       "sampling_status": "HOLD",
-      "sampling_notes": ""
+      "sampling_notes": "",
+      "shared_emotion_ids": [
+        "being_carried",
+        "comfort_after_loss",
+        "support",
+        "resilience",
+        "continuing_love",
+        "patience",
+        "sheltered_from_hurt",
+        "protection",
+        "remembering_a_life",
+        "continuing_bond",
+        "legacy",
+        "missing_someone"
+      ],
+      "shared_emotion_map_status": "mapped_candidate_review_required",
+      "buyer_lane_candidates": [
+        "sympathy",
+        "grief",
+        "memorial"
+      ]
     }
-  ]
+  ],
+  "shared_emotion_mapping": {
+    "status": "mapped_candidate_review_required",
+    "source": "data/emotions/top-100-shared-emotions.json",
+    "rule": "Shared emotion mappings are candidate mappings only. They do not approve publication or payment."
+  }
 }
