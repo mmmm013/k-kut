@@ -6,6 +6,7 @@ import Link from "next/link";
 
 type BridgeRecord = {
   public_option_id: string;
+  source_pix_id_or_track_id: string;
   display_title: string;
   interpretation_summary: string;
   action_object_meaning: {
@@ -20,6 +21,11 @@ type BridgeRecord = {
   public_route: string;
   more_for_this_feeling_allowed: boolean;
   more_from_this_track_allowed: boolean;
+};
+
+type SearchParams = {
+  feeling?: string | string[];
+  track?: string | string[];
 };
 
 const FIRST_STEP_OPTIONS = [
@@ -65,8 +71,35 @@ function titleCaseSlug(value: string) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-export default function FindPage() {
+function getSingleParam(value: string | string[] | undefined) {
+  if (Array.isArray(value)) return value[0] || "";
+  return value || "";
+}
+
+export default async function FindPage({
+  searchParams,
+}: {
+  searchParams?: Promise<SearchParams>;
+}) {
   const bridgeRecords = loadBridgeRecords();
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+
+  const activeFeeling = getSingleParam(resolvedSearchParams.feeling);
+  const activeTrack = getSingleParam(resolvedSearchParams.track);
+
+  const filteredRecords = bridgeRecords.filter((record) => {
+    if (activeFeeling && record.intent_lane !== activeFeeling) return false;
+    if (activeTrack && record.source_pix_id_or_track_id !== activeTrack) {
+      return false;
+    }
+    return true;
+  });
+
+  const filterLabel = activeFeeling
+    ? `More for this feeling: ${titleCaseSlug(activeFeeling)}`
+    : activeTrack
+      ? "More from this track"
+      : "All approved bridge options";
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
@@ -122,8 +155,29 @@ export default function FindPage() {
             These options come from the public publication bridge only. No raw inventory, no unapproved router candidates, and no high-risk Sympathy results appear here.
           </p>
 
+          <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-[#D4A017]/20 bg-[#24180F] p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#D4A017]">
+                Current view
+              </p>
+              <p className="mt-1 text-sm font-black text-[#F5E6C8]/85">
+                {filterLabel} — {filteredRecords.length} option
+                {filteredRecords.length === 1 ? "" : "s"}
+              </p>
+            </div>
+
+            {(activeFeeling || activeTrack) && (
+              <Link
+                href="/find"
+                className="rounded-xl border border-[#D4A017]/30 px-4 py-3 text-center text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
+              >
+                Show all approved options
+              </Link>
+            )}
+          </div>
+
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            {bridgeRecords.map((record) => (
+            {filteredRecords.map((record) => (
               <article
                 key={record.public_option_id}
                 className="rounded-2xl border border-[#D4A017]/25 bg-[#24180F] p-5"
@@ -186,7 +240,7 @@ export default function FindPage() {
                   {record.more_from_this_track_allowed && (
                     <Link
                       href={`/find?track=${encodeURIComponent(
-                        record.public_option_id
+                        record.source_pix_id_or_track_id
                       )}`}
                       className="rounded-xl border border-[#D4A017]/30 px-4 py-3 text-center text-sm font-black text-[#FFD36A] hover:bg-[#D4A017]/10"
                     >
