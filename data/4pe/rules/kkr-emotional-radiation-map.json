@@ -9,7 +9,8 @@
     "No page category alone.",
     "Every match needs verb + object + emotional direction + situation + evidence + anti-meaning check.",
     "Object focuses the match.",
-    "Situation humanizes the match."
+    "Situation humanizes the match.",
+    "Every match needs verb + emotional direction + situation + evidence + anti-meaning check."
   ],
   "matching_stack": [
     "source_identity_lane_control",
@@ -289,91 +290,91 @@
           "presence_or_love_context"
         ]
       }
-    }
-  },
-  "sympathy_action_objects": {
-    "comfort": [
-      "grief",
-      "someone_grieving",
-      "hard_day",
-      "loneliness",
-      "pain"
-    ],
-    "hold": [
-      "someone_grieving",
-      "presence",
-      "fear",
-      "loneliness"
-    ],
-    "remember": [
-      "a_life",
-      "memory",
-      "what_remains",
-      "shared_history",
-      "legacy"
-    ],
-    "miss": [
-      "absence",
-      "someone_gone",
-      "grief",
-      "distance_with_care"
-    ],
-    "carry": [
-      "someone",
-      "dark_days",
-      "burden",
-      "hard_season"
-    ],
-    "shelter": [
-      "someone",
-      "wind_and_rain",
-      "storm",
-      "need_for_safety"
-    ],
-    "walk_beside": [
-      "someone",
-      "hard_road",
-      "life_road",
-      "grief_road"
-    ],
-    "sit_with": [
-      "grief",
-      "someone_grieving",
-      "quiet_pain",
-      "unfixed_sorrow"
-    ],
-    "honor": [
-      "a_life",
-      "gratitude",
-      "what_was_given",
-      "legacy"
-    ],
-    "release": [
-      "goodbye",
-      "grief",
-      "farewell",
-      "soft_departure"
-    ],
-    "endure": [
-      "grief",
-      "hard_road",
-      "dark_night",
-      "continuing_love"
+    },
+    "sympathy_action_objects": {
+      "comfort": [
+        "grief",
+        "someone_grieving",
+        "hard_day",
+        "loneliness",
+        "pain"
+      ],
+      "hold": [
+        "someone_grieving",
+        "presence",
+        "fear",
+        "loneliness"
+      ],
+      "remember": [
+        "a_life",
+        "memory",
+        "what_remains",
+        "shared_history",
+        "legacy"
+      ],
+      "miss": [
+        "absence",
+        "someone_gone",
+        "grief",
+        "distance_with_care"
+      ],
+      "carry": [
+        "someone",
+        "dark_days",
+        "burden",
+        "hard_season"
+      ],
+      "shelter": [
+        "someone",
+        "wind_and_rain",
+        "storm",
+        "need_for_safety"
+      ],
+      "walk_beside": [
+        "someone",
+        "hard_road",
+        "life_road",
+        "grief_road"
+      ],
+      "sit_with": [
+        "grief",
+        "someone_grieving",
+        "quiet_pain",
+        "unfixed_sorrow"
+      ],
+      "honor": [
+        "a_life",
+        "gratitude",
+        "what_was_given",
+        "legacy"
+      ],
+      "release": [
+        "goodbye",
+        "grief",
+        "farewell",
+        "soft_departure"
+      ],
+      "endure": [
+        "grief",
+        "hard_road",
+        "dark_night",
+        "continuing_love"
+      ]
+    },
+    "blocked_action_objects": [
+      "lover",
+      "crush",
+      "heart_pounding",
+      "christmas",
+      "holiday",
+      "wedding",
+      "baby",
+      "ex",
+      "romance",
+      "spark",
+      "party",
+      "confidence"
     ]
   },
-  "blocked_action_objects": [
-    "lover",
-    "crush",
-    "heart_pounding",
-    "christmas",
-    "holiday",
-    "wedding",
-    "baby",
-    "ex",
-    "romance",
-    "spark",
-    "party",
-    "confidence"
-  ],
   "publication_rule": "Emotional radiation is required before candidate approval. A verb/action candidate cannot publish until positive direction, negative direction, situation fit, evidence, and opposite meaning risk are recorded."
 }

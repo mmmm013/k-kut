@@ -143,9 +143,17 @@ function radiationRisk(rowText, radiation) {
 }
 
 function inferActionObject(actionVerb, rowText) {
-  const objectMap = sympathyRadiation.sympathy_action_objects || {};
+  const objectMap =
+    sympathyRadiation.sympathy_action_objects ||
+    radiationMap.sympathy_action_objects ||
+    {};
+
   const allowedObjects = objectMap[actionVerb] || [];
-  const blockedObjects = sympathyRadiation.blocked_action_objects || [];
+
+  const blockedObjects =
+    sympathyRadiation.blocked_action_objects ||
+    radiationMap.blocked_action_objects ||
+    [];
 
   const blockedHits = blockedObjects.filter((obj) => {
     const phrase = String(obj).replaceAll("_", " ");

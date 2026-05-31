@@ -16,6 +16,11 @@ if (!fs.existsSync(worksheetPath)) {
 } else {
   const text = fs.readFileSync(worksheetPath, "utf8");
 
+  const candidateHeadings = text.match(/^##\s+\d+\./gm) || [];
+  if (candidateHeadings.length < 1) {
+    fail("Worksheet has zero candidate rows. Regenerate action candidates before sampling.");
+  }
+
   for (const phrase of [
     "Gregory review only",
     "Non-public",
