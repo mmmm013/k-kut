@@ -1,0 +1,89 @@
+{
+  "status": "locked_doctrine",
+  "name": "Per-User Caring History Doctrine",
+  "purpose": "Define how K-KUT may remember user-specific emotional/sensory history in a personally caring, non-creepy, non-manipulative way.",
+  "core_law": "Remember to care better. Never remember to manipulate.",
+  "allowed_memory": [
+    "buyer-selected emotional lane",
+    "chosen public HUG option",
+    "intended relationship context",
+    "safe sensory preferences",
+    "buyer-approved receiver-safe wording",
+    "avoidance notes supplied by the buyer",
+    "previously successful route types",
+    "human review notes",
+    "consent status"
+  ],
+  "forbidden_memory": [
+    "diagnosed mental health state",
+    "inferred trauma without explicit user statement",
+    "secret receiver profiling",
+    "pressure likelihood",
+    "vulnerability score",
+    "manipulation prediction",
+    "private facts not needed for HUG delivery",
+    "anything collected without consent"
+  ],
+  "consent_laws": [
+    "User history must be opt-in.",
+    "The user must be able to review stored history.",
+    "The user must be able to correct stored history.",
+    "The user must be able to delete stored history.",
+    "Sensitive emotional notes must never be required for purchase.",
+    "Do not surprise the user with remembered details in buyer-facing copy."
+  ],
+  "tone_laws": [
+    "Use remembered history gently.",
+    "Prefer helpful suggestions over declarations.",
+    "Never say the system knows the receiver.",
+    "Never imply a prior emotional choice defines the user permanently.",
+    "Treat change over time as normal."
+  ],
+  "history_record_shape": {
+    "user_history_id": "stable id",
+    "consent_status": "none | opted_in | revoked",
+    "buyer_user_id": "internal user id or anonymous session id",
+    "receiver_alias": "optional buyer-provided non-sensitive alias",
+    "relationship_lane": "partner | parent | child | friend | mentor | self | family | other",
+    "occasion_or_situation": "anniversary | apology | birthday | thank_you | grief_held | encouragement | other",
+    "selected_public_option_id": "approved public HUG option id",
+    "selected_route": "buyer route used",
+    "surface_feeling": "buyer-recognizable feeling",
+    "deeper_feelings": ["specific meanings"],
+    "sensory_preferences": {
+      "audio": ["soft", "lifted", "steady"],
+      "body": ["warm", "settled"],
+      "visual": ["warm light", "stillness"],
+      "touch": ["held", "soft"],
+      "memory": ["shared history"]
+    },
+    "worked_well_notes": ["what the buyer approved or repeated"],
+    "avoid_next_time": ["sounds, words, moods, or lanes to avoid"],
+    "receiver_safe_words_used": ["phrases used or approved"],
+    "do_not_say": ["phrases to avoid"],
+    "review_status": "active | held | deleted | revoked",
+    "last_reviewed_at": "ISO timestamp or null",
+    "human_review_notes": "why this history is safe to reuse"
+  },
+  "use_cases": [
+    "Suggest a warmer option after a buyer repeatedly chooses gentle care.",
+    "Avoid energetic/spark options when the user has marked them as too intense.",
+    "Remember that apology routes should stay soft and non-coercive for this buyer.",
+    "Keep anniversary suggestions in still-choosing/devotion territory when previously approved.",
+    "Hold grief-related history for human review instead of automatic reuse."
+  ],
+  "public_language": {
+    "safe": [
+      "Based on what you chose before, here are softer options.",
+      "You can keep this gentle.",
+      "You can change the feeling anytime.",
+      "Nothing is assumed about the receiver."
+    ],
+    "forbidden": [
+      "We know what they need.",
+      "This will make them forgive you.",
+      "They always respond to this feeling.",
+      "Your profile says this is perfect."
+    ]
+  }
+}
