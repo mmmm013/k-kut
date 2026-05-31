@@ -2,7 +2,7 @@
   "status": "action_candidate_pool_generated_non_public",
   "intent": "sympathy",
   "publication_allowed": false,
-  "generated_at": "2026-05-31T02:33:36.146Z",
+  "generated_at": "2026-05-31T02:35:08.035Z",
   "source_files_scanned": [
     "reports/kkr-linefeels/human-expression-linefeel-candidates.md",
     "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
