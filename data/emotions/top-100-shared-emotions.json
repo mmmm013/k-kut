@@ -1,8 +1,2112 @@
 {
-  "status": "locked_seed",
+  "status": "locked_seed_v1",
   "name": "Top 100 Shared Emotions",
   "purpose": "Shared emotional language for mapping KK interpretations to user scenarios, buyer themes, and safe public lanes.",
   "rule": "Emotions are maintained as reusable shared targets. KKs map to emotions through interpretations, not title-only or one-term search.",
   "source_note": "Seeded from GPM/Hallmark/common-situation study. Must be groomed over time.",
-  "emotions": []
+  "count": 100,
+  "emotions": [
+    {
+      "emotion_id": "comfort_after_loss",
+      "display_name": "Comfort after loss",
+      "level": "deep",
+      "action_verbs": [
+        "comfort",
+        "support",
+        "sit_with"
+      ],
+      "objects": [
+        "grief",
+        "someone_grieving",
+        "loss"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "missing_someone",
+      "display_name": "Missing someone",
+      "level": "deep",
+      "action_verbs": [
+        "miss",
+        "remember",
+        "keep_near"
+      ],
+      "objects": [
+        "absence",
+        "someone_gone",
+        "memory"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "remembering_a_life",
+      "display_name": "Remembering a life",
+      "level": "deep",
+      "action_verbs": [
+        "remember",
+        "honor"
+      ],
+      "objects": [
+        "a_life",
+        "legacy",
+        "what_remains"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "being_carried",
+      "display_name": "Being carried through",
+      "level": "deep",
+      "action_verbs": [
+        "carry",
+        "support"
+      ],
+      "objects": [
+        "dark_days",
+        "hard_season",
+        "burden"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "sheltered_from_hurt",
+      "display_name": "Sheltered from hurt",
+      "level": "deep",
+      "action_verbs": [
+        "shelter",
+        "protect"
+      ],
+      "objects": [
+        "wind_and_rain",
+        "storm",
+        "need_for_safety"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "walking_beside",
+      "display_name": "Walking beside someone",
+      "level": "deep",
+      "action_verbs": [
+        "walk_beside",
+        "support"
+      ],
+      "objects": [
+        "hard_road",
+        "life_road",
+        "someone"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "quiet_presence",
+      "display_name": "Quiet presence",
+      "level": "deep",
+      "action_verbs": [
+        "sit_with",
+        "listen"
+      ],
+      "objects": [
+        "quiet_pain",
+        "loneliness",
+        "someone_grieving"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "continuing_love",
+      "display_name": "Continuing love",
+      "level": "deep",
+      "action_verbs": [
+        "endure",
+        "remember"
+      ],
+      "objects": [
+        "what_remains",
+        "continuing_love",
+        "hard_road"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "gratitude_for_life",
+      "display_name": "Gratitude for a life",
+      "level": "deep",
+      "action_verbs": [
+        "honor",
+        "thank"
+      ],
+      "objects": [
+        "a_life",
+        "what_was_given",
+        "legacy"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "gentle_goodbye",
+      "display_name": "Gentle goodbye",
+      "level": "deep",
+      "action_verbs": [
+        "release",
+        "say_goodbye"
+      ],
+      "objects": [
+        "farewell",
+        "soft_departure",
+        "grief"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "thank_you",
+      "display_name": "Thank you",
+      "level": "warm",
+      "action_verbs": [
+        "thank",
+        "honor"
+      ],
+      "objects": [
+        "gratitude",
+        "what_was_given",
+        "support"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "being_seen",
+      "display_name": "Being seen",
+      "level": "warm",
+      "action_verbs": [
+        "recognize",
+        "notice"
+      ],
+      "objects": [
+        "effort",
+        "heart",
+        "presence"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "being_heard",
+      "display_name": "Being heard",
+      "level": "warm",
+      "action_verbs": [
+        "listen",
+        "receive"
+      ],
+      "objects": [
+        "voice",
+        "truth",
+        "need"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "forgiveness",
+      "display_name": "Forgiveness",
+      "level": "careful",
+      "action_verbs": [
+        "forgive",
+        "repair"
+      ],
+      "objects": [
+        "hurt",
+        "apology",
+        "relationship"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "apology",
+      "display_name": "Apology",
+      "level": "careful",
+      "action_verbs": [
+        "apologize",
+        "repair"
+      ],
+      "objects": [
+        "mistake",
+        "hurt",
+        "trust"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "reconnection",
+      "display_name": "Reconnection",
+      "level": "careful",
+      "action_verbs": [
+        "return",
+        "reach_out"
+      ],
+      "objects": [
+        "distance",
+        "repair",
+        "bond"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "encouragement",
+      "display_name": "Encouragement",
+      "level": "support",
+      "action_verbs": [
+        "encourage",
+        "steady"
+      ],
+      "objects": [
+        "challenge",
+        "fear",
+        "trying"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "hope",
+      "display_name": "Hope",
+      "level": "support",
+      "action_verbs": [
+        "hope",
+        "reassure"
+      ],
+      "objects": [
+        "future",
+        "possibility",
+        "light"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "resilience",
+      "display_name": "Resilience",
+      "level": "support",
+      "action_verbs": [
+        "endure",
+        "rise"
+      ],
+      "objects": [
+        "hard_road",
+        "trial",
+        "strength"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "healing",
+      "display_name": "Healing",
+      "level": "support",
+      "action_verbs": [
+        "heal",
+        "soften"
+      ],
+      "objects": [
+        "pain",
+        "recovery",
+        "time"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "birthday_joy",
+      "display_name": "Birthday joy",
+      "level": "celebration",
+      "action_verbs": [
+        "celebrate",
+        "wish"
+      ],
+      "objects": [
+        "birthday",
+        "life",
+        "day"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "anniversary_love",
+      "display_name": "Anniversary love",
+      "level": "romance",
+      "action_verbs": [
+        "celebrate",
+        "remember"
+      ],
+      "objects": [
+        "shared_history",
+        "love",
+        "time"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "wedding_commitment",
+      "display_name": "Wedding commitment",
+      "level": "romance",
+      "action_verbs": [
+        "promise",
+        "join"
+      ],
+      "objects": [
+        "future",
+        "vow",
+        "love"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "romantic_longing",
+      "display_name": "Romantic longing",
+      "level": "romance",
+      "action_verbs": [
+        "miss",
+        "want"
+      ],
+      "objects": [
+        "lover",
+        "distance",
+        "desire"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "romantic_spark",
+      "display_name": "Romantic spark",
+      "level": "romance",
+      "action_verbs": [
+        "desire",
+        "spark"
+      ],
+      "objects": [
+        "chemistry",
+        "heart",
+        "attraction"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "friendship",
+      "display_name": "Friendship",
+      "level": "warm",
+      "action_verbs": [
+        "stand_by",
+        "listen"
+      ],
+      "objects": [
+        "friend",
+        "trust",
+        "fun"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "parent_gratitude",
+      "display_name": "Parent gratitude",
+      "level": "family",
+      "action_verbs": [
+        "thank",
+        "honor"
+      ],
+      "objects": [
+        "parent",
+        "life",
+        "guidance"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "child_pride",
+      "display_name": "Child pride",
+      "level": "family",
+      "action_verbs": [
+        "encourage",
+        "celebrate"
+      ],
+      "objects": [
+        "growth",
+        "achievement",
+        "future"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "mentor_gratitude",
+      "display_name": "Mentor gratitude",
+      "level": "gratitude",
+      "action_verbs": [
+        "thank",
+        "recognize"
+      ],
+      "objects": [
+        "guidance",
+        "learning",
+        "path"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "family_bond",
+      "display_name": "Family bond",
+      "level": "family",
+      "action_verbs": [
+        "belong",
+        "hold"
+      ],
+      "objects": [
+        "home",
+        "history",
+        "care"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "new_beginning",
+      "display_name": "New beginning",
+      "level": "transition",
+      "action_verbs": [
+        "begin",
+        "step_forward"
+      ],
+      "objects": [
+        "future",
+        "change",
+        "hope"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "good_luck",
+      "display_name": "Good luck",
+      "level": "support",
+      "action_verbs": [
+        "wish",
+        "encourage"
+      ],
+      "objects": [
+        "test",
+        "chance",
+        "future"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "graduation_pride",
+      "display_name": "Graduation pride",
+      "level": "celebration",
+      "action_verbs": [
+        "celebrate",
+        "honor"
+      ],
+      "objects": [
+        "achievement",
+        "future",
+        "work"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "retirement_honor",
+      "display_name": "Retirement honor",
+      "level": "transition",
+      "action_verbs": [
+        "honor",
+        "thank"
+      ],
+      "objects": [
+        "work",
+        "legacy",
+        "chapter"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "recovery_support",
+      "display_name": "Recovery support",
+      "level": "careful",
+      "action_verbs": [
+        "support",
+        "heal"
+      ],
+      "objects": [
+        "illness",
+        "recovery",
+        "strength"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "illness_comfort",
+      "display_name": "Illness comfort",
+      "level": "careful",
+      "action_verbs": [
+        "comfort",
+        "steady"
+      ],
+      "objects": [
+        "pain",
+        "fear",
+        "care"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "anxiety_reassurance",
+      "display_name": "Anxiety reassurance",
+      "level": "careful",
+      "action_verbs": [
+        "reassure",
+        "steady"
+      ],
+      "objects": [
+        "fear",
+        "uncertainty",
+        "breath"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "loneliness_support",
+      "display_name": "Loneliness support",
+      "level": "careful",
+      "action_verbs": [
+        "sit_with",
+        "reach_out"
+      ],
+      "objects": [
+        "alone",
+        "distance",
+        "quiet"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "stress_relief",
+      "display_name": "Stress relief",
+      "level": "support",
+      "action_verbs": [
+        "soften",
+        "steady"
+      ],
+      "objects": [
+        "pressure",
+        "work",
+        "overwhelm"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "confidence_boost",
+      "display_name": "Confidence boost",
+      "level": "energy",
+      "action_verbs": [
+        "encourage",
+        "lift"
+      ],
+      "objects": [
+        "confidence",
+        "challenge",
+        "moment"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "celebration",
+      "display_name": "Celebration",
+      "level": "joy",
+      "action_verbs": [
+        "celebrate",
+        "cheer"
+      ],
+      "objects": [
+        "moment",
+        "win",
+        "joy"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "pride",
+      "display_name": "Pride",
+      "level": "joy",
+      "action_verbs": [
+        "honor",
+        "recognize"
+      ],
+      "objects": [
+        "achievement",
+        "growth",
+        "effort"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "awe",
+      "display_name": "Awe",
+      "level": "wonder",
+      "action_verbs": [
+        "wonder",
+        "marvel"
+      ],
+      "objects": [
+        "beauty",
+        "life",
+        "moment"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "peace",
+      "display_name": "Peace",
+      "level": "calm",
+      "action_verbs": [
+        "settle",
+        "soften"
+      ],
+      "objects": [
+        "stillness",
+        "quiet",
+        "rest"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "calm",
+      "display_name": "Calm",
+      "level": "calm",
+      "action_verbs": [
+        "steady",
+        "settle"
+      ],
+      "objects": [
+        "breath",
+        "quiet",
+        "safety"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "tenderness",
+      "display_name": "Tenderness",
+      "level": "warm",
+      "action_verbs": [
+        "soften",
+        "hold"
+      ],
+      "objects": [
+        "care",
+        "heart",
+        "gentleness"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "warmth",
+      "display_name": "Warmth",
+      "level": "warm",
+      "action_verbs": [
+        "welcome",
+        "comfort"
+      ],
+      "objects": [
+        "home",
+        "care",
+        "presence"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "nostalgia",
+      "display_name": "Nostalgia",
+      "level": "neutral",
+      "action_verbs": [
+        "remember",
+        "look_back"
+      ],
+      "objects": [
+        "past",
+        "memory",
+        "time"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "bittersweet",
+      "display_name": "Bittersweet",
+      "level": "mixed",
+      "action_verbs": [
+        "remember",
+        "release"
+      ],
+      "objects": [
+        "love",
+        "loss",
+        "time"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "longing",
+      "display_name": "Longing",
+      "level": "mixed",
+      "action_verbs": [
+        "miss",
+        "wish"
+      ],
+      "objects": [
+        "distance",
+        "absence",
+        "want"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "regret",
+      "display_name": "Regret",
+      "level": "negative",
+      "action_verbs": [
+        "wish",
+        "repair"
+      ],
+      "objects": [
+        "mistake",
+        "past",
+        "hurt"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "sadness",
+      "display_name": "Sadness",
+      "level": "negative",
+      "action_verbs": [
+        "grieve",
+        "feel"
+      ],
+      "objects": [
+        "loss",
+        "hurt",
+        "quiet"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "fear",
+      "display_name": "Fear",
+      "level": "negative",
+      "action_verbs": [
+        "steady",
+        "protect"
+      ],
+      "objects": [
+        "risk",
+        "unknown",
+        "danger"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "anger",
+      "display_name": "Anger",
+      "level": "negative",
+      "action_verbs": [
+        "name",
+        "release"
+      ],
+      "objects": [
+        "hurt",
+        "injustice",
+        "boundary"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "shame",
+      "display_name": "Shame",
+      "level": "negative",
+      "action_verbs": [
+        "repair",
+        "forgive"
+      ],
+      "objects": [
+        "mistake",
+        "self",
+        "hurt"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "guilt",
+      "display_name": "Guilt",
+      "level": "negative",
+      "action_verbs": [
+        "apologize",
+        "repair"
+      ],
+      "objects": [
+        "harm",
+        "choice",
+        "relationship"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "envy",
+      "display_name": "Envy",
+      "level": "negative",
+      "action_verbs": [
+        "name",
+        "soften"
+      ],
+      "objects": [
+        "comparison",
+        "want",
+        "lack"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "jealousy",
+      "display_name": "Jealousy",
+      "level": "negative",
+      "action_verbs": [
+        "name",
+        "steady"
+      ],
+      "objects": [
+        "fear",
+        "loss",
+        "relationship"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "confusion",
+      "display_name": "Confusion",
+      "level": "neutral",
+      "action_verbs": [
+        "clarify",
+        "steady"
+      ],
+      "objects": [
+        "unknown",
+        "change",
+        "choice"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "uncertainty",
+      "display_name": "Uncertainty",
+      "level": "neutral",
+      "action_verbs": [
+        "steady",
+        "wait"
+      ],
+      "objects": [
+        "future",
+        "choice",
+        "unknown"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "belonging",
+      "display_name": "Belonging",
+      "level": "warm",
+      "action_verbs": [
+        "welcome",
+        "include"
+      ],
+      "objects": [
+        "home",
+        "group",
+        "identity"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "homecoming",
+      "display_name": "Homecoming",
+      "level": "warm",
+      "action_verbs": [
+        "return",
+        "welcome"
+      ],
+      "objects": [
+        "home",
+        "distance",
+        "belonging"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "distance",
+      "display_name": "Distance",
+      "level": "mixed",
+      "action_verbs": [
+        "miss",
+        "reach_out"
+      ],
+      "objects": [
+        "apart",
+        "time",
+        "space"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "trust",
+      "display_name": "Trust",
+      "level": "warm",
+      "action_verbs": [
+        "rely",
+        "believe"
+      ],
+      "objects": [
+        "bond",
+        "safety",
+        "truth"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "loyalty",
+      "display_name": "Loyalty",
+      "level": "warm",
+      "action_verbs": [
+        "stand_by",
+        "remain"
+      ],
+      "objects": [
+        "friend",
+        "family",
+        "commitment"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "protection",
+      "display_name": "Protection",
+      "level": "support",
+      "action_verbs": [
+        "protect",
+        "shelter"
+      ],
+      "objects": [
+        "risk",
+        "storm",
+        "care"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "guidance",
+      "display_name": "Guidance",
+      "level": "support",
+      "action_verbs": [
+        "guide",
+        "show"
+      ],
+      "objects": [
+        "path",
+        "way",
+        "choice"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "support",
+      "display_name": "Support",
+      "level": "support",
+      "action_verbs": [
+        "support",
+        "stand_by"
+      ],
+      "objects": [
+        "difficulty",
+        "need",
+        "care"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "strength",
+      "display_name": "Strength",
+      "level": "support",
+      "action_verbs": [
+        "strengthen",
+        "endure"
+      ],
+      "objects": [
+        "challenge",
+        "pain",
+        "effort"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "relief",
+      "display_name": "Relief",
+      "level": "calm",
+      "action_verbs": [
+        "release",
+        "breathe"
+      ],
+      "objects": [
+        "pressure",
+        "fear",
+        "end"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "surprise",
+      "display_name": "Surprise",
+      "level": "joy",
+      "action_verbs": [
+        "surprise",
+        "delight"
+      ],
+      "objects": [
+        "unexpected",
+        "gift",
+        "moment"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "delight",
+      "display_name": "Delight",
+      "level": "joy",
+      "action_verbs": [
+        "delight",
+        "enjoy"
+      ],
+      "objects": [
+        "play",
+        "light",
+        "smile"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "playfulness",
+      "display_name": "Playfulness",
+      "level": "joy",
+      "action_verbs": [
+        "play",
+        "tease"
+      ],
+      "objects": [
+        "fun",
+        "lightness",
+        "energy"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "fun",
+      "display_name": "Fun",
+      "level": "joy",
+      "action_verbs": [
+        "play",
+        "celebrate"
+      ],
+      "objects": [
+        "energy",
+        "laugh",
+        "together"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "adventure",
+      "display_name": "Adventure",
+      "level": "energy",
+      "action_verbs": [
+        "explore",
+        "begin"
+      ],
+      "objects": [
+        "unknown",
+        "road",
+        "future"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "freedom",
+      "display_name": "Freedom",
+      "level": "energy",
+      "action_verbs": [
+        "release",
+        "open"
+      ],
+      "objects": [
+        "space",
+        "choice",
+        "future"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "renewal",
+      "display_name": "Renewal",
+      "level": "transition",
+      "action_verbs": [
+        "renew",
+        "begin"
+      ],
+      "objects": [
+        "fresh_start",
+        "healing",
+        "time"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "patience",
+      "display_name": "Patience",
+      "level": "calm",
+      "action_verbs": [
+        "wait",
+        "endure"
+      ],
+      "objects": [
+        "time",
+        "process",
+        "care"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "acceptance",
+      "display_name": "Acceptance",
+      "level": "calm",
+      "action_verbs": [
+        "accept",
+        "release"
+      ],
+      "objects": [
+        "truth",
+        "change",
+        "peace"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "closure",
+      "display_name": "Closure",
+      "level": "careful",
+      "action_verbs": [
+        "close",
+        "release"
+      ],
+      "objects": [
+        "ending",
+        "goodbye",
+        "peace"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "legacy",
+      "display_name": "Legacy",
+      "level": "deep",
+      "action_verbs": [
+        "honor",
+        "remember"
+      ],
+      "objects": [
+        "life",
+        "impact",
+        "what_remains"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "continuing_bond",
+      "display_name": "Continuing bond",
+      "level": "deep",
+      "action_verbs": [
+        "remember",
+        "keep_near"
+      ],
+      "objects": [
+        "absence",
+        "love",
+        "memory"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "sacrifice",
+      "display_name": "Sacrifice",
+      "level": "deep",
+      "action_verbs": [
+        "honor",
+        "thank"
+      ],
+      "objects": [
+        "giving",
+        "cost",
+        "love"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "devotion",
+      "display_name": "Devotion",
+      "level": "deep",
+      "action_verbs": [
+        "remain",
+        "commit"
+      ],
+      "objects": [
+        "love",
+        "care",
+        "time"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "repair",
+      "display_name": "Repair",
+      "level": "careful",
+      "action_verbs": [
+        "repair",
+        "rebuild"
+      ],
+      "objects": [
+        "trust",
+        "hurt",
+        "return"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "boundary",
+      "display_name": "Boundary",
+      "level": "careful",
+      "action_verbs": [
+        "protect",
+        "name"
+      ],
+      "objects": [
+        "hurt",
+        "safety",
+        "self"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "letting_go",
+      "display_name": "Letting go",
+      "level": "careful",
+      "action_verbs": [
+        "release",
+        "soften"
+      ],
+      "objects": [
+        "ending",
+        "grief",
+        "change"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "moving_forward",
+      "display_name": "Moving forward",
+      "level": "transition",
+      "action_verbs": [
+        "step_forward",
+        "continue"
+      ],
+      "objects": [
+        "future",
+        "change",
+        "hope"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "waiting",
+      "display_name": "Waiting",
+      "level": "neutral",
+      "action_verbs": [
+        "wait",
+        "hold"
+      ],
+      "objects": [
+        "time",
+        "uncertainty",
+        "hope"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "arrival",
+      "display_name": "Arrival",
+      "level": "transition",
+      "action_verbs": [
+        "arrive",
+        "welcome"
+      ],
+      "objects": [
+        "home",
+        "goal",
+        "moment"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "spiritual_comfort",
+      "display_name": "Spiritual comfort",
+      "level": "careful",
+      "action_verbs": [
+        "comfort",
+        "bless"
+      ],
+      "objects": [
+        "faith",
+        "loss",
+        "hope"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "secular_comfort",
+      "display_name": "Secular comfort",
+      "level": "careful",
+      "action_verbs": [
+        "comfort",
+        "support"
+      ],
+      "objects": [
+        "presence",
+        "care",
+        "grief"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "commemoration",
+      "display_name": "Commemoration",
+      "level": "deep",
+      "action_verbs": [
+        "honor",
+        "remember"
+      ],
+      "objects": [
+        "ceremony",
+        "life",
+        "legacy"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "encouraging_child",
+      "display_name": "Encouraging a child",
+      "level": "family",
+      "action_verbs": [
+        "encourage",
+        "protect"
+      ],
+      "objects": [
+        "child",
+        "growth",
+        "future"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "honoring_parent",
+      "display_name": "Honoring a parent",
+      "level": "family",
+      "action_verbs": [
+        "thank",
+        "honor"
+      ],
+      "objects": [
+        "parent",
+        "life",
+        "guidance"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "supporting_partner",
+      "display_name": "Supporting a partner",
+      "level": "romance",
+      "action_verbs": [
+        "support",
+        "stand_by"
+      ],
+      "objects": [
+        "partner",
+        "life",
+        "challenge"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "supporting_friend",
+      "display_name": "Supporting a friend",
+      "level": "warm",
+      "action_verbs": [
+        "listen",
+        "stand_by"
+      ],
+      "objects": [
+        "friend",
+        "hard_day",
+        "trust"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "work_appreciation",
+      "display_name": "Work appreciation",
+      "level": "gratitude",
+      "action_verbs": [
+        "thank",
+        "recognize"
+      ],
+      "objects": [
+        "effort",
+        "team",
+        "service"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "community_care",
+      "display_name": "Community care",
+      "level": "support",
+      "action_verbs": [
+        "support",
+        "gather"
+      ],
+      "objects": [
+        "community",
+        "need",
+        "belonging"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    },
+    {
+      "emotion_id": "private_hug",
+      "display_name": "Private HUG",
+      "level": "gpm",
+      "action_verbs": [
+        "send",
+        "hold"
+      ],
+      "objects": [
+        "personal",
+        "audio",
+        "care"
+      ],
+      "positive_common_language": [],
+      "negative_common_language": [],
+      "neutral_common_language": [],
+      "common_user_scenarios": [],
+      "unsafe_scenarios": [],
+      "buyer_lanes": [],
+      "groom_status": "seed"
+    }
+  ]
 }
