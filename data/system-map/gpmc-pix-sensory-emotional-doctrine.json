@@ -1,0 +1,168 @@
+{
+  "status": "locked_doctrine",
+  "name": "GPMC PIX Sensory-Emotional Interpretation Doctrine",
+  "core_truth": "GPM PIX are human-made musical connection objects. LOVE is the truest center and final measure.",
+  "commercial_rule": "Revenue is allowed. Harm is not.",
+  "platform_distinction": {
+    "gpex_business_process": "Use process: listen, learn, best practice, do, audit, protect.",
+    "gpmc_pix_interpretation": "Use sensory-emotional interpretation: sound, feeling, body, memory, relationship, situation, safety."
+  },
+  "non_exploitation_laws": [
+    "Do not exploit vulnerability.",
+    "Do not diagnose the buyer or receiver.",
+    "Do not claim to know the receiver's inner state.",
+    "Do not force intensity.",
+    "Do not use grief, apology, longing, or romance to pressure a purchase.",
+    "Do not sell emotion as a commodity.",
+    "Offer emotionally accurate options the buyer can recognize and choose."
+  ],
+  "interpretation_stack": [
+    "source_PIX_identity",
+    "musical_structure",
+    "lyrical_or_phrase_meaning",
+    "sound_energy",
+    "body_feel",
+    "visual_impression",
+    "touch_impression",
+    "memory_direction",
+    "relationship_direction",
+    "time_direction",
+    "good_use_cases",
+    "bad_use_cases",
+    "risk_notes",
+    "buyer_safe_words",
+    "receiver_safe_words",
+    "human_review_status"
+  ],
+  "sensory_axes": {
+    "audio": [
+      "tempo",
+      "softness",
+      "vocal_grain",
+      "silence",
+      "lift",
+      "tension",
+      "release",
+      "ending_feel"
+    ],
+    "body": [
+      "settling",
+      "ache",
+      "pulse",
+      "warmth",
+      "chills",
+      "pressure",
+      "release",
+      "grounded"
+    ],
+    "visual": [
+      "light",
+      "dark",
+      "color_impression",
+      "distance",
+      "close_up",
+      "weather",
+      "season",
+      "motion",
+      "stillness"
+    ],
+    "touch": [
+      "soft",
+      "sharp",
+      "held",
+      "heavy",
+      "airy",
+      "fragile",
+      "warm",
+      "cold"
+    ],
+    "memory": [
+      "first_love",
+      "old_home",
+      "parent_care",
+      "apology",
+      "lost_chance",
+      "still_choosing",
+      "goodbye",
+      "returning"
+    ]
+  },
+  "emotional_coordinates": {
+    "valence": [
+      "positive_warm",
+      "painful",
+      "mixed",
+      "neutral_safe",
+      "bittersweet"
+    ],
+    "arousal": [
+      "quiet",
+      "settled",
+      "lifted",
+      "charged",
+      "urgent"
+    ],
+    "control_or_agency": [
+      "helpless",
+      "held",
+      "steady",
+      "empowering",
+      "releasing"
+    ],
+    "social_direction": [
+      "toward",
+      "away",
+      "returning",
+      "staying",
+      "releasing",
+      "witnessing"
+    ],
+    "time_direction": [
+      "memory",
+      "present",
+      "future",
+      "past_present_future",
+      "last_goodbye"
+    ]
+  },
+  "thin_slice_rule": "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning.",
+  "slice_levels": [
+    "line_pair",
+    "line_trio",
+    "phrase_cluster",
+    "section",
+    "musical_gesture",
+    "ending_tail"
+  ],
+  "required_record_shape": {
+    "surface_feeling": "string",
+    "deeper_feelings": ["string"],
+    "sensory_axes": ["audio", "body", "visual", "touch", "memory"],
+    "good_use_cases": ["string"],
+    "bad_use_cases": ["string"],
+    "risk_notes": ["string"],
+    "buyer_words": ["string"],
+    "receiver_safe_words": ["string"],
+    "do_not_say": ["string"],
+    "review_status": "unreviewed | held | approved_public | rejected_public"
+  },
+  "buyer_language_doctrine": {
+    "say": [
+      "real music moment",
+      "chosen by feeling",
+      "approved HUG option",
+      "press play",
+      "send the feeling",
+      "what words alone may not"
+    ],
+    "avoid": [
+      "we know exactly what they feel",
+      "this will fix it",
+      "guaranteed emotional result",
+      "perfect for grief",
+      "AI-generated emotion",
+      "raw inventory"
+    ]
+  },
+  "locked_center": "K-KUT does not sell emotion. K-KUT helps a person choose a real music moment that safely carries what words alone may not."
+}
