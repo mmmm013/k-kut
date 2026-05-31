@@ -1,0 +1,216 @@
+{
+  "status": "inventory_reality_snapshot",
+  "note": "This is not a sellable-item count. It separates current public surface from broader K-KUT/PIX/KK/II inventory evidence.",
+  "totals": {
+    "scanned_files": 571,
+    "json_files": 98,
+    "audio_files_in_repo_public_or_project": 183,
+    "pix_mentions": 1471,
+    "kk_mentions": 20506,
+    "ii_mentions": 980,
+    "checkout_link_mentions": 149,
+    "audioUrl_mentions_in_code": 55
+  },
+  "top_inventory_evidence_files": [
+    {
+      "file": "data/intent-candidates/sympathy/candidates.json",
+      "pixCount": 598,
+      "kkCount": 936,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/ii-candidates/mother-hope-kk-candidates.json",
+      "pixCount": 1,
+      "kkCount": 1403,
+      "iiCount": 1,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/ii-candidates/mother-hope-kk-candidates.md",
+      "pixCount": 1,
+      "kkCount": 927,
+      "iiCount": 1,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "manifests/sandman-kk-combo-options.json",
+      "pixCount": 92,
+      "kkCount": 646,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/fathers-day/fathers-day-actionable-registry-extract.json",
+      "pixCount": 30,
+      "kkCount": 534,
+      "iiCount": 8,
+      "checkoutCount": 2,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "data/ii-delivery-registry/romance-router.json",
+      "pixCount": 1,
+      "kkCount": 517,
+      "iiCount": 2,
+      "checkoutCount": 11,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/problem-kk-triage.md",
+      "pixCount": 0,
+      "kkCount": 502,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/problem-kk-worklists/inl_ino_lane_review.md",
+      "pixCount": 0,
+      "kkCount": 501,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/inl-ino-worklists/ino_pix_review.md",
+      "pixCount": 0,
+      "kkCount": 500,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/title-blind-kut-review-outcomes/PENDING.md",
+      "pixCount": 0,
+      "kkCount": 500,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/fathers-day/fathers-day-actionable-registry-extract.md",
+      "pixCount": 30,
+      "kkCount": 453,
+      "iiCount": 9,
+      "checkoutCount": 2,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "manifests/kkr/line-cc/lnduo-lntrio-rmst-cc-inventory.json",
+      "pixCount": 144,
+      "kkCount": 320,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/inl-ino-worklists/inl_pix_parent_match_review.md",
+      "pixCount": 0,
+      "kkCount": 454,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/problem-kk-worklists/possible_lt_pix_remap.md",
+      "pixCount": 0,
+      "kkCount": 452,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/duplicate-governance-audit.md",
+      "pixCount": 0,
+      "kkCount": 396,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/inl-ino-problem-kk-review.md",
+      "pixCount": 4,
+      "kkCount": 361,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/lt-pix-remap-decision-worklists.md",
+      "pixCount": 2,
+      "kkCount": 338,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "manifests/kkr/line-cc/line-cc-hold-review.json",
+      "pixCount": 100,
+      "kkCount": 222,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/fathers-day/fathers-day-kk-pool.json",
+      "pixCount": 1,
+      "kkCount": 155,
+      "iiCount": 154,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/lt-pix-remap-candidate-packet.md",
+      "pixCount": 2,
+      "kkCount": 294,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/duplicate-action-ledger.md",
+      "pixCount": 0,
+      "kkCount": 278,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/inl-ino-worklists/inl_pix_possible_parent_review.md",
+      "pixCount": 0,
+      "kkCount": 251,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "data/intent-candidates/sympathy/candidate-report.md",
+      "pixCount": 0,
+      "kkCount": 224,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/title-blind-kut-konotation-packet.md",
+      "pixCount": 1,
+      "kkCount": 201,
+      "iiCount": 0,
+      "checkoutCount": 0,
+      "audioUrlCount": 0
+    },
+    {
+      "file": "reports/end-to-end/all-buyer-usecases-production-audit.json",
+      "pixCount": 0,
+      "kkCount": 0,
+      "iiCount": 107,
+      "checkoutCount": 69,
+      "audioUrlCount": 0
+    }
+  ]
+}
