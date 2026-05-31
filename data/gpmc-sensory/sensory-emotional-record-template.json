@@ -1,0 +1,125 @@
+{
+  "status": "locked_template",
+  "name": "GPMC Sensory-Emotional Record Template",
+  "purpose": "Define the required shape for turning a GPM PIX or K-KUT into a safe, multi-sensory emotional interpretation record before public buyer use.",
+  "core_law": "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning.",
+  "record_statuses": [
+    "unreviewed",
+    "held",
+    "approved_internal",
+    "approved_public",
+    "rejected_public"
+  ],
+  "required_fields": {
+    "record_id": "stable internal id",
+    "source_pix_id_or_track_id": "source PIX, track, or approved source id",
+    "source_title": "internal source title",
+    "source_type": "PIX | KK | KUT | II | section | line_pair | phrase_cluster | ending_tail",
+    "public_option_id": "optional approved public option id when published",
+    "public_route": "optional buyer-facing route when approved",
+    "surface_feeling": "simple buyer-recognizable feeling",
+    "deeper_feelings": ["more specific emotional meanings"],
+    "interpretation_summary": "plain-language emotional meaning",
+    "sensory_profile": {
+      "audio": ["tempo, softness, vocal grain, silence, lift, tension, release, ending feel"],
+      "body": ["warmth, ache, pulse, settling, pressure, release, grounded"],
+      "visual": ["light, dark, color, distance, weather, motion, stillness"],
+      "touch": ["soft, sharp, held, heavy, airy, fragile, warm, cold"],
+      "memory": ["first love, old home, parent care, apology, lost chance, still choosing, goodbye"]
+    },
+    "emotional_coordinates": {
+      "valence": "positive_warm | painful | mixed | neutral_safe | bittersweet",
+      "arousal": "quiet | settled | lifted | charged | urgent",
+      "control_or_agency": "helpless | held | steady | empowering | releasing",
+      "social_direction": "toward | away | returning | staying | releasing | witnessing",
+      "time_direction": "memory | present | future | past_present_future | last_goodbye"
+    },
+    "good_use_cases": ["where this record may help"],
+    "bad_use_cases": ["where this record may confuse, pressure, or harm"],
+    "risk_notes": ["human safety notes"],
+    "buyer_words": ["buyer-facing phrases"],
+    "receiver_safe_words": ["receiver-safe phrasing"],
+    "do_not_say": ["forbidden claims or pressure language"],
+    "review_status": "unreviewed | held | approved_internal | approved_public | rejected_public",
+    "human_review_notes": "why this status is safe or not safe"
+  },
+  "non_exploitation_laws": [
+    "Do not exploit vulnerability.",
+    "Do not diagnose the buyer or receiver.",
+    "Do not claim to know the receiver's inner state.",
+    "Do not force intensity.",
+    "Do not use grief, apology, longing, or romance to pressure a purchase.",
+    "Do not sell emotion as a commodity."
+  ],
+  "public_approval_gate": [
+    "audio_delivery_url must be public and working",
+    "public route must exist",
+    "Stripe link must be approved if payment is allowed",
+    "no raw inventory language",
+    "no internal proof language",
+    "no mKs in buyer flow",
+    "good_use_cases and bad_use_cases must both be present",
+    "risk_notes must be present",
+    "review_status must be approved_public"
+  ],
+  "example_record": {
+    "record_id": "example-anniversary-still-choosing",
+    "source_pix_id_or_track_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+    "source_title": "A LOVE LIKE THAT",
+    "source_type": "II",
+    "public_option_id": "generated-anniversary-still-choosing-you-d3dfd13c-7421-4671-8261-0c735cb51f38",
+    "public_route": "/personal/anniversary",
+    "surface_feeling": "anniversary",
+    "deeper_feelings": [
+      "devotion",
+      "continuity",
+      "still choosing",
+      "soft gratitude"
+    ],
+    "interpretation_summary": "Send something that says I still choose you.",
+    "sensory_profile": {
+      "audio": ["warm", "steady", "soft lift", "resolved ending"],
+      "body": ["settled", "open", "warm"],
+      "visual": ["warm light", "close-up", "stillness"],
+      "touch": ["held", "soft", "warm"],
+      "memory": ["still choosing", "shared history", "returning"]
+    },
+    "emotional_coordinates": {
+      "valence": "positive_warm",
+      "arousal": "settled",
+      "control_or_agency": "steady",
+      "social_direction": "staying",
+      "time_direction": "past_present_future"
+    },
+    "good_use_cases": [
+      "anniversary",
+      "longtime love",
+      "still choosing you"
+    ],
+    "bad_use_cases": [
+      "fresh breakup",
+      "ambiguous apology",
+      "grief",
+      "pressure to reconcile"
+    ],
+    "risk_notes": [
+      "Romantic context required.",
+      "Do not imply the song fixes the relationship."
+    ],
+    "buyer_words": [
+      "I still choose you.",
+      "We are still here."
+    ],
+    "receiver_safe_words": [
+      "This made me think of us.",
+      "I wanted to send something warm."
+    ],
+    "do_not_say": [
+      "This fixes everything.",
+      "You have to feel the same.",
+      "This proves forever."
+    ],
+    "review_status": "approved_public",
+    "human_review_notes": "Approved because the route is anniversary-specific, warm, non-coercive, and public audio/payment proof exists."
+  }
+}
