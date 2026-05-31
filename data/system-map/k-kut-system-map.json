@@ -1,0 +1,102 @@
+{
+  "status": "locked_seed",
+  "name": "K-KUT System Map",
+  "purpose": "Identify each K-KUT part, loop, pathway, endpoint, purpose, proof, and safety gate so the platform functions perfectly and in harmony.",
+  "public_buyer_paths": [
+    {
+      "path": "/hug",
+      "purpose": "General buyer-ready K-KUT HUG doorway.",
+      "user_goal": "Understand HUGs and buy a regular/basic HUG.",
+      "payment_allowed": true,
+      "audio_allowed": true,
+      "must_not_show": ["internal candidate language", "debug copy", "unapproved Sympathy cards"],
+      "proof": ["HTTP 200", "checkout link present or route available"]
+    },
+    {
+      "path": "/checkout",
+      "purpose": "Regular/basic HUG payment redirect.",
+      "user_goal": "Go to Stripe checkout.",
+      "payment_allowed": true,
+      "required_target": "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y",
+      "proof": ["HTTP 307", "location is regular HUG Stripe link"]
+    },
+    {
+      "path": "/find",
+      "purpose": "Find/Search entry for KKs and HUG use cases.",
+      "user_goal": "Find suitable KKs by feeling, theme, or scenario.",
+      "payment_allowed": "only after approved option selection",
+      "must_not_show": ["weak keyword matches", "unapproved high-risk results"]
+    },
+    {
+      "path": "/personal",
+      "purpose": "Personal HUG lane index.",
+      "user_goal": "Choose a personal use case.",
+      "payment_allowed": "lane-dependent",
+      "must_not_show": ["mK language", "unsafe high-risk lane cards"]
+    },
+    {
+      "path": "/personal/sympathy",
+      "purpose": "High-risk Sympathy hold page.",
+      "user_goal": "Understand this lane is under human review.",
+      "payment_allowed": false,
+      "audio_allowed": false,
+      "must_show": ["stricter human review", "No generic personal HUG cards"],
+      "must_not_show": ["Send this Personal HUG", "audio", "Stripe", "romance cards"]
+    }
+  ],
+  "commercial_paths": [
+    {
+      "name": "Regular HUG",
+      "primary_path": "/checkout",
+      "stripe_link": "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y",
+      "status": "buyer_ready"
+    }
+  ],
+  "high_risk_lanes": [
+    {
+      "lane": "sympathy",
+      "status": "human_review_hold",
+      "public_cards_allowed": false,
+      "audio_allowed": false,
+      "payment_allowed": false,
+      "reason": "Grief, remembrance, memorial, and celebration-of-life require approved intent-safe KK registry before public selection."
+    }
+  ],
+  "kkr_internal_loops": [
+    {
+      "loop": "interpretation_first",
+      "purpose": "Readings/reviews/metagrabs are preserved per PIX and per KK before buyer categories are derived.",
+      "rule": "KKr does not primarily search categories. KKr maintains interpretations per PIX and per KK."
+    },
+    {
+      "loop": "action_object_matching",
+      "purpose": "Map KKs by verb + object + situation + direction + opposite-risk + evidence.",
+      "rule": "No one-term search. No title-only search."
+    },
+    {
+      "loop": "shared_emotion_mapping",
+      "purpose": "Map KK interpretations to Top 100 Shared Emotions before buyer-lane use.",
+      "rule": "User scenarios map to shared emotions; shared emotions map to suitable KKs."
+    }
+  ],
+  "more_logic": [
+    {
+      "label": "More for this feeling",
+      "purpose": "Expand across the catalog for the same emotional need.",
+      "limit_rule": "Stop after two More pages unless user refines."
+    },
+    {
+      "label": "More from this track",
+      "purpose": "Expand within the same PIX/source track.",
+      "limit_rule": "Show only suitable KKs from same source."
+    }
+  ],
+  "global_laws": [
+    "KKs per search are suitability-limited, not number-limited.",
+    "Candidate does not mean approved.",
+    "Approved does not mean published unless all gates pass.",
+    "Published does not mean payable unless payment_allowed is true.",
+    "High-risk intent lanes cannot publish from raw title, one-term search, or mood metadata.",
+    "Public buyer UI must not expose mK / mini-KUT / mini language by default."
+  ]
+}
