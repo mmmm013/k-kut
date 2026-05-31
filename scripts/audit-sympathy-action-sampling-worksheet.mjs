@@ -3,12 +3,13 @@ import fs from "node:fs";
 const worksheetPath = "reports/intent-sampling/sympathy-action-sampling-worksheet.md";
 
 let failed = false;
+
 function fail(msg) {
   console.error("FAIL:", msg);
   failed = true;
 }
 
-console.log("SYMPATHY ACTION SAMPLING WORKSHEET AUDIT");
+console.log("SYMPATHY ACTION-OBJECT SAMPLING WORKSHEET AUDIT");
 
 if (!fs.existsSync(worksheetPath)) {
   fail(`Missing ${worksheetPath}`);
@@ -19,8 +20,12 @@ if (!fs.existsSync(worksheetPath)) {
     "Gregory review only",
     "Non-public",
     "Non-payable",
-    "Decision options: PASS / HOLD / FAIL / REPROCESS",
-    "approve the human action, not the title",
+    "verb + object + situation + direction + opposite-risk + evidence",
+    "Verb starts the match. Object focuses the match.",
+    "**Positive directions:**",
+    "**Negative directions:**",
+    "**Object evidence:**",
+    "**Opposite-meaning risk:**",
     "**Decision:** HOLD",
     "**Gregory notes:**",
     "**Reprocess reason, if any:**"
@@ -30,8 +35,8 @@ if (!fs.existsSync(worksheetPath)) {
 }
 
 if (failed) {
-  console.error("SYMPATHY ACTION SAMPLING WORKSHEET AUDIT: FAIL");
+  console.error("SYMPATHY ACTION-OBJECT SAMPLING WORKSHEET AUDIT: FAIL");
   process.exit(1);
 }
 
-console.log("SYMPATHY ACTION SAMPLING WORKSHEET AUDIT: PASS");
+console.log("SYMPATHY ACTION-OBJECT SAMPLING WORKSHEET AUDIT: PASS");
