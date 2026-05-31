@@ -1,0 +1,34 @@
+{
+  "status": "seed",
+  "purpose": "First governed public option records. These prove the path from inventory to public buyer UI without exposing raw inventory directly.",
+  "records": [
+    {
+      "public_option_id": "personal-warmth-a-love-like-that-seed",
+      "source_pix_id_or_track_id": "unknown_existing_delivery_source",
+      "kk_id_or_delivery_object_id": "a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle",
+      "display_title": "A Love Like That",
+      "interpretation_summary": "A warm personal HUG for love, care, thanks, support, or a simple human moment.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "warmth",
+        "situation": "personal care, thanks, support, or everyday connection"
+      },
+      "positive_connotations": ["warmth", "care", "support", "appreciation", "human connection"],
+      "negative_connotations": [],
+      "neutral_connotations": ["personal", "private", "flexible"],
+      "shared_emotion_ids": ["gratitude", "care", "warmth", "connection"],
+      "buyer_scenario_ids": ["thank-you", "thinking-of-you", "support", "just-because"],
+      "intent_lane": "personal_warmth",
+      "risk_level": "standard",
+      "approval_status": "public_approved_seed",
+      "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+      "public_route": "/personal",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Seed record only. Proves bridge shape before catalog-scale publication."
+    }
+  ]
+}
