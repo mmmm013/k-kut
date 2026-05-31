@@ -17,13 +17,14 @@ const generated = JSON.parse(fs.readFileSync(generatedPath, "utf8"));
 
 for (const phrase of [
   "public-option-records.generated.json",
-  "Approved bridge options",
+  "Approved HUG options",
   "Hear approved K-KUT HUG options",
   "More for this feeling",
   "More from this track",
   "Send this HUG",
   "No raw inventory",
-  "no unapproved router candidates"
+  "no unapproved router candidates",
+  "These options are approved for public K-KUT HUG browsing."
 ]) {
   if (!page.includes(phrase)) fail(`/find missing phrase: ${phrase}`);
 }

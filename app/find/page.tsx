@@ -99,7 +99,7 @@ export default async function FindPage({
     ? `More for this feeling: ${titleCaseSlug(activeFeeling)}`
     : activeTrack
       ? "More from this track"
-      : "All approved bridge options";
+      : "All approved HUG options";
 
   return (
     <main className="min-h-screen bg-[#1A120B] px-6 py-10 text-[#F5E6C8]">
@@ -144,7 +144,7 @@ export default async function FindPage({
 
         <section className="mt-8 rounded-[2rem] border border-[#D4A017]/30 bg-[#160D08] p-6 sm:p-8">
           <p className="text-sm font-black uppercase tracking-[0.25em] text-[#D4A017]">
-            Approved bridge options
+            Approved HUG options
           </p>
 
           <h2 className="mt-3 text-3xl font-black text-[#FFD36A]">
@@ -152,7 +152,7 @@ export default async function FindPage({
           </h2>
 
           <p className="mt-3 max-w-3xl text-sm font-bold leading-relaxed text-[#F5E6C8]/75">
-            These options come from the public publication bridge only. No raw inventory, no unapproved router candidates, and no high-risk Sympathy results appear here.
+            These options are approved for public K-KUT HUG browsing. No raw inventory, no unapproved router candidates, and no high-risk Sympathy results appear here.
           </p>
 
           <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-[#D4A017]/20 bg-[#24180F] p-4 sm:flex-row sm:items-center sm:justify-between">
