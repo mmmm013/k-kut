@@ -1,6 +1,6 @@
 {
   "status": "generated",
-  "name": "GPMC Sensory-Emotional Records From Approved Public Options",
+  "name": "GPMC Sensory-Emotional Records From Approved Public Seed Options",
   "source": "data/publication-bridge/public-option-records.generated.json",
   "generated_at": "2026-05-31T20:38:02.939Z",
   "count": 6,
@@ -83,7 +83,7 @@
       ],
       "receiver_safe_words": [
         "I thought you might like this.",
-        "No pressure — just a warm music moment."
+        "No pressure \u2014 just a warm music moment."
       ],
       "do_not_say": [
         "This proves you love me.",
@@ -169,7 +169,7 @@
       ],
       "receiver_safe_words": [
         "I thought you might like this.",
-        "No pressure — just a warm music moment."
+        "No pressure \u2014 just a warm music moment."
       ],
       "do_not_say": [
         "This proves you love me.",
@@ -533,5 +533,8 @@
       "review_status": "approved_public",
       "human_review_notes": "Generated from an already approved public option record. Requires future human enrichment before deeper personalization use."
     }
-  ]
+  ],
+  "scope": "approved_public_seed_only",
+  "critical_warning": "This file contains only the current approved-public buyer options. It is not the full GPM PIX catalog, not the full K-KUT inventory, and not the total KKr emotional-sensory universe.",
+  "expansion_rule": "More sensory records must be generated from approved/reviewed PIX, KK, KUT, II, section, line-pair, phrase-cluster, and ending-tail records after safety review."
 }
