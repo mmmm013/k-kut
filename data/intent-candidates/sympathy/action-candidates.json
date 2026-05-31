@@ -2,7 +2,7 @@
   "status": "action_candidate_pool_generated_non_public",
   "intent": "sympathy",
   "publication_allowed": false,
-  "generated_at": "2026-05-30T23:25:39.963Z",
+  "generated_at": "2026-05-31T01:30:43.223Z",
   "source_files_scanned": [
     "reports/kkr-linefeels/human-expression-linefeel-candidates.md",
     "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
@@ -28,15 +28,44 @@
         "days"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "help_through_darkness",
+        "sustain",
+        "lift_burden"
+      ],
+      "negative_directions": [
+        "savior_complex",
+        "dependency",
+        "melodrama"
+      ],
+      "common_use_situations": [
+        "hard_season",
+        "grief",
+        "dark_days",
+        "support_through_pain"
+      ],
+      "forbidden_use_situations": [
+        "romantic_rescue",
+        "hero_fantasy",
+        "dependency"
+      ],
+      "evidence_needs": [
+        "carry_or_through_evidence",
+        "difficulty_context",
+        "recipient_supported_not_possessed"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -58,15 +87,44 @@
         "day"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "survive",
+        "continue",
+        "remain"
+      ],
+      "negative_directions": [
+        "hopelessness",
+        "suffering_only",
+        "despair"
+      ],
+      "common_use_situations": [
+        "long_grief",
+        "hard_road",
+        "dark_night",
+        "continuing_love"
+      ],
+      "forbidden_use_situations": [
+        "nihilism",
+        "despair_without_support",
+        "melodrama"
+      ],
+      "evidence_needs": [
+        "remain_or_through_evidence",
+        "hard_context",
+        "presence_or_love_context"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -76,39 +134,6 @@
     },
     {
       "id": "sym_action_0003",
-      "action_verb": "honor",
-      "human_situation": "sympathy_grief_support_candidate",
-      "title_backend_label": "- Candidate: Like a River",
-      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
-      "source_section_or_paragraph": "- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Sustaining Love\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Road May Lead\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_",
-      "meaning_context": "- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Sustaining Love\n  - Type: 2-term phrase\n  - Term count: 2\n  - Object strength: NEEDS_CONTEXT_REVIEW\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candi",
-      "positive_evidence_terms": [
-        "giving",
-        "chance",
-        "life",
-        "way",
-        "best",
-        "today"
-      ],
-      "negative_evidence_terms": [],
-      "pov_scores": {
-        "admin_intent": 1,
-        "song_meaning": 2,
-        "section_context": 2,
-        "recipient_risk": 2,
-        "buyer_promise": 1,
-        "payment_safety": 0
-      },
-      "total_score": 8,
-      "risk_flags": [],
-      "publication_allowed": false,
-      "payment_allowed": false,
-      "human_approved": false,
-      "sampling_status": "HOLD",
-      "sampling_notes": ""
-    },
-    {
-      "id": "sym_action_0004",
       "action_verb": "walk_beside",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a River",
@@ -122,48 +147,43 @@
         "lead"
       ],
       "negative_evidence_terms": [],
-      "pov_scores": {
-        "admin_intent": 1,
-        "song_meaning": 2,
-        "section_context": 2,
-        "recipient_risk": 2,
-        "buyer_promise": 1,
-        "payment_safety": 0
-      },
-      "total_score": 8,
-      "risk_flags": [],
-      "publication_allowed": false,
-      "payment_allowed": false,
-      "human_approved": false,
-      "sampling_status": "HOLD",
-      "sampling_notes": ""
-    },
-    {
-      "id": "sym_action_0005",
-      "action_verb": "honor",
-      "human_situation": "sympathy_grief_support_candidate",
-      "title_backend_label": "- Candidate: Chance in This Life",
-      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
-      "source_section_or_paragraph": "- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me the Best\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me Today\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
-      "meaning_context": "- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED",
-      "positive_evidence_terms": [
-        "giving",
-        "chance",
-        "life",
-        "way",
-        "best",
-        "today"
+      "positive_directions": [
+        "presence",
+        "companionship",
+        "support_on_the_road"
       ],
-      "negative_evidence_terms": [],
+      "negative_directions": [
+        "romance_walk",
+        "dependency",
+        "possessive_presence"
+      ],
+      "common_use_situations": [
+        "grief",
+        "hard_road",
+        "support_without_fixing"
+      ],
+      "forbidden_use_situations": [
+        "romance",
+        "wedding",
+        "breakup_longing"
+      ],
+      "evidence_needs": [
+        "walk_or_beside_evidence",
+        "road_or_life_context",
+        "non_romantic_frame"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -172,7 +192,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0006",
+      "id": "sym_action_0004",
       "action_verb": "remember",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a Star",
@@ -187,49 +207,46 @@
         "always"
       ],
       "negative_evidence_terms": [],
-      "pov_scores": {
-        "admin_intent": 1,
-        "song_meaning": 2,
-        "section_context": 2,
-        "recipient_risk": 2,
-        "buyer_promise": 1,
-        "payment_safety": 0
-      },
-      "total_score": 8,
-      "risk_flags": [],
-      "publication_allowed": false,
-      "payment_allowed": false,
-      "human_approved": false,
-      "sampling_status": "HOLD",
-      "sampling_notes": ""
-    },
-    {
-      "id": "sym_action_0007",
-      "action_verb": "honor",
-      "human_situation": "sympathy_grief_support_candidate",
-      "title_backend_label": "- Candidate: Like a Star",
-      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
-      "source_section_or_paragraph": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a River\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Walk Beside Me\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Dark Nights / Bright Days\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Your Love Will Always Remain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE",
-      "meaning_context": "- Candidate: Like a Star\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Like a Bird\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: L",
-      "positive_evidence_terms": [
-        "giving",
-        "chance",
-        "life",
-        "way",
-        "best",
-        "today",
-        "remain"
+      "positive_directions": [
+        "honor",
+        "memorialize",
+        "keep_near",
+        "gratitude"
       ],
-      "negative_evidence_terms": [],
+      "negative_directions": [
+        "nostalgia_only",
+        "romance_longing",
+        "holiday_memory"
+      ],
+      "common_use_situations": [
+        "memorial",
+        "loss",
+        "legacy",
+        "continuing_bond",
+        "gratitude_for_life"
+      ],
+      "forbidden_use_situations": [
+        "holiday",
+        "romantic_missing",
+        "anniversary_romance"
+      ],
+      "evidence_needs": [
+        "memory_or_remain_evidence",
+        "life_or_legacy_context",
+        "no_holiday_bleed"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -238,7 +255,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0008",
+      "id": "sym_action_0005",
       "action_verb": "walk_beside",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Like a Star",
@@ -251,15 +268,43 @@
         "always"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "presence",
+        "companionship",
+        "support_on_the_road"
+      ],
+      "negative_directions": [
+        "romance_walk",
+        "dependency",
+        "possessive_presence"
+      ],
+      "common_use_situations": [
+        "grief",
+        "hard_road",
+        "support_without_fixing"
+      ],
+      "forbidden_use_situations": [
+        "romance",
+        "wedding",
+        "breakup_longing"
+      ],
+      "evidence_needs": [
+        "walk_or_beside_evidence",
+        "road_or_life_context",
+        "non_romantic_frame"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -268,7 +313,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0009",
+      "id": "sym_action_0006",
       "action_verb": "sit_with",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Best Friend",
@@ -282,48 +327,43 @@
         "friend"
       ],
       "negative_evidence_terms": [],
-      "pov_scores": {
-        "admin_intent": 1,
-        "song_meaning": 2,
-        "section_context": 2,
-        "recipient_risk": 2,
-        "buyer_promise": 1,
-        "payment_safety": 0
-      },
-      "total_score": 8,
-      "risk_flags": [],
-      "publication_allowed": false,
-      "payment_allowed": false,
-      "human_approved": false,
-      "sampling_status": "HOLD",
-      "sampling_notes": ""
-    },
-    {
-      "id": "sym_action_0010",
-      "action_verb": "honor",
-      "human_situation": "sympathy_grief_support_candidate",
-      "title_backend_label": "- Candidate: Tree to Her Garden",
-      "source_file": "reports/kkr-linefeels/kk-objectified-ii-ci-review.md",
-      "source_section_or_paragraph": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Chance in This Life\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Showing Me the Way\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me the Best\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Giving Me Today\n  - Type: 3-term minimum idea\n  - Term count: 3\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SING",
-      "meaning_context": "- Candidate: Tree to Her Garden\n  - Type: 3-term minimum idea\n  - Term count: 4\n  - Object strength: POSSIBLE_STANDALONE\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNED\n- Candidate: Shelter From Wind and Rain\n  - Type: phrase / expression\n  - Term count: 5\n  - Object strength: STRONG_STANDALONE\n  - Context need: CAN_REVIEW_AS_SINGLE_II_CI\n  - II/CI status: CANDIDATE_NOT_APPROVED\n  - LineFeel disposition: NOT_ASSIGNE",
-      "positive_evidence_terms": [
-        "giving",
-        "chance",
-        "life",
-        "way",
-        "best",
-        "today"
+      "positive_directions": [
+        "listen",
+        "stay_present",
+        "make_less_alone"
       ],
-      "negative_evidence_terms": [],
+      "negative_directions": [
+        "romantic_intimacy",
+        "passive_pity",
+        "dependency"
+      ],
+      "common_use_situations": [
+        "grief",
+        "loneliness",
+        "quiet_support"
+      ],
+      "forbidden_use_situations": [
+        "romance",
+        "sexual_care",
+        "breakup_longing"
+      ],
+      "evidence_needs": [
+        "listening_evidence",
+        "support_context",
+        "non_romantic_frame"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -332,7 +372,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0011",
+      "id": "sym_action_0007",
       "action_verb": "shelter",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Tree to Her Garden",
@@ -347,15 +387,44 @@
         "garden"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "protect_from_storm",
+        "safe_harbor",
+        "cover"
+      ],
+      "negative_directions": [
+        "romantic_rescue",
+        "parent_only_unless_intended",
+        "control"
+      ],
+      "common_use_situations": [
+        "wind_and_rain",
+        "storm",
+        "danger",
+        "need_for_safety"
+      ],
+      "forbidden_use_situations": [
+        "romance_rescue",
+        "sexual_safety",
+        "wedding"
+      ],
+      "evidence_needs": [
+        "shelter_or_protection_evidence",
+        "storm_or_difficulty_context",
+        "non_romantic_frame"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -364,7 +433,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0012",
+      "id": "sym_action_0008",
       "action_verb": "remember",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Valleys and Mountains",
@@ -377,15 +446,46 @@
         "always"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "honor",
+        "memorialize",
+        "keep_near",
+        "gratitude"
+      ],
+      "negative_directions": [
+        "nostalgia_only",
+        "romance_longing",
+        "holiday_memory"
+      ],
+      "common_use_situations": [
+        "memorial",
+        "loss",
+        "legacy",
+        "continuing_bond",
+        "gratitude_for_life"
+      ],
+      "forbidden_use_situations": [
+        "holiday",
+        "romantic_missing",
+        "anniversary_romance"
+      ],
+      "evidence_needs": [
+        "memory_or_remain_evidence",
+        "life_or_legacy_context",
+        "no_holiday_bleed"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -394,7 +494,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0013",
+      "id": "sym_action_0009",
       "action_verb": "endure",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Valleys and Mountains",
@@ -409,15 +509,44 @@
         "mountain"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "survive",
+        "continue",
+        "remain"
+      ],
+      "negative_directions": [
+        "hopelessness",
+        "suffering_only",
+        "despair"
+      ],
+      "common_use_situations": [
+        "long_grief",
+        "hard_road",
+        "dark_night",
+        "continuing_love"
+      ],
+      "forbidden_use_situations": [
+        "nihilism",
+        "despair_without_support",
+        "melodrama"
+      ],
+      "evidence_needs": [
+        "remain_or_through_evidence",
+        "hard_context",
+        "presence_or_love_context"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -426,7 +555,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0014",
+      "id": "sym_action_0010",
       "action_verb": "remember",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Tree to Her Garden",
@@ -440,15 +569,46 @@
         "always"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "honor",
+        "memorialize",
+        "keep_near",
+        "gratitude"
+      ],
+      "negative_directions": [
+        "nostalgia_only",
+        "romance_longing",
+        "holiday_memory"
+      ],
+      "common_use_situations": [
+        "memorial",
+        "loss",
+        "legacy",
+        "continuing_bond",
+        "gratitude_for_life"
+      ],
+      "forbidden_use_situations": [
+        "holiday",
+        "romantic_missing",
+        "anniversary_romance"
+      ],
+      "evidence_needs": [
+        "memory_or_remain_evidence",
+        "life_or_legacy_context",
+        "no_holiday_bleed"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,
@@ -457,7 +617,7 @@
       "sampling_notes": ""
     },
     {
-      "id": "sym_action_0015",
+      "id": "sym_action_0011",
       "action_verb": "endure",
       "human_situation": "sympathy_grief_support_candidate",
       "title_backend_label": "- Candidate: Tree to Her Garden",
@@ -473,15 +633,44 @@
         "mountain"
       ],
       "negative_evidence_terms": [],
+      "positive_directions": [
+        "survive",
+        "continue",
+        "remain"
+      ],
+      "negative_directions": [
+        "hopelessness",
+        "suffering_only",
+        "despair"
+      ],
+      "common_use_situations": [
+        "long_grief",
+        "hard_road",
+        "dark_night",
+        "continuing_love"
+      ],
+      "forbidden_use_situations": [
+        "nihilism",
+        "despair_without_support",
+        "melodrama"
+      ],
+      "evidence_needs": [
+        "remain_or_through_evidence",
+        "hard_context",
+        "presence_or_love_context"
+      ],
+      "opposite_meaning_risk": [],
+      "radiation_confidence": "medium_review_required",
       "pov_scores": {
         "admin_intent": 1,
         "song_meaning": 2,
         "section_context": 2,
         "recipient_risk": 2,
         "buyer_promise": 1,
-        "payment_safety": 0
+        "payment_safety": 0,
+        "emotional_radiation": 2
       },
-      "total_score": 8,
+      "total_score": 10,
       "risk_flags": [],
       "publication_allowed": false,
       "payment_allowed": false,

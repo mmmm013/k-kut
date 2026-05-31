@@ -17,6 +17,8 @@ const sourceFiles = [
 ].filter((f) => fs.existsSync(f));
 
 const rule = JSON.parse(fs.readFileSync("data/4pe/rules/kkr-action-intent-rules.json", "utf8"));
+const radiationMap = JSON.parse(fs.readFileSync("data/4pe/rules/kkr-emotional-radiation-map.json", "utf8"));
+const sympathyRadiation = radiationMap.sympathy || {};
 
 const actionPatterns = [
   {
@@ -95,6 +97,51 @@ function titleLooksExcluded(title) {
   return hardExclusion(t).length > 0;
 }
 
+function getRadiationForVerb(actionVerb) {
+  const normalized = String(actionVerb || "").replace(/_through$/, "").toLowerCase();
+
+  if (sympathyRadiation.verbs?.[actionVerb]) return sympathyRadiation.verbs[actionVerb];
+  if (sympathyRadiation.verbs?.[normalized]) return sympathyRadiation.verbs[normalized];
+
+  if (actionVerb === "walk_beside") {
+    return {
+      positive_radiation: ["presence", "companionship", "support_on_the_road"],
+      negative_radiation: ["romance_walk", "dependency", "possessive_presence"],
+      common_use_situations: ["grief", "hard_road", "support_without_fixing"],
+      forbidden_use_situations: ["romance", "wedding", "breakup_longing"],
+      evidence_needs: ["walk_or_beside_evidence", "road_or_life_context", "non_romantic_frame"]
+    };
+  }
+
+  if (actionVerb === "sit_with") {
+    return {
+      positive_radiation: ["listen", "stay_present", "make_less_alone"],
+      negative_radiation: ["romantic_intimacy", "passive_pity", "dependency"],
+      common_use_situations: ["grief", "loneliness", "quiet_support"],
+      forbidden_use_situations: ["romance", "sexual_care", "breakup_longing"],
+      evidence_needs: ["listening_evidence", "support_context", "non_romantic_frame"]
+    };
+  }
+
+  return null;
+}
+
+function radiationRisk(rowText, radiation) {
+  const risks = [];
+
+  for (const term of radiation?.negative_radiation || []) {
+    const phrase = String(term).replaceAll("_", " ");
+    if (rowText.includes(phrase)) risks.push(`negative_radiation:${term}`);
+  }
+
+  for (const term of radiation?.forbidden_use_situations || []) {
+    const phrase = String(term).replaceAll("_", " ");
+    if (rowText.includes(phrase)) risks.push(`forbidden_situation:${term}`);
+  }
+
+  return risks;
+}
+
 function extractTitle(paragraph) {
   const lines = paragraph.split("\n").map((l) => l.trim()).filter(Boolean);
   const first = lines[0] || "";
@@ -134,13 +181,19 @@ for (const file of sourceFiles) {
       if (seen.has(key)) continue;
       seen.add(key);
 
+      const radiation = getRadiationForVerb(pattern.action_verb);
+      if (!radiation) continue;
+
+      const oppositeMeaningRisks = radiationRisk(text, radiation);
+
       const pov_scores = {
         admin_intent: 1,
         song_meaning: requiredHits.length + contextHits.length >= 3 ? 2 : 1,
         section_context: paragraph.length >= 220 ? 2 : 1,
-        recipient_risk: exclusions.length === 0 ? 2 : 0,
+        recipient_risk: exclusions.length === 0 && oppositeMeaningRisks.length === 0 ? 2 : 0,
         buyer_promise: 1,
-        payment_safety: 0
+        payment_safety: 0,
+        emotional_radiation: radiation.positive_radiation?.length > 0 && radiation.negative_radiation?.length > 0 ? 2 : 0
       };
 
       const total_score = Object.values(pov_scores).reduce((a, b) => a + b, 0);
@@ -155,13 +208,23 @@ for (const file of sourceFiles) {
         meaning_context: paragraph.slice(0, 500),
         positive_evidence_terms: [...new Set([...requiredHits, ...contextHits])],
         negative_evidence_terms: exclusions,
+        positive_directions: radiation.positive_radiation || [],
+        negative_directions: radiation.negative_radiation || [],
+        common_use_situations: radiation.common_use_situations || [],
+        forbidden_use_situations: radiation.forbidden_use_situations || [],
+        evidence_needs: radiation.evidence_needs || [],
+        opposite_meaning_risk: oppositeMeaningRisks,
+        radiation_confidence:
+          oppositeMeaningRisks.length === 0 && requiredHits.length >= 1 && contextHits.length >= 1
+            ? "medium_review_required"
+            : "low_reprocess",
         pov_scores,
         total_score,
-        risk_flags: [],
+        risk_flags: oppositeMeaningRisks,
         publication_allowed: false,
         payment_allowed: false,
         human_approved: false,
-        sampling_status: "HOLD",
+        sampling_status: oppositeMeaningRisks.length === 0 ? "HOLD" : "REPROCESS",
         sampling_notes: ""
       });
     }
@@ -192,11 +255,11 @@ fs.writeFileSync(
 let md = "# Sympathy Action Candidate Report\n\n";
 md += "Status: non-public, non-payable, verb/action candidate review only.\n\n";
 md += `Candidates: ${limited.length}\n\n`;
-md += "| # | Action | Score | Backend Label | Evidence | Source |\n";
-md += "|---:|---|---:|---|---|---|\n";
+md += "| # | Action | Score | Radiation | Risk | Backend Label | Evidence | Source |\n";
+md += "|---:|---|---:|---|---|---|---|---|\n";
 
 limited.forEach((row, index) => {
-  md += `| ${index + 1} | ${row.action_verb} | ${row.total_score} | ${String(row.title_backend_label).replaceAll("|", "/")} | ${row.positive_evidence_terms.join(", ")} | ${path.basename(row.source_file)} |\n`;
+  md += `| ${index + 1} | ${row.action_verb} | ${row.total_score} | ${(row.positive_directions || []).slice(0, 3).join(", ")} | ${(row.opposite_meaning_risk || []).join(", ") || "none"} | ${String(row.title_backend_label).replaceAll("|", "/")} | ${row.positive_evidence_terms.join(", ")} | ${path.basename(row.source_file)} |\n`;
 });
 
 fs.writeFileSync(outMd, md);

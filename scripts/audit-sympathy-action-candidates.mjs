@@ -39,6 +39,27 @@ for (const row of data.rows || []) {
   if (!Array.isArray(row.positive_evidence_terms) || row.positive_evidence_terms.length < 2) {
     fail(`Candidate has weak one-term evidence: ${row.id}`);
   }
+
+  for (const key of [
+    "positive_directions",
+    "negative_directions",
+    "common_use_situations",
+    "forbidden_use_situations",
+    "evidence_needs"
+  ]) {
+    if (!Array.isArray(row[key]) || row[key].length === 0) {
+      fail(`Candidate missing radiation field ${key}: ${row.id}`);
+    }
+  }
+
+  if (!("opposite_meaning_risk" in row)) {
+    fail(`Candidate missing opposite_meaning_risk: ${row.id}`);
+  }
+
+  if (!row.radiation_confidence) {
+    fail(`Candidate missing radiation_confidence: ${row.id}`);
+  }
+
   if (row.publication_allowed !== false) fail(`Candidate publishes: ${row.id}`);
   if (row.payment_allowed !== false) fail(`Candidate allows payment: ${row.id}`);
 
