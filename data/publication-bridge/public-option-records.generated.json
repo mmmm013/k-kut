@@ -1,0 +1,284 @@
+{
+  "status": "generated",
+  "source": "data/ii-delivery-registry/romance-reusable-ii-records.json",
+  "generated_at": "2026-05-31T15:28:11.618Z",
+  "records": [
+    {
+      "public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_pix_id_or_track_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "kk_id_or_delivery_object_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "display_title": "A LOVE LIKE THAT",
+      "interpretation_summary": "Send something warm, sweet, and easy to receive.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "warmth",
+        "situation": "Sweet Love"
+      },
+      "positive_connotations": [
+        "sweet",
+        "love",
+        "send",
+        "something",
+        "warm",
+        "easy",
+        "receive"
+      ],
+      "negative_connotations": [],
+      "neutral_connotations": [
+        "private",
+        "music",
+        "hug"
+      ],
+      "shared_emotion_ids": [
+        "love",
+        "sweet"
+      ],
+      "buyer_scenario_ids": [
+        "love-sweet"
+      ],
+      "intent_lane": "romance_love",
+      "risk_level": "standard",
+      "approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "public_route": "/romance",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Generated from reusable II delivery registry. Raw router candidates are excluded."
+    },
+    {
+      "public_option_id": "generated-love-deep-devotion-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_pix_id_or_track_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "kk_id_or_delivery_object_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "display_title": "A LOVE LIKE THAT",
+      "interpretation_summary": "Send something that feels lasting, loyal, and serious.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "devotion",
+        "situation": "Deep Devotion"
+      },
+      "positive_connotations": [
+        "deep",
+        "devotion",
+        "send",
+        "something",
+        "that",
+        "feels",
+        "lasting",
+        "loyal"
+      ],
+      "negative_connotations": [],
+      "neutral_connotations": [
+        "private",
+        "music",
+        "hug"
+      ],
+      "shared_emotion_ids": [
+        "love",
+        "deep",
+        "devotion"
+      ],
+      "buyer_scenario_ids": [
+        "love-deep-devotion"
+      ],
+      "intent_lane": "romance_love",
+      "risk_level": "standard",
+      "approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "public_route": "/romance",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Generated from reusable II delivery registry. Raw router candidates are excluded."
+    },
+    {
+      "public_option_id": "generated-wedding-forever-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_pix_id_or_track_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "kk_id_or_delivery_object_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "display_title": "A LOVE LIKE THAT",
+      "interpretation_summary": "Send something ceremonial, beautiful, and forever-facing.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "commitment",
+        "situation": "Wedding / Forever"
+      },
+      "positive_connotations": [
+        "wedding",
+        "forever",
+        "send",
+        "something",
+        "ceremonial",
+        "beautiful",
+        "facing"
+      ],
+      "negative_connotations": [],
+      "neutral_connotations": [
+        "private",
+        "music",
+        "hug"
+      ],
+      "shared_emotion_ids": [
+        "wedding",
+        "forever"
+      ],
+      "buyer_scenario_ids": [
+        "wedding-forever"
+      ],
+      "intent_lane": "wedding",
+      "risk_level": "standard",
+      "approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
+      "public_route": "/wedding",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Generated from reusable II delivery registry. Raw router candidates are excluded."
+    },
+    {
+      "public_option_id": "generated-anniversary-still-choosing-you-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_pix_id_or_track_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "kk_id_or_delivery_object_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "display_title": "A LOVE LIKE THAT",
+      "interpretation_summary": "Send something that says I still choose you.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "devotion",
+        "situation": "Anniversary"
+      },
+      "positive_connotations": [
+        "anniversary",
+        "send",
+        "something",
+        "that",
+        "says",
+        "still",
+        "choose",
+        "devotion"
+      ],
+      "negative_connotations": [],
+      "neutral_connotations": [
+        "private",
+        "music",
+        "hug"
+      ],
+      "shared_emotion_ids": [
+        "anniversary",
+        "still",
+        "choosing"
+      ],
+      "buyer_scenario_ids": [
+        "anniversary-still-choosing-you"
+      ],
+      "intent_lane": "anniversary",
+      "risk_level": "standard",
+      "approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "public_route": "/personal/anniversary",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Generated from reusable II delivery registry. Raw router candidates are excluded."
+    },
+    {
+      "public_option_id": "generated-kupid-physical-spark-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "source_pix_id_or_track_id": "1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "kk_id_or_delivery_object_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "display_title": "YOUR HEART POUNDIN'",
+      "interpretation_summary": "Send something bold, intimate, and charged.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "spark",
+        "situation": "Physical Spark"
+      },
+      "positive_connotations": [
+        "physical",
+        "spark",
+        "send",
+        "something",
+        "bold",
+        "intimate",
+        "charged"
+      ],
+      "negative_connotations": [],
+      "neutral_connotations": [
+        "private",
+        "music",
+        "hug"
+      ],
+      "shared_emotion_ids": [
+        "kupid",
+        "physical",
+        "spark"
+      ],
+      "buyer_scenario_ids": [
+        "kupid-physical-spark"
+      ],
+      "intent_lane": "kupid_romance",
+      "risk_level": "standard",
+      "approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_delivery_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+      "public_route": "/kupid",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Generated from reusable II delivery registry. Raw router candidates are excluded."
+    },
+    {
+      "public_option_id": "generated-repair-still-love-you-6e959ac6-9546-4bae-87b2-ed6584185682",
+      "source_pix_id_or_track_id": "6e959ac6-9546-4bae-87b2-ed6584185682",
+      "kk_id_or_delivery_object_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+      "display_title": "Don't Call It Love",
+      "interpretation_summary": "Send something tender when the relationship needs care.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "repair",
+        "situation": "Repair / Still Love You"
+      },
+      "positive_connotations": [
+        "repair",
+        "still",
+        "love",
+        "send",
+        "something",
+        "tender",
+        "when",
+        "relationship"
+      ],
+      "negative_connotations": [],
+      "neutral_connotations": [
+        "private",
+        "music",
+        "hug"
+      ],
+      "shared_emotion_ids": [
+        "repair",
+        "still",
+        "love"
+      ],
+      "buyer_scenario_ids": [
+        "repair-still-love-you"
+      ],
+      "intent_lane": "repair_still_care",
+      "risk_level": "standard",
+      "approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_delivery_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "public_route": "/personal/apology",
+      "more_for_this_feeling_allowed": true,
+      "more_from_this_track_allowed": true,
+      "public_notes": "Generated from reusable II delivery registry. Raw router candidates are excluded."
+    }
+  ]
+}
