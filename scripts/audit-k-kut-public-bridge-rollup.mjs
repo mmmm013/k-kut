@@ -7,6 +7,7 @@ const audits = [
   "scripts/audit-public-option-records-seed.mjs",
   "scripts/audit-public-option-records-generated.mjs",
   "scripts/audit-find-bridge-wiring.mjs",
+  "scripts/audit-no-public-bridge-language.mjs",
   "scripts/audit-find-more-filtering.mjs",
   "scripts/audit-find-pathway.mjs",
   "scripts/audit-audio-pathway.mjs",
