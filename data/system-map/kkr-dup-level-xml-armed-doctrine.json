@@ -1,0 +1,59 @@
+{
+  "status": "locked_doctrine",
+  "name": "KKr DUP, Emotional-Level, and XML-Armed Doctrine",
+  "purpose": "Govern how KKr handles duplicate or near-duplicate KKs across many sources while preserving depth, emotional levels, and future XML-ready interchange.",
+  "core_law": "DUPs are allowed when they improve selection depth, emotional-level coverage, or future review quality. DUPs must not create public confusion.",
+  "dup_rules": {
+    "A_best_one_wins_when_same": "When two candidates are meaningfully the same, the best reviewed candidate wins.",
+    "B_if_tie_no_change": "If two same-level candidates tie, no forced change is required. Keep both internally or hold until stronger evidence appears.",
+    "C_emotional_levels_convene": "Duplicate or similar candidates may remain valuable when they serve different emotional levels, relationship contexts, sensory profiles, or use-case depths."
+  },
+  "emotional_level_requirement": {
+    "required_levels": [
+      "surface_feeling",
+      "deeper_feelings",
+      "relationship_lane",
+      "situation_lane",
+      "sensory_profile",
+      "good_use_cases",
+      "bad_use_cases",
+      "risk_notes",
+      "receiver_safe_words",
+      "do_not_say"
+    ],
+    "depth_law": "Do not collapse meaningful emotional levels into a single flat tag.",
+    "buyer_safety_law": "Only approved_public records may reach buyer-facing routes."
+  },
+  "xml_armed_requirement": {
+    "meaning": "A record is XML-armed when it can be serialized into a stable future XML exchange envelope without losing source, review, safety, emotional-level, or routing meaning.",
+    "required_xml_fields": [
+      "record_id",
+      "source_id",
+      "source_type",
+      "source_title",
+      "candidate_type",
+      "lane_id",
+      "surface_feeling",
+      "deeper_feelings",
+      "emotional_level",
+      "sensory_profile",
+      "good_use_cases",
+      "bad_use_cases",
+      "risk_notes",
+      "review_status",
+      "public_status",
+      "public_route",
+      "audio_delivery_url",
+      "do_not_say"
+    ],
+    "xml_public_guard": "XML readiness does not equal public approval."
+  },
+  "not_allowed": [
+    "Do not expose DUP logic in public buyer copy.",
+    "Do not publish tied candidates merely because they exist.",
+    "Do not let raw inventory become buyer-facing.",
+    "Do not let XML-ready records bypass human review.",
+    "Do not let mKs enter current K-KUT buyer flow through this doctrine."
+  ],
+  "locked_summary": "KKr may retain DUPs for depth. Best wins when same. Ties may remain internal. Emotional levels must convene. Records should be XML-armed before wider system propagation."
+}
