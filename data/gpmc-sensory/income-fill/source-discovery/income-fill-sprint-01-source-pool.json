@@ -1,0 +1,2533 @@
+{
+  "status": "income_fill_sprint_01_source_pool",
+  "name": "Income Fill Sprint 01 Source Pool Discovery",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "scan_roots": [
+    "data",
+    "lib",
+    "public"
+  ],
+  "themes": {
+    "birthday": {
+      "source_pool_candidate_count": 22,
+      "target_internal_admin_candidates": 8,
+      "discovery_status": "ENOUGH_SOURCE_POOL_FOR_REVIEW",
+      "candidates": [
+        {
+          "theme": "birthday",
+          "source_file": "lib/personalSeeds.ts",
+          "keyword_hits": [
+            "birthday",
+            "another year",
+            "celebrate",
+            "celebration",
+            "party"
+          ],
+          "keyword_hit_count": 5,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 17,
+              "text": "line: \"A ceremonial music package for first dance, forever love, and wedding-party thanks.\","
+            },
+            {
+              "line_number": 18,
+              "text": "paths: [\"First dance\", \"Forever love\", \"Bride’s choice\", \"Thank the wedding party\", \"Family blessing\"],"
+            },
+            {
+              "line_number": 27,
+              "text": "\"Thank-you phrase options for the wedding party\","
+            },
+            {
+              "line_number": 40,
+              "text": "birthday: {"
+            },
+            {
+              "line_number": 41,
+              "text": "title: \"Birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/emotions/top-100-shared-emotions.json",
+          "keyword_hits": [
+            "birthday",
+            "celebrate",
+            "celebration"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 432,
+              "text": "\"emotion_id\": \"birthday_joy\","
+            },
+            {
+              "line_number": 433,
+              "text": "\"display_name\": \"Birthday joy\","
+            },
+            {
+              "line_number": 434,
+              "text": "\"level\": \"celebration\","
+            },
+            {
+              "line_number": 436,
+              "text": "\"celebrate\","
+            },
+            {
+              "line_number": 440,
+              "text": "\"birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/4pe/rules/kkr-emotional-radiation-map.json",
+          "keyword_hits": [
+            "celebration",
+            "party"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 50,
+              "text": "\"celebration\","
+            },
+            {
+              "line_number": 85,
+              "text": "\"celebration\""
+            },
+            {
+              "line_number": 375,
+              "text": "\"party\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/4pe/rules/kkr-intent-safety-gate.json",
+          "keyword_hits": [
+            "celebration",
+            "party"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 16,
+              "text": "\"celebration-of-life\""
+            },
+            {
+              "line_number": 37,
+              "text": "\"party\","
+            },
+            {
+              "line_number": 39,
+              "text": "\"celebration\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/bic-usecases/routes.json",
+          "keyword_hits": [
+            "birthday",
+            "party"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 4,
+              "text": "\"route\": \"/personal/birthday\","
+            },
+            {
+              "line_number": 5,
+              "text": "\"name\": \"BIRTHDAY\","
+            },
+            {
+              "line_number": 7,
+              "text": "\"Birthday K-KUT HUGs\","
+            },
+            {
+              "line_number": 9,
+              "text": "\"Birthday Matching\","
+            },
+            {
+              "line_number": 10,
+              "text": "\"Bright Birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/candidates/thank-you-gratitude-candidates.json",
+          "keyword_hits": [
+            "birthday",
+            "celebration"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 595,
+              "text": "\"celebration-only birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json",
+          "keyword_hits": [
+            "birthday",
+            "celebration"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 431,
+              "text": "\"celebration-only birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/sensory-expansion-queue.json",
+          "keyword_hits": [
+            "birthday",
+            "celebration"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 27,
+              "text": "\"lane_id\": \"birthday_lift\","
+            },
+            {
+              "line_number": 29,
+              "text": "\"purpose\": \"Birthday warmth, joy, confidence, celebration, and personal spark.\","
+            },
+            {
+              "line_number": 86,
+              "text": "\"review_requirement\": \"Human review required. No romance, spark, or celebration leakage.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/theme-feed/theme-feed-system.json",
+          "keyword_hits": [
+            "birthday",
+            "party"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 51,
+              "text": "\"id\": \"birthday\","
+            },
+            {
+              "line_number": 52,
+              "text": "\"public_label\": \"Birthday\","
+            },
+            {
+              "line_number": 53,
+              "text": "\"route_family\": \"/personal/birthday\","
+            },
+            {
+              "line_number": 97,
+              "text": "\"mc_bot_role\": \"Narrow vow-level, first dance, forever, ceremony-safe, wedding-party thanks.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "lib/holidaySeeds.ts",
+          "keyword_hits": [
+            "celebrate",
+            "celebration"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 28,
+              "text": "line: \"Send luck, joy, friendship, celebration, and warmth.\","
+            },
+            {
+              "line_number": 29,
+              "text": "question: \"What kind of celebration fits?\","
+            },
+            {
+              "line_number": 30,
+              "text": "paths: [\"Good luck\", \"Joy\", \"Friendship\", \"Playful\", \"Celebrate\"],"
+            },
+            {
+              "line_number": 89,
+              "text": "line: \"Honor freedom, resilience, memory, and celebration.\","
+            },
+            {
+              "line_number": 91,
+              "text": "paths: [\"Freedom\", \"Resilience\", \"Memory\", \"Celebration\", \"Hope\"],"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/4pe/rules/hug-tug-classification-rules.json",
+          "keyword_hits": [
+            "celebration"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 7,
+              "text": "\"meaning\": \"Warmth, care, gratitude, love, comfort, support, appreciation, celebration, tenderness.\","
+            },
+            {
+              "line_number": 21,
+              "text": "\"celebration\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/4pe/rules/kkr-action-intent-rules.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 56,
+              "text": "\"birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/depth-standards/min-8-theme-depth.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 12,
+              "text": "\"birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/audits/full-theme-stock-audit.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 74,
+              "text": "\"theme\": \"birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/income-fill/income-fill-sprint-01-seed.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 11,
+              "text": "\"theme\": \"birthday\","
+            },
+            {
+              "line_number": 66,
+              "text": "\"locked_summary\": \"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/per-user-caring-history-doctrine.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 48,
+              "text": "\"occasion_or_situation\": \"anniversary | apology | birthday | thank_you | grief_held | encouragement | other\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/plans/minimum-8-admin-candidate-plan.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 15,
+              "text": "\"theme\": \"birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/sensory-emotional-records.generated.json",
+          "keyword_hits": [
+            "celebration"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 512,
+              "text": "\"celebration\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/localization/hug-copy.en.json",
+          "keyword_hits": [
+            "celebration"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 35,
+              "text": "\"celebration\": \"Celebration\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/rotation/holiday-season-rotation-system.json",
+          "keyword_hits": [
+            "birthday"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 42,
+              "text": "\"Birthday\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "data/system-map/k-kut-system-map.json",
+          "keyword_hits": [
+            "celebration"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 86,
+              "text": "\"reason\": \"Grief, remembrance, memorial, and celebration-of-life require approved intent-safe KK registry before public selection.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "birthday",
+          "source_file": "lib/intentApprovedRegistry.ts",
+          "keyword_hits": [
+            "celebration"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 34,
+              "text": "\"celebration-of-life\": sympathyRegistry as IntentRegistry,"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        }
+      ]
+    },
+    "encouragement_support": {
+      "source_pool_candidate_count": 39,
+      "target_internal_admin_candidates": 8,
+      "discovery_status": "ENOUGH_SOURCE_POOL_FOR_REVIEW",
+      "candidates": [
+        {
+          "theme": "encouragement_support",
+          "source_file": "lib/personalSeeds.ts",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "carry",
+            "through",
+            "strong",
+            "strength",
+            "keep going",
+            "you can",
+            "better days",
+            "hope",
+            "believe"
+          ],
+          "keyword_hit_count": 12,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 10,
+              "text": "question: \"What kind of love do you want the HUG to carry?\","
+            },
+            {
+              "line_number": 16,
+              "text": "question: \"What should this wedding music moment carry?\","
+            },
+            {
+              "line_number": 50,
+              "text": "paths: [\"Still choosing you\", \"Thank you for us\", \"Through everything\", \"Forever feeling\"],"
+            },
+            {
+              "line_number": 58,
+              "text": "encouragement: {"
+            },
+            {
+              "line_number": 59,
+              "text": "title: \"Encouragement\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/emotions/top-100-shared-emotions.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "carry",
+            "through",
+            "strength",
+            "hope",
+            "believe",
+            "resilience"
+          ],
+          "keyword_hit_count": 9,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 5,
+              "text": "\"rule\": \"Emotions are maintained as reusable shared targets. KKs map to emotions through interpretations, not title-only or one-term search.\","
+            },
+            {
+              "line_number": 15,
+              "text": "\"support\","
+            },
+            {
+              "line_number": 76,
+              "text": "\"display_name\": \"Being carried through\","
+            },
+            {
+              "line_number": 79,
+              "text": "\"carry\","
+            },
+            {
+              "line_number": 80,
+              "text": "\"support\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/theme-feed/theme-feed-system.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "carry",
+            "strong",
+            "strength",
+            "keep going",
+            "hope",
+            "believe"
+          ],
+          "keyword_hit_count": 9,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 7,
+              "text": "\"KK\": \"Primary buyer-match unit. KK labeling must carry most match weight.\","
+            },
+            {
+              "line_number": 8,
+              "text": "\"II\": \"Reusable delivery/matching object. One II may support many routes.\","
+            },
+            {
+              "line_number": 41,
+              "text": "\"mc_bot_role\": \"Ask what kind of dad moment this is: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad.\""
+            },
+            {
+              "line_number": 48,
+              "text": "\"mc_bot_role\": \"Guide gratitude, repair, mom support, warmth, and thank-you paths.\""
+            },
+            {
+              "line_number": 62,
+              "text": "\"mc_bot_role\": \"Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/sensory-expansion-queue.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "carry",
+            "through",
+            "strength",
+            "keep going",
+            "resilience"
+          ],
+          "keyword_hit_count": 8,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 36,
+              "text": "\"lane_id\": \"encouragement_strength\","
+            },
+            {
+              "line_number": 38,
+              "text": "\"purpose\": \"Support, courage, resilience, belief, and keep-going energy.\","
+            },
+            {
+              "line_number": 39,
+              "text": "\"source_strategy\": \"Search for strength, test, keep going, carry through, showing the way.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/intent-candidates/sympathy/action-candidates.json",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "through",
+            "strong",
+            "strength",
+            "hope",
+            "resilience"
+          ],
+          "keyword_hit_count": 7,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 18,
+              "text": "\"action_verb\": \"carry\","
+            },
+            {
+              "line_number": 23,
+              "text": "\"human_situation\": \"sympathy_grief_support_candidate\","
+            },
+            {
+              "line_number": 26,
+              "text": "\"source_section_or_paragraph\": \"- Candidate: Like a Star\\n  - Type: 3-term minimum idea\\n  - Term count: 3\\n  - Object strength: POSSIBLE_STANDALONE\\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGNED"
+            },
+            {
+              "line_number": 27,
+              "text": "\"meaning_context\": \"- Candidate: Like a Star\\n  - Type: 3-term minimum idea\\n  - Term count: 3\\n  - Object strength: POSSIBLE_STANDALONE\\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGNED\\n- Candidat"
+            },
+            {
+              "line_number": 29,
+              "text": "\"carry\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/localization/hug-copy.en.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "through",
+            "you can"
+          ],
+          "keyword_hit_count": 5,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 9,
+              "text": "\"timed_delivery\": \"You can choose when the HUG should be prepared for delivery.\""
+            },
+            {
+              "line_number": 31,
+              "text": "\"encouragement\": \"Encouragement\","
+            },
+            {
+              "line_number": 53,
+              "text": "\"checkout_support\": {"
+            },
+            {
+              "line_number": 55,
+              "text": "\"no_download\": \"This HUG is delivered through a private link, not a public download.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/rotation/holiday-season-rotation-system.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "carry",
+            "through",
+            "hope"
+          ],
+          "keyword_hit_count": 5,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 6,
+              "text": "\"core_rule\": \"Holiday promos are not one-off hacks. They rotate through a governed seasonal system.\","
+            },
+            {
+              "line_number": 45,
+              "text": "\"Encouragement\","
+            },
+            {
+              "line_number": 48,
+              "text": "\"Hope\","
+            },
+            {
+              "line_number": 73,
+              "text": "\"kk_metadata\": \"KK labels must carry most buyer-match weight and must be robust.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "lib/holidaySeeds.ts",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "hope",
+            "believe",
+            "resilience"
+          ],
+          "keyword_hit_count": 5,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 4,
+              "text": "line: \"Begin again with hope, reflection, and renewal.\","
+            },
+            {
+              "line_number": 5,
+              "text": "question: \"What kind of beginning should this HUG carry?\","
+            },
+            {
+              "line_number": 6,
+              "text": "paths: [\"Fresh start\", \"Hope\", \"Reflection\", \"New beginning\", \"I believe in this year\"],"
+            },
+            {
+              "line_number": 12,
+              "text": "paths: [\"Courage\", \"Service\", \"Justice\", \"Hope\", \"Shared humanity\"],"
+            },
+            {
+              "line_number": 17,
+              "text": "question: \"What kind of love should this HUG carry?\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/4pe/rules/kkr-emotional-radiation-map.json",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "through",
+            "hope"
+          ],
+          "keyword_hit_count": 4,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 37,
+              "text": "\"carry_through\","
+            },
+            {
+              "line_number": 65,
+              "text": "\"support\","
+            },
+            {
+              "line_number": 78,
+              "text": "\"quiet_support\","
+            },
+            {
+              "line_number": 88,
+              "text": "\"comfort_or_support_action\","
+            },
+            {
+              "line_number": 109,
+              "text": "\"support_without_fixing\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/depth-standards/min-8-theme-depth.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "strong",
+            "hope"
+          ],
+          "keyword_hit_count": 4,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 6,
+              "text": "\"strong_theme_floor\": 12,"
+            },
+            {
+              "line_number": 15,
+              "text": "\"encouragement-hope-hang-tough\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/income-fill/income-fill-sprint-01-seed.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "resilience"
+          ],
+          "keyword_hit_count": 4,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 18,
+              "text": "\"theme\": \"encouragement_support\","
+            },
+            {
+              "line_number": 22,
+              "text": "\"priority_reason\": \"Broad use case for care, resilience, support, and everyday HUG sending.\""
+            },
+            {
+              "line_number": 29,
+              "text": "\"priority_reason\": \"Broad, safer emotional lane with gift and support use cases.\""
+            },
+            {
+              "line_number": 66,
+              "text": "\"locked_summary\": \"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/mc-bot/mc-bot-review-packet.json",
+          "keyword_hits": [
+            "support",
+            "strong",
+            "strength",
+            "you can"
+          ],
+          "keyword_hit_count": 4,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 29,
+              "text": "\"mc_bot_role\": \"Help buyers choose the kind of dad moment: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad.\","
+            },
+            {
+              "line_number": 32,
+              "text": "\"Is this more thank you, strength, missing him, or hard to say?\","
+            },
+            {
+              "line_number": 35,
+              "text": "\"You can hear it first. Then send the one that feels right.\""
+            },
+            {
+              "line_number": 43,
+              "text": "\"Here are the strongest fits first.\","
+            },
+            {
+              "line_number": 56,
+              "text": "\"You can go back to all Holiday HUGs anytime.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/4pe/rules/hug-tug-classification-rules.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 7,
+              "text": "\"meaning\": \"Warmth, care, gratitude, love, comfort, support, appreciation, celebration, tenderness.\","
+            },
+            {
+              "line_number": 15,
+              "text": "\"support\","
+            },
+            {
+              "line_number": 22,
+              "text": "\"encouragement\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/4pe/rules/kkr-action-intent-rules.json",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "through"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 31,
+              "text": "\"carry\","
+            },
+            {
+              "line_number": 32,
+              "text": "\"support\","
+            },
+            {
+              "line_number": 67,
+              "text": "\"baby we're through\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/fathers-day/fathers-day-more-router.json",
+          "keyword_hits": [
+            "support",
+            "strong",
+            "strength"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 24,
+              "text": "\"id\": \"dad-strength\","
+            },
+            {
+              "line_number": 25,
+              "text": "\"public_label\": \"Strength / Life Lessons\","
+            },
+            {
+              "line_number": 52,
+              "text": "\"id\": \"dad-support\","
+            },
+            {
+              "line_number": 53,
+              "text": "\"public_label\": \"Support / I’m Here\","
+            },
+            {
+              "line_number": 197,
+              "text": "\"role\": \"Strongest 3-5 options only.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/audits/full-theme-stock-audit.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 10,
+              "text": "\"internal_rule\": \"Internal-ready records may support admin search and review but not public routes or Stripe.\""
+            },
+            {
+              "line_number": 96,
+              "text": "\"theme\": \"encouragement_support\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/per-user-caring-history-doctrine.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "you can"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 48,
+              "text": "\"occasion_or_situation\": \"anniversary | apology | birthday | thank_you | grief_held | encouragement | other\","
+            },
+            {
+              "line_number": 78,
+              "text": "\"You can keep this gentle.\","
+            },
+            {
+              "line_number": 79,
+              "text": "\"You can change the feeling anytime.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/plans/minimum-8-admin-candidate-plan.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 51,
+              "text": "\"theme\": \"encouragement_support\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/holiday-kks/mothers-day-thank-you-kks.json",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "strong"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-005.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-006.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-007.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-008.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-009.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-010.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-011.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-013.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-014.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-015.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-016.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-017.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-018.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-019.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-020.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 718,
+              "text": "\"intensity\": \"medium_to_strong\","
+            },
+            {
+              "line_number": 749,
+              "text": "\"intensity\": \"medium_to_strong\","
+            },
+            {
+              "line_number": 780,
+              "text": "\"intensity\": \"medium_to_strong\","
+            },
+            {
+              "line_number": 811,
+              "text": "\"intensity\": \"medium_to_strong\","
+            },
+            {
+              "line_number": 842,
+              "text": "\"intensity\": \"medium_to_strong\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/intent-candidates/sympathy/action-candidate-report.md",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "through"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 9,
+              "text": "| 1 | carry | dark_days | 10 | help_through_darkness, sustain, lift_burden | none | - Candidate: Like a Star | carry, through, dark, days | kk-objectified-ii-ci-review.md |"
+            },
+            {
+              "line_number": 10,
+              "text": "| 2 | endure | dark_days | 10 | survive, continue, remain | none | - Candidate: Like a Star | through, dark, day | kk-objectified-ii-ci-review.md |"
+            },
+            {
+              "line_number": 11,
+              "text": "| 3 | walk_beside | hard_road | 10 | presence, companionship, support_on_the_road | none | - Candidate: Like a River | walk, beside, road, lead | kk-objectified-ii-ci-review.md |"
+            },
+            {
+              "line_number": 13,
+              "text": "| 5 | walk_beside | dark_days | 10 | presence, companionship, support_on_the_road | none | - Candidate: Like a Star | walk, beside, always | kk-objectified-ii-ci-review.md |"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/intent-candidates/sympathy/shared-emotion-map-report.md",
+          "keyword_hits": [
+            "support",
+            "carry",
+            "resilience"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 7,
+              "text": "| 1 | carry | dark_days | being_carried, comfort_after_loss, support, resilience, continuing_love, patience | sympathy, grief, memorial | - Candidate: Like a Star |"
+            },
+            {
+              "line_number": 8,
+              "text": "| 2 | endure | dark_days | being_carried, comfort_after_loss, support, resilience, continuing_love, patience, remembering_a_life, continuing_bond, legacy, missing_someone | sympathy, grief, memorial | - Candidate: Like a Star |"
+            },
+            {
+              "line_number": 9,
+              "text": "| 3 | walk_beside | hard_road | walking_beside, support, quiet_presence, loyalty | support | - Candidate: Like a River |"
+            },
+            {
+              "line_number": 10,
+              "text": "| 4 | remember | dark_days | being_carried, comfort_after_loss, support, resilience, continuing_love, patience, remembering_a_life, continuing_bond, legacy, missing_someone | sympathy, grief, memorial | - Candidate: Like a Star |"
+            },
+            {
+              "line_number": 11,
+              "text": "| 5 | walk_beside | dark_days | being_carried, comfort_after_loss, support, resilience, continuing_love, patience, walking_beside, quiet_presence, loyalty, remembering_a_life, continuing_bond, legacy, missing_someone | sympathy, grief, memorial | - Candidate: Like a Star |"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "public/audio/kleigh/guide-final/manifest.json",
+          "keyword_hits": [
+            "support",
+            "strong",
+            "you can"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [
+            "/audio/kleigh/guide-final/01-after-checkout-link.m4a",
+            "/audio/kleigh/guide-final/02-back-one.m4a",
+            "/audio/kleigh/guide-final/03-best-hug.m4a",
+            "/audio/kleigh/guide-final/04-checkout-is-ready.m4a",
+            "/audio/kleigh/guide-final/05-checkout-not-open.m4a",
+            "/audio/kleigh/guide-final/06-checkout-opens.m4a",
+            "/audio/kleigh/guide-final/07-choose-feel.m4a",
+            "/audio/kleigh/guide-final/08-demo-not-play.m4a",
+            "/audio/kleigh/guide-final/09-good-choice-selected.m4a",
+            "/audio/kleigh/guide-final/10-good-choice.m4a",
+            "/audio/kleigh/guide-final/11-good-choose-calm-peace.m4a",
+            "/audio/kleigh/guide-final/12-good-find-appreciated.m4a",
+            "/audio/kleigh/guide-final/13-good-soft-gentle.m4a",
+            "/audio/kleigh/guide-final/14-good-strongest.m4a",
+            "/audio/kleigh/guide-final/15-good-let-s-find.m4a",
+            "/audio/kleigh/guide-final/16-good.m4a",
+            "/audio/kleigh/guide-final/17-if-you-want-to-send-today.m4a",
+            "/audio/kleigh/guide-final/18-i-m-not-sure.m4a",
+            "/audio/kleigh/guide-final/19-let-s-start-over.m4a",
+            "/audio/kleigh/guide-final/20-listen-first.m4a"
+          ],
+          "snippets": [
+            {
+              "line_number": 7,
+              "text": "\"purpose\": \"K-KUT / HUG guided user assistance and sales support\","
+            },
+            {
+              "line_number": 101,
+              "text": "\"id\": \"good-strongest\","
+            },
+            {
+              "line_number": 102,
+              "text": "\"title\": \"Good Strongest\","
+            },
+            {
+              "line_number": 103,
+              "text": "\"file\": \"/audio/kleigh/guide-final/14-good-strongest.m4a\","
+            },
+            {
+              "line_number": 242,
+              "text": "\"title\": \"You Can Send\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json",
+          "keyword_hits": [
+            "support",
+            "strong"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 32,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 68,
+              "text": "\"Are the bad use cases strong enough?\","
+            },
+            {
+              "line_number": 98,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 134,
+              "text": "\"Are the bad use cases strong enough?\","
+            },
+            {
+              "line_number": 163,
+              "text": "\"support recognition\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/sensory-emotional-records.generated.json",
+          "keyword_hits": [
+            "support",
+            "carry"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 255,
+              "text": "\"This could carry the moment.\""
+            },
+            {
+              "line_number": 424,
+              "text": "\"family support\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/intent-candidates/sympathy/candidate-report.md",
+          "keyword_hits": [
+            "through",
+            "hope"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 17,
+              "text": "| 7 | HOLD | 093 - Emily Hope - CRUSH ON CHRISTMAS — KK 1 | hope | none | k_kuts.auto.csv |"
+            },
+            {
+              "line_number": 18,
+              "text": "| 8 | HOLD | 093 - Emily Hope - CRUSH ON CHRISTMAS — KK 2 | hope | none | k_kuts.auto.csv |"
+            },
+            {
+              "line_number": 19,
+              "text": "| 9 | HOLD | 093 - Emily Hope - CRUSH ON CHRISTMAS — KK 3 | hope | none | k_kuts.auto.csv |"
+            },
+            {
+              "line_number": 20,
+              "text": "| 10 | HOLD | 093 - Emily Hope - CRUSH ON CHRISTMAS — KK 4 | hope | none | k_kuts.auto.csv |"
+            },
+            {
+              "line_number": 21,
+              "text": "| 11 | HOLD | 093 - Emily Hope - CRUSH ON CHRISTMAS — KK 5 | hope | none | k_kuts.auto.csv |"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/intent-candidates/sympathy/candidates.json",
+          "keyword_hits": [
+            "through",
+            "hope"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 426,
+              "text": "\"title\": \"093 - Emily Hope - CRUSH ON CHRISTMAS — KK 1\","
+            },
+            {
+              "line_number": 432,
+              "text": "\"kut_title\": \"093 - Emily Hope - CRUSH ON CHRISTMAS — KK 1\","
+            },
+            {
+              "line_number": 435,
+              "text": "\"source_master_filename\": \"093 - Emily Hope - CRUSH ON CHRISTMAS.mp3\","
+            },
+            {
+              "line_number": 449,
+              "text": "\"delivered_url_or_path\": \"https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/093 - Emily Hope - CRUSH ON CHRISTMAS.mp3\","
+            },
+            {
+              "line_number": 460,
+              "text": "\"title\": \"093 - Emily Hope - CRUSH ON CHRISTMAS — KK 1\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/system-map/kkr-dup-level-xml-armed-doctrine.json",
+          "keyword_hits": [
+            "through",
+            "strong"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 8,
+              "text": "\"B_if_tie_no_change\": \"If two same-level candidates tie, no forced change is required. Keep both internally or hold until stronger evidence appears.\","
+            },
+            {
+              "line_number": 56,
+              "text": "\"Do not let mKs enter current K-KUT buyer flow through this doctrine.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "lib/tugMcBotScript.ts",
+          "keyword_hits": [
+            "strong",
+            "you can"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "/audio/mc-bot/tug/script-whole-2.m4a"
+          ],
+          "snippets": [
+            {
+              "line_number": 43,
+              "text": "line: \"Start here. This is the strongest first K-KUT recommendation.\","
+            },
+            {
+              "line_number": 61,
+              "text": "line: \"You can choose it now. Buying opens only after final audio approval.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/4pe/rules/user-intent-capture-rules.json",
+          "keyword_hits": [
+            "support"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 15,
+              "text": "\"support_clicked\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/4pe-biz-msc/pix-reprocess-level-set.json",
+          "keyword_hits": [
+            "through"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 23,
+              "text": "\"fulfill through DP gate after payment\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/bic-routes/routes.json",
+          "keyword_hits": [
+            "support"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 85,
+              "text": "\"Gratitude / Support\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/delivery/dp-ci-delivery-gate.json",
+          "keyword_hits": [
+            "through"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 4,
+              "text": "\"rule\": \"Incoming user requests cue DP selection. Payment finalizes DP. DP fulfillment proceeds through QA/QC and proof.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/candidates/thank-you-gratitude-candidates.json",
+          "keyword_hits": [
+            "support"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 55,
+              "text": "\"support\","
+            },
+            {
+              "line_number": 70,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 142,
+              "text": "\"support\","
+            },
+            {
+              "line_number": 157,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 228,
+              "text": "\"support remembered\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/localization/hug-languages.json",
+          "keyword_hits": [
+            "support"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 14,
+              "text": "\"supports_romance\": true,"
+            },
+            {
+              "line_number": 15,
+              "text": "\"supports_grief\": true,"
+            },
+            {
+              "line_number": 16,
+              "text": "\"supports_apology\": true,"
+            },
+            {
+              "line_number": 17,
+              "text": "\"supports_holiday\": true,"
+            },
+            {
+              "line_number": 27,
+              "text": "\"supports_romance\": true,"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/pricing/global-pricing-tiers.json",
+          "keyword_hits": [
+            "support"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 4,
+              "text": "\"first_version_checkout_rule\": \"No automatic live checkout price changes until country, currency, Stripe, support, and abuse controls are approved.\","
+            },
+            {
+              "line_number": 13,
+              "text": "\"description\": \"Default K-KUT / HUG pricing for standard checkout and unknown or unsupported regions.\","
+            },
+            {
+              "line_number": 46,
+              "text": "\"description\": \"Manual-only sponsored, hardship, partner, nonprofit, grief, memorial, or donor-supported access.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/publication-bridge/public-option-records.seed.json",
+          "keyword_hits": [
+            "support"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 10,
+              "text": "\"interpretation_summary\": \"A warm personal HUG for love, care, thanks, support, or a simple human moment.\","
+            },
+            {
+              "line_number": 14,
+              "text": "\"situation\": \"personal care, thanks, support, or everyday connection\""
+            },
+            {
+              "line_number": 16,
+              "text": "\"positive_connotations\": [\"warmth\", \"care\", \"support\", \"appreciation\", \"human connection\"],"
+            },
+            {
+              "line_number": 20,
+              "text": "\"buyer_scenario_ids\": [\"thank-you\", \"thinking-of-you\", \"support\", \"just-because\"],"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "lib/gpex/assuranceSti.ts",
+          "keyword_hits": [
+            "through"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 22,
+              "text": "\"At its core, GPEx is about love — love shown through clear work, fair process, useful tools, honest permission, and respect for the person using the system.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "public/mothers-day/thank-you/kks/manifest.json",
+          "keyword_hits": [
+            "through"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks/thank-you-kk1.mp3",
+            "/mothers-day/thank-you/kks/thank-you-kk2.mp3",
+            "/mothers-day/thank-you/kks/thank-you-kk3.mp3",
+            "/mothers-day/thank-you/kks/thank-you-kk4.mp3",
+            "/mothers-day/thank-you/kks/thank-you-kk5.mp3",
+            "/mothers-day/thank-you/kks/thank-you-kk6.mp3",
+            "/mothers-day/thank-you/kks/thank-you-kk7.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 4,
+              "text": "\"product_rule\": \"One K-KUT per purchase. Buyers may purchase multiple K-KUTs through separate purchases.\","
+            },
+            {
+              "line_number": 30,
+              "text": "\"section\": \"Intro through Chorus 1\","
+            },
+            {
+              "line_number": 42,
+              "text": "\"section\": \"Verse 2B through Outro\","
+            },
+            {
+              "line_number": 48,
+              "text": "\"section\": \"Chorus 2 through Outro\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "encouragement_support",
+          "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
+          "keyword_hits": [
+            "through"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk3.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk4.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk5.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk6.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-kk7.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-intro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-004.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 5,
+              "text": "\"purchase_rule\": \"One K-KUT per purchase. Buyers may purchase multiple K-KUTs through separate purchases.\","
+            },
+            {
+              "line_number": 49,
+              "text": "\"section\": \"Intro through Chorus 1\","
+            },
+            {
+              "line_number": 71,
+              "text": "\"section\": \"V2B through Outro\","
+            },
+            {
+              "line_number": 82,
+              "text": "\"section\": \"Chorus 2 through Outro\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        }
+      ]
+    },
+    "friendship": {
+      "source_pool_candidate_count": 20,
+      "target_internal_admin_candidates": 8,
+      "discovery_status": "ENOUGH_SOURCE_POOL_FOR_REVIEW",
+      "candidates": [
+        {
+          "theme": "friendship",
+          "source_file": "data/emotions/top-100-shared-emotions.json",
+          "keyword_hits": [
+            "friend",
+            "friendship",
+            "together",
+            "laugh"
+          ],
+          "keyword_hit_count": 4,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 537,
+              "text": "\"emotion_id\": \"friendship\","
+            },
+            {
+              "line_number": 538,
+              "text": "\"display_name\": \"Friendship\","
+            },
+            {
+              "line_number": 545,
+              "text": "\"friend\","
+            },
+            {
+              "line_number": 1364,
+              "text": "\"friend\","
+            },
+            {
+              "line_number": 1554,
+              "text": "\"laugh\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/intent-candidates/sympathy/action-candidates.json",
+          "keyword_hits": [
+            "friend",
+            "best friend",
+            "always listening",
+            "fun along the way"
+          ],
+          "keyword_hit_count": 4,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 433,
+              "text": "\"title_backend_label\": \"- Candidate: Best Friend\","
+            },
+            {
+              "line_number": 435,
+              "text": "\"source_section_or_paragraph\": \"- Candidate: Best Friend\\n  - Type: 2-term phrase\\n  - Term count: 2\\n  - Object strength: NEEDS_CONTEXT_REVIEW\\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGN"
+            },
+            {
+              "line_number": 436,
+              "text": "\"meaning_context\": \"- Candidate: Best Friend\\n  - Type: 2-term phrase\\n  - Term count: 2\\n  - Object strength: NEEDS_CONTEXT_REVIEW\\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGNED\\n- Candid"
+            },
+            {
+              "line_number": 441,
+              "text": "\"friend\""
+            },
+            {
+              "line_number": 495,
+              "text": "\"supporting_friend\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/sensory-expansion-queue.json",
+          "keyword_hits": [
+            "friend",
+            "friendship",
+            "always listening"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 45,
+              "text": "\"lane_id\": \"friendship_seen\","
+            },
+            {
+              "line_number": 47,
+              "text": "\"purpose\": \"Friendship, being seen, listening, shared history, and everyday care.\","
+            },
+            {
+              "line_number": 48,
+              "text": "\"source_strategy\": \"Search for friend, always listening, shared care, warm presence.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/rotation/holiday-season-rotation-system.json",
+          "keyword_hits": [
+            "friend",
+            "friendship",
+            "together"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 49,
+              "text": "\"Friendship\","
+            },
+            {
+              "line_number": 69,
+              "text": "\"Customer delivery audio requires padding + Twinkle together.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "lib/holidaySeeds.ts",
+          "keyword_hits": [
+            "friend",
+            "friendship",
+            "together"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 28,
+              "text": "line: \"Send luck, joy, friendship, celebration, and warmth.\","
+            },
+            {
+              "line_number": 30,
+              "text": "paths: [\"Good luck\", \"Joy\", \"Friendship\", \"Playful\", \"Celebrate\"],"
+            },
+            {
+              "line_number": 161,
+              "text": "line: \"Send gratitude, family warmth, home, memory, and togetherness.\","
+            },
+            {
+              "line_number": 163,
+              "text": "paths: [\"Thankful for you\", \"Family warmth\", \"Home\", \"Togetherness\", \"Blessing\"],"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "lib/personalSeeds.ts",
+          "keyword_hits": [
+            "friend",
+            "friendship",
+            "best friend"
+          ],
+          "keyword_hit_count": 3,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 124,
+              "text": "friendship: {"
+            },
+            {
+              "line_number": 125,
+              "text": "title: \"Friendship\","
+            },
+            {
+              "line_number": 126,
+              "text": "question: \"What kind of friendship moment is this?\","
+            },
+            {
+              "line_number": 127,
+              "text": "line: \"For the friends who stayed, helped, and mattered.\","
+            },
+            {
+              "line_number": 128,
+              "text": "paths: [\"Thanks for being there\", \"I’ve got you\", \"Best friend energy\", \"Old friends\"],"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/depth-standards/min-8-theme-depth.json",
+          "keyword_hits": [
+            "friend",
+            "friendship"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 17,
+              "text": "\"friendship-best-friend-family\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/fathers-day/fathers-day-more-router.json",
+          "keyword_hits": [
+            "together",
+            "laugh"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 13,
+              "text": "\"Customer-ready delivery audio requires padding + Twinkle together.\""
+            },
+            {
+              "line_number": 108,
+              "text": "\"laugh\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/audits/full-theme-stock-audit.json",
+          "keyword_hits": [
+            "friend",
+            "friendship"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 85,
+              "text": "\"theme\": \"friendship\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/income-fill/income-fill-sprint-01-seed.json",
+          "keyword_hits": [
+            "friend",
+            "friendship"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 25,
+              "text": "\"theme\": \"friendship\","
+            },
+            {
+              "line_number": 66,
+              "text": "\"locked_summary\": \"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/plans/minimum-8-admin-candidate-plan.json",
+          "keyword_hits": [
+            "friend",
+            "friendship"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 87,
+              "text": "\"theme\": \"friendship\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/sensory-emotional-records.generated.json",
+          "keyword_hits": [
+            "friend",
+            "friendship"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 74,
+              "text": "\"unclear friendship\""
+            },
+            {
+              "line_number": 160,
+              "text": "\"unclear friendship\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/intent-candidates/sympathy/action-candidate-report.md",
+          "keyword_hits": [
+            "friend",
+            "best friend"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 14,
+              "text": "| 6 | sit_with | what_remains | 10 | listen, stay_present, make_less_alone | none | - Candidate: Best Friend | listen, listening, always, friend | kk-objectified-ii-ci-review.md |"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/intent-candidates/sympathy/shared-emotion-map-report.md",
+          "keyword_hits": [
+            "friend",
+            "best friend"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 12,
+              "text": "| 6 | sit_with | what_remains | continuing_love, resilience, patience, support, quiet_presence, being_heard, comfort_after_loss, supporting_friend, remembering_a_life, continuing_bond, legacy, missing_someone | sympathy, grief, memorial | - Candidate: Best Friend |"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/theme-feed/theme-feed-system.json",
+          "keyword_hits": [
+            "friend",
+            "together"
+          ],
+          "keyword_hit_count": 2,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 55,
+              "text": "\"mc_bot_role\": \"Narrow age, tone, relationship, fun vs heartfelt, family vs friend.\""
+            },
+            {
+              "line_number": 62,
+              "text": "\"mc_bot_role\": \"Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks.\""
+            },
+            {
+              "line_number": 118,
+              "text": "\"Customer-ready delivery audio requires padding + Twinkle together.\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/fathers-day/no-mystery-kk-structure-standard.json",
+          "keyword_hits": [
+            "together"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 5,
+              "text": "\"rule\": \"A K-KUT / KK is one natural song section. A KK-Kombo is two or more contiguous KKs joined together.\","
+            },
+            {
+              "line_number": 11,
+              "text": "\"combo_definition\": \"two or more KKs joined together\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/candidates/thank-you-gratitude-candidates.json",
+          "keyword_hits": [
+            "friend"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 70,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 157,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 418,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 505,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 853,
+              "text": "\"friend support\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/per-user-caring-history-doctrine.json",
+          "keyword_hits": [
+            "friend"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [],
+          "snippets": [
+            {
+              "line_number": 47,
+              "text": "\"relationship_lane\": \"partner | parent | child | friend | mentor | self | family | other\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json",
+          "keyword_hits": [
+            "friend"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 32,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 98,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 296,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 362,
+              "text": "\"friend support\""
+            },
+            {
+              "line_number": 626,
+              "text": "\"friend support\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
+        {
+          "theme": "friendship",
+          "source_file": "data/ii-delivery-registry/romance-reusable-ii-records.json",
+          "keyword_hits": [
+            "together"
+          ],
+          "keyword_hit_count": 1,
+          "audio_hints": [
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 65,
+              "text": "\"law\": \"front_padding_and_back_padding_and_twinkle_travel_together\","
+            },
+            {
+              "line_number": 109,
+              "text": "\"law\": \"front_padding_and_back_padding_and_twinkle_travel_together\","
+            },
+            {
+              "line_number": 153,
+              "text": "\"law\": \"front_padding_and_back_padding_and_twinkle_travel_together\","
+            },
+            {
+              "line_number": 169,
+              "text": "\"Padding and Twinkle travel together for all customer delivery II records.\""
+            },
+            {
+              "line_number": 172,
+              "text": "\"twinkle_and_padding_travel_together\": true,"
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        }
+      ]
+    }
+  },
+  "locked_summary": "This is source discovery only. It does not create approved candidates, routes, Stripe links, or buyer-facing records."
+}
