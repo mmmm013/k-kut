@@ -17,7 +17,12 @@ type BridgeRecord = {
   public_route: string;
 };
 
+const PUBLIC_OPTIONS_READY =
+  process.env.NEXT_PUBLIC_KKR_PUBLIC_OPTIONS_READY === "true";
+
 function loadRecord(publicRoute: string): BridgeRecord | null {
+  if (!PUBLIC_OPTIONS_READY) return null;
+
   const filePath = path.join(
     process.cwd(),
     "data/publication-bridge/public-option-records.generated.json"
@@ -68,18 +73,29 @@ export default function ApprovedPersonalRoutePage({
           </p>
 
           <p className="mt-4 max-w-3xl text-sm leading-6 text-white/68">
-            This page shows approved HUG options for this exact personal route.
-            No raw inventory, no generic personal cards, and no mixed-route options appear here.
+            This page only shows HUG options after route fit, source diversity,
+            emotional intent, and audio readiness pass review.
           </p>
         </header>
 
         {!record ? (
           <section className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-            <p className="text-sm font-bold leading-7 text-white/70">
-              This route is being prepared. Return to Find to browse approved HUG options.
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-[#FFD54F]">
+              KKr review active
             </p>
+
+            <h2 className="mt-3 text-2xl font-black">
+              This route is being reviewed before public release.
+            </h2>
+
+            <p className="mt-3 text-sm font-bold leading-7 text-white/70">
+              K-KUT is holding this buyer route until the exact public audio,
+              source diversity, and emotional match are confirmed. No checkout
+              is shown until the route is approved.
+            </p>
+
             <Link className="mt-6 inline-flex font-black text-[#FFD54F]" href="/find">
-              Back to approved HUG options
+              Back to HUG guide
             </Link>
           </section>
         ) : (
@@ -131,7 +147,7 @@ export default function ApprovedPersonalRoutePage({
 
         <footer className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 text-sm leading-6 text-white/62">
           <Link className="font-black text-[#FFD54F]" href="/find">
-            Back to approved HUG options
+            Back to HUG guide
           </Link>
         </footer>
       </section>
