@@ -17,6 +17,7 @@ const audits = [
   "scripts/audit-gpex-mk-flagship-gpmd-carveout-doctrine.mjs",
   "scripts/audit-gpex-universal-upgrade-propagation-doctrine.mjs",
   "scripts/audit-gpmc-pix-sensory-emotional-doctrine.mjs",
+  "scripts/audit-income-fill-sprint-01-internal-candidates.mjs",
   "scripts/audit-income-fill-sprint-01-source-pool.mjs",
   "scripts/audit-income-fill-sprint-01-seed.mjs",
   "scripts/audit-minimum-8-admin-candidate-plan.mjs",
