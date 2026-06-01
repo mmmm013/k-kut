@@ -1,0 +1,121 @@
+{
+  "system": "KKr-BIZ-MSC Delivery Proof Checklist",
+  "status": "active",
+  "locked_rule": "No PIX-derived audio object may be displayed, sold, sent, delivered, fulfilled, routed to checkout, or treated as receiver-ready unless Delivery Proof is complete.",
+  "scope": [
+    "KKs",
+    "K-KUTs",
+    "mKs / mini-KUTs",
+    "LFLs / LineFeel objects",
+    "line-pairs",
+    "trios",
+    "hooks",
+    "verses",
+    "choruses",
+    "bridges",
+    "outros",
+    "II renders",
+    "HUG renders",
+    "private review renders",
+    "future KK derivatives",
+    "past approved items when reused, republished, resent, or repackaged"
+  ],
+  "public_flow_note": "mKs remain banned from public buyer flow unless explicitly re-approved by owner. This Delivery Proof standard still applies internally to any mK/LFL/derivative that is rendered, reviewed, archived, delivered privately, reused, or later reconsidered.",
+  "clarification": {
+    "bridge_term": "Bridge was only the working label for one Thank You section candidate. The Delivery Proof and render rules are not limited to structural Bridges.",
+    "universal_application": "The same Delivery Proof standard applies to every PIX-derived audio object regardless of structure label or derivative type."
+  },
+  "delivery_proof_required": [
+    {
+      "id": "source_identity_confirmed",
+      "required": true,
+      "description": "Actual PIX/source family is confirmed."
+    },
+    {
+      "id": "campaign_tag_separated",
+      "required": true,
+      "description": "Campaign use is separated from true source identity and does not trap reuse."
+    },
+    {
+      "id": "recipient_sentiment_situation_fit",
+      "required": true,
+      "description": "Recipient, sentiment, situation, emotional weight, and delivery shape are reviewed."
+    },
+    {
+      "id": "wrong_language_checked",
+      "required": true,
+      "description": "Holiday, recipient, romance, grief, or other wrong-fit language is checked."
+    },
+    {
+      "id": "start_point_approved",
+      "required": true,
+      "description": "Start point is approved by human listening."
+    },
+    {
+      "id": "end_point_approved",
+      "required": true,
+      "description": "End point is approved by human listening and musical sustain is not cut incorrectly."
+    },
+    {
+      "id": "final_note_completion",
+      "required": true,
+      "description": "Music/vocal final note is allowed to complete correctly before treatment."
+    },
+    {
+      "id": "content_end_fade",
+      "required": true,
+      "description": "KK/mK/LFL/derivative content fades at its own final note/end before Twinkle."
+    },
+    {
+      "id": "tail_space_before_twinkle",
+      "required": true,
+      "description": "Tail space exists after content fade and before Twinkle."
+    },
+    {
+      "id": "twinkle_present_when_required",
+      "required": true,
+      "description": "Twinkle/end treatment is present where required for II/HUG delivery."
+    },
+    {
+      "id": "twinkle_signature_level",
+      "required": true,
+      "description": "Twinkle is low signature-level and must not compete with the content."
+    },
+    {
+      "id": "final_render_not_raw_capture",
+      "required": true,
+      "description": "Public/review/checkout/send audio points to final DP render, not raw micro-capture."
+    },
+    {
+      "id": "human_approval_recorded",
+      "required": true,
+      "description": "Human approval status and notes are recorded in proof data."
+    },
+    {
+      "id": "public_checkout_send_gated",
+      "required": true,
+      "description": "Display, checkout, send, and fulfillment are gated to approved Delivery Proof renders only."
+    }
+  ],
+  "default_render_standard": {
+    "lead_padding_seconds": 1.35,
+    "content_end_fade_required": true,
+    "content_end_fade_seconds_default": 0.60,
+    "tail_space_before_twinkle_required": true,
+    "tail_padding_before_twinkle_seconds_default": 0.75,
+    "twinkle_volume_default": 0.125,
+    "raw_micro_capture_public_allowed": false
+  },
+  "approval_statuses": [
+    "raw_only",
+    "review_render_created",
+    "needs_start_adjustment",
+    "needs_end_adjustment",
+    "needs_render_treatment_adjustment",
+    "delivery_proof_complete",
+    "approved_for_display",
+    "approved_for_checkout",
+    "approved_for_send",
+    "blocked"
+  ]
+}
