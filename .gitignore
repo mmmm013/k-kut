@@ -59,3 +59,6 @@ recovery-review/
 
 # Internal review/proof audio; never commit/deploy.
 ops/
+
+# Local emergency backups
+local-backups/
