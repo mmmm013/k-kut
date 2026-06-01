@@ -17,6 +17,8 @@ const audits = [
   "scripts/audit-gpex-mk-flagship-gpmd-carveout-doctrine.mjs",
   "scripts/audit-gpex-universal-upgrade-propagation-doctrine.mjs",
   "scripts/audit-gpmc-pix-sensory-emotional-doctrine.mjs",
+  "scripts/audit-thank-you-gratitude-human-review-queue.mjs",
+  "scripts/audit-kkr-dup-level-xml-armed-doctrine.mjs",
   "scripts/audit-thank-you-gratitude-sensory-candidates.mjs",
   "scripts/audit-thank-you-fixture-doctrine.mjs",
   "scripts/audit-approved-stripe-links-quiet.mjs"
