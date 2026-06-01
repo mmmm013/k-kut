@@ -1,0 +1,168 @@
+{
+  "system": "K-KUT Sentiment Match Taxonomy",
+  "goal": "Help users share personal sentiments in a new way by matching recipient, meaning, situation, emotional weight, and music moment.",
+  "public_experience": {
+    "step_1": "Who is this for?",
+    "step_2": "What do you want them to receive?",
+    "step_3": "What situation is this for?",
+    "step_4": "How should it land?",
+    "step_5": "Hear matched HUG options"
+  },
+  "recipient_lanes": [
+    "mom",
+    "dad",
+    "partner",
+    "spouse",
+    "friend",
+    "child",
+    "family",
+    "mentor",
+    "someone_i_miss",
+    "someone_i_hurt",
+    "someone_grieving",
+    "not_sure"
+  ],
+  "sentiment_lanes": [
+    "gratitude",
+    "love",
+    "comfort",
+    "encouragement",
+    "celebration",
+    "apology",
+    "repair",
+    "missing_you",
+    "devotion",
+    "respect",
+    "legacy",
+    "remembrance",
+    "support",
+    "understanding",
+    "forgiveness"
+  ],
+  "situation_lanes": [
+    "thank_you",
+    "birthday",
+    "anniversary",
+    "wedding",
+    "fathers_day",
+    "mothers_day",
+    "hard_season",
+    "life_support",
+    "distance",
+    "reconnect",
+    "grief",
+    "new_love",
+    "long_love",
+    "achievement",
+    "just_because"
+  ],
+  "emotional_weights": [
+    "soft",
+    "simple",
+    "warm",
+    "deep",
+    "bright",
+    "strong",
+    "playful",
+    "healing",
+    "ceremonial"
+  ],
+  "public_card_shapes": [
+    {
+      "slot": "best_first_match",
+      "label": "Best first match",
+      "purpose": "The safest strongest match for the chosen sentiment."
+    },
+    {
+      "slot": "softer_option",
+      "label": "Softer option",
+      "purpose": "Less intense, easier to receive."
+    },
+    {
+      "slot": "more_complete_option",
+      "label": "More complete option",
+      "purpose": "A fuller emotional arc or longer music moment."
+    },
+    {
+      "slot": "more_direct_option",
+      "label": "More direct option",
+      "purpose": "Clearer sentiment with less interpretation."
+    },
+    {
+      "slot": "unexpected_but_strong",
+      "label": "Unexpected but strong",
+      "purpose": "A non-obvious match that still fits the user’s intent."
+    }
+  ],
+  "match_record_schema": {
+    "public_title": "Human-facing title for what the HUG says.",
+    "recipient_lanes": ["mom", "dad", "mentor", "family"],
+    "sentiment_lanes": ["gratitude", "support", "love"],
+    "situation_lanes": ["thank_you", "life_support", "hard_season"],
+    "emotional_weight": "deep",
+    "delivery_shape": "warm and sincere",
+    "why_this_matches": "Plain-English explanation of why this music moment fits the sender’s intent.",
+    "audio_url": "Required before public display.",
+    "source_family": "Required for diversity protection.",
+    "approved_public": false,
+    "stripe_allowed": false
+  },
+  "public_release_gates": {
+    "meaning_gate": "Must fit recipient, sentiment, situation, and emotional weight.",
+    "music_gate": "Must have working audio and feel musically appropriate.",
+    "diversity_gate": "Must avoid repeated-source flooding.",
+    "safety_gate": "Must not create emotional mismatch or high-risk routing.",
+    "checkout_gate": "Stripe only appears when exact approved audio is ready."
+  },
+  "minimum_public_route_standard": {
+    "minimum_options": 3,
+    "minimum_source_families": 3,
+    "maximum_top_source_family_share": 0.49,
+    "audio_required": true,
+    "approved_public_required": true,
+    "sympathy_requires_human_review": true
+  },
+  "route_profiles": {
+    "gratitude_support": {
+      "user_phrase": "You carried me.",
+      "include": ["gratitude", "support", "steady love", "care", "life support"],
+      "exclude": ["sexual charge", "breakup", "wedding-only", "generic romance"]
+    },
+    "love_tender": {
+      "user_phrase": "I want you to feel loved.",
+      "include": ["warmth", "tenderness", "safe love", "closeness"],
+      "exclude": ["apology-only", "grief-only", "sexual charge"]
+    },
+    "missing_you": {
+      "user_phrase": "I miss you.",
+      "include": ["distance", "longing", "memory", "soft ache", "still connected"],
+      "exclude": ["celebration", "triumph", "wedding vow"]
+    },
+    "repair_soft": {
+      "user_phrase": "I am sorry, softly.",
+      "include": ["apology", "humility", "reconnect", "still care", "gentle repair"],
+      "exclude": ["pressure", "demand", "sexual charge", "victory"]
+    },
+    "wedding_forever": {
+      "user_phrase": "I choose forever with you.",
+      "include": ["vow", "ceremony", "commitment", "future together", "first dance"],
+      "exclude": ["breakup", "apology", "grief", "casual flirt"]
+    },
+    "anniversary_still_choosing": {
+      "user_phrase": "I still choose you.",
+      "include": ["years together", "endurance", "memory", "gratitude", "devotion"],
+      "exclude": ["new crush", "casual spark", "apology-only"]
+    },
+    "comfort_held": {
+      "user_phrase": "I want you to feel held.",
+      "include": ["comfort", "reassurance", "support", "soft strength", "presence"],
+      "exclude": ["celebration", "sexual charge", "triumph"]
+    },
+    "sympathy_memorial": {
+      "user_phrase": "I want to honor and comfort.",
+      "include": ["remembrance", "honor", "comfort", "loss", "gentle presence"],
+      "exclude": ["romance spillover", "celebration", "bright party", "generic love"],
+      "requires_human_review": true
+    }
+  }
+}
