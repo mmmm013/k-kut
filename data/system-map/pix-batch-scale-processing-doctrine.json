@@ -1,0 +1,55 @@
+{
+  "status": "locked_doctrine",
+  "name": "PIX Batch-Scale Processing Doctrine",
+  "problem_statement": "The Sprint 01 proof chain is too slow to repeat manually for hundreds of PIX.",
+  "core_rule": "Do not process 300 PIX one-by-one through full manual doctrine steps. Use the proven spine as a reusable batch pipeline.",
+  "batch_first_rule": {
+    "scope": "all available PIX and KKs",
+    "method": "batch classify, score, triage, and queue",
+    "target": "large-scale abundance without fake approval",
+    "minimum_batch_size": 25,
+    "preferred_batch_size": 100,
+    "full_catalog_goal": "all reasonable GPMC PIX and KKs"
+  },
+  "quality_gate_rule": {
+    "candidate_generation": "automated_batch_internal",
+    "audio_matching": "automated_discovery_plus_human_review",
+    "text_safety": "automated_triage_plus_human_review",
+    "approval": "human_review_required",
+    "public_promotion": "separate approved_public step only"
+  },
+  "manual_deep_review_required_when": [
+    "candidate is considered for buyer-facing public promotion",
+    "theme is grief, apology, trauma, medical, crisis, or high-risk repair",
+    "audio is wrong-lane or ambiguous",
+    "lyrics or context could pressure, manipulate, shame, or overpromise",
+    "candidate may become a flagship K-KUT, mK, GPMD, or public package anchor"
+  ],
+  "manual_deep_review_not_required_for": [
+    "initial internal batch discovery",
+    "source pool indexing",
+    "keyword scoring",
+    "theme mapping",
+    "candidate queue creation",
+    "not_public internal inventory records"
+  ],
+  "public_safety_law": {
+    "not_public": "Internal candidates may exist in quantity.",
+    "approve_internal": "Internal readiness only; no route, no Stripe, no buyer exposure.",
+    "approved_public": "Only this status may enter buyer-facing pages, Stripe-backed offers, public HUG flow, or promotion."
+  },
+  "inventory_targets": {
+    "admin_minimum_per_theme": 8,
+    "public_minimum_per_commercial_theme": 3,
+    "public_bic_per_major_theme": 8,
+    "full_catalog_direction": "batch toward abundance across all commercially useful themes"
+  },
+  "duplicate_rule": {
+    "dups_allowed": true,
+    "best_one_wins_when_same": true,
+    "ties_remain_internal": true,
+    "emotional_levels_must_convene": true
+  },
+  "income_rule": "Platform spine exists to support income. Batch inventory must prioritize sellable lanes first: birthday, encouragement/support, friendship, gratitude, romance, anniversary, wedding, apology, KUPID, family/parent, mentor.",
+  "locked_summary": "Use the Sprint 01 spine as a reusable batch machine. Do not repeat one-song or one-PIX marathons across 300 PIX."
+}
