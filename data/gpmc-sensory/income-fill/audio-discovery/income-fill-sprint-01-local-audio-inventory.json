@@ -1,0 +1,236 @@
+{
+  "status": "income_fill_sprint_01_local_audio_inventory",
+  "name": "Income Fill Sprint 01 Local Audio Inventory",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "audio_file_count_scanned": 379,
+  "critical_warning": "This is local audio inventory only. It does not approve candidates, publish records, create routes, create Stripe links, or expose candidates in buyer flow.",
+  "approval_rule": "Only human-reviewed, theme-matched audio may repair an internal candidate before approve_internal. Public promotion remains separate.",
+  "themes": {
+    "birthday": {
+      "theme": "birthday",
+      "local_audio_candidate_count": 7,
+      "public_ready_count": 0,
+      "private_or_unexported_count": 7,
+      "inventory_status": "PARTIAL_LOCAL_AUDIO_FOR_REVIEW",
+      "candidates": [
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/birthday/source/Best Birthday.wav",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "birthday",
+            "birth",
+            "celebration"
+          ],
+          "score": 3,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/anniversary/source/Awesome Anniversary.mp3",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "celebration"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/twinkle/candidates/source/cornfield-elle.wav",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "celebration"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/twinkle/candidates/source/cornfield-instro-100bpm-gmaj.wav",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "celebration"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/twinkle/candidates/source/home-is-sunny-instro-84-5bpm-cminor.wav",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "celebration"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/twinkle/candidates/source/interesting-bird-across-street.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "celebration"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "birthday",
+          "source_audio_file": "staging/individual-celebrations/twinkle/candidates/source/interesting-bird-call.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "celebration"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        }
+      ]
+    },
+    "encouragement_support": {
+      "theme": "encouragement_support",
+      "local_audio_candidate_count": 6,
+      "public_ready_count": 1,
+      "private_or_unexported_count": 5,
+      "inventory_status": "PARTIAL_LOCAL_AUDIO_FOR_REVIEW",
+      "candidates": [
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "inbox/kleigh/all/Good strongest 2.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "inbox/kleigh/all/Good strongest.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "inbox/kleigh/chat-uploads/Good strongest 2.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "inbox/kleigh/chat-uploads/Good strongest.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "inbox/kleigh/final-unique/Good strongest.m4a",
+          "public_audio_url": null,
+          "is_public_ready_file": false,
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        },
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "public/audio/kleigh/guide-final/14-good-strongest.m4a",
+          "public_audio_url": "/audio/kleigh/guide-final/14-good-strongest.m4a",
+          "is_public_ready_file": true,
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "inventory_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        }
+      ]
+    },
+    "friendship": {
+      "theme": "friendship",
+      "local_audio_candidate_count": 0,
+      "public_ready_count": 0,
+      "private_or_unexported_count": 0,
+      "inventory_status": "NO_LOCAL_THEME_AUDIO_FOUND",
+      "candidates": []
+    }
+  }
+}
