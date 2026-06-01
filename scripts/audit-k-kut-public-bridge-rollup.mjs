@@ -16,6 +16,7 @@ const audits = [
   "scripts/audit-per-user-caring-history-doctrine.mjs",
   "scripts/audit-gpex-mk-flagship-gpmd-carveout-doctrine.mjs",
   "scripts/audit-gpex-universal-upgrade-propagation-doctrine.mjs",
+  "scripts/audit-pix-batch-scale-processing-doctrine.mjs",
   "scripts/audit-gpmc-pix-sensory-emotional-doctrine.mjs",
   "scripts/audit-income-fill-sprint-01-local-audio-inventory.mjs",
   "scripts/audit-income-fill-sprint-01-audio-intake-needs.mjs",
