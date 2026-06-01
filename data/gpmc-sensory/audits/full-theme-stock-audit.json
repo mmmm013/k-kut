@@ -1,0 +1,162 @@
+{
+  "status": "full_theme_stock_audit",
+  "name": "Full Theme Stock Audit",
+  "generated_at": "2026-06-01T02:14:21.106Z",
+  "rules": {
+    "admin_minimum_per_theme": 8,
+    "public_minimum_per_commercial_theme": 3,
+    "public_bic_per_major_theme": 8,
+    "public_buyer_rule": "Only approved_public records may reach buyer-facing routes.",
+    "internal_rule": "Internal-ready records may support admin search and review but not public routes or Stripe."
+  },
+  "counts": {
+    "themes_checked": 13,
+    "public_records_available": 6,
+    "internal_approval_decisions_available": 12
+  },
+  "themes": [
+    {
+      "theme": "gratitude_thank_you",
+      "approved_public_count": 0,
+      "internal_ready_count": 12,
+      "total_admin_candidate_count": 12,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "STOCKED_INTERNAL",
+      "next_action": "Review for possible public promotion, one controlled lane at a time."
+    },
+    {
+      "theme": "romance_love",
+      "approved_public_count": 2,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 2,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "PARTIAL_STOCK",
+      "next_action": "Batch-curate more internal candidates."
+    },
+    {
+      "theme": "wedding_forever",
+      "approved_public_count": 1,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 1,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "PARTIAL_STOCK",
+      "next_action": "Batch-curate more internal candidates."
+    },
+    {
+      "theme": "anniversary",
+      "approved_public_count": 1,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 1,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "PARTIAL_STOCK",
+      "next_action": "Batch-curate more internal candidates."
+    },
+    {
+      "theme": "apology_repair",
+      "approved_public_count": 1,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 1,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "PARTIAL_STOCK",
+      "next_action": "Batch-curate more internal candidates."
+    },
+    {
+      "theme": "birthday",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "NEEDS_MORE_CURATION",
+      "next_action": "Needs candidate generation from all KKs."
+    },
+    {
+      "theme": "friendship",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "NEEDS_MORE_CURATION",
+      "next_action": "Needs candidate generation from all KKs."
+    },
+    {
+      "theme": "encouragement_support",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "NEEDS_MORE_CURATION",
+      "next_action": "Needs candidate generation from all KKs."
+    },
+    {
+      "theme": "missing_you",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "NEEDS_MORE_CURATION",
+      "next_action": "Needs candidate generation from all KKs."
+    },
+    {
+      "theme": "family_parent",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "NEEDS_MORE_CURATION",
+      "next_action": "Needs candidate generation from all KKs."
+    },
+    {
+      "theme": "mentor_recognition",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "NEEDS_MORE_CURATION",
+      "next_action": "Needs candidate generation from all KKs."
+    },
+    {
+      "theme": "grief_remembrance",
+      "approved_public_count": 0,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 0,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "HELD_HIGH_RISK",
+      "next_action": "Keep held until grief-specific safety review exists."
+    },
+    {
+      "theme": "kupid_spark",
+      "approved_public_count": 1,
+      "internal_ready_count": 0,
+      "total_admin_candidate_count": 1,
+      "target_admin_minimum": 8,
+      "target_public_minimum": 3,
+      "target_public_bic": 8,
+      "stock_status": "PARTIAL_STOCK",
+      "next_action": "Batch-curate more internal candidates."
+    }
+  ]
+}
