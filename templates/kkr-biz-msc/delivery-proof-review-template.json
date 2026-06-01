@@ -1,0 +1,42 @@
+{
+  "object_id": "",
+  "source_family": "",
+  "source_pix": "",
+  "derivative_type": "",
+  "campaign_use": [],
+  "recipient_lanes": [],
+  "sentiment_lanes": [],
+  "situation_lanes": [],
+  "wrong_language_checked": false,
+  "wrong_language_notes": "",
+  "start_point": {
+    "status": "pending",
+    "approved_by_human": false,
+    "notes": ""
+  },
+  "end_point": {
+    "status": "pending",
+    "approved_by_human": false,
+    "final_note_completion": false,
+    "notes": ""
+  },
+  "render_treatment": {
+    "lead_padding_seconds": 1.35,
+    "content_end_fade_required": true,
+    "content_end_fade_seconds": 0.60,
+    "tail_padding_before_twinkle_seconds": 0.75,
+    "twinkle_required": true,
+    "twinkle_volume": 0.125,
+    "raw_micro_capture_public_allowed": false
+  },
+  "audio_paths": {
+    "raw_micro_capture": "",
+    "review_render": "",
+    "delivery_proof_render": ""
+  },
+  "approval_status": "raw_only",
+  "approved_for_display": false,
+  "approved_for_checkout": false,
+  "approved_for_send": false,
+  "human_notes": ""
+}

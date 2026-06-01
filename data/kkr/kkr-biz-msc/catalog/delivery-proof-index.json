@@ -1,0 +1,23 @@
+{
+  "system": "KKr-BIZ-MSC Delivery Proof Index",
+  "status": "active",
+  "source_of_truth": "data/kkr/kkr-biz-msc/delivery-proof-checklist.json",
+  "support_doc": "docs/kkr-biz-msc/delivery-proof-standard.md",
+  "review_template": "templates/kkr-biz-msc/delivery-proof-review-template.json",
+  "catalog_rule": "Every PIX-derived audio object must have a Delivery Proof record before display, checkout, send, or fulfillment.",
+  "default_status": "raw_only",
+  "approved_statuses": [
+    "delivery_proof_complete",
+    "approved_for_display",
+    "approved_for_checkout",
+    "approved_for_send"
+  ],
+  "blocked_statuses": [
+    "raw_only",
+    "review_render_created",
+    "needs_start_adjustment",
+    "needs_end_adjustment",
+    "needs_render_treatment_adjustment",
+    "blocked"
+  ]
+}
