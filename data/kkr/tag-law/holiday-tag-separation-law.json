@@ -1,0 +1,73 @@
+{
+  "system": "K-KUT Holiday Tag Separation Law",
+  "status": "active",
+  "core_rule": "A campaign folder or prior holiday use does not define the permanent identity of a PIX, KK, or HUG candidate.",
+  "problem_prevented": "Avoid trapping reusable emotional audio inside a holiday label such as Mother's Day when the song itself does not declare that holiday.",
+  "tag_types": {
+    "source_family": {
+      "meaning": "The actual audio/source identity or reusable emotional source family.",
+      "examples": ["thank-you", "no-mystery", "forever-and-a-day"],
+      "reuse_allowed": true
+    },
+    "campaign_use": {
+      "meaning": "Where the audio was used, tested, promoted, or grouped before.",
+      "examples": ["mothers_day_2026", "fathers_day_2026", "wedding_pack"],
+      "reuse_allowed": true,
+      "must_not_limit_source_identity": true
+    },
+    "lyric_declared_occasion": {
+      "meaning": "The occasion explicitly announced by the lyric or spoken content.",
+      "examples": ["mothers_day", "fathers_day", "birthday", "christmas", "none"],
+      "reuse_allowed": false,
+      "controls_holiday_exclusivity": true
+    }
+  },
+  "reuse_law": {
+    "campaign_tag_is_not_exclusive": true,
+    "folder_path_is_not_exclusive": true,
+    "explicit_lyric_occasion_is_exclusive": true,
+    "human_review_required_when_recipient_role_is_explicit": true
+  },
+  "fathers_day_rules": {
+    "allowed_sentiments": [
+      "gratitude",
+      "guidance",
+      "support",
+      "legacy",
+      "respect",
+      "protection",
+      "showing_the_way",
+      "family_strength",
+      "steady_love"
+    ],
+    "allowed_when": [
+      "lyrics do not explicitly declare another holiday",
+      "recipient role fits father, dad, mentor, grandfather, stepfather, or father-figure",
+      "music lands as respect, gratitude, guidance, care, or legacy"
+    ],
+    "blocked_when": [
+      "lyrics explicitly say Mother's Day",
+      "lyrics explicitly address Mom or Mum as the only recipient",
+      "lyrics are romance-only",
+      "lyrics are grief-only without human review",
+      "prior folder path is the only reason for inclusion"
+    ]
+  },
+  "example": {
+    "no_mystery": {
+      "source_family": "no-mystery",
+      "campaign_use": ["fathers_day_2026"],
+      "lyric_declared_occasion": "none",
+      "fathers_day_eligible": true,
+      "reason": "Tagged for Father's Day use, but not inherently a holiday PIX unless the lyric declares the holiday."
+    },
+    "thank_you": {
+      "source_family": "thank-you",
+      "campaign_use": ["mothers_day_2026"],
+      "lyric_declared_occasion": "none_or_review_required",
+      "fathers_day_eligible": "depends_on_recipient_language",
+      "reason": "Prior Mother's Day use does not alone block reuse. Explicit Mom/Mum language may block Father's Day."
+    }
+  },
+  "public_rule": "Public buyer routes must display the sentiment and recipient fit, not misleading campaign-history labels."
+}
