@@ -1,0 +1,67 @@
+{
+  "status": "income_fill_sprint_seed",
+  "name": "Income Fill Sprint 01",
+  "purpose": "Fill the first empty income lanes to minimum 8 internal admin candidates each.",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "themes": [
+    {
+      "theme": "birthday",
+      "target_internal_admin_candidates": 8,
+      "current_total_admin_candidates": 0,
+      "deficit": 8,
+      "priority_reason": "Commercially obvious, low-risk, recurring gift occasion."
+    },
+    {
+      "theme": "encouragement_support",
+      "target_internal_admin_candidates": 8,
+      "current_total_admin_candidates": 0,
+      "deficit": 8,
+      "priority_reason": "Broad use case for care, resilience, support, and everyday HUG sending."
+    },
+    {
+      "theme": "friendship",
+      "target_internal_admin_candidates": 8,
+      "current_total_admin_candidates": 0,
+      "deficit": 8,
+      "priority_reason": "Broad, safer emotional lane with gift and support use cases."
+    }
+  ],
+  "candidate_rules": {
+    "source_scope": "all_KKs",
+    "minimum_per_theme": 8,
+    "dup_rule": "DUPs allowed. Best reviewed candidate wins when same. Ties may remain internal.",
+    "emotional_level_rule": "Do not flatten feeling tags. Preserve surface feeling, deeper feelings, relationship lane, situation lane, sensory profile, risks, safe words, and do_not_say.",
+    "xml_armed_rule": "Each candidate must be XML-armed for later GPEx propagation.",
+    "public_rule": "Generated candidates remain internal and not_public until separate human review and approved_public promotion."
+  },
+  "required_candidate_fields": [
+    "record_id",
+    "source_id",
+    "source_type",
+    "source_title",
+    "candidate_type",
+    "lane_id",
+    "theme",
+    "surface_feeling",
+    "deeper_feelings",
+    "emotional_level",
+    "relationship_lane",
+    "situation_lane",
+    "sensory_profile",
+    "good_use_cases",
+    "bad_use_cases",
+    "risk_notes",
+    "buyer_words",
+    "receiver_safe_words",
+    "do_not_say",
+    "review_status",
+    "public_status",
+    "public_route",
+    "audio_delivery_url",
+    "stripe_url_if_payment_allowed"
+  ],
+  "locked_summary": "Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step."
+}
