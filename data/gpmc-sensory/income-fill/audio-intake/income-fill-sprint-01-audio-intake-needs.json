@@ -1,0 +1,88 @@
+{
+  "status": "income_fill_sprint_01_audio_intake_needs",
+  "name": "Income Fill Sprint 01 Audio Intake Needs",
+  "source_theme_audio_discovery": "data/gpmc-sensory/income-fill/audio-discovery/income-fill-sprint-01-theme-audio-discovery.json",
+  "source_repair_plan": "data/gpmc-sensory/income-fill/audio-repair/income-fill-sprint-01-audio-repair-plan.json",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "target_per_theme": 8,
+  "total_audio_intake_deficit": 23,
+  "critical_warning": "This intake plan does not approve candidates, publish records, create routes, create Stripe links, or expose candidates in buyer flow.",
+  "approval_rule": "Only human-reviewed, theme-matched audio may repair internal candidates before approve_internal. Public promotion remains separate.",
+  "needs": [
+    {
+      "theme": "birthday",
+      "target_theme_matched_audio_candidates": 8,
+      "discovered_theme_audio_candidates": 0,
+      "audio_intake_deficit": 8,
+      "need_status": "FULL_AUDIO_INTAKE_NEEDED",
+      "intake_sources_allowed": [
+        "existing unreleased GPMC audio",
+        "approved PIX/KUT source files",
+        "newly exported theme-matched KKs",
+        "human-reviewed audio clips only"
+      ],
+      "intake_sources_not_allowed": [
+        "wrong-lane romance audio",
+        "wrong-lane Mothers Day audio",
+        "unreviewed AI audio",
+        "public buyer exposure before approval"
+      ],
+      "public_status_after_intake_plan": "not_public",
+      "public_route_after_intake_plan": null,
+      "stripe_url_after_intake_plan": null,
+      "buyer_exposure_after_intake_plan": "none",
+      "instruction": "Find or export 8 theme-matched audio candidates for birthday before approve_internal."
+    },
+    {
+      "theme": "encouragement_support",
+      "target_theme_matched_audio_candidates": 8,
+      "discovered_theme_audio_candidates": 1,
+      "audio_intake_deficit": 7,
+      "need_status": "PARTIAL_AUDIO_INTAKE_NEEDED",
+      "intake_sources_allowed": [
+        "existing unreleased GPMC audio",
+        "approved PIX/KUT source files",
+        "newly exported theme-matched KKs",
+        "human-reviewed audio clips only"
+      ],
+      "intake_sources_not_allowed": [
+        "wrong-lane romance audio",
+        "wrong-lane Mothers Day audio",
+        "unreviewed AI audio",
+        "public buyer exposure before approval"
+      ],
+      "public_status_after_intake_plan": "not_public",
+      "public_route_after_intake_plan": null,
+      "stripe_url_after_intake_plan": null,
+      "buyer_exposure_after_intake_plan": "none",
+      "instruction": "Find or export 7 theme-matched audio candidates for encouragement_support before approve_internal."
+    },
+    {
+      "theme": "friendship",
+      "target_theme_matched_audio_candidates": 8,
+      "discovered_theme_audio_candidates": 0,
+      "audio_intake_deficit": 8,
+      "need_status": "FULL_AUDIO_INTAKE_NEEDED",
+      "intake_sources_allowed": [
+        "existing unreleased GPMC audio",
+        "approved PIX/KUT source files",
+        "newly exported theme-matched KKs",
+        "human-reviewed audio clips only"
+      ],
+      "intake_sources_not_allowed": [
+        "wrong-lane romance audio",
+        "wrong-lane Mothers Day audio",
+        "unreviewed AI audio",
+        "public buyer exposure before approval"
+      ],
+      "public_status_after_intake_plan": "not_public",
+      "public_route_after_intake_plan": null,
+      "stripe_url_after_intake_plan": null,
+      "buyer_exposure_after_intake_plan": "none",
+      "instruction": "Find or export 8 theme-matched audio candidates for friendship before approve_internal."
+    }
+  ]
+}
