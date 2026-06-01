@@ -12,10 +12,70 @@
   ],
   "themes": {
     "birthday": {
-      "source_pool_candidate_count": 22,
+      "source_pool_candidate_count": 23,
       "target_internal_admin_candidates": 8,
       "discovery_status": "ENOUGH_SOURCE_POOL_FOR_REVIEW",
       "candidates": [
+        {
+          "theme": "birthday",
+          "source_file": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json",
+          "keyword_hits": [
+            "birthday",
+            "another year",
+            "celebrate",
+            "celebration",
+            "party"
+          ],
+          "keyword_hit_count": 5,
+          "audio_hints": [
+            "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3",
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 14,
+              "text": "\"birthday\": {"
+            },
+            {
+              "line_number": 20,
+              "text": "\"theme\": \"birthday\","
+            },
+            {
+              "line_number": 23,
+              "text": "\"birthday\","
+            },
+            {
+              "line_number": 24,
+              "text": "\"another year\","
+            },
+            {
+              "line_number": 25,
+              "text": "\"celebrate\","
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
         {
           "theme": "birthday",
           "source_file": "lib/personalSeeds.ts",
@@ -593,10 +653,78 @@
       ]
     },
     "encouragement_support": {
-      "source_pool_candidate_count": 39,
+      "source_pool_candidate_count": 40,
       "target_internal_admin_candidates": 8,
       "discovery_status": "ENOUGH_SOURCE_POOL_FOR_REVIEW",
       "candidates": [
+        {
+          "theme": "encouragement_support",
+          "source_file": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json",
+          "keyword_hits": [
+            "encourage",
+            "encouragement",
+            "support",
+            "carry",
+            "through",
+            "strong",
+            "strength",
+            "keep going",
+            "you can",
+            "better days",
+            "hope",
+            "believe",
+            "resilience"
+          ],
+          "keyword_hit_count": 13,
+          "audio_hints": [
+            "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3",
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 341,
+              "text": "\"text\": \"line: \\\"Honor freedom, resilience, memory, and celebration.\\\",\""
+            },
+            {
+              "line_number": 345,
+              "text": "\"text\": \"paths: [\\\"Freedom\\\", \\\"Resilience\\\", \\\"Memory\\\", \\\"Celebration\\\", \\\"Hope\\\"],\""
+            },
+            {
+              "line_number": 364,
+              "text": "\"text\": \"\\\"meaning\\\": \\\"Warmth, care, gratitude, love, comfort, support, appreciation, celebration, tenderness.\\\",\""
+            },
+            {
+              "line_number": 448,
+              "text": "\"text\": \"\\\"locked_summary\\\": \\\"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\\\"\""
+            },
+            {
+              "line_number": 467,
+              "text": "\"text\": \"\\\"occasion_or_situation\\\": \\\"anniversary | apology | birthday | thank_you | grief_held | encouragement | other\\\",\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
         {
           "theme": "encouragement_support",
           "source_file": "lib/personalSeeds.ts",
@@ -1940,10 +2068,72 @@
       ]
     },
     "friendship": {
-      "source_pool_candidate_count": 20,
+      "source_pool_candidate_count": 21,
       "target_internal_admin_candidates": 8,
       "discovery_status": "ENOUGH_SOURCE_POOL_FOR_REVIEW",
       "candidates": [
+        {
+          "theme": "friendship",
+          "source_file": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json",
+          "keyword_hits": [
+            "friend",
+            "friendship",
+            "best friend",
+            "always listening",
+            "together",
+            "laugh",
+            "fun along the way"
+          ],
+          "keyword_hit_count": 7,
+          "audio_hints": [
+            "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "//www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3",
+            "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+            "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+            "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-001.mp3",
+            "/mothers-day/thank-you/kks-expanded/thank-you-cc-002.mp3"
+          ],
+          "snippets": [
+            {
+              "line_number": 329,
+              "text": "\"text\": \"line: \\\"Send luck, joy, friendship, celebration, and warmth.\\\",\""
+            },
+            {
+              "line_number": 337,
+              "text": "\"text\": \"paths: [\\\"Good luck\\\", \\\"Joy\\\", \\\"Friendship\\\", \\\"Playful\\\", \\\"Celebrate\\\"],\""
+            },
+            {
+              "line_number": 448,
+              "text": "\"text\": \"\\\"locked_summary\\\": \\\"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\\\"\""
+            },
+            {
+              "line_number": 724,
+              "text": "\"text\": \"\\\"mc_bot_role\\\": \\\"Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks.\\\"\""
+            },
+            {
+              "line_number": 1006,
+              "text": "\"text\": \"\\\"locked_summary\\\": \\\"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\\\"\""
+            }
+          ],
+          "source_status": "source_pool_candidate",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false
+        },
         {
           "theme": "friendship",
           "source_file": "data/emotions/top-100-shared-emotions.json",
