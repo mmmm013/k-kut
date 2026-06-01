@@ -15,7 +15,7 @@ fi
 render_ii () {
   local id="$1"
   local raw="$RAW_DIR/$id.mp3"
-  local out="$OUT_DIR/$id-ii-pad1s-twinkle.mp3"
+  local out="$OUT_DIR/$id-ii-pad135s-twinkle.mp3"
 
   if [ ! -f "$raw" ]; then
     echo "MISSING RAW KK: $raw"
@@ -25,11 +25,11 @@ render_ii () {
   echo "RENDER II REVIEW: $id"
 
   ffmpeg -y \
-    -f lavfi -t 1.0 -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+    -f lavfi -t 1.35 -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -i "$raw" \
     -f lavfi -t 0.75 -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -i "$TWINKLE" \
-    -filter_complex "[0:a][1:a][2:a][3:a]concat=n=4:v=0:a=1,afade=t=in:st=0:d=0.08[a]" \
+    -filter_complex "[3:a]volume=0.5[tw];[0:a][1:a][2:a][tw]concat=n=4:v=0:a=1,afade=t=in:st=0:d=0.08[a]" \
     -map "[a]" \
     -codec:a libmp3lame -b:a 192k \
     "$out"

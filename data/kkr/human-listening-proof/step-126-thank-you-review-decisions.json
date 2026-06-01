@@ -1,0 +1,52 @@
+{
+  "step": "126",
+  "source_family": "thank-you",
+  "review_mode": "fathers_day_reuse_and_ii_quality",
+  "display_rule": "Display only perfect II review candidates. Continue refining imperfect KKs.",
+  "render_standard": {
+    "lead_padding_seconds": 1.35,
+    "twinkle_volume": 0.5,
+    "twinkle_status": "softened after listening review"
+  },
+  "perfect_display_now": [
+    {
+      "id": "thank-you-sec-ch1",
+      "label": "Chorus 1",
+      "status": "perfect",
+      "audio_url": "/kkr/ii-review/thank-you/thank-you-sec-ch1-ii-pad135s-twinkle.mp3"
+    },
+    {
+      "id": "thank-you-sec-v2b",
+      "label": "Verse 2B",
+      "status": "perfect",
+      "audio_url": "/kkr/ii-review/thank-you/thank-you-sec-v2b-ii-pad135s-twinkle.mp3"
+    }
+  ],
+  "refinement_queue": [
+    {
+      "id": "thank-you-sec-outro",
+      "issue": "Twinkle/end treatment was too loud before softening.",
+      "needed": "Re-listen after 0.5 Twinkle volume before approval."
+    },
+    {
+      "id": "thank-you-sec-ch2",
+      "issue": "Ends one line too soon; final note does not sustain in needed range/time.",
+      "needed": "Re-cut ending later so final phrase and sustain complete naturally."
+    },
+    {
+      "id": "thank-you-sec-br",
+      "issue": "Great candidate, but starts one line late and cutoff catches upcoming build.",
+      "needed": "Move start earlier by one line; trim cutoff milliseconds before upcoming build."
+    },
+    {
+      "id": "thank-you-sec-prech1",
+      "issue": "Starts late; needs prior line in full; cuts off milliseconds early.",
+      "needed": "Move start earlier to include prior line; add approximately 1 second to end."
+    },
+    {
+      "id": "thank-you-sec-v2a",
+      "issue": "No final approval note yet.",
+      "needed": "Review again before display."
+    }
+  ]
+}
