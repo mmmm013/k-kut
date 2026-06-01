@@ -1,0 +1,37 @@
+{
+  "system": "K-KUT KK Micro-Capture Render Law",
+  "status": "active",
+  "problem_observed": "Raw section KK files may start too abruptly and may not include padding, Twinkle, or receiver-safe presentation treatment.",
+  "core_rule": "A raw KK micro-capture is not automatically buyer-ready delivery audio.",
+  "layers": {
+    "raw_micro_capture": {
+      "purpose": "Exact audio extraction from PIX/source for structural and meaning proof.",
+      "public_buyer_ready": false,
+      "may_start_abruptly": true
+    },
+    "review_render": {
+      "purpose": "Human listening version with enough lead padding/fade to judge emotional meaning safely.",
+      "public_buyer_ready": false,
+      "requires_padding": true,
+      "requires_fade_check": true
+    },
+    "buyer_hug_render": {
+      "purpose": "Final receiver-safe K-KUT/HUG delivery audio.",
+      "public_buyer_ready": true,
+      "requires_exact_approved_audio": true,
+      "requires_no_premature_start": true,
+      "requires_checkout_lock_until_ready": true
+    }
+  },
+  "render_requirements": {
+    "minimum_lead_padding_seconds": 0.75,
+    "preferred_lead_padding_seconds": 1.0,
+    "minimum_tail_padding_seconds": 0.5,
+    "fade_in_allowed": true,
+    "fade_out_allowed": true,
+    "twinkle_allowed_only_when_approved": true,
+    "signature_tail_allowed_only_when_approved": true,
+    "source_start_end_must_be_retained": true
+  },
+  "buyer_safety_rule": "Public pages and Stripe checkout must use buyer_hug_render or explicitly approved review_render, never raw_micro_capture by default."
+}
