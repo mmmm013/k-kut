@@ -1,0 +1,2122 @@
+{
+  "status": "income_fill_sprint_01_internal_candidates",
+  "name": "Income Fill Sprint 01 Internal Admin Candidates",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "target_per_theme": 8,
+  "count": 24,
+  "theme_counts": {
+    "birthday": 8,
+    "encouragement_support": 8,
+    "friendship": 8
+  },
+  "critical_warning": "These are internal admin candidates only. They do not publish records, create routes, create Stripe links, or expose candidates in buyer flow.",
+  "records": [
+    {
+      "record_id": "income-sprint-01-birthday-01",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-income-fill-source-discovery-income-fill-sprint-01-source-pool-1",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json",
+      "source_title": "income-fill-sprint-01-source-pool.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "birthday",
+        "another year",
+        "celebrate",
+        "celebration",
+        "party"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 14,
+          "text": "\"birthday\": {"
+        },
+        {
+          "line_number": 20,
+          "text": "\"theme\": \"birthday\","
+        },
+        {
+          "line_number": 23,
+          "text": "\"birthday\","
+        },
+        {
+          "line_number": 24,
+          "text": "\"another year\","
+        },
+        {
+          "line_number": 25,
+          "text": "\"celebrate\","
+        }
+      ],
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-02",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "lib-personalseeds-ts-2",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "lib/personalSeeds.ts",
+      "source_title": "personalSeeds.ts",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "birthday",
+        "another year",
+        "celebrate",
+        "celebration",
+        "party"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 17,
+          "text": "line: \"A ceremonial music package for first dance, forever love, and wedding-party thanks.\","
+        },
+        {
+          "line_number": 18,
+          "text": "paths: [\"First dance\", \"Forever love\", \"Bride’s choice\", \"Thank the wedding party\", \"Family blessing\"],"
+        },
+        {
+          "line_number": 27,
+          "text": "\"Thank-you phrase options for the wedding party\","
+        },
+        {
+          "line_number": 40,
+          "text": "birthday: {"
+        },
+        {
+          "line_number": 41,
+          "text": "title: \"Birthday\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-03",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-emotions-top-100-shared-emotions-json-3",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/emotions/top-100-shared-emotions.json",
+      "source_title": "top-100-shared-emotions.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "birthday",
+        "celebrate",
+        "celebration"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 432,
+          "text": "\"emotion_id\": \"birthday_joy\","
+        },
+        {
+          "line_number": 433,
+          "text": "\"display_name\": \"Birthday joy\","
+        },
+        {
+          "line_number": 434,
+          "text": "\"level\": \"celebration\","
+        },
+        {
+          "line_number": 436,
+          "text": "\"celebrate\","
+        },
+        {
+          "line_number": 440,
+          "text": "\"birthday\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-04",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-4pe-rules-kkr-emotional-radiation-map-json-4",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/4pe/rules/kkr-emotional-radiation-map.json",
+      "source_title": "kkr-emotional-radiation-map.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "celebration",
+        "party"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 50,
+          "text": "\"celebration\","
+        },
+        {
+          "line_number": 85,
+          "text": "\"celebration\""
+        },
+        {
+          "line_number": 375,
+          "text": "\"party\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-05",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-4pe-rules-kkr-intent-safety-gate-json-5",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/4pe/rules/kkr-intent-safety-gate.json",
+      "source_title": "kkr-intent-safety-gate.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "celebration",
+        "party"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 16,
+          "text": "\"celebration-of-life\""
+        },
+        {
+          "line_number": 37,
+          "text": "\"party\","
+        },
+        {
+          "line_number": 39,
+          "text": "\"celebration\""
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-06",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-bic-usecases-routes-json-6",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/bic-usecases/routes.json",
+      "source_title": "routes.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "birthday",
+        "party"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 4,
+          "text": "\"route\": \"/personal/birthday\","
+        },
+        {
+          "line_number": 5,
+          "text": "\"name\": \"BIRTHDAY\","
+        },
+        {
+          "line_number": 7,
+          "text": "\"Birthday K-KUT HUGs\","
+        },
+        {
+          "line_number": 9,
+          "text": "\"Birthday Matching\","
+        },
+        {
+          "line_number": 10,
+          "text": "\"Bright Birthday\","
+        }
+      ],
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-07",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-candidates-thank-you-gratitude-candidates-json-7",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/candidates/thank-you-gratitude-candidates.json",
+      "source_title": "thank-you-gratitude-candidates.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "birthday",
+        "celebration"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 595,
+          "text": "\"celebration-only birthday\","
+        }
+      ],
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-birthday-08",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-review-queues-thank-you-gratitude-human-review-queue-json-8",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json",
+      "source_title": "thank-you-gratitude-human-review-queue.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "birthday",
+      "theme": "birthday",
+      "source_keyword_hits": [
+        "birthday",
+        "celebration"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 431,
+          "text": "\"celebration-only birthday\","
+        }
+      ],
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "surface_feeling": "birthday joy",
+      "deeper_feelings": [
+        "celebration",
+        "being remembered",
+        "warm attention",
+        "personal lift"
+      ],
+      "emotional_level": "light_to_warm",
+      "relationship_lane": "friend_family_everyday",
+      "situation_lane": "birthday",
+      "sensory_profile": [
+        "bright",
+        "warm",
+        "uplifting",
+        "personal"
+      ],
+      "good_use_cases": [
+        "birthday greeting",
+        "simple celebration",
+        "warm check-in",
+        "friend or family birthday"
+      ],
+      "bad_use_cases": [
+        "fresh grief birthday",
+        "romantic repair",
+        "high-conflict relationship"
+      ],
+      "risk_notes": [
+        "Keep birthday language warm without assuming closeness or party mood."
+      ],
+      "buyer_words": [
+        "A real birthday HUG.",
+        "Something warmer than a text."
+      ],
+      "receiver_safe_words": [
+        "Thought of you today.",
+        "Wanted to send something warm for your birthday."
+      ],
+      "do_not_say": [
+        "You have to be happy today.",
+        "This fixes a hard year."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-01",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-income-fill-source-discovery-income-fill-sprint-01-source-pool-1",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json",
+      "source_title": "income-fill-sprint-01-source-pool.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "support",
+        "carry",
+        "through",
+        "strong",
+        "strength",
+        "keep going",
+        "you can",
+        "better days",
+        "hope",
+        "believe",
+        "resilience"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 341,
+          "text": "\"text\": \"line: \\\"Honor freedom, resilience, memory, and celebration.\\\",\""
+        },
+        {
+          "line_number": 345,
+          "text": "\"text\": \"paths: [\\\"Freedom\\\", \\\"Resilience\\\", \\\"Memory\\\", \\\"Celebration\\\", \\\"Hope\\\"],\""
+        },
+        {
+          "line_number": 364,
+          "text": "\"text\": \"\\\"meaning\\\": \\\"Warmth, care, gratitude, love, comfort, support, appreciation, celebration, tenderness.\\\",\""
+        },
+        {
+          "line_number": 448,
+          "text": "\"text\": \"\\\"locked_summary\\\": \\\"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\\\"\""
+        },
+        {
+          "line_number": 467,
+          "text": "\"text\": \"\\\"occasion_or_situation\\\": \\\"anniversary | apology | birthday | thank_you | grief_held | encouragement | other\\\",\""
+        }
+      ],
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-02",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "lib-personalseeds-ts-2",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "lib/personalSeeds.ts",
+      "source_title": "personalSeeds.ts",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "support",
+        "carry",
+        "through",
+        "strong",
+        "strength",
+        "keep going",
+        "you can",
+        "better days",
+        "hope",
+        "believe"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 10,
+          "text": "question: \"What kind of love do you want the HUG to carry?\","
+        },
+        {
+          "line_number": 16,
+          "text": "question: \"What should this wedding music moment carry?\","
+        },
+        {
+          "line_number": 50,
+          "text": "paths: [\"Still choosing you\", \"Thank you for us\", \"Through everything\", \"Forever feeling\"],"
+        },
+        {
+          "line_number": 58,
+          "text": "encouragement: {"
+        },
+        {
+          "line_number": 59,
+          "text": "title: \"Encouragement\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-03",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-emotions-top-100-shared-emotions-json-3",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/emotions/top-100-shared-emotions.json",
+      "source_title": "top-100-shared-emotions.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "support",
+        "carry",
+        "through",
+        "strength",
+        "hope",
+        "believe",
+        "resilience"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 5,
+          "text": "\"rule\": \"Emotions are maintained as reusable shared targets. KKs map to emotions through interpretations, not title-only or one-term search.\","
+        },
+        {
+          "line_number": 15,
+          "text": "\"support\","
+        },
+        {
+          "line_number": 76,
+          "text": "\"display_name\": \"Being carried through\","
+        },
+        {
+          "line_number": 79,
+          "text": "\"carry\","
+        },
+        {
+          "line_number": 80,
+          "text": "\"support\""
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-04",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-theme-feed-theme-feed-system-json-4",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/theme-feed/theme-feed-system.json",
+      "source_title": "theme-feed-system.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "support",
+        "carry",
+        "strong",
+        "strength",
+        "keep going",
+        "hope",
+        "believe"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 7,
+          "text": "\"KK\": \"Primary buyer-match unit. KK labeling must carry most match weight.\","
+        },
+        {
+          "line_number": 8,
+          "text": "\"II\": \"Reusable delivery/matching object. One II may support many routes.\","
+        },
+        {
+          "line_number": 41,
+          "text": "\"mc_bot_role\": \"Ask what kind of dad moment this is: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad.\""
+        },
+        {
+          "line_number": 48,
+          "text": "\"mc_bot_role\": \"Guide gratitude, repair, mom support, warmth, and thank-you paths.\""
+        },
+        {
+          "line_number": 62,
+          "text": "\"mc_bot_role\": \"Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks.\""
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-05",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-sensory-expansion-queue-json-5",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/sensory-expansion-queue.json",
+      "source_title": "sensory-expansion-queue.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "support",
+        "carry",
+        "through",
+        "strength",
+        "keep going",
+        "resilience"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 36,
+          "text": "\"lane_id\": \"encouragement_strength\","
+        },
+        {
+          "line_number": 38,
+          "text": "\"purpose\": \"Support, courage, resilience, belief, and keep-going energy.\","
+        },
+        {
+          "line_number": 39,
+          "text": "\"source_strategy\": \"Search for strength, test, keep going, carry through, showing the way.\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-06",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-intent-candidates-sympathy-action-candidates-json-6",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/intent-candidates/sympathy/action-candidates.json",
+      "source_title": "action-candidates.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "support",
+        "carry",
+        "through",
+        "strong",
+        "strength",
+        "hope",
+        "resilience"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 18,
+          "text": "\"action_verb\": \"carry\","
+        },
+        {
+          "line_number": 23,
+          "text": "\"human_situation\": \"sympathy_grief_support_candidate\","
+        },
+        {
+          "line_number": 26,
+          "text": "\"source_section_or_paragraph\": \"- Candidate: Like a Star\\n  - Type: 3-term minimum idea\\n  - Term count: 3\\n  - Object strength: POSSIBLE_STANDALONE\\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGNED"
+        },
+        {
+          "line_number": 27,
+          "text": "\"meaning_context\": \"- Candidate: Like a Star\\n  - Type: 3-term minimum idea\\n  - Term count: 3\\n  - Object strength: POSSIBLE_STANDALONE\\n  - Context need: REVIEW_SINGLE_OR_ADJACENT_LINE\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGNED\\n- Candidat"
+        },
+        {
+          "line_number": 29,
+          "text": "\"carry\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-07",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-localization-hug-copy-en-json-7",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/localization/hug-copy.en.json",
+      "source_title": "hug-copy.en.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "support",
+        "through",
+        "you can"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 9,
+          "text": "\"timed_delivery\": \"You can choose when the HUG should be prepared for delivery.\""
+        },
+        {
+          "line_number": 31,
+          "text": "\"encouragement\": \"Encouragement\","
+        },
+        {
+          "line_number": 53,
+          "text": "\"checkout_support\": {"
+        },
+        {
+          "line_number": 55,
+          "text": "\"no_download\": \"This HUG is delivered through a private link, not a public download.\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-08",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-rotation-holiday-season-rotation-system-json-8",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/rotation/holiday-season-rotation-system.json",
+      "source_title": "holiday-season-rotation-system.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "encouragement_support",
+      "theme": "encouragement_support",
+      "source_keyword_hits": [
+        "encourage",
+        "encouragement",
+        "carry",
+        "through",
+        "hope"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 6,
+          "text": "\"core_rule\": \"Holiday promos are not one-off hacks. They rotate through a governed seasonal system.\","
+        },
+        {
+          "line_number": 45,
+          "text": "\"Encouragement\","
+        },
+        {
+          "line_number": 48,
+          "text": "\"Hope\","
+        },
+        {
+          "line_number": 73,
+          "text": "\"kk_metadata\": \"KK labels must carry most buyer-match weight and must be robust.\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "encouragement",
+      "deeper_feelings": [
+        "support",
+        "resilience",
+        "hope",
+        "steady care"
+      ],
+      "emotional_level": "supportive_to_grounding",
+      "relationship_lane": "friend_family_support",
+      "situation_lane": "encouragement",
+      "sensory_profile": [
+        "steady",
+        "hopeful",
+        "grounding",
+        "warm"
+      ],
+      "good_use_cases": [
+        "encouragement",
+        "support during stress",
+        "keep going message",
+        "everyday resilience"
+      ],
+      "bad_use_cases": [
+        "medical promise",
+        "therapy substitute",
+        "fresh crisis intervention"
+      ],
+      "risk_notes": [
+        "Do not promise outcomes, healing, or emotional repair."
+      ],
+      "buyer_words": [
+        "A small support HUG.",
+        "Something to help them feel less alone."
+      ],
+      "receiver_safe_words": [
+        "No pressure — just support.",
+        "I wanted to send something steady."
+      ],
+      "do_not_say": [
+        "Everything will be fine.",
+        "This will heal you."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-01",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-income-fill-source-discovery-income-fill-sprint-01-source-pool-1",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json",
+      "source_title": "income-fill-sprint-01-source-pool.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship",
+        "best friend",
+        "always listening",
+        "together",
+        "laugh",
+        "fun along the way"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 329,
+          "text": "\"text\": \"line: \\\"Send luck, joy, friendship, celebration, and warmth.\\\",\""
+        },
+        {
+          "line_number": 337,
+          "text": "\"text\": \"paths: [\\\"Good luck\\\", \\\"Joy\\\", \\\"Friendship\\\", \\\"Playful\\\", \\\"Celebrate\\\"],\""
+        },
+        {
+          "line_number": 448,
+          "text": "\"text\": \"\\\"locked_summary\\\": \\\"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\\\"\""
+        },
+        {
+          "line_number": 724,
+          "text": "\"text\": \"\\\"mc_bot_role\\\": \\\"Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks.\\\"\""
+        },
+        {
+          "line_number": 1006,
+          "text": "\"text\": \"\\\"locked_summary\\\": \\\"Sprint 01 fills birthday, encouragement/support, and friendship to 8 internal admin candidates each. Nothing becomes public in this step.\\\"\""
+        }
+      ],
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-02",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-emotions-top-100-shared-emotions-json-2",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/emotions/top-100-shared-emotions.json",
+      "source_title": "top-100-shared-emotions.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship",
+        "together",
+        "laugh"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 537,
+          "text": "\"emotion_id\": \"friendship\","
+        },
+        {
+          "line_number": 538,
+          "text": "\"display_name\": \"Friendship\","
+        },
+        {
+          "line_number": 545,
+          "text": "\"friend\","
+        },
+        {
+          "line_number": 1364,
+          "text": "\"friend\","
+        },
+        {
+          "line_number": 1554,
+          "text": "\"laugh\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-03",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-intent-candidates-sympathy-action-candidates-json-3",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/intent-candidates/sympathy/action-candidates.json",
+      "source_title": "action-candidates.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "best friend",
+        "always listening",
+        "fun along the way"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 433,
+          "text": "\"title_backend_label\": \"- Candidate: Best Friend\","
+        },
+        {
+          "line_number": 435,
+          "text": "\"source_section_or_paragraph\": \"- Candidate: Best Friend\\n  - Type: 2-term phrase\\n  - Term count: 2\\n  - Object strength: NEEDS_CONTEXT_REVIEW\\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGN"
+        },
+        {
+          "line_number": 436,
+          "text": "\"meaning_context\": \"- Candidate: Best Friend\\n  - Type: 2-term phrase\\n  - Term count: 2\\n  - Object strength: NEEDS_CONTEXT_REVIEW\\n  - Context need: LIKELY_NEEDS_2_LINE_OR_3_LINE_CONTEXT\\n  - II/CI status: CANDIDATE_NOT_APPROVED\\n  - LineFeel disposition: NOT_ASSIGNED\\n- Candid"
+        },
+        {
+          "line_number": 441,
+          "text": "\"friend\""
+        },
+        {
+          "line_number": 495,
+          "text": "\"supporting_friend\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-04",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-gpmc-sensory-sensory-expansion-queue-json-4",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/gpmc-sensory/sensory-expansion-queue.json",
+      "source_title": "sensory-expansion-queue.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship",
+        "always listening"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 45,
+          "text": "\"lane_id\": \"friendship_seen\","
+        },
+        {
+          "line_number": 47,
+          "text": "\"purpose\": \"Friendship, being seen, listening, shared history, and everyday care.\","
+        },
+        {
+          "line_number": 48,
+          "text": "\"source_strategy\": \"Search for friend, always listening, shared care, warm presence.\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-05",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-rotation-holiday-season-rotation-system-json-5",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/rotation/holiday-season-rotation-system.json",
+      "source_title": "holiday-season-rotation-system.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship",
+        "together"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 49,
+          "text": "\"Friendship\","
+        },
+        {
+          "line_number": 69,
+          "text": "\"Customer delivery audio requires padding + Twinkle together.\""
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-06",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "lib-holidayseeds-ts-6",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "lib/holidaySeeds.ts",
+      "source_title": "holidaySeeds.ts",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship",
+        "together"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 28,
+          "text": "line: \"Send luck, joy, friendship, celebration, and warmth.\","
+        },
+        {
+          "line_number": 30,
+          "text": "paths: [\"Good luck\", \"Joy\", \"Friendship\", \"Playful\", \"Celebrate\"],"
+        },
+        {
+          "line_number": 161,
+          "text": "line: \"Send gratitude, family warmth, home, memory, and togetherness.\","
+        },
+        {
+          "line_number": 163,
+          "text": "paths: [\"Thankful for you\", \"Family warmth\", \"Home\", \"Togetherness\", \"Blessing\"],"
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-07",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "lib-personalseeds-ts-7",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "lib/personalSeeds.ts",
+      "source_title": "personalSeeds.ts",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship",
+        "best friend"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 124,
+          "text": "friendship: {"
+        },
+        {
+          "line_number": 125,
+          "text": "title: \"Friendship\","
+        },
+        {
+          "line_number": 126,
+          "text": "question: \"What kind of friendship moment is this?\","
+        },
+        {
+          "line_number": 127,
+          "text": "line: \"For the friends who stayed, helped, and mattered.\","
+        },
+        {
+          "line_number": 128,
+          "text": "paths: [\"Thanks for being there\", \"I’ve got you\", \"Best friend energy\", \"Old friends\"],"
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    },
+    {
+      "record_id": "income-sprint-01-friendship-08",
+      "sprint_id": "income_fill_sprint_01",
+      "source_id": "data-depth-standards-min-8-theme-depth-json-8",
+      "source_type": "repo_source_pool_discovery",
+      "source_file": "data/depth-standards/min-8-theme-depth.json",
+      "source_title": "min-8-theme-depth.json",
+      "candidate_type": "admin_internal_candidate",
+      "lane_id": "friendship",
+      "theme": "friendship",
+      "source_keyword_hits": [
+        "friend",
+        "friendship"
+      ],
+      "source_snippets": [
+        {
+          "line_number": 17,
+          "text": "\"friendship-best-friend-family\","
+        }
+      ],
+      "audio_delivery_url": null,
+      "surface_feeling": "friendship",
+      "deeper_feelings": [
+        "connection",
+        "loyalty",
+        "shared warmth",
+        "being there"
+      ],
+      "emotional_level": "warm_to_playful",
+      "relationship_lane": "friend",
+      "situation_lane": "friendship",
+      "sensory_profile": [
+        "warm",
+        "familiar",
+        "light",
+        "real"
+      ],
+      "good_use_cases": [
+        "friend appreciation",
+        "thinking of you",
+        "supportive friendship",
+        "everyday connection"
+      ],
+      "bad_use_cases": [
+        "romantic confession",
+        "apology pressure",
+        "grief-specific remembrance"
+      ],
+      "risk_notes": [
+        "Keep friendship language non-romantic and non-possessive."
+      ],
+      "buyer_words": [
+        "A real friendship HUG.",
+        "For someone who has been there."
+      ],
+      "receiver_safe_words": [
+        "This made me think of our friendship.",
+        "Just wanted to send something real."
+      ],
+      "do_not_say": [
+        "You are my only person.",
+        "You owe me the same friendship."
+      ],
+      "review_status": "needs_human_review",
+      "public_status": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "route_created": false,
+      "stripe_created": false,
+      "buyer_exposure": "none",
+      "xml_armed": true,
+      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
+    }
+  ]
+}
