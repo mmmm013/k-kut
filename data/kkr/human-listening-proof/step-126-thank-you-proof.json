@@ -17,7 +17,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-v1b",
@@ -31,7 +37,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-prech1",
@@ -45,7 +57,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-ch1",
@@ -59,7 +77,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-v2a",
@@ -73,7 +97,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-v2b",
@@ -87,7 +117,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-br",
@@ -101,7 +137,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-ch2",
@@ -115,7 +157,13 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     },
     {
       "id": "thank-you-sec-outro",
@@ -129,7 +177,24 @@
       "what_it_says": "",
       "best_for": "",
       "why_this_matches": "",
-      "public_ready": false
+      "public_ready": false,
+      "source_family": "thank-you",
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
+      "holiday_identity": "not_assumed",
+      "fathers_day_candidate": "review_required"
     }
+  ],
+  "campaign_use": [
+    "mothers_day_2026"
+  ],
+  "holiday_identity": "not_assumed",
+  "holiday_exclusivity_rule": "Only lyric-declared holiday or explicit recipient language limits reuse. Folder path and campaign use do not limit reuse.",
+  "fathers_day_reuse_possible": true,
+  "fathers_day_reuse_requires": [
+    "no explicit Mother's Day lyric",
+    "no Mom/Mum-only recipient language",
+    "fits father/father-figure gratitude, guidance, support, respect, legacy, or steady love"
   ]
 }
