@@ -1,0 +1,48 @@
+{
+  "status": "income_fill_sprint_01_theme_audio_discovery",
+  "name": "Income Fill Sprint 01 Theme Audio Discovery",
+  "source_repair_plan": "data/gpmc-sensory/income-fill/audio-repair/income-fill-sprint-01-audio-repair-plan.json",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "scanned_root": "public",
+  "audio_file_count_scanned": 183,
+  "themes": {
+    "birthday": {
+      "theme": "birthday",
+      "candidate_audio_count": 0,
+      "discovery_status": "NO_THEME_AUDIO_FOUND",
+      "candidates": []
+    },
+    "encouragement_support": {
+      "theme": "encouragement_support",
+      "candidate_audio_count": 1,
+      "discovery_status": "PARTIAL_AUDIO_FOR_REVIEW",
+      "candidates": [
+        {
+          "theme": "encouragement_support",
+          "source_audio_file": "public/audio/kleigh/guide-final/14-good-strongest.m4a",
+          "public_audio_url": "/audio/kleigh/guide-final/14-good-strongest.m4a",
+          "keyword_hits": [
+            "strong"
+          ],
+          "score": 1,
+          "audio_discovery_status": "POSSIBLE_THEME_AUDIO",
+          "public_status": "not_public",
+          "route_created": false,
+          "stripe_created": false,
+          "buyer_exposure": "none"
+        }
+      ]
+    },
+    "friendship": {
+      "theme": "friendship",
+      "candidate_audio_count": 0,
+      "discovery_status": "NO_THEME_AUDIO_FOUND",
+      "candidates": []
+    }
+  },
+  "critical_warning": "This is audio discovery only. It does not approve candidates, publish records, create routes, create Stripe links, or expose candidates in buyer flow.",
+  "approval_rule": "Only human-reviewed theme-matched audio may repair an internal candidate before approve_internal."
+}
