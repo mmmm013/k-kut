@@ -70,33 +70,13 @@ if (!fs.existsSync(p)) {
       if (!(field in record)) fail(`${record.record_id || "unknown"} missing ${field}.`);
     }
 
-    if (record.review_status !== "needs_human_review") {
-      fail(`${record.record_id} must need human review.`);
-    }
-
-    if (record.public_status !== "not_public") {
-      fail(`${record.record_id} must remain not_public.`);
-    }
-
-    if (record.public_route !== null) {
-      fail(`${record.record_id} must not have public route.`);
-    }
-
-    if (record.stripe_url_if_payment_allowed !== null) {
-      fail(`${record.record_id} must not have Stripe URL.`);
-    }
-
-    if (record.route_created !== false || record.stripe_created !== false) {
-      fail(`${record.record_id} must not create route or Stripe.`);
-    }
-
-    if (record.buyer_exposure !== "none") {
-      fail(`${record.record_id} buyer exposure must be none.`);
-    }
-
-    if (record.xml_armed !== true) {
-      fail(`${record.record_id} must be XML-armed.`);
-    }
+    if (record.review_status !== "needs_human_review") fail(`${record.record_id} must need human review.`);
+    if (record.public_status !== "not_public") fail(`${record.record_id} must remain not_public.`);
+    if (record.public_route !== null) fail(`${record.record_id} must not have public route.`);
+    if (record.stripe_url_if_payment_allowed !== null) fail(`${record.record_id} must not have Stripe URL.`);
+    if (record.route_created !== false || record.stripe_created !== false) fail(`${record.record_id} must not create route or Stripe.`);
+    if (record.buyer_exposure !== "none") fail(`${record.record_id} buyer exposure must be none.`);
+    if (record.xml_armed !== true) fail(`${record.record_id} must be XML-armed.`);
 
     for (const arrayField of [
       "deeper_feelings",
