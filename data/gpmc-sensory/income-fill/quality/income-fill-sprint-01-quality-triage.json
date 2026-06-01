@@ -1,0 +1,450 @@
+{
+  "status": "income_fill_sprint_01_quality_triage",
+  "name": "Income Fill Sprint 01 Quality Triage",
+  "source_candidates": "data/gpmc-sensory/income-fill/candidates/income-fill-sprint-01-internal-candidates.json",
+  "public_status": "not_public",
+  "buyer_exposure": "none",
+  "routes_created": false,
+  "stripe_created": false,
+  "count": 24,
+  "counts": {
+    "HOLD_FOR_AUDIO_REPAIR": 6,
+    "HOLD_FOR_AUDIO_DISCOVERY": 18
+  },
+  "critical_warning": "This triage does not approve candidates. It identifies missing audio, wrong-lane audio, and review needs before any internal approval or public promotion.",
+  "approval_rule": "Only candidates with theme-matched audio and clean text review may advance to approve_internal. Public promotion remains a separate step.",
+  "triage": [
+    {
+      "record_id": "income-sprint-01-birthday-01",
+      "theme": "birthday",
+      "source_title": "income-fill-sprint-01-source-pool.json",
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_status": "WRONG_LANE_AUDIO_HINT",
+      "quality_status": "HOLD_FOR_AUDIO_REPAIR",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-02",
+      "theme": "birthday",
+      "source_title": "personalSeeds.ts",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-03",
+      "theme": "birthday",
+      "source_title": "top-100-shared-emotions.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-04",
+      "theme": "birthday",
+      "source_title": "kkr-emotional-radiation-map.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-05",
+      "theme": "birthday",
+      "source_title": "kkr-intent-safety-gate.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-06",
+      "theme": "birthday",
+      "source_title": "routes.json",
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_status": "WRONG_LANE_AUDIO_HINT",
+      "quality_status": "HOLD_FOR_AUDIO_REPAIR",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-07",
+      "theme": "birthday",
+      "source_title": "thank-you-gratitude-candidates.json",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "audio_status": "WRONG_LANE_AUDIO_HINT",
+      "quality_status": "HOLD_FOR_AUDIO_REPAIR",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-birthday-08",
+      "theme": "birthday",
+      "source_title": "thank-you-gratitude-human-review-queue.json",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "audio_status": "WRONG_LANE_AUDIO_HINT",
+      "quality_status": "HOLD_FOR_AUDIO_REPAIR",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-01",
+      "theme": "encouragement_support",
+      "source_title": "income-fill-sprint-01-source-pool.json",
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_status": "WRONG_LANE_AUDIO_HINT",
+      "quality_status": "HOLD_FOR_AUDIO_REPAIR",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-02",
+      "theme": "encouragement_support",
+      "source_title": "personalSeeds.ts",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-03",
+      "theme": "encouragement_support",
+      "source_title": "top-100-shared-emotions.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-04",
+      "theme": "encouragement_support",
+      "source_title": "theme-feed-system.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-05",
+      "theme": "encouragement_support",
+      "source_title": "sensory-expansion-queue.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-06",
+      "theme": "encouragement_support",
+      "source_title": "action-candidates.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-07",
+      "theme": "encouragement_support",
+      "source_title": "hug-copy.en.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-encouragement_support-08",
+      "theme": "encouragement_support",
+      "source_title": "holiday-season-rotation-system.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-01",
+      "theme": "friendship",
+      "source_title": "income-fill-sprint-01-source-pool.json",
+      "audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "audio_status": "WRONG_LANE_AUDIO_HINT",
+      "quality_status": "HOLD_FOR_AUDIO_REPAIR",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-02",
+      "theme": "friendship",
+      "source_title": "top-100-shared-emotions.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-03",
+      "theme": "friendship",
+      "source_title": "action-candidates.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-04",
+      "theme": "friendship",
+      "source_title": "sensory-expansion-queue.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-05",
+      "theme": "friendship",
+      "source_title": "holiday-season-rotation-system.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-06",
+      "theme": "friendship",
+      "source_title": "holidaySeeds.ts",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-07",
+      "theme": "friendship",
+      "source_title": "personalSeeds.ts",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    },
+    {
+      "record_id": "income-sprint-01-friendship-08",
+      "theme": "friendship",
+      "source_title": "min-8-theme-depth.json",
+      "audio_delivery_url": null,
+      "audio_status": "NO_AUDIO_HINT_YET",
+      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
+      "review_status_before_triage": "needs_human_review",
+      "public_status_after_triage": "not_public",
+      "public_route_after_triage": null,
+      "stripe_url_after_triage": null,
+      "buyer_exposure_after_triage": "none",
+      "triage_notes": [
+        "Do not approve public use from this triage step.",
+        "Wrong-lane or missing audio must be repaired before internal approval.",
+        "Text metadata may be useful, but audio must match theme and feeling."
+      ]
+    }
+  ]
+}
