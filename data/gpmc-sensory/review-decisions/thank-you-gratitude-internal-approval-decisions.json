@@ -1,0 +1,348 @@
+{
+  "status": "internal_approval_decisions",
+  "name": "Thank You Gratitude Internal Approval Decisions",
+  "lane_id": "thank_you_gratitude",
+  "source_queue": "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json",
+  "count": 12,
+  "public_status": "not_public",
+  "critical_warning": "These decisions approve internal readiness only. They do not publish records, create routes, create Stripe links, or expose candidates in buyer flow.",
+  "public_promotion_law": "A separate approved_public promotion step and production containment proof are required before buyer-facing use.",
+  "decisions": [
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-v1a",
+      "review_id": "review-candidate-gratitude-thank-you-sec-v1a",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-v1a",
+      "source_kut_id": "thank-you-sec-v1a",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Confirm not Mother’s-Day-only before public approval."
+      ],
+      "retained_do_not_say": [
+        "This will fix everything.",
+        "You need to feel appreciated now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.700Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-v1b",
+      "review_id": "review-candidate-gratitude-thank-you-sec-v1b",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-v1b",
+      "source_kut_id": "thank-you-sec-v1b",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Confirm not Mother’s-Day-only before public approval."
+      ],
+      "retained_do_not_say": [
+        "This will fix everything.",
+        "You need to feel appreciated now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-prech1",
+      "review_id": "review-candidate-gratitude-thank-you-sec-prech1",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-prech1",
+      "source_kut_id": "thank-you-sec-prech1",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Use as appreciation, not emotional leverage."
+      ],
+      "retained_do_not_say": [
+        "This proves how much you did for me.",
+        "You have to understand this now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-ch1",
+      "review_id": "review-candidate-gratitude-thank-you-sec-ch1",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-ch1",
+      "source_kut_id": "thank-you-sec-ch1",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Use as appreciation, not emotional leverage."
+      ],
+      "retained_do_not_say": [
+        "This proves how much you did for me.",
+        "You have to understand this now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-v2a",
+      "review_id": "review-candidate-gratitude-thank-you-sec-v2a",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-v2a",
+      "source_kut_id": "thank-you-sec-v2a",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Confirm not Mother’s-Day-only before public approval."
+      ],
+      "retained_do_not_say": [
+        "This will fix everything.",
+        "You need to feel appreciated now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-v2b",
+      "review_id": "review-candidate-gratitude-thank-you-sec-v2b",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-v2b",
+      "source_kut_id": "thank-you-sec-v2b",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Confirm not Mother’s-Day-only before public approval."
+      ],
+      "retained_do_not_say": [
+        "This will fix everything.",
+        "You need to feel appreciated now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-br",
+      "review_id": "review-candidate-gratitude-thank-you-sec-br",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-br",
+      "source_kut_id": "thank-you-sec-br",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Do not overstate what the receiver intended or felt."
+      ],
+      "retained_do_not_say": [
+        "I know exactly what you feel.",
+        "This captures everything perfectly."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-ch2",
+      "review_id": "review-candidate-gratitude-thank-you-sec-ch2",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-ch2",
+      "source_kut_id": "thank-you-sec-ch2",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Use as appreciation, not emotional leverage."
+      ],
+      "retained_do_not_say": [
+        "This proves how much you did for me.",
+        "You have to understand this now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-sec-outro",
+      "review_id": "review-candidate-gratitude-thank-you-sec-outro",
+      "source_candidate_id": "candidate-gratitude-thank-you-sec-outro",
+      "source_kut_id": "thank-you-sec-outro",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Keep as gratitude/closure, not grief or obligation."
+      ],
+      "retained_do_not_say": [
+        "You owe me a response.",
+        "This should make up for everything."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-cc-003",
+      "review_id": "review-candidate-gratitude-thank-you-cc-003",
+      "source_candidate_id": "candidate-gratitude-thank-you-cc-003",
+      "source_kut_id": "thank-you-cc-003",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-003.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Confirm not Mother’s-Day-only before public approval."
+      ],
+      "retained_do_not_say": [
+        "This will fix everything.",
+        "You need to feel appreciated now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-cc-012",
+      "review_id": "review-candidate-gratitude-thank-you-cc-012",
+      "source_candidate_id": "candidate-gratitude-thank-you-cc-012",
+      "source_kut_id": "thank-you-cc-012",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-012.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Confirm not Mother’s-Day-only before public approval."
+      ],
+      "retained_do_not_say": [
+        "This will fix everything.",
+        "You need to feel appreciated now."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    },
+    {
+      "decision_id": "decision-review-candidate-gratitude-thank-you-cc-022",
+      "review_id": "review-candidate-gratitude-thank-you-cc-022",
+      "source_candidate_id": "candidate-gratitude-thank-you-cc-022",
+      "source_kut_id": "thank-you-cc-022",
+      "lane_id": "thank_you_gratitude",
+      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-cc-022.mp3",
+      "human_decision": "approve_internal",
+      "decision_scope": "internal_readiness_only",
+      "public_status_after_decision": "not_public",
+      "public_route": null,
+      "stripe_url_if_payment_allowed": null,
+      "approval_notes": [
+        "Gratitude-safe for internal readiness.",
+        "Not approved for public buyer flow.",
+        "Requires separate approved_public promotion step before any route, Stripe, or public use.",
+        "Keep receiver language gentle, non-assumptive, and non-coercive."
+      ],
+      "retained_risks": [
+        "Keep as gratitude/closure, not grief or obligation."
+      ],
+      "retained_do_not_say": [
+        "You owe me a response.",
+        "This should make up for everything."
+      ],
+      "reviewer": "GPEx platform review",
+      "reviewed_at": "2026-06-01T02:06:46.701Z"
+    }
+  ]
+}
