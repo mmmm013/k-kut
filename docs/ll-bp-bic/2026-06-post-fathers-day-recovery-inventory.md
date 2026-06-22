@@ -311,3 +311,73 @@ Requirements:
 - One approved room.
 
 Experimental rooms remain isolated from production operations.
+
+
+---
+
+## LL-SOURCE-001
+
+Description:
+Source authority became fragmented across projects, inventories, review lanes, product lanes, and operational storage systems.
+
+Evidence:
+- GPMC tracks exist independently of K-KUT products.
+- PIX, LT-PIX, KK, and sK inventories are downstream derivative inventories.
+- Multiple systems can appear to be source authorities if lineage is not centralized.
+- DISCO, SoundBox, Supabase, K-KUT, holiday inventories, review inventories, publication inventories, fulfillment inventories, and product inventories are not permanent authority.
+
+Impact:
+- Lineage ambiguity.
+- ASCAP / PRO reporting risk.
+- Inventory audit difficulty.
+- Increased operator confusion.
+- Increased risk of treating derivative inventory as source inventory.
+
+Candidate BP:
+BP-SOURCE-001
+
+Status:
+Candidate LL
+
+---
+
+## BP-SOURCE-001
+
+Rule:
+All audio authority must originate from the GPMC Master Track Registry.
+
+Locked authority lineage:
+
+GPMC
+↓
+GPM Kreator
+↓
+II
+↓
+Track
+↓
+PIX
+↓
+LT-PIX
+↓
+KK
+↓
+sK
+
+Additional rule:
+DISCO is an intake source, not permanent authority.
+
+Additional rule:
+Supabase is operational storage, not authority.
+
+Additional rule:
+KK inventories, sK inventories, holiday inventories, review inventories, publication inventories, fulfillment inventories, and product inventories are derivative consumers of source inventory, not owners of source inventory.
+
+Additional rule:
+No derivative inventory may become a source authority.
+
+Status:
+Candidate BP
+
+BIC dependency:
+Pending GPMC Master Track Registry creation and migration proof.
