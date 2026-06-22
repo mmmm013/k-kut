@@ -1123,7 +1123,7 @@
       "record_id": "pix-kk-batch-01-053",
       "batch_id": "pix_kk_batch_01",
       "theme": "family_parent",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
+      "source_file": "public/kks/thank-you/kks-expanded/manifest.json",
       "audio_status": "AUDIO_HINTS_EXIST_REVIEW_REQUIRED",
       "quality_status": "INCOME_LANE_REVIEW_READY",
       "income_lane": true,

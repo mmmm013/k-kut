@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "role": "Factory decisions for universal KUT processing queue",
+  "factoryMode": true,
+  "approveDoesNotMeanRelease": true,
+  "source": "universal-kut-processing-factory-workbench-v1",
+  "decisions": [
+    {
+      "workOrderId": "UKUT-WO-003",
+      "sourceCandidateNumber": 12,
+      "decision": "approve-for-processing",
+      "note": "Cut at 13 seconds, then approve.",
+      "approveMeans": "processing-only-not-release",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    },
+    {
+      "workOrderId": "UKUT-WO-004",
+      "sourceCandidateNumber": 14,
+      "decision": "approve-for-processing",
+      "note": "",
+      "approveMeans": "processing-only-not-release",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    },
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "decision": "approve-for-processing",
+      "note": "Last note NOT resolved. Add maybe 1 second. We need precision we will learn, so do best can.",
+      "approveMeans": "processing-only-not-release",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    },
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "decision": "approve-for-processing",
+      "note": "",
+      "approveMeans": "processing-only-not-release",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    }
+  ],
+  "laneSummary": {
+    "approvedForProcessing": [
+      "UKUT-WO-003",
+      "UKUT-WO-004",
+      "UKUT-WO-005",
+      "UKUT-WO-006"
+    ],
+    "needsRecutAdjust": [],
+    "hold": [],
+    "reject": []
+  },
+  "renderAudioNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "nextSystemStep": "process-approved-items-with-boundary-notes-padding-fade-twinkle-and-review"
+}

@@ -1,18 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const manifestPath = "public/mothers-day/thank-you/kks-expanded/manifest.json";
+const manifestPath = "public/kks/thank-you/kks-expanded/manifest.json";
 
 const required = [
-  ["thank-you-sec-v1a", "V1a", "v1a", "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3"],
-  ["thank-you-sec-v1b", "V1b", "v1b", "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3"],
-  ["thank-you-sec-prech1", "PreCh1", "prech1", "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3"],
-  ["thank-you-sec-ch1", "Ch1", "ch1", "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3"],
-  ["thank-you-sec-v2a", "V2a", "v2a", "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3"],
-  ["thank-you-sec-v2b", "V2b", "v2b", "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3"],
-  ["thank-you-sec-br", "Br", "br", "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3"],
-  ["thank-you-sec-ch2", "Ch2", "ch2", "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3"],
-  ["thank-you-sec-outro", "Outro", "outro", "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3"],
+  ["thank-you-sec-v1a", "V1a", "v1a", "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3"],
+  ["thank-you-sec-v1b", "V1b", "v1b", "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3"],
+  ["thank-you-sec-prech1", "PreCh1", "prech1", "/kks/thank-you/kks-expanded/thank-you-sec-prech1.mp3"],
+  ["thank-you-sec-ch1", "Ch1", "ch1", "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3"],
+  ["thank-you-sec-v2a", "V2a", "v2a", "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3"],
+  ["thank-you-sec-v2b", "V2b", "v2b", "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3"],
+  ["thank-you-sec-br", "Br", "br", "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3"],
+  ["thank-you-sec-ch2", "Ch2", "ch2", "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3"],
+  ["thank-you-sec-outro", "Outro", "outro", "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3"],
 ];
 
 let failed = false;

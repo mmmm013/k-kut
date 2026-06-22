@@ -1,0 +1,26 @@
+{
+  "work_family_id": "WORK-NO-MYSTERY",
+  "work_family_display": "No Mystery",
+  "status": "TWO_IDENTITY_MATCHED_SOURCE_VERSIONS_AVAILABLE",
+  "selection_rule": "Use only the two files manually dragged by Gregory into ~/Desktop/NO_MYSTERY_TWO_ONLY. Do not select by duration.",
+  "active_sources": [
+    {
+      "pix_id": "PIX-NO-MYSTERY-BILLY-HARPER-VOCAL",
+      "pix_title_internal": "I'm No Mystery",
+      "identity_source": "Manual Music drag by Gregory",
+      "local_original_path": "/Users/gputnammusicllc/Desktop/NO_MYSTERY_TWO_ONLY/02 I'm No Mystery.mp3",
+      "source_audio_path": "/pix/no-mystery/source-audio/no-mystery-billy-harper-vocal-source.mp3",
+      "status": "AVAILABLE_FOR_KK_MATCHING"
+    },
+    {
+      "pix_id": "PIX-NO-MYSTERY-CHRIS-KRAUSE",
+      "pix_title_internal": "No Mystery",
+      "identity_source": "Manual Music drag by Gregory",
+      "local_original_path": "/Users/gputnammusicllc/Desktop/NO_MYSTERY_TWO_ONLY/03 No Mystery.mp3",
+      "source_audio_path": "/pix/no-mystery/source-audio/no-mystery-chris-krause-source.mp3",
+      "status": "AVAILABLE_FOR_KK_MATCHING"
+    }
+  ],
+  "backend_rule": "Each No Mystery KK must preserve exact parent PIX version. Theme/public labels remain buyer-safe.",
+  "duration_rule": "Duration is backend reporting only and was not used for source selection."
+}

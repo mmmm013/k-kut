@@ -1,0 +1,286 @@
+{
+  "setId": "fathers-day-public-display-kks",
+  "holiday": "Father’s Day",
+  "status": "PUBLIC_DISPLAY_CURATED",
+  "rule": "Public Father’s Day page reads this curated display JSON. Do not hardcode public KKs in app/fathers-day/page.tsx. Exclude FD-BAN-ONLY, SOURCE_HOLD, TPR_NEEDED, REVIEW_ONLY, duplicate variants, private proof files, and buyer-confusing BLK/sBLK labels.",
+  "count": 19,
+  "slds": "Sensible? Logical? Doable? Suitable?",
+  "fdBannedOnly": [
+    {
+      "kkId": "thank-you-sec-v2b",
+      "title": "Thank You — Verse 2B",
+      "reason": "Feminine recipient language makes it wrong for Father’s Day. KK still exists for other SLDS? lanes.",
+      "preservedAt": "public/kks/thank-you/fd-banned-hold/thank-you-sec-v2b-release.mp3"
+    }
+  ],
+  "lanes": [
+    {
+      "laneId": "release-kks",
+      "title": "Release KKs",
+      "subtitle": "Current safe Father’s Day release set. V2b is removed from active Father’s Day use.",
+      "items": [
+        {
+          "displayOrder": 1,
+          "kkId": "thank-you-sec-br",
+          "publicTitle": "Thank You — Bridge",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-br-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Gratitude turn / emotional pivot.",
+          "feelingTags": ["gratitude", "emotional pivot", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 2,
+          "kkId": "thank-you-sec-ch1",
+          "publicTitle": "Thank You — Chorus 1",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-ch1-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Clear gratitude hook.",
+          "feelingTags": ["gratitude", "thank you", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 3,
+          "kkId": "thank-you-sec-ch2",
+          "publicTitle": "Thank You — Chorus 2",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-ch2-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Strong gratitude return.",
+          "feelingTags": ["gratitude", "return", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 4,
+          "kkId": "thank-you-sec-intro",
+          "publicTitle": "Thank You — Intro",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-intro-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Opening gratitude / setup.",
+          "feelingTags": ["gratitude", "opening", "warmth"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 5,
+          "kkId": "thank-you-sec-outro",
+          "publicTitle": "Thank You — Outro",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-outro-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Gratitude close / send-off.",
+          "feelingTags": ["gratitude", "close", "send-off"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 6,
+          "kkId": "thank-you-sec-prech1",
+          "publicTitle": "Thank You — Pre-Chorus 1",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-prech1-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Lift into gratitude hook.",
+          "feelingTags": ["gratitude", "lift", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 7,
+          "kkId": "thank-you-sec-v1a",
+          "publicTitle": "Thank You — Verse 1A",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-v1a-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Specific gratitude / first verse setup.",
+          "feelingTags": ["gratitude", "specific thanks", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 8,
+          "kkId": "have-to-duet-ch1",
+          "publicTitle": "Have-To Duet — Chorus 1",
+          "audioUrl": "/kks/fathers-day/release/have-to-duet-ch1-release.mp3",
+          "pixGroup": "Have-To Duet",
+          "lane": "Release KK",
+          "note": "Duty / devotion / have-to love.",
+          "feelingTags": ["devotion", "duty", "loyalty"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 9,
+          "kkId": "thank-you-sec-v1b",
+          "publicTitle": "Thank You — Verse 1B",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-v1b-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Specific gratitude / first verse continuation.",
+          "feelingTags": ["gratitude", "specific thanks", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 10,
+          "kkId": "thank-you-sec-v2a",
+          "publicTitle": "Thank You — Verse 2A",
+          "audioUrl": "/kks/fathers-day/release/thank-you-sec-v2a-release.mp3",
+          "pixGroup": "Thank You",
+          "lane": "Release KK",
+          "note": "Second gratitude detail.",
+          "feelingTags": ["gratitude", "detail", "support"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 11,
+          "kkId": "have-to-duet-ch3-outro",
+          "publicTitle": "Have-To Duet — Chorus 3 + Outro",
+          "audioUrl": "/kks/fathers-day/release/have-to-duet-ch3-outro-release.mp3",
+          "pixGroup": "Have-To Duet",
+          "lane": "Release KK",
+          "note": "Final duty / devotion close.",
+          "feelingTags": ["devotion", "duty", "closing"],
+          "recipientAim": "neutral-you",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        }
+      ]
+    },
+    {
+      "laneId": "no-mystery-fathers-day-kks",
+      "title": "No Mystery / I’m No Mystery Father’s Day KKs",
+      "subtitle": "Locked Father’s Day lane: honoring him, strong and steady, proud of him, missing him, legacy Dad.",
+      "items": [
+        {
+          "displayOrder": 12,
+          "kkId": "no-mystery-honoring-him",
+          "publicTitle": "Honoring Him",
+          "audioUrl": "/kks/no-mystery/fathers-day-blk2-twinkle-overlap-pad1s-lock/honoring-him-blk2-pad1s-twinkle-2sec-sooner.mp3",
+          "pixGroup": "No Mystery / I’m No Mystery",
+          "lane": "Locked Father’s Day KK",
+          "note": "Respect / honor / Father’s Day recognition.",
+          "feelingTags": ["honor", "respect", "recognition"],
+          "recipientAim": "him",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 13,
+          "kkId": "no-mystery-strong-and-steady",
+          "publicTitle": "Strong and Steady",
+          "audioUrl": "/kks/no-mystery/fathers-day-blk3-twinkle-overlap-v1/strong-and-steady-blk3-twinkle-2sec-sooner.mp3",
+          "pixGroup": "No Mystery / I’m No Mystery",
+          "lane": "Locked Father’s Day KK",
+          "note": "Strength / steadiness / Dad presence.",
+          "feelingTags": ["strength", "steady", "presence"],
+          "recipientAim": "dad",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 14,
+          "kkId": "no-mystery-proud-of-him",
+          "publicTitle": "Proud of Him",
+          "audioUrl": "/kks/no-mystery/fathers-day-blk4-trim-lock/proud-of-him-blk4-trim-0p75-twinkle-2sec-sooner.mp3",
+          "pixGroup": "No Mystery / I’m No Mystery",
+          "lane": "Locked Father’s Day KK",
+          "note": "Pride / admiration / recognition.",
+          "feelingTags": ["pride", "admiration", "recognition"],
+          "recipientAim": "him",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 15,
+          "kkId": "no-mystery-missing-him",
+          "publicTitle": "Missing Him",
+          "audioUrl": "/kks/no-mystery/fathers-day-blk5-trim-lock/missing-him-blk5-trim-0p75-twinkle-2sec-sooner.mp3",
+          "pixGroup": "No Mystery / I’m No Mystery",
+          "lane": "Locked Father’s Day KK",
+          "note": "Missing Dad / remembrance / tender Father’s Day lane.",
+          "feelingTags": ["missing him", "remembrance", "tender"],
+          "recipientAim": "him",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 16,
+          "kkId": "no-mystery-legacy-dad",
+          "publicTitle": "Legacy Dad",
+          "audioUrl": "/kks/no-mystery/fathers-day-blk6-trim-lock/legacy-dad-blk6-trim-0p75-twinkle-2sec-sooner.mp3",
+          "pixGroup": "No Mystery / I’m No Mystery",
+          "lane": "Locked Father’s Day KK",
+          "note": "Legacy / memory / what Dad leaves behind.",
+          "feelingTags": ["legacy", "memory", "dad"],
+          "recipientAim": "dad",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        }
+      ]
+    },
+    {
+      "laneId": "fathers-day-kk-statements",
+      "title": "Father’s Day KK Statements",
+      "subtitle": "Short and full statement KKs for Dad-focused buyer moments.",
+      "items": [
+        {
+          "displayOrder": 17,
+          "kkId": "fd-im-no-mystery-about-dad-locked",
+          "publicTitle": "’Bout Dad",
+          "audioUrl": "/kks/no-mystery/fathers-day-statements-twinkle-overlap-v2/bout-dad-twinkle-2sec-sooner.mp3",
+          "pixGroup": "I’m No Mystery",
+          "lane": "Short KK Statement",
+          "note": "A short, direct music statement for the Dad you know.",
+          "feelingTags": ["dad statement", "direct", "short"],
+          "recipientAim": "dad",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 18,
+          "kkId": "fd-im-no-mystery-heres-my-dad-locked",
+          "publicTitle": "Here’s My Dad",
+          "audioUrl": "/kks/no-mystery/fathers-day-statements-twinkle-overlap-v2/heres-my-dad-twinkle-2sec-sooner.mp3",
+          "pixGroup": "I’m No Mystery",
+          "lane": "Short KK Statement",
+          "note": "A short music moment that says, this is who Dad is.",
+          "feelingTags": ["dad statement", "identity", "short"],
+          "recipientAim": "dad",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        },
+        {
+          "displayOrder": 19,
+          "kkId": "fd-im-no-mystery-making-a-statement-locked",
+          "publicTitle": "Making a Statement",
+          "audioUrl": "/kks/no-mystery/fathers-day-statements-twinkle-overlap-v2/making-a-statement-twinkle-2sec-sooner.mp3",
+          "pixGroup": "I’m No Mystery",
+          "lane": "Full KK Statement",
+          "note": "A fuller music statement for honoring Dad with strength and presence.",
+          "feelingTags": ["honoring dad", "strength", "statement"],
+          "recipientAim": "dad",
+          "sldsStatus": "SLDS_PASS",
+          "sourceStatus": "PUBLIC_READY"
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const DEST = "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3";
-const DEST_URL = "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3";
-const MANIFEST = "public/mothers-day/thank-you/kks-expanded/manifest.json";
+const DEST = "public/kks/thank-you/kks-expanded/thank-you-sec-br.mp3";
+const DEST_URL = "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3";
+const MANIFEST = "public/kks/thank-you/kks-expanded/manifest.json";
 
 const ROOTS = ["manifests", "data", "reports", "public/mothers-day/thank-you"];
 

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const manifestPath = "public/mothers-day/thank-you/kks-expanded/manifest.json";
+const manifestPath = "public/kks/thank-you/kks-expanded/manifest.json";
 
 const locked = [
   "thank-you-sec-v1a",

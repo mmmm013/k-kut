@@ -1,5 +1,19 @@
-ops/
+# Never deploy local recovery dumps
+data/recovery/
+data/recovery/**
+
+# Never deploy private env backups
+data/4pe-biz-msc/env-fix/
+data/4pe-biz-msc/env-fix/**
+
+# Never deploy staging/proof work
 staging/
-backups/
-tmp/
-reports/
+staging/**
+
+# Never deploy internal proof/review candidate files
+public/father-days-kks/**/internal-proof/
+public/father-days-kks/**/internal-proof/**
+
+# Never deploy temporary render folders
+public/father-days-kks/**/ii-delivery/tmp*/
+public/father-days-kks/**/ii-delivery/tmp*/**

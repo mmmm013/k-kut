@@ -1,0 +1,32 @@
+{
+  "status": "captured_authority",
+  "lane": "apology",
+  "theme": "I'm Sorry",
+  "rule": "The three I'm Sorry versions may have aliases that look like PIX labels, but each captured object is a KK, not a PIX.",
+  "public_display_rule": "Public display stays theme-first and option-based. Do not expose confusing PIX/title mechanics to buyers.",
+  "internal_rule": "Internal systems may use the aliases for search, lineage, QC, and matching.",
+  "versions": [
+    {
+      "backend_kk_id": "KK-IM-SORRY-V01",
+      "public_option_label": "I'm Sorry — Option 1",
+      "alias_pix_label": "I'm Sorry Version 1",
+      "actual_object_type": "KK",
+      "status": "CAPTURED_PENDING_FILE_MATCH"
+    },
+    {
+      "backend_kk_id": "KK-IM-SORRY-V02",
+      "public_option_label": "I'm Sorry — Option 2",
+      "alias_pix_label": "I'm Sorry Version 2",
+      "actual_object_type": "KK",
+      "status": "CAPTURED_PENDING_FILE_MATCH"
+    },
+    {
+      "backend_kk_id": "KK-IM-SORRY-V03",
+      "public_option_label": "I'm Sorry — Option 3",
+      "alias_pix_label": "I'm Sorry Version 3",
+      "actual_object_type": "KK",
+      "status": "CAPTURED_PENDING_FILE_MATCH"
+    }
+  ],
+  "locked_instruction": "Do not treat these aliases as source PIXs. They are KK versions. Do not approve until exact audio files are matched and Gregory listens."
+}

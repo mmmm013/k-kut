@@ -12,17 +12,25 @@ type BridgeRecord = {
     situation: string;
   };
   intent_lane: string;
+  approval_status?: string;
   audio_delivery_url: string;
+  audio_proof_status?: string;
+  payment_allowed?: boolean;
   stripe_url_if_payment_allowed: string;
   public_route: string;
 };
 
-const PUBLIC_OPTIONS_READY =
-  process.env.NEXT_PUBLIC_KKR_PUBLIC_OPTIONS_READY === "true";
+function isRecordPublicReady(record: BridgeRecord) {
+  return (
+    record.approval_status?.startsWith("public_approved") === true &&
+    record.audio_proof_status === "pass" &&
+    record.payment_allowed === true &&
+    Boolean(record.audio_delivery_url) &&
+    Boolean(record.stripe_url_if_payment_allowed)
+  );
+}
 
 function loadRecord(publicRoute: string): BridgeRecord | null {
-  if (!PUBLIC_OPTIONS_READY) return null;
-
   const filePath = path.join(
     process.cwd(),
     "data/publication-bridge/public-option-records.generated.json"
@@ -32,10 +40,14 @@ function loadRecord(publicRoute: string): BridgeRecord | null {
     records?: BridgeRecord[];
   };
 
-  return (
-    (parsed.records || []).find((record) => record.public_route === publicRoute) ||
-    null
-  );
+  const record =
+    (parsed.records || []).find((item) => item.public_route === publicRoute) ||
+    null;
+
+  if (!record) return null;
+  if (!isRecordPublicReady(record)) return null;
+
+  return record;
 }
 
 function titleCaseSlug(value: string) {

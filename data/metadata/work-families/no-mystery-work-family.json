@@ -1,0 +1,33 @@
+{
+  "work_family_id": "WORK-NO-MYSTERY",
+  "work_family_display": "No Mystery",
+  "alias_titles": [
+    "I'm No Mystery",
+    "I’m No Mystery",
+    "i'M NO MYSTERY",
+    "No Mystery"
+  ],
+  "rule": "These aliases may connect the song/work family for search, but each recording/master is its own PIX when the audio/performance differs.",
+  "pix_recordings": [
+    {
+      "pix_id": "PIX-NO-MYSTERY-BILLY-HARPER",
+      "pix_title_internal": "I'm No Mystery",
+      "work_family_id": "WORK-NO-MYSTERY",
+      "producer": "Billy Harper",
+      "recording_variant": "unplugged/current",
+      "status": "NEEDS_SOURCE_AUDIO_SELECTION",
+      "notes": "Produced by Billy Harper. Treat as separate PIX recording/master from Chris Krause vocal."
+    },
+    {
+      "pix_id": "PIX-NO-MYSTERY-CHRIS-KRAUSE",
+      "pix_title_internal": "No Mystery",
+      "work_family_id": "WORK-NO-MYSTERY",
+      "vocalist": "Chris Krause",
+      "recording_variant": "Chris Krause vocal",
+      "status": "NEEDS_SOURCE_AUDIO_SELECTION",
+      "notes": "Sung by Chris Krause. Treat as separate PIX recording/master from Billy Harper produced/unplugged version."
+    }
+  ],
+  "backend_rule": "KKs attach to the exact PIX recording, not only to the shared work family.",
+  "public_rule": "Buyer-facing KK labels remain theme/use-case based. Backend preserves work family, exact PIX recording, KK ID, audio path, structure, and approval status."
+}

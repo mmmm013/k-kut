@@ -1,0 +1,1960 @@
+{
+  "version": 1,
+  "role": "BUG human review outcome v1",
+  "generatedAt": "2026-06-20T20:30:30.923Z",
+  "sourceShortlist": "data/kut-inventory/review/bug-human-review-playable-shortlist.json",
+  "signatureAudioBrandingSsot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+  "publicBugIndexAllowedFromThisOutcome": false,
+  "releaseGateAllowedFromThisOutcome": false,
+  "outletAllowedFromThisOutcome": false,
+  "totalReviewed": 22,
+  "counts": {
+    "nextInLineKutCandidates": 6,
+    "hold": 14,
+    "reject": 2,
+    "publicBugReadyNow": 0,
+    "releaseReadyNow": 0
+  },
+  "doctrine": {
+    "nextInLineKutCandidateDoesNotEqualReleaseReady": true,
+    "paddingTwinkleDpAreStisNotBugProductsByDefault": true,
+    "allReleaseBoundProductsRequireSignatureAudioBranding": true,
+    "signatureAudioBrandingIsNotOptional": true,
+    "signatureAudioBrandingIsNotUponDemand": true,
+    "bugRequiresShortKutOnly": true,
+    "bugPriceCents": 199,
+    "bugRepeatMax": 5,
+    "repeatedBugRequiresSchedule": true
+  },
+  "requiredSignatureAudioBrandingBeforeRelease": {
+    "padding": true,
+    "slightEndFade": true,
+    "twinkle": true,
+    "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+  },
+  "nextInLineKutCandidates": [
+    {
+      "bugHumanReviewNumber": 1,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "BUT JUST musical (INSTRO) piece. Study it & add it to the IN/O-PIX group, you think?",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-001 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-001 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "route-in-o-pix-study"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 10,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Save this as unique. Should NEXT CC initial \"Yeah....Thank You\" vocal, which is initial vocal. 0:00-0:04 is TPs for this TRM/Salutation. NEED THAT thank you, to use & store among THANK YOUs HOME. Another kut CAN be start to 0:13, as a PHRZ.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "thank-you-home",
+        "trm-salutation-0-00-to-0-04",
+        "phrzkut-0-00-to-0-13",
+        "gender-limited-her-line"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 12,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Needs Twinkle",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "explicit-human-note-needs-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 14,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Uses \"her\" in 2nd line, so cannot be used for traditionally-male oriented uses. & add Twinkle.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "explicit-human-note-needs-twinkle",
+        "gender-limited-her-line"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 16,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Twinkle",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "explicit-human-note-needs-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 22,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    }
+  ],
+  "recutOrHoldQueue": [
+    {
+      "bugHumanReviewNumber": 2,
+      "decision": "hold",
+      "notes": "",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-002 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-002 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 3,
+      "decision": "hold",
+      "notes": "Runs past proper TP into next BLK's vocal. So cut accurately.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-003 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-003 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 4,
+      "decision": "hold",
+      "notes": "Cut off at line, like a bird, always flying. Do NOT start next vocal line.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-004 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-004 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 6,
+      "decision": "hold",
+      "notes": "See pattern of running PAST first SUB-TP, I guess we call these for kuts vs KKs. Lock & monitor.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-006 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-006 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 7,
+      "decision": "hold",
+      "notes": "Cut out initial middle-of-line start, & use only NEXT Phrase, & NOT current following vocals.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-007 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-007 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 8,
+      "decision": "hold",
+      "notes": "Start earlier, end at \"where the road may lead\", NOT abruptly.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-008 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-008 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "gender-limited-her-line"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 11,
+      "decision": "hold",
+      "notes": "Almost, but cuts off in middle of LPR/LTR.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-011 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-011 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 13,
+      "decision": "hold",
+      "notes": "Almost perfect but is AS BIG as LTRs get, right? Catch that?",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-013 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-013 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 15,
+      "decision": "hold",
+      "notes": "Should start at 0:08. Stop at 0:13.75.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-015 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-015 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "phrzkut-0-00-to-0-13",
+        "needs-start-trim",
+        "needs-stop-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 17,
+      "decision": "hold",
+      "notes": "Stop 1 kut at :11. Also, Keep but add 1 second.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-017 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-017 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-stop-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 18,
+      "decision": "hold",
+      "notes": "Start at 3 seconds.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-018 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-018 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-start-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 19,
+      "decision": "hold",
+      "notes": "Start at 7 seconds. Stop sooner, at 17 seconds.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-019 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-019 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-start-trim",
+        "needs-stop-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 20,
+      "decision": "hold",
+      "notes": "Create 1 kut at 8 seconds. Still use entire kut but cut off vocal in middle.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-020 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-020 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 21,
+      "decision": "hold",
+      "notes": "Start at 3 seconds.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-021 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-021 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-start-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "bugHumanReviewNumber": 5,
+      "decision": "reject",
+      "notes": "Start NOR End were accurate.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-005 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-005 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "rejected",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Rejected by human review.",
+      "requiredNextActions": [
+        "Keep rejection record.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 9,
+      "decision": "reject",
+      "notes": "FAR TOO MANY lines!!!!!",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-009 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-009 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "rejected",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "too-long-for-bug"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Rejected by human review.",
+      "requiredNextActions": [
+        "Keep rejection record.",
+        "Do not enter BUG eligible index."
+      ]
+    }
+  ],
+  "fullLedger": [
+    {
+      "bugHumanReviewNumber": 1,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "BUT JUST musical (INSTRO) piece. Study it & add it to the IN/O-PIX group, you think?",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-001 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-001 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "route-in-o-pix-study"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 2,
+      "decision": "hold",
+      "notes": "",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-002 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-002 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 3,
+      "decision": "hold",
+      "notes": "Runs past proper TP into next BLK's vocal. So cut accurately.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-003 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-003 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 4,
+      "decision": "hold",
+      "notes": "Cut off at line, like a bird, always flying. Do NOT start next vocal line.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-004 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-004 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 5,
+      "decision": "reject",
+      "notes": "Start NOR End were accurate.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-005 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-005 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "rejected",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Rejected by human review.",
+      "requiredNextActions": [
+        "Keep rejection record.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 6,
+      "decision": "hold",
+      "notes": "See pattern of running PAST first SUB-TP, I guess we call these for kuts vs KKs. Lock & monitor.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-006 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-006 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 7,
+      "decision": "hold",
+      "notes": "Cut out initial middle-of-line start, & use only NEXT Phrase, & NOT current following vocals.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-007 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-007 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 8,
+      "decision": "hold",
+      "notes": "Start earlier, end at \"where the road may lead\", NOT abruptly.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-008 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-008 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "gender-limited-her-line"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 9,
+      "decision": "reject",
+      "notes": "FAR TOO MANY lines!!!!!",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-009 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-009 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "rejected",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "too-long-for-bug"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Rejected by human review.",
+      "requiredNextActions": [
+        "Keep rejection record.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 10,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Save this as unique. Should NEXT CC initial \"Yeah....Thank You\" vocal, which is initial vocal. 0:00-0:04 is TPs for this TRM/Salutation. NEED THAT thank you, to use & store among THANK YOUs HOME. Another kut CAN be start to 0:13, as a PHRZ.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "thank-you-home",
+        "trm-salutation-0-00-to-0-04",
+        "phrzkut-0-00-to-0-13",
+        "gender-limited-her-line"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 11,
+      "decision": "hold",
+      "notes": "Almost, but cuts off in middle of LPR/LTR.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-011 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-011 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 12,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Needs Twinkle",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "explicit-human-note-needs-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 13,
+      "decision": "hold",
+      "notes": "Almost perfect but is AS BIG as LTRs get, right? Catch that?",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-013 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-013 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 14,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Uses \"her\" in 2nd line, so cannot be used for traditionally-male oriented uses. & add Twinkle.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "explicit-human-note-needs-twinkle",
+        "gender-limited-her-line"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 15,
+      "decision": "hold",
+      "notes": "Should start at 0:08. Stop at 0:13.75.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-015 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-015 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "phrzkut-0-00-to-0-13",
+        "needs-start-trim",
+        "needs-stop-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 16,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "Twinkle",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "explicit-human-note-needs-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    },
+    {
+      "bugHumanReviewNumber": 17,
+      "decision": "hold",
+      "notes": "Stop 1 kut at :11. Also, Keep but add 1 second.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-017 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-017 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-stop-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 18,
+      "decision": "hold",
+      "notes": "Start at 3 seconds.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-018 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-018 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-start-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 19,
+      "decision": "hold",
+      "notes": "Start at 7 seconds. Stop sooner, at 17 seconds.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-019 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-019 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-start-trim",
+        "needs-stop-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 20,
+      "decision": "hold",
+      "notes": "Create 1 kut at 8 seconds. Still use entire kut but cut off vocal in middle.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-020 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-020 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-recut"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 21,
+      "decision": "hold",
+      "notes": "Start at 3 seconds.",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-021 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-021 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "hold-needs-recut-or-review",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle",
+        "needs-start-trim"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Hold item requires recut/timing/audio review and Signature Audio Branding before release.",
+      "requiredNextActions": [
+        "Create recut instruction from notes.",
+        "Re-listen after recut.",
+        "Apply GPMx Signature Audio Branding only after approved processing pass.",
+        "Do not enter BUG eligible index."
+      ]
+    },
+    {
+      "bugHumanReviewNumber": 22,
+      "decision": "next-in-line-kut-candidate",
+      "notes": "",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "sourceAudioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "bugLane": "PLAYFUL",
+      "releaseStatus": "next-in-line-kut-candidate-not-release-ready",
+      "tags": [
+        "requires-gpmx-signature-audio-branding",
+        "requires-padding",
+        "requires-end-fade",
+        "requires-twinkle"
+      ],
+      "gpmxSignatureAudioBranding": {
+        "ssotPath": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "requiredBeforeReleaseGate": true,
+        "requiredBeforeOutlet": true,
+        "requiredAtProcessingIntake": true,
+        "requiredAtKkrToHomeRegistration": true,
+        "notOptional": true,
+        "notUponDemand": true,
+        "componentsRequired": {
+          "padding": true,
+          "endFade": true,
+          "twinkle": true
+        },
+        "appliedNow": false,
+        "releaseBlockedUntilApplied": true,
+        "processingIntakeMustApply": true
+      },
+      "publicBugIndexAllowedNow": false,
+      "releaseGateAllowedNow": false,
+      "outletAllowedNow": false,
+      "reasonPublicBugIndexBlocked": "Next-in-line KUT candidate/classification only; still requires recut where applicable, GPMx Signature Audio Branding from SSOT, neutral KUT canonicalization, BTI/BF checks, and final release gate.",
+      "requiredNextActions": [
+        "Preserve human notes.",
+        "Process required trims/routing restrictions where applicable.",
+        "Apply GPMx Signature Audio Branding from SSOT: padding, slight end fade, Twinkle.",
+        "Canonicalize into neutral KUT inventory only after final audio pass.",
+        "Run BUG Short-KUT audit before entering BUG eligible index."
+      ],
+      "candidateState": "next-in-line-kut-candidate"
+    }
+  ],
+  "statusLanguage": {
+    "candidateState": "next-in-line-kut-candidate",
+    "releaseMeaning": "not public-ready, not release-ready, not outlet-ready",
+    "oldCandidateStateForbidden": true
+  }
+}

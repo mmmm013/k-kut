@@ -1,7 +1,7 @@
 import fs from "node:fs";
 
 const orderPath = "manifests/kkr/dispatch/thank-you-kk8-bridge-br-materialization.json";
-const required = "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3";
+const required = "public/kks/thank-you/kks-expanded/thank-you-sec-br.mp3";
 
 if (!fs.existsSync(orderPath)) {
   console.error(`STOP: missing targeted export order ${orderPath}`);

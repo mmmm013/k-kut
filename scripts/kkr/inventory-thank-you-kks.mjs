@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const dir = path.join(process.cwd(), "public/mothers-day/thank-you/kks-expanded");
+const dir = path.join(process.cwd(), "public/kks/thank-you/kks-expanded");
 const out = path.join(process.cwd(), "data/kkr/audio-inventory/thank-you-kks-inventory.json");
 
 function groupFor(filename) {
@@ -23,8 +23,8 @@ const files = fs
       id: file.replace(/\.mp3$/, ""),
       filename: file,
       group: groupFor(file),
-      repo_path: `public/mothers-day/thank-you/kks-expanded/${file}`,
-      public_url: `/mothers-day/thank-you/kks-expanded/${file}`,
+      repo_path: `public/kks/thank-you/kks-expanded/${file}`,
+      public_url: `/kks/thank-you/kks-expanded/${file}`,
       size_bytes: stat.size,
       canonical_audio_home: true,
       apple_music_is_home: false,
@@ -41,7 +41,7 @@ const report = {
   system: "K-KUT KK Audio Inventory",
   source_family: "thank-you",
   rule: "Repo public path is canonical for public playback. Apple Music is a listening/import workspace only.",
-  canonical_directory: "public/mothers-day/thank-you/kks-expanded",
+  canonical_directory: "public/kks/thank-you/kks-expanded",
   count: files.length,
   group_counts,
   files

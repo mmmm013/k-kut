@@ -1,0 +1,31 @@
+field_name,layer,public_visible,required,purpose,rule
+item_id,system,no,yes,stable row identity,Internal tracking only.
+item_type,system,no,yes,PIX / KK / KUT / II / HUG,Object type control.
+parent_pix_id,lineage,no,yes,source parent lineage,No PIX lineage means no valid KUT use.
+kk_id,lineage,no,when item_type=KK,exact KK object identity,One KK equals one exact excerpt definition.
+ii_id,delivery,no,when public_ready=yes,finished delivery object identity,Public audio must be finished II / DP only.
+internal_work_title,internal,no,yes,search and reporting,Title is lookup only.
+internal_pix_title,internal,no,yes,source authority and QA,Title is not buyer-match signal.
+internal_artist_or_kreator,internal,no,when known,rights and provenance,Do not expose unless approved.
+source_audio_path,internal,no,yes,source custody,Not public customer audio.
+source_rights_status,internal,no,yes,rights gate,Must pass before release.
+section_label,internal,no,when KK/KUT,structure map,Intro/V1/Ch/Bridge/Outro tracking only.
+start_time,internal,no,when KK/KUT,exact excerpt boundary,Required for real KK/KUT.
+end_time,internal,no,when KK/KUT,exact excerpt boundary,Required for real KK/KUT.
+duration,internal,no,when KK/KUT,reporting only,Duration cannot select or approve.
+theme_tags,kk_match,no,yes,KKr interpretation tags,Used to feed theme registry.
+intent_tags,kk_match,no,yes,use-case safety,High-risk intent needs approval.
+recipient_tags,kk_match,no,no,buyer routing,Recipient fit without exposing source title.
+tone_tags,kk_match,no,no,buyer routing,Tone fit without exposing source title.
+product_lane,product,yes,yes,buyer-facing lane,Public simple product grouping.
+buyer_label,frontend,yes,yes,public card label,This replaces song/title match on frontend.
+buyer_short_copy,frontend,yes,no,public description,Feeling/use-case language only.
+frontend_title_mode,frontend,no,yes,title exposure control,Default HIDE_SOURCE_TITLE.
+kk_audio_path,internal,no,when KK proof exists,raw internal proof only,Raw KK is never public.
+ii_delivery_path,delivery,yes,when public_ready=yes,finished II audio path,Must live under /ii-delivery/.
+delivery_marker,delivery,yes,when public_ready=yes,bookend marker,Use bookend-twinkle or equivalent.
+approval_state,gate,no,yes,current gate,Blocks public release until pass.
+public_ready,gate,no,yes,yes/no,No public page unless yes.
+stripe_ready,gate,no,when public_ready=yes,payment gate,No send button if false.
+bic_status,gate,no,yes,BIC audit state,Must PASS for release.
+notes,internal,no,no,review notes,Internal only.

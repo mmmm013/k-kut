@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "publicProductFamilies": {
+    "K-KUT": {
+      "publicMeaning": "a fuller music moment",
+      "allowedIntentContainers": [
+        "HUG",
+        "TUG"
+      ],
+      "publicDisplayPattern": "K-KUT {n}"
+    },
+    "Short-KUT": {
+      "publicMeaning": "a smaller, quicker, tiny music moment",
+      "allowedIntentContainers": [
+        "HUG",
+        "TUG",
+        "BUG"
+      ],
+      "publicDisplayPattern": "Short-KUT {n}"
+    }
+  },
+  "intentContainers": {
+    "HUG": {
+      "role": "warmth, care, support, gratitude, love, comfort, celebration, emotional presence",
+      "allowedPublicProductFamilies": [
+        "K-KUT",
+        "Short-KUT"
+      ],
+      "ownsAudio": false
+    },
+    "TUG": {
+      "role": "emotional pull, missing, repair, longing, regret, grief, unresolved feeling",
+      "allowedPublicProductFamilies": [
+        "K-KUT",
+        "Short-KUT"
+      ],
+      "ownsAudio": false,
+      "requiresToneControl": true
+    },
+    "BUG": {
+      "role": "tiny, light, affectionate reminder or nudge",
+      "allowedPublicProductFamilies": [
+        "Short-KUT"
+      ],
+      "ownsAudio": false,
+      "shortKutOnly": true,
+      "unitPriceCents": 199,
+      "currency": "USD",
+      "minRepeatCount": 1,
+      "maxRepeatCount": 5,
+      "allowPublicRepeatCounts": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "forbidPublicRepeatCountsAbove": 5,
+      "flatUnitPricing": true,
+      "bundleDiscountsAllowedInPublicV1": false,
+      "allowedExamples": [
+        "Call me.",
+        "Text me.",
+        "Remember.",
+        "Love you.",
+        "Don’t forget.",
+        "Thinking of you.",
+        "Check in.",
+        "Breathe.",
+        "You got this.",
+        "Miss you."
+      ],
+      "forbiddenTone": [
+        "pressure",
+        "guilt",
+        "harassment",
+        "anger",
+        "repeated pestering",
+        "romantic coercion",
+        "threats",
+        "jealousy",
+        "surveillance",
+        "control",
+        "heavy apology",
+        "grief delivery",
+        "serious repair"
+      ]
+    }
+  }
+}

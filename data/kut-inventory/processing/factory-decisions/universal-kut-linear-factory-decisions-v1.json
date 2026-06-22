@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "role": "Universal KUT linear factory decisions",
+  "factoryMode": true,
+  "flow": "play-accept-or-adjust-auto-next",
+  "approveDoesNotMeanRelease": true,
+  "currentIndex": 4,
+  "decisions": [
+    {
+      "workOrderId": "UKUT-WO-003",
+      "sourceCandidateNumber": 12,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "decision": "accept-for-processing",
+      "approveMeans": "processing-only-not-release",
+      "note": "",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    },
+    {
+      "workOrderId": "UKUT-WO-004",
+      "sourceCandidateNumber": 14,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "decision": "accept-for-processing",
+      "approveMeans": "processing-only-not-release",
+      "note": "",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    },
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "decision": "adjust",
+      "cutEndSeconds": "Add 1/3 second at end. retest then. ",
+      "note": "",
+      "nextLane": "recut-or-adjust-queue",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    },
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "decision": "adjust",
+      "cutEndSeconds": "Stop at 4 seconds, then approve. ",
+      "note": "",
+      "nextLane": "recut-or-adjust-queue",
+      "renderAudioNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    }
+  ],
+  "renderAudioNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "laneSummary": {
+    "approvedForProcessing": [
+      "UKUT-WO-003",
+      "UKUT-WO-004"
+    ],
+    "needsAdjust": [
+      "UKUT-WO-005",
+      "UKUT-WO-006"
+    ],
+    "hold": [],
+    "reject": []
+  },
+  "nextSystemStep": "process-accepted-and-adjusted-items-with-padding-fade-twinkle-and-review"
+}

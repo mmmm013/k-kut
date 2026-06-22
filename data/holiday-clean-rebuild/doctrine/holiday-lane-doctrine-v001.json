@@ -1,0 +1,28 @@
+{
+  "status": "LOCKED_CLEAN_REBUILD",
+  "doctrine": "Holiday is a lane/list system. Tracks, PIXs, and KKs are independent of holidays unless the holiday is in the actual title or an admin explicitly marks the item as Christmas, Holiday, or a specific holiday.",
+  "rules": [
+    "No track is tied to Mother's Day because it was used for Mother's Day.",
+    "No track is tied to Father's Day because it was used for Father's Day.",
+    "No PIX title may be renamed by holiday use.",
+    "Holiday use is a temporary presentation context unless admin marks otherwise.",
+    "Christmas may stand as a specific holiday exception only when admin-marked or title-supported.",
+    "Thank You remains a PIX/track title only.",
+    "Ring the Bell remains a PIX/track title only.",
+    "Holiday pages select by theme/feeling/metadata, not by prior event history."
+  ],
+  "allowed_holiday_binding_fields": [
+    "admin_marked_christmas",
+    "admin_marked_holiday",
+    "admin_marked_specific_holiday",
+    "title_contains_holiday"
+  ],
+  "banned_inference_fields": [
+    "used_for_mothers_day",
+    "used_for_fathers_day",
+    "used_for_valentines_day",
+    "prior_campaign_use",
+    "temporary_page_use",
+    "event_history"
+  ]
+}

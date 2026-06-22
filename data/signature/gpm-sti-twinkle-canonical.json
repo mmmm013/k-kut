@@ -1,0 +1,10 @@
+{
+  "status": "CANONICAL_STI_CURRENT",
+  "sti_id": "GPM-STI-TWINKLE-V001",
+  "canonical_sti_audio_path": "/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+  "source_raw_sti_path": "public/mothers-day/thank-you/signature-tests/get-so-down-cc-4m13-4m20-magic-signature.mp3",
+  "mix_rule": "STI / Twinkle is a signature insert. It must be the same across all II / CI / HUG delivery renders unless Gregory explicitly changes the canonical STI.",
+  "volume_rule": "Canonical STI rendered at 0.275 because 0.55 was about 2x too loud.",
+  "delivery_rule": "Approved KK excerpt resolves, intentional short gap, canonical STI, file end.",
+  "locked_instruction": "Do not make per-KK STI volume changes. Use this canonical STI for all delivery renders."
+}

@@ -1,0 +1,25 @@
+feeling_id,display_name,living_dad_fit,deceased_dad_fit,absent_or_complicated_fit,description,buyer_question
+respect,Respect,yes,yes,yes,Honor for who Dad is or was,Do you want it to feel respectful and honoring?
+strength,Strength,yes,yes,possible,Dad as backbone or source of resilience,Should it feel strong and steady?
+loyalty,Loyalty,yes,possible,possible,Sticking by family or values,Should it recognize loyalty or staying power?
+dedication,Dedication,yes,yes,possible,Showing up over time,Should it honor what Dad kept doing?
+toughness,Toughness,yes,yes,possible,Grit without needing softness,Should it feel tough but warm?
+hope,Hope,yes,yes,yes,Forward-looking comfort,Should it leave a little hope?
+gratitude,Gratitude,yes,yes,possible,Thanking Dad for care or influence,Is this mainly a thank-you?
+perseverance,Perseverance,yes,yes,possible,Endurance through hard seasons,Should it honor perseverance?
+patience,Patience,yes,possible,possible,Calm guidance over time,Should it feel patient and steady?
+protection,Protection,yes,yes,possible,Dad as shelter or shield,Should it say he helped protect you?
+guidance,Guidance,yes,yes,possible,Dad showing the way,Should it thank him for guidance?
+sacrifice,Sacrifice,yes,yes,possible,What Dad gave up or carried,Should it recognize sacrifice?
+steadiness,Steadiness,yes,yes,possible,Dad as reliable presence,Should it feel steady and dependable?
+humor,Humor,yes,no,possible,Light dad energy or warmth,Should it have a little Dad humor?
+pride,Pride,yes,yes,possible,Proud of Dad or proud because of Dad,Should it feel proud?
+repair,Repair,possible,no,yes,Careful reconnection without pressure,Is this complicated or repairing something?
+forgiveness,Forgiveness,possible,no,yes,Softening pain or tension,Does it need forgiveness energy?
+presence,Presence,yes,possible,possible,Being there physically/emotionally,Should it say being there mattered?
+legacy,Legacy,yes,yes,possible,What Dad leaves in family/person,Should it honor his legacy?
+remembrance,Remembrance,no,yes,possible,Memory of Dad,Is this about remembering him?
+grief,Grief,no,yes,possible,Loss and sorrow,Is this for missing Dad?
+empty_chair,Empty Chair,no,yes,possible,The felt absence at family moments,Is the empty place part of the feeling?
+unfinished_words,Unfinished Words,no,yes,yes,What was not said,Are there words that were never said?
+spiritual_comfort,Spiritual Comfort,possible,yes,possible,Continuing connection beyond absence,Should it feel spiritually comforting?

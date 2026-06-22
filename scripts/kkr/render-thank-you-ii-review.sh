@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RAW_DIR="public/mothers-day/thank-you/kks-expanded"
+RAW_DIR="public/kks/thank-you/kks-expanded"
 OUT_DIR="public/kkr/ii-review/thank-you"
 TWINKLE="public/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3"
 

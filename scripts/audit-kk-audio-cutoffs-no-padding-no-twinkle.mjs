@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 
-const manifestPath = "public/mothers-day/thank-you/kks-expanded/manifest.json";
+const manifestPath = "public/kks/thank-you/kks-expanded/manifest.json";
 
 const bannedWords = [
   "twinkle",

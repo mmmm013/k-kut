@@ -1,0 +1,65 @@
+{
+  "version": 4,
+  "role": "Universal KUT processing factory workbench",
+  "runtimeSafeDataBlock": true,
+  "factoryMode": true,
+  "activeWorkbenchMode": true,
+  "completedReviewSet": "UKUT-WO-002",
+  "activeQueue": [
+    {
+      "workOrderId": "UKUT-WO-003",
+      "sourceCandidateNumber": 12,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "sourceAudioSrc": "../../public/kks/thank-you/kks-expanded/thank-you-cc-012%202.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "Needs Twinkle"
+    },
+    {
+      "workOrderId": "UKUT-WO-004",
+      "sourceCandidateNumber": 14,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "sourceAudioSrc": "../../public/kks/thank-you/kks-expanded/thank-you-cc-014%202.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "Uses \"her\" in 2nd line, so cannot be used for traditionally-male oriented uses. & add Twinkle."
+    },
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "sourceAudioSrc": "../../public/kks/thank-you/kks-expanded/thank-you-cc-016%202.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "Twinkle"
+    },
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "sourceAudioSrc": "../../public/kks/thank-you/kks-expanded/thank-you-cc-022%202.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": ""
+    }
+  ],
+  "firstActiveWorkOrderId": "UKUT-WO-003",
+  "gpmColorSchema": "data/brand/gpm-color-schema-v1.json",
+  "twinkleBinding": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+  "plainDecisionButtonsRequired": true,
+  "decisionButtons": [
+    "APPROVE FOR PROCESSING",
+    "NEEDS RECUT / ADJUST",
+    "HOLD",
+    "REJECT"
+  ],
+  "approveDoesNotMeanRelease": true,
+  "approveMeans": "approve-for-processing-review-only",
+  "terminalRawNotesForbidden": true,
+  "oldDraftPlayersAreNotDecisionTargets": true,
+  "activeCandidateHasOwnDecisionControls": true,
+  "autoAdvanceAfterDecision": true,
+  "recutAdjustOpensRequiredForm": true,
+  "finishSaveRequiredAtEndOfQueue": true,
+  "renderAudioNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false
+}

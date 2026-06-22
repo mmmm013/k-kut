@@ -1,0 +1,460 @@
+{
+  "setId": "fathers-day-current-all-candidates",
+  "lane": "holiday_fathers_day_candidate_pool",
+  "holiday": "Father’s Day",
+  "status": "FATHERS_DAY_LIVE_UNSAFE_SOURCES_RETRACTED",
+  "rule": "Retracted: Believe until SB/tracks proven; Til until SB/tracks/Zach Linley source proven; That Empty Chair because current source is INSTRO and cannot be labeled Chorus/Final Chorus.",
+  "count": 42,
+  "groups": {
+    "Have-To Duet": 2,
+    "Thank You": 40
+  },
+  "kks": [
+    {
+      "kkId": "have-to-duet-ch1",
+      "title": "Have To Duet Ch1",
+      "audioUrl": "/kks/fathers-day/review/have-to-duet-ch1.mp3",
+      "pixGroup": "Have-To Duet",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 1
+    },
+    {
+      "kkId": "have-to-duet-ch3-outro",
+      "title": "Have To Duet Ch3 Outro",
+      "audioUrl": "/kks/fathers-day/review/have-to-duet-ch3-outro.mp3",
+      "pixGroup": "Have-To Duet",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 2
+    },
+    {
+      "kkId": "thank-you-cc-001",
+      "title": "Thank You Cc 001",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-001.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 3
+    },
+    {
+      "kkId": "thank-you-cc-002",
+      "title": "Thank You Cc 002",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-002.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 4
+    },
+    {
+      "kkId": "thank-you-cc-003",
+      "title": "Thank You Cc 003",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-003.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 5
+    },
+    {
+      "kkId": "thank-you-cc-004",
+      "title": "Thank You Cc 004",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-004.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 6
+    },
+    {
+      "kkId": "thank-you-cc-005",
+      "title": "Thank You Cc 005",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-005.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 7
+    },
+    {
+      "kkId": "thank-you-cc-006",
+      "title": "Thank You Cc 006",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-006.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 8
+    },
+    {
+      "kkId": "thank-you-cc-007",
+      "title": "Thank You Cc 007",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-007.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 9
+    },
+    {
+      "kkId": "thank-you-cc-008",
+      "title": "Thank You Cc 008",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-008.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 10
+    },
+    {
+      "kkId": "thank-you-cc-009",
+      "title": "Thank You Cc 009",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-009.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 11
+    },
+    {
+      "kkId": "thank-you-cc-010",
+      "title": "Thank You Cc 010",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-010.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 12
+    },
+    {
+      "kkId": "thank-you-cc-011",
+      "title": "Thank You Cc 011",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-011.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 13
+    },
+    {
+      "kkId": "thank-you-cc-012",
+      "title": "Thank You Cc 012",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-012.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 14
+    },
+    {
+      "kkId": "thank-you-cc-013",
+      "title": "Thank You Cc 013",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-013.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 15
+    },
+    {
+      "kkId": "thank-you-cc-014",
+      "title": "Thank You Cc 014",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-014.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 16
+    },
+    {
+      "kkId": "thank-you-cc-015",
+      "title": "Thank You Cc 015",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-015.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 17
+    },
+    {
+      "kkId": "thank-you-cc-016",
+      "title": "Thank You Cc 016",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-016.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 18
+    },
+    {
+      "kkId": "thank-you-cc-017",
+      "title": "Thank You Cc 017",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-017.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 19
+    },
+    {
+      "kkId": "thank-you-cc-018",
+      "title": "Thank You Cc 018",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-018.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 20
+    },
+    {
+      "kkId": "thank-you-cc-019",
+      "title": "Thank You Cc 019",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-019.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 21
+    },
+    {
+      "kkId": "thank-you-cc-020",
+      "title": "Thank You Cc 020",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-020.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 22
+    },
+    {
+      "kkId": "thank-you-cc-021",
+      "title": "Thank You Cc 021",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-021.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 23
+    },
+    {
+      "kkId": "thank-you-cc-022",
+      "title": "Thank You Cc 022",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-022.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 24
+    },
+    {
+      "kkId": "thank-you-kk1",
+      "title": "Thank You Kk1",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk1.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 25
+    },
+    {
+      "kkId": "thank-you-kk2",
+      "title": "Thank You Kk2",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk2.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 26
+    },
+    {
+      "kkId": "thank-you-kk3",
+      "title": "Thank You Kk3",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk3.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 27
+    },
+    {
+      "kkId": "thank-you-kk4",
+      "title": "Thank You Kk4",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk4.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 28
+    },
+    {
+      "kkId": "thank-you-kk5",
+      "title": "Thank You Kk5",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk5.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 29
+    },
+    {
+      "kkId": "thank-you-kk6",
+      "title": "Thank You Kk6",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk6.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 30
+    },
+    {
+      "kkId": "thank-you-kk7",
+      "title": "Thank You Kk7",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk7.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 31
+    },
+    {
+      "kkId": "thank-you-sec-br",
+      "title": "Thank You Sec Br",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 32
+    },
+    {
+      "kkId": "thank-you-sec-ch1",
+      "title": "Thank You Sec Ch1",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 33
+    },
+    {
+      "kkId": "thank-you-sec-ch2",
+      "title": "Thank You Sec Ch2",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 34
+    },
+    {
+      "kkId": "thank-you-sec-intro",
+      "title": "Thank You Sec Intro",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-intro.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 35
+    },
+    {
+      "kkId": "thank-you-sec-outro",
+      "title": "Thank You Sec Outro",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 36
+    },
+    {
+      "kkId": "thank-you-sec-prech1",
+      "title": "Thank You Sec Prech1",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 37
+    },
+    {
+      "kkId": "thank-you-sec-v1a",
+      "title": "Thank You Sec V1a",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 38
+    },
+    {
+      "kkId": "thank-you-sec-v1b",
+      "title": "Thank You Sec V1b",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 39
+    },
+    {
+      "kkId": "thank-you-sec-v1c",
+      "title": "Thank You Sec V1c",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 40
+    },
+    {
+      "kkId": "thank-you-sec-v1d",
+      "title": "Thank You Sec V1d",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 41
+    },
+    {
+      "kkId": "thank-you-sec-v2a",
+      "title": "Thank You Sec V2a",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL",
+      "displayOrder": 42
+    }
+  ],
+  "groupCounts": {
+    "Have-To Duet": 2,
+    "Thank You": 40
+  },
+  "removedUnverifiedBelieveCount": 6,
+  "removedUnverifiedBelieve": [
+    {
+      "kkId": "believe-in-me-bridge",
+      "title": "Believe In Me Bridge",
+      "audioUrl": "/kks/fathers-day/review/believe-in-me-bridge.mp3",
+      "pixGroup": "Believe in Me",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL"
+    },
+    {
+      "kkId": "believe-in-me-ch1",
+      "title": "Believe In Me Ch1",
+      "audioUrl": "/kks/fathers-day/review/believe-in-me-ch1.mp3",
+      "pixGroup": "Believe in Me",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL"
+    },
+    {
+      "kkId": "believe-in-me-ch2",
+      "title": "Believe In Me Ch2",
+      "audioUrl": "/kks/fathers-day/review/believe-in-me-ch2.mp3",
+      "pixGroup": "Believe in Me",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL"
+    },
+    {
+      "kkId": "believe-in-me-final-chorus-outro",
+      "title": "Believe In Me Final Chorus Outro",
+      "audioUrl": "/kks/fathers-day/review/believe-in-me-final-chorus-outro.mp3",
+      "pixGroup": "Believe in Me",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL"
+    },
+    {
+      "kkId": "believe-in-me-intro-v1",
+      "title": "Believe In Me Intro V1",
+      "audioUrl": "/kks/fathers-day/review/believe-in-me-intro-v1.mp3",
+      "pixGroup": "Believe in Me",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL"
+    },
+    {
+      "kkId": "believe-in-me-v2",
+      "title": "Believe In Me V2",
+      "audioUrl": "/kks/fathers-day/review/believe-in-me-v2.mp3",
+      "pixGroup": "Believe in Me",
+      "sourceBucket": "public/kks",
+      "status": "CURRENT_CANDIDATE_NEEDS_USER_APPROVAL"
+    }
+  ],
+  "fdBannedOnly": [
+    {
+      "kkId": "thank-you-sec-v2b",
+      "title": "Thank You Sec V2b",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "pixGroup": "Thank You",
+      "sourceBucket": "public/kks",
+      "status": "FD-BAN-ONLY",
+      "displayOrder": 43,
+      "fdBanReason": "Feminine recipient pronoun / wrong Father’s Day recipient aim. KK still exists for other SLDS? lanes.",
+      "preservedAt": "public/kks/thank-you/fd-banned-hold/thank-you-sec-v2b-release.mp3"
+    }
+  ]
+}

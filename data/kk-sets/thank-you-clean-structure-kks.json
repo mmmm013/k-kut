@@ -1,0 +1,269 @@
+{
+  "setId": "thank-you-clean-structure-kks",
+  "pixTitle": "Thank You",
+  "lane": "neutral_gratitude_theme_matched",
+  "holidayOwnership": false,
+  "status": "CLEAN_REVIEW_SET_NOT_PUBLIC_APPROVED",
+  "rule": "No PIX should exceed 10 KKs. Use only clean structure KKs, not cc fragments or duplicate/misfire candidates.",
+  "count": 10,
+  "kks": [
+    {
+      "displayOrder": 1,
+      "kkId": "thank-you-sec-intro",
+      "title": "Thank You — Intro",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-intro.mp3",
+      "pixGroup": "Thank You",
+      "use": "opening gratitude / setup",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 2,
+      "kkId": "thank-you-sec-v1a",
+      "title": "Thank You — Verse 1A",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "pixGroup": "Thank You",
+      "use": "specific gratitude / first verse setup",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 3,
+      "kkId": "thank-you-sec-v1b",
+      "title": "Thank You — Verse 1B",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "pixGroup": "Thank You",
+      "use": "specific gratitude / first verse continuation",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 4,
+      "kkId": "thank-you-sec-prech1",
+      "title": "Thank You — Pre-Chorus 1",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "pixGroup": "Thank You",
+      "use": "lift into gratitude hook",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 5,
+      "kkId": "thank-you-sec-ch1",
+      "title": "Thank You — Chorus 1",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "pixGroup": "Thank You",
+      "use": "clear gratitude hook",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 6,
+      "kkId": "thank-you-sec-v2a",
+      "title": "Thank You — Verse 2A",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "pixGroup": "Thank You",
+      "use": "second gratitude detail",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 7,
+      "kkId": "thank-you-sec-v2b",
+      "title": "Thank You — Verse 2B",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "pixGroup": "Thank You",
+      "use": "second gratitude continuation",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 8,
+      "kkId": "thank-you-sec-br",
+      "title": "Thank You — Bridge",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "pixGroup": "Thank You",
+      "use": "gratitude turn / emotional pivot",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 9,
+      "kkId": "thank-you-sec-ch2",
+      "title": "Thank You — Chorus 2",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "pixGroup": "Thank You",
+      "use": "strong gratitude return",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    },
+    {
+      "displayOrder": 10,
+      "kkId": "thank-you-sec-outro",
+      "title": "Thank You — Outro",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+      "pixGroup": "Thank You",
+      "use": "gratitude close / send-off",
+      "sourceBucket": "public/kks/thank-you/kks-expanded",
+      "status": "CLEAN_THANK_YOU_STRUCTURE_KK_NEEDS_USER_APPROVAL"
+    }
+  ],
+  "rejectedCount": 31,
+  "rejected": [
+    {
+      "kkId": "thank-you-cc-001",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-001.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-002",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-002.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-003",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-003.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-004",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-004.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-005",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-005.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-006",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-006.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-007",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-007.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-008",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-008.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-009",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-009.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-010",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-010.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-011",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-011.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-012",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-012.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-013",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-013.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-014",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-014.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-015",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-015.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-016",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-016.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-017",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-017.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-018",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-018.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-019",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-019.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-020",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-020.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-021",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-021.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-cc-022",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-cc-022.mp3",
+      "reason": "Rejected from clean set: cc fragment / over-capture"
+    },
+    {
+      "kkId": "thank-you-kk1",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk1.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-kk2",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk2.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-kk3",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk3.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-kk4",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk4.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-kk5",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk5.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-kk6",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk6.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-kk7",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-kk7.mp3",
+      "reason": "Rejected from clean set: older duplicate-style KK candidate"
+    },
+    {
+      "kkId": "thank-you-sec-v1c",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1c.mp3",
+      "reason": "Rejected from clean set: not in preferred structure list"
+    },
+    {
+      "kkId": "thank-you-sec-v1d",
+      "audioUrl": "/kks/thank-you/kks-expanded/thank-you-sec-v1d.mp3",
+      "reason": "Rejected from clean set: not in preferred structure list"
+    }
+  ]
+}

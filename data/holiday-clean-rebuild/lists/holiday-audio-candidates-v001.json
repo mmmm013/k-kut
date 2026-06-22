@@ -1,0 +1,311 @@
+{
+  "status": "HOLIDAY_AUDIO_CANDIDATES_V001",
+  "rule": "Holiday pages may show only real public audio candidates or honest inventory reports. Do not fake holiday ownership.",
+  "minimum_rule": "Non-Christmas holidays target at least 8 suitable KKs. Christmas may exceed 8.",
+  "holidays": {
+    "mothers-day": {
+      "status": "READY_WITH_NEUTRAL_GRATITUDE_AUDIO",
+      "public_note": "Mother\u2019s Day can use neutral gratitude K-KUTs where the fit is real. Thank You is neutral inventory, not Mother\u2019s Day ownership.",
+      "candidates": [
+        {
+          "id": "thank-you-sec-v1a",
+          "title": "Gentle Gratitude",
+          "description": "A soft gratitude K-KUT for appreciation and care.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; appreciation; gentle support",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v1b",
+          "title": "Warm Support",
+          "description": "A warm K-KUT for support, presence, and thanks.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; support; warmth",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-prech1",
+          "title": "Before the Thank You",
+          "description": "A short build into a gratitude moment.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; anticipation; appreciation",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-ch1",
+          "title": "Clear Thank You",
+          "description": "A direct gratitude chorus for a clear emotional send.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; appreciation; direct thanks",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v2a",
+          "title": "Reflective Thanks",
+          "description": "A reflective K-KUT for appreciation and memory.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; memory; appreciation",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v2b",
+          "title": "Supportive Thanks",
+          "description": "A supportive gratitude moment with personal feeling.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; support; personal thanks",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-br",
+          "title": "Deeper Gratitude",
+          "description": "A deeper bridge for gratitude and reflection.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; reflection; emotional depth",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-ch2",
+          "title": "Bigger Thank You",
+          "description": "A stronger gratitude chorus for a bigger send.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; appreciation; strong thanks",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-outro",
+          "title": "Soft Closing Thanks",
+          "description": "A closing gratitude moment with a softer landing.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; closure; gentle thanks",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        }
+      ]
+    },
+    "thanksgiving": {
+      "status": "READY_WITH_NEUTRAL_GRATITUDE_AUDIO",
+      "public_note": "Thanksgiving can use neutral gratitude K-KUTs where the fit is real. Thank You is neutral inventory, not Thanksgiving ownership.",
+      "candidates": [
+        {
+          "id": "thank-you-sec-ch1",
+          "title": "Clear Thanks",
+          "description": "A direct gratitude chorus for appreciation.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; appreciation; thanks",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-ch2",
+          "title": "Bigger Thanks",
+          "description": "A stronger gratitude chorus.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; family appreciation; thanks",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v1a",
+          "title": "Gentle Thanks",
+          "description": "A soft gratitude K-KUT.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; gentle appreciation",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v1b",
+          "title": "Warm Thanks",
+          "description": "A warm K-KUT for gratitude and care.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; warmth; appreciation",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v2a",
+          "title": "Reflective Thanks",
+          "description": "A reflective K-KUT for appreciation and memory.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; reflection; memory",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-v2b",
+          "title": "Supportive Thanks",
+          "description": "A supportive gratitude moment.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; support; togetherness",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-br",
+          "title": "Deeper Thanks",
+          "description": "A deeper bridge for reflection.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; reflection; emotional depth",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        },
+        {
+          "id": "thank-you-sec-outro",
+          "title": "Closing Thanks",
+          "description": "A soft closing gratitude moment.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; closure; appreciation",
+          "ownership_note": "Neutral inventory. Theme match only. No holiday ownership."
+        }
+      ]
+    },
+    "valentines-day": {
+      "status": "AUDIO_PRESENT_ADMIN_REVIEW_NEEDED",
+      "public_note": "Romance audio exists, but these are marked as II delivery files and need admin confirmation before being treated as K-KUT product candidates.",
+      "candidates": [
+        {
+          "id": "a-love-like-that-romance-ii",
+          "title": "Love Like That",
+          "description": "Romance audio candidate requiring admin review before product use.",
+          "audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+          "candidate_type": "II_REVIEW_AUDIO",
+          "source_family": "Romance",
+          "fit": "love; devotion; tenderness",
+          "ownership_note": "Audio candidate only. Admin must confirm KK/product readiness."
+        },
+        {
+          "id": "dont-call-it-love-romance-ii",
+          "title": "Don\u2019t Call It Love",
+          "description": "Romance audio candidate requiring admin review before product use.",
+          "audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+          "candidate_type": "II_REVIEW_AUDIO",
+          "source_family": "Romance",
+          "fit": "romance; longing; complicated love",
+          "ownership_note": "Audio candidate only. Admin must confirm KK/product readiness."
+        },
+        {
+          "id": "your-heart-poundin-romance-ii",
+          "title": "Your Heart Poundin\u2019",
+          "description": "Romance audio candidate requiring admin review before product use.",
+          "audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+          "candidate_type": "II_REVIEW_AUDIO",
+          "source_family": "Romance",
+          "fit": "romance; attraction; heart",
+          "ownership_note": "Audio candidate only. Admin must confirm KK/product readiness."
+        }
+      ]
+    },
+    "fathers-day": {
+      "status": "READY_TO_PREVIEW",
+      "public_note": "Father\u2019s Day previews are connected for today\u2019s feature. Only verified playable audio is shown.",
+      "candidates": [
+        {
+          "id": "thank-you-sec-ch1",
+          "title": "Thank You, Dad",
+          "description": "A clear gratitude K-KUT for saying thank you directly.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; appreciation; thank you Dad",
+          "ownership_note": "Neutral gratitude inventory. Admin-selected for Father\u2019s Day feeling fit today."
+        },
+        {
+          "id": "thank-you-sec-ch2",
+          "title": "Bigger Thank You",
+          "description": "A stronger gratitude K-KUT for a bigger Father\u2019s Day send.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "gratitude; appreciation; strong thanks",
+          "ownership_note": "Neutral gratitude inventory. Admin-selected for Father\u2019s Day feeling fit today."
+        },
+        {
+          "id": "thank-you-sec-v1b",
+          "title": "You Were There",
+          "description": "A warm K-KUT for support, presence, and appreciation.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "support; presence; gratitude; warmth",
+          "ownership_note": "Neutral gratitude inventory. Admin-selected for Father\u2019s Day feeling fit today."
+        },
+        {
+          "id": "thank-you-sec-v2a",
+          "title": "What You Gave Still Matters",
+          "description": "A reflective K-KUT for memory, appreciation, and lasting impact.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "legacy; memory; appreciation; gratitude",
+          "ownership_note": "Neutral gratitude inventory. Admin-selected for Father\u2019s Day feeling fit today."
+        },
+        {
+          "id": "thank-you-sec-br",
+          "title": "Deeper Gratitude",
+          "description": "A deeper emotional K-KUT for reflection and respect.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "respect; reflection; gratitude; emotional depth",
+          "ownership_note": "Neutral gratitude inventory. Admin-selected for Father\u2019s Day feeling fit today."
+        },
+        {
+          "id": "thank-you-sec-outro",
+          "title": "Soft Closing Thanks",
+          "description": "A softer closing K-KUT for care, gratitude, and a gentle landing.",
+          "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+          "candidate_type": "KK",
+          "source_family": "Thank You",
+          "fit": "soft gratitude; care; closing; peace",
+          "ownership_note": "Neutral gratitude inventory. Admin-selected for Father\u2019s Day feeling fit today."
+        }
+      ]
+    },
+    "christmas": {
+      "status": "NEEDS_HOLIDAY_AUDIO_INVENTORY",
+      "public_note": "Christmas needs its own expanded candidate pool. Do not fill Christmas with Thank You unless a specific gratitude fit is admin-approved.",
+      "candidates": []
+    },
+    "new-year": {
+      "status": "NEEDS_HOLIDAY_AUDIO_INVENTORY",
+      "public_note": "New Year needs hope, fresh-start, reflection, and keep-going candidates. Do not fake-fill with unrelated audio.",
+      "candidates": []
+    },
+    "easter": {
+      "status": "NEEDS_HOLIDAY_AUDIO_INVENTORY",
+      "public_note": "Easter needs renewal, hope, light, family, or faith-friendly spring candidates. Do not fake-fill with unrelated audio.",
+      "candidates": []
+    },
+    "memorial-remembrance": {
+      "status": "NEEDS_HOLIDAY_AUDIO_INVENTORY",
+      "public_note": "Memorial / Remembrance needs grief comfort, honor, memory, and legacy candidates. Father\u2019s Day queue contains one legacy idea, but no public-ready audio path yet.",
+      "candidates": []
+    }
+  }
+}

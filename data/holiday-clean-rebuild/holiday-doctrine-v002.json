@@ -1,0 +1,16 @@
+{
+  "status": "LOCKED",
+  "doctrine": "Holiday is a separate lane. Personal is a separate lane. They may use similar theme-matching mechanics, but Holiday is never Personal and Personal is never Holiday.",
+  "rules": [
+    "Holiday remains its own independent lane.",
+    "Personal remains its own independent lane.",
+    "Holiday may use theme, feeling, metadata, MetaGrab tags, and admin filters to collect candidates.",
+    "No track, PIX, KK, CI, or II is tied to any holiday because of prior use.",
+    "No prior holiday campaign becomes metadata truth.",
+    "A holiday may attach to an item only if the holiday is in the actual title or admin explicitly marks it.",
+    "Christmas is not automatic; it also requires title support or admin marking.",
+    "Thank You remains a neutral PIX/track title.",
+    "Ring the Bell remains a neutral PIX/track title."
+  ],
+  "separation_rule": "Holiday and Personal are parallel lanes, not the same lane."
+}

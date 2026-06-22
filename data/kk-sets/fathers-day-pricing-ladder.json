@@ -1,0 +1,69 @@
+{
+  "id": "fathers-day-pricing-ladder-v1",
+  "currency": "USD",
+  "status": "active_fd_promo",
+  "pricingDoctrine": [
+    "Products are premade / resident inventory before user selection.",
+    "A user request selects and routes an existing product candidate; it does not invent the product.",
+    "Product path is premade resident inventory -> buyer selection -> DP packaging -> Release Gate -> Dispatch.",
+    "Donation/support is optional and separate from product price."
+  ],
+  "tiers": [
+    {
+      "id": "tiny-expression",
+      "publicName": "Tiny Expression",
+      "includes": ["TRM", "Sound", "1-word unit", "2-word unit", "3-word unit"],
+      "minimumShape": "One sound, word, short phrase, or micro-expression.",
+      "buyerMeaning": "A tiny emotional signal for a quick HUG touch.",
+      "priceCents": 199,
+      "priceLabel": "$1.99"
+    },
+    {
+      "id": "phrase-pair-kut",
+      "publicName": "Phrase Pair KUT",
+      "includes": ["paired line", "paired phrase", "paired expression"],
+      "minimumShape": "At least 2 paired lines, phrases, or expressions.",
+      "buyerMeaning": "A short emotional pair with more shape than a tiny unit.",
+      "priceCents": 299,
+      "priceLabel": "$2.99"
+    },
+    {
+      "id": "k-kut",
+      "publicName": "K-KUT",
+      "includes": ["approved K-KUT", "resident II/KK product moment"],
+      "minimumShape": "One approved premade resident K-KUT-scale music moment.",
+      "buyerMeaning": "A complete selected music statement for Dad.",
+      "priceCents": 499,
+      "priceLabel": "$4.99"
+    },
+    {
+      "id": "k-kut-kombo",
+      "publicName": "K-KUT KOMBO",
+      "includes": ["2+ connected K-KUTs", "contiguous emotional sequence"],
+      "minimumShape": "Two or more connected K-KUT moments, usually contiguous.",
+      "buyerMeaning": "A bigger connected statement with more emotional arc.",
+      "priceCents": 599,
+      "priceLabel": "$5.99",
+      "pricingLogic": "FD promo K-KUT price plus a simple $1 KOMBO lift."
+    },
+    {
+      "id": "fd-holiday-hug-package",
+      "publicName": "Father's Day HUG Package",
+      "includes": ["selected product audio", "recipient-ready holiday wrapper", "DP / Dispatch packaging"],
+      "minimumShape": "A gift-ready Father’s Day delivery package.",
+      "buyerMeaning": "A ready-to-send Father’s Day HUG built around the selected K-KUT feeling.",
+      "standardPriceCents": 1499,
+      "standardPriceLabel": "$14.99",
+      "promoPriceCents": 1199,
+      "promoPriceLabel": "$11.99"
+    }
+  ],
+  "optionalSupport": {
+    "enabled": true,
+    "publicName": "Support GPMx invention work",
+    "buyerMeaning": "Optional support helps keep real emotional audio moments alive and available.",
+    "suggestedAmountsCents": [300, 700, 1300],
+    "suggestedAmountLabels": ["+$3", "+$7", "+$13"],
+    "customSupportAllowed": true
+  }
+}

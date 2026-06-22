@@ -1,0 +1,77 @@
+{
+  "status": "HOLIDAY_INDEX_V001",
+  "lane_rule": "Holiday is its own separate lane. Holiday and Personal are separate lanes.",
+  "matching_rule": "Each holiday assembles candidates by holiday-specific tags, metadata, title support, or admin marks.",
+  "ownership_rule": "Theme match only. No holiday ownership. Prior campaign use does not create a holiday tie.",
+  "minimums": {
+    "holiday_target_minimum_kks": 8,
+    "christmas_note": "Christmas may exceed 8 and should not be artificially limited.",
+    "deficiency_rule": "If a non-Christmas holiday has fewer than 8 KKs, report it for inventory adjustment."
+  },
+  "holidays": [
+    {
+      "slug": "christmas",
+      "display_title": "Christmas",
+      "intent": "Warmth, giving, home, wonder, family, faith-friendly seasonal feeling.",
+      "target": "Expanded inventory; do not cap at 8.",
+      "status": "Needs inventory count",
+      "source_rule": "Christmas title support, Christmas/Holiday tag, metadata, or admin mark."
+    },
+    {
+      "slug": "mothers-day",
+      "display_title": "Mother’s Day",
+      "intent": "Gratitude, love, respect, support, repair where audio truly supports it.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "Mother’s Day title support, mother/mom tag, metadata, or admin mark."
+    },
+    {
+      "slug": "fathers-day",
+      "display_title": "Father’s Day",
+      "intent": "Respect, strength, steadiness, legacy, pride, hope, complicated repair only when exact audio supports it.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "Father’s Day title support, father/dad tag, metadata, or admin mark."
+    },
+    {
+      "slug": "valentines-day",
+      "display_title": "Valentine’s Day",
+      "intent": "Love, devotion, romance, affection, forever, chosen person.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "Valentine title support, love/romance tag, metadata, or admin mark."
+    },
+    {
+      "slug": "thanksgiving",
+      "display_title": "Thanksgiving",
+      "intent": "Thanks, gratitude, gathering, family, home, appreciation.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "Thanksgiving title support, gratitude/gathering tag, metadata, or admin mark."
+    },
+    {
+      "slug": "new-year",
+      "display_title": "New Year",
+      "intent": "Hope, fresh start, keep going, celebration, future-facing encouragement.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "New Year title support, hope/fresh-start tag, metadata, or admin mark."
+    },
+    {
+      "slug": "easter",
+      "display_title": "Easter",
+      "intent": "Renewal, hope, light, family, faith-friendly spring feeling.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "Easter title support, renewal/hope tag, metadata, or admin mark."
+    },
+    {
+      "slug": "memorial-remembrance",
+      "display_title": "Memorial / Remembrance",
+      "intent": "Missing you, honor, memory, grief comfort, legacy, soft support.",
+      "target": "8+ KKs minimum",
+      "status": "Needs inventory count",
+      "source_rule": "Memorial/remembrance title support, grief/memory/honor tag, metadata, or admin mark."
+    }
+  ]
+}

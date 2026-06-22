@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "role": "sK / short-KUT trim doctrine",
+  "status": "locked",
+  "appliesTo": ["sK", "short-KUT", "short-KUT"],
+  "purpose": "short-KUTs must be immediate-use emotional/audio objects, not song excerpts with dead lead-in or drift-out.",
+  "rules": [
+    {
+      "id": "SK_START_IMMEDIATE_MEANING",
+      "rule": "An sK must start at the first usable emotional, vocal, hook, phrase, or unmistakable sonic-identity moment."
+    },
+    {
+      "id": "NO_MUSIC_ONLY_INTRO",
+      "rule": "Cut all music-only intro from sKs unless the music-only intro is itself the emotional object being sold or studied."
+    },
+    {
+      "id": "NO_MUSIC_ONLY_TAIL",
+      "rule": "Cut music-only tail after the usable emotional/vocal/action moment resolves."
+    },
+    {
+      "id": "MICRO_PAD_EXCEPTION",
+      "rule": "A tiny lead or tail pad is allowed only when it prevents a hard cut, protects a vocal attack, protects a final consonant, or preserves a sustaining note."
+    },
+    {
+      "id": "APPROVAL_RULE",
+      "rule": "An sK with music-only intro or music-only tail is not approved; mark ADJUST / TRIM."
+    },
+    {
+      "id": "NO_AUDIO_WITHOUT_PREFLIGHT",
+      "rule": "No audio review player may be delivered unless the referenced audio file exists and has duration greater than zero."
+    }
+  ],
+  "decisionLanguage": {
+    "approve": "starts fast, carries usable meaning, ends clean",
+    "adjustIntro": "trim music-only intro; start at first usable emotional/vocal/sonic moment",
+    "adjustTail": "trim music-only tail; end after phrase or moment resolves",
+    "adjustCutoff": "fix cutoff; do not cut phrase, final consonant, or sustaining note"
+  },
+  "releaseReadyNow": false,
+  "publicReadyNow": false
+}

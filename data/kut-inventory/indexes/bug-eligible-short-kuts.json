@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "role": "BUG eligible Short-KUT index",
+  "ownsAudio": false,
+  "audioIdentity": "neutral KUT inventory only",
+  "generatedAt": "2026-06-20T17:40:49.526Z",
+  "sourceInventory": "data/kut-inventory/neutral-kut-inventory.json",
+  "publicRules": {
+    "intentContainer": "BUG",
+    "productFamily": "Short-KUT",
+    "unitPriceCents": 199,
+    "currency": "USD",
+    "minRepeatCount": 1,
+    "maxRepeatCount": 5,
+    "repeatRequiresSchedule": true,
+    "uncontrolledRandomDeliveryAllowed": false,
+    "surpriseWindowAllowedOnlyWhenExplicit": true
+  },
+  "inventoryCount": 0,
+  "launchStatus": "needs-more-short-kuts",
+  "launchMinimumRecommended": 15,
+  "targetInventoryRecommended": 30,
+  "items": []
+}

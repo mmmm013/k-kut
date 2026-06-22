@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "role": "GPMx Universal Product Signature Audio Branding SSOT",
+  "scope": "all-release-bound-gpmx-audio-products-and-delivery-experiences",
+  "appliesTo": [
+    "K-KUT",
+    "Short-KUT",
+    "HUG",
+    "TUG",
+    "BUG",
+    "KUPID-delivery-audio",
+    "private-delivery-bound-KUT",
+    "public-release-bound-KUT",
+    "all-GPMx-release-bound-audio"
+  ],
+  "requiredBeforeReleaseGate": true,
+  "requiredBeforeOutlet": true,
+  "requiredAtProcessingIntake": true,
+  "requiredAtKkrToHomeRegistration": true,
+  "notOptional": true,
+  "notUponDemand": true,
+  "components": {
+    "padding": {
+      "required": true,
+      "role": "protect musical entry/exit and prevent hard cut feel",
+      "source": "SSOT",
+      "defaultLeadPaddingMs": 350,
+      "defaultTailPaddingMs": 750,
+      "overrideAllowedOnlyByBTI": true
+    },
+    "endFade": {
+      "required": true,
+      "role": "slight fade at KUT end",
+      "source": "SSOT",
+      "defaultFadeOutMs": 500,
+      "overrideAllowedOnlyByBTI": true
+    },
+    "twinkle": {
+      "required": true,
+      "role": "GPMx Signature Audio Branding",
+      "source": "SSOT",
+      "placement": "release-safe end signature unless BTI assigns another approved outlet placement",
+      "overrideAllowedOnlyByBTI": true
+    }
+  },
+  "processingRule": {
+    "kkRegistrationToHomeMustApply": true,
+    "homeInventoryCannotMarkReleaseReadyWithoutSignatureBranding": true,
+    "releaseGateFailsClosedWhenMissing": true,
+    "outletFailsClosedWhenMissing": true
+  },
+  "stiRule": {
+    "paddingIsSTI": true,
+    "endFadeIsSTI": true,
+    "twinkleIsSTI": true,
+    "signatureAudioBrandingRequiresSTISlot": true,
+    "signatureAudioBrandingRequiresBTI": true,
+    "signatureAudioBrandingRequiresBF": true
+  },
+  "forbidden": [
+    "allowing any product to own its own separate signature audio rule",
+    "creating product-specific non-SSOT signature rules",
+    "release-bound KUT without Twinkle / GPMx Signature Audio Branding",
+    "release-bound KUT without padding",
+    "release-bound KUT without slight end fade",
+    "treating Signature Audio Branding as BUG-specific",
+    "treating Signature Audio Branding as a product family",
+    "treating Signature Audio Branding as an intent container",
+    "treating Signature Audio Branding as demand-only",
+    "treating Signature Audio Branding as optional"
+  ],
+  "notBugSpecific": true,
+  "sonicLogoEquivalent": true,
+  "brandFunction": "audio logo / sonic brand mark for all release-bound GPMx products",
+  "productOwnershipRule": {
+    "ownedBy": "GPMx brand system",
+    "notOwnedByAnySingleProduct": true,
+    "bugIsOnlyDownstreamConsumer": true,
+    "hugsTugsBugsKutsAllInherit": true
+  },
+  "gpmxTwinkleSourceBinding": {
+    "version": 1,
+    "bindingId": "GPMX-TWINKLE-SOURCE-BINDING-V1",
+    "canonicalTwinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+    "requiredBeforeReleaseGate": true,
+    "requiredBeforeOutlet": true,
+    "appliesUniversally": true,
+    "productSpecific": false
+  },
+  "canonicalTwinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3"
+}

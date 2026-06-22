@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const OUT = "lib/hugRealKutManifest.ts";
-const SOURCE = "public/mothers-day/thank-you/kks-expanded/manifest.json";
+const SOURCE = "public/kks/thank-you/kks-expanded/manifest.json";
 
 const LOCKED_THANK_YOU_KKS = [
   "thank-you-sec-v1a",

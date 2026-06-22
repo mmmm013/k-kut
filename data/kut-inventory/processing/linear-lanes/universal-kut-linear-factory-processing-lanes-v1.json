@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "role": "Universal KUT linear factory processing lanes",
+  "sourceDecisions": "data/kut-inventory/processing/factory-decisions/universal-kut-linear-factory-decisions-v1.json",
+  "acceptedLaneCount": 2,
+  "adjustLaneCount": 2,
+  "acceptedForProcessing": [
+    {
+      "workOrderId": "UKUT-WO-003",
+      "sourceCandidateNumber": 12,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "sourceNotes": "Needs Twinkle",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "decision": "accept-for-processing",
+      "approveMeans": "processing-only-not-release",
+      "humanNote": "",
+      "requiredProcessingSteps": [
+        "exact-cut-or-recut",
+        "lead-tail-padding",
+        "slight-end-fade",
+        "twinkle-gpmx-signature-audio-branding",
+        "processed-candidate-review"
+      ],
+      "twinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+      "paddingRequired": true,
+      "slightEndFadeRequired": true,
+      "twinkleRequired": true,
+      "renderAudioNow": false,
+      "publicReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "lane": "accepted-for-processing",
+      "nextStep": "process-current-boundary-with-padding-fade-twinkle-then-review"
+    },
+    {
+      "workOrderId": "UKUT-WO-004",
+      "sourceCandidateNumber": 14,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "sourceNotes": "Uses \"her\" in 2nd line, so cannot be used for traditionally-male oriented uses. & add Twinkle.",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "decision": "accept-for-processing",
+      "approveMeans": "processing-only-not-release",
+      "humanNote": "",
+      "requiredProcessingSteps": [
+        "exact-cut-or-recut",
+        "lead-tail-padding",
+        "slight-end-fade",
+        "twinkle-gpmx-signature-audio-branding",
+        "processed-candidate-review"
+      ],
+      "twinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+      "paddingRequired": true,
+      "slightEndFadeRequired": true,
+      "twinkleRequired": true,
+      "renderAudioNow": false,
+      "publicReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "lane": "accepted-for-processing",
+      "nextStep": "process-current-boundary-with-padding-fade-twinkle-then-review"
+    }
+  ],
+  "adjustOrRecut": [
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "sourceNotes": "Twinkle",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "decision": "adjust",
+      "approveMeans": "processing-only-not-release",
+      "humanNote": "Add 1/3 second at end. retest then. ",
+      "requiredProcessingSteps": [
+        "exact-cut-or-recut",
+        "lead-tail-padding",
+        "slight-end-fade",
+        "twinkle-gpmx-signature-audio-branding",
+        "processed-candidate-review"
+      ],
+      "twinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+      "paddingRequired": true,
+      "slightEndFadeRequired": true,
+      "twinkleRequired": true,
+      "renderAudioNow": false,
+      "publicReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "lane": "adjust-recut-required",
+      "adjustPlan": {
+        "originalInstruction": "Add 1/3 second at end. retest then.",
+        "targetEndSeconds": null,
+        "tailExtensionSeconds": 0.333,
+        "retestRequired": true,
+        "needsSourceParentOrExtraTail": true
+      },
+      "nextStep": "render-adjusted-retest-draft-before-final-processing"
+    },
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "sourceNotes": "",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "decision": "adjust",
+      "approveMeans": "processing-only-not-release",
+      "humanNote": "Stop at 4 seconds, then approve. ",
+      "requiredProcessingSteps": [
+        "exact-cut-or-recut",
+        "lead-tail-padding",
+        "slight-end-fade",
+        "twinkle-gpmx-signature-audio-branding",
+        "processed-candidate-review"
+      ],
+      "twinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+      "paddingRequired": true,
+      "slightEndFadeRequired": true,
+      "twinkleRequired": true,
+      "renderAudioNow": false,
+      "publicReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "lane": "adjust-recut-required",
+      "adjustPlan": {
+        "originalInstruction": "Stop at 4 seconds, then approve.",
+        "targetEndSeconds": 4,
+        "tailExtensionSeconds": null,
+        "retestRequired": true,
+        "needsSourceParentOrExtraTail": false
+      },
+      "nextStep": "render-adjusted-retest-draft-before-final-processing"
+    }
+  ],
+  "laneSummary": {
+    "acceptedForProcessing": [
+      "UKUT-WO-003",
+      "UKUT-WO-004"
+    ],
+    "adjustOrRecut": [
+      "UKUT-WO-005",
+      "UKUT-WO-006"
+    ]
+  },
+  "renderAudioNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "nextSystemStep": "render-adjusted-retest-drafts-for-adjust-lane-and-process-accepted-lane-with-signature-controls"
+}

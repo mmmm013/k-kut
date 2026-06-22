@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 const orderPath = "manifests/kkr/dispatch/thank-you-kk8-bridge-br-materialization.json";
 const sourceAudio = "public/mothers-day/thank-you/song/thank-you-song.mp3";
 const reviewDir = "ops/review/kkr/br-section-review";
-const finalAudio = "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3";
+const finalAudio = "public/kks/thank-you/kks-expanded/thank-you-sec-br.mp3";
 
 if (!fs.existsSync(orderPath)) {
   console.error(`STOP: missing order ${orderPath}`);

@@ -1,0 +1,61 @@
+{
+  "status": "CURRENT",
+  "purpose": "Require human listen approval before any KK or HUG audio becomes sellable or buyer-facing.",
+  "rule": "KKr may propose. Human approval controls sale, public display, and delivery.",
+  "quality_target": "6_sigma_level_5_operating_maturity",
+  "public_display_rule": "Frontend displays generic buyer-safe HUG options. Backend retains source, section, KK, PIX-PCK, defect, and financial tracking.",
+  "approval_statuses": [
+    "approved_sellable",
+    "approved_request_only",
+    "hold_needs_recut",
+    "hold_needs_remap",
+    "hold_wrong_emotional_match",
+    "retired"
+  ],
+  "required_fields": [
+    "approval_id",
+    "kk_id",
+    "public_option_code",
+    "buyer_lane",
+    "campaign",
+    "audio_url",
+    "listen_status",
+    "human_reviewer",
+    "reviewed_at",
+    "defect_category",
+    "public_status",
+    "backend_source_ref",
+    "replacement_rule"
+  ],
+  "defect_categories": [
+    "none",
+    "start_too_early",
+    "start_too_late",
+    "end_too_early",
+    "end_too_late",
+    "tail_cut_off",
+    "wrong_boundary",
+    "wrong_emotional_match",
+    "dead_audio_link",
+    "wrong_hug_delivered"
+  ],
+  "frontend_naming_examples": [
+    "HUG-FD-2026 Option 1",
+    "HUG-FD-2026 Option 2",
+    "HUG-GRAT Option 1",
+    "HUG-CONDOLENCE Option 1",
+    "HUG-HOPE Option 1"
+  ],
+  "backend_tracking_examples": [
+    "KK-THANK-YOU-S01",
+    "KK-NOMYSTERY-S03",
+    "PIX-PCK lineage",
+    "source title",
+    "section id",
+    "audio path",
+    "order code",
+    "defect history",
+    "replacement history"
+  ],
+  "memory_anchor": "KKr proposes. Human approves. System records. Buyer receives. Defects teach the system."
+}

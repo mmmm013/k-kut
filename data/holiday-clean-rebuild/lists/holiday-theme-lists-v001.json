@@ -1,0 +1,42 @@
+{
+  "status": "CLEAN_HOLIDAY_LISTS_REBUILT",
+  "holiday_lane_rule": "Holiday lists are independent matching lists. They do not bind tracks to holidays.",
+  "lists": [
+    {
+      "list_id": "holiday-gratitude",
+      "display_title": "Gratitude",
+      "themes": ["thank you", "appreciation", "respect", "honoring", "presence"],
+      "binding_rule": "Theme match only. No holiday ownership."
+    },
+    {
+      "list_id": "holiday-family",
+      "display_title": "Family",
+      "themes": ["family", "loyalty", "home", "togetherness", "support"],
+      "binding_rule": "Theme match only. No holiday ownership."
+    },
+    {
+      "list_id": "holiday-strength",
+      "display_title": "Strength",
+      "themes": ["strength", "steady", "courage", "keep going", "resilience"],
+      "binding_rule": "Theme match only. No holiday ownership."
+    },
+    {
+      "list_id": "holiday-comfort",
+      "display_title": "Comfort",
+      "themes": ["comfort", "missing you", "grief", "repair", "soft support"],
+      "binding_rule": "Theme match only. No holiday ownership."
+    },
+    {
+      "list_id": "holiday-celebration",
+      "display_title": "Celebration",
+      "themes": ["birthday", "anniversary", "congratulations", "milestone", "joy"],
+      "binding_rule": "Theme match only unless title/admin explicitly marks holiday."
+    },
+    {
+      "list_id": "holiday-christmas",
+      "display_title": "Christmas",
+      "themes": ["christmas", "holiday", "winter", "home", "giving"],
+      "binding_rule": "Allowed only when title contains Christmas/Holiday or admin marks Christmas/Holiday."
+    }
+  ]
+}

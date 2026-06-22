@@ -1,7 +1,7 @@
 import fs from "node:fs";
 
 const source = "staging/mothers-day/thank-you/audio-proof/thank-you-kk-structure.json";
-const finalBr = "public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3";
+const finalBr = "public/kks/thank-you/kks-expanded/thank-you-sec-br.mp3";
 
 if (!fs.existsSync(source)) {
   console.error(`FAIL: missing staging structure source ${source}`);

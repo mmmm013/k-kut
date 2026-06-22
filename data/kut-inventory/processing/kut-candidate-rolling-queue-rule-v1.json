@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "role": "KUT candidate rolling queue control",
+  "noFixedApprovedPile": true,
+  "oldApprovedPileForbidden": true,
+  "candidateState": "next-in-line-kut-candidate",
+  "candidateStateMeaning": "selected for controlled processing attention; not public-ready, not release-ready, not outlet-ready",
+  "laneSequence": [
+    "next-in-line-kut-candidate",
+    "in-processing",
+    "processed-candidate-review",
+    "release-gate",
+    "outlet-or-release"
+  ],
+  "alternateLaneSequence": [
+    "next-in-line-kut-candidate",
+    "in-processing",
+    "processed-candidate-review",
+    "recut-or-hold"
+  ],
+  "replacementRule": {
+    "whenCandidateMovesToProcessing": "remove from next-in-line lane",
+    "then": "promote next best eligible candidate into next-in-line lane when available",
+    "requiresHumanOrControlledSystemReview": true
+  },
+  "releaseGateStillRequired": true,
+  "signatureAudioBrandingStillRequired": true,
+  "requiredBeforeRelease": [
+    "exact-cut-or-recut",
+    "padding",
+    "slight-end-fade",
+    "twinkle",
+    "bti-restrictions",
+    "bf-guardrails",
+    "neutral-kut-canonicalization",
+    "final-human-release-gate"
+  ]
+}

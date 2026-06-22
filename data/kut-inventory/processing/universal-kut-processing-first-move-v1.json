@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "role": "First universal KUT processing move decision",
+  "sourceWorkOrdersFile": "data/kut-inventory/processing/universal-kut-processing-work-orders-v1.json",
+  "selectedWorkOrderId": "UKUT-WO-002",
+  "selectedSourceCandidateNumber": 10,
+  "selectedSourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+  "fromLane": "next-in-line-kut-candidate",
+  "toLane": "in-processing",
+  "moveState": "authorized-first-move-to-in-processing",
+  "reason": "Best first move because it is a reusable neutral THANK YOU HOME extract with explicit human notes and child tasks, while still requiring all universal processing before any release decision.",
+  "noProductSpecificRelease": true,
+  "targetProduct": null,
+  "targetIntentContainer": null,
+  "audioRenderedNow": false,
+  "audioProcessedNow": false,
+  "publicReadyNow": false,
+  "productReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "requiredBeforeAnyReleaseDecision": [
+    "boundary-confirmation",
+    "exact-cut-or-recut",
+    "lead-tail-padding",
+    "slight-end-fade",
+    "twinkle-gpmx-signature-audio-branding",
+    "bti-bf-review",
+    "neutral-kut-canonicalization",
+    "processed-candidate-review",
+    "release-gate-or-recut-hold"
+  ],
+  "firstProcessingFocus": {
+    "primary": "review source candidate 10 as THANK YOU HOME extract",
+    "childTasks": [
+      {
+        "childTaskId": "THANK-YOU-HOME-EXTRACT-001",
+        "boundaryInstruction": "review candidate 0:00–0:04 as TRM / salutation / thank-you extract",
+        "outputStatus": "not-rendered-not-release-ready"
+      },
+      {
+        "childTaskId": "THANK-YOU-HOME-EXTRACT-002",
+        "boundaryInstruction": "review candidate 0:00–0:13 as phrase candidate only if boundary is musically clean",
+        "outputStatus": "not-rendered-not-release-ready"
+      }
+    ],
+    "boundaryReviewRequired": true,
+    "renderAllowedNow": false,
+    "releaseDecisionAllowedNow": false
+  },
+  "ranking": [
+    {
+      "workOrderId": "UKUT-WO-002",
+      "sourceCandidateNumber": 10,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+      "candidateRoleHint": "thank-you-home-extract-and-neutral-kut-canonicalization",
+      "sourceNotes": "Save this as unique. Should NEXT CC initial \"Yeah....Thank You\" vocal, which is initial vocal. 0:00-0:04 is TPs for this TRM/Salutation. NEED THAT thank you, to use & store among THANK YOUs HOME. Another kut CAN be start to 0:13, as a PHRZ.",
+      "score": 175,
+      "releaseReadyNow": false,
+      "audioRenderedNow": false,
+      "productSpecific": false,
+      "restrictions": [
+        {
+          "type": "BTI_CONTEXT_RESTRICTION",
+          "rule": "contains gendered reference; restrict use context until BTI confirms allowed placement"
+        }
+      ],
+      "childTasks": [
+        {
+          "childTaskId": "THANK-YOU-HOME-EXTRACT-001",
+          "boundaryInstruction": "review candidate 0:00–0:04 as TRM / salutation / thank-you extract",
+          "outputStatus": "not-rendered-not-release-ready"
+        },
+        {
+          "childTaskId": "THANK-YOU-HOME-EXTRACT-002",
+          "boundaryInstruction": "review candidate 0:00–0:13 as phrase candidate only if boundary is musically clean",
+          "outputStatus": "not-rendered-not-release-ready"
+        }
+      ]
+    },
+    {
+      "workOrderId": "UKUT-WO-003",
+      "sourceCandidateNumber": 12,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "Needs Twinkle",
+      "score": 0,
+      "releaseReadyNow": false,
+      "audioRenderedNow": false,
+      "productSpecific": false,
+      "restrictions": [
+        {
+          "type": "SIGNATURE_AUDIO_REQUIRED",
+          "rule": "Twinkle specifically noted by human reviewer; still required universally for all release-bound processing"
+        }
+      ],
+      "childTasks": []
+    },
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "Twinkle",
+      "score": 0,
+      "releaseReadyNow": false,
+      "audioRenderedNow": false,
+      "productSpecific": false,
+      "restrictions": [
+        {
+          "type": "SIGNATURE_AUDIO_REQUIRED",
+          "rule": "Twinkle specifically noted by human reviewer; still required universally for all release-bound processing"
+        }
+      ],
+      "childTasks": []
+    },
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "",
+      "score": 0,
+      "releaseReadyNow": false,
+      "audioRenderedNow": false,
+      "productSpecific": false,
+      "restrictions": [],
+      "childTasks": []
+    },
+    {
+      "workOrderId": "UKUT-WO-001",
+      "sourceCandidateNumber": 1,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-001 2.mp3",
+      "candidateRoleHint": "neutral-instrumental-study-and-boundary-confirmation",
+      "sourceNotes": "BUT JUST musical (INSTRO) piece. Study it & add it to the IN/O-PIX group, you think?",
+      "score": -30,
+      "releaseReadyNow": false,
+      "audioRenderedNow": false,
+      "productSpecific": false,
+      "restrictions": [],
+      "childTasks": []
+    },
+    {
+      "workOrderId": "UKUT-WO-004",
+      "sourceCandidateNumber": 14,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "sourceNotes": "Uses \"her\" in 2nd line, so cannot be used for traditionally-male oriented uses. & add Twinkle.",
+      "score": -40,
+      "releaseReadyNow": false,
+      "audioRenderedNow": false,
+      "productSpecific": false,
+      "restrictions": [
+        {
+          "type": "BTI_CONTEXT_RESTRICTION",
+          "rule": "contains gendered reference; restrict use context until BTI confirms allowed placement"
+        },
+        {
+          "type": "SIGNATURE_AUDIO_REQUIRED",
+          "rule": "Twinkle specifically noted by human reviewer; still required universally for all release-bound processing"
+        }
+      ],
+      "childTasks": []
+    }
+  ]
+}

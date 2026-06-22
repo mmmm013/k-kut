@@ -1,0 +1,4 @@
+lane,theme,public_option_label,backend_kk_id,alias_pix_label,alias_rule,actual_object_type,source_title_internal,candidate_status,listen_url_local,local_file_path,gregory_decision,decision_reason,notes
+Apology,I'm Sorry,I'm Sorry — Option 1,KK-IM-SORRY-V01,I'm Sorry Version 1,Alias may behave like PIX for search/display but object is KK,KK,I'm Sorry,CAPTURED_PENDING_FILE_MATCH,,,,
+Apology,I'm Sorry,I'm Sorry — Option 2,KK-IM-SORRY-V02,I'm Sorry Version 2,Alias may behave like PIX for search/display but object is KK,KK,I'm Sorry,CAPTURED_PENDING_FILE_MATCH,,,,
+Apology,I'm Sorry,I'm Sorry — Option 3,KK-IM-SORRY-V03,I'm Sorry Version 3,Alias may behave like PIX for search/display but object is KK,KK,I'm Sorry,CAPTURED_PENDING_FILE_MATCH,,,,

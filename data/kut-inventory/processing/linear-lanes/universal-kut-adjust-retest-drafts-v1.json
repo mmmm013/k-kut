@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "role": "Universal KUT adjust-lane retest drafts",
+  "sourceLane": "data/kut-inventory/processing/linear-lanes/universal-kut-linear-factory-processing-lanes-v1.json",
+  "renderedDraftCount": 1,
+  "blockedAdjustmentCount": 1,
+  "renderedDrafts": [
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "adjustmentType": "target-end-seconds",
+      "targetEndSeconds": 4,
+      "outputPath": "review-sessions/processing/linear-lanes/adjust-retest/ukut-wo-006-adjust-retest-draft.mp3",
+      "retestRequired": true,
+      "renderAudioNow": true,
+      "publicReadyNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    }
+  ],
+  "blockedAdjustments": [
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "adjustmentType": "tail-extension",
+      "requiredTailExtensionSeconds": 0.333,
+      "currentSourceDurationSeconds": 14,
+      "blockedReason": "needs-parent-or-untrimmed-source-tail; do-not-fake-with-silence",
+      "retestRequired": true,
+      "renderAudioNow": false,
+      "publicReadyNow": false,
+      "releaseReadyNow": false,
+      "releaseGateAllowedNow": false
+    }
+  ],
+  "renderAudioNow": true,
+  "renderedForRetestOnly": true,
+  "publicReadyNow": false,
+  "productReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "nextSystemStep": "retest-rendered-adjust-drafts-and-bind-parent-source-for-blocked-tail-extension"
+}

@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>UKUT-WO-002 Boundary Confirmation Room v1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --gpm-black: #0B0F0E;
+      --gpm-deep-green: #0E3B2E;
+      --gpm-green: #1F7A4D;
+      --gpm-light-green: #75C790;
+      --gpm-gold: #D8B35A;
+      --gpm-warm-amber: #B97835;
+      --gpm-cream: #F3EAD7;
+      --gpm-soft-white: #F8F5EC;
+      --gpm-slate: #202722;
+      --gpm-line: #456052;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--gpm-green) 18%, transparent), transparent 36rem),
+        linear-gradient(135deg, var(--gpm-black), #050706 68%);
+      color: var(--gpm-soft-white);
+    }
+    main { max-width: 1080px; margin: 0 auto; padding: 28px; }
+    h1 { margin-bottom: 6px; color: var(--gpm-soft-white); }
+    h2 { color: var(--gpm-gold); }
+    .brandbar {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+      border: 1px solid var(--gpm-line); border-radius: 18px; padding: 14px 16px;
+      background: color-mix(in srgb, var(--gpm-deep-green) 42%, var(--gpm-black));
+      box-shadow: 0 0 0 1px rgba(216,179,90,.14) inset;
+      margin: 16px 0 20px;
+    }
+    .pill {
+      border: 1px solid var(--gpm-gold);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--gpm-cream);
+      background: rgba(0,0,0,.22);
+      font-size: .9rem;
+    }
+    .status { padding: 14px 16px; border: 1px solid var(--gpm-line); border-radius: 14px; background: rgba(32,39,34,.86); margin: 18px 0; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+    .card { border: 1px solid var(--gpm-line); border-radius: 16px; padding: 18px; background: rgba(14,59,46,.56); }
+    .card.active-target { outline: 3px solid var(--gpm-gold); box-shadow: 0 0 0 4px rgba(216,179,90,.16); }
+    .card.completed-target { opacity: .72; }
+    .navrow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .bigbutton { font-weight: 800; padding: 12px 18px; }
+    audio { width: 100%; margin: 18px 0; }
+    button { cursor: pointer; border: 1px solid var(--gpm-gold); border-radius: 999px; background: var(--gpm-deep-green); color: var(--gpm-soft-white); padding: 10px 14px; margin: 4px 6px 4px 0; }
+    button:hover { background: var(--gpm-green); }
+    textarea, input { width: 100%; box-sizing: border-box; background: var(--gpm-black); color: var(--gpm-soft-white); border: 1px solid var(--gpm-line); border-radius: 10px; padding: 10px; margin-top: 8px; }
+    code { color: var(--gpm-cream); }
+    .danger { color: #ffb4b4; }
+    .good { color: var(--gpm-light-green); }
+    .small { color: var(--gpm-cream); font-size: 0.94rem; }
+    pre { white-space: pre-wrap; background: rgba(0,0,0,.38); border: 1px solid var(--gpm-line); padding: 14px; border-radius: 12px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>UKUT-WO-002 Boundary Confirmation Room</h1>
+  <p class="small">Source candidate 10 · In processing · Boundary confirmation only</p>
+
+  <section class="brandbar">
+    <span class="pill">GPM-COLOR-SCHEMA-V1</span>
+    <span class="pill">GPMx Processing Control</span>
+    <span class="pill">Twinkle Required Before Release</span>
+    <span class="pill">No Render / No Release State</span>
+  </section>
+
+  <section class="status">
+    <strong class="good">Controls locked:</strong>
+    no audio render · no public-ready state · no release-ready state · no outlet-ready state.
+    <br />
+    <span class="small">GPM Color Schema: <code>data/brand/gpm-color-schema-v1.json</code></span>
+    <br />
+    <span class="small">GPMx Signature Audio Branding SSOT: <code>data/audio-branding/gpmx-signature-audio-branding-ssot.json</code></span>
+    <br />
+    <span class="small">Source audio: <code>public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3</code></span>
+  </section>
+
+  <section class="status">
+    <h2>Sonic Branding Gate</h2>
+    <p><strong>Twinkle / GPMx Signature Audio Branding</strong> is mandatory before any release decision.</p>
+    <p class="small">This page is still boundary review only. Twinkle is shown here as a required gate, not as release completion.</p>
+    <audio id="twinkleAudio" controls preload="metadata" src="../../public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3"></audio>
+     <p class="small">Twinkle audition source bound from SSOT: <code>public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3</code></p>
+  </section>
+
+  <audio id="audio" controls preload="metadata" src="../../public/kks/thank-you/kks-expanded/thank-you-cc-010%202.mp3"></audio>
+
+  <section class="status" id="reviewFlowPanel">
+    <h2>Review Flow</h2>
+    <p><strong>Decision buttons auto-advance.</strong> Use Next only when you want manual control.</p>
+    <p class="small">This page saves decisions in this browser only. Use “Copy terminal-safe save command” to write the decision file without pasting raw notes into zsh.</p>
+    <div class="navrow">
+      <button class="bigbutton" onclick="previousTarget()">Previous</button>
+      <button class="bigbutton" onclick="nextTarget()">Next</button>
+      <button class="bigbutton" onclick="copyTerminalSaveCommand()">Copy terminal-safe save command</button>
+      <button onclick="resetDecisions()">Reset decisions</button>
+    </div>
+    <p id="activeTargetLabel" class="small"></p>
+    <pre id="decisionSummary">No decisions yet.</pre>
+  </section>
+
+  <section class="grid" id="targetGrid"></section>
+
+  <section class="status">
+    <h2>Decision capture</h2>
+    <p class="small">Use this for human notes. Copy/paste the result into the next terminal step. This page does not write to disk.</p>
+    <textarea id="notes" rows="10" placeholder="Example:
+BT-001: confirm 0:00–0:04
+BT-002: adjust end to 0:12.7 because ...
+"></textarea>
+    <button onclick="copyNotes()">Copy notes</button>
+    <button onclick="clearNotes()">Clear</button>
+  </section>
+
+  <section class="status">
+    <h2>Required after boundary confirmation</h2>
+    <pre>exact-cut-or-recut
+lead-tail-padding
+slight-end-fade
+twinkle-gpmx-signature-audio-branding
+bti-bf-review
+neutral-kut-canonicalization
+processed-candidate-review
+release-gate-or-recut-hold</pre>
+  </section>
+</main>
+
+<script>
+const audio = document.getElementById("audio");
+const targets = [{"boundaryTargetId":"UKUT-WO-002-BT-001","label":"THANK YOU HOME short extract","proposedStart":"0:00","proposedEnd":"0:04","humanNote":"Save 0:00–0:04 as TRM / salutation / thank-you extract.","requiredDecision":"confirm, adjust, or reject boundary before rendering","renderAllowedNow":false,"startSeconds":0,"endSeconds":4},{"boundaryTargetId":"UKUT-WO-002-BT-002","label":"THANK YOU phrase candidate","proposedStart":"0:00","proposedEnd":"0:13","humanNote":"Possible phrase candidate only if the boundary is musically clean.","requiredDecision":"confirm, adjust, or reject boundary before rendering","renderAllowedNow":false,"startSeconds":0,"endSeconds":13}];
+let loop = null;
+let timer = null;
+
+function stopLoop() {
+  loop = null;
+  if (timer) clearInterval(timer);
+  timer = null;
+}
+
+function playRange(start, end) {
+  stopLoop();
+  audio.currentTime = start;
+  audio.play();
+  timer = setInterval(() => {
+    if (audio.currentTime >= end) {
+      audio.pause();
+      clearInterval(timer);
+      timer = null;
+    }
+  }, 35);
+}
+
+function loopRange(start, end) {
+  stopLoop();
+  loop = { start, end };
+  audio.currentTime = start;
+  audio.play();
+  timer = setInterval(() => {
+    if (!loop) return;
+    if (audio.currentTime >= loop.end) {
+      audio.currentTime = loop.start;
+      audio.play();
+    }
+  }, 35);
+}
+
+function addDecision(id, text) {
+  const box = document.getElementById("notes");
+  const prefix = box.value.trim() ? "\n" : "";
+  box.value += prefix + id + ": " + text;
+  box.focus();
+}
+
+function copyNotes() {
+  navigator.clipboard.writeText(document.getElementById("notes").value || "");
+}
+
+function clearNotes() {
+  document.getElementById("notes").value = "";
+}
+
+const grid = document.getElementById("targetGrid");
+for (const t of targets) {
+  const card = document.createElement("section");
+  card.className = "card";
+  card.innerHTML = `
+    <h2>${t.boundaryTargetId}</h2>
+    <p><strong>${t.label}</strong></p>
+    <p>Proposed: <code>${t.proposedStart}–${t.proposedEnd}</code></p>
+    <p class="small">${t.humanNote || ""}</p>
+    <button onclick="playRange(${t.startSeconds}, ${t.endSeconds})">Play once</button>
+    <button onclick="loopRange(${t.startSeconds}, ${t.endSeconds})">Loop</button>
+    <button onclick="stopLoop(); audio.pause()">Stop</button>
+    <hr />
+    <button onclick="addDecision('${t.boundaryTargetId}', 'confirm boundary')">Confirm</button>
+    <button onclick="addDecision('${t.boundaryTargetId}', 'adjust boundary to ')">Adjust</button>
+    <button onclick="addDecision('${t.boundaryTargetId}', 'reject boundary because ')">Reject</button>
+  `;
+  grid.appendChild(card);
+}
+
+const AUTO_ADVANCE_ENABLED = true;
+const STORAGE_KEY = "UKUT-WO-002-boundary-decisions-v1";
+let activeTargetIndex = 0;
+let decisions = {};
+
+try {
+  decisions = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+} catch {
+  decisions = {};
+}
+
+function normalizeBoundaryText(text) {
+  if (text.includes("adjust boundary to")) {
+    const response = prompt("Enter adjusted boundary and reason:", text);
+    return response || text;
+  }
+  if (text.includes("reject boundary because")) {
+    const response = prompt("Enter reject reason:", text);
+    return response || text;
+  }
+  return text;
+}
+
+function decisionTypeFromText(text) {
+  if (text.startsWith("confirm boundary")) return "confirm-boundary";
+  if (text.startsWith("adjust boundary")) return "adjust-boundary";
+  if (text.startsWith("reject boundary")) return "reject-boundary";
+  return "human-decision";
+}
+
+function saveDecision(id, text) {
+  const finalText = normalizeBoundaryText(text);
+  decisions[id] = {
+    boundaryTargetId: id,
+    decision: decisionTypeFromText(finalText),
+    humanNote: finalText,
+    decidedAt: new Date().toISOString()
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(decisions, null, 2));
+  renderReviewFlow();
+
+  if (AUTO_ADVANCE_ENABLED) {
+    const idx = targets.findIndex(t => t.boundaryTargetId === id);
+    if (idx >= 0 && idx < targets.length - 1) {
+      activeTargetIndex = idx + 1;
+      renderReviewFlow();
+      scrollToActive();
+    }
+  }
+  return finalText;
+}
+
+const originalAddDecision = addDecision;
+addDecision = function(id, text) {
+  const finalText = saveDecision(id, text);
+  const box = document.getElementById("notes");
+  const line = id + ": " + finalText;
+  const lines = (box.value || "").split("\n").filter(Boolean).filter(l => !l.startsWith(id + ":"));
+  lines.push(line);
+  box.value = lines.join("\n");
+  box.focus();
+};
+
+function nextTarget() {
+  if (activeTargetIndex < targets.length - 1) activeTargetIndex += 1;
+  renderReviewFlow();
+  scrollToActive();
+}
+
+function previousTarget() {
+  if (activeTargetIndex > 0) activeTargetIndex -= 1;
+  renderReviewFlow();
+  scrollToActive();
+}
+
+function scrollToActive() {
+  const active = document.querySelector(".active-target");
+  if (active) active.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function resetDecisions() {
+  if (!confirm("Clear browser-saved boundary decisions for UKUT-WO-002?")) return;
+  decisions = {};
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById("notes").value = "";
+  renderReviewFlow();
+}
+
+function renderReviewFlow() {
+  const active = targets[activeTargetIndex];
+  document.getElementById("activeTargetLabel").textContent =
+    "Active target: " + active.boundaryTargetId + " — " + active.label;
+
+  for (const card of document.querySelectorAll(".card")) {
+    card.classList.remove("active-target", "completed-target");
+  }
+
+  for (const target of targets) {
+    const h2s = Array.from(document.querySelectorAll(".card h2"));
+    const h2 = h2s.find(x => x.textContent.trim() === target.boundaryTargetId);
+    const card = h2 ? h2.closest(".card") : null;
+    if (!card) continue;
+    if (target.boundaryTargetId === active.boundaryTargetId) card.classList.add("active-target");
+    if (decisions[target.boundaryTargetId]) card.classList.add("completed-target");
+  }
+
+  const summary = targets.map(t => {
+    const d = decisions[t.boundaryTargetId];
+    return d
+      ? t.boundaryTargetId + ": " + d.humanNote
+      : t.boundaryTargetId + ": pending";
+  }).join("\n");
+
+  document.getElementById("decisionSummary").textContent = summary;
+}
+
+function buildDecisionPayload() {
+  const bt001 = decisions["UKUT-WO-002-BT-001"] || {
+    boundaryTargetId: "UKUT-WO-002-BT-001",
+    decision: "pending-human-boundary-decision",
+    humanNote: ""
+  };
+
+  const bt002 = decisions["UKUT-WO-002-BT-002"] || {
+    boundaryTargetId: "UKUT-WO-002-BT-002",
+    decision: "pending-human-boundary-decision",
+    humanNote: ""
+  };
+
+  return {
+    version: 1,
+    role: "Human boundary decision record for UKUT-WO-002",
+    workOrderId: "UKUT-WO-002",
+    sourceCandidateNumber: 10,
+    currentLane: "in-processing",
+    decisions: [bt001, bt002],
+    renderAudioNow: false,
+    audioProcessedNow: false,
+    publicReadyNow: false,
+    releaseReadyNow: false,
+    outletReadyNow: false,
+    releaseGateAllowedNow: false,
+    nextAllowedStep: Object.keys(decisions).length >= 2
+      ? "exact-cut-or-recut-after-human-boundary-decisions"
+      : "finish-boundary-decisions-before-render"
+  };
+}
+
+function copyTerminalSaveCommand() {
+  const payload = buildDecisionPayload();
+  const json = JSON.stringify(payload, null, 2);
+  const md = "# UKUT-WO-002 Boundary Human Decision v1\\n\\n"
+    + payload.decisions.map(d => "## " + d.boundaryTargetId + "\\n\\nDecision: " + d.decision + "\\n\\nHuman note: " + (d.humanNote || "")).join("\\n\\n")
+    + "\\n\\nNo audio rendered. No release-ready state created.\\n";
+
+  const command =
+`cd /Users/gputnammusicllc/Documents/GitHub/k-kut
+cat > data/kut-inventory/processing/ukut-wo-002-boundary-human-decision-v1.json <<'EOF_JSON'
+${json}
+EOF_JSON
+cat > data/kut-inventory/processing/ukut-wo-002-boundary-human-decision-v1.md <<'EOF_MD'
+${md}
+EOF_MD
+node scripts/audit-ukut-wo-002-boundary-human-decision-v1.mjs
+`;
+
+  navigator.clipboard.writeText(command);
+  alert("Copied terminal-safe save command. Paste that command into Terminal, not raw notes.");
+}
+
+renderReviewFlow();
+</script>
+</body>
+</html>

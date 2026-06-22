@@ -1,0 +1,6 @@
+theme_id,theme_display_name,theme_group,kk_id,parent_pix_id,exact_kk_audio_path,public_display_label,fit_reason,fit_strength,excluded_uses,approval_status,delivery_render_status,notes
+im_sorry,I'm Sorry,Apology,,,,,,,,,,
+repair,Repair,Apology,,,,,,,,,,
+regret,Regret,Apology,,,,,,,,,,
+still_care,Still Care,Apology,,,,,,,,,,
+complicated_care,Complicated Care,Apology,,,,,,,,,,

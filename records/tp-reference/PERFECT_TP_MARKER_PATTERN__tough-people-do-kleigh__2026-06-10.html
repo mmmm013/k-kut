@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Tough People Do — KLEIGH TP Marker</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#2b1b12; color:#fff4dc; padding:32px; }
+    h1 { color:#ffd37a; font-size:40px; margin:0 0 8px; }
+    .subtitle { color:#e9c893; font-size:19px; margin-bottom:24px; }
+    .panel { background:#3a2417; border:1px solid #8b5a2b; border-radius:18px; padding:22px; margin:20px 0; }
+    audio { width:100%; margin:14px 0; }
+    button { background:#7b4a20; color:#fff4dc; border:1px solid #d1994e; border-radius:12px; padding:12px 14px; margin:6px; font-size:15px; cursor:pointer; }
+    button:hover { background:#9a612a; }
+    textarea { width:100%; height:280px; background:#1d110b; color:#fff4dc; border:1px solid #8b5a2b; border-radius:12px; padding:14px; font-family:ui-monospace, Menlo, monospace; font-size:14px; }
+    .warn { color:#ffd37a; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h1>Tough People Do — KLEIGH TP Marker</h1>
+  <p class="subtitle">Mark true section entry points. Similar to Zack, but KLEIGH gets fresh human TPs.</p>
+
+  <section class="panel">
+    <h2>Full Source Audio</h2>
+    <audio id="a" controls preload="metadata" src="file:///Users/gputnammusicllc/Documents/GitHub/k-kut/public/pix/tough-people-do/source-audio/tough-people-do-kleigh-source.mp3"></audio>
+    <p class="warn">TP = where the next section actually begins. No percentage guessing. No fake sBLKs.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Mark TPs</h2>
+    <button onclick="mark('SONG_START')">SONG START</button>
+    <button onclick="mark('V1_END__CH1_START')">V1 END / CH1 START</button>
+    <button onclick="mark('CH1_END__V2_START')">CH1 END / V2 START</button>
+    <button onclick="mark('V2_END__CH2_START')">V2 END / CH2 START</button>
+    <button onclick="mark('CH2_END__BRIDGE_START')">CH2 END / BRIDGE START</button>
+    <button onclick="mark('BRIDGE_END__CH3_START')">BRIDGE END / CH3 START</button>
+    <button onclick="mark('SONG_END')">SONG END</button>
+    <button onclick="copyMarks()">COPY MARKS</button>
+  </section>
+
+  <section class="panel">
+    <h2>Marks Output</h2>
+    <textarea id="out">Tough People Do — KLEIGH TP marks
+Rule:
+BLK decides. Time reports only.
+NO V1a/V1b unless human confirms after audio.
+NO V2a/V2b.
+Use Zack learning:
+TP = next section entry point, not guessed duration.
+GPM Twinkle louder.
+No delay before Twinkle.
+Twinkle starts immediately after final note/fade.
+Twinkle runs alone.
+File ends immediately when Twinkle ends.
+
+MARKS:
+</textarea>
+  </section>
+
+<script>
+const audio = document.getElementById('a');
+const out = document.getElementById('out');
+
+function mark(label) {
+  const t = audio.currentTime.toFixed(3);
+  out.value += label + ": " + t + "s\n";
+}
+
+function copyMarks() {
+  out.select();
+  document.execCommand('copy');
+}
+</script>
+</body>
+</html>

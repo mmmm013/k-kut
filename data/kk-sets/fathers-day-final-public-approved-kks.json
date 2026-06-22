@@ -1,0 +1,201 @@
+{
+  "setId": "fathers-day-final-public-approved-kks",
+  "status": "PUBLIC_APPROVED_AUDIO_READY_8_BOX_PAGINATED",
+  "pageSize": 8,
+  "doctrine": [
+    "Display 8 boxes per page.",
+    "Use Next / Back pagination.",
+    "Thank You KKs included.",
+    "Until I’m Dyin’ I’m Tryin’ included only for BLK4/Ch2, BLK5/Bridge, BLK6/Final Chorus, BLK7/Outro when files are found.",
+    "No public review/admin/internal/proof/staging language."
+  ],
+  "counts": {
+    "thankYou": 9,
+    "ringTheBell": 3,
+    "separated": 11,
+    "until": 2,
+    "total": 25,
+    "pages": 4
+  },
+  "items": [
+    {
+      "id": "FD-TY-INTRO",
+      "title": "Thank You — Opening",
+      "feeling": "A warm start for gratitude, respect, and steady love.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-intro-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "FD-RTB-001",
+      "title": "You Earned This",
+      "feeling": "Respect, legacy, and the kind of life that deserves the bell.",
+      "audioUrl": "/father-days-kks/ring-the-bell/ii-delivery/FD-KUT-RTB-001-v005-KEEP-30p90-endpad-0p333-ii-delivery-v001.mp3",
+      "family": "RING_THE_BELL"
+    },
+    {
+      "id": "FD-TY-V1A",
+      "title": "Thank You — Verse 1A",
+      "feeling": "A simple thank-you when words are hard to find.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-v1a-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "FD-RTB-002",
+      "title": "Ring the Bell",
+      "feeling": "A proud Father’s Day lift for the dad who gave what he had.",
+      "audioUrl": "/father-days-kks/ring-the-bell/ii-delivery/FD-KUT-RTB-002-v001-KEEP-CHORUS1-30p90-54p00-ii-delivery-v001.mp3",
+      "family": "RING_THE_BELL"
+    },
+    {
+      "id": "FD-TY-V1B",
+      "title": "Thank You — Verse 1B",
+      "feeling": "A grounded Father’s Day thank-you with heart.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-v1b-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "FD-RTB-003",
+      "title": "Keep Going Dad",
+      "feeling": "Steady, hopeful, and built for a dad who keeps showing up.",
+      "audioUrl": "/father-days-kks/ring-the-bell/ii-delivery/FD-KUT-RTB-003-v002-REENCODE-FIX-54p00-76p00-ii-delivery-v001.mp3",
+      "family": "RING_THE_BELL"
+    },
+    {
+      "id": "FD-TY-PRECH1",
+      "title": "Thank You — Lift",
+      "feeling": "A small rise before the feeling opens up.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-prech1-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "NM-CK-FD-BLK1-BOUT-DAD",
+      "title": "Bout Dad",
+      "feeling": "dad statement / intro feeling",
+      "audioUrl": "/kks/no-mystery/chris-krause-blk1-locked/bout-dad-chris-krause-sblk1-trim-0p5-twinkle-2sec-sooner.mp3",
+      "family": "NO_MYSTERY"
+    },
+    {
+      "id": "FD-TY-CH1",
+      "title": "Thank You — Chorus 1",
+      "feeling": "Clear gratitude for the dad who showed up.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-ch1-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "IMNM-FD-BLK2-HONORING-HIM",
+      "title": "Honoring Him",
+      "feeling": "respect / honoring dad",
+      "audioUrl": "/kks/no-mystery/fathers-day-blk2-twinkle-overlap-pad1s-lock/honoring-him-blk2-pad1s-twinkle-2sec-sooner.mp3",
+      "family": "IM_NO_MYSTERY"
+    },
+    {
+      "id": "FD-TY-V2A",
+      "title": "Thank You — Verse 2A",
+      "feeling": "A reflective thank-you for what he carried.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-v2a-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "NM-CK-FD-BLK1-MAKING-A-STATEMENT",
+      "title": "Making a Statement",
+      "feeling": "dad statement / strong identity",
+      "audioUrl": "/kks/no-mystery/chris-krause-blk1-locked/making-a-statement-chris-krause-blk1-trim-0p5-twinkle-2sec-sooner.mp3",
+      "family": "NO_MYSTERY"
+    },
+    {
+      "id": "FD-TY-CH2",
+      "title": "Thank You — Chorus 2",
+      "feeling": "A stronger gratitude moment for Father’s Day.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-ch2-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "IMNM-FD-BLK3-STRONG-STEADY",
+      "title": "Strong and Steady",
+      "feeling": "strong / steady dad",
+      "audioUrl": "/kks/no-mystery/fathers-day-blk3-twinkle-overlap-v1/strong-and-steady-blk3-twinkle-2sec-sooner.mp3",
+      "family": "IM_NO_MYSTERY"
+    },
+    {
+      "id": "FD-TY-BR",
+      "title": "Thank You — Bridge",
+      "feeling": "A heartfelt turn for respect, repair, or memory.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-br-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "NM-CK-FD-BLK2-HONORING-HIM",
+      "title": "Honoring Him",
+      "feeling": "respect / honoring dad",
+      "audioUrl": "/kks/no-mystery/chris-krause-blk2-lock/honoring-him-chris-krause-blk2-lock-start-0p75-earlier-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "family": "NO_MYSTERY"
+    },
+    {
+      "id": "FD-TY-OUTRO",
+      "title": "Thank You — Closing",
+      "feeling": "A soft closing thank-you he can keep.",
+      "audioUrl": "/kks/fathers-day/release/thank-you-sec-outro-release.mp3",
+      "family": "THANK_YOU"
+    },
+    {
+      "id": "IMNM-FD-BLK4-PROUD-OF-HIM",
+      "title": "Proud of Him",
+      "feeling": "proud / respect dad",
+      "audioUrl": "/kks/no-mystery/fathers-day-blk4-trim-lock/proud-of-him-blk4-trim-0p75-twinkle-2sec-sooner.mp3",
+      "family": "IM_NO_MYSTERY"
+    },
+    {
+      "id": "NM-CK-FD-BLK3-STRONG-STEADY",
+      "title": "Strong and Steady",
+      "feeling": "strong / steady dad",
+      "audioUrl": "/kks/no-mystery/chris-krause-blk3-lock/strong-and-steady-chris-krause-blk3-lock-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "family": "NO_MYSTERY"
+    },
+    {
+      "id": "IMNM-FD-BLK5-MISSING-HIM",
+      "title": "Missing Him",
+      "feeling": "missing him / complicated dad only if audio supports",
+      "audioUrl": "/kks/no-mystery/fathers-day-blk5-trim-lock/missing-him-blk5-trim-0p75-twinkle-2sec-sooner.mp3",
+      "family": "IM_NO_MYSTERY"
+    },
+    {
+      "id": "NM-CK-FD-BLK4-PROUD-OF-HIM",
+      "title": "Proud of Him",
+      "feeling": "proud / respect dad",
+      "audioUrl": "/kks/no-mystery/chris-krause-blk4-lock-no-tail/proud-of-him-chris-krause-blk4-lock-no-tail-twinkle-end.mp3",
+      "family": "NO_MYSTERY"
+    },
+    {
+      "id": "IMNM-FD-BLK6-LEGACY-DAD",
+      "title": "Legacy Dad",
+      "feeling": "legacy dad / final lift",
+      "audioUrl": "/kks/no-mystery/fathers-day-blk6-trim-lock/legacy-dad-blk6-trim-0p75-twinkle-2sec-sooner.mp3",
+      "family": "IM_NO_MYSTERY"
+    },
+    {
+      "id": "NM-CK-FD-BLK6-LEGACY-DAD",
+      "title": "Legacy Dad",
+      "feeling": "legacy dad / final lift",
+      "audioUrl": "/kks/no-mystery/chris-krause-blk6-lock-twinkle-after/legacy-dad-chris-krause-blk6-lock-twinkle-after-final-note.mp3",
+      "family": "NO_MYSTERY"
+    },
+    {
+      "id": "FD-UDT-BLK6-FINAL-CHORUS",
+      "title": "Until I’m Dyin’ I’m Tryin’ — Final Chorus",
+      "feeling": "A final push of strength, pride, and perseverance.",
+      "audioUrl": "/kks/fathers-day/release/til-im-dyin-im-tryin-final-chorus-outro-release.mp3",
+      "family": "UNTIL_DYIN_TRYIN",
+      "matchedFile": "public/kks/fathers-day/release/til-im-dyin-im-tryin-final-chorus-outro-release.mp3",
+      "score": 110
+    },
+    {
+      "id": "FD-UDT-BLK7-OUTRO",
+      "title": "Until I’m Dyin’ I’m Tryin’ — Outro",
+      "feeling": "A closing moment for hope, effort, and staying with it.",
+      "audioUrl": "/kks/fathers-day/release/til-im-dyin-im-tryin-final-chorus-outro-release.mp3",
+      "family": "UNTIL_DYIN_TRYIN",
+      "matchedFile": "public/kks/fathers-day/release/til-im-dyin-im-tryin-final-chorus-outro-release.mp3",
+      "score": 110
+    }
+  ]
+}

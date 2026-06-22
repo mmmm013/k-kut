@@ -62,3 +62,4 @@ ops/
 
 # Local emergency backups
 local-backups/
+.env*

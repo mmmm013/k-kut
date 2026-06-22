@@ -1,0 +1,9 @@
+{
+  "canonicalTwinkleId": "gpmx-canonical-twinkle",
+  "canonicalTwinkleName": "GPMx Canonical Twinkle",
+  "canonicalTwinkleSource": "public/audio-system/twinkle-half-volume/get-so-down-4m11-4m19-soft-signature-twinkle-50.mp3",
+  "twinkleApplicationGain": 2.0,
+  "twinkleAttachPoint": "artTailEnd",
+  "twinkleRole": "GPMx product inventory priming / art-tail adornment",
+  "rule": "There is one canonical GPMx Twinkle. It attaches at the art-tail end when an II, CI, KK, K-KOMBO, DP, or Dispatch audio file becomes product-inventoried."
+}

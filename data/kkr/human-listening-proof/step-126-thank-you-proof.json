@@ -7,7 +7,7 @@
   "records": [
     {
       "id": "thank-you-sec-v1a",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -27,7 +27,7 @@
     },
     {
       "id": "thank-you-sec-v1b",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -47,7 +47,7 @@
     },
     {
       "id": "thank-you-sec-prech1",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -67,7 +67,7 @@
     },
     {
       "id": "thank-you-sec-ch1",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -87,7 +87,7 @@
     },
     {
       "id": "thank-you-sec-v2a",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -107,7 +107,7 @@
     },
     {
       "id": "thank-you-sec-v2b",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -127,7 +127,7 @@
     },
     {
       "id": "thank-you-sec-br",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -147,7 +147,7 @@
     },
     {
       "id": "thank-you-sec-ch2",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],
@@ -167,7 +167,7 @@
     },
     {
       "id": "thank-you-sec-outro",
-      "audio_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+      "audio_url": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
       "human_status": "pending",
       "recipient_lanes": [],
       "sentiment_lanes": [],

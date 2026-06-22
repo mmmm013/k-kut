@@ -1,0 +1,3 @@
+work_family_id,pix_id,pix_title_internal,producer,vocalist,recording_variant,source_audio_path,source_selection_status,kk_inventory_status,notes
+WORK-NO-MYSTERY,PIX-NO-MYSTERY-BILLY-HARPER,I'm No Mystery,Billy Harper,,unplugged/current,,NEEDS_SOURCE_AUDIO_SELECTION,STRUCTURE_KKS_DEFINED_AUDIO_MATCH_NEEDED,Produced by Billy Harper. Separate PIX recording/master.
+WORK-NO-MYSTERY,PIX-NO-MYSTERY-CHRIS-KRAUSE,No Mystery,,Chris Krause,Chris Krause vocal,,NEEDS_SOURCE_AUDIO_SELECTION,STRUCTURE_KKS_DEFINED_AUDIO_MATCH_NEEDED,Sung by Chris Krause. Separate PIX recording/master.

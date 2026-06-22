@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "role": "GPMx universal release-bound product signature processing intake",
+  "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+  "notBugSpecific": true,
+  "sonicLogoEquivalent": true,
+  "brandFunction": "audio logo / sonic brand mark for all release-bound GPMx products",
+  "appliesToAllReleaseBoundProducts": true,
+  "requiredComponentsBeforeReleaseGate": {
+    "leadTailPadding": true,
+    "slightEndFade": true,
+    "twinkle": true
+  },
+  "productOwnershipRule": {
+    "ownedBy": "GPMx brand system",
+    "notOwnedByAnySingleProduct": true,
+    "bugIsOnlyOneDownstreamConsumer": true
+  },
+  "releaseGateRule": {
+    "releaseReadyWithoutSignatureBranding": false,
+    "outletReadyWithoutSignatureBranding": false,
+    "deliveryReadyWithoutSignatureBranding": false
+  }
+}

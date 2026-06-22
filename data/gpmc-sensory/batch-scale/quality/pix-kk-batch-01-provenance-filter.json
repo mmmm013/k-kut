@@ -219,7 +219,7 @@
       "review_id": "review-pix-kk-batch-01-053",
       "decision_id": "decision-pix-kk-batch-01-053",
       "theme": "family_parent",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
+      "source_file": "public/kks/thank-you/kks-expanded/manifest.json",
       "audio_hints_count": 25,
       "provenance_status": "MANIFEST_OR_INDEX",
       "recommended_action": "HOLD_NOT_APPROVABLE_FROM_BATCH_01",

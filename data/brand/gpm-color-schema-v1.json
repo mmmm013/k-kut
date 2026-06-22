@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "role": "GPM visual brand color schema",
+  "schemaId": "GPM-COLOR-SCHEMA-V1",
+  "requiredForReviewRooms": true,
+  "requiredForAdminRooms": true,
+  "requiredForProcessingRooms": true,
+  "tokens": {
+    "gpmBlack": "#0B0F0E",
+    "gpmDeepGreen": "#0E3B2E",
+    "gpmGreen": "#1F7A4D",
+    "gpmLightGreen": "#75C790",
+    "gpmGold": "#D8B35A",
+    "gpmWarmAmber": "#B97835",
+    "gpmCream": "#F3EAD7",
+    "gpmSoftWhite": "#F8F5EC",
+    "gpmSlate": "#202722",
+    "gpmLine": "#456052"
+  },
+  "usage": {
+    "background": "gpmBlack",
+    "panel": "gpmSlate",
+    "primaryAccent": "gpmGreen",
+    "secondaryAccent": "gpmGold",
+    "warningAccent": "gpmWarmAmber",
+    "text": "gpmSoftWhite",
+    "mutedText": "gpmCream",
+    "line": "gpmLine"
+  },
+  "forbidden": [
+    "unstyled generic review room",
+    "default browser-only styling",
+    "processing room without GPM visual schema",
+    "release-bound audio room without Twinkle / Sonic Branding visibility"
+  ]
+}

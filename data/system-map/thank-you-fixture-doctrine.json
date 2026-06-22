@@ -5,8 +5,8 @@
   "classification": "legacy_proven_theme_fixture",
   "core_rule": "Thank You is one proven personal/theme KK family used as a BIC proof fixture. It is not the universal K-KUT model, not the only sellable theme, and not the catalog architecture.",
   "safe_to_keep": [
-    "public/mothers-day/thank-you/kks-expanded/manifest.json",
-    "public/mothers-day/thank-you/kks-expanded/*.mp3",
+    "public/kks/thank-you/kks-expanded/manifest.json",
+    "public/kks/thank-you/kks-expanded/*.mp3",
     "lib/hugRealKutManifest.ts",
     "scripts/build-real-hug-kut-manifest.mjs",
     "scripts/bic-hug-gate.mjs"

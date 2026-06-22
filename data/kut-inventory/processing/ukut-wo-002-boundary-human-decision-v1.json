@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "role": "Human boundary decision record for UKUT-WO-002",
+  "workOrderId": "UKUT-WO-002",
+  "sourceCandidateNumber": 10,
+  "currentLane": "in-processing",
+  "factoryMode": true,
+  "decisions": [
+    {
+      "boundaryTargetId": "UKUT-WO-002-BT-001",
+      "label": "THANK YOU HOME short extract",
+      "decision": "adjust-boundary",
+      "adjustedStart": "0:00",
+      "adjustedEnd": "0:05.5",
+      "humanNote": "Add 1 second because 'You' was cut off. Learn: 'You' is implied and should have been inferred based on commonality. Do not cut off phrases or sustaining notes."
+    },
+    {
+      "boundaryTargetId": "UKUT-WO-002-BT-002",
+      "label": "THANK YOU phrase candidate",
+      "decision": "adjust-boundary",
+      "adjustedStart": "0:00",
+      "adjustedEnd": "0:13.5",
+      "humanNote": "Add 0.5 second at end because cutoff. Add to CC."
+    }
+  ],
+  "renderAudioNow": false,
+  "audioProcessedNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "nextAllowedStep": "render-adjusted-exact-cut-review-drafts-and-show-next-candidate"
+}

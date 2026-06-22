@@ -1,0 +1,85 @@
+{
+  "law_set_id": "KUT_START_PADDING_INTRO_LAW_SET_001",
+  "status": "APPROVED",
+  "approved_by": "GD Putnam",
+  "approved_date": "2026-06-21",
+  "scope": [
+    "LT-PIX-derived KUTs",
+    "mKs",
+    "sKs",
+    "KK clone renders when applicable"
+  ],
+  "core_law": [
+    "Clean starts",
+    "Protected endings",
+    "Parent identity untouched",
+    "Clone-level correction only",
+    "Remove contamination, not meaning",
+    "Preserve intentional Musical INTRO when it adds value",
+    "Offer Clean Start / With Music INTRO only when both reviewed clone variants exist"
+  ],
+  "default": {
+    "musical_intro_default": "NO",
+    "start_variant_default": "CLEAN_START",
+    "word_focus": "PRIMARY",
+    "music_role": "BACKGROUND_SUPPORT",
+    "clean_start_does_not_mean_abrupt": true
+  },
+  "required_controls": {
+    "front_pad_required": true,
+    "back_pad_required": true,
+    "fade_handling_required": true,
+    "protected_ending_required": true,
+    "twinkle_sti_transition_when_lane_requires": true
+  },
+  "suggested_padding_ms": {
+    "mK_front_pad": [80, 150],
+    "sK_front_pad": [150, 300],
+    "mK_back_pad": [300, 600],
+    "sK_back_pad": [500, 900]
+  },
+  "twinkle_sti": {
+    "component_type": "signature_transition",
+    "not_peer_kut_item": true,
+    "current_fade_target_seconds": 1.0,
+    "evolution_fade_target_seconds": 0.5,
+    "timing_basis": "VOC"
+  },
+  "start_variant_outcomes": [
+    "CLEAN_START_ONLY",
+    "WITH_MUSIC_INTRO_ONLY",
+    "BOTH_VARIANTS_APPROVED",
+    "NEEDS_ADMIN_REVIEW",
+    "REJECT_START_DAMAGE"
+  ],
+  "internal_fields": [
+    "START_VARIANT",
+    "MUSICAL_INTRO_DEFAULT",
+    "INTRO_STATUS",
+    "INTRO_BOUNDARY",
+    "CONTENT_START",
+    "CONTENT_END",
+    "FRONT_PAD_MS",
+    "BACK_PAD_MS",
+    "VOC_ATTACK_SAFE",
+    "VOC_TAIL_SAFE",
+    "TWINKLE_STI_ENABLED",
+    "TWINKLE_FADE_MS",
+    "SOURCE_PIX_ID",
+    "SOURCE_LT_PIX_ID",
+    "SOURCE_KK_ID",
+    "SOURCE_BLK_ID",
+    "SOURCE_SUB_BLK_ID",
+    "CLONE_VERSION_ID",
+    "ADMIN_DECISION",
+    "ADMIN_NOTE"
+  ],
+  "buyer_language": {
+    "default": "Start clean",
+    "optional_reviewed_variant": "Start with a short musical lead-in"
+  },
+  "buyer_checkbox_rule": "Do not show a buyer checkbox unless both variants actually exist, play correctly, preserve endings, and have passed admin/KKr review.",
+  "parent_source_law": "PIX, LT-PIX, KK, BLK, sub-BLK, and Song Section checkpoint remain source truth. No parent source is destructively edited to fix a child KUT.",
+  "clone_level_law": "All intro removal, padding, fading, DP, tail repair, Twinkle/STI transition, and variant creation happen only on the derived KUT candidate clone/version, with provenance preserved.",
+  "final_operational_law": "Default = no Musical INTRO. Words first. Music supports. Clean starts must still breathe. Protected endings must still resolve. Twinkle/STI follows only after the vocal/content tail is safely preserved."
+}

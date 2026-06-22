@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-const manifestPath = "public/mothers-day/thank-you/kks-expanded/manifest.json";
+const manifestPath = "public/kks/thank-you/kks-expanded/manifest.json";
 const outputPath = "data/gpmc-sensory/candidates/thank-you-gratitude-candidates.json";
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));

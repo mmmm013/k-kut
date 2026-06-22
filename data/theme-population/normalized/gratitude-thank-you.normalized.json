@@ -1,0 +1,124 @@
+{
+  "status": "CURRENT",
+  "theme": "gratitude",
+  "buyer_label": "Thank You HUG",
+  "public_status": "public_active",
+  "normalization_goal": "Convert existing Thank You public KKs into matrix-controlled theme records with PIX handle, section IDs, KK IDs, public tags, bad-KK replacement rule, and full PIX context path.",
+  "pix": {
+    "human_title": "Thank You",
+    "pix_handle": "THANK-YOU",
+    "source_status": "existing_public_active",
+    "source_note": "Existing public Thank You structure and delivery files are already present in K-KUT and must be normalized into theme population records."
+  },
+  "section_records": [
+    {
+      "section_id": "THANK-YOU-S01",
+      "kk_id": "KK-THANK-YOU-S01",
+      "legacy_id": "thank-you-sec-v1a",
+      "structural_role": "verse_part",
+      "public_tags": ["Thank You HUG", "Gratitude HUG", "Mom HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-v1a-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S02",
+      "kk_id": "KK-THANK-YOU-S02",
+      "legacy_id": "thank-you-sec-v1b",
+      "structural_role": "verse_part",
+      "public_tags": ["Thank You HUG", "Gratitude HUG", "Mom HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-v1b-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S03",
+      "kk_id": "KK-THANK-YOU-S03",
+      "legacy_id": "thank-you-sec-prech1",
+      "structural_role": "pre_chorus",
+      "public_tags": ["Thank You HUG", "Gratitude HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-prech1-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S04",
+      "kk_id": "KK-THANK-YOU-S04",
+      "legacy_id": "thank-you-sec-ch1",
+      "structural_role": "chorus",
+      "public_tags": ["Thank You HUG", "Gratitude HUG", "Mom HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-ch1-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S05",
+      "kk_id": "KK-THANK-YOU-S05",
+      "legacy_id": "thank-you-sec-v2a",
+      "structural_role": "verse_part",
+      "public_tags": ["Thank You HUG", "Gratitude HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-v2a-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S06",
+      "kk_id": "KK-THANK-YOU-S06",
+      "legacy_id": "thank-you-sec-v2b",
+      "structural_role": "verse_part",
+      "public_tags": ["Thank You HUG", "Gratitude HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-v2b-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S07",
+      "kk_id": "KK-THANK-YOU-S07",
+      "legacy_id": "thank-you-sec-br",
+      "structural_role": "bridge",
+      "public_tags": ["Thank You HUG", "Gratitude HUG", "Reflection HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-br-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S08",
+      "kk_id": "KK-THANK-YOU-S08",
+      "legacy_id": "thank-you-sec-ch2",
+      "structural_role": "chorus",
+      "public_tags": ["Thank You HUG", "Gratitude HUG", "Mom HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-ch2-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    },
+    {
+      "section_id": "THANK-YOU-S09",
+      "kk_id": "KK-THANK-YOU-S09",
+      "legacy_id": "thank-you-sec-outro",
+      "structural_role": "outro",
+      "public_tags": ["Thank You HUG", "Gratitude HUG", "Closing HUG"],
+      "audio_url": "/hug-delivery/thank-you/thank-you-sec-outro-ii-delivery.mp3",
+      "status": "existing_public_active_pending_matrix_proof"
+    }
+  ],
+  "bad_kk_free_replacement_rule": {
+    "enabled": true,
+    "applies_to": [
+      "start_too_early",
+      "start_too_late",
+      "end_too_early",
+      "end_too_late",
+      "resolving_note_cut_off",
+      "musical_tail_cut_off",
+      "wrong_section",
+      "wrong_emotional_match",
+      "audio_artifact_or_glitch",
+      "dead_audio_link",
+      "wrong_hug_delivered"
+    ],
+    "customer_resolution": "free_replacement_or_corrected_delivery"
+  },
+  "full_pix_context": {
+    "required_when_approved": true,
+    "public_path": "pending",
+    "rule": "User may hear the HUG, see the source PIX title, open approved full PIX context, and explore more approved HUGs from this PIX."
+  },
+  "next_actions": [
+    "audit each audio_url exists",
+    "map legacy Thank You IDs to KK IDs",
+    "add route-safe registry import later",
+    "do not alter public route until build and audit pass"
+  ]
+}

@@ -233,7 +233,7 @@ const hasLockedKkSource =
 
 if (
   !hugManifest.includes("public/mothers-day/thank-you/kks/manifest.json") &&
-  !hugManifest.includes("public/mothers-day/thank-you/kks-expanded/manifest.json") &&
+  !hugManifest.includes("public/kks/thank-you/kks-expanded/manifest.json") &&
   !hugManifest.includes("data/holiday-kks/mothers-day-thank-you-kks.json") &&
   !hugManifest.includes("data/holiday-kks/mothers-day-promo-sets.json")
 ) {

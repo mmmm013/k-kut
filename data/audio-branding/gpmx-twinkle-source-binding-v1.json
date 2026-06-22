@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "role": "GPMx Twinkle source binding",
+  "bindingId": "GPMX-TWINKLE-SOURCE-BINDING-V1",
+  "signatureAudioBrandingSsot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+  "canonicalTwinkleSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+  "canonicalTwinkleSourceExists": true,
+  "sourceClass": "universal-sti-signature-source",
+  "requiredBeforeReleaseGate": true,
+  "requiredBeforeOutlet": true,
+  "appliesUniversally": true,
+  "productSpecific": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false
+}

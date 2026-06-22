@@ -1,0 +1,307 @@
+{
+  "setId": "fathers-day-separated-alternating-no-mystery-im-no-mystery",
+  "status": "REVIEW_READY_NOT_PUBLIC",
+  "doctrine": [
+    "No Mystery and I'm No Mystery are separate unique IIs.",
+    "Never merge, connect, or treat them as the same source.",
+    "Display/review order alternates origins whenever reasonable.",
+    "No two same-origin KKs back-to-back unless no reasonable alternative exists."
+  ],
+  "counts": {
+    "imNoMystery": 5,
+    "noMystery": 6,
+    "alternating": 11,
+    "missing": 0,
+    "audioExists": 11
+  },
+  "imNoMystery": [
+    {
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK2-HONORING-HIM",
+      "displayTitle": "Honoring Him",
+      "role": "respect / honoring dad",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk2-twinkle-overlap-pad1s-lock/honoring-him-blk2-pad1s-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 678145,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk2-twinkle-overlap-pad1s-lock/honoring-him-blk2-pad1s-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK3-STRONG-STEADY",
+      "displayTitle": "Strong and Steady",
+      "role": "strong / steady dad",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk3-twinkle-overlap-v1/strong-and-steady-blk3-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 507982,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk3-twinkle-overlap-v1/strong-and-steady-blk3-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK4-PROUD-OF-HIM",
+      "displayTitle": "Proud of Him",
+      "role": "proud / respect dad",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk4-trim-lock/proud-of-him-blk4-trim-0p75-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 518748,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk4-trim-lock/proud-of-him-blk4-trim-0p75-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK5-MISSING-HIM",
+      "displayTitle": "Missing Him",
+      "role": "missing him / complicated dad only if audio supports",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk5-trim-lock/missing-him-blk5-trim-0p75-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 548569,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk5-trim-lock/missing-him-blk5-trim-0p75-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK6-LEGACY-DAD",
+      "displayTitle": "Legacy Dad",
+      "role": "legacy dad / final lift",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk6-trim-lock/legacy-dad-blk6-trim-0p75-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 930312,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk6-trim-lock/legacy-dad-blk6-trim-0p75-twinkle-2sec-sooner.mp3"
+    }
+  ],
+  "noMystery": [
+    {
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK1-BOUT-DAD",
+      "displayTitle": "Bout Dad",
+      "role": "dad statement / intro feeling",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk1-locked/bout-dad-chris-krause-sblk1-trim-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 700164,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk1-locked/bout-dad-chris-krause-sblk1-trim-0p5-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK1-MAKING-A-STATEMENT",
+      "displayTitle": "Making a Statement",
+      "role": "dad statement / strong identity",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk1-locked/making-a-statement-chris-krause-blk1-trim-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 1174608,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk1-locked/making-a-statement-chris-krause-blk1-trim-0p5-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK2-HONORING-HIM",
+      "displayTitle": "Honoring Him",
+      "role": "respect / honoring dad",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk2-lock/honoring-him-chris-krause-blk2-lock-start-0p75-earlier-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 815064,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk2-lock/honoring-him-chris-krause-blk2-lock-start-0p75-earlier-endguard-0p5-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK3-STRONG-STEADY",
+      "displayTitle": "Strong and Steady",
+      "role": "strong / steady dad",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk3-lock/strong-and-steady-chris-krause-blk3-lock-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 1007623,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk3-lock/strong-and-steady-chris-krause-blk3-lock-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "pathRepair": {
+        "repairedFromMissingPath": true,
+        "repairedBy": "scripts/fd-find-and-patch-missing-no-mystery-paths.mjs",
+        "score": 275
+      }
+    },
+    {
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK4-PROUD-OF-HIM",
+      "displayTitle": "Proud of Him",
+      "role": "proud / respect dad",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk4-lock-no-tail/proud-of-him-chris-krause-blk4-lock-no-tail-twinkle-end.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 520557,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk4-lock-no-tail/proud-of-him-chris-krause-blk4-lock-no-tail-twinkle-end.mp3",
+      "pathRepair": {
+        "repairedFromMissingPath": true,
+        "repairedBy": "scripts/fd-find-and-patch-missing-no-mystery-paths.mjs",
+        "score": 275
+      }
+    },
+    {
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK6-LEGACY-DAD",
+      "displayTitle": "Legacy Dad",
+      "role": "legacy dad / final lift",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk6-lock-twinkle-after/legacy-dad-chris-krause-blk6-lock-twinkle-after-final-note.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 604884,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk6-lock-twinkle-after/legacy-dad-chris-krause-blk6-lock-twinkle-after-final-note.mp3",
+      "pathRepair": {
+        "repairedFromMissingPath": true,
+        "repairedBy": "scripts/fd-find-and-patch-missing-no-mystery-paths.mjs",
+        "score": 275
+      }
+    }
+  ],
+  "alternating": [
+    {
+      "order": 1,
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK1-BOUT-DAD",
+      "displayTitle": "Bout Dad",
+      "role": "dad statement / intro feeling",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk1-locked/bout-dad-chris-krause-sblk1-trim-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 700164,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk1-locked/bout-dad-chris-krause-sblk1-trim-0p5-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 2,
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK2-HONORING-HIM",
+      "displayTitle": "Honoring Him",
+      "role": "respect / honoring dad",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk2-twinkle-overlap-pad1s-lock/honoring-him-blk2-pad1s-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 678145,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk2-twinkle-overlap-pad1s-lock/honoring-him-blk2-pad1s-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 3,
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK1-MAKING-A-STATEMENT",
+      "displayTitle": "Making a Statement",
+      "role": "dad statement / strong identity",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk1-locked/making-a-statement-chris-krause-blk1-trim-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 1174608,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk1-locked/making-a-statement-chris-krause-blk1-trim-0p5-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 4,
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK3-STRONG-STEADY",
+      "displayTitle": "Strong and Steady",
+      "role": "strong / steady dad",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk3-twinkle-overlap-v1/strong-and-steady-blk3-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 507982,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk3-twinkle-overlap-v1/strong-and-steady-blk3-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 5,
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK2-HONORING-HIM",
+      "displayTitle": "Honoring Him",
+      "role": "respect / honoring dad",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk2-lock/honoring-him-chris-krause-blk2-lock-start-0p75-earlier-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 815064,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk2-lock/honoring-him-chris-krause-blk2-lock-start-0p75-earlier-endguard-0p5-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 6,
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK4-PROUD-OF-HIM",
+      "displayTitle": "Proud of Him",
+      "role": "proud / respect dad",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk4-trim-lock/proud-of-him-blk4-trim-0p75-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 518748,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk4-trim-lock/proud-of-him-blk4-trim-0p75-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 7,
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK3-STRONG-STEADY",
+      "displayTitle": "Strong and Steady",
+      "role": "strong / steady dad",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk3-lock/strong-and-steady-chris-krause-blk3-lock-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 1007623,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk3-lock/strong-and-steady-chris-krause-blk3-lock-endguard-0p5-twinkle-2sec-sooner.mp3",
+      "pathRepair": {
+        "repairedFromMissingPath": true,
+        "repairedBy": "scripts/fd-find-and-patch-missing-no-mystery-paths.mjs",
+        "score": 275
+      }
+    },
+    {
+      "order": 8,
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK5-MISSING-HIM",
+      "displayTitle": "Missing Him",
+      "role": "missing him / complicated dad only if audio supports",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk5-trim-lock/missing-him-blk5-trim-0p75-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 548569,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk5-trim-lock/missing-him-blk5-trim-0p75-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 9,
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK4-PROUD-OF-HIM",
+      "displayTitle": "Proud of Him",
+      "role": "proud / respect dad",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk4-lock-no-tail/proud-of-him-chris-krause-blk4-lock-no-tail-twinkle-end.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 520557,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk4-lock-no-tail/proud-of-him-chris-krause-blk4-lock-no-tail-twinkle-end.mp3",
+      "pathRepair": {
+        "repairedFromMissingPath": true,
+        "repairedBy": "scripts/fd-find-and-patch-missing-no-mystery-paths.mjs",
+        "score": 275
+      }
+    },
+    {
+      "order": 10,
+      "origin": "IM_NO_MYSTERY",
+      "sourceTitle": "I'm No Mystery",
+      "kkId": "IMNM-FD-BLK6-LEGACY-DAD",
+      "displayTitle": "Legacy Dad",
+      "role": "legacy dad / final lift",
+      "publicFile": "public/kks/no-mystery/fathers-day-blk6-trim-lock/legacy-dad-blk6-trim-0p75-twinkle-2sec-sooner.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 930312,
+      "audioUrl": "/kks/no-mystery/fathers-day-blk6-trim-lock/legacy-dad-blk6-trim-0p75-twinkle-2sec-sooner.mp3"
+    },
+    {
+      "order": 11,
+      "origin": "NO_MYSTERY",
+      "sourceTitle": "No Mystery — Chris Krause",
+      "kkId": "NM-CK-FD-BLK6-LEGACY-DAD",
+      "displayTitle": "Legacy Dad",
+      "role": "legacy dad / final lift",
+      "publicFile": "public/kks/no-mystery/chris-krause-blk6-lock-twinkle-after/legacy-dad-chris-krause-blk6-lock-twinkle-after-final-note.mp3",
+      "status": "AUDIO_EXISTS",
+      "sizeBytes": 604884,
+      "audioUrl": "/kks/no-mystery/chris-krause-blk6-lock-twinkle-after/legacy-dad-chris-krause-blk6-lock-twinkle-after-final-note.mp3",
+      "pathRepair": {
+        "repairedFromMissingPath": true,
+        "repairedBy": "scripts/fd-find-and-patch-missing-no-mystery-paths.mjs",
+        "score": 275
+      }
+    }
+  ],
+  "lastPathRepairAt": "2026-06-13T02:38:19.575Z"
+}

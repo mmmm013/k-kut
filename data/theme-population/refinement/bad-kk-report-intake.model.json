@@ -1,0 +1,77 @@
+{
+  "status": "CURRENT",
+  "purpose": "Capture user-reported bad KK / HUG defects and route confirmed defects to free replacement or corrected delivery.",
+  "rule": "If a customer receives a bad KK caused by section, timing, audio, delivery, or emotional-match defect, GPM should correct or replace it free when confirmed.",
+  "applies_to": [
+    "KK",
+    "K-KUT",
+    "HUG",
+    "theme_population_audio",
+    "private_delivery_audio"
+  ],
+  "required_report_fields": {
+    "report_id": "generated",
+    "reported_at": "timestamp",
+    "customer_email_or_contact": "required_when_available",
+    "order_id": "required_when_available",
+    "hug_id": "required_when_available",
+    "kk_id": "required_when_available",
+    "pix_handle": "required_when_available",
+    "theme": "required_when_available",
+    "public_label": "required_when_available",
+    "audio_url": "required_when_available",
+    "defect_category": "required",
+    "customer_notes": "optional",
+    "review_status": "new"
+  },
+  "defect_categories": [
+    "start_too_early",
+    "start_too_late",
+    "end_too_early",
+    "end_too_late",
+    "resolving_note_cut_off",
+    "musical_tail_cut_off",
+    "wrong_section",
+    "wrong_emotional_match",
+    "audio_artifact_or_glitch",
+    "dead_audio_link",
+    "wrong_hug_delivered",
+    "other"
+  ],
+  "review_outcomes": [
+    "confirmed_defect_free_replacement",
+    "confirmed_defect_refund_or_credit",
+    "not_a_defect_explained",
+    "needs_human_review",
+    "retire_kk",
+    "recut_required",
+    "route_mapping_required"
+  ],
+  "free_replacement_policy": {
+    "enabled": true,
+    "customer_language": "If the music moment starts or ends wrong, cuts off the resolving note, links incorrectly, or does not match the approved HUG delivered, GPM will correct or replace it at no extra charge after review.",
+    "internal_rule": "A confirmed section/timing/delivery/audio defect creates a replacement obligation."
+  },
+  "lineage_required_for_resolution": [
+    "kk_id",
+    "section_id",
+    "pix_handle",
+    "parent_pix_pck_id_when_available",
+    "theme",
+    "public_hug_tag",
+    "route_context"
+  ],
+  "recursive_refinement_actions": [
+    "log report",
+    "review audio",
+    "classify defect",
+    "confirm or reject defect",
+    "recut if needed",
+    "update section registry",
+    "update normalized theme seed",
+    "replace delivery object",
+    "send corrected/free replacement",
+    "roll up defect to PIX-PCK",
+    "feed defect back into KKr learning"
+  ]
+}

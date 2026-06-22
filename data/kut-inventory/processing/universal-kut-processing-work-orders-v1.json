@@ -1,0 +1,616 @@
+{
+  "version": 1,
+  "role": "Universal KUT processing work orders for Next-in-line KUT Candidates",
+  "createdFrom": "next-in-line-kut-candidate review outcome",
+  "sourceHumanReviewFile": "data/kut-inventory/review/bug-human-review-outcome-v1.json",
+  "rollingQueueRule": "data/kut-inventory/processing/kut-candidate-rolling-queue-rule-v1.json",
+  "signatureAudioBrandingSsot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+  "noProductSpecificRelease": true,
+  "noAudioRenderedByThisFile": true,
+  "noReleaseReadyItems": true,
+  "workOrderCount": 6,
+  "laneRule": {
+    "noFixedCandidatePile": true,
+    "sourceLane": "next-in-line-kut-candidate",
+    "nextLane": "in-processing",
+    "afterProcessing": [
+      "processed-candidate-review",
+      "release-gate-or-recut-hold"
+    ]
+  },
+  "workOrders": [
+    {
+      "workOrderId": "UKUT-WO-001",
+      "sourceCandidateNumber": 1,
+      "sourceHumanReviewState": "next-in-line-kut-candidate",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-001 2.mp3",
+      "sourceNotes": "BUT JUST musical (INSTRO) piece. Study it & add it to the IN/O-PIX group, you think?",
+      "candidateRoleHint": "neutral-instrumental-study-and-boundary-confirmation",
+      "workOrderState": "queued-for-universal-kut-processing",
+      "nextLaneWhenStarted": "in-processing",
+      "exitLanesAfterProcessing": [
+        "processed-candidate-review",
+        "recut-or-hold"
+      ],
+      "universalKUTProcessingOnly": true,
+      "productSpecific": false,
+      "targetProduct": null,
+      "targetIntentContainer": null,
+      "audioRenderedNow": false,
+      "audioProcessedNow": false,
+      "publicReadyNow": false,
+      "productReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "candidateLeavesNextInLineWhenStarted": true,
+      "nextInLineReplacementRequiredAfterStart": true,
+      "requiredSignatureAudioBranding": {
+        "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "paddingRequired": true,
+        "slightEndFadeRequired": true,
+        "twinkleRequired": true,
+        "appliesUniversally": true
+      },
+      "requiredProcessingSteps": [
+        {
+          "step": "boundary-confirmation",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm exact musical and lyric start/end before any render"
+        },
+        {
+          "step": "exact-cut-or-recut",
+          "required": true,
+          "status": "not-started",
+          "purpose": "create clean neutral KUT source candidate only after boundary confirmation"
+        },
+        {
+          "step": "lead-tail-padding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "slight-end-fade",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "twinkle-gpmx-signature-audio-branding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "bti-bf-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm branding template, restrictions, context, and guardrails"
+        },
+        {
+          "step": "neutral-kut-canonicalization",
+          "required": true,
+          "status": "not-started",
+          "purpose": "assign neutral KUT identity only after processing proof"
+        },
+        {
+          "step": "processed-candidate-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "human review after processing, before Release Gate"
+        },
+        {
+          "step": "release-gate-or-recut-hold",
+          "required": true,
+          "status": "blocked-until-processing-complete",
+          "purpose": "final decision lane; not available at work-order creation"
+        }
+      ],
+      "restrictions": [],
+      "childTasks": [],
+      "finalState": "not-release-ready"
+    },
+    {
+      "workOrderId": "UKUT-WO-002",
+      "sourceCandidateNumber": 10,
+      "sourceHumanReviewState": "next-in-line-kut-candidate",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+      "sourceNotes": "Save this as unique. Should NEXT CC initial \"Yeah....Thank You\" vocal, which is initial vocal. 0:00-0:04 is TPs for this TRM/Salutation. NEED THAT thank you, to use & store among THANK YOUs HOME. Another kut CAN be start to 0:13, as a PHRZ.",
+      "candidateRoleHint": "thank-you-home-extract-and-neutral-kut-canonicalization",
+      "workOrderState": "queued-for-universal-kut-processing",
+      "nextLaneWhenStarted": "in-processing",
+      "exitLanesAfterProcessing": [
+        "processed-candidate-review",
+        "recut-or-hold"
+      ],
+      "universalKUTProcessingOnly": true,
+      "productSpecific": false,
+      "targetProduct": null,
+      "targetIntentContainer": null,
+      "audioRenderedNow": false,
+      "audioProcessedNow": false,
+      "publicReadyNow": false,
+      "productReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "candidateLeavesNextInLineWhenStarted": true,
+      "nextInLineReplacementRequiredAfterStart": true,
+      "requiredSignatureAudioBranding": {
+        "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "paddingRequired": true,
+        "slightEndFadeRequired": true,
+        "twinkleRequired": true,
+        "appliesUniversally": true
+      },
+      "requiredProcessingSteps": [
+        {
+          "step": "boundary-confirmation",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm exact musical and lyric start/end before any render"
+        },
+        {
+          "step": "exact-cut-or-recut",
+          "required": true,
+          "status": "not-started",
+          "purpose": "create clean neutral KUT source candidate only after boundary confirmation"
+        },
+        {
+          "step": "lead-tail-padding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "slight-end-fade",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "twinkle-gpmx-signature-audio-branding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "bti-bf-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm branding template, restrictions, context, and guardrails"
+        },
+        {
+          "step": "neutral-kut-canonicalization",
+          "required": true,
+          "status": "not-started",
+          "purpose": "assign neutral KUT identity only after processing proof"
+        },
+        {
+          "step": "processed-candidate-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "human review after processing, before Release Gate"
+        },
+        {
+          "step": "release-gate-or-recut-hold",
+          "required": true,
+          "status": "blocked-until-processing-complete",
+          "purpose": "final decision lane; not available at work-order creation"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "BTI_CONTEXT_RESTRICTION",
+          "rule": "contains gendered reference; restrict use context until BTI confirms allowed placement"
+        }
+      ],
+      "childTasks": [
+        {
+          "childTaskId": "THANK-YOU-HOME-EXTRACT-001",
+          "boundaryInstruction": "review candidate 0:00–0:04 as TRM / salutation / thank-you extract",
+          "outputStatus": "not-rendered-not-release-ready"
+        },
+        {
+          "childTaskId": "THANK-YOU-HOME-EXTRACT-002",
+          "boundaryInstruction": "review candidate 0:00–0:13 as phrase candidate only if boundary is musically clean",
+          "outputStatus": "not-rendered-not-release-ready"
+        }
+      ],
+      "finalState": "not-release-ready"
+    },
+    {
+      "workOrderId": "UKUT-WO-003",
+      "sourceCandidateNumber": 12,
+      "sourceHumanReviewState": "next-in-line-kut-candidate",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-012 2.mp3",
+      "sourceNotes": "Needs Twinkle",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "workOrderState": "queued-for-universal-kut-processing",
+      "nextLaneWhenStarted": "in-processing",
+      "exitLanesAfterProcessing": [
+        "processed-candidate-review",
+        "recut-or-hold"
+      ],
+      "universalKUTProcessingOnly": true,
+      "productSpecific": false,
+      "targetProduct": null,
+      "targetIntentContainer": null,
+      "audioRenderedNow": false,
+      "audioProcessedNow": false,
+      "publicReadyNow": false,
+      "productReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "candidateLeavesNextInLineWhenStarted": true,
+      "nextInLineReplacementRequiredAfterStart": true,
+      "requiredSignatureAudioBranding": {
+        "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "paddingRequired": true,
+        "slightEndFadeRequired": true,
+        "twinkleRequired": true,
+        "appliesUniversally": true
+      },
+      "requiredProcessingSteps": [
+        {
+          "step": "boundary-confirmation",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm exact musical and lyric start/end before any render"
+        },
+        {
+          "step": "exact-cut-or-recut",
+          "required": true,
+          "status": "not-started",
+          "purpose": "create clean neutral KUT source candidate only after boundary confirmation"
+        },
+        {
+          "step": "lead-tail-padding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "slight-end-fade",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "twinkle-gpmx-signature-audio-branding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "bti-bf-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm branding template, restrictions, context, and guardrails"
+        },
+        {
+          "step": "neutral-kut-canonicalization",
+          "required": true,
+          "status": "not-started",
+          "purpose": "assign neutral KUT identity only after processing proof"
+        },
+        {
+          "step": "processed-candidate-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "human review after processing, before Release Gate"
+        },
+        {
+          "step": "release-gate-or-recut-hold",
+          "required": true,
+          "status": "blocked-until-processing-complete",
+          "purpose": "final decision lane; not available at work-order creation"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "SIGNATURE_AUDIO_REQUIRED",
+          "rule": "Twinkle specifically noted by human reviewer; still required universally for all release-bound processing"
+        }
+      ],
+      "childTasks": [],
+      "finalState": "not-release-ready"
+    },
+    {
+      "workOrderId": "UKUT-WO-004",
+      "sourceCandidateNumber": 14,
+      "sourceHumanReviewState": "next-in-line-kut-candidate",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-014 2.mp3",
+      "sourceNotes": "Uses \"her\" in 2nd line, so cannot be used for traditionally-male oriented uses. & add Twinkle.",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "workOrderState": "queued-for-universal-kut-processing",
+      "nextLaneWhenStarted": "in-processing",
+      "exitLanesAfterProcessing": [
+        "processed-candidate-review",
+        "recut-or-hold"
+      ],
+      "universalKUTProcessingOnly": true,
+      "productSpecific": false,
+      "targetProduct": null,
+      "targetIntentContainer": null,
+      "audioRenderedNow": false,
+      "audioProcessedNow": false,
+      "publicReadyNow": false,
+      "productReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "candidateLeavesNextInLineWhenStarted": true,
+      "nextInLineReplacementRequiredAfterStart": true,
+      "requiredSignatureAudioBranding": {
+        "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "paddingRequired": true,
+        "slightEndFadeRequired": true,
+        "twinkleRequired": true,
+        "appliesUniversally": true
+      },
+      "requiredProcessingSteps": [
+        {
+          "step": "boundary-confirmation",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm exact musical and lyric start/end before any render"
+        },
+        {
+          "step": "exact-cut-or-recut",
+          "required": true,
+          "status": "not-started",
+          "purpose": "create clean neutral KUT source candidate only after boundary confirmation"
+        },
+        {
+          "step": "lead-tail-padding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "slight-end-fade",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "twinkle-gpmx-signature-audio-branding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "bti-bf-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm branding template, restrictions, context, and guardrails"
+        },
+        {
+          "step": "neutral-kut-canonicalization",
+          "required": true,
+          "status": "not-started",
+          "purpose": "assign neutral KUT identity only after processing proof"
+        },
+        {
+          "step": "processed-candidate-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "human review after processing, before Release Gate"
+        },
+        {
+          "step": "release-gate-or-recut-hold",
+          "required": true,
+          "status": "blocked-until-processing-complete",
+          "purpose": "final decision lane; not available at work-order creation"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "BTI_CONTEXT_RESTRICTION",
+          "rule": "contains gendered reference; restrict use context until BTI confirms allowed placement"
+        },
+        {
+          "type": "SIGNATURE_AUDIO_REQUIRED",
+          "rule": "Twinkle specifically noted by human reviewer; still required universally for all release-bound processing"
+        }
+      ],
+      "childTasks": [],
+      "finalState": "not-release-ready"
+    },
+    {
+      "workOrderId": "UKUT-WO-005",
+      "sourceCandidateNumber": 16,
+      "sourceHumanReviewState": "next-in-line-kut-candidate",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-016 2.mp3",
+      "sourceNotes": "Twinkle",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "workOrderState": "queued-for-universal-kut-processing",
+      "nextLaneWhenStarted": "in-processing",
+      "exitLanesAfterProcessing": [
+        "processed-candidate-review",
+        "recut-or-hold"
+      ],
+      "universalKUTProcessingOnly": true,
+      "productSpecific": false,
+      "targetProduct": null,
+      "targetIntentContainer": null,
+      "audioRenderedNow": false,
+      "audioProcessedNow": false,
+      "publicReadyNow": false,
+      "productReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "candidateLeavesNextInLineWhenStarted": true,
+      "nextInLineReplacementRequiredAfterStart": true,
+      "requiredSignatureAudioBranding": {
+        "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "paddingRequired": true,
+        "slightEndFadeRequired": true,
+        "twinkleRequired": true,
+        "appliesUniversally": true
+      },
+      "requiredProcessingSteps": [
+        {
+          "step": "boundary-confirmation",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm exact musical and lyric start/end before any render"
+        },
+        {
+          "step": "exact-cut-or-recut",
+          "required": true,
+          "status": "not-started",
+          "purpose": "create clean neutral KUT source candidate only after boundary confirmation"
+        },
+        {
+          "step": "lead-tail-padding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "slight-end-fade",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "twinkle-gpmx-signature-audio-branding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "bti-bf-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm branding template, restrictions, context, and guardrails"
+        },
+        {
+          "step": "neutral-kut-canonicalization",
+          "required": true,
+          "status": "not-started",
+          "purpose": "assign neutral KUT identity only after processing proof"
+        },
+        {
+          "step": "processed-candidate-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "human review after processing, before Release Gate"
+        },
+        {
+          "step": "release-gate-or-recut-hold",
+          "required": true,
+          "status": "blocked-until-processing-complete",
+          "purpose": "final decision lane; not available at work-order creation"
+        }
+      ],
+      "restrictions": [
+        {
+          "type": "SIGNATURE_AUDIO_REQUIRED",
+          "rule": "Twinkle specifically noted by human reviewer; still required universally for all release-bound processing"
+        }
+      ],
+      "childTasks": [],
+      "finalState": "not-release-ready"
+    },
+    {
+      "workOrderId": "UKUT-WO-006",
+      "sourceCandidateNumber": 22,
+      "sourceHumanReviewState": "next-in-line-kut-candidate",
+      "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-022 2.mp3",
+      "sourceNotes": "",
+      "candidateRoleHint": "neutral-kut-boundary-confirmation-and-signature-processing",
+      "workOrderState": "queued-for-universal-kut-processing",
+      "nextLaneWhenStarted": "in-processing",
+      "exitLanesAfterProcessing": [
+        "processed-candidate-review",
+        "recut-or-hold"
+      ],
+      "universalKUTProcessingOnly": true,
+      "productSpecific": false,
+      "targetProduct": null,
+      "targetIntentContainer": null,
+      "audioRenderedNow": false,
+      "audioProcessedNow": false,
+      "publicReadyNow": false,
+      "productReadyNow": false,
+      "releaseReadyNow": false,
+      "outletReadyNow": false,
+      "releaseGateAllowedNow": false,
+      "candidateLeavesNextInLineWhenStarted": true,
+      "nextInLineReplacementRequiredAfterStart": true,
+      "requiredSignatureAudioBranding": {
+        "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+        "paddingRequired": true,
+        "slightEndFadeRequired": true,
+        "twinkleRequired": true,
+        "appliesUniversally": true
+      },
+      "requiredProcessingSteps": [
+        {
+          "step": "boundary-confirmation",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm exact musical and lyric start/end before any render"
+        },
+        {
+          "step": "exact-cut-or-recut",
+          "required": true,
+          "status": "not-started",
+          "purpose": "create clean neutral KUT source candidate only after boundary confirmation"
+        },
+        {
+          "step": "lead-tail-padding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "slight-end-fade",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "twinkle-gpmx-signature-audio-branding",
+          "required": true,
+          "status": "not-started",
+          "ssot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json"
+        },
+        {
+          "step": "bti-bf-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "confirm branding template, restrictions, context, and guardrails"
+        },
+        {
+          "step": "neutral-kut-canonicalization",
+          "required": true,
+          "status": "not-started",
+          "purpose": "assign neutral KUT identity only after processing proof"
+        },
+        {
+          "step": "processed-candidate-review",
+          "required": true,
+          "status": "not-started",
+          "purpose": "human review after processing, before Release Gate"
+        },
+        {
+          "step": "release-gate-or-recut-hold",
+          "required": true,
+          "status": "blocked-until-processing-complete",
+          "purpose": "final decision lane; not available at work-order creation"
+        }
+      ],
+      "restrictions": [],
+      "childTasks": [],
+      "finalState": "not-release-ready"
+    }
+  ]
+}

@@ -10,7 +10,7 @@ function fail(msg) {
 console.log("SYSTEM PATH NAMING RULE AUDIT");
 
 const forbiddenPublicReviewRoots = [
-  "public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review",
+  "public/kks/thank-you/kks-expanded/kk8-br-controlled-review",
   "public/fathers-day",
   "public/mothers-day/controlled-review",
   "public/mothers-day/review",
@@ -27,7 +27,7 @@ const script = "scripts/kkr-controlled-export-thank-you-kk8-br.mjs";
 if (fs.existsSync(script)) {
   const text = fs.readFileSync(script, "utf8");
 
-  if (text.includes("public/mothers-day/thank-you/kks-expanded/kk8-br-controlled-review")) {
+  if (text.includes("public/kks/thank-you/kks-expanded/kk8-br-controlled-review")) {
     fail("Controlled export script still writes review pack into mothers-day promo path.");
   }
 

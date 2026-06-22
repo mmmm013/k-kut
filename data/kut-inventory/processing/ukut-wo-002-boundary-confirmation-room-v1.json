@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "role": "Playable boundary confirmation room for UKUT-WO-002 with GPM color schema and Twinkle gate",
+  "workOrderId": "UKUT-WO-002",
+  "sourceCandidateNumber": 10,
+  "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+  "roomPath": "review-sessions/processing/ukut-wo-002-boundary-confirmation-room-v1.html",
+  "gpmColorSchema": "data/brand/gpm-color-schema-v1.json",
+  "gpmColorSchemaId": "GPM-COLOR-SCHEMA-V1",
+  "signatureAudioBrandingSsot": "data/audio-branding/gpmx-signature-audio-branding-ssot.json",
+  "twinkleRequiredBeforeRelease": true,
+  "twinkleAuditionSource": "public/signature/sti/gpm-sti-twinkle-v001-vol0275.mp3",
+  "twinkleAuditionAvailable": true,
+  "boundaryTargets": [
+    {
+      "boundaryTargetId": "UKUT-WO-002-BT-001",
+      "label": "THANK YOU HOME short extract",
+      "proposedStart": "0:00",
+      "proposedEnd": "0:04",
+      "startSeconds": 0,
+      "endSeconds": 4,
+      "decisionOptions": [
+        "confirm-boundary",
+        "adjust-boundary",
+        "reject-boundary"
+      ]
+    },
+    {
+      "boundaryTargetId": "UKUT-WO-002-BT-002",
+      "label": "THANK YOU phrase candidate",
+      "proposedStart": "0:00",
+      "proposedEnd": "0:13",
+      "startSeconds": 0,
+      "endSeconds": 13,
+      "decisionOptions": [
+        "confirm-boundary",
+        "adjust-boundary",
+        "reject-boundary"
+      ]
+    }
+  ],
+  "renderAudioNow": false,
+  "audioProcessedNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "autoAdvanceOnDecision": true,
+  "manualNextButton": true,
+  "terminalSafeSaveCommandButton": true,
+  "doNotPasteRawNotesIntoTerminal": true,
+  "reviewFlowStateStorage": "browser-localStorage"
+}

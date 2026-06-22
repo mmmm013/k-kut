@@ -28,12 +28,18 @@ if (!checkout.includes("redirect(REGULAR_HUG_PAYMENT_URL)")) {
   fail("/checkout is not redirecting through REGULAR_HUG_PAYMENT_URL.");
 }
 
-if (!hug.includes("Start HUG Order")) {
-  fail("/hug is missing Start HUG Order CTA.");
-}
+const hugRedirectsToFathersDay =
+  hug.includes('redirect("/fathers-day")') ||
+  hug.includes("redirect('/fathers-day')");
 
-if (!hug.includes('href="/checkout"')) {
-  fail("/hug Start HUG Order does not point to /checkout.");
+if (!hugRedirectsToFathersDay) {
+  if (!hug.includes("Start HUG Order")) {
+    fail("/hug is missing Start HUG Order CTA.");
+  }
+
+  if (!hug.includes('href="/checkout"')) {
+    fail("/hug Start HUG Order does not point to /checkout.");
+  }
 }
 
 const rawStripeLinksOnHug = hug.match(/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/g) || [];

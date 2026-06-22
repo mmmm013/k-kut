@@ -1,0 +1,42 @@
+{
+  "status": "CLEAN_HOLIDAY_THEME_LANES",
+  "rule": "Holiday lanes collect candidates by theme. They do not own or bind tracks.",
+  "lanes": [
+    {
+      "id": "holiday-gratitude",
+      "display_title": "Gratitude",
+      "themes": ["thank you", "appreciation", "respect", "honor", "presence"]
+    },
+    {
+      "id": "holiday-family",
+      "display_title": "Family",
+      "themes": ["family", "home", "loyalty", "togetherness", "support"]
+    },
+    {
+      "id": "holiday-strength",
+      "display_title": "Strength",
+      "themes": ["strength", "steady", "courage", "resilience", "keep going"]
+    },
+    {
+      "id": "holiday-comfort",
+      "display_title": "Comfort",
+      "themes": ["comfort", "missing you", "grief", "soft support", "repair"]
+    },
+    {
+      "id": "holiday-celebration",
+      "display_title": "Celebration",
+      "themes": ["celebration", "birthday", "anniversary", "milestone", "congratulations"]
+    },
+    {
+      "id": "holiday-love",
+      "display_title": "Love",
+      "themes": ["love", "romance", "devotion", "heart", "forever"]
+    },
+    {
+      "id": "holiday-christmas-admin-only",
+      "display_title": "Christmas",
+      "themes": ["christmas", "holiday", "winter", "giving", "home"],
+      "gate": "title_contains_christmas_or_admin_marked"
+    }
+  ]
+}

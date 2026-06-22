@@ -19,15 +19,6 @@ const ROMANCE_LEVELS = [
 
 const READY_HUGS = [
   {
-    level: "Gentle Affection / Sweet Love",
-    title: "A Love Like That",
-    description:
-      "Warm, easy to receive, and romantic without overwhelming the moment.",
-    audioUrl:
-      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
-  },
-  {
     level: "Desire / Passion / Physical Spark",
     title: "Your Heart Poundin'",
     description:

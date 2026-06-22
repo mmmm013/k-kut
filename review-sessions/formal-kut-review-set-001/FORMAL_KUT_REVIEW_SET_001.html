@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<base href="http://127.0.0.1:4188/">
+<title>Formal KUT Review Set 001</title>
+<style>
+body { margin:0; background:#06130d; color:#f5f0df; font-family:system-ui, -apple-system, Segoe UI, sans-serif; }
+main { max-width:1100px; margin:0 auto; padding:32px; }
+.card { background:#0b3d2c; border:1px solid #2b6b56; border-radius:16px; padding:22px; margin:18px 0; }
+.active { border:3px solid #f2c94c; }
+h1,h2 { color:#f2c94c; }
+pre { white-space:pre-wrap; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+audio { width:100%; margin:14px 0; }
+button { border:1px solid #f2c94c; border-radius:999px; padding:12px 18px; margin:6px; font-weight:900; color:#fff; background:#174d38; cursor:pointer; }
+button.approve { background:#27824f; }
+button.adjust { background:#9a6123; }
+button.load { background:#103b2d; }
+textarea { width:100%; min-height:150px; background:#020807; color:#fff; border:1px solid #426b58; border-radius:10px; padding:12px; }
+.warn { color:#ff6b6b; font-weight:900; }
+.small { opacity:.9; }
+.row { border-top:1px solid #2b6b56; padding:12px 0; }
+</style>
+</head>
+<body>
+<main>
+
+<section id="sk-trim-doctrine-banner" class="card">
+<h2>sK TRIM LAW — LOCKED</h2>
+<pre>APPROVE sK only when:
+- starts fast
+- carries usable meaning
+- no music-only intro
+- no music-only tail
+- ends cleanly after the usable moment resolves
+
+ADJUST when:
+- trim music-only intro; start at first usable emotional/vocal/sonic moment
+- trim music-only tail; end after phrase/moment resolves
+- fix cutoff; do not cut phrase, final consonant, or sustaining note
+
+No audio review player may be delivered unless the audio file exists and has duration greater than zero.</pre>
+</section>
+
+<section class="card">
+<h1>Formal KUT Review Set 001</h1>
+<pre>KUT = all LT-PIX derivative product/audio objects, II/CI governed.
+Element Types = KK / sK / mK.
+KK = K-KUT. sK = short-KUT. mK = mini-KUT.
+Target = 30 KUTs: clean public audio only.
+Queue: 30 valid candidates.
+Excluded invalid/system audio before page delivery.
+Rule: no audio player is delivered unless file exists and duration is verified.</pre>
+</section>
+
+<section class="card active">
+<h2 id="title"></h2>
+<pre id="meta"></pre>
+<audio id="player" controls preload="metadata"></audio>
+<div id="audioStatus" class="small"></div>
+<div>
+<button class="approve" onclick="approve()">APPROVE</button>
+<button class="adjust" onclick="adjust()">ADJUST</button>
+<button onclick="next()">NEXT</button>
+<button onclick="previous()">PREVIOUS</button>
+<button onclick="copyExport()">COPY EXPORT</button>
+</div>
+</section>
+
+<section class="card">
+<h2>Export</h2>
+<textarea id="exportBox" readonly></textarea>
+</section>
+
+<section class="card">
+<h2>Queue</h2>
+<div id="queue"></div>
+</section>
+</main>
+
+<script>
+const CANDIDATES = [{"id": "KUT-4C68AE4609", "title": "missing-him-blk5-review-kk 2", "element": "KK", "duration": 4.93, "audioPath": "public/kks/no-mystery/chris-krause-blk5-review-v1-no-tail/_work/missing-him-blk5-review-kk 2.wav"}, {"id": "KUT-5A3990FB2D", "title": "missing-him-blk5-review-kk", "element": "KK", "duration": 4.93, "audioPath": "public/kks/no-mystery/chris-krause-blk5-review-v1-no-tail/_work/missing-him-blk5-review-kk.wav"}, {"id": "KUT-BA9C09DED9", "title": "FD-KUT-RTB-002-start-30p90-end-42p00-internal-kk-proof", "element": "KK", "duration": 11.1, "audioPath": "public/father-days-kks/ring-the-bell/internal-proof/rtb-002-coarse-review/FD-KUT-RTB-002-start-30p90-end-42p00-internal-kk-proof.mp3"}, {"id": "KUT-0965B57893", "title": "01-kk 2", "element": "KK", "duration": 13.6, "audioPath": "public/father-days-kks/ring-the-bell/ii-delivery/tmp-rtb005-v002/01-kk 2.wav"}, {"id": "KUT-3ECC186179", "title": "01-kk", "element": "KK", "duration": 13.6, "audioPath": "public/father-days-kks/ring-the-bell/ii-delivery/tmp-rtb005-v002/01-kk.wav"}, {"id": "KUT-767B6E398F", "title": "01-kk 2", "element": "KK", "duration": 13.6, "audioPath": "public/father-days-kks/ring-the-bell/ii-delivery/tmp-rtb005-v003-soft/01-kk 2.wav"}, {"id": "KUT-C71049976E", "title": "01-kk", "element": "KK", "duration": 13.6, "audioPath": "public/father-days-kks/ring-the-bell/ii-delivery/tmp-rtb005-v003-soft/01-kk.wav"}, {"id": "KUT-2264509BFB", "title": "FD-KUT-RTB-005-v001-KEEP-98p80-112p40-internal-kk-proof 2", "element": "KK", "duration": 13.6, "audioPath": "public/father-days-kks/ring-the-bell/internal-proof/FD-KUT-RTB-005-v001-KEEP-98p80-112p40-internal-kk-proof 2.mp3"}, {"id": "KUT-B8A17B1BEA", "title": "FD-KUT-RTB-005-v001-KEEP-98p80-112p40-internal-kk-proof", "element": "KK", "duration": 13.6, "audioPath": "public/father-days-kks/ring-the-bell/internal-proof/FD-KUT-RTB-005-v001-KEEP-98p80-112p40-internal-kk-proof.mp3"}, {"id": "KUT-7E1DF3EFC2", "title": "thank-you-kk-opening", "element": "KK", "duration": 14.0, "audioPath": "public/mothers-day/samples/thank-you-kk-opening.mp3"}, {"id": "KUT-AUTO-011", "title": "FD KUT NM 001 INTRO V1 v001 internal kk proof 2", "element": "KK", "duration": 32.0, "audioPath": "public/father-days-kks/no-mystery/_BAD_DO_NOT_USE/FD-KUT-NM-001-INTRO-V1-v001-internal-kk-proof 2.mp3"}, {"id": "KUT-AUTO-012", "title": "FD KUT NM 001 INTRO V1 v001 internal kk proof", "element": "KK", "duration": 32.0, "audioPath": "public/father-days-kks/no-mystery/_BAD_DO_NOT_USE/FD-KUT-NM-001-INTRO-V1-v001-internal-kk-proof.mp3"}, {"id": "KUT-AUTO-013", "title": "FD KUT NM 001 VERSE1 ONLY v001 internal kk proof 2", "element": "KK", "duration": 54.0, "audioPath": "public/father-days-kks/no-mystery/_BAD_DO_NOT_USE/nm-001-verse1-only/FD-KUT-NM-001-VERSE1-ONLY-v001-internal-kk-proof 2.mp3"}, {"id": "KUT-AUTO-014", "title": "FD KUT NM 001 VERSE1 ONLY v001 internal kk proof", "element": "KK", "duration": 54.0, "audioPath": "public/father-days-kks/no-mystery/_BAD_DO_NOT_USE/nm-001-verse1-only/FD-KUT-NM-001-VERSE1-ONLY-v001-internal-kk-proof.mp3"}, {"id": "KUT-AUTO-015", "title": "NM 001 INTRO V1 to CH1 boundary SOUND STUDY", "element": "sK", "duration": 11.5, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-sound-study/NM-001-INTRO-V1-to-CH1-boundary-SOUND-STUDY.mp3"}, {"id": "KUT-AUTO-016", "title": "FD KUT NM 001 start 0p00 end 20p00 structure review 2", "element": "KK", "duration": 20.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-20p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-017", "title": "FD KUT NM 001 start 0p00 end 20p00 structure review", "element": "KK", "duration": 20.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-20p00-structure-review.mp3"}, {"id": "KUT-AUTO-018", "title": "FD KUT NM 001 start 0p00 end 26p00 structure review 2", "element": "KK", "duration": 26.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-26p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-019", "title": "FD KUT NM 001 start 0p00 end 26p00 structure review", "element": "KK", "duration": 26.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-26p00-structure-review.mp3"}, {"id": "KUT-AUTO-020", "title": "FD KUT NM 001 start 0p00 end 32p00 structure review 2", "element": "KK", "duration": 32.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-32p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-021", "title": "FD KUT NM 001 start 0p00 end 32p00 structure review", "element": "KK", "duration": 32.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-32p00-structure-review.mp3"}, {"id": "KUT-AUTO-022", "title": "FD KUT NM 001 start 0p00 end 38p00 structure review 2", "element": "KK", "duration": 38.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-38p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-023", "title": "FD KUT NM 001 start 0p00 end 38p00 structure review", "element": "KK", "duration": 38.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-38p00-structure-review.mp3"}, {"id": "KUT-AUTO-024", "title": "FD KUT NM 001 start 0p00 end 44p00 structure review 2", "element": "KK", "duration": 44.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-44p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-025", "title": "FD KUT NM 001 start 0p00 end 44p00 structure review", "element": "KK", "duration": 44.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-44p00-structure-review.mp3"}, {"id": "KUT-AUTO-026", "title": "FD KUT NM 001 start 0p00 end 50p00 structure review 2", "element": "KK", "duration": 50.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-50p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-027", "title": "FD KUT NM 001 start 0p00 end 50p00 structure review", "element": "KK", "duration": 50.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-50p00-structure-review.mp3"}, {"id": "KUT-AUTO-028", "title": "FD KUT NM 001 start 0p00 end 56p00 structure review 2", "element": "KK", "duration": 56.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-56p00-structure-review 2.mp3"}, {"id": "KUT-AUTO-029", "title": "FD KUT NM 001 start 0p00 end 56p00 structure review", "element": "KK", "duration": 56.0, "audioPath": "public/father-days-kks/no-mystery/internal-proof/nm-001-structure-review/FD-KUT-NM-001-start-0p00-end-56p00-structure-review.mp3"}, {"id": "KUT-AUTO-030", "title": "NM STRUCTURE STUDY intro v1 ch1 v2 not a kk 2", "element": "KK", "duration": 125.0, "audioPath": "public/father-days-kks/no-mystery/structure-study/NM-STRUCTURE-STUDY-intro-v1-ch1-v2-not-a-kk 2.mp3"}];
+const KEY = "FORMAL_KUT_REVIEW_SET_001_CLEAN_STATE_V1";
+let state = JSON.parse(localStorage.getItem(KEY) || '{"index":0,"decisions":[]}');
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+
+function current() {
+  return CANDIDATES[state.index] || null;
+}
+
+function stopAudio() {
+  const p = document.getElementById("player");
+  try { p.pause(); p.currentTime = 0; } catch {}
+}
+
+function render() {
+  if (state.index < 0) state.index = 0;
+  if (state.index >= CANDIDATES.length) state.index = CANDIDATES.length - 1;
+
+  const c = current();
+  const player = document.getElementById("player");
+
+  document.getElementById("title").textContent = c.title;
+  document.getElementById("meta").textContent =
+`KUT ID: ${c.id}
+Element Type: ${c.element}
+Duration: ${c.duration}s
+Audio Path: ${c.audioPath}`;
+
+  player.src = encodeURI(c.audioPath);
+  document.getElementById("audioStatus").textContent = "Ready. Press play to review.";
+  stopAudio();
+
+  renderExport();
+  renderQueue();
+}
+
+function record(decision) {
+  const c = current();
+  state.decisions = state.decisions.filter(d => d.audioPath !== c.audioPath);
+  state.decisions.push({
+    decision,
+    id: c.id,
+    title: c.title,
+    element: c.element,
+    duration: c.duration,
+    audioPath: c.audioPath,
+    time: new Date().toISOString()
+  });
+  state.index++;
+  if (state.index >= CANDIDATES.length) {
+    state.index = CANDIDATES.length - 1;
+    save();
+    stopAudio();
+    renderExport();
+    alert("QUEUE COMPLETE. Copy/export decisions.");
+    return;
+  }
+  save();
+  render();
+}
+
+function approve() { record("APPROVE"); }
+function adjust() { record("ADJUST"); }
+function next() { state.index = Math.min(CANDIDATES.length - 1, state.index + 1); save(); render(); }
+function previous() { state.index = Math.max(0, state.index - 1); save(); render(); }
+
+function loadIndex(i) {
+  state.index = i;
+  save();
+  render();
+}
+
+function renderExport() {
+  const box = document.getElementById("exportBox");
+  box.value = state.decisions.map(d =>
+    `${d.decision} | ${d.element} | ${d.duration}s | ${d.title} | ${d.audioPath}`
+  ).join("\n");
+}
+
+function renderQueue() {
+  const q = document.getElementById("queue");
+  q.innerHTML = "";
+  CANDIDATES.forEach((c, i) => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = `<button class="load" onclick="loadIndex(${i})">LOAD</button> ${i+1}/${CANDIDATES.length} | ${c.element} | ${c.duration}s | ${c.title}<br><span class="small">${c.audioPath}</span>`;
+    q.appendChild(row);
+  });
+}
+
+document.getElementById("player").addEventListener("loadedmetadata", () => {
+  const p = document.getElementById("player");
+  document.getElementById("audioStatus").textContent = `Browser loaded duration: ${p.duration.toFixed(3)}s`;
+});
+
+document.getElementById("player").addEventListener("error", () => {
+  document.getElementById("audioStatus").innerHTML = '<span class="warn">NO REVIEW: browser audio failed to load. Do not approve this item.</span>';
+});
+
+function copyExport() {
+  navigator.clipboard?.writeText(document.getElementById("exportBox").value);
+}
+
+render();
+</script>
+</body>
+</html>

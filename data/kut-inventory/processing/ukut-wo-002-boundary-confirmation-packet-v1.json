@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "role": "Boundary confirmation packet for first in-processing universal KUT work order",
+  "workOrderId": "UKUT-WO-002",
+  "sourceCandidateNumber": 10,
+  "sourceAudioFile": "public/kks/thank-you/kks-expanded/thank-you-cc-010 2.mp3",
+  "currentLane": "in-processing",
+  "purpose": "Confirm exact boundaries before any audio render, padding, fade, Twinkle, canonical KUT assignment, or Release Gate decision.",
+  "renderAudioNow": false,
+  "audioProcessedNow": false,
+  "publicReadyNow": false,
+  "releaseReadyNow": false,
+  "outletReadyNow": false,
+  "releaseGateAllowedNow": false,
+  "boundaryTargets": [
+    {
+      "boundaryTargetId": "UKUT-WO-002-BT-001",
+      "label": "THANK YOU HOME short extract",
+      "proposedStart": "0:00",
+      "proposedEnd": "0:04",
+      "humanNote": "Save 0:00–0:04 as TRM / salutation / thank-you extract.",
+      "requiredDecision": "confirm, adjust, or reject boundary before rendering",
+      "renderAllowedNow": false
+    },
+    {
+      "boundaryTargetId": "UKUT-WO-002-BT-002",
+      "label": "THANK YOU phrase candidate",
+      "proposedStart": "0:00",
+      "proposedEnd": "0:13",
+      "humanNote": "Possible phrase candidate only if the boundary is musically clean.",
+      "requiredDecision": "confirm, adjust, or reject boundary before rendering",
+      "renderAllowedNow": false
+    }
+  ],
+  "requiredAfterBoundaryConfirmation": [
+    "exact-cut-or-recut",
+    "lead-tail-padding",
+    "slight-end-fade",
+    "twinkle-gpmx-signature-audio-branding",
+    "bti-bf-review",
+    "neutral-kut-canonicalization",
+    "processed-candidate-review",
+    "release-gate-or-recut-hold"
+  ]
+}

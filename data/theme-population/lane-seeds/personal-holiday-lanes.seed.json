@@ -1,0 +1,186 @@
+{
+  "status": "CURRENT",
+  "purpose": "Seed all Personal and Holiday K-KUT buyer lanes from verified LT-PIX theme population controls.",
+  "rule": "Lanes are buyer-facing paths. Themes are emotional/product groupings. Public lane population requires verified LT-PIX, section IDs, KK IDs, audits, bad-KK replacement rule, and Gregory approval.",
+  "source_rule": {
+    "lt_pix": "public_delivery_only_after_section_proof",
+    "in_o_pix": "learning_only",
+    "in_pix": "learning_only",
+    "old_duration_clips": "do_not_use_for_public_population"
+  },
+  "personal_lanes": [
+    {
+      "lane": "personal",
+      "route": "/personal",
+      "buyer_purpose": "general personal HUG selection",
+      "themes": [
+        "gratitude",
+        "love",
+        "anniversary",
+        "birthday",
+        "apology",
+        "sympathy",
+        "romance",
+        "forever"
+      ],
+      "current_level": "L1_TO_L3_MIXED",
+      "public_status": "route_exists_limited_audio",
+      "next_action": "render lane groups from verified registries only"
+    },
+    {
+      "lane": "birthday",
+      "route": "/personal/birthday",
+      "buyer_purpose": "birthday HUG",
+      "themes": [
+        "birthday",
+        "gratitude",
+        "love",
+        "encouragement"
+      ],
+      "current_level": "L0_L1",
+      "public_status": "route_exists_limited_samples",
+      "next_action": "select birthday LT-PIX candidates"
+    },
+    {
+      "lane": "anniversary",
+      "route": "/personal/anniversary",
+      "buyer_purpose": "anniversary HUG",
+      "themes": [
+        "anniversary",
+        "love",
+        "forever",
+        "gratitude"
+      ],
+      "current_level": "L2_TO_L3_PENDING_APPROVED_AUDIO_PATHS",
+      "public_status": "route_exists_options_pending",
+      "next_action": "use ALLT controlled registry only after approved delivery paths exist"
+    },
+    {
+      "lane": "apology",
+      "route": "/personal/apology",
+      "buyer_purpose": "sorry / repair HUG",
+      "themes": [
+        "apology",
+        "repair",
+        "forgiveness"
+      ],
+      "current_level": "L0_L1",
+      "public_status": "route_exists_gated",
+      "next_action": "select apology LT-PIX candidates"
+    },
+    {
+      "lane": "romance",
+      "route": "/romance",
+      "buyer_purpose": "romance HUG",
+      "themes": [
+        "love",
+        "romance",
+        "forever",
+        "anniversary"
+      ],
+      "current_level": "L1_L2",
+      "public_status": "public_samples_limited",
+      "next_action": "replace II-only records with verified KK records"
+    },
+    {
+      "lane": "wedding",
+      "route": "/wedding",
+      "buyer_purpose": "wedding HUG / wedding track pack",
+      "themes": [
+        "wedding",
+        "love",
+        "forever",
+        "gratitude"
+      ],
+      "current_level": "L1_L2_HELD",
+      "public_status": "held_review",
+      "next_action": "section-proof wedding candidates before checkout"
+    }
+  ],
+  "holiday_lanes": [
+    {
+      "lane": "holiday",
+      "route": "/holiday",
+      "buyer_purpose": "seasonal HUG selection",
+      "themes": [
+        "gratitude",
+        "love",
+        "family",
+        "remembrance",
+        "celebration"
+      ],
+      "current_level": "L1_L2",
+      "public_status": "route_exists_limited",
+      "next_action": "build verified seasonal rotation"
+    },
+    {
+      "lane": "mothers_day",
+      "route": "/mothers-day/thank-you",
+      "buyer_purpose": "Mother's Day Thank You HUG",
+      "themes": [
+        "gratitude",
+        "mom",
+        "family"
+      ],
+      "current_level": "L3_L4",
+      "public_status": "public_active",
+      "next_action": "wire to gratitude registry when ready"
+    },
+    {
+      "lane": "fathers_day",
+      "route": "/holiday/fathers-day",
+      "buyer_purpose": "Father's Day HUG",
+      "themes": [
+        "father",
+        "dad",
+        "gratitude",
+        "memory",
+        "support",
+        "legacy",
+        "western"
+      ],
+      "current_level": "L1_L2_ACTIVE_SEASON_AUTHORITY_POOL_EXISTS",
+      "public_status": "active_season_lane_exists_candidates_require_delivery_audio",
+      "next_action": "use Father’s Day source authority pool: No Mystery, Life’s a Test, That’s a Have To, Have-To duet, That Empty Chair, Ring the Bell; extract or verify KK/audio candidates before public checkout"
+    },
+    {
+      "lane": "valentine",
+      "route": "pending_or_kupid",
+      "buyer_purpose": "Valentine / KUPID HUG",
+      "themes": [
+        "love",
+        "romance",
+        "forever"
+      ],
+      "current_level": "L1_L2",
+      "public_status": "kupid_route_exists_limited",
+      "next_action": "use controlled Love registry only after approved delivery paths exist"
+    },
+    {
+      "lane": "christmas",
+      "route": "pending",
+      "buyer_purpose": "Christmas / holiday family HUG",
+      "themes": [
+        "family",
+        "gratitude",
+        "remembrance",
+        "celebration"
+      ],
+      "current_level": "L0_L1",
+      "public_status": "not_public",
+      "next_action": "select LT-PIX candidates"
+    }
+  ],
+  "release_gate": [
+    "lane_exists_or_is_planned",
+    "theme_mapping_exists",
+    "lt_pix_candidates_exist",
+    "section_registry_exists",
+    "kk_ids_exist",
+    "audio_paths_are_approved",
+    "bad_kk_free_replacement_enabled",
+    "route_audit_passes",
+    "build_passes",
+    "gregory_approves"
+  ]
+}

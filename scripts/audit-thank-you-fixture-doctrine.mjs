@@ -32,7 +32,7 @@ if (!fs.existsSync(doctrinePath)) {
 const buildScript = fs.readFileSync("scripts/build-real-hug-kut-manifest.mjs", "utf8");
 const bicGate = fs.readFileSync("scripts/bic-hug-gate.mjs", "utf8");
 
-if (!buildScript.includes("public/mothers-day/thank-you/kks-expanded/manifest.json")) {
+if (!buildScript.includes("public/kks/thank-you/kks-expanded/manifest.json")) {
   fail("Expected existing Thank You manifest source to remain unchanged.");
 }
 

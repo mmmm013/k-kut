@@ -1,106 +1,269 @@
-export default function SmsOptInPage() {
-  return (
-    <main className="min-h-screen bg-neutral-950 px-6 py-12 text-neutral-100">
-      <section className="mx-auto max-w-2xl">
-        <a href="/" className="text-sm text-amber-300">
-          &larr; Back to K-KUT
-        </a>
+import type { CSSProperties } from "react";
 
-        <h1 className="mt-8 text-4xl font-bold text-white">K-KUT SMS Updates</h1>
-        <p className="mt-3 text-neutral-300">
-          Stay informed about your K-KUT HUG orders, delivery status, and support requests
-          via transactional SMS messages from K-KUT, operated by G Putnam Music, LLC.
+export const metadata = {
+  title: "K-KUT SMS Opt-In",
+  description:
+    "K-KUT transactional customer-care SMS opt-in for orders, delivery links, support requests, and service-status updates.",
+};
+
+type SmsOptInPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+const pageStyle: CSSProperties = {
+  maxWidth: 880,
+  margin: "0 auto",
+  padding: "48px 20px",
+  fontFamily:
+    "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+  lineHeight: 1.55,
+};
+
+const cardStyle: CSSProperties = {
+  border: "1px solid #ddd",
+  borderRadius: 16,
+  padding: 24,
+  marginTop: 24,
+  background: "#fff",
+              color: "#1f2937",
+};
+
+const labelStyle: CSSProperties = {
+  display: "block",
+  fontWeight: 700,
+  marginTop: 16,
+  marginBottom: 6,
+};
+
+const inputStyle: CSSProperties = {
+  width: "100%",
+  padding: "12px 14px",
+  border: "1px solid #bbb",
+  borderRadius: 10,
+  fontSize: 16,
+  boxSizing: "border-box",
+};
+
+const smallStyle: CSSProperties = {
+  color: "#1f2937",
+  fontSize: 14,
+};
+
+export default async function SmsOptInPage({
+  searchParams,
+}: SmsOptInPageProps) {
+  const params = searchParams ? await searchParams : {};
+  const submitted = params.submitted === "1";
+  const error = params.error === "missing-consent";
+
+  return (
+    <main style={pageStyle}>
+      <p>
+        <a href="/" aria-label="Back to K-KUT">
+          ← Back to K-KUT
+        </a>
+      </p>
+
+      <h1>K-KUT SMS Opt-In</h1>
+
+      <p>
+        K-KUT is operated by G Putnam Music, LLC. This page is for
+        transactional and customer-care SMS consent only.
+      </p>
+
+      <section style={cardStyle}>
+        <h2>SMS program description</h2>
+
+        <p>
+          K-KUT may send transactional customer-care SMS messages related to
+          orders, digital delivery links, support requests, account/customer-care
+          follow-up, and service-status updates.
         </p>
 
-        <div className="mt-10 rounded-xl border border-neutral-700 bg-neutral-900 p-6">
-          <h2 className="text-xl font-semibold text-white">Opt In to SMS Notifications</h2>
+        <p>
+          K-KUT does not use this SMS program for promotional blasts,
+          third-party marketing, or unsolicited outreach.
+        </p>
+      </section>
 
-          <p className="mt-4 text-sm text-neutral-300">
-            By providing your mobile phone number and checking the box below, you agree to
-            receive transactional SMS messages from <strong>K-KUT</strong> (G Putnam Music, LLC)
-            about your orders, digital HUG delivery, support requests, and service-status
-            updates. Message frequency varies based on your activity.
-          </p>
+      <section style={cardStyle}>
+        <h2>Provide SMS consent</h2>
 
-          <div className="mt-6 flex items-start gap-3">
+        {submitted ? (
+          <div
+            role="status"
+            style={{
+              border: "1px solid #8bc48b",
+              borderRadius: 12,
+              padding: 16,
+              marginBottom: 18,
+              background: "#f1fff1",
+            }}
+          >
+            Thank you. Your K-KUT SMS opt-in request was received. K-KUT will
+            only use SMS for transactional/customer-care purposes.
+          </div>
+        ) : null}
+
+        {error ? (
+          <div
+            role="alert"
+            style={{
+              border: "1px solid #d88",
+              borderRadius: 12,
+              padding: 16,
+              marginBottom: 18,
+              background: "#fff5f5",
+            }}
+          >
+            Please provide a mobile phone number and check the SMS consent box
+            before submitting.
+          </div>
+        ) : null}
+
+        <form action="/api/sms-optin" method="post">
+          <label htmlFor="name" style={labelStyle}>
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+            style={inputStyle}
+          />
+
+          <label htmlFor="email" style={labelStyle}>
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            style={inputStyle}
+          />
+
+          <label htmlFor="phone" style={labelStyle}>
+            Mobile phone number
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            placeholder="+1 309 555 0123"
+            required
+            style={inputStyle}
+          />
+
+          <label
+            htmlFor="smsConsent"
+            style={{
+              display: "flex",
+              gap: 12,
+              alignItems: "flex-start",
+              marginTop: 20,
+              fontWeight: 500,
+            }}
+          >
             <input
-              id="sms-consent"
+              id="smsConsent"
+              name="smsConsent"
               type="checkbox"
-              className="mt-1 h-4 w-4 accent-amber-400"
-              aria-label="I agree to receive transactional SMS messages from K-KUT"
+              value="yes"
+              required
+              style={{ marginTop: 6 }}
             />
-            <label htmlFor="sms-consent" className="text-sm text-neutral-300">
-              I agree to receive transactional SMS messages from K-KUT (G Putnam Music, LLC)
-              about my orders, delivery, and support. Message and data rates may apply.
-              Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for
-              assistance. View our{' '}
-              <a href="/terms" className="text-amber-300 underline">
-                Terms and Conditions
-              </a>{' '}
-              and{' '}
-              <a href="/privacy" className="text-amber-300 underline">
-                Privacy Policy
-              </a>.
-            </label>
-          </div>
-
-          <div className="mt-6">
-            <label htmlFor="phone" className="block text-sm font-medium text-neutral-300">
-              Mobile Phone Number
-            </label>
-            <input
-              id="phone"
-              type="tel"
-              placeholder="(555) 000-0000"
-              className="mt-2 w-full rounded-lg border border-neutral-600 bg-neutral-800 px-4 py-3 text-white placeholder-neutral-500 focus:border-amber-400 focus:outline-none"
-            />
-          </div>
+            <span>
+              By checking this box and submitting this form, I consent to
+              receive transactional/customer-care SMS messages from K-KUT
+              (G Putnam Music, LLC) about my order, digital delivery link,
+              support request, account/customer-care follow-up, or service
+              status. Message frequency varies. Message and data rates may
+              apply. Reply STOP to opt out. Reply HELP for help. Consent to
+              receive SMS messages is not a condition of any unrelated purchase.
+            </span>
+          </label>
 
           <button
-            type="button"
-            className="mt-6 w-full rounded-lg bg-amber-400 px-6 py-3 font-semibold text-neutral-950 transition hover:bg-amber-300"
+            type="submit"
+            style={{
+              marginTop: 22,
+              padding: "12px 18px",
+              borderRadius: 999,
+              border: "1px solid #111",
+              fontWeight: 800,
+              cursor: "pointer",
+              background: "#111",
+              color: "#fff",
+            }}
           >
-            Subscribe to K-KUT SMS
+            Submit SMS opt-in request
           </button>
-        </div>
+        </form>
 
-        <div className="mt-10 space-y-4 text-sm text-neutral-400">
-          <h2 className="text-base font-semibold text-white">SMS Program Details</h2>
-          <p><strong className="text-neutral-200">Program Name:</strong> K-KUT</p>
-          <p>
-            <strong className="text-neutral-200">Message Types:</strong> Order confirmations,
-            digital HUG delivery links, support follow-up, and service-status alerts.
-          </p>
-          <p>
-            <strong className="text-neutral-200">Message Frequency:</strong> Varies based on
-            your orders, delivery activity, and support requests.
-          </p>
-          <p>
-            <strong className="text-neutral-200">Charges:</strong> Message and data rates may
-            apply depending on your mobile carrier and service plan.
-          </p>
-          <p>
-            <strong className="text-neutral-200">Opt Out:</strong> Reply{' '}
-            <strong>STOP</strong> to any message to cancel SMS notifications at any time.
-          </p>
-          <p>
-            <strong className="text-neutral-200">Help:</strong> Reply{' '}
-            <strong>HELP</strong> or contact{' '}
-            <a href="mailto:gregory@gputnammusic.com" className="text-amber-300 underline">
-              gregory@gputnammusic.com
-            </a>.
-          </p>
-          <p>
-            <strong className="text-neutral-200">No Sharing:</strong> Mobile phone numbers
-            collected for SMS messaging are used only for K-KUT customer-care messaging and
-            are not sold, rented, or shared with third parties for marketing purposes.
-          </p>
-        </div>
+        <p style={smallStyle}>
+          This form is for SMS consent only. K-KUT messaging remains limited to
+          transactional/customer-care communications.
+        </p>
+      </section>
 
-        <div className="mt-8 flex gap-4 text-sm">
-          <a href="/terms" className="text-amber-300 underline">Terms and Conditions</a>
-          <a href="/privacy" className="text-amber-300 underline">Privacy Policy</a>
-        </div>
+      <section style={cardStyle}>
+        <h2>SMS terms and disclosures</h2>
+
+        <p>
+          <strong>Program name:</strong> K-KUT
+        </p>
+
+        <p>
+          <strong>Message purpose:</strong> transactional/customer-care messages
+          about orders, digital delivery links, support requests,
+          account/customer-care follow-up, and service-status updates.
+        </p>
+
+        <p>
+          <strong>Frequency:</strong> message frequency varies based on your
+          orders, delivery activity, support requests, or service-status needs.
+        </p>
+
+        <p>
+          <strong>Rates:</strong> message and data rates may apply depending on
+          your mobile carrier and service plan.
+        </p>
+
+        <p>
+          <strong>Opt out:</strong> reply STOP to opt out.
+        </p>
+
+        <p>
+          <strong>Help:</strong> reply HELP for help or contact{" "}
+          <a href="mailto:reachus@gputnammusic.com">
+            reachus@gputnammusic.com
+          </a>
+          .
+        </p>
+
+        <p>
+          <strong>No sale or marketing sharing:</strong> mobile phone numbers
+          and SMS consent information are not sold, rented, shared, or disclosed
+          to third parties or affiliates for their marketing or promotional
+          purposes.
+        </p>
+
+        <p>
+          Review the{" "}
+          <a href="/privacy">
+            K-KUT Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="/terms">
+            K-KUT Terms
+          </a>
+          .
+        </p>
       </section>
     </main>
   );

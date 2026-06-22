@@ -6,9 +6,9 @@ export const realHugKuts = {
     "label": "V1a",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "V1a",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-v1b",
@@ -16,9 +16,9 @@ export const realHugKuts = {
     "label": "V1b",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "V1b",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-v1b.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-prech1",
@@ -26,9 +26,9 @@ export const realHugKuts = {
     "label": "PreCh1",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "PreCh1",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-prech1.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-ch1",
@@ -36,9 +36,9 @@ export const realHugKuts = {
     "label": "Ch1",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "Ch1",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-ch1.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-v2a",
@@ -46,9 +46,9 @@ export const realHugKuts = {
     "label": "V2a",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "V2a",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-v2a.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-v2b",
@@ -56,9 +56,9 @@ export const realHugKuts = {
     "label": "V2b",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "V2b",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-v2b.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-br",
@@ -66,9 +66,9 @@ export const realHugKuts = {
     "label": "Br",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "Br",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-br.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-ch2",
@@ -76,9 +76,9 @@ export const realHugKuts = {
     "label": "Ch2",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "Ch2",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-ch2.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   },
   {
     "id": "thank-you-sec-outro",
@@ -86,9 +86,9 @@ export const realHugKuts = {
     "label": "Outro",
     "fit": "Locked Thank You text-structure K-KUT from SSOT.",
     "section": "Outro",
-    "previewSrc": "/mothers-day/thank-you/kks-expanded/thank-you-sec-outro.mp3",
+    "previewSrc": "/kks/thank-you/kks-expanded/thank-you-sec-outro.mp3",
     "source": "KK_STRUCTURE_LOCKED",
-    "kkSourceFile": "public/mothers-day/thank-you/kks-expanded/manifest.json"
+    "kkSourceFile": "public/kks/thank-you/kks-expanded/manifest.json"
   }
 ]
 } as const;

@@ -4,9 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
+    "prebuild": "node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "audit:themes": "node scripts/theme-population/audit-all-theme-population.mjs",
+    "audit:themes:gratitude": "node scripts/theme-population/audit-normalized-gratitude.mjs",
+    "audit:themes:bad-kk": "node scripts/theme-population/audit-bad-kk-report-model.mjs",
+    "audit:themes:all": "npm run audit:themes && npm run audit:themes:gratitude && npm run audit:themes:bad-kk && npm run audit:themes:gratitude-registry && npm run audit:themes:love-anniversary-registry && npm run audit:themes:personal-holiday-lanes && npm run audit:kkr:human-approval",
+    "audit:themes:gratitude-registry": "node scripts/theme-population/audit-gratitude-registry.mjs",
+    "audit:themes:love-anniversary-registry": "node scripts/theme-population/audit-love-anniversary-registry.mjs",
+    "audit:themes:personal-holiday-lanes": "node scripts/theme-population/audit-personal-holiday-lanes.mjs",
+    "audit:kkr:human-approval": "node scripts/kkr/audit-human-kk-approval-gate.mjs",
+    "audit:audio:no-trailing-silence": "node scripts/audio-qc/audit-no-trailing-silence-after-twinkle.mjs",
+    "deploy:preflight": "node scripts/preflight-deploy-size.mjs",
+    "deploy:prod": "npm run deploy:preflight && vercel deploy --prod --yes --archive=tgz"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.0",

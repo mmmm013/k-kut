@@ -1,0 +1,61 @@
+{
+  "setId": "no-mystery-theme-kks",
+  "status": "KK_APPROVAL_TARGET",
+  "lane": "neutral_theme_matched",
+  "holidayOwnership": false,
+  "doctrine": {
+    "themeMatching": "Themes may capture KKs from PIX content, lyric feeling, audio structure, metadata, MetaGrab tags, and admin filters without knowing the PIX title.",
+    "holidayOwnership": "Holiday attachment requires holiday title support or explicit admin mark. Prior campaign use does not create holiday ownership.",
+    "titleRule": "PIX title may help search and review, but title is not required for theme capture."
+  },
+  "kks": [
+    {
+      "kkId": "no-mystery-intro-v1",
+      "pixTitle": "No Mystery",
+      "kkTitle": "No Mystery — Intro + Verse 1",
+      "structure": "Intro + Verse 1",
+      "use": "opening identity / sincere presence / here-I-am feeling",
+      "approvalStatus": "needs_audio_binding"
+    },
+    {
+      "kkId": "no-mystery-final-chorus-outro",
+      "pixTitle": "No Mystery",
+      "kkTitle": "No Mystery — Final Chorus + Outro",
+      "structure": "Final Chorus + Outro",
+      "use": "closing resolve / emotional finish / send-off",
+      "approvalStatus": "needs_audio_binding"
+    },
+    {
+      "kkId": "no-mystery-bridge",
+      "pixTitle": "No Mystery",
+      "kkTitle": "No Mystery — Bridge",
+      "structure": "Bridge",
+      "use": "turn / reveal / emotional pivot",
+      "approvalStatus": "needs_audio_binding"
+    },
+    {
+      "kkId": "im-no-mystery-intro-v1",
+      "pixTitle": "I'm No Mystery",
+      "kkTitle": "I'm No Mystery — Intro + Verse 1",
+      "structure": "Intro + Verse 1",
+      "use": "opening identity / sincere presence / here-I-am feeling",
+      "approvalStatus": "needs_audio_binding"
+    },
+    {
+      "kkId": "im-no-mystery-final-chorus-outro",
+      "pixTitle": "I'm No Mystery",
+      "kkTitle": "I'm No Mystery — Final Chorus + Outro",
+      "structure": "Final Chorus + Outro",
+      "use": "closing resolve / emotional finish / send-off",
+      "approvalStatus": "needs_audio_binding"
+    },
+    {
+      "kkId": "im-no-mystery-bridge",
+      "pixTitle": "I'm No Mystery",
+      "kkTitle": "I'm No Mystery — Bridge",
+      "structure": "Bridge",
+      "use": "turn / reveal / emotional pivot",
+      "approvalStatus": "needs_audio_binding"
+    }
+  ]
+}

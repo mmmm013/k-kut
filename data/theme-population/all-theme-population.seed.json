@@ -1,0 +1,165 @@
+{
+  "status": "CURRENT",
+  "purpose": "Seed all K-KUT buyer themes from verified LT-PIX, verified section IDs, approved KK IDs, public HUG tags, and recursive bad-KK refinement rules.",
+  "source_use_rule": {
+    "in_o_pix": "learning_only",
+    "in_pix": "learning_only",
+    "lt_pix": "public_delivery_only_after_section_proof"
+  },
+  "levels": {
+    "L0": "Theme route exists, no public audio.",
+    "L1": "Theme has LT-PIX candidates.",
+    "L2": "Theme has section-mapped LT-PIX.",
+    "L3": "Theme has approved public KK/HUG options.",
+    "L4": "Theme has recursive refinement, bad-KK replacement, play reporting, and PIX-PCK rollup."
+  },
+  "bad_kk_free_replacement_rule": {
+    "applies_when_confirmed": [
+      "start_too_early",
+      "start_too_late",
+      "end_too_early",
+      "end_too_late",
+      "resolving_note_cut_off",
+      "musical_tail_cut_off",
+      "wrong_section",
+      "wrong_emotional_match",
+      "audio_artifact_or_glitch",
+      "dead_audio_link",
+      "wrong_hug_delivered"
+    ],
+    "customer_resolution": "free_replacement_or_corrected_delivery"
+  },
+  "themes": [
+    {
+      "theme": "love",
+      "buyer_label": "Love HUG",
+      "candidate_lt_pix": ["A Love like That"],
+      "pix_handles": ["ALLT-105529524"],
+      "candidate_kk_ids": [
+        "KK-ALLT-105529524-S02",
+        "KK-ALLT-105529524-S04",
+        "KK-ALLT-105529524-S06",
+        "KK-ALLT-105529524-S07"
+      ],
+      "level": "L2_TO_L3_PENDING_K_KUT_IMPLEMENTATION",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "held_from_public_routes",
+      "next_refinement_action": "copy approved derivative files, map KK IDs, choose public tags"
+    },
+    {
+      "theme": "anniversary",
+      "buyer_label": "Anniversary HUG",
+      "candidate_lt_pix": ["A Love like That"],
+      "pix_handles": ["ALLT-105529524"],
+      "candidate_kk_ids": [
+        "KK-ALLT-105529524-S02",
+        "KK-ALLT-105529524-S04",
+        "KK-ALLT-105529524-S06"
+      ],
+      "level": "L2_TO_L3_PENDING_K_KUT_IMPLEMENTATION",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "route_exists_options_pending",
+      "next_refinement_action": "add controlled records"
+    },
+    {
+      "theme": "wedding",
+      "buyer_label": "Wedding HUG",
+      "candidate_lt_pix": ["A Love like That", "Forever and a Day"],
+      "pix_handles": ["ALLT-105529524", "FAAD_PENDING"],
+      "candidate_kk_ids": [],
+      "level": "L1_L2",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "held_review",
+      "next_refinement_action": "section-proof wedding candidates"
+    },
+    {
+      "theme": "apology",
+      "buyer_label": "Sorry HUG / Repair HUG",
+      "candidate_lt_pix": [],
+      "pix_handles": [],
+      "candidate_kk_ids": [],
+      "level": "L0_L1",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "route_exists_gated",
+      "next_refinement_action": "select LT-PIX candidates"
+    },
+    {
+      "theme": "sympathy",
+      "buyer_label": "Condolence HUG",
+      "candidate_lt_pix": [],
+      "pix_handles": [],
+      "candidate_kk_ids": [],
+      "level": "L0_L1",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "sensitive_lane_hold",
+      "next_refinement_action": "select LT-PIX candidates with stricter review"
+    },
+    {
+      "theme": "birthday",
+      "buyer_label": "Birthday HUG",
+      "candidate_lt_pix": [],
+      "pix_handles": [],
+      "candidate_kk_ids": [],
+      "level": "L0_L1",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "route_exists_limited_samples",
+      "next_refinement_action": "select birthday LT-PIX candidates"
+    },
+    {
+      "theme": "gratitude",
+      "buyer_label": "Thank You HUG",
+      "candidate_lt_pix": ["Thank You"],
+      "pix_handles": ["THANK-YOU_PENDING_HANDLE"],
+      "candidate_kk_ids": ["EXISTING_THANK_YOU_SECTION_KKS"],
+      "level": "L3_L4",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "public_active",
+      "next_refinement_action": "convert Thank You to matrix IDs and refinement loop"
+    },
+    {
+      "theme": "holiday",
+      "buyer_label": "Holiday HUG",
+      "candidate_lt_pix": ["Thank You"],
+      "pix_handles": ["PENDING"],
+      "candidate_kk_ids": [],
+      "level": "L1_L2",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "route_exists_limited",
+      "next_refinement_action": "build seasonal rotation"
+    },
+    {
+      "theme": "romance",
+      "buyer_label": "Romance HUG",
+      "candidate_lt_pix": ["A Love like That", "Don’t Call It Love", "Your Heart Poundin"],
+      "pix_handles": ["ALLT-105529524", "PENDING", "PENDING"],
+      "candidate_kk_ids": [],
+      "level": "L1_L2",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "public_samples_limited",
+      "next_refinement_action": "replace II-only records with verified KK records"
+    },
+    {
+      "theme": "forever",
+      "buyer_label": "Forever HUG",
+      "candidate_lt_pix": ["A Love like That", "The Only Forever", "Forever and a Day"],
+      "pix_handles": ["ALLT-105529524", "PENDING", "FAAD_PENDING"],
+      "candidate_kk_ids": [],
+      "level": "L1",
+      "full_pix_context_path": "required_when_approved",
+      "public_status": "not_fully_populated",
+      "next_refinement_action": "section-proof candidates"
+    }
+  ],
+  "release_gate": [
+    "theme_candidate_lt_pix_list_exists",
+    "section_registry_exists",
+    "kk_ids_exist",
+    "human_listen_proof_exists",
+    "public_hug_tags_exist",
+    "full_pix_path_defined_or_withheld",
+    "bad_kk_replacement_path_exists",
+    "build_passes",
+    "route_audit_passes",
+    "gregory_approves"
+  ]
+}

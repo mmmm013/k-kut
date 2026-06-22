@@ -1,14 +1,5 @@
 const PERSONAL_II_OPTIONS = [
   {
-    label: "Warmth / Care",
-    title: "A Love Like That",
-    description:
-      "A warm, flexible HUG for care, thanks, support, friendship, family, and everyday connection.",
-    audioUrl:
-      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
-  },
-  {
     label: "Repair / Still Care",
     title: "Don't Call It Love",
     description:
