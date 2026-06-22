@@ -41,25 +41,25 @@ export default function MiniKutPage({ params }: { params: Promise<{ id: string }
         }
 
         if (!data) {
-          setError("mini-KUT not found");
+          setError("short-KUT not found");
           return;
         }
 
         const row = data as MKutAsset;
 
         if (row.audio_qc_status !== "pass") {
-          setError(`mini-KUT is not playable yet: ${row.audio_qc_status ?? "pending"}`);
+          setError(`short-KUT is not playable yet: ${row.audio_qc_status ?? "pending"}`);
           return;
         }
 
         if (!row.audio_url && !row.mp3_url) {
-          setError("mini-KUT has no audio URL");
+          setError("short-KUT has no audio URL");
           return;
         }
 
         setAsset(row);
       } catch (e) {
-        setError(e instanceof Error ? e.message : "Failed to load mini-KUT");
+        setError(e instanceof Error ? e.message : "Failed to load short-KUT");
       } finally {
         setLoading(false);
       }
@@ -70,7 +70,7 @@ export default function MiniKutPage({ params }: { params: Promise<{ id: string }
 
   const audioSrc = asset?.audio_url ?? asset?.mp3_url ?? "";
   const title = asset?.title ?? asset?.content ?? asset?.id;
-  const structure = asset?.structure_tag ?? asset?.mk_type ?? "mini-KUT";
+  const structure = asset?.structure_tag ?? asset?.mk_type ?? "short-KUT";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -78,18 +78,18 @@ export default function MiniKutPage({ params }: { params: Promise<{ id: string }
         <Link href="/" className="text-[#D4A017] font-bold text-lg hover:opacity-80">
           ← K-KUT
         </Link>
-        <span className="text-xs uppercase tracking-widest text-[#C8A882]">mini-KUT</span>
+        <span className="text-xs uppercase tracking-widest text-[#C8A882]">short-KUT</span>
       </header>
 
       <main className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-lg">
           {loading && (
-            <div className="text-center text-[#C8A882] animate-pulse">Loading mini-KUT…</div>
+            <div className="text-center text-[#C8A882] animate-pulse">Loading short-KUT…</div>
           )}
 
           {error && (
             <div className="rounded-xl border border-red-500/40 bg-red-500/10 p-6 text-center">
-              <p className="text-red-400 font-semibold mb-2">Unable to load mini-KUT</p>
+              <p className="text-red-400 font-semibold mb-2">Unable to load short-KUT</p>
               <p className="text-sm text-[#C8A882]">{error}</p>
               <Link href="/" className="mt-4 inline-block text-[#D4A017] text-sm hover:underline">
                 ← Back to K-KUT
@@ -100,7 +100,7 @@ export default function MiniKutPage({ params }: { params: Promise<{ id: string }
           {asset && (
             <div className="rounded-xl border border-[#C8A882]/30 bg-[#111] p-6 flex flex-col gap-6">
               <div>
-                <p className="text-xs uppercase tracking-widest text-[#C8A882] mb-1">mini-KUT</p>
+                <p className="text-xs uppercase tracking-widest text-[#C8A882] mb-1">short-KUT</p>
                 <p className="text-xl font-bold text-[#F5e6c8]">{structure}</p>
                 <p className="text-sm text-[#C8A882] mt-1">
                   {title}{asset.artist ? ` · ${asset.artist}` : ""}
