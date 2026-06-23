@@ -8,60 +8,96 @@ export default function SmsOptInPage() {
 
         <h1 className="mt-8 text-4xl font-bold text-white">K-KUT SMS Updates</h1>
         <p className="mt-3 text-neutral-300">
-          Stay informed about your K-KUT HUG orders, delivery status, and support requests
-          via transactional SMS messages from K-KUT, operated by G Putnam Music, LLC.
+          K-KUT, operated by G Putnam Music, LLC, may send transactional
+          customer-care SMS messages about K-KUT HUG orders, delivery status,
+          support requests, and service-status updates.
         </p>
 
+        <div className="mt-8 rounded-xl border border-amber-500/50 bg-amber-500/10 p-5 text-sm text-amber-100">
+          <h2 className="text-base font-semibold text-white">SMS consent is optional</h2>
+          <p className="mt-2">
+            No customer is required to opt in to SMS to buy from K-KUT, request
+            support, receive non-SMS delivery, or use the site. The SMS checkbox
+            below is optional and may be left unchecked.
+          </p>
+        </div>
+
         <div className="mt-10 rounded-xl border border-neutral-700 bg-neutral-900 p-6">
-          <h2 className="text-xl font-semibold text-white">Opt In to SMS Notifications</h2>
+          <h2 className="text-xl font-semibold text-white">Optional SMS Notification Preference</h2>
 
           <p className="mt-4 text-sm text-neutral-300">
-            By providing your mobile phone number and checking the box below, you agree to
-            receive transactional SMS messages from <strong>K-KUT</strong> (G Putnam Music, LLC)
-            about your orders, digital HUG delivery, support requests, and service-status
-            updates. Message frequency varies based on your activity.
+            You may provide your mobile phone number and optionally check the SMS
+            consent box if you want transactional SMS messages from <strong>K-KUT</strong>{' '}
+            (G Putnam Music, LLC) about your orders, digital HUG delivery,
+            support requests, and service-status updates. Message frequency varies
+            based on your activity.
           </p>
 
-          <div className="mt-6 flex items-start gap-3">
-            <input
-              id="sms-consent"
-              type="checkbox"
-              className="mt-1 h-4 w-4 accent-amber-400"
-              aria-label="I agree to receive transactional SMS messages from K-KUT"
-            />
-            <label htmlFor="sms-consent" className="text-sm text-neutral-300">
-              I agree to receive transactional SMS messages from K-KUT (G Putnam Music, LLC)
-              about my orders, delivery, and support. Message and data rates may apply.
-              Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for
-              assistance. View our{' '}
-              <a href="/terms" className="text-amber-300 underline">
-                Terms and Conditions
-              </a>{' '}
-              and{' '}
-              <a href="/privacy" className="text-amber-300 underline">
-                Privacy Policy
-              </a>.
-            </label>
-          </div>
-
-          <div className="mt-6">
-            <label htmlFor="phone" className="block text-sm font-medium text-neutral-300">
-              Mobile Phone Number
-            </label>
-            <input
-              id="phone"
-              type="tel"
-              placeholder="(555) 000-0000"
-              className="mt-2 w-full rounded-lg border border-neutral-600 bg-neutral-800 px-4 py-3 text-white placeholder-neutral-500 focus:border-amber-400 focus:outline-none"
-            />
-          </div>
-
-          <button
-            type="button"
-            className="mt-6 w-full rounded-lg bg-amber-400 px-6 py-3 font-semibold text-neutral-950 transition hover:bg-amber-300"
+          <form
+            action="mailto:reachus@gputnammusic.com"
+            method="post"
+            encType="text/plain"
+            className="mt-6"
           >
-            Subscribe to K-KUT SMS
-          </button>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-neutral-300">
+                Mobile Phone Number
+              </label>
+              <input
+                id="phone"
+                name="mobile_phone"
+                type="tel"
+                placeholder="(555) 000-0000"
+                className="mt-2 w-full rounded-lg border border-neutral-600 bg-neutral-800 px-4 py-3 text-white placeholder-neutral-500 focus:border-amber-400 focus:outline-none"
+                aria-describedby="sms-optional-note"
+              />
+            </div>
+
+            <div className="mt-6 flex items-start gap-3">
+              <input
+                id="sms-consent"
+                name="sms_consent_optional"
+                type="checkbox"
+                value="yes"
+                className="mt-1 h-4 w-4 accent-amber-400"
+                aria-label="Optional consent to receive transactional SMS messages from K-KUT"
+              />
+              <label htmlFor="sms-consent" className="text-sm text-neutral-300">
+                <strong>Optional:</strong> I agree to receive transactional SMS messages from
+                K-KUT (G Putnam Music, LLC) about my orders, delivery, and support.
+                Message and data rates may apply. Reply <strong>STOP</strong> to opt out
+                at any time. Reply <strong>HELP</strong> for assistance. View our{' '}
+                <a href="/terms" className="text-amber-300 underline">
+                  Terms and Conditions
+                </a>{' '}
+                and{' '}
+                <a href="/privacy" className="text-amber-300 underline">
+                  Privacy Policy
+                </a>.
+              </label>
+            </div>
+
+            <p id="sms-optional-note" className="mt-4 text-sm text-neutral-400">
+              The SMS checkbox is not required. Leaving it unchecked does not prevent
+              a customer from completing a purchase, requesting support, receiving
+              email delivery, or using K-KUT without SMS.
+            </p>
+
+            <button
+              type="submit"
+              className="mt-6 w-full rounded-lg bg-amber-400 px-6 py-3 font-semibold text-neutral-950 transition hover:bg-amber-300"
+            >
+              Submit Optional SMS Preference
+            </button>
+          </form>
+
+          <p className="mt-5 text-sm text-neutral-400">
+            Prefer not to use SMS? You may continue without SMS by using the K-KUT
+            website normally or by contacting{' '}
+            <a href="mailto:reachus@gputnammusic.com" className="text-amber-300 underline">
+              reachus@gputnammusic.com
+            </a>.
+          </p>
         </div>
 
         <div className="mt-10 space-y-4 text-sm text-neutral-400">
@@ -86,8 +122,8 @@ export default function SmsOptInPage() {
           <p>
             <strong className="text-neutral-200">Help:</strong> Reply{' '}
             <strong>HELP</strong> or contact{' '}
-            <a href="mailto:gregory@gputnammusic.com" className="text-amber-300 underline">
-              gregory@gputnammusic.com
+            <a href="mailto:reachus@gputnammusic.com" className="text-amber-300 underline">
+              reachus@gputnammusic.com
             </a>.
           </p>
           <p>
