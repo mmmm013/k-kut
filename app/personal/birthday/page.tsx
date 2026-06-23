@@ -1,42 +1,17 @@
 export const metadata = {
-  title: "Birthday K-KUT HUGs | G Putnam Music",
+  title: "Birthday K-KUT HUG Review | G Putnam Music",
   description:
-    "Send a birthday-ready GPM music HUG with real customer delivery audio.",
+    "Birthday HUG review is active while GPM verifies governed Best Birthday delivery audio.",
 };
 
 const BIRTHDAY_HUGS = [
-  {
-    label: "Bright Birthday",
-    title: "A Love Like That",
-    description:
-      "Warm, bright, and easy to send for a birthday HUG that feels caring and personal.",
-    bestFor: "Friend, sibling, coworker, general birthday.",
-    price: "$7.99",
-    audioUrl:
-      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
-  },
-  {
-    label: "Sweet Birthday",
-    title: "A Love Like That",
-    description:
-      "Warm, loving, and close. A simple birthday HUG for someone who matters.",
-    bestFor: "Partner, parent, child, close family.",
-    price: "$7.99",
-    audioUrl:
-      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
-  },
   {
     label: "Milestone Birthday",
     title: "Don't Call It Love",
     description:
       "Tender, reflective, and meaningful for a bigger life moment.",
     bestFor: "30th, 40th, 50th, 60th, and big-year birthdays.",
-    price: "$12.99",
-    audioUrl:
-      "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+    status: "Human listen review pending",
   },
   {
     label: "Birthday Party Lift",
@@ -44,10 +19,7 @@ const BIRTHDAY_HUGS = [
     description:
       "Energetic, playful, and bold for a livelier birthday message.",
     bestFor: "Celebration energy, playful romance, fun message.",
-    price: "$4.99",
-    audioUrl:
-      "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+    status: "Human listen review pending",
   },
 ];
 
@@ -61,7 +33,7 @@ export default function BirthdayPage() {
           </p>
 
           <h1 className="mt-4 text-4xl font-black tracking-tight md:text-6xl">
-            Birthday K-KUT HUGs
+            Birthday K-KUT HUG Review
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-pink-100">
@@ -69,8 +41,8 @@ export default function BirthdayPage() {
           </p>
 
           <p className="mt-4 max-w-3xl text-sm leading-6 text-white/68">
-            Choose a birthday tone. Press play. Send a private GPM HUG.
-            Customer delivery audio includes padding and the GPM signature end sound.
+            Birthday HUGs are under review while GPM verifies the governed Best Birthday delivery audio with padding and signature end sound.
+            No Birthday HUG checkout is shown until the exact governed delivery audio passes human listen approval.
           </p>
         </header>
 
@@ -107,7 +79,7 @@ export default function BirthdayPage() {
                     {hug.label}
                   </p>
                   <p className="rounded-full bg-white/10 px-3 py-1 text-xs font-black text-white/80">
-                    {hug.price}
+                    Review hold
                   </p>
                 </div>
 
@@ -121,18 +93,15 @@ export default function BirthdayPage() {
                   Best for: {hug.bestFor}
                 </p>
 
-                <audio
-                  className="mt-5 w-full"
-                  controls
-                  preload="metadata"
-                  src={hug.audioUrl}
-                />
+                <p className="mt-5 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-bold text-white/60">
+                  Audio preview is held until the exact Birthday HUG delivery passes human listen approval.
+                </p>
 
                 <a
                   className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
-                  href={hug.checkoutUrl}
+                  href="/find?intent=birthday"
                 >
-                  Send this Birthday HUG
+                  Help me choose a birthday feeling
                 </a>
               </article>
             ))}
