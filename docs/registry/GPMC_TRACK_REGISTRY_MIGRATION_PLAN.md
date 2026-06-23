@@ -53,6 +53,62 @@ Holiday inventories are derivative inventory, not authority.
 
 ---
 
+## Current Scope Exclusion
+
+Father's Day / FD is excluded from the current intake source pass.
+
+FD is a theme / product container, not source authority.
+
+FD history remains reported and preserved as historical theme output.
+
+FD stays empty until called.
+
+When called, FD unpacks eligible content from the source spine.
+
+FD is rebuilt automatically each year from current source authority.
+
+FD does not seed the GPMC Master Track Registry.
+
+FD does not create authority for Track, PIX, LT-PIX, KK, or sK records.
+
+4PE rebuilds FD and all other theme / product views from the new source spine.
+
+Required rebuild spine:
+
+GPMC
+↓
+GPM Kreator
+↓
+II
+↓
+Track
+↓
+PIX
+↓
+LT-PIX
+↓
+KK
+↓
+sK
+
+---
+
+## Acronym Control Rule
+
+Known acronyms stay known.
+
+One-off typos in known acronyms may be corrected only when the intended known acronym is obvious.
+
+Unidentified acronyms must never be accepted as valid doctrine.
+
+Unidentified acronyms must be stopped, questioned, or staged for formal definition before use.
+
+Do not invent acronym meanings.
+
+Do not introduce alternate acronym forms.
+
+---
+
 ## Migration Order
 
 ### Pass 1
