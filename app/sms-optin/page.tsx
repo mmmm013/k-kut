@@ -174,7 +174,6 @@ export default async function SmsOptInPage({
               name="smsConsent"
               type="checkbox"
               value="yes"
-              required
               style={{ marginTop: 6 }}
             />
             <span>
