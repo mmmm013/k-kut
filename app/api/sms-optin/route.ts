@@ -8,11 +8,16 @@ export async function POST(request: Request) {
 
   const redirectUrl = new URL("/sms-optin", request.url);
 
-  if (!phone || smsConsent !== "yes") {
-    redirectUrl.searchParams.set("error", "missing-consent");
+  if (!phone) {
+    redirectUrl.searchParams.set("error", "missing-phone");
     return NextResponse.redirect(redirectUrl, { status: 303 });
   }
 
   redirectUrl.searchParams.set("submitted", "1");
+  redirectUrl.searchParams.set(
+    "sms",
+    smsConsent === "yes" ? "opted-in" : "not-requested",
+  );
+
   return NextResponse.redirect(redirectUrl, { status: 303 });
 }

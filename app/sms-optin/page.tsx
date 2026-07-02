@@ -54,7 +54,13 @@ export default async function SmsOptInPage({
 }: SmsOptInPageProps) {
   const params = searchParams ? await searchParams : {};
   const submitted = params.submitted === "1";
-  const error = params.error === "missing-consent";
+  const error = params.error === "missing-phone";
+  const smsStatus =
+    params.sms === "opted-in"
+      ? "opted-in"
+      : params.sms === "not-requested"
+        ? "not-requested"
+        : "";
 
   return (
     <main style={pageStyle}>
@@ -100,8 +106,9 @@ export default async function SmsOptInPage({
               background: "#f1fff1",
             }}
           >
-            Thank you. Your K-KUT SMS opt-in request was received. K-KUT will
-            only use SMS for transactional/customer-care purposes.
+            {smsStatus === "opted-in"
+              ? "Thank you. Your K-KUT SMS opt-in request was received. K-KUT will only use SMS for transactional/customer-care purposes."
+              : "Thank you. Your form submission was received. No SMS opt-in was recorded because the SMS consent box was not checked."}
           </div>
         ) : null}
 
@@ -116,8 +123,7 @@ export default async function SmsOptInPage({
               background: "#fff5f5",
             }}
           >
-            Please provide a mobile phone number and check the SMS consent box
-            before submitting.
+            Please provide a mobile phone number before submitting.
           </div>
         ) : null}
 
@@ -200,7 +206,7 @@ export default async function SmsOptInPage({
               color: "#fff",
             }}
           >
-            Submit SMS opt-in request
+            Subscribe to K-KUT SMS
           </button>
         </form>
 
