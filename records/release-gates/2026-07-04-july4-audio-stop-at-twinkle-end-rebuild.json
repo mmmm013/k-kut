@@ -1,0 +1,106 @@
+{
+  "manifest_id": "JULY4_AUDIO_STOP_AT_TWINKLE_END_REBUILD_20260704",
+  "created_at_epoch": 1783189500,
+  "rule": "Stop at Twinkle end. No post-Twinkle silence tail.",
+  "trimmed_twinkle_duration_seconds": 4.352,
+  "items": [
+    {
+      "title": "Foundation V1",
+      "path": "public/foundation-july4/audio/foundation-july4-v1-full-dp-sti.mp3",
+      "duration": 39.553,
+      "sha256": "0a96bc61345760bae012781ed69068e8dcb5cf44dbb7b6b9985e6d54e81b4e55",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "Foundation Bridge",
+      "path": "public/foundation-july4/audio/foundation-july4-bridge-dp-sti.mp3",
+      "duration": 49.052,
+      "sha256": "a00f3c9fd81676d1e8dd2b5df9a4c4869559a961193a08e4b6bea5369f66492d",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "Foundation Final Chorus",
+      "path": "public/foundation-july4/audio/foundation-july4-ch3-dp-sti.mp3",
+      "duration": 37.052,
+      "sha256": "742603156c6d143652068c1a6fb82cc941f3bb4e2b4ec548f55e636cb83551de",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK01 Ch1",
+      "path": "public/i-live-free-july4/audio/ilf-kk01-ch1-dp-sti.mp3",
+      "duration": 21.381,
+      "sha256": "622fc29f2e725f728c47c9965aea755742060c0b4b405bfc63a4104a3a1aec5e",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK02 Tag",
+      "path": "public/i-live-free-july4/audio/ilf-kk02-tag-dp-sti.mp3",
+      "duration": 12.428,
+      "sha256": "fc119c94f0cb8cd027dec1cda5c0ee2e090cab98cf4e835a48b9a0a86ba897dd",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK03 V1",
+      "path": "public/i-live-free-july4/audio/ilf-kk03-v1-dp-sti.mp3",
+      "duration": 34.712,
+      "sha256": "bfe78877d9d5599f82d206823da93498d0bf4c98aa232903cdbbf06f84100b44",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK04 Ch2",
+      "path": "public/i-live-free-july4/audio/ilf-kk04-ch2-dp-sti.mp3",
+      "duration": 21.037,
+      "sha256": "3d45311e916e145b918ba6be65ed3c8b7bcb5428a9f617e04eb056cc1a45befd",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK05 Tag",
+      "path": "public/i-live-free-july4/audio/ilf-kk05-tag-dp-sti.mp3",
+      "duration": 18.572,
+      "sha256": "073b3a2c0664464e4cfb40837212f2f15086c9c652266cefaeba964b3d43ebdf",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK06 Bridge",
+      "path": "public/i-live-free-july4/audio/ilf-kk06-bridge-dp-sti.mp3",
+      "duration": 23.582,
+      "sha256": "0d36131dc4daea0510bf561c66d18de6ad505a294781bf49139e6bb09a19b79b",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK07 Tag",
+      "path": "public/i-live-free-july4/audio/ilf-kk07-tag-dp-sti.mp3",
+      "duration": 8.602,
+      "sha256": "bef316ade10bdc50639d44a2cebe8912718caefddbf45514567852bcdc917388",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK08 Tag",
+      "path": "public/i-live-free-july4/audio/ilf-kk08-tag-dp-sti.mp3",
+      "duration": 7.702,
+      "sha256": "0a44f9cc6c66aef8c806df418a7ee3f082e3e23cd3ff0369ac9bac7cc120885b",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK09 Bridge Tight",
+      "path": "public/i-live-free-july4/audio/ilf-kk09-bridge-tight-dp-sti.mp3",
+      "duration": 19.835,
+      "sha256": "6e253c1bf825702cd69d506f5d9f437cf1fafbcc51f308135f2143e6e74b37d8",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK10 Tag",
+      "path": "public/i-live-free-july4/audio/ilf-kk10-tag-dp-sti.mp3",
+      "duration": 10.3,
+      "sha256": "e89c42c17066b2b9c80db1dfbe1ba6bc0a236c77b66509d27f28661340ffe6ec",
+      "post_twinkle_tail": "NONE_APPENDED"
+    },
+    {
+      "title": "I Live Free KK11 Final Chorus",
+      "path": "public/i-live-free-july4/audio/ilf-kk11-final-chorus-dp-sti.mp3",
+      "duration": 30.868,
+      "sha256": "71cee1c433976787801174e34229c19c394b25d1fc5f01a225b495a2203b54ac",
+      "post_twinkle_tail": "NONE_APPENDED"
+    }
+  ]
+}
