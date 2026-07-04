@@ -1,4 +1,3 @@
-
 {
   "status": "locked_operating_model",
   "asset_system": "Supabase Storage",
@@ -29,5 +28,12 @@
     "classify with KKr",
     "import approved assets",
     "release only after BIC"
-  ]
+  ],
+  "artist_upload_folder": "4PE_ARTIST_UPLOADS_PENDING_REVIEW",
+  "artist_upload_metadata": {
+    "uploaded_by_role": "artist_or_gpm_admin",
+    "approval_status": "PENDING_4PE_INTAKE_REVIEW",
+    "intake_lane": "4PE_ARTIST_UPLOAD"
+  },
+  "artist_upload_rule": "All artist/GPM admin uploads enter 4PE Intake Pending Review first. Upload means received only; it does not create PIX, KKr, II, DP, or public approval."
 }

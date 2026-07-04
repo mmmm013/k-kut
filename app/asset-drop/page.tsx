@@ -4,6 +4,7 @@
 import { useState } from "react";
 
 const FOLDERS = [
+  "4PE_ARTIST_UPLOADS_PENDING_REVIEW",
   "01_MC-BOT Voice",
   "02_KLEIGH Audio",
   "03_K-KUT Candidate Audio",

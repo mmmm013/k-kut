@@ -7,6 +7,7 @@ export const runtime = "nodejs";
 const BUCKET = "asset-drop";
 
 const allowedFolders = new Set([
+  "4PE_ARTIST_UPLOADS_PENDING_REVIEW",
   "01_MC-BOT Voice",
   "02_KLEIGH Audio",
   "03_K-KUT Candidate Audio",
@@ -114,14 +115,28 @@ export async function POST(req: Request) {
     const path = `pending-review/${folder}/${day}/${stamp}-${fileName}`;
     const bytes = await file.arrayBuffer();
 
+    const is4peArtistUpload = folder === "4PE_ARTIST_UPLOADS_PENDING_REVIEW";
+    const uploadMetadata = is4peArtistUpload
+      ? {
+          uploaded_by_role: "artist_or_gpm_admin",
+          approval_status: "PENDING_4PE_INTAKE_REVIEW",
+          intake_lane: "4PE_ARTIST_UPLOAD",
+        }
+      : {
+          uploaded_by_role: "MC",
+          approval_status: "pending_greg_review",
+          intake_lane: "asset_drop",
+        };
+
     const { error } = await supabase.storage
       .from(BUCKET)
       .upload(path, bytes, {
         contentType: file.type || "application/octet-stream",
         upsert: false,
         metadata: {
-          uploaded_by_role: "MC",
-          approval_status: "pending_greg_review",
+          uploaded_by_role: uploadMetadata.uploaded_by_role,
+          approval_status: uploadMetadata.approval_status,
+          intake_lane: uploadMetadata.intake_lane,
           note,
           original_name: file.name,
         },
@@ -137,7 +152,8 @@ export async function POST(req: Request) {
     uploaded.push({
       originalName: file.name,
       path,
-      status: "pending_greg_review",
+      status: uploadMetadata.approval_status,
+      intakeLane: uploadMetadata.intake_lane,
     });
   }
 
