@@ -1,0 +1,12 @@
+{
+  "rule_id": "SIGNATURE_AUDIO_LOGO_STOP_AT_TWINKLE_END_20260704",
+  "date": "2026-07-04",
+  "status": "LOCKED",
+  "rule": "DP audio must stop at the audible end of the Signature Audio Logo. No post-Twinkle silence tail is allowed.",
+  "dp_shape": "front silence -> KK audio -> end cushion silence -> Signature Audio Logo -> STOP",
+  "forbidden": [
+    "post-Twinkle blank tail",
+    "2-second silence after Signature Audio Logo",
+    "static/noise padding after Signature Audio Logo"
+  ]
+}
