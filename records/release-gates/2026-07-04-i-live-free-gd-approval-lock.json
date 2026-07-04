@@ -1,0 +1,34 @@
+{
+  "approval_lock_id": "GD_APPROVAL_LOCK_I_LIVE_FREE_JULY4_20260704",
+  "date": "2026-07-04",
+  "approver": "GD / Greg Putnam",
+  "canonical_track_title": "I LIVE FREE",
+  "approval_status": "APPROVED_LOCKED",
+  "accuracy_grade": "A+",
+  "approved_scope": "All 11 rebuilt I Live Free KKs approved after digital-silence padding repair.",
+  "featured_items": [
+    {
+      "rank": 1,
+      "kk_number": 11,
+      "file": "public/i-live-free-july4/audio/ilf-kk11-final-chorus-dp-sti.mp3",
+      "reason": "Best and strongest"
+    },
+    {
+      "rank": 2,
+      "kk_number": 9,
+      "file": "public/i-live-free-july4/audio/ilf-kk09-bridge-tight-dp-sti.mp3",
+      "reason": "Featured July 4 support"
+    },
+    {
+      "rank": 3,
+      "kk_number": 6,
+      "file": "public/i-live-free-july4/audio/ilf-kk06-bridge-dp-sti.mp3",
+      "reason": "Featured July 4 support"
+    }
+  ],
+  "volume_policy": {
+    "default_player_volume": 0.55,
+    "muted": false,
+    "reason": "Lower default level protects listeners and Signature Audio Logo impact while keeping audio audible."
+  }
+}

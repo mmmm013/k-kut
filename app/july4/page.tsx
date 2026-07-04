@@ -1,78 +1,95 @@
-const foundationItems = [
+"use client";
+
+import { useEffect, useRef } from "react";
+
+const defaultVolume = 0.55;
+
+const featured = [
+  {
+    title: "I Live Free · KK11 · Final Chorus",
+    tag: "Featured #1 · Best / strongest",
+    line: "Freedom finish. Accuracy A+ · GD approved and locked.",
+    audio: "/i-live-free-july4/audio/ilf-kk11-final-chorus-dp-sti.mp3",
+  },
+  {
+    title: "I Live Free · KK09 · Bridge Tight",
+    tag: "Featured #2",
+    line: "Bridge lift. Accuracy A+ · GD approved and locked.",
+    audio: "/i-live-free-july4/audio/ilf-kk09-bridge-tight-dp-sti.mp3",
+  },
+  {
+    title: "I Live Free · KK06 · Bridge",
+    tag: "Featured #3",
+    line: "BRAVE center. Accuracy A+ · GD approved and locked.",
+    audio: "/i-live-free-july4/audio/ilf-kk06-bridge-dp-sti.mp3",
+  },
+];
+
+const foundation = [
   {
     title: "The Foundation · V1",
-    line: "Foundation July 4 II · approved live Foundation moment.",
+    tag: "Foundation II 1",
+    line: "Approved Foundation July 4 moment.",
     audio: "/foundation-july4/audio/foundation-july4-v1-full-dp-sti.mp3",
   },
   {
     title: "The Foundation · Bridge",
-    line: "Foundation July 4 II · BRAVE lift.",
+    tag: "Foundation II 2",
+    line: "BRAVE lift.",
     audio: "/foundation-july4/audio/foundation-july4-bridge-dp-sti.mp3",
   },
   {
     title: "The Foundation · Final Chorus",
-    line: "Foundation July 4 II · Heroes Eagle finish.",
+    tag: "Foundation II 3",
+    line: "Heroes Eagle finish.",
     audio: "/foundation-july4/audio/foundation-july4-ch3-dp-sti.mp3",
   },
 ];
 
-const iLiveFreeItems = [
-  {
-    "title": "I Live Free \u00b7 KK01 \u00b7 Ch1",
-    "line": "Chorus 1 \u00b7 TPR row TPR_KKR_BATCH_003_50_0001 \u00b7 source window 0.000\u201316.029s",
-    "audio": "/i-live-free-july4/audio/ilf-kk01-ch1-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK02 \u00b7 Tag",
-    "line": "Tag \u00b7 TPR row TPR_KKR_BATCH_003_50_0002 \u00b7 source window 16.029\u201323.105s",
-    "audio": "/i-live-free-july4/audio/ilf-kk02-tag-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK03 \u00b7 V1",
-    "line": "Verse 1 \u00b7 TPR row TPR_KKR_BATCH_003_50_0003 \u00b7 source window 23.105\u201352.465s",
-    "audio": "/i-live-free-july4/audio/ilf-kk03-v1-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK04 \u00b7 Ch2",
-    "line": "Chorus 2 \u00b7 TPR row TPR_KKR_BATCH_003_50_0004 \u00b7 source window 52.465\u201368.150s",
-    "audio": "/i-live-free-july4/audio/ilf-kk04-ch2-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK05 \u00b7 Tag",
-    "line": "Tag \u00b7 TPR row TPR_KKR_BATCH_003_50_0005 \u00b7 source window 68.150\u201381.370s",
-    "audio": "/i-live-free-july4/audio/ilf-kk05-tag-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK06 \u00b7 Bridge",
-    "line": "Bridge \u00b7 TPR row TPR_KKR_BATCH_003_50_0006 \u00b7 source window 96.479\u2013114.709s",
-    "audio": "/i-live-free-july4/audio/ilf-kk06-bridge-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK07 \u00b7 Tag",
-    "line": "Tag \u00b7 TPR row TPR_KKR_BATCH_003_50_0007 \u00b7 source window 119.770\u2013123.020s",
-    "audio": "/i-live-free-july4/audio/ilf-kk07-tag-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK08 \u00b7 Tag",
-    "line": "Tag \u00b7 TPR row TPR_KKR_BATCH_003_50_0008 \u00b7 source window 94.006\u201396.356s",
-    "audio": "/i-live-free-july4/audio/ilf-kk08-tag-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK09 \u00b7 Bridge Tight",
-    "line": "Bridge alternate \u00b7 TPR row TPR_KKR_BATCH_003_50_0009 \u00b7 source window 100.121\u2013114.604s",
-    "audio": "/i-live-free-july4/audio/ilf-kk09-bridge-tight-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK10 \u00b7 Tag",
-    "line": "Tag \u00b7 TPR row TPR_KKR_BATCH_003_50_0010 \u00b7 source window 116.391\u2013121.339s",
-    "audio": "/i-live-free-july4/audio/ilf-kk10-tag-dp-sti.mp3"
-  },
-  {
-    "title": "I Live Free \u00b7 KK11 \u00b7 Final Chorus",
-    "line": "Final Chorus \u00b7 TPR row TPR_KKR_BATCH_003_50_0011 \u00b7 source window 121.339\u2013146.855s",
-    "audio": "/i-live-free-july4/audio/ilf-kk11-final-chorus-dp-sti.mp3"
-  }
-];
+function ControlledAudio({ src }: { src: string }) {
+  const ref = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.volume = defaultVolume;
+      ref.current.muted = false;
+    }
+  }, []);
+
+  return (
+    <audio
+      ref={ref}
+      className="mt-5 w-full"
+      controls
+      preload="metadata"
+      src={src}
+    />
+  );
+}
+
+function Card({
+  item,
+  index,
+}: {
+  item: { title: string; tag: string; line: string; audio: string };
+  index: number;
+}) {
+  return (
+    <section className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl">
+      <p className="text-xs font-black uppercase tracking-[0.25em] text-white/45">
+        {item.tag}
+      </p>
+      <h3 className="mt-2 text-3xl font-black text-[#FFD54F]">
+        {item.title}
+      </h3>
+      <p className="mt-2 text-sm leading-6 text-white/70">{item.line}</p>
+      <p className="mt-2 text-xs text-white/45">
+        Player opens at 55% volume. Use controls to lower or raise.
+      </p>
+      <ControlledAudio src={item.audio} />
+    </section>
+  );
+}
 
 export default function July4Page() {
   return (
@@ -84,50 +101,44 @@ export default function July4Page() {
           </p>
 
           <div className="mt-5 flex items-center gap-4">
-            <div className="text-6xl" aria-hidden="true">🦅</div>
+            <div className="text-6xl" aria-hidden="true">
+              🦅
+            </div>
             <div>
               <h1 className="text-5xl font-black tracking-tight">BRAVE</h1>
               <p className="mt-2 text-lg font-bold text-white/75">
-                Heroes Eagle · The Foundation · I Live Free
+                Heroes Eagle · I Live Free · The Foundation
               </p>
             </div>
           </div>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
-            July 4 K-KUT display: courage, memory, freedom, and forward motion.
+            July 4 K-KUT display from two LT-PIX: freedom, foundation, courage,
+            and forward motion.
           </p>
         </div>
 
-        <h2 className="mt-10 text-3xl font-black text-[#FFD54F]">The Foundation</h2>
+        <h2 className="mt-10 text-3xl font-black text-[#FFD54F]">
+          Featured I Live Free KKs
+        </h2>
         <div className="mt-5 grid gap-5">
-          {foundationItems.map((item, index) => (
-            <section key={item.audio} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-white/45">
-                Foundation II {index + 1}
-              </p>
-              <h3 className="mt-2 text-3xl font-black text-[#FFD54F]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-white/70">{item.line}</p>
-              <audio className="mt-5 w-full" controls src={item.audio} />
-            </section>
+          {featured.map((item, index) => (
+            <Card key={item.audio} item={item} index={index} />
           ))}
         </div>
 
-        <h2 className="mt-10 text-3xl font-black text-[#FFD54F]">I Live Free</h2>
+        <h2 className="mt-10 text-3xl font-black text-[#FFD54F]">
+          The Foundation
+        </h2>
         <div className="mt-5 grid gap-5">
-          {iLiveFreeItems.map((item, index) => (
-            <section key={item.audio} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-white/45">
-                I Live Free II {index + 1}
-              </p>
-              <h3 className="mt-2 text-3xl font-black text-[#FFD54F]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-white/70">{item.line}</p>
-              <audio className="mt-5 w-full" controls src={item.audio} />
-            </section>
+          {foundation.map((item, index) => (
+            <Card key={item.audio} item={item} index={index} />
           ))}
         </div>
 
         <p className="mt-8 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm leading-6 text-white/60">
           © G Putnam Music. K-KUT promo audio prepared through GPM release gate.
+          I Live Free approval locked by GD: Accuracy A+.
         </p>
       </section>
     </main>
