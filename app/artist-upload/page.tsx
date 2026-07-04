@@ -48,7 +48,7 @@ export default function ArtistUploadPage() {
     }
 
     setStatus(
-      `Uploaded ${json.uploadedCount} file(s) into private 4PE Intake Pending Review. Nothing is public or approved yet.`
+      `Upload received successfully. Thank you. ${json.uploadedCount} file(s) entered private 4PE Intake Pending Review. Nothing is public, accepted, or approved yet. Greg/GPM will review next.`
     );
 
     form.reset();
