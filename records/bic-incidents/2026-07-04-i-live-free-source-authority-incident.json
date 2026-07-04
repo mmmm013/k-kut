@@ -1,0 +1,52 @@
+{
+  "incident_id": "BIC_INCIDENT_2026_07_04_I_LIVE_FREE_SOURCE_AUTHORITY",
+  "date": "2026-07-04",
+  "severity": "BIC_LEVEL_RELEASE_SAFETY",
+  "project": "K-KUT / 4PE-KKr",
+  "affected_route": "/i-live-free-july4",
+  "status": "HELD_OFFLINE",
+  "hold_commit": "d50fcaf",
+  "hold_commit_message": "Emergency hold I Live Free promo pending source-authority audit",
+  "bad_public_files_removed": [
+    "app/i-live-free-july4/page.tsx",
+    "public/i-live-free-july4/audio/i-live-free-karekut-dp-sti.mp3",
+    "public/i-live-free-july4/audio/i-live-free-shortkut-dp-sti.mp3"
+  ],
+  "bad_or_unsafe_paths": [
+    {
+      "path": "/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/4PE_KKr_RUN_STL_311/108_II_APPROVAL_NEXT_BATCH_HOLIDAY_FOUNDATION/PRIVATE_RENDERED_AUDIO_BATCH_DO_NOT_SHIP/sentimeants/karekut/SIM_AUDIO_aa52381561c0bcefa0/karekut-015-8c65c871__SIM_AUDIO_aa52381561c0bcefa0.mp3",
+      "reason": "PRIVATE_RENDERED_AUDIO_BATCH_DO_NOT_SHIP; not public release authority; listener mismatch reported"
+    },
+    {
+      "path": "/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/4PE_KKr_RUN_STL_311/50_GD_PRODUCT_REVIEW_CANDIDATE_PLAYBACK_SAFE_PUBLIC_TITLES/GD_PRODUCT_REVIEW_CANDIDATE_PLAYBACK_20260630T223240Z/CANDIDATE_AUDIO_CLIPS_REVIEW_ONLY/shortKUT_0238_39__17.996.wav",
+      "reason": "review-only candidate audio; filename not enough release proof"
+    },
+    {
+      "path": "/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/4PE_KKr_RUN_STL_311/49_GD_PRODUCT_REVIEW_WORKBENCH_AUDIO_RESOLVED/GD_PRODUCT_REVIEW_AUDIO_RESOLVED_20260630T222704Z/AUDIO_REVIEW_CACHE_CONTROLLED/50__KareKUT__I_LIVE_FREE__238_-_Brianna_Shelko_-_I_LIVE_FREE.wav",
+      "reason": "full/wrapper audio, not individual KK"
+    },
+    {
+      "path": "/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/4PE_KKr_RUN_STL_311/49_GD_PRODUCT_REVIEW_WORKBENCH_AUDIO_RESOLVED/GD_PRODUCT_REVIEW_AUDIO_RESOLVED_20260630T222704Z/AUDIO_REVIEW_CACHE_CONTROLLED/50__shortKUT__I_LIVE_FREE__238_-_Brianna_Shelko_-_I_LIVE_FREE.wav",
+      "reason": "full/wrapper audio, not individual KK"
+    },
+    {
+      "path": "/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/4PE_KKr_RUN_STL_311/49_GD_PRODUCT_REVIEW_WORKBENCH_AUDIO_RESOLVED/GD_PRODUCT_REVIEW_AUDIO_RESOLVED_20260630T222704Z/AUDIO_REVIEW_CACHE_CONTROLLED/50__sK_rhyme_review__I_LIVE_FREE__50_-_Michael_Scherer_-_SUNDAY_AFTERNOON_-_INSTRO_bpm.wav",
+      "reason": "explicit cross-title mismatch: I Live Free path plus Sunday Afternoon INSTRO filename"
+    }
+  ],
+  "new_hard_gates": [
+    "No public release from title/filename/path search.",
+    "Require canonical_track_title exact match.",
+    "Require work item / track ID exact match.",
+    "Require source_file_name exact match.",
+    "Require parent WAV/lossless path and hash match.",
+    "Require exact TPR/CDR/II Approval row binding.",
+    "Reject PRIVATE / DO_NOT_SHIP / REVIEW_ONLY sources for public release.",
+    "Require final public duration verification.",
+    "Require GD final listening approval."
+  ],
+  "live_verification_after_hold": {
+    "i-live-free-july4": 404,
+    "foundation-july4": 200
+  }
+}
