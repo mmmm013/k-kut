@@ -1,0 +1,63 @@
+{
+  "approval_lock_id": "GD_APPROVAL_LOCK_ALL_JULY4_KKS_20260704",
+  "date": "2026-07-04",
+  "approver": "GD / Greg Putnam",
+  "approval_status": "APPROVED_ALL_LOCKED",
+  "scope": "All deployed July 4 K-KUT IIs from The Foundation and I Live Free.",
+  "included_lt_pix": [
+    "THE FOUNDATION - DEMOCRACY",
+    "I LIVE FREE"
+  ],
+  "approved_public_routes": [
+    "/july4",
+    "/foundation-july4",
+    "/i-live-free-july4"
+  ],
+  "featured_i_live_free_order": [
+    {
+      "rank": 1,
+      "kk_number": 11,
+      "file": "public/i-live-free-july4/audio/ilf-kk11-final-chorus-dp-sti.mp3",
+      "note": "Best / strongest"
+    },
+    {
+      "rank": 2,
+      "kk_number": 9,
+      "file": "public/i-live-free-july4/audio/ilf-kk09-bridge-tight-dp-sti.mp3"
+    },
+    {
+      "rank": 3,
+      "kk_number": 6,
+      "file": "public/i-live-free-july4/audio/ilf-kk06-bridge-dp-sti.mp3"
+    }
+  ],
+  "foundation_files": [
+    "public/foundation-july4/audio/foundation-july4-v1-full-dp-sti.mp3",
+    "public/foundation-july4/audio/foundation-july4-bridge-dp-sti.mp3",
+    "public/foundation-july4/audio/foundation-july4-ch3-dp-sti.mp3"
+  ],
+  "i_live_free_files": [
+    "public/i-live-free-july4/audio/ilf-kk01-ch1-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk02-tag-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk03-v1-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk04-ch2-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk05-tag-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk06-bridge-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk07-tag-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk08-tag-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk09-bridge-tight-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk10-tag-dp-sti.mp3",
+    "public/i-live-free-july4/audio/ilf-kk11-final-chorus-dp-sti.mp3"
+  ],
+  "signature_audio_logo_rule": {
+    "status": "LOCKED",
+    "rule": "Stop at Twinkle end. No post-Twinkle silence tail.",
+    "dp_shape": "front silence -> KK audio -> end cushion silence -> Signature Audio Logo -> STOP"
+  },
+  "volume_policy": {
+    "default_player_volume": 0.55,
+    "muted": false,
+    "user_can_adjust": true
+  },
+  "bic_release_note": "Approved by GD after source-authority repair, digital-silence repair, and Signature Audio Logo stop-at-Twinkle-end rule."
+}
