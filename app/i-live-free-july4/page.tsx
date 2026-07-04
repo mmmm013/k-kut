@@ -1,22 +1,4 @@
-const foundationItems = [
-  {
-    title: "The Foundation · V1",
-    line: "Foundation July 4 II · approved live Foundation moment.",
-    audio: "/foundation-july4/audio/foundation-july4-v1-full-dp-sti.mp3",
-  },
-  {
-    title: "The Foundation · Bridge",
-    line: "Foundation July 4 II · BRAVE lift.",
-    audio: "/foundation-july4/audio/foundation-july4-bridge-dp-sti.mp3",
-  },
-  {
-    title: "The Foundation · Final Chorus",
-    line: "Foundation July 4 II · Heroes Eagle finish.",
-    audio: "/foundation-july4/audio/foundation-july4-ch3-dp-sti.mp3",
-  },
-];
-
-const iLiveFreeItems = [
+const items = [
   {
     "title": "I Live Free \u00b7 KK01 \u00b7 Ch1",
     "line": "Chorus 1 \u00b7 TPR row TPR_KKR_BATCH_003_50_0001 \u00b7 source window 0.000\u201316.029s",
@@ -74,7 +56,7 @@ const iLiveFreeItems = [
   }
 ];
 
-export default function July4Page() {
+export default function ILiveFreeJuly4Page() {
   return (
     <main className="min-h-screen bg-[#07070a] px-5 py-10 text-white">
       <section className="mx-auto max-w-5xl">
@@ -83,43 +65,26 @@ export default function July4Page() {
             G Putnam Music · K-KUT · July 4
           </p>
 
-          <div className="mt-5 flex items-center gap-4">
-            <div className="text-6xl" aria-hidden="true">🦅</div>
-            <div>
-              <h1 className="text-5xl font-black tracking-tight">BRAVE</h1>
-              <p className="mt-2 text-lg font-bold text-white/75">
-                Heroes Eagle · The Foundation · I Live Free
-              </p>
-            </div>
-          </div>
+          <h1 className="mt-5 text-5xl font-black tracking-tight">
+            I Live Free
+          </h1>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
-            July 4 K-KUT display: courage, memory, freedom, and forward motion.
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-white/75">
+            Eleven rebuilt K-KUT moments from the exact I Live Free parent WAV
+            and exact TPR row windows. No filename search. No wrong-title audio.
           </p>
         </div>
 
-        <h2 className="mt-10 text-3xl font-black text-[#FFD54F]">The Foundation</h2>
-        <div className="mt-5 grid gap-5">
-          {foundationItems.map((item, index) => (
-            <section key={item.audio} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-white/45">
-                Foundation II {index + 1}
-              </p>
-              <h3 className="mt-2 text-3xl font-black text-[#FFD54F]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-white/70">{item.line}</p>
-              <audio className="mt-5 w-full" controls src={item.audio} />
-            </section>
-          ))}
-        </div>
-
-        <h2 className="mt-10 text-3xl font-black text-[#FFD54F]">I Live Free</h2>
-        <div className="mt-5 grid gap-5">
-          {iLiveFreeItems.map((item, index) => (
-            <section key={item.audio} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl">
+        <div className="mt-8 grid gap-5">
+          {items.map((item, index) => (
+            <section
+              key={item.audio}
+              className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl"
+            >
               <p className="text-xs font-black uppercase tracking-[0.25em] text-white/45">
                 I Live Free II {index + 1}
               </p>
-              <h3 className="mt-2 text-3xl font-black text-[#FFD54F]">{item.title}</h3>
+              <h2 className="mt-2 text-3xl font-black text-[#FFD54F]">{item.title}</h2>
               <p className="mt-2 text-sm leading-6 text-white/70">{item.line}</p>
               <audio className="mt-5 w-full" controls src={item.audio} />
             </section>
