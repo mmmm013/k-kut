@@ -1,12 +1,12 @@
 const items = [
   {
     title: "I Live Free · KareKUT",
-    line: "A full free-standing K-KUT moment for the Fourth.",
+    line: "Actual short KK candidate · source render 23.497s · prepared through DP/STI release gate.",
     audio: "/i-live-free-july4/audio/i-live-free-karekut-dp-sti.mp3",
   },
   {
     title: "I Live Free · ShortKUT",
-    line: "A shorter freedom hit from the same approved source.",
+    line: "Actual short KK candidate · source render 17.996s · prepared through DP/STI release gate.",
     audio: "/i-live-free-july4/audio/i-live-free-shortkut-dp-sti.mp3",
   },
 ];
@@ -24,7 +24,7 @@ export default function ILiveFreeJuly4Page() {
         </h1>
 
         <p className="mt-4 max-w-2xl text-lg leading-7 text-white/75">
-          Two July 4 K-KUT moments from <em>I Live Free</em>. Turn it up.
+          Two actual short K-KUT moments from <em>I Live Free</em>. Turn it up.
           Make noise for freedom, breath, and forward motion.
         </p>
 
