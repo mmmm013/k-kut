@@ -12,6 +12,8 @@ const SCAN_ROOTS = [
 const OUT_DIR = "manifests/kkr/line-cc";
 const OUT_JSON = `${OUT_DIR}/lnduo-lntrio-rmst-cc-inventory.json`;
 const OUT_MD = `reports/lnduo-lntrio-rmst-cc-inventory.md`;
+const MIN_SK_SECONDS = 1.001;
+const MK_TYPICAL_MAX_SECONDS = 1.100;
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.mkdirSync("reports", { recursive: true });
@@ -164,18 +166,47 @@ function makeCandidate({ type, lines, sourceFile, audioUrl }) {
   const lowerText = text.toLowerCase();
   const words = normalizeLine(text).split(" ").filter(Boolean).length;
 
-  const ready =
+  const goodAudio =
     audioUrl &&
     !isBadAudioUrl(audioUrl) &&
     !lowerText.includes("instro") &&
     !lowerText.includes("instrumental") &&
-    suitableDuration(dur) &&
-    words >= 4;
+    suitableDuration(dur);
+
+  const skReady =
+    goodAudio &&
+    words >= 4 &&
+    dur >= MIN_SK_SECONDS;
+
+  const mkReadyTypical =
+    goodAudio &&
+    !skReady &&
+    words >= 1 &&
+    words <= 3 &&
+    dur > 0 &&
+    dur <= MK_TYPICAL_MAX_SECONDS;
+
+  const mkReadyHeldOneTerm =
+    goodAudio &&
+    !skReady &&
+    words === 1 &&
+    dur > MK_TYPICAL_MAX_SECONDS;
+
+  const ready = skReady || mkReadyTypical || mkReadyHeldOneTerm;
+  const ccStatus = skReady
+    ? "READY_FOR_SK_CC"
+    : mkReadyHeldOneTerm
+      ? "READY_FOR_MK_CC_HELD_ONE_TERM_REVIEW"
+      : mkReadyTypical
+        ? "READY_FOR_MK_CC"
+        : "HOLD_REVIEW";
+  const iiLane = skReady ? "sK_II" : ready ? "mK_II" : "HOLD";
 
   return {
     id: `${type}-${Buffer.from(`${sourceFile}:${start}:${end}:${text}`).toString("hex").slice(0, 16)}`,
     type,
-    status: ready ? "READY_FOR_CC" : "HOLD_REVIEW",
+    status: ccStatus,
+    ii_lane: iiLane,
     source_file: sourceFile,
     ssot_audio_url: audioUrl || null,
     start,
@@ -190,9 +221,16 @@ function makeCandidate({ type, lines, sourceFile, audioUrl }) {
     })),
     suitability: {
       has_audio_url: Boolean(audioUrl),
-      non_instrumental: audioUrl ? !isBadAudioUrl(audioUrl) : false,
-      duration_recorded_not_eligibility: dur,
+      non_instrumental: Boolean(goodAudio),
+      minimum_sk_terms: 4,
+      minimum_sk_seconds: MIN_SK_SECONDS,
+      mk_typical_max_seconds: MK_TYPICAL_MAX_SECONDS,
+      mk_can_be_under_1000ms: true,
+      mk_held_one_term_longer_allowed: true,
       word_count: words,
+      sk_ready: skReady,
+      mk_ready_typical: mkReadyTypical,
+      mk_ready_held_one_term: mkReadyHeldOneTerm,
     },
   };
 }
@@ -271,9 +309,13 @@ const payload = {
     no_guessed_timing: true,
     cc_requires_ssot_audio_url: true,
     cc_requires_exact_start_end: true,
-    time_is_not_creation_eligibility_except_swsp_13s_floor: true,
+    kk_time_not_creation_eligibility_but_sk_mk_ii_has_timing_gates: true,
     instrumental_rejected: true,
     ready_for_cc_is_not_auto_release: true,
+    sk_requires_minimum_4_terms_and_1001_seconds: true,
+    mk_micro_meaning_can_be_under_1000ms: true,
+    mk_typical_up_to_1100ms: true,
+    mk_held_one_term_longer_allowed: true,
   },
   totals,
   candidates: rows,

@@ -5,6 +5,8 @@ const SCAN_ROOTS = ["data", "manifests", "incoming", "public"];
 
 const OUT_DIR = "manifests/kkr/line-cc/individual";
 const REPORT = "reports/lt-pix-line-cc-individual-audit.md";
+const MIN_SK_SECONDS = 1.001;
+const MK_TYPICAL_MAX_SECONDS = 1.100;
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.mkdirSync("reports", { recursive: true });
@@ -75,12 +77,9 @@ function dur(a, b) {
   return Math.round((b - a) * 1000) / 1000;
 }
 
-function durationOk(_seconds) {
-  // GPEx LAW:
-  // Time is not a CC creation eligibility factor for LT-PIX or KKs.
-  // Exact start/end remains required metadata.
-  // Only SWSP has a 13-second floor, handled separately.
-  return true;
+function durationOk(seconds) {
+  const n = Number(seconds);
+  return Number.isFinite(n) && n > 0;
 }
 
 function findAudioRefs(obj, refs = []) {
@@ -193,17 +192,46 @@ function makeCandidate(type, unit, lines) {
   const lower = text.toLowerCase();
   const words = norm(text).split(" ").filter(Boolean).length;
 
-  const ready =
+  const goodAudio =
     !badAudio(unit.ssot_audio_url) &&
     !lower.includes("instro") &&
     !lower.includes("instrumental") &&
-    durationOk(seconds) &&
-    words >= 4;
+    durationOk(seconds);
+
+  const skReady =
+    goodAudio &&
+    words >= 4 &&
+    seconds >= MIN_SK_SECONDS;
+
+  const mkReadyTypical =
+    goodAudio &&
+    !skReady &&
+    words >= 1 &&
+    words <= 3 &&
+    seconds > 0 &&
+    seconds <= MK_TYPICAL_MAX_SECONDS;
+
+  const mkReadyHeldOneTerm =
+    goodAudio &&
+    !skReady &&
+    words === 1 &&
+    seconds > MK_TYPICAL_MAX_SECONDS;
+
+  const ready = skReady || mkReadyTypical || mkReadyHeldOneTerm;
+  const ccStatus = skReady
+    ? "READY_FOR_SK_CC"
+    : mkReadyHeldOneTerm
+      ? "READY_FOR_MK_CC_HELD_ONE_TERM_REVIEW"
+      : mkReadyTypical
+        ? "READY_FOR_MK_CC"
+        : "HOLD_REVIEW";
+  const iiLane = skReady ? "sK_II" : ready ? "mK_II" : "HOLD";
 
   return {
     id: `${type}-${Buffer.from(`${unit.ssot_audio_url}:${start}:${end}:${text}`).toString("hex").slice(0, 20)}`,
     type,
-    status: ready ? "READY_FOR_CC" : "HOLD_REVIEW",
+    status: ccStatus,
+    ii_lane: iiLane,
     source_file: unit.source_file,
     ssot_audio_url: unit.ssot_audio_url,
     start,
@@ -212,9 +240,16 @@ function makeCandidate(type, unit, lines) {
     text,
     lines,
     suitability: {
-      non_instrumental: !badAudio(unit.ssot_audio_url) && !lower.includes("instro") && !lower.includes("instrumental"),
-      duration_recorded_not_eligibility: seconds,
+      non_instrumental: Boolean(goodAudio),
+      minimum_sk_terms: 4,
+      minimum_sk_seconds: MIN_SK_SECONDS,
+      mk_typical_max_seconds: MK_TYPICAL_MAX_SECONDS,
+      mk_can_be_under_1000ms: true,
+      mk_held_one_term_longer_allowed: true,
       word_count: words,
+      sk_ready: skReady,
+      mk_ready_typical: mkReadyTypical,
+      mk_ready_held_one_term: mkReadyHeldOneTerm,
     },
   };
 }
@@ -279,11 +314,30 @@ function dedupRows(rows) {
   return [...m.values()];
 }
 
+function isReadyStatus(status) {
+  return [
+    "READY_FOR_CC",
+    "READY_FOR_SK_CC",
+    "READY_FOR_MK_CC",
+    "READY_FOR_MK_CC_HELD_ONE_TERM_REVIEW",
+  ].includes(status);
+}
+
 function totals(rows) {
   return {
     total: rows.length,
-    ready: rows.filter((r) => r.status === "READY_FOR_CC").length,
-    hold: rows.filter((r) => r.status !== "READY_FOR_CC").length,
+    ready: rows.filter((r) => isReadyStatus(r.status)).length,
+    hold: rows.filter((r) => !isReadyStatus(r.status)).length,
+    by_status: rows.reduce((acc, r) => {
+      const key = r.status || "(blank)";
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {}),
+    by_lane: rows.reduce((acc, r) => {
+      const key = r.ii_lane || "(blank)";
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {}),
   };
 }
 
@@ -329,6 +383,10 @@ fs.writeFileSync(
     doctrine: {
       coverage_only: true,
       missing_timed_line_map_is_not_rejection: true,
+      sk_requires_minimum_4_terms_and_1001_seconds: true,
+      mk_micro_meaning_can_be_under_1000ms: true,
+      mk_typical_up_to_1100ms: true,
+      mk_held_one_term_longer_allowed: true,
       ssot_audio_must_be_mapped_before_line_cc_generation: true,
     },
     totals: {
