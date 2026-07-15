@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const DEFAULT_HUG_PAYMENT_URL =
+const REGULAR_HUG_PAYMENT_URL =
   "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
 const APPROVED_PAYMENT_LINKS = new Set([
@@ -32,7 +32,7 @@ function configuredLink(offer: CheckoutOffer) {
   return (
     process.env.NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL ||
     process.env.NEXT_PUBLIC_TAILORED_HUG_PAYMENT_URL ||
-    DEFAULT_HUG_PAYMENT_URL
+    REGULAR_HUG_PAYMENT_URL
   );
 }
 
