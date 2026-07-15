@@ -37,16 +37,28 @@ export default function BrowsePage() {
 
           <div className="mt-7 grid gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-[#8D6E63]/35 bg-black/25 p-5">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">1 · Listen</p>
-              <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">Every option uses the finished public delivery capsule.</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">
+                1 · Listen
+              </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
+                Every option uses the finished public delivery capsule.
+              </p>
             </div>
             <div className="rounded-2xl border border-[#8D6E63]/35 bg-black/25 p-5">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">2 · Choose</p>
-              <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">Your selected K-KUT ID travels into checkout for order reconciliation.</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">
+                2 · Choose
+              </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
+                Your exact K-KUT ID travels into checkout for order reconciliation.
+              </p>
             </div>
             <div className="rounded-2xl border border-[#8D6E63]/35 bg-black/25 p-5">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">3 · Receive</p>
-              <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">K-KUT uses the paid order record to fulfill the exact music moment selected.</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">
+                3 · Receive
+              </p>
+              <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
+                K-KUT uses the paid order record to fulfill the exact music moment selected.
+              </p>
             </div>
           </div>
         </header>
@@ -54,7 +66,7 @@ export default function BrowsePage() {
         <PublicIiBrowser />
 
         <footer className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
-          Released catalog rule: public storage verified, exact inventory identity preserved, and canonical GPMx Twinkle proof required. MC-BOT may narrow by available metadata, but listening and customer choice remain decisive.
+          Released catalog rule: public storage verified, exact K-KUT identity preserved, and canonical GPMx Twinkle proof required. MC-BOT may narrow by available metadata, but listening and customer choice remain decisive.
         </footer>
       </section>
     </main>
