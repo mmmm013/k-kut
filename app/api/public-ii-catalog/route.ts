@@ -23,6 +23,8 @@ const TRUE_VALUES = new Set([
   "end",
 ]);
 
+type CheckoutClass = "short_kut" | "hug" | "big_hug" | "hold";
+
 type RawCatalogRecord = {
   inventory_id?: unknown;
   inventory_family?: unknown;
@@ -61,7 +63,10 @@ function prettyLabel(value: unknown) {
 }
 
 function itemLabel(inventoryId: string, index: number) {
-  const match = inventoryId.match(/(?:ALLPOSS[-_])?(\d{1,6}).*?KK[-_](\d{1,3})$/i);
+  const match = inventoryId.match(
+    /(?:ALLPOSS[-_])?(\d{1,6}).*?KK[-_](\d{1,3})$/i,
+  );
+
   if (match) {
     return `K-KUT ${match[1].padStart(5, "0")} · ${match[2]}`;
   }
@@ -71,10 +76,12 @@ function itemLabel(inventoryId: string, index: number) {
 
 function priceNumber(value: unknown) {
   const parsed = Number.parseFloat(cleanText(value, 24).replace(/[$,]/g, ""));
-  return Number.isFinite(parsed) && parsed > 0 ? Number(parsed.toFixed(2)) : null;
+  return Number.isFinite(parsed) && parsed > 0
+    ? Number(parsed.toFixed(2))
+    : null;
 }
 
-function checkoutClass(offer: string, priceUsd: number | null) {
+function checkoutClass(offer: string, priceUsd: number | null): CheckoutClass {
   const normalized = offer.toLowerCase().replace(/[^a-z0-9]+/g, "_");
 
   if (normalized.includes("big_hug") || normalized.includes("bighug")) {
@@ -93,6 +100,17 @@ function checkoutClass(offer: string, priceUsd: number | null) {
   if (priceUsd === 12.99) return "big_hug";
 
   return "hold";
+}
+
+function checkoutConfigured(checkout: CheckoutClass) {
+  if (checkout === "hug") return true;
+  if (checkout === "short_kut") {
+    return Boolean(process.env.NEXT_PUBLIC_KKUT_SHORT_KUT_PAYMENT_URL);
+  }
+  if (checkout === "big_hug") {
+    return Boolean(process.env.NEXT_PUBLIC_KKUT_BIG_HUG_PAYMENT_URL);
+  }
+  return false;
 }
 
 export async function GET() {
@@ -152,50 +170,66 @@ export async function GET() {
     );
   }
 
-  const publicRecords = records.map((record, index) => {
-    const id = cleanText(record.inventory_id, 200);
-    const audioUrl = cleanText(record.public_audio_url, 900);
-    const storageStatus = cleanText(record.public_storage_status, 80);
-    const twinkleAtEnd = isTrue(record.signature_audio_logo_integral_at_end);
-    const offerRaw = cleanText(record.delivery_offer, 100);
-    const priceUsd = priceNumber(record.delivery_price_usd);
+  let publicRecords;
 
-    if (!/^[A-Za-z0-9_-]+$/.test(id)) {
-      throw new Error(`unsafe_inventory_id_at_${index + 1}`);
-    }
+  try {
+    publicRecords = records.map((record, index) => {
+      const id = cleanText(record.inventory_id, 200);
+      const audioUrl = cleanText(record.public_audio_url, 900);
+      const storageStatus = cleanText(record.public_storage_status, 80);
+      const twinkleAtEnd = isTrue(
+        record.signature_audio_logo_integral_at_end,
+      );
+      const offerRaw = cleanText(record.delivery_offer, 100);
+      const priceUsd = priceNumber(record.delivery_price_usd);
 
-    if (!audioUrl.startsWith(AUDIO_PREFIX)) {
-      throw new Error(`unsafe_audio_url_at_${index + 1}`);
-    }
+      if (!/^[A-Za-z0-9_-]+$/.test(id)) {
+        throw new Error(`unsafe_inventory_id_at_${index + 1}`);
+      }
 
-    if (storageStatus !== "PUBLIC_STORAGE_VERIFIED") {
-      throw new Error(`storage_gate_failed_at_${index + 1}`);
-    }
+      if (!audioUrl.startsWith(AUDIO_PREFIX)) {
+        throw new Error(`unsafe_audio_url_at_${index + 1}`);
+      }
 
-    if (!twinkleAtEnd) {
-      throw new Error(`twinkle_gate_failed_at_${index + 1}`);
-    }
+      if (storageStatus !== "PUBLIC_STORAGE_VERIFIED") {
+        throw new Error(`storage_gate_failed_at_${index + 1}`);
+      }
 
-    const offer = prettyLabel(offerRaw) || "K-KUT HUG";
-    const checkout = checkoutClass(offerRaw || offer, priceUsd);
+      if (!twinkleAtEnd) {
+        throw new Error(`twinkle_gate_failed_at_${index + 1}`);
+      }
 
-    return {
-      id,
-      label: itemLabel(id, index),
-      family: prettyLabel(record.inventory_family),
-      lane: prettyLabel(record.primary_use_lane),
-      offer,
-      priceUsd,
-      audioUrl,
-      checkout,
-      checkoutHref:
-        checkout === "hold"
-          ? null
-          : `/checkout?ii=${encodeURIComponent(id)}&offer=${encodeURIComponent(
+      const offer = prettyLabel(offerRaw) || "K-KUT HUG";
+      const checkout = checkoutClass(offerRaw || offer, priceUsd);
+      const purchaseReady = checkoutConfigured(checkout);
+
+      return {
+        id,
+        label: itemLabel(id, index),
+        family: prettyLabel(record.inventory_family),
+        lane: prettyLabel(record.primary_use_lane),
+        offer,
+        priceUsd,
+        audioUrl,
+        checkout,
+        checkoutHref: purchaseReady
+          ? `/checkout?ii=${encodeURIComponent(id)}&offer=${encodeURIComponent(
               checkout,
-            )}`,
-    };
-  });
+            )}`
+          : null,
+      };
+    });
+  } catch (reason) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "public_release_gate_failed",
+        reason:
+          reason instanceof Error ? reason.message : "unidentified_gate_failure",
+      },
+      { status: 503 },
+    );
+  }
 
   const purchasableCount = publicRecords.filter(
     (record) => record.checkoutHref,
