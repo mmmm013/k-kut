@@ -64,13 +64,24 @@ export default function HugPage() {
             </Link>
           </div>
 
-          <div className="mt-7 rounded-2xl border border-emerald-400/30 bg-emerald-950/25 p-5">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-200">
-              Released audio standard
-            </p>
-            <p className="mt-2 text-sm font-bold leading-7 text-emerald-100/90">
-              The public catalog uses the verified delivery capsules already placed in public storage. Source audio stays unchanged, and the GPMx Twinkle-at-end proof remains required.
-            </p>
+          <div className="mt-7 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-emerald-400/30 bg-emerald-950/25 p-5">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-200">
+                Released audio standard
+              </p>
+              <p className="mt-2 text-sm font-bold leading-7 text-emerald-100/90">
+                The public catalog uses the verified delivery capsules already placed in public storage. Source audio stays unchanged, and the GPMx Twinkle-at-end proof remains required.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[#FFD54F]/30 bg-[#24130C] p-5">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
+                Private delivery review
+              </p>
+              <p className="mt-2 text-sm font-bold leading-7 text-[#FFF8E1]/85">
+                Every paid HUG is manually reviewed before private release. We use your checkout contact to finish delivery. No automatic SMS and no uncontrolled public download.
+              </p>
+            </div>
           </div>
         </header>
 
