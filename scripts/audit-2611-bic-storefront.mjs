@@ -26,6 +26,10 @@ const hug = read("app/hug/page.tsx");
 const home = read("app/page.tsx");
 const checkout = read("app/checkout/route.ts");
 const webhook = read("app/api/stripe/webhook/route.ts");
+const h2Store = read("lib/h2PendingOrder.ts");
+const h2Migration = read(
+  "supabase/migrations/20260715_gpm_h2_pending_orders.sql",
+);
 
 for (const required of [
   "EXPECTED_INVENTORY_COUNT = 2611",
@@ -92,12 +96,13 @@ for (const required of [
   "PERSONAL_NOTE_WORD_LIMIT = 13",
   "PERSONAL_NOTE_CHARACTER_LIMIT = 160",
   "CLIENT_REFERENCE_LIMIT = 200",
-  'CLIENT_REFERENCE_PREFIX = "H1|"',
+  'H2_CLIENT_REFERENCE_PREFIX = "H2_"',
   'return value === "hug" ? "hug" : null',
   'formData.get("personal_note")',
   "personal-note-over-13-words",
-  "personal-note-reference-too-long",
-  "buildClientReference",
+  "pending-order-unavailable",
+  "pending-order-reference-invalid",
+  "createPendingH2Order",
   'checkoutUrl.searchParams.set("client_reference_id", clientReference)',
 ]) requireText(checkout, required, "checkout route");
 
@@ -108,12 +113,15 @@ for (const forbidden of [
   'value === "big_hug"',
   "NEXT_PUBLIC_KKUT_SHORT_KUT_PAYMENT_URL",
   "NEXT_PUBLIC_KKUT_BIG_HUG_PAYMENT_URL",
+  'CLIENT_REFERENCE_PREFIX = "H1|"',
 ]) forbidText(checkout, forbidden, "checkout route");
 
 for (const required of [
   "session.client_reference_id",
   "parseClientReference",
-  'CLIENT_REFERENCE_PREFIX = "H1|"',
+  'H2_CLIENT_REFERENCE_PREFIX = "H2_"',
+  'LEGACY_CLIENT_REFERENCE_PREFIX = "H1|"',
+  "consumePendingH2Order",
   "selected_hug_id: selectedInventoryId",
   "fulfill_exact_selected_ii",
   "constructEvent",
@@ -125,8 +133,28 @@ for (const required of [
   "personalNoteFields",
   'personal_note_placement: "before_hug_content"',
   'personal_note_capture: "optional_13_words_before_hug_content"',
-  'client_reference_format: "H1|inventory_id|personal_note"',
+  'client_reference_format: "H2_safe_order_token"',
+  '"H1|inventory_id|personal_note"',
+  "public_product_name: publicProductName",
+  "bf_profile: bfProfile",
+  "origin_domain: originDomain",
 ]) requireText(webhook, required, "Stripe webhook");
+
+for (const required of [
+  "SUPABASE_SERVICE_ROLE_KEY",
+  'H2_TABLE = "gpm_h2_pending_orders"',
+  "createPendingH2Order",
+  "consumePendingH2Order",
+  '.eq("status", "awaiting_payment")',
+]) requireText(h2Store, required, "H2 pending-order store");
+
+for (const required of [
+  "create table if not exists public.gpm_h2_pending_orders",
+  "enable row level security",
+  "revoke all on table public.gpm_h2_pending_orders from anon",
+  "revoke all on table public.gpm_h2_pending_orders from authenticated",
+  "grant all on table public.gpm_h2_pending_orders to service_role",
+]) requireText(h2Migration, required, "H2 migration");
 
 if (!webhook.includes("if (!isVercelProduction)") ||
     !webhook.includes("writeLocalPaidFulfillmentPacket(record)")) {
@@ -158,8 +186,9 @@ console.log("PUBLIC CATALOG COUNT GATE: 2611");
 console.log("PURCHASABLE K-KUT HUGS REQUIRED: 2611");
 console.log("REGULAR HUG PRICE: $7.99 EXISTING PAYMENT LINK");
 console.log("PERSONAL NOTE LIMIT: 13 WORDS");
-console.log("CLIENT REFERENCE LIMIT: 200 CHARACTERS");
-console.log("EXACT II + OPTIONAL NOTE RECOVERY: REQUIRED");
+console.log("STRIPE REFERENCE: H2 SAFE TOKEN");
+console.log("EXACT II + OPTIONAL NOTE: SERVER-SIDE PENDING ORDER");
+console.log("LEGACY H1 READ COMPATIBILITY: REQUIRED");
 console.log("SECOND STRIPE CHECKOUT AUTHORITY: FORBIDDEN");
 console.log("SOURCE AUDIO CHANGED: FORBIDDEN");
 console.log("SHORT KUT / BIG HUG / $0.99 ADD-ON: HELD");
