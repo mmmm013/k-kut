@@ -16,11 +16,19 @@ import {
   aLoveLikeThatControlledLtPixResolution,
   applyALoveLikeThatControlledLtPixResolution,
 } from "./a-love-like-that-controlled-lt-pix-resolution-v001.mjs";
+import {
+  aLoveLikeThatLyricAuthority,
+  applyALoveLikeThatLyricAuthority,
+} from "./a-love-like-that-lyric-authority-v001.mjs";
+
+const aLoveLikeThatSourceResolved = applyALoveLikeThatControlledLtPixResolution(
+  baseCandidateAudioProfiles["a-love-like-that"]
+);
 
 const candidateAudioProfiles = {
   ...baseCandidateAudioProfiles,
-  "a-love-like-that": applyALoveLikeThatControlledLtPixResolution(
-    baseCandidateAudioProfiles["a-love-like-that"]
+  "a-love-like-that": applyALoveLikeThatLyricAuthority(
+    aLoveLikeThatSourceResolved
   )
 };
 
@@ -28,18 +36,26 @@ const evidenceCatalog = {
   ...baseEvidenceCatalog,
   controlled_lossless_parent_resolved:
     "The controlled WAV parent is LTPIX_0121: 296 - Lloyd G Miller - A LOVE LIKE THAT.wav, recorded in the controlled DISCO WAV inbox with SHA-256 0b05e40b1421665770d748242325a08e2c7d4fdd94757a43f57c3142d1839a80.",
+  lyric_text_source_located:
+    "A 37-line lyric text is located in the operating source metadata and STL intake evidence. Its controlled evidence fingerprint is 56ac367e1d136d9b5c176a5b372ba8383f9f4ada3f593332829469c880fe1aea.",
+  exact_audible_alignment_required:
+    "The located lyric text has not been aligned line by line to LTPIX_0121. It cannot create exact-expression hits until audible deviations, omissions, repeats, ad-libs, uncertain words, and section placement are proven.",
+  lyric_normalization_hold:
+    "Source-text discrepancies and orthography remain held for controlled listening. They must not be silently corrected or treated as exact audible wording.",
   tpr_boundary_gate_required:
     "The controlled WAV parent remains NEEDS_TPR_BEFORE_KK_DERIVATION and BLOCKED_UNTIL_TPR_CDR_LOCKS_KK_BOUNDARIES. Source identity does not approve any prior duration-window KK.",
   missing_mial:
-    "The controlled LT-PIX ID, WAV path, and SHA-256 are resolved for A Love Like That, but a separate current MIAL row ID and rendition/performance ID remain unlinked. Other candidates remain unresolved."
+    "The controlled LT-PIX ID, WAV path, SHA-256, and source lyric evidence are resolved for A Love Like That, but separate current MIAL authority row IDs for the track/lyric record and the rendition/performance identity remain unlinked. Other candidates remain unresolved."
 };
 
 const eligibilityGateProfiles = {
   ...baseEligibilityGateProfiles,
-  a_love_like_that_source_resolved_v1: {
+  a_love_like_that_source_and_lyric_text_resolved_v1: {
     ...baseEligibilityGateProfiles.quarantined_evidence_missing_v1,
-    mial_authority: "PARTIAL_LT_PIX_ID_RESOLVED_MIAL_ROW_ID_MISSING",
+    mial_authority: "PARTIAL_LT_PIX_AND_LYRIC_EVIDENCE_RESOLVED_MIAL_ROW_IDS_MISSING",
     controlled_source_identity: "PASS",
+    lyric_text_source: "PASS_SOURCE_TEXT_LOCATED",
+    exact_audible_expression: "CONTROLLED_WAV_ALIGNMENT_REQUIRED",
     natural_vocal_start: "TPR_REQUIRED",
     natural_vocal_end: "TPR_REQUIRED",
     no_vocal_cut: "TPR_REQUIRED"
@@ -116,11 +132,14 @@ function makeRecord(candidateId, needId) {
   const sourceAuthorityEvidence = isALoveLikeThat
     ? [
         "#/evidence_catalog/gpmc_handoff_source_authority",
-        "#/evidence_catalog/controlled_lossless_parent_resolved"
+        "#/evidence_catalog/controlled_lossless_parent_resolved",
+        "#/evidence_catalog/lyric_text_source_located"
       ]
     : [];
   const sourceLineageConflicts = isALoveLikeThat
     ? [
+        "#/evidence_catalog/exact_audible_alignment_required",
+        "#/evidence_catalog/lyric_normalization_hold",
         "#/evidence_catalog/tpr_boundary_gate_required",
         "#/evidence_catalog/rendition_reconciliation_required"
       ]
@@ -146,7 +165,12 @@ function makeRecord(candidateId, needId) {
     },
     audio_meaning_profile: {
       profile_ref: `#/candidate_audio_profiles/${candidateId}`,
-      status: "EVIDENCE_REQUIRED",
+      lyric_authority_ref: isALoveLikeThat
+        ? "#/lyric_authorities/a_love_like_that"
+        : null,
+      status: isALoveLikeThat
+        ? "LYRIC_TEXT_LOCATED_EXACT_AUDIBLE_ALIGNMENT_REQUIRED"
+        : "EVIDENCE_REQUIRED",
       verified_field_count: 0
     },
     synonym_graph_hits: {
@@ -160,7 +184,9 @@ function makeRecord(candidateId, needId) {
       hits: semanticHits
     },
     exact_expression_hits: {
-      status: "BLOCKED_NO_VERIFIED_TRANSCRIPT",
+      status: isALoveLikeThat
+        ? "LYRIC_TEXT_LOCATED_AUDIO_ALIGNMENT_REQUIRED"
+        : "BLOCKED_NO_VERIFIED_TRANSCRIPT",
       evidence_role: "CANDIDATE_DISCOVERY_ONLY_NOT_MATCH_APPROVAL",
       hits: []
     },
@@ -188,7 +214,7 @@ function makeRecord(candidateId, needId) {
     },
     eligibility_gates: {
       gate_profile_ref: isALoveLikeThat
-        ? "#/eligibility_gate_profiles/a_love_like_that_source_resolved_v1"
+        ? "#/eligibility_gate_profiles/a_love_like_that_source_and_lyric_text_resolved_v1"
         : "#/eligibility_gate_profiles/quarantined_evidence_missing_v1",
       eligible_for_ranking: false,
       eligible_for_public_release: false,
@@ -206,7 +232,7 @@ function makeRecord(candidateId, needId) {
       missing_dimensions: isALoveLikeThat
         ? [
             "mial_row_identity", "rendition_performance_identity", "rights",
-            "audible_expression", "boundaries", "meaning", "performance",
+            "audible_expression_alignment", "boundaries", "meaning", "performance",
             "customer_fit", "human_review", "gd_decision", "final_package"
           ]
         : [
@@ -265,6 +291,9 @@ export const matchEvidenceRegistry = {
   },
   source_resolutions: {
     a_love_like_that: aLoveLikeThatControlledLtPixResolution
+  },
+  lyric_authorities: {
+    a_love_like_that: aLoveLikeThatLyricAuthority
   },
   customer_need_profiles: customerNeedProfiles,
   candidate_audio_profiles: candidateAudioProfiles,
