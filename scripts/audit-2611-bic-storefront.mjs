@@ -37,6 +37,11 @@ for (const required of [
   "public_release_gate_failed",
   "inventory_count_gate_failed",
   "release-gate-v004/",
+  'REGULAR_HUG_OFFER = "K-KUT HUG"',
+  "REGULAR_HUG_PRICE_USD = 7.99",
+  "PERSONAL_NOTE_WORD_LIMIT = 13",
+  'checkout: "hug"',
+  "purchasableCount: publicRecords.length",
 ]) {
   requireText(api, required, "catalog API");
 }
@@ -56,7 +61,11 @@ for (const required of [
   "const PAGE_SIZE = 12",
   'preload="none"',
   "MC-BOT will not invent a match",
-  "Choose this K-KUT",
+  "Send this K-KUT as a HUG",
+  "Optional personal note · 13 words maximum",
+  'action="/checkout"',
+  'method="post"',
+  'name="personal_note"',
   "stopOtherAudio",
 ]) {
   requireText(browser, required, "public browser");
@@ -65,7 +74,9 @@ for (const required of [
 for (const required of [
   "Browse All K-KUTs",
   "PublicIiBrowser",
-  "exact K-KUT ID travels into checkout",
+  "Add up to 13 words",
+  "$7.99",
+  "does not alter the audio",
 ]) {
   requireText(browse, required, "browse page");
 }
@@ -90,13 +101,29 @@ for (const required of [
 requireText(home, 'redirect("/browse")', "home route");
 
 for (const required of [
-  "client_reference_id",
-  "APPROVED_PAYMENT_LINKS",
-  "invalid-selection",
-  "offer-checkout-held",
-  "ii_catalog",
+  "REGULAR_HUG_PAYMENT_URL",
+  "REGULAR_HUG_PRICE_CENTS = 799",
+  "PERSONAL_NOTE_WORD_LIMIT = 13",
+  "PERSONAL_NOTE_CHARACTER_LIMIT = 160",
+  'return value === "hug" ? "hug" : null',
+  'formData.get("personal_note")',
+  "personal-note-over-13-words",
+  "regular_hug_price_is_not_7_99",
+  "stripe.paymentLinks.listLineItems",
+  "stripe.checkout.sessions.create",
+  "client_reference_id: inventoryId",
+  'personal_note_placement: "before_hug_content"',
 ]) {
   requireText(checkout, required, "checkout route");
+}
+
+for (const forbidden of [
+  'value === "short_kut"',
+  'value === "big_hug"',
+  "NEXT_PUBLIC_KKUT_SHORT_KUT_PAYMENT_URL",
+  "NEXT_PUBLIC_KKUT_BIG_HUG_PAYMENT_URL",
+]) {
+  forbidText(checkout, forbidden, "checkout route");
 }
 
 for (const required of [
@@ -109,6 +136,9 @@ for (const required of [
   "stripe_durable_manual_review_queue",
   "disabled_on_read_only_runtime",
   "manual_review_required: true",
+  "personalNoteFields",
+  'personal_note_placement: "before_hug_content"',
+  'personal_note_capture: "optional_13_words_before_hug_content"',
 ]) {
   requireText(webhook, required, "Stripe webhook");
 }
@@ -129,6 +159,11 @@ for (const forbidden of [
   "raw inventory",
   "local_capsule_sha256",
   "controlled_source_path",
+  "$4.99",
+  "$12.99",
+  "$0.99",
+  "donation",
+  "charity",
 ]) {
   forbidText(publicSurfaces, forbidden, "customer UI");
 }
@@ -139,6 +174,13 @@ if (/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/.test(browser + browse + find + hu
 
 console.log("BIC 2611 STOREFRONT AUDIT PASS");
 console.log("PUBLIC CATALOG COUNT GATE: 2611");
+console.log("PURCHASABLE K-KUT HUGS REQUIRED: 2611");
+console.log("REGULAR HUG PRICE: $7.99");
+console.log("PERSONAL NOTE LIMIT: 13 WORDS");
+console.log("PERSONAL NOTE PLACEMENT: BEFORE HUG CONTENT");
+console.log("SOURCE AUDIO CHANGED: FORBIDDEN");
+console.log("SHORT KUT / BIG HUG / $0.99 ADD-ON: HELD");
+console.log("CHARITABLE SALES CLAIMS: HELD");
 console.log("PUBLIC STORAGE STATUS GATE: REQUIRED");
 console.log("CANONICAL TWINKLE-AT-END GATE: REQUIRED");
 console.log("MC-BOT ABSTENTION: REQUIRED");
