@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createPendingH2Order } from "@/lib/h2PendingOrder";
 
 export const runtime = "nodejs";
 
@@ -8,7 +9,9 @@ const REGULAR_HUG_PRICE_CENTS = 799;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const CLIENT_REFERENCE_LIMIT = 200;
-const CLIENT_REFERENCE_PREFIX = "H1|";
+const H2_CLIENT_REFERENCE_PREFIX = "H2_";
+const BF_PROFILE = "k-kut";
+const PUBLIC_PRODUCT_NAME = "K-KUT HUG";
 
 function returnToBrowse(request: NextRequest, reason: string) {
   const url = request.nextUrl.clone();
@@ -35,14 +38,17 @@ function countWords(value: string) {
   return value ? value.split(/\s+/u).filter(Boolean).length : 0;
 }
 
-function buildClientReference(inventoryId: string, personalNote: string) {
-  if (!personalNote) return inventoryId;
+function originDomain(request: NextRequest) {
+  const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0];
+  const host = (forwardedHost || request.headers.get("host") || "k-kut.com")
+    .trim()
+    .toLowerCase()
+    .replace(/:\d+$/u, "");
 
-  const reference = `${CLIENT_REFERENCE_PREFIX}${inventoryId}|${personalNote}`;
-  return reference.length <= CLIENT_REFERENCE_LIMIT ? reference : "";
+  return /^[A-Za-z0-9.-]{1,253}$/.test(host) ? host : "k-kut.com";
 }
 
-function regularHugCheckout(
+async function regularHugCheckout(
   request: NextRequest,
   inventoryId: string,
   personalNote: string,
@@ -53,14 +59,34 @@ function regularHugCheckout(
     return returnToBrowse(request, "personal-note-over-13-words");
   }
 
-  const clientReference = buildClientReference(inventoryId, personalNote);
-  if (!clientReference) {
-    return returnToBrowse(request, "personal-note-reference-too-long");
+  let token: string;
+  try {
+    token = await createPendingH2Order({
+      inventoryId,
+      personalNote,
+      bfProfile: BF_PROFILE,
+      originDomain: originDomain(request),
+      publicProductName: PUBLIC_PRODUCT_NAME,
+    });
+  } catch (reason) {
+    console.error(
+      "H2_PENDING_ORDER_CREATE_FAILED",
+      reason instanceof Error ? reason.message : "unidentified_error",
+    );
+    return returnToBrowse(request, "pending-order-unavailable");
+  }
+
+  const clientReference = `${H2_CLIENT_REFERENCE_PREFIX}${token}`;
+  if (
+    clientReference.length > CLIENT_REFERENCE_LIMIT ||
+    !/^[A-Za-z0-9_-]+$/.test(clientReference)
+  ) {
+    return returnToBrowse(request, "pending-order-reference-invalid");
   }
 
   const checkoutUrl = new URL(REGULAR_HUG_PAYMENT_URL);
   checkoutUrl.searchParams.set("client_reference_id", clientReference);
-  checkoutUrl.searchParams.set("utm_source", "k-kut");
+  checkoutUrl.searchParams.set("utm_source", BF_PROFILE);
   checkoutUrl.searchParams.set("utm_medium", "storefront");
   checkoutUrl.searchParams.set("utm_campaign", "ii_catalog");
   checkoutUrl.searchParams.set("utm_content", personalNote ? "hug_with_note" : "hug");
@@ -68,7 +94,7 @@ function regularHugCheckout(
   return NextResponse.redirect(checkoutUrl);
 }
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   const inventoryId = safeInventoryId(request.nextUrl.searchParams.get("ii"));
   const offer = safeOffer(request.nextUrl.searchParams.get("offer"));
 
