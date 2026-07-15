@@ -37,7 +37,13 @@ jobs:
           const fs = require('fs');
           const assert = require('assert/strict');
           const page = fs.readFileSync('app/sms-optin/page.tsx', 'utf8');
-          const checkbox = page.match(/<input\s+[^>]*id="sms-consent"[^>]*\/>/)?.[0] || '';
+          const idAt = page.indexOf('id="sms-consent"');
+          assert.notEqual(idAt, -1);
+          const inputAt = page.lastIndexOf('<input', idAt);
+          const inputEnd = page.indexOf('/>', idAt);
+          assert.notEqual(inputAt, -1);
+          assert.notEqual(inputEnd, -1);
+          const checkbox = page.slice(inputAt, inputEnd + 2);
           assert.match(checkbox, /type="checkbox"/);
           assert.doesNotMatch(checkbox, /\brequired\b/);
           assert.match(page, /unchecked by default/i);
