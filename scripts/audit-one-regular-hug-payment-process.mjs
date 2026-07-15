@@ -19,7 +19,7 @@ function requireText(text, expected, message) {
 }
 
 console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT");
-console.log("MODE: exact selected K-KUT → approved checkout → paid-order identity");
+console.log("MODE: exact selected K-KUT → approved checkout → durable Stripe order → manual review");
 
 for (const file of [
   checkoutPath,
@@ -113,7 +113,27 @@ requireText(
 requireText(
   webhook,
   "selected_hug_id: selectedInventoryId",
-  "Paid fulfillment record does not preserve the selected K-KUT identity.",
+  "Paid fulfillment evidence does not preserve the selected K-KUT identity.",
+);
+requireText(
+  webhook,
+  'durable_order_authority: "stripe_checkout_session"',
+  "Stripe Checkout is not declared as the durable production order authority.",
+);
+requireText(
+  webhook,
+  "stripe_durable_manual_review_queue",
+  "Production webhook does not enter the durable Stripe manual-review queue.",
+);
+requireText(
+  webhook,
+  "disabled_on_read_only_runtime",
+  "Production webhook does not disable local file writes on Vercel.",
+);
+requireText(
+  webhook,
+  "manual_review_required: true",
+  "Paid HUG fulfillment is not locked to manual review.",
 );
 
 for (const [label, text] of [
@@ -136,6 +156,9 @@ if (failed) {
 console.log("APPROVED REGULAR HUG PAYMENT URL: PRESENT");
 console.log("EXACT K-KUT REFERENCE INTO CHECKOUT: PASS");
 console.log("APPROVED PAYMENT ALLOW-LIST: PASS");
+console.log("STRIPE DURABLE ORDER AUTHORITY: PASS");
 console.log("PAID-ORDER K-KUT ID CAPTURE: PASS");
+console.log("VERCEL LOCAL FILE WRITE: DISABLED");
+console.log("MANUAL FULFILLMENT REVIEW: REQUIRED");
 console.log("RAW STRIPE LINKS ON BUYER PAGES: 0");
 console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT: PASS");
