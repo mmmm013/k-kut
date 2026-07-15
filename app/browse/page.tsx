@@ -4,7 +4,7 @@ import PublicIiBrowser from "@/components/PublicIiBrowser";
 export const metadata = {
   title: "Browse All K-KUTs | G Putnam Music",
   description:
-    "Listen to released K-KUT music moments, use MC-BOT to narrow the catalog, and choose the exact K-KUT you want.",
+    "Listen to released K-KUT music moments, add an optional 13-word note, and send the exact K-KUT as a HUG for $7.99.",
 };
 
 export const dynamic = "force-dynamic";
@@ -23,7 +23,7 @@ export default function BrowsePage() {
                 Browse All K-KUTs
               </h1>
               <p className="mt-5 max-w-4xl text-lg font-bold leading-8 text-[#EFEBE9]">
-                Hear the real music moment first. Choose the exact one that fits. MC-BOT can help narrow the released catalog without guessing for you.
+                Hear the real music moment first. Choose the exact K-KUT that fits. Add up to 13 words of your own, then send it as a HUG for $7.99.
               </p>
             </div>
 
@@ -41,36 +41,36 @@ export default function BrowsePage() {
                 1 · Listen
               </p>
               <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
-                Every option uses the finished public delivery capsule.
+                Hear the finished K-KUT before choosing it.
               </p>
             </div>
             <div className="rounded-2xl border border-[#8D6E63]/35 bg-black/25 p-5">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">
-                2 · Choose
+                2 · Add your words
               </p>
               <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
-                Your exact K-KUT ID travels into checkout for order reconciliation.
+                Add an optional personal note of up to 13 words. It appears before the HUG music and does not alter the audio.
               </p>
             </div>
             <div className="rounded-2xl border border-[#8D6E63]/35 bg-black/25 p-5">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-[#FFD54F]">
-                3 · Receive
+                3 · Send the HUG
               </p>
               <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
-                After payment, we manually review the exact selection and prepare its private delivery using your checkout contact.
+                The exact K-KUT and your optional note travel together into the $7.99 Regular HUG order.
               </p>
             </div>
           </div>
 
           <p className="mt-5 max-w-4xl text-sm font-bold leading-7 text-[#D7CCC8]">
-            Every paid HUG is reviewed before release. No automatic SMS and no uncontrolled public download.
+            Every paid HUG is manually reviewed before private delivery. No automatic SMS and no uncontrolled public download.
           </p>
         </header>
 
         <PublicIiBrowser />
 
         <footer className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
-          Released catalog rule: public storage verified, exact K-KUT identity preserved, and canonical GPMx Twinkle proof required. MC-BOT may narrow by available metadata, but listening and customer choice remain decisive.
+          Every displayed K-KUT must remain publicly playable, preserve its exact identity, and retain the canonical GPMx Twinkle at the end. MC-BOT may narrow the choices, but listening and customer choice remain decisive.
         </footer>
       </section>
     </main>
