@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/audit-2611-bic-storefront.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
+    "prebuild": "node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/audit-h2-pending-order-token.mjs && node scripts/audit-2611-bic-storefront.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
     "build": "next build",
     "start": "next start",
+    "audit:h2:pending-order": "node scripts/audit-h2-pending-order-token.mjs",
     "audit:bic:2611-storefront": "node scripts/audit-2611-bic-storefront.mjs",
     "audit:themes": "node scripts/theme-population/audit-all-theme-population.mjs",
     "audit:themes:gratitude": "node scripts/theme-population/audit-normalized-gratitude.mjs",
