@@ -32,6 +32,7 @@ export default function SmsOptInPage() {
         <p className="mt-3 text-neutral-300">
           Stay informed about your K-KUT HUG orders, delivery status, and support requests
           via transactional SMS messages from K-KUT, operated by G Putnam Music, LLC.
+          Messages are sent from <strong>(833) 848-3161</strong>.
         </p>
 
         <form
@@ -63,6 +64,7 @@ export default function SmsOptInPage() {
             />
             <label htmlFor="sms-consent" className="text-sm text-neutral-300">
               I agree to receive transactional SMS messages from K-KUT (G Putnam Music, LLC)
+              at the mobile number I provide. Messages may be sent from <strong>(833) 848-3161</strong>
               about my orders, delivery, and support. Message and data rates may apply.
               Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for
               assistance. View our{' '}
@@ -118,6 +120,12 @@ export default function SmsOptInPage() {
         <div className="mt-10 space-y-4 text-sm text-neutral-400">
           <h2 className="text-base font-semibold text-white">SMS Program Details</h2>
           <p><strong className="text-neutral-200">Program Name:</strong> K-KUT</p>
+          <p>
+            <strong className="text-neutral-200">SMS Number:</strong>{' '}
+            <a href="tel:+18338483161" className="text-amber-300 underline">
+              (833) 848-3161
+            </a>
+          </p>
           <p>
             <strong className="text-neutral-200">Message Types:</strong> Order confirmations,
             digital HUG delivery links, support follow-up, and service-status alerts.
