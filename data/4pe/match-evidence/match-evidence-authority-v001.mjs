@@ -109,6 +109,73 @@ export const candidateAudioProfiles = {
     legacy_claimed_start_seconds: 0,
     legacy_claimed_end_seconds: 24,
     legacy_twinkle_path: "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
+    source_lineage_resolution: {
+      resolution_status: "PARTIAL",
+      resolution_date: "2026-07-15",
+      canonical_title: "A Love Like That",
+      title_artist_separation_rule: "Artist identity remains metadata; the canonical track title does not include the artist name.",
+      mial_lineage: {
+        status: "PARTIAL_GPMC_HANDOFF_CONFIRMED_MIAL_ROW_NOT_LINKED",
+        pix_handle: "ALLT-105529524",
+        source_stl_id: "105529524",
+        mial_record_id: null
+      },
+      gpmc_authority: {
+        source_authority_status: "PASS",
+        source_locator_status: "PASS",
+        tracks_ssot_status: "PASS",
+        technical_audio_only_cuts_status: "PASS",
+        human_listen_status: "PASS",
+        section_registry_status: "CREATED",
+        bp_ll_record_status: "CREATED",
+        k_kut_handoff_packet_status: "CREATED",
+        operating_pix_ssot_url: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/A%20LOVE%20LIKE%20THAT.mp3",
+        historical_handoff_document_path: "docs/source-authority/handoffs/ALLT-105529524_GPMC_HANDOFF_RECEIVED_CURRENT.md",
+        historical_handoff_document_current_branch_status: "NOT_PRESENT_ON_FEATURE_BRANCH"
+      },
+      controlled_lt_pix: {
+        status: "BLOCKED_LOSSLESS_PARENT_NOT_LOCATED",
+        lt_pix_id: null,
+        controlled_source_path: null,
+        source_sha256: null,
+        required_parent_format: "WAV_OR_OTHER_APPROVED_LOSSLESS",
+        reason: "The proven GPMC locator is an MP3 operating PIX/track object. It cannot be promoted to the controlled LT-PIX parent or substitute for the missing lossless source."
+      },
+      rendition_reconciliation: {
+        status: "REQUIRED",
+        rule: "Do not merge, deduplicate, or select a rendition without source hash evidence or audible performance comparison.",
+        candidates: [
+          {
+            canonical_title: "A Love Like That",
+            performing_artist: null,
+            source_catalog_title: "A LOVE LIKE THAT",
+            track_locator: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/tracks/A%20LOVE%20LIKE%20THAT.mp3",
+            evidence_status: "GPMC_OPERATING_PIX_SSOT"
+          },
+          {
+            canonical_title: "A Love Like That",
+            performing_artist: "Lloyd G Miller",
+            source_catalog_title: "003 - Lloyd G Miller - A LOVE LIKE THAT",
+            track_locator: "https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/003 - Lloyd G Miller - A LOVE LIKE THAT.mp3",
+            evidence_status: "ARTIST_LINKED_TRACKS_CANDIDATE"
+          }
+        ]
+      },
+      legacy_kk_lineage: {
+        contaminated_legacy_kk_id: "d3dfd13c-7421-4671-8261-0c735cb51f38",
+        parent_pix_handle: "ALLT-105529524",
+        approved_candidate_kk_ids_for_implementation_planning: [
+          "KK-ALLT-105529524-S01",
+          "KK-ALLT-105529524-S02",
+          "KK-ALLT-105529524-S03",
+          "KK-ALLT-105529524-S04",
+          "KK-ALLT-105529524-S05",
+          "KK-ALLT-105529524-S06",
+          "KK-ALLT-105529524-S07"
+        ],
+        status: "IMPLEMENTATION_PLANNING_ONLY_NO_PUBLIC_RESTORE"
+      }
+    },
     mial_record_id: null,
     lt_pix_id: null,
     rendition_performance_id: null,
@@ -129,7 +196,7 @@ export const candidateAudioProfiles = {
     boundary_status: "UNREVIEWED",
     composition_rights_status: "UNRESOLVED",
     sound_recording_rights_status: "UNRESOLVED",
-    source_authority_status: "UNRESOLVED"
+    source_authority_status: "PARTIAL"
   },
   "your-heart-poundin": {
     display_title: "Your Heart Poundin'",
@@ -195,8 +262,12 @@ export const candidateAudioProfiles = {
   }
 };
 
+
 export const evidenceCatalog = {
-  missing_mial: "No current MIAL record, exact LT-PIX lineage, controlled source SHA-256, or rendition/performance identity is linked.",
+  gpmc_handoff_source_authority: "Historical GPMC handoff evidence confirms canonical PIX title A Love Like That, PIX handle ALLT-105529524, source/STL ID 105529524, GPMC source authority, source locator, tracks SSOT, technical-cut proof, human-listen proof, section registry, and K-KUT handoff creation.",
+  lossless_lt_pix_parent_missing: "No WAV, AIFF, FLAC, or other approved lossless LT-PIX parent path and SHA-256 have been located. The confirmed MP3 track locator is not an LT-PIX parent.",
+  rendition_reconciliation_required: "Two source-title forms are evidenced—A LOVE LIKE THAT and 003 - Lloyd G Miller - A LOVE LIKE THAT—but no source hash or audible comparison proves whether they are the same performance or different renditions.",
+  missing_mial: "No current MIAL row ID, exact controlled lossless LT-PIX parent, source SHA-256, or reconciled rendition/performance identity is linked. The GPMC handoff and PIX handle are confirmed but do not replace those missing controls.",
   missing_expression: "No verified exact audible words, speaker, addressee, action, claim, resolution, or performance profile exists.",
   missing_rights: "ASCAP evidence where applicable, composition rights, sound-recording rights, and GPM Kreator relationships are unresolved.",
   missing_gd: "No GD approval exists for any candidate/need pair in this first adversarial matrix.",
@@ -268,3 +339,4 @@ export const requiredNextActionPlans = {
     ]
   }
 };
+
