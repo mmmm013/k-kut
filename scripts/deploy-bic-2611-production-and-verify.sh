@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO="/Users/gputnammusicllc/GPM_LOCAL_REPOS/k-kut"
-EXPECTED_SHA="03cbe417d63bd3f469b94adeb1fec761bb3a22d3"
+EXPECTED_SHA="dbc3642ae4c158546fc7e0942c827e4a19fb49c6"
 WORKTREE="${TMPDIR:-/tmp}/k-kut-bic-2611-production-$$"
 BASE="/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/RAPID_DEPLOYMENT_429_KK_SALES_GATE_V004_20260712-000531"
 OUT="$BASE/06_BIC_2611_STOREFRONT_PRODUCTION_V001"
@@ -188,6 +188,12 @@ if payload.get("status") != "configured":
     raise SystemExit(f"webhook status={payload.get('status')} expected configured")
 if payload.get("exact_ii_capture") != "client_reference_id_to_selected_hug_id":
     raise SystemExit("webhook exact-II capture proof missing")
+if payload.get("durable_order_authority") != "stripe_checkout_session":
+    raise SystemExit("Stripe Checkout is not the durable order authority")
+if payload.get("production_fulfillment_mode") != "manual_review_from_stripe_order":
+    raise SystemExit("production fulfillment is not manual-reviewed from Stripe")
+if payload.get("local_packet_mode") != "disabled_on_read_only_runtime":
+    raise SystemExit("Vercel local packet writes are not disabled")
 PY
 
 cat > "$SUMMARY" <<EOF
@@ -206,7 +212,9 @@ PUBLIC AUDIO RANGE SAMPLES: 3/3 PASS
 EXACT CHECKOUT TEST II: $SELECTED_ID
 STRIPE CLIENT REFERENCE PRESERVED: PASS
 STRIPE WEBHOOK CONFIGURED: PASS
-EXACT PAID-ORDER II CAPTURE: PASS
+STRIPE DURABLE ORDER AUTHORITY: PASS
+VERCEL LOCAL PACKET WRITE: DISABLED
+MANUAL-REVIEW FULFILLMENT MODE: PASS
 SOURCE AUDIO CHANGED: 0
 AUDIO REBUILT: 0
 PRICING CHANGED: 0
