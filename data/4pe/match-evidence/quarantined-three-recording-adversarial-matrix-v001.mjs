@@ -5,13 +5,46 @@ import {
   MATCH_EVIDENCE_SCHEMA_PATH,
   CANONICAL_TWINKLE_PATH,
   customerNeedProfiles,
-  candidateAudioProfiles,
-  evidenceCatalog,
-  eligibilityGateProfiles,
+  candidateAudioProfiles as baseCandidateAudioProfiles,
+  evidenceCatalog as baseEvidenceCatalog,
+  eligibilityGateProfiles as baseEligibilityGateProfiles,
   fitWeightProfiles,
   unresolvedQuestions,
   requiredNextActionPlans,
 } from "./match-evidence-authority-v001.mjs";
+import {
+  aLoveLikeThatControlledLtPixResolution,
+  applyALoveLikeThatControlledLtPixResolution,
+} from "./a-love-like-that-controlled-lt-pix-resolution-v001.mjs";
+
+const candidateAudioProfiles = {
+  ...baseCandidateAudioProfiles,
+  "a-love-like-that": applyALoveLikeThatControlledLtPixResolution(
+    baseCandidateAudioProfiles["a-love-like-that"]
+  )
+};
+
+const evidenceCatalog = {
+  ...baseEvidenceCatalog,
+  controlled_lossless_parent_resolved:
+    "The controlled WAV parent is LTPIX_0121: 296 - Lloyd G Miller - A LOVE LIKE THAT.wav, recorded in the controlled DISCO WAV inbox with SHA-256 0b05e40b1421665770d748242325a08e2c7d4fdd94757a43f57c3142d1839a80.",
+  tpr_boundary_gate_required:
+    "The controlled WAV parent remains NEEDS_TPR_BEFORE_KK_DERIVATION and BLOCKED_UNTIL_TPR_CDR_LOCKS_KK_BOUNDARIES. Source identity does not approve any prior duration-window KK.",
+  missing_mial:
+    "The controlled LT-PIX ID, WAV path, and SHA-256 are resolved for A Love Like That, but a separate current MIAL row ID and rendition/performance ID remain unlinked. Other candidates remain unresolved."
+};
+
+const eligibilityGateProfiles = {
+  ...baseEligibilityGateProfiles,
+  a_love_like_that_source_resolved_v1: {
+    ...baseEligibilityGateProfiles.quarantined_evidence_missing_v1,
+    mial_authority: "PARTIAL_LT_PIX_ID_RESOLVED_MIAL_ROW_ID_MISSING",
+    controlled_source_identity: "PASS",
+    natural_vocal_start: "TPR_REQUIRED",
+    natural_vocal_end: "TPR_REQUIRED",
+    no_vocal_cut: "TPR_REQUIRED"
+  }
+};
 
 const historicalAssignments = {
   "a-love-like-that": new Set(["sweet_love", "devotion", "wedding", "anniversary", "general_care", "holiday_use"]),
@@ -43,7 +76,6 @@ const titleSignals = {
     holiday_use: ["don't call it love", "ambiguous", "AMBIGUOUS", 0, "No current event fit is established."]
   }
 };
-
 
 function retrievalHit(candidateId, needId) {
   const row = titleSignals[candidateId]?.[needId];
@@ -80,12 +112,16 @@ function makeRecord(candidateId, needId) {
   const need = customerNeedProfiles[needId];
   const synonymHits = retrievalHit(candidateId, needId);
   const semanticHits = legacySemanticHit(candidateId, needId);
-  const sourceAuthorityEvidence = candidateId === "a-love-like-that"
-    ? ["#/evidence_catalog/gpmc_handoff_source_authority"]
-    : [];
-  const sourceLineageConflicts = candidateId === "a-love-like-that"
+  const isALoveLikeThat = candidateId === "a-love-like-that";
+  const sourceAuthorityEvidence = isALoveLikeThat
     ? [
-        "#/evidence_catalog/lossless_lt_pix_parent_missing",
+        "#/evidence_catalog/gpmc_handoff_source_authority",
+        "#/evidence_catalog/controlled_lossless_parent_resolved"
+      ]
+    : [];
+  const sourceLineageConflicts = isALoveLikeThat
+    ? [
+        "#/evidence_catalog/tpr_boundary_gate_required",
         "#/evidence_catalog/rendition_reconciliation_required"
       ]
     : [];
@@ -97,7 +133,7 @@ function makeRecord(candidateId, needId) {
     authority_chain: {
       system: "GPMx / 4PE / KKr / MIAL",
       mial_is_operational_ssot: true,
-      authority_status: "UNRESOLVED"
+      authority_status: isALoveLikeThat ? "PARTIAL" : "UNRESOLVED"
     },
     candidate_audio: {
       candidate_id: candidateId,
@@ -151,7 +187,9 @@ function makeRecord(candidateId, needId) {
       )
     },
     eligibility_gates: {
-      gate_profile_ref: "#/eligibility_gate_profiles/quarantined_evidence_missing_v1",
+      gate_profile_ref: isALoveLikeThat
+        ? "#/eligibility_gate_profiles/a_love_like_that_source_resolved_v1"
+        : "#/eligibility_gate_profiles/quarantined_evidence_missing_v1",
       eligible_for_ranking: false,
       eligible_for_public_release: false,
       blocking_statuses: ["METADATA_INSUFFICIENT", "DELIVERY_PACKAGE_BLOCKED"]
@@ -165,10 +203,16 @@ function makeRecord(candidateId, needId) {
     evidence_confidence: {
       score: null,
       confidence_band: "INSUFFICIENT_EVIDENCE",
-      missing_dimensions: [
-        "source_identity", "rights", "audible_expression", "boundaries", "meaning",
-        "performance", "customer_fit", "human_review", "gd_decision", "final_package"
-      ]
+      missing_dimensions: isALoveLikeThat
+        ? [
+            "mial_row_identity", "rendition_performance_identity", "rights",
+            "audible_expression", "boundaries", "meaning", "performance",
+            "customer_fit", "human_review", "gd_decision", "final_package"
+          ]
+        : [
+            "source_identity", "rights", "audible_expression", "boundaries", "meaning",
+            "performance", "customer_fit", "human_review", "gd_decision", "final_package"
+          ]
     },
     personalization_adjustment: {
       status: "NOT_APPLIED",
@@ -218,6 +262,9 @@ export const matchEvidenceRegistry = {
   canonical_twinkle: {
     required_final_path: CANONICAL_TWINKLE_PATH,
     legacy_paths_are_not_approved: true
+  },
+  source_resolutions: {
+    a_love_like_that: aLoveLikeThatControlledLtPixResolution
   },
   customer_need_profiles: customerNeedProfiles,
   candidate_audio_profiles: candidateAudioProfiles,
