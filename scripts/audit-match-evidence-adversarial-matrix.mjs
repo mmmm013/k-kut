@@ -133,6 +133,46 @@ for (const record of records) {
   }
 }
 
+const alltProfile = matchEvidenceRegistry.candidate_audio_profiles["a-love-like-that"];
+if (alltProfile?.source_authority_status !== "PARTIAL") {
+  stop("A Love Like That source authority must be PARTIAL after GPMC handoff resolution");
+}
+if (alltProfile?.source_lineage_resolution?.mial_lineage?.pix_handle !== "ALLT-105529524") {
+  stop("A Love Like That PIX handle mismatch");
+}
+if (alltProfile?.source_lineage_resolution?.mial_lineage?.source_stl_id !== "105529524") {
+  stop("A Love Like That source/STL ID mismatch");
+}
+if (alltProfile?.source_lineage_resolution?.controlled_lt_pix?.status !==
+    "BLOCKED_LOSSLESS_PARENT_NOT_LOCATED") {
+  stop("A Love Like That controlled LT-PIX must remain blocked until lossless parent resolution");
+}
+if (alltProfile?.source_lineage_resolution?.controlled_lt_pix?.lt_pix_id !== null ||
+    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.controlled_source_path !== null ||
+    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.source_sha256 !== null) {
+  stop("A Love Like That lossless LT-PIX identifiers must remain null");
+}
+if (alltProfile?.source_lineage_resolution?.rendition_reconciliation?.status !== "REQUIRED" ||
+    alltProfile?.source_lineage_resolution?.rendition_reconciliation?.candidates?.length !== 2) {
+  stop("A Love Like That must retain two unresolved rendition candidates");
+}
+for (const record of records.filter(
+  (row) => row.candidate_audio?.candidate_id === "a-love-like-that"
+)) {
+  if (!record.supporting_evidence?.includes(
+    "#/evidence_catalog/gpmc_handoff_source_authority"
+  )) {
+    stop(`${record.match_evidence_record_id} missing GPMC handoff source evidence`);
+  }
+  if (!record.conflicting_evidence?.includes(
+    "#/evidence_catalog/lossless_lt_pix_parent_missing"
+  ) || !record.conflicting_evidence?.includes(
+    "#/evidence_catalog/rendition_reconciliation_required"
+  )) {
+    stop(`${record.match_evidence_record_id} missing source-lineage blockers`);
+  }
+}
+
 for (const candidateId of candidateIds) {
   const profile = matchEvidenceRegistry.candidate_audio_profiles[candidateId];
   const requiredUnknowns = [
@@ -168,3 +208,7 @@ console.log("PUBLIC RELEASE ELIGIBLE: 0");
 console.log("SCORING ALLOWED: 0");
 console.log("PERSONALIZATION APPLIED: 0");
 console.log("SCALING ALLOWED: false");
+console.log("A LOVE LIKE THAT SOURCE AUTHORITY: PARTIAL");
+console.log("A LOVE LIKE THAT PIX HANDLE: ALLT-105529524");
+console.log("A LOVE LIKE THAT CONTROLLED LT-PIX: BLOCKED_LOSSLESS_PARENT_NOT_LOCATED");
+console.log("A LOVE LIKE THAT RENDITION RECONCILIATION: REQUIRED");
