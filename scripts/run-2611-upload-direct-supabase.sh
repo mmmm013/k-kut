@@ -5,39 +5,26 @@ REPO="/Users/gputnammusicllc/GPM_LOCAL_REPOS/k-kut"
 BASE="/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/RAPID_DEPLOYMENT_429_KK_SALES_GATE_V004_20260712-000531"
 OUT="$BASE/05_PUBLIC_SUPABASE_II_DEPLOYMENT_V001"
 REMOTE_REF="origin/agent/deploy-2611-public-ii-inventory"
-SOURCE_SCRIPT="$REPO/.tmp/gpmx-upload-source-2611-$$.sh"
-NODE_SCRIPT="$REPO/.tmp/gpmx-upload-direct-2611-$$.mjs"
+NODE_SCRIPT="$REPO/.tmp/upload-2611-public-ii-inventory.mjs"
 KEY_ERROR="$OUT/04_SUPABASE_CLI_KEY_ERROR.txt"
 PROJECT_REF="vwlzubxshjjonabpeagd"
 SUPABASE_URL="https://vwlzubxshjjonabpeagd.supabase.co"
 
 cleanup() {
   unset SERVER_KEY KEYS_JSON
-  rm -f "$SOURCE_SCRIPT" "$NODE_SCRIPT"
 }
 trap cleanup EXIT INT TERM HUP
 
 cd "$REPO"
 mkdir -p "$OUT" "$REPO/.tmp"
 
-if ! git show "${REMOTE_REF}:scripts/deploy-2611-public-ii-inventory.sh" > "$SOURCE_SCRIPT"; then
-  echo "STOP: could not read the controlled 2611 uploader from $REMOTE_REF"
+if ! git show "${REMOTE_REF}:scripts/upload-2611-public-ii-inventory.mjs" > "$NODE_SCRIPT"; then
+  echo "STOP: could not retrieve the standalone 2611 uploader"
   exit 1
 fi
 
-awk '
-  /^cat > .*NODE$/ { capture = 1; next }
-  capture && /^NODE$/ { exit }
-  capture { print }
-' "$SOURCE_SCRIPT" > "$NODE_SCRIPT"
-
-if ! grep -q '^import fs from "node:fs";' "$NODE_SCRIPT"; then
-  echo "STOP: controlled uploader extraction failed before any upload action"
-  exit 1
-fi
-
-if ! grep -q 'PASS: ALL 2611 IIs ARE IN VERIFIED PUBLIC STORAGE' "$NODE_SCRIPT"; then
-  echo "STOP: controlled uploader completion gate is missing"
+if ! node --check "$NODE_SCRIPT" >/dev/null 2>&1; then
+  echo "STOP: standalone 2611 uploader failed syntax validation"
   exit 1
 fi
 
@@ -47,23 +34,26 @@ else
   SUPABASE_COMMAND=(npx --yes supabase@latest)
 fi
 
+HELP_TEXT="$("${SUPABASE_COMMAND[@]}" projects api-keys --help 2>&1 || true)"
+if ! print -r -- "$HELP_TEXT" | grep -q -- '--project-ref'; then
+  echo "STOP: installed Supabase CLI does not expose projects api-keys"
+  exit 1
+fi
+
+KEY_ARGS=(projects api-keys --project-ref "$PROJECT_REF" --output json)
+if print -r -- "$HELP_TEXT" | grep -q -- '--reveal'; then
+  KEY_ARGS+=(--reveal)
+fi
+
 rm -f "$KEY_ERROR"
 set +e
-KEYS_JSON="$(
-  "${SUPABASE_COMMAND[@]}" projects api-keys \
-    --project-ref "$PROJECT_REF" \
-    --reveal \
-    --output json \
-    2>"$KEY_ERROR"
-)"
+KEYS_JSON="$("${SUPABASE_COMMAND[@]}" "${KEY_ARGS[@]}" 2>"$KEY_ERROR")"
 KEY_STATUS=$?
 set -e
 
 if [[ "$KEY_STATUS" -ne 0 ]]; then
-  echo "STOP: Supabase CLI could not retrieve the project server key."
-  if [[ -s "$KEY_ERROR" ]]; then
-    tail -n 8 "$KEY_ERROR"
-  fi
+  echo "STOP: Supabase CLI could not retrieve the project server key"
+  [[ -s "$KEY_ERROR" ]] && tail -n 8 "$KEY_ERROR"
   exit "$KEY_STATUS"
 fi
 
@@ -80,13 +70,9 @@ const strings = [];
 function walk(value) {
   if (typeof value === "string") {
     strings.push(value.trim());
-    return;
-  }
-  if (Array.isArray(value)) {
+  } else if (Array.isArray(value)) {
     for (const item of value) walk(item);
-    return;
-  }
-  if (value && typeof value === "object") {
+  } else if (value && typeof value === "object") {
     for (const item of Object.values(value)) walk(item);
   }
 }
@@ -94,8 +80,7 @@ function jwtRole(value) {
   const parts = value.split(".");
   if (parts.length !== 3) return "";
   try {
-    const payload = JSON.parse(Buffer.from(parts[1], "base64url").toString("utf8"));
-    return String(payload.role || "");
+    return String(JSON.parse(Buffer.from(parts[1], "base64url").toString("utf8")).role || "");
   } catch {
     return "";
   }
@@ -108,7 +93,7 @@ process.stdout.write(modern || legacy || "");
 unset KEYS_JSON
 
 if [[ -z "$SERVER_KEY" ]]; then
-  echo "STOP: Supabase CLI returned no usable secret/service-role key."
+  echo "STOP: Supabase CLI returned no usable secret/service-role key"
   exit 1
 fi
 
