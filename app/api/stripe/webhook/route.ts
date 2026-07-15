@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
 import Stripe from "stripe";
+import {
+  consumePendingH2Order,
+  h2PendingOrderStoreConfigured,
+} from "@/lib/h2PendingOrder";
 
 export const runtime = "nodejs";
 
@@ -10,9 +14,18 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
 const isVercelProduction = Boolean(process.env.VERCEL);
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
-const CLIENT_REFERENCE_PREFIX = "H1|";
+const LEGACY_CLIENT_REFERENCE_PREFIX = "H1|";
+const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
+
+type ParsedClientReference = {
+  kind: "h2" | "legacy" | "inventory_only" | "missing" | "invalid";
+  token: string;
+  inventoryId: string;
+  personalNote: string;
+  format: string;
+};
 
 function cleanString(value: unknown, max = 500) {
   if (typeof value !== "string") return "";
@@ -36,31 +49,73 @@ function safePersonalNote(value: unknown) {
   return countWords(note) <= PERSONAL_NOTE_WORD_LIMIT ? note : "";
 }
 
-function parseClientReference(value: unknown) {
+function parseClientReference(value: unknown): ParsedClientReference {
   const reference = cleanString(value, 200);
 
-  if (!reference.startsWith(CLIENT_REFERENCE_PREFIX)) {
+  if (!reference) {
     return {
-      inventoryId: safeInventoryId(reference),
+      kind: "missing",
+      token: "",
+      inventoryId: "",
       personalNote: "",
-      format: reference ? "inventory_only" : "missing",
+      format: "missing",
     };
   }
 
-  const body = reference.slice(CLIENT_REFERENCE_PREFIX.length);
-  const separatorIndex = body.indexOf("|");
+  if (reference.startsWith(H2_CLIENT_REFERENCE_PREFIX)) {
+    const token = reference.slice(H2_CLIENT_REFERENCE_PREFIX.length).toLowerCase();
+    if (!/^[a-f0-9]{32}$/.test(token)) {
+      return {
+        kind: "invalid",
+        token: "",
+        inventoryId: "",
+        personalNote: "",
+        format: "invalid_h2_token",
+      };
+    }
 
-  if (separatorIndex < 1) {
-    return { inventoryId: "", personalNote: "", format: "invalid" };
+    return {
+      kind: "h2",
+      token,
+      inventoryId: "",
+      personalNote: "",
+      format: "h2_pending_order_token",
+    };
   }
 
-  const inventoryId = safeInventoryId(body.slice(0, separatorIndex));
-  const personalNote = safePersonalNote(body.slice(separatorIndex + 1));
+  if (reference.startsWith(LEGACY_CLIENT_REFERENCE_PREFIX)) {
+    const body = reference.slice(LEGACY_CLIENT_REFERENCE_PREFIX.length);
+    const separatorIndex = body.indexOf("|");
 
+    if (separatorIndex < 1) {
+      return {
+        kind: "invalid",
+        token: "",
+        inventoryId: "",
+        personalNote: "",
+        format: "invalid_legacy_h1",
+      };
+    }
+
+    const inventoryId = safeInventoryId(body.slice(0, separatorIndex));
+    const personalNote = safePersonalNote(body.slice(separatorIndex + 1));
+
+    return {
+      kind: inventoryId ? "legacy" : "invalid",
+      token: "",
+      inventoryId,
+      personalNote,
+      format: inventoryId ? "legacy_h1_with_note" : "invalid_legacy_h1",
+    };
+  }
+
+  const inventoryId = safeInventoryId(reference);
   return {
+    kind: inventoryId ? "inventory_only" : "invalid",
+    token: "",
     inventoryId,
-    personalNote,
-    format: inventoryId ? "hug_with_note" : "invalid",
+    personalNote: "",
+    format: inventoryId ? "legacy_inventory_only" : "invalid",
   };
 }
 
@@ -106,6 +161,10 @@ function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
     stripe_checkout_session_id: record.stripe_checkout_session_id,
     stripe_payment_intent_id: record.stripe_payment_intent_id,
     amount_paid_usd: record.amount_paid_usd,
+    core_product_name: record.product_name,
+    public_product_name: record.public_product_name,
+    bf_profile: record.bf_profile,
+    origin_domain: record.origin_domain,
     selected_hug_id: record.selected_hug_id,
     personal_note_present: record.personal_note_present,
     personal_note_word_count: record.personal_note_word_count,
@@ -136,6 +195,9 @@ function basePaidRecord(event: Stripe.Event) {
     manual_review_required: true,
     product_family: "HUG",
     product_name: "",
+    public_product_name: "",
+    bf_profile: "",
+    origin_domain: "",
     amount_paid_usd: "",
     net_amount_usd: "",
     stripe_payment_status: "succeeded",
@@ -166,7 +228,7 @@ function basePaidRecord(event: Stripe.Event) {
     sms_enabled: false,
     metadata: {},
     notes:
-      "Stripe Checkout is the durable paid-order authority. Exact selected K-KUT and any approved personal note are preserved in Stripe client_reference_id. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
+      "Stripe Checkout is the durable paid-order authority. H2 stores the exact selected II and optional note server-side before checkout; legacy H1 and inventory-only references remain readable during migration. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
   };
 }
 
@@ -187,28 +249,49 @@ function personalNoteFields(
     personal_note_word_count: note ? countWords(note) : 0,
     personal_note_word_limit: PERSONAL_NOTE_WORD_LIMIT,
     personal_note_placement: "before_hug_content",
-    personal_note_status: rawWordCount > PERSONAL_NOTE_WORD_LIMIT
-      ? "held_over_word_limit"
-      : note
-        ? "approved_for_manual_placement"
-        : "not_provided",
+    personal_note_status:
+      rawWordCount > PERSONAL_NOTE_WORD_LIMIT
+        ? "held_over_word_limit"
+        : note
+          ? "approved_for_manual_placement"
+          : "not_provided",
   };
 }
 
-function recordFromCheckoutSession(event: Stripe.Event) {
+async function recordFromCheckoutSession(event: Stripe.Event) {
   const session = event.data.object as Stripe.Checkout.Session;
   const record = basePaidRecord(event);
   const parsedReference = parseClientReference(session.client_reference_id);
-  const selectedInventoryId = parsedReference.inventoryId;
-  const noteFields = personalNoteFields(
-    session.metadata,
-    parsedReference.personalNote,
-  );
+
+  let selectedInventoryId = parsedReference.inventoryId;
+  let referenceNote = parsedReference.personalNote;
+  let publicProductName = "K-KUT HUG";
+  let bfProfile = "k-kut";
+  let originDomain = "k-kut.com";
+
+  if (parsedReference.kind === "h2") {
+    const pendingOrder = await consumePendingH2Order({
+      token: parsedReference.token,
+      stripeEventId: event.id,
+      stripeCheckoutSessionId: session.id,
+    });
+
+    selectedInventoryId = pendingOrder.inventoryId;
+    referenceNote = pendingOrder.personalNote;
+    publicProductName = pendingOrder.publicProductName;
+    bfProfile = pendingOrder.bfProfile;
+    originDomain = pendingOrder.originDomain;
+  }
+
+  const noteFields = personalNoteFields(session.metadata, referenceNote);
 
   return {
     ...record,
     ...noteFields,
     product_name: "K-KUT HUG",
+    public_product_name: publicProductName,
+    bf_profile: bfProfile,
+    origin_domain: originDomain,
     amount_paid_usd: moneyFromCents(session.amount_total),
     stripe_payment_status: cleanString(session.payment_status, 80) || "paid",
     stripe_checkout_session_id: cleanString(session.id, 220),
@@ -227,9 +310,14 @@ function recordFromCheckoutSession(event: Stripe.Event) {
       : "manual_review_missing_selected_ii",
     metadata: {
       ...(session.metadata || {}),
-      client_reference_id_present: Boolean(selectedInventoryId),
+      client_reference_id_present: Boolean(session.client_reference_id),
       client_reference_format: parsedReference.format,
-      personal_note_valid: noteFields.personal_note_status !== "held_over_word_limit",
+      exact_inventory_id_present: Boolean(selectedInventoryId),
+      personal_note_valid:
+        noteFields.personal_note_status !== "held_over_word_limit",
+      bf_profile: bfProfile,
+      origin_domain: originDomain,
+      public_product_name: publicProductName,
     },
   };
 }
@@ -247,6 +335,13 @@ function recordFromPaymentIntent(event: Stripe.Event) {
     ...noteFields,
     product_name:
       cleanString(paymentIntent.description, 220) || "K-KUT HUG payment",
+    public_product_name:
+      cleanString(paymentIntent.metadata?.public_product_name, 120) ||
+      "K-KUT HUG",
+    bf_profile:
+      cleanString(paymentIntent.metadata?.bf_profile, 60) || "k-kut",
+    origin_domain:
+      cleanString(paymentIntent.metadata?.origin_domain, 253) || "k-kut.com",
     amount_paid_usd: moneyFromCents(
       paymentIntent.amount_received || paymentIntent.amount,
     ),
@@ -295,15 +390,26 @@ export async function POST(req: NextRequest) {
   let fulfillmentQueueStatus = "event_acknowledged_no_fulfillment_action";
 
   if (event.type === "checkout.session.completed") {
-    fulfillmentQueueStatus = stagePaidFulfillmentRecord(
-      recordFromCheckoutSession(event),
-    );
+    try {
+      const record = await recordFromCheckoutSession(event);
+      fulfillmentQueueStatus = stagePaidFulfillmentRecord(record);
+    } catch (reason) {
+      console.error(
+        "H2_PENDING_ORDER_RESOLUTION_FAILED",
+        reason instanceof Error ? reason.message : "unidentified_error",
+      );
+      return NextResponse.json(
+        { ok: false, error: "h2_pending_order_resolution_failed" },
+        { status: 500 },
+      );
+    }
   }
 
   if (event.type === "payment_intent.succeeded") {
-    fulfillmentQueueStatus = stagePaidFulfillmentRecord(
-      recordFromPaymentIntent(event),
-    );
+    const record = recordFromPaymentIntent(event);
+    fulfillmentQueueStatus = record.selected_hug_id
+      ? stagePaidFulfillmentRecord(record)
+      : "event_acknowledged_checkout_session_is_fulfillment_authority";
   }
 
   return NextResponse.json({
@@ -320,15 +426,22 @@ export async function GET() {
     route: "/api/stripe/webhook",
     status: stripe && webhookSecret ? "configured" : "missing_env",
     handles: ["checkout.session.completed", "payment_intent.succeeded"],
-    exact_ii_capture: "client_reference_id_to_selected_hug_id",
+    exact_ii_capture: "h2_pending_order_token_to_selected_hug_id",
     personal_note_capture: "optional_13_words_before_hug_content",
-    client_reference_format: "H1|inventory_id|personal_note",
+    client_reference_format: "H2_safe_order_token",
+    legacy_client_reference_formats: [
+      "H1|inventory_id|personal_note",
+      "inventory_id",
+    ],
+    h2_pending_order_store: h2PendingOrderStoreConfigured()
+      ? "configured"
+      : "missing_env",
     durable_order_authority: "stripe_checkout_session",
     production_fulfillment_mode: "manual_review_from_stripe_order",
     local_packet_mode: isVercelProduction
       ? "disabled_on_read_only_runtime"
       : "local_mial_import_packet",
     rule:
-      "Paid capture recovers the exact selected II and any valid 13-word personal note from Stripe client_reference_id. No automatic SMS or download. Manual HUG fulfillment review remains required.",
+      "H2 recovers the exact selected II, optional 13-word note, BF profile, origin domain, and public product identity from a server-only pending-order record. No automatic SMS or download. Manual HUG fulfillment review remains required.",
   });
 }
