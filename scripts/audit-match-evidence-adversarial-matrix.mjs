@@ -8,6 +8,11 @@ import {
   A_LOVE_LIKE_THAT_SOURCE_SHA256,
   aLoveLikeThatControlledLtPixResolution,
 } from "../data/4pe/match-evidence/a-love-like-that-controlled-lt-pix-resolution-v001.mjs";
+import {
+  A_LOVE_LIKE_THAT_LYRIC_AUTHORITY_ID,
+  A_LOVE_LIKE_THAT_SOURCE_LYRIC_FINGERPRINT,
+  aLoveLikeThatLyricAuthority,
+} from "../data/4pe/match-evidence/a-love-like-that-lyric-authority-v001.mjs";
 
 const SCHEMA_PATH = "data/4pe/rules/match-evidence-record.schema.json";
 
@@ -90,6 +95,9 @@ for (const record of records) {
     record.candidate_audio?.profile_ref,
     record.customer_need_profile?.profile_ref,
     record.audio_meaning_profile?.profile_ref,
+    ...(record.audio_meaning_profile?.lyric_authority_ref
+      ? [record.audio_meaning_profile.lyric_authority_ref]
+      : []),
     ...(record.supporting_evidence || []),
     ...(record.conflicting_evidence || []),
     record.contraindications?.customer_need_profile_ref,
@@ -129,10 +137,15 @@ for (const record of records) {
       record.gd_decision?.decision !== null) {
     stop(`${pair} must not claim a GD decision`);
   }
-  if (record.exact_expression_hits?.status !== "BLOCKED_NO_VERIFIED_TRANSCRIPT" ||
+
+  const expectedExactExpressionStatus = candidateId === "a-love-like-that"
+    ? "LYRIC_TEXT_LOCATED_AUDIO_ALIGNMENT_REQUIRED"
+    : "BLOCKED_NO_VERIFIED_TRANSCRIPT";
+  if (record.exact_expression_hits?.status !== expectedExactExpressionStatus ||
       record.exact_expression_hits?.hits?.length !== 0) {
-    stop(`${pair} exact-expression matching must abstain without transcript`);
+    stop(`${pair} exact-expression matching status or abstention is wrong`);
   }
+
   if (!record.eligibility_gates?.blocking_statuses?.includes("DELIVERY_PACKAGE_BLOCKED")) {
     stop(`${pair} must retain delivery package block`);
   }
@@ -140,6 +153,7 @@ for (const record of records) {
 
 const alltProfile = matchEvidenceRegistry.candidate_audio_profiles["a-love-like-that"];
 const alltSourceResolution = matchEvidenceRegistry.source_resolutions?.a_love_like_that;
+const alltLyricAuthority = matchEvidenceRegistry.lyric_authorities?.a_love_like_that;
 
 if (alltProfile?.source_authority_status !==
     "RESOLVED_CONTROLLED_LOSSLESS_PARENT_TPR_REQUIRED") {
@@ -186,29 +200,74 @@ if (alltProfile?.mial_record_id !== null ||
   stop("A Love Like That MIAL row ID and rendition/performance ID must remain unresolved");
 }
 
+if (alltLyricAuthority?.lyric_authority_id !== A_LOVE_LIKE_THAT_LYRIC_AUTHORITY_ID ||
+    alltProfile?.lyric_authority_source !== A_LOVE_LIKE_THAT_LYRIC_AUTHORITY_ID) {
+  stop("A Love Like That lyric authority ID mismatch");
+}
+if (alltLyricAuthority?.authority_status !==
+    "PARTIAL_LYRIC_TEXT_LOCATED_CONTROLLED_AUDIO_ALIGNMENT_REQUIRED") {
+  stop("A Love Like That lyric authority must remain partial");
+}
+if (alltLyricAuthority?.lt_pix_id !== "LTPIX_0121" ||
+    alltLyricAuthority?.controlled_source_path !== A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH ||
+    alltLyricAuthority?.controlled_source_sha256 !== A_LOVE_LIKE_THAT_SOURCE_SHA256) {
+  stop("A Love Like That lyric authority is not bound to the controlled WAV parent");
+}
+if (alltLyricAuthority?.source_lyric_evidence?.line_count !== 37 ||
+    alltLyricAuthority?.source_lyric_evidence?.utf8_character_count !== 1308 ||
+    alltLyricAuthority?.source_lyric_evidence?.sha256 !==
+      A_LOVE_LIKE_THAT_SOURCE_LYRIC_FINGERPRINT) {
+  stop("A Love Like That source lyric fingerprint or count mismatch");
+}
+if (alltProfile?.lyric_source_line_count !== 37 ||
+    alltProfile?.lyric_source_sha256 !== A_LOVE_LIKE_THAT_SOURCE_LYRIC_FINGERPRINT) {
+  stop("A Love Like That candidate profile lyric evidence mismatch");
+}
+if (alltProfile?.exact_audible_words !== null ||
+    alltProfile?.exact_audible_words_status !==
+      "PENDING_LINE_BY_LINE_CONTROLLED_WAV_ALIGNMENT") {
+  stop("A Love Like That must not claim exact audible words before alignment");
+}
+if (alltProfile?.source_lineage_resolution?.lyric_authority?.next_gate !==
+    "CONTROLLED_WAV_LINE_BY_LINE_ALIGNMENT_AND_TPR_CDR_SECTION_LOCK") {
+  stop("A Love Like That lyric authority next gate mismatch");
+}
+
 for (const record of records.filter(
   (row) => row.candidate_audio?.candidate_id === "a-love-like-that"
 )) {
   if (record.authority_chain?.authority_status !== "PARTIAL") {
     stop(`${record.match_evidence_record_id} authority status must be PARTIAL`);
   }
+  if (record.audio_meaning_profile?.status !==
+      "LYRIC_TEXT_LOCATED_EXACT_AUDIBLE_ALIGNMENT_REQUIRED" ||
+      record.audio_meaning_profile?.lyric_authority_ref !==
+        "#/lyric_authorities/a_love_like_that") {
+    stop(`${record.match_evidence_record_id} lyric evidence status or reference mismatch`);
+  }
   if (record.eligibility_gates?.gate_profile_ref !==
-      "#/eligibility_gate_profiles/a_love_like_that_source_resolved_v1") {
-    stop(`${record.match_evidence_record_id} uses wrong source-resolved gate`);
+      "#/eligibility_gate_profiles/a_love_like_that_source_and_lyric_text_resolved_v1") {
+    stop(`${record.match_evidence_record_id} uses wrong source-and-lyric gate`);
   }
   if (!record.supporting_evidence?.includes(
       "#/evidence_catalog/gpmc_handoff_source_authority"
     ) || !record.supporting_evidence?.includes(
       "#/evidence_catalog/controlled_lossless_parent_resolved"
+    ) || !record.supporting_evidence?.includes(
+      "#/evidence_catalog/lyric_text_source_located"
     )) {
-    stop(`${record.match_evidence_record_id} missing controlled source evidence`);
+    stop(`${record.match_evidence_record_id} missing controlled source or lyric evidence`);
   }
   if (!record.conflicting_evidence?.includes(
+      "#/evidence_catalog/exact_audible_alignment_required"
+    ) || !record.conflicting_evidence?.includes(
+      "#/evidence_catalog/lyric_normalization_hold"
+    ) || !record.conflicting_evidence?.includes(
       "#/evidence_catalog/tpr_boundary_gate_required"
     ) || !record.conflicting_evidence?.includes(
       "#/evidence_catalog/rendition_reconciliation_required"
     )) {
-    stop(`${record.match_evidence_record_id} missing remaining source-lineage holds`);
+    stop(`${record.match_evidence_record_id} missing remaining lyric or source holds`);
   }
   if (record.conflicting_evidence?.includes(
       "#/evidence_catalog/lossless_lt_pix_parent_missing"
@@ -257,7 +316,11 @@ if (aLoveLikeThatControlledLtPixResolution.lt_pix_id !== "LTPIX_0121" ||
       A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH ||
     aLoveLikeThatControlledLtPixResolution.source_sha256 !==
       A_LOVE_LIKE_THAT_SOURCE_SHA256) {
-  stop("A Love Like That imported resolution constants mismatch");
+  stop("A Love Like That imported source-resolution constants mismatch");
+}
+if (aLoveLikeThatLyricAuthority.source_lyric_evidence.sha256 !==
+    A_LOVE_LIKE_THAT_SOURCE_LYRIC_FINGERPRINT) {
+  stop("A Love Like That imported lyric-evidence constant mismatch");
 }
 
 console.log("MATCH EVIDENCE ADVERSARIAL MATRIX AUDIT PASS");
@@ -274,4 +337,7 @@ console.log("A LOVE LIKE THAT PIX HANDLE: ALLT-105529524");
 console.log("A LOVE LIKE THAT LT-PIX ID: LTPIX_0121");
 console.log(`A LOVE LIKE THAT WAV PATH: ${A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH}`);
 console.log(`A LOVE LIKE THAT SHA-256: ${A_LOVE_LIKE_THAT_SOURCE_SHA256}`);
+console.log("A LOVE LIKE THAT LYRIC TEXT: 37 SOURCE LINES LOCATED");
+console.log(`A LOVE LIKE THAT LYRIC FINGERPRINT: ${A_LOVE_LIKE_THAT_SOURCE_LYRIC_FINGERPRINT}`);
+console.log("A LOVE LIKE THAT EXACT AUDIBLE WORDS: ALIGNMENT REQUIRED");
 console.log("A LOVE LIKE THAT TPR/CDR BOUNDARY GATE: REQUIRED");
