@@ -8,6 +8,8 @@ export const runtime = "nodejs";
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || "";
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
 const isVercelProduction = Boolean(process.env.VERCEL);
+const PERSONAL_NOTE_WORD_LIMIT = 13;
+const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
@@ -19,6 +21,18 @@ function cleanString(value: unknown, max = 500) {
 function safeInventoryId(value: unknown) {
   const candidate = cleanString(value, 200);
   return /^[A-Za-z0-9_-]{1,200}$/.test(candidate) ? candidate : "";
+}
+
+function countWords(value: string) {
+  return value ? value.split(/\s+/u).filter(Boolean).length : 0;
+}
+
+function safePersonalNote(value: unknown) {
+  const note = cleanString(value, PERSONAL_NOTE_CHARACTER_LIMIT).replace(
+    /\s+/gu,
+    " ",
+  );
+  return countWords(note) <= PERSONAL_NOTE_WORD_LIMIT ? note : "";
 }
 
 function moneyFromCents(value: number | null | undefined) {
@@ -64,6 +78,9 @@ function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
     stripe_payment_intent_id: record.stripe_payment_intent_id,
     amount_paid_usd: record.amount_paid_usd,
     selected_hug_id: record.selected_hug_id,
+    personal_note_present: record.personal_note_present,
+    personal_note_word_count: record.personal_note_word_count,
+    personal_note_placement: record.personal_note_placement,
     customer_email_present: record.customer_email_present,
     customer_phone_present: record.customer_phone_present,
     delivery_preference: record.delivery_preference,
@@ -104,6 +121,12 @@ function basePaidRecord(event: Stripe.Event) {
     selected_hug_title: "",
     source_song: "",
     typed_feeling: "",
+    personal_note: "",
+    personal_note_present: false,
+    personal_note_word_count: 0,
+    personal_note_word_limit: PERSONAL_NOTE_WORD_LIMIT,
+    personal_note_placement: "before_hug_content",
+    personal_note_status: "not_provided",
     delivery_preference: "manual_review_required",
     hug_link_status: "not_created",
     hug_link_url: "",
@@ -112,7 +135,29 @@ function basePaidRecord(event: Stripe.Event) {
     sms_enabled: false,
     metadata: {},
     notes:
-      "Stripe Checkout is the durable paid-order authority. Exact selected K-KUT is preserved in client_reference_id. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
+      "Stripe Checkout is the durable paid-order authority. Exact selected K-KUT and any approved personal note are preserved in Stripe. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
+  };
+}
+
+function personalNoteFields(metadata: Stripe.Metadata | null | undefined) {
+  const rawNote = cleanString(
+    metadata?.personal_note,
+    PERSONAL_NOTE_CHARACTER_LIMIT,
+  ).replace(/\s+/gu, " ");
+  const note = safePersonalNote(rawNote);
+  const rawWordCount = countWords(rawNote);
+
+  return {
+    personal_note: note,
+    personal_note_present: Boolean(note),
+    personal_note_word_count: note ? countWords(note) : 0,
+    personal_note_word_limit: PERSONAL_NOTE_WORD_LIMIT,
+    personal_note_placement: "before_hug_content",
+    personal_note_status: rawWordCount > PERSONAL_NOTE_WORD_LIMIT
+      ? "held_over_word_limit"
+      : note
+        ? "approved_for_manual_placement"
+        : "not_provided",
   };
 }
 
@@ -120,10 +165,12 @@ function recordFromCheckoutSession(event: Stripe.Event) {
   const session = event.data.object as Stripe.Checkout.Session;
   const record = basePaidRecord(event);
   const selectedInventoryId = safeInventoryId(session.client_reference_id);
+  const noteFields = personalNoteFields(session.metadata);
 
   return {
     ...record,
-    product_name: "K-KUT catalog selection",
+    ...noteFields,
+    product_name: "K-KUT HUG",
     amount_paid_usd: moneyFromCents(session.amount_total),
     stripe_payment_status: cleanString(session.payment_status, 80) || "paid",
     stripe_checkout_session_id: cleanString(session.id, 220),
@@ -142,6 +189,7 @@ function recordFromCheckoutSession(event: Stripe.Event) {
     metadata: {
       ...(session.metadata || {}),
       client_reference_id_present: Boolean(selectedInventoryId),
+      personal_note_valid: noteFields.personal_note_status !== "held_over_word_limit",
     },
   };
 }
@@ -149,11 +197,16 @@ function recordFromCheckoutSession(event: Stripe.Event) {
 function recordFromPaymentIntent(event: Stripe.Event) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
   const record = basePaidRecord(event);
+  const selectedInventoryId = safeInventoryId(
+    paymentIntent.metadata?.selected_hug_id,
+  );
+  const noteFields = personalNoteFields(paymentIntent.metadata);
 
   return {
     ...record,
+    ...noteFields,
     product_name:
-      cleanString(paymentIntent.description, 220) || "Stripe payment",
+      cleanString(paymentIntent.description, 220) || "K-KUT HUG payment",
     amount_paid_usd: moneyFromCents(
       paymentIntent.amount_received || paymentIntent.amount,
     ),
@@ -162,6 +215,10 @@ function recordFromPaymentIntent(event: Stripe.Event) {
     stripe_payment_intent_id: cleanString(paymentIntent.id, 220),
     stripe_customer_id:
       typeof paymentIntent.customer === "string" ? paymentIntent.customer : "",
+    selected_hug_id: selectedInventoryId,
+    delivery_preference: selectedInventoryId
+      ? "fulfill_exact_selected_ii"
+      : "manual_review_missing_selected_ii",
     metadata: paymentIntent.metadata || {},
   };
 }
@@ -224,12 +281,13 @@ export async function GET() {
     status: stripe && webhookSecret ? "configured" : "missing_env",
     handles: ["checkout.session.completed", "payment_intent.succeeded"],
     exact_ii_capture: "client_reference_id_to_selected_hug_id",
+    personal_note_capture: "optional_13_words_before_hug_content",
     durable_order_authority: "stripe_checkout_session",
     production_fulfillment_mode: "manual_review_from_stripe_order",
     local_packet_mode: isVercelProduction
       ? "disabled_on_read_only_runtime"
       : "local_mial_import_packet",
     rule:
-      "Paid capture preserves exact selected II in Stripe. No automatic SMS or download. Manual HUG fulfillment review remains required.",
+      "Paid capture preserves the exact selected II and any valid 13-word personal note in Stripe. No automatic SMS or download. Manual HUG fulfillment review remains required.",
   });
 }
