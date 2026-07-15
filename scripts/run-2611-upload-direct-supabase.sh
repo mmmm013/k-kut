@@ -20,29 +20,26 @@ trap cleanup EXIT INT TERM HUP
 cd "$REPO"
 mkdir -p "$OUT" "$REPO/.tmp"
 
-if ! git show "$REMOTE_REF:scripts/deploy-2611-public-ii-inventory.sh" > "$SOURCE_SCRIPT"; then
+if ! git show "${REMOTE_REF}:scripts/deploy-2611-public-ii-inventory.sh" > "$SOURCE_SCRIPT"; then
   echo "STOP: could not read the controlled 2611 uploader from $REMOTE_REF"
   exit 1
 fi
 
-python3 - "$SOURCE_SCRIPT" "$NODE_SCRIPT" <<'PY'
-from pathlib import Path
-import sys
+awk '
+  /^cat > .*NODE$/ { capture = 1; next }
+  capture && /^NODE$/ { exit }
+  capture { print }
+' "$SOURCE_SCRIPT" > "$NODE_SCRIPT"
 
-source = Path(sys.argv[1]).read_text(encoding="utf-8")
-start_marker = 'cat > "$NODE_SCRIPT" <<\'NODE\'\n'
-end_marker = "\nNODE\n"
+if ! grep -q '^import fs from "node:fs";' "$NODE_SCRIPT"; then
+  echo "STOP: controlled uploader extraction failed before any upload action"
+  exit 1
+fi
 
-if start_marker not in source:
-    raise SystemExit("STOP: controlled uploader body start marker not found")
-
-body = source.split(start_marker, 1)[1]
-
-if end_marker not in body:
-    raise SystemExit("STOP: controlled uploader body end marker not found")
-
-Path(sys.argv[2]).write_text(body.split(end_marker, 1)[0] + "\n", encoding="utf-8")
-PY
+if ! grep -q 'PASS: ALL 2611 IIs ARE IN VERIFIED PUBLIC STORAGE' "$NODE_SCRIPT"; then
+  echo "STOP: controlled uploader completion gate is missing"
+  exit 1
+fi
 
 if command -v supabase >/dev/null 2>&1; then
   SUPABASE_COMMAND=(supabase)
