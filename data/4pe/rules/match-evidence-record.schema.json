@@ -1,0 +1,516 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gpmx:4pe:kkr:mial:match-evidence-record:v1",
+  "title": "GPMx 4PE / KKr / MIAL Match Evidence Record",
+  "description": "One evidence-controlled comparison between one customer need and one audio candidate. Retrieval signals discover candidates; they never approve matches.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "match_evidence_record_id",
+    "schema_version",
+    "record_date",
+    "authority_chain",
+    "candidate_audio",
+    "customer_need_profile",
+    "audio_meaning_profile",
+    "synonym_graph_hits",
+    "semantic_retrieval_hits",
+    "exact_expression_hits",
+    "supporting_evidence",
+    "conflicting_evidence",
+    "contraindications",
+    "eligibility_gates",
+    "fit_components",
+    "evidence_confidence",
+    "personalization_adjustment",
+    "actual_status",
+    "required_next_action",
+    "gd_decision"
+  ],
+  "properties": {
+    "match_evidence_record_id": {
+      "type": "string",
+      "pattern": "^mer-[a-z0-9-]+-v[0-9]{3}$"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "record_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "authority_chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "mial_is_operational_ssot",
+        "authority_status"
+      ],
+      "properties": {
+        "system": {
+          "const": "GPMx / 4PE / KKr / MIAL"
+        },
+        "mial_is_operational_ssot": {
+          "const": true
+        },
+        "authority_status": {
+          "enum": [
+            "UNRESOLVED",
+            "PARTIAL",
+            "RESOLVED"
+          ]
+        }
+      }
+    },
+    "candidate_audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "profile_ref",
+        "quarantine_status"
+      ],
+      "properties": {
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_ref": {
+          "type": "string",
+          "pattern": "^#/candidate_audio_profiles/"
+        },
+        "quarantine_status": {
+          "const": "QUARANTINED_MATCH_REVIEW"
+        }
+      }
+    },
+    "customer_need_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "need_id",
+        "profile_ref"
+      ],
+      "properties": {
+        "need_id": {
+          "enum": [
+            "sweet_love",
+            "devotion",
+            "wedding",
+            "anniversary",
+            "physical_spark",
+            "apology",
+            "grief",
+            "general_care",
+            "holiday_use"
+          ]
+        },
+        "profile_ref": {
+          "type": "string",
+          "pattern": "^#/customer_need_profiles/"
+        }
+      }
+    },
+    "audio_meaning_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_ref",
+        "status",
+        "verified_field_count"
+      ],
+      "properties": {
+        "profile_ref": {
+          "type": "string",
+          "pattern": "^#/candidate_audio_profiles/"
+        },
+        "status": {
+          "enum": [
+            "EVIDENCE_REQUIRED",
+            "PARTIAL",
+            "VERIFIED"
+          ]
+        },
+        "verified_field_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "synonym_graph_hits": {
+      "$ref": "#/$defs/retrievalSet"
+    },
+    "semantic_retrieval_hits": {
+      "$ref": "#/$defs/retrievalSet"
+    },
+    "exact_expression_hits": {
+      "$ref": "#/$defs/retrievalSet"
+    },
+    "supporting_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#/evidence_catalog/"
+      }
+    },
+    "conflicting_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#/evidence_catalog/"
+      },
+      "minItems": 1
+    },
+    "contraindications": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_status",
+        "customer_need_profile_ref",
+        "candidate_specific_refs",
+        "unresolved_question_refs"
+      ],
+      "properties": {
+        "review_status": {
+          "enum": [
+            "NOT_REVIEWED",
+            "PARTIAL",
+            "COMPLETE"
+          ]
+        },
+        "customer_need_profile_ref": {
+          "type": "string",
+          "pattern": "^#/customer_need_profiles/"
+        },
+        "candidate_specific_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^#/evidence_catalog/"
+          }
+        },
+        "unresolved_question_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^#/unresolved_questions/"
+          }
+        }
+      }
+    },
+    "eligibility_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_profile_ref",
+        "eligible_for_ranking",
+        "eligible_for_public_release",
+        "blocking_statuses"
+      ],
+      "properties": {
+        "gate_profile_ref": {
+          "type": "string",
+          "pattern": "^#/eligibility_gate_profiles/"
+        },
+        "eligible_for_ranking": {
+          "type": "boolean"
+        },
+        "eligible_for_public_release": {
+          "type": "boolean"
+        },
+        "blocking_statuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/actualStatus"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "fit_components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scoring_allowed",
+        "weight_profile_ref",
+        "fit_score",
+        "component_scores"
+      ],
+      "properties": {
+        "scoring_allowed": {
+          "type": "boolean"
+        },
+        "weight_profile_ref": {
+          "type": "string",
+          "pattern": "^#/fit_weight_profiles/"
+        },
+        "fit_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "component_scores": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    },
+    "evidence_confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "confidence_band",
+        "missing_dimensions"
+      ],
+      "properties": {
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "confidence_band": {
+          "enum": [
+            "INSUFFICIENT_EVIDENCE",
+            "LOW",
+            "MODERATE",
+            "HIGH",
+            "RELEASE_GRADE"
+          ]
+        },
+        "missing_dimensions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "source_identity",
+              "rights",
+              "audible_expression",
+              "boundaries",
+              "meaning",
+              "performance",
+              "customer_fit",
+              "human_review",
+              "gd_decision",
+              "final_package"
+            ]
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "personalization_adjustment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "value",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_APPLIED",
+            "APPLIED"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "minimum": -20,
+          "maximum": 20
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "actual_status": {
+      "$ref": "#/$defs/actualStatus"
+    },
+    "required_next_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action_plan_ref",
+        "priority"
+      ],
+      "properties": {
+        "action_plan_ref": {
+          "type": "string",
+          "pattern": "^#/required_next_action_plans/"
+        },
+        "priority": {
+          "enum": [
+            "P1",
+            "P2",
+            "P3",
+            "P4"
+          ]
+        }
+      }
+    },
+    "gd_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewer",
+        "decision",
+        "decision_date",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "REVOKED"
+          ]
+        },
+        "reviewer": {
+          "const": "GD"
+        },
+        "decision": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            null,
+            "PROVEN_MATCH",
+            "REJECT_MATCH",
+            "HOLD",
+            "REVOKE"
+          ]
+        },
+        "decision_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "actualStatus": {
+      "enum": [
+        "PROVEN_MATCH",
+        "MATCH_REVIEW_REQUIRED",
+        "METADATA_INSUFFICIENT",
+        "BOUNDARY_FAILED",
+        "MEANING_FAILED",
+        "RIGHTS_BLOCKED",
+        "SOURCE_BLOCKED",
+        "DUPLICATE_PERFORMANCE",
+        "DELIVERY_PACKAGE_BLOCKED",
+        "REVOKED"
+      ]
+    },
+    "retrievalSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_role",
+        "hits"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "BLOCKED_NO_VERIFIED_TRANSCRIPT",
+            "LEGACY_SIGNAL_ONLY",
+            "COMPLETE"
+          ]
+        },
+        "evidence_role": {
+          "const": "CANDIDATE_DISCOVERY_ONLY_NOT_MATCH_APPROVAL"
+        },
+        "hits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "query_concept",
+              "candidate_signal",
+              "relationship_type",
+              "direction",
+              "weight",
+              "context_requirement",
+              "evidence_grade",
+              "source"
+            ],
+            "properties": {
+              "query_concept": {
+                "type": "string"
+              },
+              "candidate_signal": {
+                "type": "string"
+              },
+              "relationship_type": {
+                "enum": [
+                  "exact_equivalent",
+                  "near_synonym",
+                  "broader_concept",
+                  "narrower_concept",
+                  "goal_relationship",
+                  "emotional_neighbor",
+                  "occasion_relationship",
+                  "implication",
+                  "contrast",
+                  "contraindication",
+                  "ambiguous",
+                  "negated_concept",
+                  "legacy_generated_assignment"
+                ]
+              },
+              "direction": {
+                "enum": [
+                  "POSITIVE",
+                  "NEGATIVE",
+                  "AMBIGUOUS"
+                ]
+              },
+              "weight": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1
+              },
+              "context_requirement": {
+                "type": "string"
+              },
+              "evidence_grade": {
+                "const": "UNVERIFIED_RETRIEVAL_SIGNAL"
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
