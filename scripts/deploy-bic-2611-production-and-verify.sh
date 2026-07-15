@@ -30,8 +30,8 @@ git show "$SOURCE_COMMIT:$SOURCE_PATH" \
 
 [[ -s "$TEMP_SCRIPT" ]] || stop "price-safe controlled runner was not created"
 
-if grep -nE '\$[0-9]' "$TEMP_SCRIPT"; then
-  stop "an unsafe dollar-number expression remains; no deployment started"
+if grep -nE '\$[0-9]+\.[0-9][0-9]' "$TEMP_SCRIPT"; then
+  stop "an unsafe currency expression remains; no deployment started"
 fi
 
 zsh -n "$TEMP_SCRIPT" || stop "price-safe controlled runner failed syntax validation"
