@@ -6,6 +6,17 @@ const CUSTOMER_PRIVATE_PREFIXES = [
   "/mkut",
 ];
 
+const PUBLIC_AUDIO_REVIEW_HOLD_PREFIXES = [
+  "/personal",
+  "/holiday",
+  "/kupid",
+  "/wedding",
+  "/romance",
+  "/checkout",
+  "/ii-delivery",
+  "/mothers-day",
+];
+
 const VEKTOR_HOSTS = new Set([
   "2gdp.com",
   "www.2gdp.com",
@@ -32,6 +43,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  const isPublicAudioReviewHoldPath = PUBLIC_AUDIO_REVIEW_HOLD_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
+  );
+
+  if (isPublicAudioReviewHoldPath) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/hug";
+    url.search = "?audio=review-hold";
+    return NextResponse.redirect(url);
+  }
+
   return NextResponse.next();
 }
 
@@ -40,5 +62,13 @@ export const config = {
     "/",
     "/pix/:path*",
     "/mkut/:path*",
+    "/personal/:path*",
+    "/holiday/:path*",
+    "/kupid/:path*",
+    "/wedding/:path*",
+    "/romance/:path*",
+    "/checkout/:path*",
+    "/ii-delivery/:path*",
+    "/mothers-day/:path*",
   ],
 };
