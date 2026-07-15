@@ -5,7 +5,7 @@ REPO="/Users/gputnammusicllc/GPM_LOCAL_REPOS/k-kut"
 BASE="/Users/gputnammusicllc/GPM_LOCAL_VAULT/09_Registry/RAPID_DEPLOYMENT_429_KK_SALES_GATE_V004_20260712-000531"
 MAP="$BASE/05_DEPLOYMENT_MAP/01_GPMX_2611_DELIVERY_DEPLOYMENT_MAP.csv"
 OUT="$BASE/05_PUBLIC_SUPABASE_II_DEPLOYMENT_V001"
-NODE_SCRIPT="$(mktemp /tmp/gpmx-upload-2611-XXXXXX.mjs)"
+NODE_SCRIPT="$REPO/.tmp/gpmx-upload-2611-$$.mjs"
 LOCAL_ENV="$REPO/.env.local"
 LOCAL_ENV_HOLD="$REPO/.env.local.GD_HOLD_2611_UPLOAD_$$"
 MOVED_LOCAL_ENV=0
@@ -20,7 +20,7 @@ cleanup() {
 trap cleanup EXIT INT TERM HUP
 
 cd "$REPO"
-mkdir -p "$OUT"
+mkdir -p "$OUT" "$REPO/.tmp"
 
 if [[ ! -f "$MAP" ]]; then
   echo "STOP: deployment map missing: $MAP"
