@@ -1,6 +1,7 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 
 export default function SmsOptInPage() {
   const [status, setStatus] = useState<'idle' | 'error' | 'success'>('idle');
