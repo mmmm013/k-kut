@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
 
 export const runtime = "nodejs";
 
@@ -8,16 +7,8 @@ const REGULAR_HUG_PAYMENT_URL =
 const REGULAR_HUG_PRICE_CENTS = 799;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
-
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY || "";
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
-
-type RegularHugLineItem = {
-  price: string;
-  quantity: number;
-};
-
-let regularHugLineItemsCache: RegularHugLineItem[] | null = null;
+const CLIENT_REFERENCE_LIMIT = 200;
+const CLIENT_REFERENCE_PREFIX = "H1|";
 
 function returnToBrowse(request: NextRequest, reason: string) {
   const url = request.nextUrl.clone();
@@ -44,105 +35,37 @@ function countWords(value: string) {
   return value ? value.split(/\s+/u).filter(Boolean).length : 0;
 }
 
-function directRegularHugCheckout(inventoryId: string) {
-  const checkoutUrl = new URL(REGULAR_HUG_PAYMENT_URL);
-  checkoutUrl.searchParams.set("client_reference_id", inventoryId);
-  checkoutUrl.searchParams.set("utm_source", "k-kut");
-  checkoutUrl.searchParams.set("utm_medium", "storefront");
-  checkoutUrl.searchParams.set("utm_campaign", "ii_catalog");
-  checkoutUrl.searchParams.set("utm_content", "hug");
-  return NextResponse.redirect(checkoutUrl);
+function buildClientReference(inventoryId: string, personalNote: string) {
+  if (!personalNote) return inventoryId;
+
+  const reference = `${CLIENT_REFERENCE_PREFIX}${inventoryId}|${personalNote}`;
+  return reference.length <= CLIENT_REFERENCE_LIMIT ? reference : "";
 }
 
-async function regularHugLineItems() {
-  if (!stripe) {
-    throw new Error("stripe_not_configured");
-  }
-
-  if (regularHugLineItemsCache) return regularHugLineItemsCache;
-
-  const links = await stripe.paymentLinks.list({ active: true, limit: 100 });
-  const regularHugLink = links.data.find(
-    (paymentLink) => paymentLink.url === REGULAR_HUG_PAYMENT_URL,
-  );
-
-  if (!regularHugLink) {
-    throw new Error("regular_hug_payment_link_not_found");
-  }
-
-  const sourceItems = await stripe.paymentLinks.listLineItems(regularHugLink.id, {
-    limit: 100,
-  });
-
-  const lineItems: RegularHugLineItem[] = [];
-  let totalCents = 0;
-
-  for (const item of sourceItems.data) {
-    const price = item.price;
-    const quantity = item.quantity || 1;
-
-    if (!price?.id || price.currency !== "usd" || price.unit_amount === null) {
-      throw new Error("regular_hug_price_authority_invalid");
-    }
-
-    lineItems.push({ price: price.id, quantity });
-    totalCents += price.unit_amount * quantity;
-  }
-
-  if (!lineItems.length || totalCents !== REGULAR_HUG_PRICE_CENTS) {
-    throw new Error("regular_hug_price_is_not_7_99");
-  }
-
-  regularHugLineItemsCache = lineItems;
-  return lineItems;
-}
-
-async function personalizedRegularHugCheckout(
+function regularHugCheckout(
   request: NextRequest,
   inventoryId: string,
   personalNote: string,
 ) {
-  if (!stripe) {
-    return returnToBrowse(request, "personal-note-checkout-held");
-  }
-
   const personalNoteWordCount = countWords(personalNote);
+
   if (personalNoteWordCount > PERSONAL_NOTE_WORD_LIMIT) {
     return returnToBrowse(request, "personal-note-over-13-words");
   }
 
-  let lineItems: RegularHugLineItem[];
-  try {
-    lineItems = await regularHugLineItems();
-  } catch {
-    return returnToBrowse(request, "regular-hug-price-authority-held");
+  const clientReference = buildClientReference(inventoryId, personalNote);
+  if (!clientReference) {
+    return returnToBrowse(request, "personal-note-reference-too-long");
   }
 
-  const orderMetadata = {
-    selected_hug_id: inventoryId,
-    offer: "hug",
-    price_usd: "7.99",
-    personal_note: personalNote,
-    personal_note_word_count: String(personalNoteWordCount),
-    personal_note_placement: "before_hug_content",
-    manual_review_required: "true",
-  };
+  const checkoutUrl = new URL(REGULAR_HUG_PAYMENT_URL);
+  checkoutUrl.searchParams.set("client_reference_id", clientReference);
+  checkoutUrl.searchParams.set("utm_source", "k-kut");
+  checkoutUrl.searchParams.set("utm_medium", "storefront");
+  checkoutUrl.searchParams.set("utm_campaign", "ii_catalog");
+  checkoutUrl.searchParams.set("utm_content", personalNote ? "hug_with_note" : "hug");
 
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    line_items: lineItems,
-    client_reference_id: inventoryId,
-    metadata: orderMetadata,
-    payment_intent_data: { metadata: orderMetadata },
-    success_url: `${request.nextUrl.origin}/browse?checkout=paid`,
-    cancel_url: `${request.nextUrl.origin}/browse?checkout=cancelled`,
-  });
-
-  if (!session.url) {
-    return returnToBrowse(request, "stripe-session-url-missing");
-  }
-
-  return NextResponse.redirect(session.url, 303);
+  return NextResponse.redirect(checkoutUrl);
 }
 
 export function GET(request: NextRequest) {
@@ -157,7 +80,7 @@ export function GET(request: NextRequest) {
     return returnToBrowse(request, "invalid-offer");
   }
 
-  return directRegularHugCheckout(inventoryId);
+  return regularHugCheckout(request, inventoryId, "");
 }
 
 export async function POST(request: NextRequest) {
@@ -174,9 +97,5 @@ export async function POST(request: NextRequest) {
     return returnToBrowse(request, "invalid-offer");
   }
 
-  if (!personalNote) {
-    return directRegularHugCheckout(inventoryId);
-  }
-
-  return personalizedRegularHugCheckout(request, inventoryId, personalNote);
+  return regularHugCheckout(request, inventoryId, personalNote);
 }
