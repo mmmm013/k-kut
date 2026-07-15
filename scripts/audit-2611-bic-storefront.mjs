@@ -15,7 +15,9 @@ function requireText(text, expected, label) {
 }
 
 function forbidText(text, forbidden, label) {
-  if (text.includes(forbidden)) stop(`${label} exposes forbidden text: ${forbidden}`);
+  if (text.includes(forbidden)) {
+    stop(`${label} exposes forbidden text: ${forbidden}`);
+  }
 }
 
 const api = read("app/api/public-ii-catalog/route.ts");
@@ -102,8 +104,20 @@ for (const required of [
   "selected_hug_id: selectedInventoryId",
   "fulfill_exact_selected_ii",
   "constructEvent",
+  "isVercelProduction",
+  'durable_order_authority: "stripe_checkout_session"',
+  "stripe_durable_manual_review_queue",
+  "disabled_on_read_only_runtime",
+  "manual_review_required: true",
 ]) {
   requireText(webhook, required, "Stripe webhook");
+}
+
+if (
+  !webhook.includes("if (!isVercelProduction)") ||
+  !webhook.includes("writeLocalPaidFulfillmentPacket(record)")
+) {
+  stop("Stripe webhook does not guard local packet writes away from Vercel");
 }
 
 const publicSurfaces = [browser, browse, find, hug].join("\n");
@@ -130,4 +144,7 @@ console.log("CANONICAL TWINKLE-AT-END GATE: REQUIRED");
 console.log("MC-BOT ABSTENTION: REQUIRED");
 console.log("EXACT II CHECKOUT REFERENCE: REQUIRED");
 console.log("STRIPE SIGNATURE VERIFICATION: REQUIRED");
+console.log("STRIPE DURABLE ORDER AUTHORITY: REQUIRED");
+console.log("VERCEL READ-ONLY FILESYSTEM WRITE: FORBIDDEN");
+console.log("MANUAL FULFILLMENT REVIEW: REQUIRED");
 console.log("PUBLIC INTERNAL-PROOF LEAKS: 0");
