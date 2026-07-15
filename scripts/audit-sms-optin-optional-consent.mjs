@@ -5,11 +5,12 @@ import { buildSmsOptInSubmission } from "../lib/smsOptInSubmission.mjs";
 const page = fs.readFileSync("app/sms-optin/page.tsx", "utf8");
 
 assert.match(page, /<form[\s\S]*onSubmit=\{submitPreference\}/);
-assert.match(page, /id="sms-consent"[\s\S]*type="checkbox"/);
-assert.doesNotMatch(
-  page.match(/<input[\s\S]*?id="sms-consent"[\s\S]*?\/>/)?.[0] || "",
-  /\brequired\b/
-);
+
+const checkboxTag =
+  page.match(/<input\s+[^>]*id="sms-consent"[^>]*\/>/)?.[0] || "";
+
+assert.match(checkboxTag, /type="checkbox"/);
+assert.doesNotMatch(checkboxTag, /\brequired\b/);
 assert.match(page, /unchecked by default/i);
 assert.match(page, /submit this form without agreeing to SMS/i);
 assert.match(page, /Consent is not a condition of purchase/i);
