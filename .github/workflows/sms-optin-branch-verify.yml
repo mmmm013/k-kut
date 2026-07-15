@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - fix/sms-optin-optional-consent
+  pull_request:
+    branches:
+      - main
 
 jobs:
   verify:
