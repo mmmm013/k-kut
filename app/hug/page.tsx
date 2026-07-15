@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "K-KUT HUGs | G Putnam Music",
   description:
-    "Listen to released K-KUT music moments, use MC-BOT to narrow the catalog, and choose the exact K-KUT you want to send.",
+    "Listen to 2,611 K-KUT music moments, add an optional 13-word note, and send the exact one as a HUG for $7.99.",
 };
 
 const STEPS = [
@@ -17,13 +17,13 @@ const STEPS = [
     number: "2",
     title: "Hear the music",
     description:
-      "Listen to the finished K-KUT delivery audio. The real sound—not a title or marketing claim—guides your choice.",
+      "Listen to the finished K-KUT audio. The real sound—not a title or marketing claim—guides your choice.",
   },
   {
     number: "3",
-    title: "Choose the exact K-KUT",
+    title: "Add your words and send",
     description:
-      "Your selected K-KUT identity is preserved into checkout so the paid order can be reconciled to the music you chose.",
+      "Add an optional personal note of up to 13 words, then send the exact K-KUT as a $7.99 HUG.",
   },
 ];
 
@@ -41,11 +41,11 @@ export default function HugPage() {
           </h1>
 
           <p className="mt-5 max-w-4xl text-xl font-black leading-9 text-[#FFF8E1] md:text-3xl">
-            Hear a real music moment. Choose the one that says what you mean.
+            Hear a real music moment. Add your words. Send the sentimeant.
           </p>
 
           <p className="mt-5 max-w-4xl text-base font-bold leading-8 text-[#D7CCC8]">
-            The released catalog now holds 2,611 playable K-KUTs. Browse them directly or let MC-BOT narrow the choices using the information available—then listen and make the final decision yourself.
+            The catalog holds 2,611 playable K-KUTs. Every one can be chosen and sent as a Regular HUG for $7.99, with an optional personal note of up to 13 words.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -67,19 +67,19 @@ export default function HugPage() {
           <div className="mt-7 grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-emerald-400/30 bg-emerald-950/25 p-5">
               <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-200">
-                Released audio standard
+                Finished music
               </p>
               <p className="mt-2 text-sm font-bold leading-7 text-emerald-100/90">
-                The public catalog uses the verified delivery capsules already placed in public storage. Source audio stays unchanged, and the GPMx Twinkle-at-end proof remains required.
+                The catalog uses the finished, verified K-KUT audio already in public storage. Source audio stays unchanged, and the GPMx Twinkle-at-end proof remains required.
               </p>
             </div>
 
             <div className="rounded-2xl border border-[#FFD54F]/30 bg-[#24130C] p-5">
               <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-                Private delivery review
+                Your note and private delivery
               </p>
               <p className="mt-2 text-sm font-bold leading-7 text-[#FFF8E1]/85">
-                Every paid HUG is manually reviewed before private release. We use your checkout contact to finish delivery. No automatic SMS and no uncontrolled public download.
+                Your optional note is written before the HUG music; it does not change the audio. Every paid HUG is manually reviewed before private delivery. No automatic SMS and no uncontrolled public download.
               </p>
             </div>
           </div>
