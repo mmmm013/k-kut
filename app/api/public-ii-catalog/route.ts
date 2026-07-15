@@ -25,6 +25,18 @@ const TRUE_VALUES = new Set([
 
 type CheckoutClass = "short_kut" | "hug" | "big_hug" | "hold";
 
+type PublicCatalogRecord = {
+  id: string;
+  label: string;
+  family: string;
+  lane: string;
+  offer: string;
+  priceUsd: number | null;
+  audioUrl: string;
+  checkout: CheckoutClass;
+  checkoutHref: string | null;
+};
+
 type RawCatalogRecord = {
   inventory_id?: unknown;
   inventory_family?: unknown;
@@ -170,10 +182,10 @@ export async function GET() {
     );
   }
 
-  let publicRecords;
+  let publicRecords: PublicCatalogRecord[];
 
   try {
-    publicRecords = records.map((record, index) => {
+    publicRecords = records.map((record, index): PublicCatalogRecord => {
       const id = cleanText(record.inventory_id, 200);
       const audioUrl = cleanText(record.public_audio_url, 900);
       const storageStatus = cleanText(record.public_storage_status, 80);
