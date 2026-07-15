@@ -44,6 +44,7 @@ const titleSignals = {
   }
 };
 
+
 function retrievalHit(candidateId, needId) {
   const row = titleSignals[candidateId]?.[needId];
   if (!row) return [];
@@ -79,6 +80,15 @@ function makeRecord(candidateId, needId) {
   const need = customerNeedProfiles[needId];
   const synonymHits = retrievalHit(candidateId, needId);
   const semanticHits = legacySemanticHit(candidateId, needId);
+  const sourceAuthorityEvidence = candidateId === "a-love-like-that"
+    ? ["#/evidence_catalog/gpmc_handoff_source_authority"]
+    : [];
+  const sourceLineageConflicts = candidateId === "a-love-like-that"
+    ? [
+        "#/evidence_catalog/lossless_lt_pix_parent_missing",
+        "#/evidence_catalog/rendition_reconciliation_required"
+      ]
+    : [];
 
   return {
     match_evidence_record_id: `mer-${candidateId}-${needId.replaceAll("_", "-")}-v001`,
@@ -118,11 +128,13 @@ function makeRecord(candidateId, needId) {
       evidence_role: "CANDIDATE_DISCOVERY_ONLY_NOT_MATCH_APPROVAL",
       hits: []
     },
-    supporting_evidence: semanticHits.length
-      ? ["#/evidence_catalog/legacy_generated_approval"]
-      : [],
+    supporting_evidence: [
+      ...sourceAuthorityEvidence,
+      ...(semanticHits.length ? ["#/evidence_catalog/legacy_generated_approval"] : [])
+    ],
     conflicting_evidence: [
       "#/evidence_catalog/missing_mial",
+      ...sourceLineageConflicts,
       "#/evidence_catalog/missing_expression",
       "#/evidence_catalog/missing_rights",
       "#/evidence_catalog/missing_gd",
