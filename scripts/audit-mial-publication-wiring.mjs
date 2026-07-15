@@ -34,8 +34,16 @@ if (fs.existsSync("lib/publication-bridge/approvedPublicOptions.ts")) {
     "lib/publication-bridge/approvedPublicOptions.ts",
     "utf8"
   );
-  if (!text.includes('record.approval_status === "public_approved_from_mial"')) {
-    failures.push("publication loader does not require public_approved_from_mial");
+  for (const status of [
+    "public_approved_from_mial",
+    "public_approved_generated_from_reusable_ii",
+  ]) {
+    if (!text.includes(status)) {
+      failures.push(`publication loader does not recognize approved status: ${status}`);
+    }
+  }
+  if (!text.includes("APPROVED_PUBLICATION_STATUSES.has(record.approval_status)")) {
+    failures.push("publication loader does not enforce the approved-status allowlist");
   }
 }
 
@@ -60,5 +68,6 @@ if (failures.length) {
 
 console.log("MIAL PUBLICATION WIRING AUDIT: PASS");
 console.log("Hand-written route inventory arrays are absent.");
-console.log("Buyer routes require MIAL-approved publication bridge records.");
+console.log("Existing approved reusable-II records remain sellable during MIAL expansion.");
+console.log("Newly added records must use public_approved_from_mial.");
 console.log("Production deployment actions: 0");
