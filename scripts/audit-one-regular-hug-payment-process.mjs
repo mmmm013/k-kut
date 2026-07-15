@@ -3,6 +3,7 @@ import fs from "node:fs";
 const checkoutPath = "app/checkout/route.ts";
 const hugPath = "app/hug/page.tsx";
 const browsePath = "app/browse/page.tsx";
+const browserPath = "components/PublicIiBrowser.tsx";
 const webhookPath = "app/api/stripe/webhook/route.ts";
 const regularHugUrl = "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
@@ -20,7 +21,13 @@ function requireText(text, expected, message) {
 console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT");
 console.log("MODE: exact selected K-KUT → approved checkout → paid-order identity");
 
-for (const file of [checkoutPath, hugPath, browsePath, webhookPath]) {
+for (const file of [
+  checkoutPath,
+  hugPath,
+  browsePath,
+  browserPath,
+  webhookPath,
+]) {
   if (!fs.existsSync(file)) fail(`missing required file: ${file}`);
 }
 
@@ -29,6 +36,7 @@ if (failed) process.exit(1);
 const checkout = fs.readFileSync(checkoutPath, "utf8");
 const hug = fs.readFileSync(hugPath, "utf8");
 const browse = fs.readFileSync(browsePath, "utf8");
+const browser = fs.readFileSync(browserPath, "utf8");
 const webhook = fs.readFileSync(webhookPath, "utf8");
 
 requireText(
@@ -84,8 +92,18 @@ requireText(
 );
 requireText(
   browse,
+  "PublicIiBrowser",
+  "/browse does not render the governed public K-KUT browser.",
+);
+requireText(
+  browser,
   "Choose this K-KUT",
-  "/browse is missing the exact K-KUT selection action.",
+  "/browse browser is missing the exact K-KUT selection action.",
+);
+requireText(
+  browser,
+  "checkoutHref",
+  "/browse browser does not use the governed checkout handoff.",
 );
 requireText(
   webhook,
@@ -101,6 +119,7 @@ requireText(
 for (const [label, text] of [
   ["/hug", hug],
   ["/browse", browse],
+  ["K-KUT browser", browser],
 ]) {
   const rawStripeLinks =
     text.match(/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/g) || [];
