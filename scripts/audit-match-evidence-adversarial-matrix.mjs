@@ -3,6 +3,11 @@ import {
   matchEvidenceRegistry,
   matchEvidenceRecords,
 } from "../data/4pe/match-evidence/quarantined-three-recording-adversarial-matrix-v001.mjs";
+import {
+  A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH,
+  A_LOVE_LIKE_THAT_SOURCE_SHA256,
+  aLoveLikeThatControlledLtPixResolution,
+} from "../data/4pe/match-evidence/a-love-like-that-controlled-lt-pix-resolution-v001.mjs";
 
 const SCHEMA_PATH = "data/4pe/rules/match-evidence-record.schema.json";
 
@@ -134,8 +139,11 @@ for (const record of records) {
 }
 
 const alltProfile = matchEvidenceRegistry.candidate_audio_profiles["a-love-like-that"];
-if (alltProfile?.source_authority_status !== "PARTIAL") {
-  stop("A Love Like That source authority must be PARTIAL after GPMC handoff resolution");
+const alltSourceResolution = matchEvidenceRegistry.source_resolutions?.a_love_like_that;
+
+if (alltProfile?.source_authority_status !==
+    "RESOLVED_CONTROLLED_LOSSLESS_PARENT_TPR_REQUIRED") {
+  stop("A Love Like That controlled source authority status mismatch");
 }
 if (alltProfile?.source_lineage_resolution?.mial_lineage?.pix_handle !== "ALLT-105529524") {
   stop("A Love Like That PIX handle mismatch");
@@ -143,49 +151,94 @@ if (alltProfile?.source_lineage_resolution?.mial_lineage?.pix_handle !== "ALLT-1
 if (alltProfile?.source_lineage_resolution?.mial_lineage?.source_stl_id !== "105529524") {
   stop("A Love Like That source/STL ID mismatch");
 }
+if (alltProfile?.lt_pix_id !== "LTPIX_0121" ||
+    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.lt_pix_id !== "LTPIX_0121") {
+  stop("A Love Like That LT-PIX ID mismatch");
+}
+if (alltProfile?.object_type !== "LT-PIX") {
+  stop("A Love Like That object type must be LT-PIX");
+}
+if (alltProfile?.controlled_source_path !== A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH ||
+    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.controlled_source_path !==
+      A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH) {
+  stop("A Love Like That controlled WAV path mismatch");
+}
+if (alltProfile?.source_sha256 !== A_LOVE_LIKE_THAT_SOURCE_SHA256 ||
+    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.source_sha256 !==
+      A_LOVE_LIKE_THAT_SOURCE_SHA256) {
+  stop("A Love Like That source SHA-256 mismatch");
+}
 if (alltProfile?.source_lineage_resolution?.controlled_lt_pix?.status !==
-    "BLOCKED_LOSSLESS_PARENT_NOT_LOCATED") {
-  stop("A Love Like That controlled LT-PIX must remain blocked until lossless parent resolution");
+    "RESOLVED_LOCKED_PARENT_AUDIO_TPR_REQUIRED") {
+  stop("A Love Like That controlled LT-PIX must retain the TPR requirement");
 }
-if (alltProfile?.source_lineage_resolution?.controlled_lt_pix?.lt_pix_id !== null ||
-    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.controlled_source_path !== null ||
-    alltProfile?.source_lineage_resolution?.controlled_lt_pix?.source_sha256 !== null) {
-  stop("A Love Like That lossless LT-PIX identifiers must remain null");
+if (alltSourceResolution?.source_identity_status !== "RESOLVED_LOCKED_LOSSLESS_PARENT" ||
+    alltSourceResolution?.authority_evidence?.blocking_status !==
+      "BLOCKED_UNTIL_TPR_CDR_LOCKS_KK_BOUNDARIES") {
+  stop("A Love Like That source-resolution authority or TPR block mismatch");
 }
-if (alltProfile?.source_lineage_resolution?.rendition_reconciliation?.status !== "REQUIRED" ||
-    alltProfile?.source_lineage_resolution?.rendition_reconciliation?.candidates?.length !== 2) {
-  stop("A Love Like That must retain two unresolved rendition candidates");
+if (alltSourceResolution?.controlled_source_path !== A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH ||
+    alltSourceResolution?.source_sha256 !== A_LOVE_LIKE_THAT_SOURCE_SHA256) {
+  stop("A Love Like That source-resolution registry values mismatch");
 }
+if (alltProfile?.mial_record_id !== null ||
+    alltProfile?.rendition_performance_id !== null) {
+  stop("A Love Like That MIAL row ID and rendition/performance ID must remain unresolved");
+}
+
 for (const record of records.filter(
   (row) => row.candidate_audio?.candidate_id === "a-love-like-that"
 )) {
+  if (record.authority_chain?.authority_status !== "PARTIAL") {
+    stop(`${record.match_evidence_record_id} authority status must be PARTIAL`);
+  }
+  if (record.eligibility_gates?.gate_profile_ref !==
+      "#/eligibility_gate_profiles/a_love_like_that_source_resolved_v1") {
+    stop(`${record.match_evidence_record_id} uses wrong source-resolved gate`);
+  }
   if (!record.supporting_evidence?.includes(
-    "#/evidence_catalog/gpmc_handoff_source_authority"
-  )) {
-    stop(`${record.match_evidence_record_id} missing GPMC handoff source evidence`);
+      "#/evidence_catalog/gpmc_handoff_source_authority"
+    ) || !record.supporting_evidence?.includes(
+      "#/evidence_catalog/controlled_lossless_parent_resolved"
+    )) {
+    stop(`${record.match_evidence_record_id} missing controlled source evidence`);
   }
   if (!record.conflicting_evidence?.includes(
-    "#/evidence_catalog/lossless_lt_pix_parent_missing"
-  ) || !record.conflicting_evidence?.includes(
-    "#/evidence_catalog/rendition_reconciliation_required"
-  )) {
-    stop(`${record.match_evidence_record_id} missing source-lineage blockers`);
+      "#/evidence_catalog/tpr_boundary_gate_required"
+    ) || !record.conflicting_evidence?.includes(
+      "#/evidence_catalog/rendition_reconciliation_required"
+    )) {
+    stop(`${record.match_evidence_record_id} missing remaining source-lineage holds`);
+  }
+  if (record.conflicting_evidence?.includes(
+      "#/evidence_catalog/lossless_lt_pix_parent_missing"
+    )) {
+    stop(`${record.match_evidence_record_id} still claims the WAV parent is missing`);
   }
 }
 
 for (const candidateId of candidateIds) {
   const profile = matchEvidenceRegistry.candidate_audio_profiles[candidateId];
-  const requiredUnknowns = [
-    "mial_record_id",
-    "lt_pix_id",
-    "rendition_performance_id",
-    "controlled_source_path",
-    "source_sha256",
-    "object_type",
-    "exact_audible_words",
-    "approved_start_seconds",
-    "approved_end_seconds",
-  ];
+  const requiredUnknowns = candidateId === "a-love-like-that"
+    ? [
+        "mial_record_id",
+        "rendition_performance_id",
+        "exact_audible_words",
+        "approved_start_seconds",
+        "approved_end_seconds"
+      ]
+    : [
+        "mial_record_id",
+        "lt_pix_id",
+        "rendition_performance_id",
+        "controlled_source_path",
+        "source_sha256",
+        "object_type",
+        "exact_audible_words",
+        "approved_start_seconds",
+        "approved_end_seconds"
+      ];
+
   for (const field of requiredUnknowns) {
     if (profile[field] !== null) {
       stop(`${candidateId} ${field} must remain null until evidence is captured`);
@@ -199,6 +252,14 @@ for (const candidateId of candidateIds) {
   }
 }
 
+if (aLoveLikeThatControlledLtPixResolution.lt_pix_id !== "LTPIX_0121" ||
+    aLoveLikeThatControlledLtPixResolution.controlled_source_path !==
+      A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH ||
+    aLoveLikeThatControlledLtPixResolution.source_sha256 !==
+      A_LOVE_LIKE_THAT_SOURCE_SHA256) {
+  stop("A Love Like That imported resolution constants mismatch");
+}
+
 console.log("MATCH EVIDENCE ADVERSARIAL MATRIX AUDIT PASS");
 console.log(`CANDIDATES: ${candidateIds.length}`);
 console.log(`CUSTOMER NEEDS: ${needIds.length}`);
@@ -208,7 +269,9 @@ console.log("PUBLIC RELEASE ELIGIBLE: 0");
 console.log("SCORING ALLOWED: 0");
 console.log("PERSONALIZATION APPLIED: 0");
 console.log("SCALING ALLOWED: false");
-console.log("A LOVE LIKE THAT SOURCE AUTHORITY: PARTIAL");
+console.log("A LOVE LIKE THAT SOURCE AUTHORITY: RESOLVED_CONTROLLED_LOSSLESS_PARENT_TPR_REQUIRED");
 console.log("A LOVE LIKE THAT PIX HANDLE: ALLT-105529524");
-console.log("A LOVE LIKE THAT CONTROLLED LT-PIX: BLOCKED_LOSSLESS_PARENT_NOT_LOCATED");
-console.log("A LOVE LIKE THAT RENDITION RECONCILIATION: REQUIRED");
+console.log("A LOVE LIKE THAT LT-PIX ID: LTPIX_0121");
+console.log(`A LOVE LIKE THAT WAV PATH: ${A_LOVE_LIKE_THAT_CONTROLLED_SOURCE_PATH}`);
+console.log(`A LOVE LIKE THAT SHA-256: ${A_LOVE_LIKE_THAT_SOURCE_SHA256}`);
+console.log("A LOVE LIKE THAT TPR/CDR BOUNDARY GATE: REQUIRED");
