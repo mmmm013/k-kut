@@ -1,4 +1,49 @@
+'use client';
+
+import { FormEvent, useState } from 'react';
+
+type SubmissionState =
+  | { kind: 'idle'; message: '' }
+  | { kind: 'error'; message: string }
+  | { kind: 'success'; message: string };
+
+function getSmsOptInError(phone: string, consent: boolean): string | null {
+  if (!consent) {
+    return 'Please check the SMS consent box before submitting. No SMS opt-in was submitted.';
+  }
+
+  const digits = phone.replace(/\D/g, '');
+  const isValidUsNumber = digits.length === 10 || (digits.length === 11 && digits.startsWith('1'));
+
+  if (!isValidUsNumber) {
+    return 'Enter a valid 10-digit U.S. mobile phone number.';
+  }
+
+  return null;
+}
+
 export default function SmsOptInPage() {
+  const [phone, setPhone] = useState('');
+  const [consent, setConsent] = useState(false);
+  const [submission, setSubmission] = useState<SubmissionState>({ kind: 'idle', message: '' });
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const error = getSmsOptInError(phone, consent);
+
+    if (error) {
+      setSubmission({ kind: 'error', message: error });
+      return;
+    }
+
+    setSubmission({
+      kind: 'success',
+      message:
+        'Your checked SMS consent and phone number passed the opt-in form validation. K-KUT will use this number only for the transactional messages described on this page.',
+    });
+  }
+
   return (
     <main className="min-h-screen bg-neutral-950 px-6 py-12 text-neutral-100">
       <section className="mx-auto max-w-2xl">
@@ -12,7 +57,11 @@ export default function SmsOptInPage() {
           via transactional SMS messages from K-KUT, operated by G Putnam Music, LLC.
         </p>
 
-        <div className="mt-10 rounded-xl border border-neutral-700 bg-neutral-900 p-6">
+        <form
+          className="mt-10 rounded-xl border border-neutral-700 bg-neutral-900 p-6"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <h2 className="text-xl font-semibold text-white">Opt In to SMS Notifications</h2>
 
           <p className="mt-4 text-sm text-neutral-300">
@@ -25,11 +74,17 @@ export default function SmsOptInPage() {
           <div className="mt-6 flex items-start gap-3">
             <input
               id="sms-consent"
+              name="smsConsent"
               type="checkbox"
+              checked={consent}
+              onChange={(event) => {
+                setConsent(event.target.checked);
+                setSubmission({ kind: 'idle', message: '' });
+              }}
               className="mt-1 h-4 w-4 accent-amber-400"
-              aria-label="I agree to receive transactional SMS messages from K-KUT"
+              aria-describedby="sms-consent-details sms-form-status"
             />
-            <label htmlFor="sms-consent" className="text-sm text-neutral-300">
+            <label id="sms-consent-details" htmlFor="sms-consent" className="text-sm text-neutral-300">
               I agree to receive transactional SMS messages from K-KUT (G Putnam Music, LLC)
               about my orders, delivery, and support. Message and data rates may apply.
               Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for
@@ -50,19 +105,44 @@ export default function SmsOptInPage() {
             </label>
             <input
               id="phone"
+              name="phone"
               type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              value={phone}
+              onChange={(event) => {
+                setPhone(event.target.value);
+                setSubmission({ kind: 'idle', message: '' });
+              }}
               placeholder="(555) 000-0000"
+              aria-describedby="sms-form-status"
+              aria-invalid={submission.kind === 'error'}
               className="mt-2 w-full rounded-lg border border-neutral-600 bg-neutral-800 px-4 py-3 text-white placeholder-neutral-500 focus:border-amber-400 focus:outline-none"
             />
           </div>
 
           <button
-            type="button"
+            type="submit"
             className="mt-6 w-full rounded-lg bg-amber-400 px-6 py-3 font-semibold text-neutral-950 transition hover:bg-amber-300"
           >
             Subscribe to K-KUT SMS
           </button>
-        </div>
+
+          <p
+            id="sms-form-status"
+            role={submission.kind === 'error' ? 'alert' : 'status'}
+            aria-live="polite"
+            className={`mt-4 text-sm ${
+              submission.kind === 'error'
+                ? 'text-red-300'
+                : submission.kind === 'success'
+                  ? 'text-green-300'
+                  : 'sr-only'
+            }`}
+          >
+            {submission.message}
+          </p>
+        </form>
 
         <div className="mt-10 space-y-4 text-sm text-neutral-400">
           <h2 className="text-base font-semibold text-white">SMS Program Details</h2>
