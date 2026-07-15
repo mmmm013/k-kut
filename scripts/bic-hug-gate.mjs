@@ -1,4 +1,3 @@
-
 // KK SLOT LAW:
 // Full LT-PIX with SSOT track: prefer 8 real customer-facing KKs.
 // Phantom PIX / original-element sets: show only real available KKs, even if 4-7.
@@ -89,7 +88,6 @@ for (const url of urls) {
 
 const requiredEnv = [
   "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL",
-  "NEXT_PUBLIC_KKUT_REVIEWED_HUG_PAYMENT_URL",
 ];
 
 for (const key of requiredEnv) {
