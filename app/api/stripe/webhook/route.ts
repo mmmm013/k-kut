@@ -7,6 +7,7 @@ export const runtime = "nodejs";
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || "";
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
+const isVercelProduction = Boolean(process.env.VERCEL);
 
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
@@ -25,12 +26,19 @@ function moneyFromCents(value: number | null | undefined) {
   return (value / 100).toFixed(2);
 }
 
-function writePaidFulfillmentRecord(record: Record<string, unknown>) {
-  const inboxDir = path.join(process.cwd(), "inbox", "4pe-fulfillment", "stripe-paid");
+function writeLocalPaidFulfillmentPacket(record: Record<string, unknown>) {
+  const inboxDir = path.join(
+    process.cwd(),
+    "inbox",
+    "4pe-fulfillment",
+    "stripe-paid",
+  );
   fs.mkdirSync(inboxDir, { recursive: true });
 
-  const createdAt = cleanString(record.created_at, 80) || new Date().toISOString();
-  const eventId = cleanString(record.stripe_event_id, 120) || `stripe_${Date.now()}`;
+  const createdAt =
+    cleanString(record.created_at, 80) || new Date().toISOString();
+  const eventId =
+    cleanString(record.stripe_event_id, 120) || `stripe_${Date.now()}`;
 
   const filePath = path.join(
     inboxDir,
@@ -38,6 +46,37 @@ function writePaidFulfillmentRecord(record: Record<string, unknown>) {
   );
 
   fs.writeFileSync(filePath, `${JSON.stringify(record, null, 2)}\n`);
+  return "local_mial_import_packet_written";
+}
+
+function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
+  if (!isVercelProduction) {
+    return writeLocalPaidFulfillmentPacket(record);
+  }
+
+  const productionEvidence = {
+    fulfillment_id: record.fulfillment_id,
+    created_at: record.created_at,
+    status: record.status,
+    stripe_event_id: record.stripe_event_id,
+    stripe_event_type: record.stripe_event_type,
+    stripe_checkout_session_id: record.stripe_checkout_session_id,
+    stripe_payment_intent_id: record.stripe_payment_intent_id,
+    amount_paid_usd: record.amount_paid_usd,
+    selected_hug_id: record.selected_hug_id,
+    customer_email_present: record.customer_email_present,
+    customer_phone_present: record.customer_phone_present,
+    delivery_preference: record.delivery_preference,
+    durable_order_authority: "stripe_checkout_session",
+    manual_review_required: true,
+  };
+
+  console.info(
+    "K_KUT_PAID_FULFILLMENT_EVIDENCE",
+    JSON.stringify(productionEvidence),
+  );
+
+  return "stripe_durable_manual_review_queue";
 }
 
 function basePaidRecord(event: Stripe.Event) {
@@ -46,6 +85,8 @@ function basePaidRecord(event: Stripe.Event) {
     created_at: new Date().toISOString(),
     status: "paid_needs_manual_fulfillment",
     source: "stripe_webhook",
+    durable_order_authority: "stripe_checkout_session",
+    manual_review_required: true,
     product_family: "HUG",
     product_name: "",
     amount_paid_usd: "",
@@ -71,7 +112,7 @@ function basePaidRecord(event: Stripe.Event) {
     sms_enabled: false,
     metadata: {},
     notes:
-      "Created by Stripe webhook. Exact selected K-KUT is preserved when client_reference_id is present. Paid order requires fulfillment review until private-link automation is approved.",
+      "Stripe Checkout is the durable paid-order authority. Exact selected K-KUT is preserved in client_reference_id. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
   };
 }
 
@@ -111,11 +152,13 @@ function recordFromPaymentIntent(event: Stripe.Event) {
 
   return {
     ...record,
-    product_name: cleanString(paymentIntent.description, 220) || "Stripe payment",
+    product_name:
+      cleanString(paymentIntent.description, 220) || "Stripe payment",
     amount_paid_usd: moneyFromCents(
       paymentIntent.amount_received || paymentIntent.amount,
     ),
-    stripe_payment_status: cleanString(paymentIntent.status, 80) || "succeeded",
+    stripe_payment_status:
+      cleanString(paymentIntent.status, 80) || "succeeded",
     stripe_payment_intent_id: cleanString(paymentIntent.id, 220),
     stripe_customer_id:
       typeof paymentIntent.customer === "string" ? paymentIntent.customer : "",
@@ -152,18 +195,25 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  let fulfillmentQueueStatus = "event_acknowledged_no_fulfillment_action";
+
   if (event.type === "checkout.session.completed") {
-    writePaidFulfillmentRecord(recordFromCheckoutSession(event));
+    fulfillmentQueueStatus = stagePaidFulfillmentRecord(
+      recordFromCheckoutSession(event),
+    );
   }
 
   if (event.type === "payment_intent.succeeded") {
-    writePaidFulfillmentRecord(recordFromPaymentIntent(event));
+    fulfillmentQueueStatus = stagePaidFulfillmentRecord(
+      recordFromPaymentIntent(event),
+    );
   }
 
   return NextResponse.json({
     ok: true,
     received: true,
     event_type: event.type,
+    fulfillment_queue_status: fulfillmentQueueStatus,
   });
 }
 
@@ -174,7 +224,12 @@ export async function GET() {
     status: stripe && webhookSecret ? "configured" : "missing_env",
     handles: ["checkout.session.completed", "payment_intent.succeeded"],
     exact_ii_capture: "client_reference_id_to_selected_hug_id",
+    durable_order_authority: "stripe_checkout_session",
+    production_fulfillment_mode: "manual_review_from_stripe_order",
+    local_packet_mode: isVercelProduction
+      ? "disabled_on_read_only_runtime"
+      : "local_mial_import_packet",
     rule:
-      "Paid capture preserves exact selected II. No SMS. No download. Manual HUG fulfillment review remains required.",
+      "Paid capture preserves exact selected II in Stripe. No automatic SMS or download. Manual HUG fulfillment review remains required.",
   });
 }
