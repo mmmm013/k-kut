@@ -28,9 +28,14 @@ const BRIDGE_PATH = path.join(
   "public-option-records.generated.json"
 );
 
+const APPROVED_PUBLICATION_STATUSES = new Set([
+  "public_approved_from_mial",
+  "public_approved_generated_from_reusable_ii",
+]);
+
 function isApproved(record: ApprovedPublicOption): boolean {
   return Boolean(
-    record.approval_status === "public_approved_from_mial" &&
+    APPROVED_PUBLICATION_STATUSES.has(record.approval_status) &&
       record.audio_proof_status === "pass" &&
       record.payment_allowed === true &&
       record.audio_delivery_url?.startsWith("/") &&
