@@ -89,6 +89,29 @@ export default function HugPage() {
           </div>
         </header>
 
+        <section className="rounded-[1.75rem] border border-[#FFD54F]/35 bg-gradient-to-r from-[#25140D] to-[#100806] p-6 shadow-xl md:p-8">
+          <p className="text-xs font-black uppercase tracking-[0.32em] text-[#FFD54F]">
+            Wounded &amp; Willing™
+          </p>
+
+          <h2 className="mt-3 text-3xl font-black md:text-4xl">
+            Real independent artists, Playing It Forward.
+          </h2>
+
+          <p className="mt-4 max-w-4xl text-sm leading-7 text-[#D7CCC8]">
+            We Kare. We Share. We Dare. Meet the artists, songwriters,
+            musicians, and performers behind the music—and help one real music
+            moment keep moving.
+          </p>
+
+          <a
+            className="mt-5 inline-flex rounded-2xl border border-[#FFD54F]/70 px-5 py-3 text-sm font-black text-[#FFD54F] transition hover:bg-[#FFD54F] hover:text-[#160A05]"
+            href="/playing-it-forward"
+          >
+            Meet Wounded &amp; Willing
+          </a>
+        </section>
+
         <section className="grid gap-5 md:grid-cols-2">
           {HUG_CARDS.map((card) => (
             <article
