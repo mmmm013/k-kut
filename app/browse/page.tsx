@@ -57,10 +57,14 @@ export default function BrowsePage() {
                 3 · Receive
               </p>
               <p className="mt-2 text-sm font-bold leading-6 text-[#D7CCC8]">
-                K-KUT uses the paid order record to fulfill the exact music moment selected.
+                After payment, we manually review the exact selection and prepare its private delivery using your checkout contact.
               </p>
             </div>
           </div>
+
+          <p className="mt-5 max-w-4xl text-sm font-bold leading-7 text-[#D7CCC8]">
+            Every paid HUG is reviewed before release. No automatic SMS and no uncontrolled public download.
+          </p>
         </header>
 
         <PublicIiBrowser />
