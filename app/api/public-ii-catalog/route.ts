@@ -10,6 +10,9 @@ const AUDIO_PREFIX =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/";
 
 const EXPECTED_INVENTORY_COUNT = 2611;
+const REGULAR_HUG_OFFER = "K-KUT HUG";
+const REGULAR_HUG_PRICE_USD = 7.99;
+const PERSONAL_NOTE_WORD_LIMIT = 13;
 
 const TRUE_VALUES = new Set([
   "1",
@@ -23,25 +26,22 @@ const TRUE_VALUES = new Set([
   "end",
 ]);
 
-type CheckoutClass = "short_kut" | "hug" | "big_hug" | "hold";
-
 type PublicCatalogRecord = {
   id: string;
   label: string;
   family: string;
   lane: string;
-  offer: string;
-  priceUsd: number | null;
+  offer: typeof REGULAR_HUG_OFFER;
+  priceUsd: typeof REGULAR_HUG_PRICE_USD;
   audioUrl: string;
-  checkout: CheckoutClass;
-  checkoutHref: string | null;
+  checkout: "hug";
+  checkoutHref: string;
+  personalNoteWordLimit: typeof PERSONAL_NOTE_WORD_LIMIT;
 };
 
 type RawCatalogRecord = {
   inventory_id?: unknown;
   inventory_family?: unknown;
-  delivery_offer?: unknown;
-  delivery_price_usd?: unknown;
   primary_use_lane?: unknown;
   public_audio_url?: unknown;
   signature_audio_logo_integral_at_end?: unknown;
@@ -84,45 +84,6 @@ function itemLabel(inventoryId: string, index: number) {
   }
 
   return `K-KUT ${String(index + 1).padStart(5, "0")}`;
-}
-
-function priceNumber(value: unknown) {
-  const parsed = Number.parseFloat(cleanText(value, 24).replace(/[$,]/g, ""));
-  return Number.isFinite(parsed) && parsed > 0
-    ? Number(parsed.toFixed(2))
-    : null;
-}
-
-function checkoutClass(offer: string, priceUsd: number | null): CheckoutClass {
-  const normalized = offer.toLowerCase().replace(/[^a-z0-9]+/g, "_");
-
-  if (normalized.includes("big_hug") || normalized.includes("bighug")) {
-    return "big_hug";
-  }
-
-  if (normalized.includes("short_kut") || normalized.includes("shortkut")) {
-    return "short_kut";
-  }
-
-  if (normalized.includes("hug") || priceUsd === 7.99) {
-    return "hug";
-  }
-
-  if (priceUsd === 4.99) return "short_kut";
-  if (priceUsd === 12.99) return "big_hug";
-
-  return "hold";
-}
-
-function checkoutConfigured(checkout: CheckoutClass) {
-  if (checkout === "hug") return true;
-  if (checkout === "short_kut") {
-    return Boolean(process.env.NEXT_PUBLIC_KKUT_SHORT_KUT_PAYMENT_URL);
-  }
-  if (checkout === "big_hug") {
-    return Boolean(process.env.NEXT_PUBLIC_KKUT_BIG_HUG_PAYMENT_URL);
-  }
-  return false;
 }
 
 export async function GET() {
@@ -192,8 +153,6 @@ export async function GET() {
       const twinkleAtEnd = isTrue(
         record.signature_audio_logo_integral_at_end,
       );
-      const offerRaw = cleanText(record.delivery_offer, 100);
-      const priceUsd = priceNumber(record.delivery_price_usd);
 
       if (!/^[A-Za-z0-9_-]+$/.test(id)) {
         throw new Error(`unsafe_inventory_id_at_${index + 1}`);
@@ -211,24 +170,17 @@ export async function GET() {
         throw new Error(`twinkle_gate_failed_at_${index + 1}`);
       }
 
-      const offer = prettyLabel(offerRaw) || "K-KUT HUG";
-      const checkout = checkoutClass(offerRaw || offer, priceUsd);
-      const purchaseReady = checkoutConfigured(checkout);
-
       return {
         id,
         label: itemLabel(id, index),
         family: prettyLabel(record.inventory_family),
         lane: prettyLabel(record.primary_use_lane),
-        offer,
-        priceUsd,
+        offer: REGULAR_HUG_OFFER,
+        priceUsd: REGULAR_HUG_PRICE_USD,
         audioUrl,
-        checkout,
-        checkoutHref: purchaseReady
-          ? `/checkout?ii=${encodeURIComponent(id)}&offer=${encodeURIComponent(
-              checkout,
-            )}`
-          : null,
+        checkout: "hug",
+        checkoutHref: `/checkout?ii=${encodeURIComponent(id)}&offer=hug`,
+        personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
       };
     });
   } catch (reason) {
@@ -243,16 +195,19 @@ export async function GET() {
     );
   }
 
-  const purchasableCount = publicRecords.filter(
-    (record) => record.checkoutHref,
-  ).length;
-
   return NextResponse.json(
     {
       ok: true,
       status: "BIC_PUBLIC_CATALOG_READY",
       inventoryCount: publicRecords.length,
-      purchasableCount,
+      purchasableCount: publicRecords.length,
+      productMapping: {
+        publicProduct: REGULAR_HUG_OFFER,
+        priceUsd: REGULAR_HUG_PRICE_USD,
+        checkoutOffer: "hug",
+        personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
+        heldOffers: ["4.99", "12.99", "0.99", "charity_sales_claims"],
+      },
       generatedFrom: cleanText(payload.status, 120),
       records: publicRecords,
     },
@@ -261,6 +216,7 @@ export async function GET() {
       headers: {
         "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
         "X-KKUT-Inventory-Count": String(publicRecords.length),
+        "X-KKUT-Purchasable-Count": String(publicRecords.length),
       },
     },
   );
