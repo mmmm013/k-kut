@@ -30,7 +30,7 @@ create table if not exists public.gpm_sms_consent_records (
   constraint gpm_sms_consent_phone_choice check (
     (
       sms_consent = true
-      and phone_e164 ~ '^\\+1[2-9][0-9]{9}$'
+      and phone_e164 ~ '^\+1[2-9][0-9]{9}$'
     )
     or
     (
