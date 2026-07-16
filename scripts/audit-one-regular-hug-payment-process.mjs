@@ -69,6 +69,8 @@ for (const [expected, message] of [
   ["personal-note-over-13-words", "/checkout does not block a 14-word note."],
   ["pending-order-unavailable", "/checkout does not fail closed when the pending-order store is unavailable."],
   ["pending-order-reference-invalid", "/checkout does not validate the Stripe-safe token."],
+  ["STRIPE_REDIRECT_STATUS = 303", "/checkout must use 303 See Other after the storefront POST."],
+  ["NextResponse.redirect(checkoutUrl, STRIPE_REDIRECT_STATUS)", "/checkout must redirect to Stripe with the locked 303 status."],
 ]) requireText(checkout, expected, message);
 
 for (const forbidden of [
@@ -79,6 +81,9 @@ for (const forbidden of [
   'value === "short_kut"',
   'value === "big_hug"',
   'CLIENT_REFERENCE_PREFIX = "H1|"',
+  "NextResponse.redirect(checkoutUrl);",
+  "NextResponse.redirect(checkoutUrl, 307)",
+  "NextResponse.redirect(checkoutUrl, 308)",
 ]) forbidText(checkout, forbidden, `/checkout still contains a rejected payment path: ${forbidden}`);
 
 for (const [expected, message] of [
@@ -156,6 +161,7 @@ console.log("PURCHASABLE CATALOG RECORDS REQUIRED: 2611");
 console.log("OPTIONAL PERSONAL NOTE: 13 WORDS MAXIMUM");
 console.log("STRIPE REFERENCE: H2 SAFE TOKEN");
 console.log("EXACT II + OPTIONAL NOTE: SERVER-SIDE PENDING ORDER");
+console.log("STRIPE POST-TO-GET REDIRECT: 303 SEE OTHER");
 console.log("STRIPE PAYMENT-LINK ENUMERATION: FORBIDDEN");
 console.log("SECOND CHECKOUT AUTHORITY: FORBIDDEN");
 console.log("HELD OFFER PATHS: $4.99 / $12.99 / $0.99");
