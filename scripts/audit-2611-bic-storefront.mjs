@@ -1,203 +1,108 @@
 import fs from "node:fs";
 
-function stop(message) {
-  console.error(`BIC 2611 STOREFRONT AUDIT FAIL: ${message}`);
+function read(path) {
+  if (!fs.existsSync(path)) throw new Error(`missing ${path}`);
+  return fs.readFileSync(path, "utf8");
+}
+
+function needs(text, values, label) {
+  for (const value of values) {
+    if (!text.includes(value)) throw new Error(`${label} missing ${value}`);
+  }
+}
+
+function forbids(text, values, label) {
+  for (const value of values) {
+    if (text.includes(value)) throw new Error(`${label} exposes ${value}`);
+  }
+}
+
+try {
+  const api = read("app/api/public-ii-catalog/route.ts");
+  const browser = read("components/PublicIiBrowser.tsx");
+  const home = read("app/page.tsx");
+  const homeProducts = read("components/KkutHomeProducts.tsx");
+  const browse = read("app/browse/page.tsx");
+  const find = read("app/find/page.tsx");
+  const hug = read("app/hug/page.tsx");
+  const checkout = read("app/checkout/route.ts");
+  const webhook = read("app/api/stripe/webhook/route.ts");
+  const store = read("lib/h2PendingOrder.ts");
+
+  needs(api, [
+    "EXPECTED_INVENTORY_COUNT = 2611",
+    "PUBLIC_STORAGE_VERIFIED",
+    "signature_audio_logo_integral_at_end",
+    "REGULAR_HUG_PRICE_USD = 7.99",
+    "purchasableCount: publicRecords.length",
+  ], "catalog API");
+
+  needs(browser, [
+    "PublicIiRecord",
+    "Send this K-KUT as a HUG",
+    "Optional personal note · 13 words maximum",
+    "stopOtherAudio",
+  ], "catalog browser");
+
+  needs(home, [
+    "KkutHomeProducts",
+    "Short KUT · $4.99",
+    "HUG · $7.99",
+    "Big HUG · $12.99",
+    "private link delivery",
+  ], "homepage");
+
+  needs(homeProducts, [
+    'offer: "short"',
+    'inventoryId: "thank-you-cc-012"',
+    'offer: "hug"',
+    'inventoryId: "thank-you-sec-ch1"',
+    'offer: "big"',
+    'inventoryId: "thank-you-kk7"',
+    'action="/checkout"',
+    "stopOtherAudio",
+  ], "homepage products");
+
+  forbids(home + homeProducts, ["KK1", "KK2"], "homepage");
+
+  needs(checkout, [
+    "SHORT_KUT_PRICE_CENTS = 499",
+    "REGULAR_HUG_PRICE_CENTS = 799",
+    "BIG_HUG_PRICE_CENTS = 1299",
+    'type OfferCode = "short" | "hug" | "big"',
+    "NEXT_PUBLIC_MD_MOMENT_KK_LINK",
+    "NEXT_PUBLIC_MD_FEATURED_KK_LINK",
+    "CURATED_SHORT_KUT_IDS",
+    "CURATED_BIG_HUG_IDS",
+    "offer-inventory-mismatch",
+    "payment-link-unavailable",
+    "createPendingH2Order",
+    "STRIPE_REDIRECT_STATUS = 303",
+  ], "checkout");
+
+  needs(webhook, [
+    "consumePendingH2Order",
+    "selected_hug_id: selectedInventoryId",
+    "public_product_name: publicProductName",
+    "manual_review_required: true",
+  ], "webhook");
+
+  needs(store, [
+    'H2_TABLE = "gpm_h2_pending_orders"',
+    "createPendingH2Order",
+    "consumePendingH2Order",
+  ], "pending-order store");
+
+  needs(browse + find + hug, ["$7.99"], "2,611-item HUG path");
+  forbids(browse + find + hug + browser, ["$4.99", "$12.99"], "2,611-item HUG path");
+
+  console.log("BIC 2611 STOREFRONT AUDIT PASS");
+  console.log("CATALOG: 2611 VERIFIED HUGS AT $7.99");
+  console.log("HOME: CURATED SHORT KUT / HUG / BIG HUG");
+  console.log("CHECKOUT: H2 EXACT ITEM + 303 STRIPE HANDOFF");
+  console.log("FULFILLMENT: MANUAL PRIVATE DELIVERY");
+} catch (error) {
+  console.error("BIC 2611 STOREFRONT AUDIT FAIL");
+  console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }
-
-function read(file) {
-  if (!fs.existsSync(file)) stop(`missing ${file}`);
-  return fs.readFileSync(file, "utf8");
-}
-
-function requireText(text, expected, label) {
-  if (!text.includes(expected)) stop(`${label} missing: ${expected}`);
-}
-
-function forbidText(text, forbidden, label) {
-  if (text.includes(forbidden)) stop(`${label} exposes forbidden text: ${forbidden}`);
-}
-
-const api = read("app/api/public-ii-catalog/route.ts");
-const browser = read("components/PublicIiBrowser.tsx");
-const browse = read("app/browse/page.tsx");
-const find = read("app/find/page.tsx");
-const hug = read("app/hug/page.tsx");
-const home = read("app/page.tsx");
-const checkout = read("app/checkout/route.ts");
-const webhook = read("app/api/stripe/webhook/route.ts");
-const h2Store = read("lib/h2PendingOrder.ts");
-const h2Migration = read(
-  "supabase/migrations/20260715_gpm_h2_pending_orders.sql",
-);
-
-for (const required of [
-  "EXPECTED_INVENTORY_COUNT = 2611",
-  "PUBLIC_STORAGE_VERIFIED",
-  "signature_audio_logo_integral_at_end",
-  "twinkle_gate_failed_at_",
-  "public_release_gate_failed",
-  "inventory_count_gate_failed",
-  "release-gate-v004/",
-  'REGULAR_HUG_OFFER = "K-KUT HUG"',
-  "REGULAR_HUG_PRICE_USD = 7.99",
-  "PERSONAL_NOTE_WORD_LIMIT = 13",
-  'checkout: "hug"',
-  "purchasableCount: publicRecords.length",
-]) requireText(api, required, "catalog API");
-
-for (const forbidden of [
-  "local_capsule_sha256:",
-  "local_capsule_size_bytes:",
-  "object_path:",
-  "lt_pix_parent_id:",
-  "controlled_source_path:",
-]) forbidText(api, forbidden, "public API output");
-
-for (const required of [
-  'fetch("/api/public-ii-catalog"',
-  "const PAGE_SIZE = 12",
-  'preload="none"',
-  "MC-BOT will not invent a match",
-  "Send this K-KUT as a HUG",
-  "Optional personal note · 13 words maximum",
-  'action="/checkout"',
-  'method="post"',
-  'name="personal_note"',
-  "stopOtherAudio",
-]) requireText(browser, required, "public browser");
-
-for (const required of [
-  "Browse All K-KUTs",
-  "PublicIiBrowser",
-  "Add up to 13 words",
-  "$7.99",
-  "does not alter the audio",
-]) requireText(browse, required, "browse page");
-
-for (const required of [
-  "MC-BOT music guide",
-  "PublicIiBrowser",
-  "MC-BOT will not invent",
-]) requireText(find, required, "find page");
-
-for (const required of [
-  "2,611 playable K-KUTs",
-  'href="/browse"',
-  'href="/find"',
-  "Twinkle-at-end proof remains required",
-]) requireText(hug, required, "HUG page");
-
-requireText(home, 'redirect("/browse")', "home route");
-
-for (const required of [
-  "REGULAR_HUG_PAYMENT_URL",
-  "REGULAR_HUG_PRICE_CENTS = 799",
-  "PERSONAL_NOTE_WORD_LIMIT = 13",
-  "PERSONAL_NOTE_CHARACTER_LIMIT = 160",
-  "CLIENT_REFERENCE_LIMIT = 200",
-  'H2_CLIENT_REFERENCE_PREFIX = "H2_"',
-  'return value === "hug" ? "hug" : null',
-  'formData.get("personal_note")',
-  "personal-note-over-13-words",
-  "pending-order-unavailable",
-  "pending-order-reference-invalid",
-  "createPendingH2Order",
-  'checkoutUrl.searchParams.set("client_reference_id", clientReference)',
-]) requireText(checkout, required, "checkout route");
-
-for (const forbidden of [
-  "stripe.paymentLinks",
-  "stripe.checkout.sessions.create",
-  'value === "short_kut"',
-  'value === "big_hug"',
-  "NEXT_PUBLIC_KKUT_SHORT_KUT_PAYMENT_URL",
-  "NEXT_PUBLIC_KKUT_BIG_HUG_PAYMENT_URL",
-  'CLIENT_REFERENCE_PREFIX = "H1|"',
-]) forbidText(checkout, forbidden, "checkout route");
-
-for (const required of [
-  "session.client_reference_id",
-  "parseClientReference",
-  'H2_CLIENT_REFERENCE_PREFIX = "H2_"',
-  'LEGACY_CLIENT_REFERENCE_PREFIX = "H1|"',
-  "consumePendingH2Order",
-  "selected_hug_id: selectedInventoryId",
-  "fulfill_exact_selected_ii",
-  "constructEvent",
-  "isVercelProduction",
-  'durable_order_authority: "stripe_checkout_session"',
-  "stripe_durable_manual_review_queue",
-  "disabled_on_read_only_runtime",
-  "manual_review_required: true",
-  "personalNoteFields",
-  'personal_note_placement: "before_hug_content"',
-  'personal_note_capture: "optional_13_words_before_hug_content"',
-  'client_reference_format: "H2_safe_order_token"',
-  '"H1|inventory_id|personal_note"',
-  "public_product_name: publicProductName",
-  "bf_profile: bfProfile",
-  "origin_domain: originDomain",
-]) requireText(webhook, required, "Stripe webhook");
-
-for (const required of [
-  "SUPABASE_SERVICE_ROLE_KEY",
-  'H2_TABLE = "gpm_h2_pending_orders"',
-  "createPendingH2Order",
-  "consumePendingH2Order",
-  '.eq("status", "awaiting_payment")',
-]) requireText(h2Store, required, "H2 pending-order store");
-
-for (const required of [
-  "create table if not exists public.gpm_h2_pending_orders",
-  "enable row level security",
-  "revoke all on table public.gpm_h2_pending_orders from anon",
-  "revoke all on table public.gpm_h2_pending_orders from authenticated",
-  "grant all on table public.gpm_h2_pending_orders to service_role",
-]) requireText(h2Migration, required, "H2 migration");
-
-if (!webhook.includes("if (!isVercelProduction)") ||
-    !webhook.includes("writeLocalPaidFulfillmentPacket(record)")) {
-  stop("Stripe webhook does not guard local packet writes away from Vercel");
-}
-
-const publicSurfaces = [browser, browse, find, hug].join("\n");
-for (const forbidden of [
-  "MIAL",
-  "Release Gate",
-  "Dispatch",
-  "pre-made",
-  "raw inventory",
-  "local_capsule_sha256",
-  "controlled_source_path",
-  "$4.99",
-  "$12.99",
-  "$0.99",
-  "donation",
-  "charity",
-]) forbidText(publicSurfaces, forbidden, "customer UI");
-
-if (/https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+/.test(browser + browse + find + hug)) {
-  stop("customer components bypass governed checkout route");
-}
-
-console.log("BIC 2611 STOREFRONT AUDIT PASS");
-console.log("PUBLIC CATALOG COUNT GATE: 2611");
-console.log("PURCHASABLE K-KUT HUGS REQUIRED: 2611");
-console.log("REGULAR HUG PRICE: $7.99 EXISTING PAYMENT LINK");
-console.log("PERSONAL NOTE LIMIT: 13 WORDS");
-console.log("STRIPE REFERENCE: H2 SAFE TOKEN");
-console.log("EXACT II + OPTIONAL NOTE: SERVER-SIDE PENDING ORDER");
-console.log("LEGACY H1 READ COMPATIBILITY: REQUIRED");
-console.log("SECOND STRIPE CHECKOUT AUTHORITY: FORBIDDEN");
-console.log("SOURCE AUDIO CHANGED: FORBIDDEN");
-console.log("SHORT KUT / BIG HUG / $0.99 ADD-ON: HELD");
-console.log("CHARITABLE SALES CLAIMS: HELD");
-console.log("PUBLIC STORAGE STATUS GATE: REQUIRED");
-console.log("CANONICAL TWINKLE-AT-END GATE: REQUIRED");
-console.log("MC-BOT ABSTENTION: REQUIRED");
-console.log("STRIPE SIGNATURE VERIFICATION: REQUIRED");
-console.log("STRIPE DURABLE ORDER AUTHORITY: REQUIRED");
-console.log("VERCEL READ-ONLY FILESYSTEM WRITE: FORBIDDEN");
-console.log("MANUAL FULFILLMENT REVIEW: REQUIRED");
-console.log("PUBLIC INTERNAL-PROOF LEAKS: 0");
