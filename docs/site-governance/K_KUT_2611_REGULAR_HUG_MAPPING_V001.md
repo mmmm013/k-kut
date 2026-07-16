@@ -4,7 +4,7 @@
 
 All 2,611 finished, public-storage-verified K-KUT IIs map to the existing Regular HUG commercial authority.
 
-Public offer:
+Public catalog offer:
 
 - Product language: `K-KUT HUG`
 - Price: `$7.99`
@@ -12,9 +12,11 @@ Public offer:
 - Payment authority: existing approved Regular HUG Stripe product/payment relationship
 - Buyer action: `Send this K-KUT as a HUG`
 
+This 2,611-item mapping is separate from the curated three-product homepage release documented in `K_KUT_HOME_3_PRODUCT_RELEASE_V001.md`.
+
 ## Personal Note
 
-Each K-KUT HUG may include one optional written personal note.
+Each catalog K-KUT HUG may include one optional written personal note.
 
 Rules:
 
@@ -40,16 +42,26 @@ This product mapping does not:
 
 The existing public-release gates remain mandatory for every displayed II.
 
-## Explicit Holds
+## Curated Homepage Boundary
 
-The following remain held until their separate product promises, prices, checkout relationships, delivery paths, and controls are proven:
+GD authorized one exact existing item in each settled homepage product tier:
 
-- `$4.99` Short KUT offer.
-- `$12.99` Big HUG offer.
+- Short KUT — `$4.99` — `thank-you-cc-012`.
+- HUG — `$7.99` — `thank-you-sec-ch1`.
+- Big HUG — `$12.99` — `thank-you-kk7`.
+
+Those three exact homepage items use the existing H2 pending-order authority, approved Stripe payment mappings, manual review, and private link delivery. They do not bulk-remap the 2,611-item catalog.
+
+## Continuing Holds
+
+The following remain held until separately authorized and proven:
+
+- Bulk Short KUT mapping across the 2,611-item catalog.
+- Bulk Big HUG mapping across the 2,611-item catalog.
 - `$0.99` personal-note add-on.
 - Any charitable donation, profit-share, community-payback, tax-benefit, or named-recipient sales claim.
 
-The optional 13-word written note is included in the `$7.99` Regular HUG. It is not a separate charge.
+The optional 13-word written note remains included in the `$7.99` catalog HUG. It is not a separate charge.
 
 ## Customer Promise
 
@@ -61,13 +73,13 @@ Every paid HUG is manually reviewed before private delivery. No automatic SMS an
 
 A production release must prove:
 
-1. Exactly 2,611 governed records load.
-2. Exactly 2,611 records are checkout-ready as `K-KUT HUG` at `$7.99`.
-3. Every displayed audio URL passes the approved public-storage prefix gate.
-4. Every displayed II passes Twinkle-at-end proof.
+1. Exactly 2,611 governed catalog records load.
+2. Exactly 2,611 catalog records remain checkout-ready as `K-KUT HUG` at `$7.99`.
+3. Every displayed catalog audio URL passes the approved public-storage prefix gate.
+4. Every displayed catalog II passes Twinkle-at-end proof.
 5. Every checkout preserves the exact selected II.
 6. An optional note over 13 words is blocked.
-7. A valid optional note is preserved in Stripe with `before_hug_content` placement.
-8. `$4.99`, `$12.99`, `$0.99`, and charitable sales claims remain absent from the live buyer flow.
+7. A valid optional note is preserved with `before_hug_content` placement.
+8. The homepage exposes only the three exact authorized product items and prices.
 9. Source audio changes equal zero.
 10. Manual review remains required before private delivery.
