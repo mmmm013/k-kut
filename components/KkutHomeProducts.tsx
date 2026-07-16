@@ -98,7 +98,7 @@ export default function KkutHomeProducts() {
                 onPlay={() => stopOtherAudio(product.offer)}
               />
 
-              <form action="/checkout" method="get" className="mt-5">
+              <form action="/checkout" method="post" className="mt-5">
                 <input type="hidden" name="ii" value={product.inventoryId} />
                 <input type="hidden" name="offer" value={product.offer} />
                 <button
