@@ -24,7 +24,7 @@ try {
     "REGULAR_HUG_PAYMENT_URL",
     "REGULAR_HUG_PRICE_CENTS = 799",
     'type OfferCode = "short" | "hug" | "big"',
-    'publicProductName: "HUG"',
+    'publicProductName: "K-KUT HUG"',
     "PERSONAL_NOTE_WORD_LIMIT = 13",
     "createPendingH2Order",
     "client_reference_id",
