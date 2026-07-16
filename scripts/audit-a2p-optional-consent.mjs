@@ -23,6 +23,7 @@ function requireNormalizedText(source, needle, label) {
   }
 }
 
+const canonical = read("lib/a2p-consent.ts");
 const page = read("app/sms-optin/page.tsx");
 const form = read("app/sms-optin/SmsOptInForm.tsx");
 const route = read("app/api/sms-optin/route.ts");
@@ -32,12 +33,93 @@ const migration = read(
   "supabase/migrations/20260715_gpm_sms_consent_records.sql",
 );
 
-requireText(page, "Optional K-KUT SMS Updates", "SMS page title");
-requireNormalizedText(
-  page,
-  "You do not have to consent to SMS to buy, order, receive a digital HUG",
-  "SMS page voluntary-use disclosure",
+requireText(
+  canonical,
+  'A2P_CONSENT_VERSION = "k-kut-sms-consent-v003-2026-07-16"',
+  "canonical consent version",
 );
+requireNormalizedText(
+  canonical,
+  "Optional: I agree to receive transactional customer-care SMS messages from K-KUT",
+  "canonical affirmative consent",
+);
+requireNormalizedText(
+  canonical,
+  "SMS consent is optional, unchecked by default, and is not a condition of purchase",
+  "canonical no-condition rule",
+);
+requireNormalizedText(
+  canonical,
+  "Merely providing a phone number",
+  "canonical no-implied-consent rule",
+);
+requireNormalizedText(
+  canonical,
+  "Leave the box unchecked to continue without SMS",
+  "canonical decline path",
+);
+requireNormalizedText(canonical, "Reply STOP", "canonical STOP instruction");
+requireNormalizedText(canonical, "Reply HELP", "canonical HELP instruction");
+requireNormalizedText(
+  canonical,
+  "not sold, rented, or shared with third parties or affiliates",
+  "canonical no-marketing-sharing rule",
+);
+
+for (const [label, source, requiredNames] of [
+  [
+    "SMS page",
+    page,
+    [
+      "A2P_NO_CONDITION_DISCLOSURE",
+      "A2P_MESSAGE_TYPES",
+      "A2P_NO_MARKETING_SHARING_DISCLOSURE",
+    ],
+  ],
+  [
+    "SMS form",
+    form,
+    [
+      "A2P_CONSENT_DISCLOSURE",
+      "A2P_DECLINE_DISCLOSURE",
+      "A2P_NO_CONDITION_DISCLOSURE",
+    ],
+  ],
+  [
+    "SMS route",
+    route,
+    [
+      "A2P_CAMPAIGN_SID",
+      "A2P_CONSENT_DISCLOSURE",
+      "A2P_CONSENT_VERSION",
+      "A2P_SOURCE_PAGE",
+    ],
+  ],
+  [
+    "Terms",
+    terms,
+    [
+      "A2P_CONSENT_DISCLOSURE",
+      "A2P_NO_CONDITION_DISCLOSURE",
+      "A2P_NO_IMPLIED_CONSENT_DISCLOSURE",
+    ],
+  ],
+  [
+    "Privacy",
+    privacy,
+    [
+      "A2P_CONSENT_DISCLOSURE",
+      "A2P_DECLINE_DISCLOSURE",
+      "A2P_NO_CONDITION_DISCLOSURE",
+      "A2P_NO_IMPLIED_CONSENT_DISCLOSURE",
+    ],
+  ],
+]) {
+  requireText(source, "lib/a2p-consent", `${label} canonical import`);
+  for (const name of requiredNames) requireText(source, name, `${label} ${name}`);
+}
+
+requireText(page, "Optional K-KUT SMS Updates", "SMS page title");
 requireText(page, '<a href="/terms"', "SMS page Terms link");
 requireText(page, '<a href="/privacy"', "SMS page Privacy link");
 requireText(page, "<SmsOptInForm />", "SMS page working form");
@@ -45,17 +127,6 @@ requireText(page, "<SmsOptInForm />", "SMS page working form");
 requireText(form, "useState(false)", "unchecked checkbox default");
 requireText(form, 'id="sms-consent"', "SMS checkbox");
 requireText(form, 'type="checkbox"', "SMS checkbox type");
-requireText(form, "Optional:", "optional checkbox label");
-requireNormalizedText(
-  form,
-  "SMS consent is optional and is not a condition of purchase",
-  "optional consent disclosure",
-);
-requireNormalizedText(
-  form,
-  "Leave the box unchecked to continue without SMS",
-  "decline path disclosure",
-);
 requireText(form, "disabled={!smsConsent}", "phone disabled without consent");
 requireText(form, "required={smsConsent}", "phone conditional requirement");
 requireText(form, 'type="submit"', "functional submit button");
@@ -83,16 +154,7 @@ requireText(
   'const TABLE = "gpm_sms_consent_records"',
   "server consent table",
 );
-requireText(
-  route,
-  "CM9788370188c8c407e38f427fe849a70f",
-  "campaign SID authority",
-);
-requireText(
-  route,
-  "SUPABASE_SERVICE_ROLE_KEY",
-  "server-only Supabase authority",
-);
+requireText(route, "SUPABASE_SERVICE_ROLE_KEY", "server-only Supabase authority");
 requireText(
   route,
   "const smsConsent = body.sms_consent === true",
@@ -103,11 +165,7 @@ requireText(
   "const phoneE164 = smsConsent ? normalizeUsPhone(body.phone) : null",
   "no phone storage without SMS consent",
 );
-requireText(
-  route,
-  "if (smsConsent && !phoneE164)",
-  "phone requirement only after opt-in",
-);
+requireText(route, "if (smsConsent && !phoneE164)", "phone requirement only after opt-in");
 requireText(
   route,
   "consent_not_condition_of_purchase: true",
@@ -118,36 +176,16 @@ if (/\.messages\.create|messages\.create|TWILIO_AUTH_TOKEN/u.test(route)) {
   stop("SMS opt-in route must record consent only and must not send SMS");
 }
 
-requireNormalizedText(
-  terms,
-  "SMS consent is optional",
-  "Terms voluntary consent language",
-);
-requireNormalizedText(
-  terms,
-  "Consent to SMS is not a condition of purchase",
-  "Terms no-condition language",
-);
-requireNormalizedText(
-  terms,
-  "Merely providing a phone number",
-  "Terms no implied-consent language",
-);
-requireNormalizedText(
-  privacy,
-  "voluntarily check the separate optional SMS-consent box",
-  "Privacy affirmative-consent language",
-);
-requireNormalizedText(
-  privacy,
-  "If you choose “No SMS,” no mobile number is required",
-  "Privacy decline path",
-);
-requireNormalizedText(
-  privacy,
-  "SMS consent is optional, unchecked by default",
-  "Privacy unchecked-default language",
-);
+const governedSources = [canonical, page, form, route, terms, privacy].join("\n");
+for (const forbidden of [
+  "If you provide your phone number, you agree",
+  "By providing your phone number, you agree",
+  "Consent to receive SMS messages is not a condition of any unrelated purchase",
+]) {
+  if (governedSources.includes(forbidden)) {
+    stop(`forbidden implied-consent wording found: ${forbidden}`);
+  }
+}
 
 requireText(
   migration,
@@ -166,11 +204,13 @@ if (!/sms_consent\s*=\s*false\s+and\s+phone_e164\s+is\s+null/gu.test(migration))
   stop("no phone retention for declined SMS is missing");
 }
 
-console.log("A2P OPTIONAL SMS CONSENT AUDIT PASS");
+console.log("A2P DMAIC CANONICAL CONSENT AUDIT PASS");
+console.log("ONE CONSENT AUTHORITY: 1");
 console.log("CHECKBOX OPTIONAL: 1");
 console.log("CHECKBOX DEFAULT UNCHECKED: 1");
 console.log("NO-SMS SUBMISSION PATH: 1");
 console.log("PHONE REQUIRED ONLY AFTER OPT-IN: 1");
+console.log("NO IMPLIED CONSENT WORDING: 1");
 console.log("DURABLE CONSENT RECORD: 1");
 console.log("TERMS AND PRIVACY ACCESSIBLE: 1");
 console.log("CONSENT CONDITION OF PURCHASE: 0");

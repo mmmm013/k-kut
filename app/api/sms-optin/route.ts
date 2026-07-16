@@ -1,15 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 
+import {
+  A2P_CAMPAIGN_SID,
+  A2P_CONSENT_DISCLOSURE,
+  A2P_CONSENT_VERSION,
+  A2P_PROGRAM_NAME,
+  A2P_SOURCE_PAGE,
+} from "../../../lib/a2p-consent";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const TABLE = "gpm_sms_consent_records";
-const CAMPAIGN_SID = "CM9788370188c8c407e38f427fe849a70f";
-const CONSENT_VERSION = "k-kut-sms-consent-v002-2026-07-15";
-const SOURCE_PAGE = "https://www.k-kut.com/sms-optin";
-const CONSENT_TEXT =
-  "Optional: I agree to receive transactional customer-care SMS messages from K-KUT (G Putnam Music, LLC) about my orders, digital HUG delivery, support requests, and service-status updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase, account creation, order, delivery, or support.";
 
 function cleanString(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -41,7 +44,7 @@ function serverSupabase() {
     },
     global: {
       headers: {
-        "X-Client-Info": "gpm-k-kut-sms-consent-v002",
+        "X-Client-Info": "gpm-k-kut-sms-consent-v003",
       },
     },
   });
@@ -84,11 +87,11 @@ export async function POST(req: NextRequest) {
       .insert({
         phone_e164: phoneE164,
         sms_consent: smsConsent,
-        campaign_sid: CAMPAIGN_SID,
-        program_name: "K-KUT",
-        consent_version: CONSENT_VERSION,
-        consent_text: CONSENT_TEXT,
-        source_page: SOURCE_PAGE,
+        campaign_sid: A2P_CAMPAIGN_SID,
+        program_name: A2P_PROGRAM_NAME,
+        consent_version: A2P_CONSENT_VERSION,
+        consent_text: A2P_CONSENT_DISCLOSURE,
+        source_page: A2P_SOURCE_PAGE,
         user_agent: cleanString(req.headers.get("user-agent"), 500),
         request_referer: cleanString(req.headers.get("referer"), 500),
       })
@@ -109,6 +112,7 @@ export async function POST(req: NextRequest) {
         sms_consent: smsConsent,
         consent_recorded: smsConsent,
         choice_recorded: true,
+        consent_version: A2P_CONSENT_VERSION,
         submitted_at: data.submitted_at,
       },
       { headers: { "Cache-Control": "no-store" } },
@@ -130,8 +134,9 @@ export async function GET() {
     {
       ok: true,
       route: "/api/sms-optin",
-      program_name: "K-KUT",
-      campaign_sid: CAMPAIGN_SID,
+      program_name: A2P_PROGRAM_NAME,
+      campaign_sid: A2P_CAMPAIGN_SID,
+      consent_version: A2P_CONSENT_VERSION,
       checkbox_optional: true,
       consent_not_condition_of_purchase: true,
       sends_sms: false,
