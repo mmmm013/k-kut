@@ -22,7 +22,7 @@ type OfferCode = "short" | "hug" | "big";
 
 type OfferConfig = {
   code: OfferCode;
-  publicProductName: "Short KUT" | "HUG" | "Big HUG";
+  publicProductName: "Short KUT" | "K-KUT HUG" | "Big HUG";
   priceCents: 499 | 799 | 1299;
   paymentUrl: string;
 };
@@ -66,7 +66,7 @@ function offerConfig(offer: OfferCode): OfferConfig {
 
   return {
     code: "hug",
-    publicProductName: "HUG",
+    publicProductName: "K-KUT HUG",
     priceCents: REGULAR_HUG_PRICE_CENTS,
     paymentUrl: REGULAR_HUG_PAYMENT_URL,
   };
