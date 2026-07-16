@@ -60,16 +60,18 @@ try {
     'offer: "big"',
     'inventoryId: "thank-you-kk7"',
     'action="/checkout"',
+    'method="post"',
     "stopOtherAudio",
   ], "homepage products");
 
-  forbids(home + homeProducts, ["KK1", "KK2"], "homepage");
+  forbids(home + homeProducts, ["KK1", "KK2", 'method="get"'], "homepage");
 
   needs(checkout, [
     "SHORT_KUT_PRICE_CENTS = 499",
     "REGULAR_HUG_PRICE_CENTS = 799",
     "BIG_HUG_PRICE_CENTS = 1299",
     'type OfferCode = "short" | "hug" | "big"',
+    'publicProductName: "K-KUT HUG"',
     "NEXT_PUBLIC_MD_MOMENT_KK_LINK",
     "NEXT_PUBLIC_MD_FEATURED_KK_LINK",
     "CURATED_SHORT_KUT_IDS",
@@ -99,6 +101,7 @@ try {
   console.log("BIC 2611 STOREFRONT AUDIT PASS");
   console.log("CATALOG: 2611 VERIFIED HUGS AT $7.99");
   console.log("HOME: CURATED SHORT KUT / HUG / BIG HUG");
+  console.log("HOME CHECKOUT: POST HIDES CONTROLLED INVENTORY ID");
   console.log("CHECKOUT: H2 EXACT ITEM + 303 STRIPE HANDOFF");
   console.log("FULFILLMENT: MANUAL PRIVATE DELIVERY");
 } catch (error) {
