@@ -6,6 +6,9 @@ const browsePath = "app/browse/page.tsx";
 const browserPath = "components/PublicIiBrowser.tsx";
 const catalogPath = "app/api/public-ii-catalog/route.ts";
 const webhookPath = "app/api/stripe/webhook/route.ts";
+const h2StorePath = "lib/h2PendingOrder.ts";
+const h2MigrationPath =
+  "supabase/migrations/20260715_gpm_h2_pending_orders.sql";
 const regularHugUrl = "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
 let failed = false;
@@ -25,7 +28,7 @@ function forbidText(text, forbidden, message) {
 
 console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT");
 console.log(
-  "MODE: exact selected K-KUT + optional 13-word note → one approved $7.99 Payment Link → durable Stripe order → manual review",
+  "MODE: exact selected K-KUT + optional 13-word note → server-side H2 pending order → one approved $7.99 Payment Link → durable Stripe order → manual review",
 );
 
 for (const file of [
@@ -35,6 +38,8 @@ for (const file of [
   browserPath,
   catalogPath,
   webhookPath,
+  h2StorePath,
+  h2MigrationPath,
 ]) {
   if (!fs.existsSync(file)) fail(`missing required file: ${file}`);
 }
@@ -47,6 +52,8 @@ const browse = fs.readFileSync(browsePath, "utf8");
 const browser = fs.readFileSync(browserPath, "utf8");
 const catalog = fs.readFileSync(catalogPath, "utf8");
 const webhook = fs.readFileSync(webhookPath, "utf8");
+const h2Store = fs.readFileSync(h2StorePath, "utf8");
+const h2Migration = fs.readFileSync(h2MigrationPath, "utf8");
 
 for (const [expected, message] of [
   [regularHugUrl, "/checkout does not retain the approved Regular HUG Stripe URL."],
@@ -55,15 +62,14 @@ for (const [expected, message] of [
   ['return value === "hug" ? "hug" : null', "/checkout permits a held offer."],
   ['formData.get("personal_note")', "/checkout does not receive the optional note."],
   ["PERSONAL_NOTE_WORD_LIMIT = 13", "/checkout does not enforce 13 words."],
-  ["CLIENT_REFERENCE_LIMIT = 200", "/checkout does not enforce Stripe's reconciliation-reference limit."],
-  ['CLIENT_REFERENCE_PREFIX = "H1|"', "/checkout is missing the governed HUG reference format."],
-  ["buildClientReference", "/checkout does not combine the exact II and optional note."],
-  ['checkoutUrl.searchParams.set("client_reference_id", clientReference)', "/checkout does not carry the governed order reference into Stripe."],
+  ["CLIENT_REFERENCE_LIMIT = 200", "/checkout does not enforce Stripe's reference limit."],
+  ['H2_CLIENT_REFERENCE_PREFIX = "H2_"', "/checkout is missing the Stripe-safe H2 reference format."],
+  ["createPendingH2Order", "/checkout does not stage the exact II and note server-side."],
+  ['checkoutUrl.searchParams.set("client_reference_id", clientReference)', "/checkout does not carry the H2 token into Stripe."],
   ["personal-note-over-13-words", "/checkout does not block a 14-word note."],
-  ["personal-note-reference-too-long", "/checkout does not block an oversized reconciliation reference."],
-]) {
-  requireText(checkout, expected, message);
-}
+  ["pending-order-unavailable", "/checkout does not fail closed when the pending-order store is unavailable."],
+  ["pending-order-reference-invalid", "/checkout does not validate the Stripe-safe token."],
+]) requireText(checkout, expected, message);
 
 for (const forbidden of [
   "stripe.paymentLinks",
@@ -72,18 +78,15 @@ for (const forbidden of [
   "NEXT_PUBLIC_KKUT_BIG_HUG_PAYMENT_URL",
   'value === "short_kut"',
   'value === "big_hug"',
-]) {
-  forbidText(checkout, forbidden, `/checkout still contains a rejected payment path: ${forbidden}`);
-}
+  'CLIENT_REFERENCE_PREFIX = "H1|"',
+]) forbidText(checkout, forbidden, `/checkout still contains a rejected payment path: ${forbidden}`);
 
 for (const [expected, message] of [
   ['REGULAR_HUG_OFFER = "K-KUT HUG"', "catalog does not map every verified II to K-KUT HUG."],
   ["REGULAR_HUG_PRICE_USD = 7.99", "catalog does not map every verified II to $7.99."],
   ["purchasableCount: publicRecords.length", "catalog does not make all governed records purchasable."],
   ['heldOffers: ["4.99", "12.99", "0.99", "charity_sales_claims"]', "catalog does not hold deferred offers and charitable claims."],
-]) {
-  requireText(catalog, expected, message);
-}
+]) requireText(catalog, expected, message);
 
 for (const [text, expected, message] of [
   [hug, "Browse all K-KUTs", "/hug is missing Browse All."],
@@ -95,14 +98,14 @@ for (const [text, expected, message] of [
   [browser, 'action="/checkout"', "browser bypasses governed checkout."],
   [browser, 'name="personal_note"', "browser is missing the note field."],
   [browser, "13 words maximum", "browser does not state the note limit."],
-]) {
-  requireText(text, expected, message);
-}
+]) requireText(text, expected, message);
 
 for (const [expected, message] of [
   ["session.client_reference_id", "webhook does not read Stripe's order reference."],
-  ["parseClientReference", "webhook does not separate the II and note."],
-  ['CLIENT_REFERENCE_PREFIX = "H1|"', "webhook does not share the governed reference format."],
+  ["parseClientReference", "webhook does not classify H2 and legacy references."],
+  ['H2_CLIENT_REFERENCE_PREFIX = "H2_"', "webhook does not recognize H2."],
+  ['LEGACY_CLIENT_REFERENCE_PREFIX = "H1|"', "webhook does not retain legacy H1 reads."],
+  ["consumePendingH2Order", "webhook does not resolve the H2 server-side record."],
   ["selected_hug_id: selectedInventoryId", "fulfillment evidence loses the selected II."],
   ["personalNoteFields", "fulfillment evidence does not reconcile the note."],
   ['personal_note_placement: "before_hug_content"', "fulfillment evidence loses note placement."],
@@ -110,9 +113,26 @@ for (const [expected, message] of [
   ["stripe_durable_manual_review_queue", "webhook does not enter manual review."],
   ["disabled_on_read_only_runtime", "webhook does not disable Vercel file writes."],
   ["manual_review_required: true", "paid HUG fulfillment is not manual-reviewed."],
-]) {
-  requireText(webhook, expected, message);
-}
+  ["public_product_name: publicProductName", "webhook loses the BF public product identity."],
+  ["bf_profile: bfProfile", "webhook loses the BF profile."],
+  ["origin_domain: originDomain", "webhook loses the origin domain."],
+]) requireText(webhook, expected, message);
+
+for (const [expected, message] of [
+  ["SUPABASE_SERVICE_ROLE_KEY", "H2 store is not server-only."],
+  ['H2_TABLE = "gpm_h2_pending_orders"', "H2 store table is not locked."],
+  ["createPendingH2Order", "H2 create path is missing."],
+  ["consumePendingH2Order", "H2 consume path is missing."],
+  ['.eq("status", "awaiting_payment")', "H2 consumption is not state-gated."],
+  ['.gt("expires_at", now)', "H2 consumption does not reject expired tokens."],
+]) requireText(h2Store, expected, message);
+
+for (const [expected, message] of [
+  ["enable row level security", "H2 table does not enable RLS."],
+  ["revoke all on table public.gpm_h2_pending_orders from anon", "anon table access is not revoked."],
+  ["revoke all on table public.gpm_h2_pending_orders from authenticated", "authenticated table access is not revoked."],
+  ["grant all on table public.gpm_h2_pending_orders to service_role", "service-role authority is missing."],
+]) requireText(h2Migration, expected, message);
 
 for (const [label, text] of [
   ["/hug", hug],
@@ -134,11 +154,13 @@ console.log("APPROVED REGULAR HUG PAYMENT URL: PRESENT");
 console.log("REGULAR HUG PRICE AUTHORITY: $7.99 EXISTING PAYMENT LINK");
 console.log("PURCHASABLE CATALOG RECORDS REQUIRED: 2611");
 console.log("OPTIONAL PERSONAL NOTE: 13 WORDS MAXIMUM");
-console.log("CLIENT REFERENCE: EXACT II + OPTIONAL NOTE, 200 CHARACTERS MAXIMUM");
+console.log("STRIPE REFERENCE: H2 SAFE TOKEN");
+console.log("EXACT II + OPTIONAL NOTE: SERVER-SIDE PENDING ORDER");
 console.log("STRIPE PAYMENT-LINK ENUMERATION: FORBIDDEN");
 console.log("SECOND CHECKOUT AUTHORITY: FORBIDDEN");
 console.log("HELD OFFER PATHS: $4.99 / $12.99 / $0.99");
 console.log("CHARITABLE SALES CLAIMS: HELD");
 console.log("PAID-ORDER K-KUT ID AND NOTE CAPTURE: PASS");
+console.log("BF PROFILE + ORIGIN DOMAIN CAPTURE: PASS");
 console.log("MANUAL FULFILLMENT REVIEW: REQUIRED");
 console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT: PASS");
