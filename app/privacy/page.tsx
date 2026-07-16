@@ -9,6 +9,7 @@ export default function PrivacyPage() {
         <h1 className="mt-8 text-4xl font-bold text-white">Privacy Policy</h1>
 
         <p className="mt-4 text-neutral-300">Effective date: May 4, 2026</p>
+        <p className="mt-1 text-neutral-400">SMS privacy terms updated: July 15, 2026</p>
 
         <p className="mt-6 text-neutral-300">
           K-KUT is operated by G Putnam Music, LLC. This Privacy Policy explains
@@ -22,8 +23,14 @@ export default function PrivacyPage() {
         </h2>
         <p className="mt-3 text-neutral-300">
           We may collect information you provide directly, including your name,
-          email address, phone number, order details, support requests, delivery
-          preferences, and other information needed to provide K-KUT services.
+          email address, order details, support requests, delivery preferences,
+          and other information needed to provide K-KUT services.
+        </p>
+        <p className="mt-3 text-neutral-300">
+          We collect and store a mobile phone number for K-KUT SMS messaging only
+          when you voluntarily check the separate optional SMS-consent box and
+          submit the opt-in form. If you choose “No SMS,” no mobile number is
+          required.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
@@ -31,27 +38,43 @@ export default function PrivacyPage() {
         </h2>
         <p className="mt-3 text-neutral-300">
           We use information to process orders, provide digital delivery, respond
-          to support requests, send service-status updates, manage customer-care
-          activity, improve K-KUT services, and maintain business records.
+          to support requests, send authorized service-status updates, manage
+          customer-care activity, improve K-KUT services, and maintain business
+          and compliance records.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
-          SMS Communications
+          Voluntary SMS Communications
         </h2>
         <p className="mt-3 text-neutral-300">
-          If you provide your phone number, you may receive transactional SMS
-          messages from K-KUT about your order, delivery, support request, or
-          service status. Message and data rates may apply. Message frequency
-          varies. Reply STOP to opt out. Reply HELP for help.
+          SMS consent is optional, unchecked by default, and separate from
+          purchases, accounts, orders, delivery, support, Terms, and Privacy
+          acceptance. Consent is not a condition of purchase or service use.
+        </p>
+        <p className="mt-3 text-neutral-300">
+          When you voluntarily opt in, K-KUT may send transactional customer-care
+          SMS messages about your order, digital HUG delivery, support request, or
+          service status. Message frequency varies. Message and data rates may
+          apply. Reply STOP to opt out. Reply HELP for help.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
-          No Sale or Sharing of Mobile Information
+          SMS Consent Records
         </h2>
         <p className="mt-3 text-neutral-300">
-          K-KUT does not sell mobile phone numbers or SMS consent information.
-          Mobile information and SMS consent are not shared with third parties
-          or affiliates for marketing or promotional purposes.
+          We maintain an operational record of the choice submitted through the
+          K-KUT SMS page, including the date and time, consent disclosure version,
+          source page, and the mobile number only when SMS consent was given. The
+          opt-in page itself does not send an SMS message.
+        </p>
+
+        <h2 className="mt-8 text-2xl font-semibold text-white">
+          No Sale or Marketing Sharing of Mobile Information
+        </h2>
+        <p className="mt-3 text-neutral-300">
+          K-KUT does not sell or rent mobile phone numbers or SMS consent
+          information. Mobile information and SMS consent are not shared with
+          third parties or affiliates for their marketing or promotional purposes.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
@@ -59,9 +82,9 @@ export default function PrivacyPage() {
         </h2>
         <p className="mt-3 text-neutral-300">
           We may use trusted service providers to operate the website, process
-          payments, deliver communications, provide hosting, and support customer
-          service. These providers are used only as needed to operate the
-          service.
+          payments, store operational records, deliver authorized communications,
+          provide hosting, and support customer service. These providers are used
+          only as needed to operate the service.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
@@ -69,22 +92,8 @@ export default function PrivacyPage() {
         </h2>
         <p className="mt-3 text-neutral-300">
           We use reasonable administrative, technical, and operational safeguards
-          to protect information. No internet-based service can guarantee
-          complete security.
-        </p>
-
-
-        <h2 className="mt-8 text-2xl font-semibold text-white">SMS Messaging</h2>
-        <p className="mt-3 text-neutral-300">
-          G Putnam Music / K-KUT may send customer-care SMS messages related to
-          K-KUT HUG orders, delivery links, support requests, and service-status
-          updates. Message frequency varies. Message and data rates may apply.
-          Reply STOP to opt out. Reply HELP for help.
-        </p>
-        <p className="mt-3 text-neutral-300">
-          Mobile phone numbers collected for SMS messaging are used only for
-          G Putnam Music / K-KUT customer-care messaging and are not sold,
-          rented, or shared with third parties for their marketing purposes.
+          to protect information. No internet-based service can guarantee complete
+          security.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">Contact</h2>
