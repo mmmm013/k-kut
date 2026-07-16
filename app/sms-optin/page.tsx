@@ -1,3 +1,14 @@
+import {
+  A2P_CHARGES_DISCLOSURE,
+  A2P_FREQUENCY_DISCLOSURE,
+  A2P_HELP_DISCLOSURE,
+  A2P_MESSAGE_TYPES,
+  A2P_NO_CONDITION_DISCLOSURE,
+  A2P_NO_MARKETING_SHARING_DISCLOSURE,
+  A2P_OPERATOR,
+  A2P_OPT_OUT_DISCLOSURE,
+  A2P_PROGRAM_NAME,
+} from "../../lib/a2p-consent";
 import SmsOptInForm from "./SmsOptInForm";
 
 export const metadata = {
@@ -18,15 +29,13 @@ export default function SmsOptInPage() {
           Optional K-KUT SMS Updates
         </h1>
         <p className="mt-3 text-neutral-300">
-          K-KUT, operated by G Putnam Music, LLC, offers optional transactional
-          customer-care SMS messages for orders, digital HUG delivery, support
-          requests, and service-status updates.
+          {A2P_PROGRAM_NAME}, operated by {A2P_OPERATOR}, offers optional
+          transactional customer-care SMS messages for {A2P_MESSAGE_TYPES}.
         </p>
 
         <div className="mt-6 rounded-xl border-2 border-amber-400 bg-amber-950/30 p-5">
           <p className="font-semibold text-amber-100">
-            You do not have to consent to SMS to buy, order, receive a digital HUG,
-            create or use an account, or receive customer support.
+            {A2P_NO_CONDITION_DISCLOSURE}
           </p>
         </div>
 
@@ -35,49 +44,40 @@ export default function SmsOptInPage() {
         <div className="mt-10 space-y-4 text-sm text-neutral-400">
           <h2 className="text-base font-semibold text-white">SMS Program Details</h2>
           <p>
-            <strong className="text-neutral-200">Program Name:</strong> K-KUT
+            <strong className="text-neutral-200">Program Name:</strong>{" "}
+            {A2P_PROGRAM_NAME}
           </p>
           <p>
-            <strong className="text-neutral-200">Program Operator:</strong> G Putnam
-            Music, LLC
+            <strong className="text-neutral-200">Program Operator:</strong>{" "}
+            {A2P_OPERATOR}
           </p>
           <p>
-            <strong className="text-neutral-200">Message Types:</strong> Order
-            confirmations, digital HUG delivery links, support follow-up, and
-            service-status alerts.
+            <strong className="text-neutral-200">Message Types:</strong>{" "}
+            {A2P_MESSAGE_TYPES}.
           </p>
           <p>
-            <strong className="text-neutral-200">Message Frequency:</strong> Varies
-            based on your orders, delivery activity, support requests, or service
-            status.
+            <strong className="text-neutral-200">Message Frequency:</strong>{" "}
+            {A2P_FREQUENCY_DISCLOSURE}
           </p>
           <p>
-            <strong className="text-neutral-200">Charges:</strong> Message and data
-            rates may apply depending on your mobile carrier and service plan.
+            <strong className="text-neutral-200">Charges:</strong>{" "}
+            {A2P_CHARGES_DISCLOSURE}
           </p>
           <p>
-            <strong className="text-neutral-200">Opt Out:</strong> Reply{" "}
-            <strong>STOP</strong> to any K-KUT message to cancel SMS notifications at
-            any time.
+            <strong className="text-neutral-200">Opt Out:</strong>{" "}
+            {A2P_OPT_OUT_DISCLOSURE}
           </p>
           <p>
-            <strong className="text-neutral-200">Help:</strong> Reply{" "}
-            <strong>HELP</strong> or contact{" "}
-            <a href="mailto:gregory@gputnammusic.com" className="text-amber-300 underline">
-              gregory@gputnammusic.com
-            </a>
-            .
+            <strong className="text-neutral-200">Help:</strong>{" "}
+            {A2P_HELP_DISCLOSURE}
           </p>
           <p>
-            <strong className="text-neutral-200">Voluntary Consent:</strong> The SMS
-            checkbox is optional, unchecked by default, and separate from purchase,
-            account, order, delivery, support, Terms, and Privacy acceptance.
+            <strong className="text-neutral-200">Voluntary Consent:</strong>{" "}
+            {A2P_NO_CONDITION_DISCLOSURE}
           </p>
           <p>
-            <strong className="text-neutral-200">No Marketing Sharing:</strong> Mobile
-            phone numbers and SMS consent information are not sold, rented, or shared
-            with third parties or affiliates for their marketing or promotional
-            purposes.
+            <strong className="text-neutral-200">No Marketing Sharing:</strong>{" "}
+            {A2P_NO_MARKETING_SHARING_DISCLOSURE}
           </p>
         </div>
 
