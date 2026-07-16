@@ -2,6 +2,12 @@
 
 import { FormEvent, useState } from "react";
 
+import {
+  A2P_CONSENT_DISCLOSURE,
+  A2P_DECLINE_DISCLOSURE,
+  A2P_NO_CONDITION_DISCLOSURE,
+} from "../../lib/a2p-consent";
+
 type SubmissionState =
   | { kind: "idle"; message: "" }
   | { kind: "saving"; message: string }
@@ -12,10 +18,7 @@ export default function SmsOptInForm() {
   const [smsConsent, setSmsConsent] = useState(false);
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
-  const [state, setState] = useState<SubmissionState>({
-    kind: "idle",
-    message: "",
-  });
+  const [state, setState] = useState<SubmissionState>({ kind: "idle", message: "" });
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -82,14 +85,10 @@ export default function SmsOptInForm() {
       <h2 className="text-xl font-semibold text-white">Choose SMS or No SMS</h2>
 
       <p className="mt-4 text-sm font-semibold text-amber-200">
-        SMS consent is optional and is not a condition of purchase, account creation,
-        ordering, digital delivery, or customer support.
+        {A2P_NO_CONDITION_DISCLOSURE}
       </p>
 
-      <p className="mt-3 text-sm text-neutral-300">
-        Leave the box unchecked to continue without SMS. Check it only when you want
-        transactional customer-care text messages from K-KUT.
-      </p>
+      <p className="mt-3 text-sm text-neutral-300">{A2P_DECLINE_DISCLOSURE}</p>
 
       <div className="mt-6 flex items-start gap-3 rounded-lg border border-neutral-700 bg-neutral-950 p-4">
         <input
@@ -107,11 +106,7 @@ export default function SmsOptInForm() {
           aria-describedby="sms-consent-details"
         />
         <label htmlFor="sms-consent" className="text-sm text-neutral-200">
-          <strong className="text-white">Optional:</strong> I agree to receive
-          transactional customer-care SMS messages from K-KUT (G Putnam Music, LLC)
-          about my orders, digital HUG delivery, support requests, and service-status
-          updates. Message frequency varies. Message and data rates may apply. Reply{" "}
-          <strong>STOP</strong> to opt out. Reply <strong>HELP</strong> for help.
+          {A2P_CONSENT_DISCLOSURE}
         </label>
       </div>
 
@@ -162,14 +157,10 @@ export default function SmsOptInForm() {
 
       <p className="mt-4 text-sm text-neutral-300">
         By saving, you acknowledge the K-KUT{" "}
-        <a href="/terms" className="text-amber-300 underline">
-          Terms and Conditions
-        </a>{" "}
+        <a href="/terms" className="text-amber-300 underline">Terms and Conditions</a>{" "}
         and{" "}
-        <a href="/privacy" className="text-amber-300 underline">
-          Privacy Policy
-        </a>
-        . Accepting those documents does not opt you in to SMS.
+        <a href="/privacy" className="text-amber-300 underline">Privacy Policy</a>.
+        Accepting those documents does not opt you in to SMS.
       </p>
 
       {state.message ? (
