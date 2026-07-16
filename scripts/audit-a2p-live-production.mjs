@@ -1,3 +1,4 @@
+// Authorized Production deploy trigger for merged A2P DMAIC correction — 2026-07-16.
 const BASE_URL = "https://www.k-kut.com";
 
 const routes = {
