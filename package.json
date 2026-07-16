@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "audit:a2p:optional-consent": "node scripts/audit-a2p-optional-consent.mjs",
+    "audit:a2p:live-production": "node scripts/audit-a2p-live-production.mjs",
     "audit:h2:pending-order": "node scripts/audit-h2-pending-order-token.mjs",
     "audit:bic:2611-storefront": "node scripts/audit-2611-bic-storefront.mjs",
     "audit:themes": "node scripts/theme-population/audit-all-theme-population.mjs",
