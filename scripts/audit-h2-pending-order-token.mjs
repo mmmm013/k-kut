@@ -31,8 +31,8 @@ for (const required of [
   'checkoutUrl.searchParams.set("client_reference_id", clientReference)',
   "pending-order-unavailable",
   "pending-order-reference-invalid",
-  'bfProfile: BF_PROFILE',
-  'publicProductName: PUBLIC_PRODUCT_NAME',
+  "bfProfile: BF_PROFILE",
+  "publicProductName: config.publicProductName",
 ]) requireText(checkout, required, "checkout");
 
 for (const forbidden of [
@@ -85,6 +85,7 @@ console.log("H2 PENDING-ORDER TOKEN AUDIT PASS");
 console.log("STRIPE REFERENCE FORMAT: H2_<32 HEX TOKEN>");
 console.log("PERSONAL NOTE IN STRIPE URL: NO");
 console.log("EXACT II IN STRIPE URL: NO");
+console.log("PUBLIC PRODUCT NAME: OFFER-SPECIFIC H2 FIELD");
 console.log("PENDING ORDER TABLE: RLS ENABLED");
 console.log("ANON TABLE ACCESS: REVOKED");
 console.log("AUTHENTICATED TABLE ACCESS: REVOKED");
