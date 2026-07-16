@@ -12,6 +12,7 @@ const CLIENT_REFERENCE_LIMIT = 200;
 const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 const BF_PROFILE = "k-kut";
 const PUBLIC_PRODUCT_NAME = "K-KUT HUG";
+const STRIPE_REDIRECT_STATUS = 303;
 
 function returnToBrowse(request: NextRequest, reason: string) {
   const url = request.nextUrl.clone();
@@ -91,7 +92,9 @@ async function regularHugCheckout(
   checkoutUrl.searchParams.set("utm_campaign", "ii_catalog");
   checkoutUrl.searchParams.set("utm_content", personalNote ? "hug_with_note" : "hug");
 
-  return NextResponse.redirect(checkoutUrl);
+  // 303 converts the completed storefront POST into a normal GET for Stripe.
+  // A 307 would preserve POST and Stripe CloudFront rejects that method with 403.
+  return NextResponse.redirect(checkoutUrl, STRIPE_REDIRECT_STATUS);
 }
 
 export async function GET(request: NextRequest) {
