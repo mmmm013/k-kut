@@ -117,7 +117,7 @@ export default function SmsOptInForm() {
 
       <div className="mt-6">
         <label htmlFor="phone" className="block text-sm font-medium text-neutral-300">
-          Mobile Phone Number {smsConsent ? "(required for SMS opt-in)" : "(not needed)"}
+          Mobile Phone Number {smsConsent ? "(required for SMS opt-in)" : "(optional)"}
         </label>
         <input
           id="phone"
@@ -127,11 +127,14 @@ export default function SmsOptInForm() {
           autoComplete="tel"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
-          disabled={!smsConsent}
           required={smsConsent}
-          placeholder={smsConsent ? "(555) 000-0000" : "Choose optional SMS to enter a number"}
-          className="mt-2 w-full rounded-lg border border-neutral-600 bg-neutral-800 px-4 py-3 text-white placeholder-neutral-500 focus:border-amber-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          placeholder="(555) 000-0000"
+          className="mt-2 w-full rounded-lg border border-neutral-600 bg-neutral-800 px-4 py-3 text-white placeholder-neutral-500 focus:border-amber-400 focus:outline-none"
         />
+        <p className="mt-2 text-xs text-neutral-400">
+          Entering a phone number does not opt you in. SMS consent is given only by
+          checking the optional consent box above.
+        </p>
       </div>
 
       <div className="sr-only" aria-hidden="true">
