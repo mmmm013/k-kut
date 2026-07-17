@@ -60,7 +60,21 @@
     }
   ],
   "candidate_pool": [
-    {"source":"The Foundation","primary_lane":"thank_you_appreciation","secondary_lane":"courage_overcoming","readiness":"PROOF_REQUIRED"},
+    {
+      "source": "The Foundation",
+      "primary_lane": "thank_you_appreciation",
+      "secondary_lane": "courage_overcoming",
+      "readiness": "HOLD_PARENT_AUDIO_READY_NO_II_GENERATION_TP_GD_MARK_PENDING",
+      "evidence": {
+        "lt_pix_id": "LTPIX_0176",
+        "source_title": "THE FOUNDATION - DEMOCRACY",
+        "source_file": "361 - Elliott Sedgewick - THE FOUNDATION - DEMOCRACY .wav",
+        "source_sha256": "f1531d16ddaec27de352088e40bf7b39657db0e0481156d66c2ff4ddb8a5c5bf",
+        "parent_audio_status": "PASS85_PARENT_AUDIO_LOCK_CANDIDATE_QA_CLEAN",
+        "ii_status": "PARENT_AUDIO_READY_BUT_NO_II_GENERATION_YET",
+        "tp_status": "WAITING_FOR_GD_MARK"
+      }
+    },
     {"source":"Do It Again","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
     {"source":"Yours & Mine","primary_lane":"romance_sexy","secondary_lane":"awesome_anniversary","readiness":"PROOF_REQUIRED"},
     {"source":"Got Me Smokin'","primary_lane":"romance_sexy","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
@@ -110,7 +124,7 @@
     "single_canonical_sentimeant_rotation",
     "production_bic_pass"
   ],
-  "next_step": "build_pilot_selection_manifest_v001_from_existing_controlled_inventory",
+  "next_step": "continue_pilot_selection_manifest_v001_with_do_it_again",
   "forbidden_in_this_lock": [
     "production_deployment",
     "pricing_change",
