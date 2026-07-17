@@ -6,10 +6,15 @@ export const dynamic = "force-dynamic";
 const CATALOG_URL =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
 
-const AUDIO_PREFIX =
-  "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/";
+const AUDIO_PREFIX_BY_FAMILY = {
+  KK: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/",
+  SK: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v005-sk/",
+} as const;
 
-const EXPECTED_INVENTORY_COUNT = 2611;
+const EXPECTED_STORAGE_INVENTORY_COUNT = 3867;
+const EXPECTED_KK_COUNT = 2611;
+const EXPECTED_SK_COUNT = 1256;
+
 const REGULAR_HUG_OFFER = "K-KUT HUG";
 const REGULAR_HUG_PRICE_USD = 7.99;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
@@ -29,7 +34,7 @@ const TRUE_VALUES = new Set([
 type PublicCatalogRecord = {
   id: string;
   label: string;
-  family: string;
+  family: "KK";
   lane: string;
   offer: typeof REGULAR_HUG_OFFER;
   priceUsd: typeof REGULAR_HUG_PRICE_USD;
@@ -74,6 +79,16 @@ function prettyLabel(value: unknown) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+function inventoryFamily(value: unknown): "KK" | "SK" | "" {
+  const normalized = cleanText(value, 20)
+    .replace(/[^A-Za-z]/g, "")
+    .toUpperCase();
+
+  if (normalized === "KK") return "KK";
+  if (normalized === "SK") return "SK";
+  return "";
+}
+
 function itemLabel(inventoryId: string, index: number) {
   const match = inventoryId.match(
     /(?:ALLPOSS[-_])?(\d{1,6}).*?KK[-_](\d{1,3})$/i,
@@ -113,6 +128,7 @@ export async function GET() {
   }
 
   let payload: RawCatalog;
+
   try {
     payload = (await response.json()) as RawCatalog;
   } catch {
@@ -127,15 +143,16 @@ export async function GET() {
     : [];
 
   const declaredCount = Number(payload.inventory_count);
+
   if (
-    declaredCount !== EXPECTED_INVENTORY_COUNT ||
-    records.length !== EXPECTED_INVENTORY_COUNT
+    declaredCount !== EXPECTED_STORAGE_INVENTORY_COUNT ||
+    records.length !== EXPECTED_STORAGE_INVENTORY_COUNT
   ) {
     return NextResponse.json(
       {
         ok: false,
-        error: "inventory_count_gate_failed",
-        expected: EXPECTED_INVENTORY_COUNT,
+        error: "storage_inventory_count_gate_failed",
+        expected: EXPECTED_STORAGE_INVENTORY_COUNT,
         declared: declaredCount,
         received: records.length,
       },
@@ -143,11 +160,16 @@ export async function GET() {
     );
   }
 
-  let publicRecords: PublicCatalogRecord[];
+  const seenIds = new Set<string>();
+  const publicRecords: PublicCatalogRecord[] = [];
+
+  let kkCount = 0;
+  let skCount = 0;
 
   try {
-    publicRecords = records.map((record, index): PublicCatalogRecord => {
+    records.forEach((record, index) => {
       const id = cleanText(record.inventory_id, 200);
+      const family = inventoryFamily(record.inventory_family);
       const audioUrl = cleanText(record.public_audio_url, 900);
       const storageStatus = cleanText(record.public_storage_status, 80);
       const twinkleAtEnd = isTrue(
@@ -158,7 +180,17 @@ export async function GET() {
         throw new Error(`unsafe_inventory_id_at_${index + 1}`);
       }
 
-      if (!audioUrl.startsWith(AUDIO_PREFIX)) {
+      if (seenIds.has(id)) {
+        throw new Error(`duplicate_inventory_id_at_${index + 1}`);
+      }
+
+      seenIds.add(id);
+
+      if (!family) {
+        throw new Error(`unsupported_inventory_family_at_${index + 1}`);
+      }
+
+      if (!audioUrl.startsWith(AUDIO_PREFIX_BY_FAMILY[family])) {
         throw new Error(`unsafe_audio_url_at_${index + 1}`);
       }
 
@@ -170,10 +202,17 @@ export async function GET() {
         throw new Error(`twinkle_gate_failed_at_${index + 1}`);
       }
 
-      return {
+      if (family == "SK") {
+        skCount += 1;
+        return;
+      }
+
+      kkCount += 1;
+
+      publicRecords.push({
         id,
-        label: itemLabel(id, index),
-        family: prettyLabel(record.inventory_family),
+        label: itemLabel(id, publicRecords.length),
+        family: "KK",
         lane: prettyLabel(record.primary_use_lane),
         offer: REGULAR_HUG_OFFER,
         priceUsd: REGULAR_HUG_PRICE_USD,
@@ -181,7 +220,7 @@ export async function GET() {
         checkout: "hug",
         checkoutHref: `/checkout?ii=${encodeURIComponent(id)}&offer=hug`,
         personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
-      };
+      });
     });
   } catch (reason) {
     return NextResponse.json(
@@ -189,7 +228,30 @@ export async function GET() {
         ok: false,
         error: "public_release_gate_failed",
         reason:
-          reason instanceof Error ? reason.message : "unidentified_gate_failure",
+          reason instanceof Error
+            ? reason.message
+            : "unidentified_gate_failure",
+      },
+      { status: 503 },
+    );
+  }
+
+  if (
+    seenIds.size !== EXPECTED_STORAGE_INVENTORY_COUNT ||
+    kkCount !== EXPECTED_KK_COUNT ||
+    skCount !== EXPECTED_SK_COUNT ||
+    publicRecords.length !== EXPECTED_KK_COUNT
+  ) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "inventory_family_count_gate_failed",
+        expectedStorage: EXPECTED_STORAGE_INVENTORY_COUNT,
+        receivedStorage: seenIds.size,
+        expectedKK: EXPECTED_KK_COUNT,
+        receivedKK: kkCount,
+        expectedSK: EXPECTED_SK_COUNT,
+        receivedSK: skCount,
       },
       { status: 503 },
     );
@@ -198,14 +260,19 @@ export async function GET() {
   return NextResponse.json(
     {
       ok: true,
-      status: "BIC_PUBLIC_CATALOG_READY",
+      status: "BIC_PUBLIC_CATALOG_READY_SK_HELD_FOR_PRODUCT_MAPPING",
+      storageInventoryCount: seenIds.size,
       inventoryCount: publicRecords.length,
       purchasableCount: publicRecords.length,
+      heldForProductMappingCount: skCount,
       productMapping: {
         publicProduct: REGULAR_HUG_OFFER,
         priceUsd: REGULAR_HUG_PRICE_USD,
         checkoutOffer: "hug",
         personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
+        purchasableFamily: "KK",
+        heldInventoryFamily: "sK",
+        heldInventoryCount: skCount,
         heldOffers: ["4.99", "12.99", "0.99", "charity_sales_claims"],
       },
       generatedFrom: cleanText(payload.status, 120),
@@ -215,8 +282,10 @@ export async function GET() {
       status: 200,
       headers: {
         "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+        "X-KKUT-Storage-Inventory-Count": String(seenIds.size),
         "X-KKUT-Inventory-Count": String(publicRecords.length),
         "X-KKUT-Purchasable-Count": String(publicRecords.length),
+        "X-KKUT-Held-SK-Count": String(skCount),
       },
     },
   );
