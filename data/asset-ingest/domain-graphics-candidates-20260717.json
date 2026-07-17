@@ -1,0 +1,92 @@
+{
+  "batch_id": "DOMAIN_GRAPHICS_INTAKE_20260717",
+  "status": "GD_SUPPLIED_CANDIDATES_NOT_PUBLIC_NOT_DEPLOYED",
+  "source": "GD uploaded eight image files in the working conversation and instructed: use for domain graphics; add to lists.",
+  "operating_model": "GPMD Asset Drop existing 04_Photos and 07_Artwork lanes; GPM review and BIC release gate remain required.",
+  "release_rule": "Registration does not publish, deploy, approve rights, or assign a final domain placement.",
+  "lists": {
+    "04_Photos": [
+      {
+        "filename": "Front Pose.jpg",
+        "dimensions": "2048x955",
+        "candidate_uses": ["wide domain hero", "artist/profile story", "GPMx editorial background"],
+        "review_status": "CANDIDATE",
+        "controls": ["confirm rights", "approve crop", "approve final domain", "write alt text"]
+      },
+      {
+        "filename": "Eclipse studio - west wall.jpg",
+        "dimensions": "2048x1365",
+        "candidate_uses": ["GPMx/GPMC studio hero", "music-production background", "catalog or creator page"],
+        "review_status": "STRONG_DOMAIN_CANDIDATE",
+        "controls": ["confirm rights", "approve crop", "approve final domain", "write alt text"]
+      },
+      {
+        "filename": "Heather Heyer Grvesite.jpg",
+        "dimensions": "2048x2048",
+        "candidate_uses": ["values or memorial context only"],
+        "review_status": "HOLD_SENSITIVE_CONTEXT_AND_RIGHTS",
+        "controls": ["confirm rights", "confirm respectful context", "verify visible third-party source markings", "GD explicit placement approval"]
+      },
+      {
+        "filename": "hero-alternate.jpg",
+        "dimensions": "1536x2048",
+        "candidate_uses": ["portrait/profile", "about page", "creator story"],
+        "review_status": "CANDIDATE",
+        "controls": ["confirm rights", "approve crop", "approve final domain", "write alt text"]
+      },
+      {
+        "filename": "Chris Krause Closeup.jpg",
+        "dimensions": "1150x999",
+        "candidate_uses": ["artist/profile card", "archive/history page"],
+        "review_status": "HOLD_IDENTITY_RIGHTS_AND_CONTEXT",
+        "controls": ["confirm rights", "confirm public-use permission", "approve final domain", "write alt text"]
+      },
+      {
+        "filename": "Pat Standing w Guitar in Front - 022.jpg",
+        "dimensions": "360x480",
+        "candidate_uses": ["archive/history page", "artist/profile card"],
+        "review_status": "HOLD_LOW_RESOLUTION_AND_RIGHTS",
+        "controls": ["confirm rights", "confirm public-use permission", "do not enlarge as hero", "approve final domain"]
+      }
+    ],
+    "07_Artwork": [
+      {
+        "filename": "Endurance.jpeg",
+        "dimensions": "2048x1405",
+        "candidate_uses": ["domain section background", "GPMx editorial visual", "sentimeant theme graphic"],
+        "review_status": "STRONG_DOMAIN_CANDIDATE",
+        "controls": ["confirm artwork ownership", "approve crop", "approve final domain", "write alt text"]
+      },
+      {
+        "filename": "MC BW 1.jpeg",
+        "dimensions": "600x600",
+        "candidate_uses": ["artist/catalog card", "archive or release-history graphic"],
+        "review_status": "HOLD_ALBUM_ART_RIGHTS_AND_PLACEMENT",
+        "controls": ["confirm cover-art rights", "confirm public-use permission", "approve final domain", "do not use as general hero"]
+      }
+    ]
+  },
+  "domain_candidate_lists": {
+    "gputnammusic.com": [
+      "Eclipse studio - west wall.jpg",
+      "Endurance.jpeg",
+      "Front Pose.jpg",
+      "hero-alternate.jpg",
+      "Chris Krause Closeup.jpg",
+      "MC BW 1.jpeg",
+      "Pat Standing w Guitar in Front - 022.jpg"
+    ],
+    "k-kut.com": [
+      "No automatic placement; use only after a specific K-KUT page purpose and GD approval."
+    ],
+    "sentimeant.com": [
+      "Endurance.jpeg",
+      "Heather Heyer Grvesite.jpg — HOLD pending sensitive-context and rights approval"
+    ],
+    "sentimeants.com": [
+      "Endurance.jpeg",
+      "Heather Heyer Grvesite.jpg — HOLD pending sensitive-context and rights approval"
+    ]
+  },
+  "next_gate": "GD selects exact domain and placement; source/rights and crop are confirmed; then a separate protected implementation and Production BIC audit may be authorized."
+}
