@@ -127,8 +127,21 @@ requireText(page, "<SmsOptInForm />", "SMS page working form");
 requireText(form, "useState(false)", "unchecked checkbox default");
 requireText(form, 'id="sms-consent"', "SMS checkbox");
 requireText(form, 'type="checkbox"', "SMS checkbox type");
-requireText(form, "disabled={!smsConsent}", "phone disabled without consent");
+if (/disabled=\{!smsConsent\}/u.test(form)) {
+  stop("phone field must remain clickable without SMS consent");
+}
 requireText(form, "required={smsConsent}", "phone conditional requirement");
+requireText(form, 'placeholder="(555) 000-0000"', "phone field available by default");
+requireText(
+  form,
+  'phone: smsConsent ? phone : ""',
+  "no phone submitted to SMS record without consent",
+);
+requireNormalizedText(
+  form,
+  "Entering a phone number does not opt you in. SMS consent is given only by checking the optional consent box above.",
+  "phone entry does not imply consent notice",
+);
 requireText(form, 'type="submit"', "functional submit button");
 requireText(form, "Save My Choice", "neutral submit label");
 requireText(form, 'fetch("/api/sms-optin"', "consent API submission");
@@ -209,6 +222,7 @@ console.log("ONE CONSENT AUTHORITY: 1");
 console.log("CHECKBOX OPTIONAL: 1");
 console.log("CHECKBOX DEFAULT UNCHECKED: 1");
 console.log("NO-SMS SUBMISSION PATH: 1");
+console.log("PHONE FIELD CLICKABLE WITHOUT CONSENT: 1");
 console.log("PHONE REQUIRED ONLY AFTER OPT-IN: 1");
 console.log("NO IMPLIED CONSENT WORDING: 1");
 console.log("DURABLE CONSENT RECORD: 1");
