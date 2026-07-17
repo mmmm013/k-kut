@@ -109,7 +109,16 @@
       "prior_kk_control": "OLD_INSTRO_KK_ROWS_ARE_LEARNING_SEEDS_ONLY_NOT_APPROVAL",
       "required_sequence_after_identity_binding": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
       "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "Salt of the Earth",
+      "status": "BLOCKED_AUTHORITATIVE_LT_PIX_AND_SOURCE_IDENTITY_NOT_PROVEN",
+      "known_candidate": "Salt of the Earth SPED UP.wav",
+      "contamination_control": "OLD_KK_12_AND_KK_13_LABELS_AND_LOW_CONFIDENCE_REMAPS_ARE_NOT_CUSTOMER_DELIVERY_AND_NOT_APPROVAL",
+      "required_next_gate": "RESOLVE_NORMAL_SPEED_RIGHTS_BOUND_LT_PIX_AND_ASSOCIATED_MUSICAL_COMPANION",
+      "required_sequence_after_source_proof": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
+      "kk_status": "KK_NOT_STARTED"
     }
   ],
-  "next_candidate": "Salt of the Earth"
+  "next_candidate": "Your Touch"
 }
