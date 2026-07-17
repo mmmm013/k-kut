@@ -53,7 +53,19 @@
       "associated_musical_source": "243 - Music Maykers - DREAMERS DANCE - INSTRO.wav",
       "required_sequence": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
       "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "Without a Soul",
+      "status": "STAGED_FOR_PAIRED_MUSICAL_TO_VOCAL_TP_AUTORUN",
+      "lt_pix_id": "LTPIX_0081",
+      "source_file": "249 - KLEIGH - WITHOUT A SOUL .wav",
+      "source_sha256": "8e17fccc5b1424cd5e4e59e42e9ac2e7b9dc3d0cea3c551d4665f138e6b29faa",
+      "associated_musical_source": "248 - Music Maykers - WITTHOUT A SOUL - INSTRO .wav",
+      "associated_musical_source_sha256": "7d80b1829d3aa7b5a9a8791962c2c160f6a11ee5b1075a2375f9cc9b5ea93219",
+      "prior_section_proposals_control": "PRIVATE_NOT_RENDERED_LEARNING_SEEDS_ONLY_RECOMPUTE_AND_HUMAN_REVIEW",
+      "required_sequence": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
+      "kk_status": "KK_NOT_STARTED"
     }
   ],
-  "next_candidate": "Without a Soul"
+  "next_candidate": "Hang On"
 }
