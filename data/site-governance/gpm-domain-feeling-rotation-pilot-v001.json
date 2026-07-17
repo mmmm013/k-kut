@@ -91,7 +91,21 @@
       "source": "Do It Again",
       "primary_lane": "courage_overcoming",
       "secondary_lane": null,
-      "readiness": "PROOF_REQUIRED"
+      "readiness": "HOLD_PARENT_KK_MAP_APPROVED_NO_FINAL_II_TWINKLE_OR_LIVE_ROUTE_PROOF",
+      "evidence": {
+        "lt_pix_id": "SBTRACK-008",
+        "source_title": "KLEIGH - DO IT AGAIN",
+        "parent_audio_file": "174 - KLEIGH - DO IT AGAIN.wav",
+        "parent_kk_count": 7,
+        "final_map_status": "KK_PARENT_SSOT_FINAL_APPROVED_MAP",
+        "packet_status": "SBTRACK_008_CLONE_SECOND_DISPATCH_THIRD_PACKET_REVIEWED_OK",
+        "label_sequence": "BLK1|BLK2|BLK3|BLK4|BLK5|BLK6|BLK7",
+        "dkk_rows": 7,
+        "nkk_rows": 7,
+        "final_ii_status": "NOT_PROVEN",
+        "twinkle_status": "NOT_PROVEN",
+        "live_route_status": "NOT_PROVEN"
+      }
     },
     {
       "source": "Yours & Mine",
@@ -256,7 +270,7 @@
     "single_canonical_sentimeant_rotation",
     "production_bic_pass"
   ],
-  "next_step": "continue_pilot_selection_manifest_v001_with_do_it_again",
+  "next_step": "continue_pilot_selection_manifest_v001_with_yours_and_mine",
   "forbidden_in_this_lock": [
     "production_deployment",
     "pricing_change",
