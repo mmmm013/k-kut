@@ -29,7 +29,7 @@ export const A2P_OPT_OUT_DISCLOSURE =
   "Reply STOP to any K-KUT message to cancel SMS notifications at any time.";
 
 export const A2P_HELP_DISCLOSURE =
-  "Reply HELP for help or contact gregory@gputnammusic.com.";
+  "Reply HELP for help or contact reachus@gputnammusic.com.";
 
 export const A2P_NO_MARKETING_SHARING_DISCLOSURE =
   "Mobile phone numbers and SMS consent information are not sold, rented, or shared with third parties or affiliates for their marketing or promotional purposes.";
