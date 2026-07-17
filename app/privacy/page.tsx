@@ -1,105 +1,112 @@
+import {
+  A2P_CONSENT_DISCLOSURE,
+  A2P_DECLINE_DISCLOSURE,
+  A2P_NO_CONDITION_DISCLOSURE,
+  A2P_NO_IMPLIED_CONSENT_DISCLOSURE,
+  A2P_NO_MARKETING_SHARING_DISCLOSURE,
+  A2P_OPERATOR,
+  A2P_PROGRAM_NAME,
+} from "../../lib/a2p-consent";
+
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-black px-6 py-12 text-neutral-100">
-      <div className="mx-auto max-w-3xl">
-        <a href="/" className="text-sm text-yellow-300 hover:text-yellow-200">
+    <main className="min-h-screen bg-neutral-950 px-6 py-12 text-neutral-100">
+      <section className="mx-auto max-w-3xl">
+        <a href="/" className="text-sm text-amber-300">
           ← Back to K-KUT
         </a>
 
         <h1 className="mt-8 text-4xl font-bold text-white">Privacy Policy</h1>
-        <p className="mt-3 text-sm text-neutral-400">
-          Effective date: June 14, 2026
+
+        <p className="mt-4 text-neutral-300">Effective date: May 4, 2026</p>
+        <p className="mt-1 text-neutral-400">
+          SMS privacy terms updated: July 16, 2026 — voluntary consent correction
         </p>
 
-        <p className="mt-8 text-neutral-300">
-          This Privacy Policy explains how G Putnam Music, LLC / K-KUT collects,
-          uses, and protects information connected to K-KUT services, including
-          K-KUT HUG orders, private delivery links, support requests, and
-          transactional customer-care communications.
+        <p className="mt-6 text-neutral-300">
+          {A2P_PROGRAM_NAME} is operated by {A2P_OPERATOR}. This Privacy Policy explains
+          how we collect, use, and protect information provided through K-KUT services,
+          including order, delivery, support, intake, and customer-care activity.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
           Information We Collect
         </h2>
         <p className="mt-3 text-neutral-300">
-          We may collect information you provide when you place an order, request
-          support, submit a delivery request, or communicate with K-KUT. This may
-          include your name, email address, phone number, order details,
-          recipient/delivery information, message content you choose to provide,
-          and service-support information.
+          We may collect information you provide directly, including your name, email
+          address, order details, support requests, delivery preferences, and other
+          information needed to provide K-KUT services.
+        </p>
+        <p className="mt-3 text-neutral-300">
+          We collect and store a mobile phone number for K-KUT SMS messaging only after
+          you deliberately check the separate optional SMS-consent box and submit the
+          opt-in form. {A2P_DECLINE_DISCLOSURE}
+        </p>
+        <p className="mt-3 font-semibold text-amber-100">
+          Providing a phone number by itself never authorizes SMS. SMS consent exists only
+          when you deliberately check the separate optional SMS-consent box and submit the
+          opt-in form.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
           How We Use Information
         </h2>
         <p className="mt-3 text-neutral-300">
-          We use information to process orders, provide K-KUT HUG delivery links,
-          send service-status updates, respond to support requests, maintain
-          customer-care records, prevent misuse, and operate K-KUT services.
+          We use information to process orders, provide digital delivery, respond to
+          support requests, send authorized service-status updates, manage customer-care
+          activity, improve K-KUT services, and maintain business and compliance records.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
-          SMS Communications
+          Canonical Voluntary SMS Consent
+        </h2>
+        <p className="mt-3 text-neutral-300">{A2P_CONSENT_DISCLOSURE}</p>
+        <p className="mt-3 text-neutral-300">{A2P_NO_CONDITION_DISCLOSURE}</p>
+        <p className="mt-3 text-neutral-300">{A2P_NO_IMPLIED_CONSENT_DISCLOSURE}</p>
+
+        <h2 className="mt-8 text-2xl font-semibold text-white">
+          SMS Consent Records
         </h2>
         <p className="mt-3 text-neutral-300">
-          If you provide your phone number, you agree to receive transactional
-          SMS messages from K-KUT related to your order, digital delivery link,
-          support request, account/customer-care follow-up, or service status.
-          Message and data rates may apply. Message frequency varies. Consent to
-          receive SMS messages is not a condition of any unrelated purchase.
-          Reply STOP to opt out. Reply HELP for help or contact
-          reachus@gputnammusic.com.
+          We maintain an operational record of the choice submitted through the K-KUT
+          SMS page, including the date and time, consent disclosure version, source page,
+          and the mobile number only when SMS consent was given. The opt-in page itself
+          does not send an SMS message.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
-          No Sale or Sharing of Mobile Information
+          No Sale or Marketing Sharing of Mobile Information
         </h2>
         <p className="mt-3 text-neutral-300">
-          Mobile phone numbers collected for SMS messaging are used only for
-          G Putnam Music / K-KUT transactional customer-care messaging. Mobile
-          phone numbers and SMS consent information are not sold, rented,
-          shared, or disclosed to third parties or affiliates for their
-          marketing or promotional purposes.
+          K-KUT does not sell or rent mobile phone numbers or SMS consent information.{" "}
+          {A2P_NO_MARKETING_SHARING_DISCLOSURE}
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
           Service Providers
         </h2>
         <p className="mt-3 text-neutral-300">
-          We may use service providers to operate K-KUT, process payments,
-          host pages, deliver private links, send transactional messages, or
-          provide support. Service providers are used only as needed to operate
-          the service and are not permitted to use mobile phone numbers or SMS
-          consent information for their own marketing.
+          We may use trusted service providers to operate the website, process payments,
+          store operational records, deliver authorized communications, provide hosting,
+          and support customer service. These providers are used only as needed to
+          operate the service.
         </p>
 
-        <h2 className="mt-8 text-2xl font-semibold text-white">
-          Digital Delivery and Private Links
-        </h2>
+        <h2 className="mt-8 text-2xl font-semibold text-white">Data Protection</h2>
         <p className="mt-3 text-neutral-300">
-          K-KUT HUGs and related digital products may be delivered through
-          private links. Recipients should use those links only as intended.
-          Delivery links may contain access information needed to play or view
-          the selected K-KUT HUG.
+          We use reasonable administrative, technical, and operational safeguards to
+          protect information. No internet-based service can guarantee complete security.
         </p>
 
-        <h2 className="mt-8 text-2xl font-semibold text-white">
-          Data Security
-        </h2>
+        <h2 className="mt-8 text-2xl font-semibold text-white">Contact</h2>
         <p className="mt-3 text-neutral-300">
-          We use reasonable measures to protect information connected to K-KUT.
-          No online system can be guaranteed completely secure, but we work to
-          limit access and use information only for service-related purposes.
+          For privacy questions, contact {A2P_OPERATOR} at{" "}
+          <a className="text-amber-300" href="mailto:gregory@gputnammusic.com">
+            gregory@gputnammusic.com
+          </a>
+          .
         </p>
-
-        <h2 className="mt-8 text-2xl font-semibold text-white">
-          Contact
-        </h2>
-        <p className="mt-3 text-neutral-300">
-          For privacy questions or SMS help, contact G Putnam Music, LLC at
-          reachus@gputnammusic.com.
-        </p>
-      </div>
+      </section>
     </main>
   );
 }
