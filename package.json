@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
+    "prebuild": "node scripts/audit-a2p-optional-consent.mjs && node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
     "build": "next build",
     "start": "next start",
+    "audit:a2p:optional-consent": "node scripts/audit-a2p-optional-consent.mjs",
+    "audit:a2p:live-production": "node scripts/audit-a2p-live-production.mjs",
     "audit:themes": "node scripts/theme-population/audit-all-theme-population.mjs",
     "audit:themes:gratitude": "node scripts/theme-population/audit-normalized-gratitude.mjs",
     "audit:themes:bad-kk": "node scripts/theme-population/audit-bad-kk-report-model.mjs",
