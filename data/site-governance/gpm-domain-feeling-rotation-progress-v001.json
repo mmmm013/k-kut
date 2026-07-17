@@ -65,7 +65,21 @@
       "prior_section_proposals_control": "PRIVATE_NOT_RENDERED_LEARNING_SEEDS_ONLY_RECOMPUTE_AND_HUMAN_REVIEW",
       "required_sequence": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
       "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "Hang On",
+      "status": "PAIRED_FAMILY_PROVEN_TP_AUTORUN_BLOCKED_UNTIL_VOCAL_LOSSLESS_PARENT_PROVEN",
+      "family_id": "PIX-FAM-0198",
+      "vocal_track_id": "166991126",
+      "vocal_artist": "NATU Visinia",
+      "vocal_source_status": "PENDING_WAV_OR_LOSSLESS_RETRIEVAL_PUBLIC_MP3_NOT_PARENT_AUTHORITY",
+      "associated_musical_track_id": "104266968",
+      "associated_musical_source": "308 - Music Maykers - Hang On - INSTRO .wav",
+      "associated_musical_source_status": "CONTROLLED_STL_BATCH_007_WAV",
+      "family_binding": "MATCHED_BASE_TITLE_SAME_ISRC_PRO_WRITERS_AND_98_BPM",
+      "required_sequence_after_vocal_source_proof": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
+      "kk_status": "KK_NOT_STARTED"
     }
   ],
-  "next_candidate": "Hang On"
+  "next_candidate": "Ridin' Cloud 10"
 }
