@@ -102,8 +102,8 @@ export default function TermsPage() {
         <h2 className="mt-8 text-2xl font-semibold text-white">Contact</h2>
         <p className="mt-3 text-neutral-300">
           For questions about these Terms, contact {A2P_OPERATOR} at{" "}
-          <a className="text-amber-300" href="mailto:gregory@gputnammusic.com">
-            gregory@gputnammusic.com
+          <a className="text-amber-300" href="mailto:reachus@gputnammusic.com">
+            reachus@gputnammusic.com
           </a>
           .
         </p>
