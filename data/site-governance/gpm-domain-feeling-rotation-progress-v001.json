@@ -1,24 +1,25 @@
 {
   "schema_version": "gpm-domain-feeling-rotation-progress-v001",
-  "status": "CANDIDATE_PROOF_PASS_IN_PROGRESS",
+  "status": "CANDIDATE_PROOF_AND_REQUIRED_TP_AUTORUN_SET_IN_PROGRESS",
   "production_deployment_authorized": false,
+  "required_tp_method": "ASSOCIATED_IN_PIX_OR_INO_PIX_MUSICAL_TP_MAP_THEN_LT_PIX_ALIGNMENT_FORWARD_TO_VOCAL_START_BACKWARD_TO_FINAL_VOICE_SOUND",
   "post_list_review_queue": [
     {
       "source": "The Foundation",
       "priority": 1,
-      "action": "IMMEDIATE_GD_REVIEW",
+      "action": "IMMEDIATE_GD_REVIEW_USING_REQUIRED_TP_AUTORUN_METHOD",
       "status": "STAGED"
     }
   ],
   "completed_proof_checks": [
     {
       "source": "The Foundation",
-      "status": "HOLD_PARENT_AUDIO_READY_NO_II_GENERATION_TP_GD_MARK_PENDING",
+      "status": "STAGED_FOR_REQUIRED_TP_AUTORUN_ASSOCIATED_MUSICAL_SOURCE_RESOLUTION_PENDING",
       "lt_pix_id": "LTPIX_0176"
     },
     {
       "source": "Do It Again",
-      "status": "HOLD_PARENT_KK_MAP_APPROVED_NO_FINAL_II_TWINKLE_OR_LIVE_ROUTE_PROOF",
+      "status": "TP_PARENT_MAP_EXISTS_REVALIDATE_UNDER_MUSICAL_TO_VOCAL_ALIGNMENT_LAW",
       "lt_pix_id": "SBTRACK-008",
       "parent_kk_count": 7,
       "dkk_rows": 7,
@@ -26,24 +27,33 @@
     },
     {
       "source": "Yours n' Mine",
-      "status": "HOLD_LOCKED_WAV_FOUND_TPR_REQUIRED_KK_NOT_STARTED",
+      "status": "STAGED_FOR_REQUIRED_TP_AUTORUN_ASSOCIATED_MUSICAL_SOURCE_RESOLUTION_PENDING",
       "lt_pix_id": "LTPIX_0131",
       "source_file": "306 - Zach Linley - YOURS N' MINE .wav",
       "source_sha256": "f306dd1351465feb0f9d55b5df11475f55d10951f802170df17a1da075078379",
       "source_binding": "P1_EXACT_NON_INSTRO_MATCH",
-      "tpr_status": "NEEDS_TPR_BEFORE_KK_DERIVATION",
       "kk_status": "KK_NOT_STARTED"
     },
     {
       "source": "Got Me Smokin' - '24",
-      "status": "HOLD_LOCKED_WAV_FOUND_TPR_REQUIRED_KK_NOT_STARTED",
+      "status": "STAGED_FOR_PAIRED_MUSICAL_TO_VOCAL_TP_AUTORUN",
       "lt_pix_id": "LTPIX_0257",
       "source_file": "447 - Lilli O'Dowd - GOT ME SMOKIN' - '24.wav",
       "source_sha256": "6c47006fe02c22a042111cc49a9ec930ca27d99dbc4ef97c416eb24840efda05",
-      "tpr_status": "NEEDS_TPR_BEFORE_KK_DERIVATION",
-      "kk_status": "KK_NOT_STARTED",
-      "instro_control": "GOT ME SMOKIN' - INSTRO remains INO-PIX/IN-PIX candidate and is not a lyric KK source"
+      "associated_musical_source": "GOT ME SMOKIN' - INSTRO",
+      "instro_control": "Musical structure authority only; not a lyric KK source",
+      "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "Dreamer's Dance",
+      "status": "STAGED_FOR_PAIRED_MUSICAL_TO_VOCAL_TP_AUTORUN",
+      "lt_pix_id": "LTPIX_0089",
+      "source_file": "259 - KLEIGH - DREAMER'S DANCE.wav",
+      "source_sha256": "a47d6167e97cab84d2eefb4544c237aca6dddb0b1d81c219c581e9afef9ee191",
+      "associated_musical_source": "243 - Music Maykers - DREAMERS DANCE - INSTRO.wav",
+      "required_sequence": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
+      "kk_status": "KK_NOT_STARTED"
     }
   ],
-  "next_candidate": "Dreamer's Dance"
+  "next_candidate": "Without a Soul"
 }
