@@ -1,0 +1,83 @@
+{
+  "schema_version": "no-luck-with-luck-existing-ii-consolidation-tp-v001",
+  "status": "INVENTORY_CONSOLIDATED_TP_METADATA_VALIDATED_AUDIO_ENDPOINT_HUMAN_REVIEW_REQUIRED",
+  "production_deployment_authorized": false,
+  "rebuild_authorized": false,
+  "source_authority": {
+    "gpmc_family_id": "PIX-FAM-0333",
+    "gpmc_track_id": "168336641",
+    "lt_pix_id": "LTPIX_0018",
+    "source_audio_file": "24 - KLEIGH - No Luck with Luck .wav",
+    "source_sha256": "00a808415453ddab6c2e32decc17aa3831dd87fcfe7a054d0671d2326c7a174e",
+    "composer": "Michael Clay / Clayton Michael Gunn",
+    "recording_artist": "KLEIGH",
+    "lyric_authority": "LT_PIX_LYRIC_STAB_001073_No_Luck_with_Luck.txt"
+  },
+  "evidence_scan": {
+    "title_matched_paths": 124,
+    "full_chain_sidecars": 21,
+    "total_evidence_references": 145,
+    "logical_manufacturing_families": 9,
+    "logical_review_inventory_slots": 7
+  },
+  "consolidated_role_order": [
+    "V1",
+    "Ch1",
+    "V2",
+    "Ch2",
+    "Bridge",
+    "Ch3",
+    "Vocal Outro"
+  ],
+  "family_classes": {
+    "legacy_six_section_sets": [
+      "SRC-00726",
+      "SRC-00802",
+      "SRC-00803"
+    ],
+    "complete_seven_section_draft_dressed_sets": [
+      "LT_PIX_ALLPOSS_00581",
+      "LT_PIX_ALLPOSS_00657",
+      "LT_PIX_ALLPOSS_00658"
+    ],
+    "complete_seven_section_full_chain_authority_cohort": [
+      "LT_PIX_ACTIVE_0057",
+      "LT_PIX_ACTIVE_0058",
+      "LT_PIX_BATCH002_0064"
+    ]
+  },
+  "family_validation": [
+    {"group_id":"SRC-00726","kk_count":6,"dkk_count":6,"sequence":"01-06","status":"LEGACY_COMPARISON_HOLD_NO_DELETE"},
+    {"group_id":"SRC-00802","kk_count":6,"dkk_count":6,"sequence":"01-06","status":"LEGACY_COMPARISON_HOLD_NO_DELETE"},
+    {"group_id":"SRC-00803","kk_count":6,"dkk_count":6,"sequence":"01-06","status":"LEGACY_COMPARISON_HOLD_NO_DELETE"},
+    {"group_id":"LT_PIX_ALLPOSS_00581","kk_count":7,"dkk_count":7,"sequence":"01-07","roles":"V1|Ch1|V2|Ch2|Bridge|Ch3|Vocal Outro","status":"COMPLETE_SEVEN_SECTION_EVIDENCE"},
+    {"group_id":"LT_PIX_ALLPOSS_00657","kk_count":7,"dkk_count":7,"sequence":"01-07","roles":"V1|Ch1|V2|Ch2|Bridge|Ch3|Vocal Outro","status":"COMPLETE_SEVEN_SECTION_EVIDENCE"},
+    {"group_id":"LT_PIX_ALLPOSS_00658","kk_count":7,"dkk_count":7,"sequence":"01-07","roles":"V1|Ch1|V2|Ch2|Bridge|Ch3|Vocal Outro","status":"COMPLETE_SEVEN_SECTION_EVIDENCE"},
+    {"group_id":"LT_PIX_ACTIVE_0057","kk_count":7,"full_chain_sidecar_count":7,"sequence":"01-07","status":"FULL_CHAIN_AUTHORITY_COHORT"},
+    {"group_id":"LT_PIX_ACTIVE_0058","kk_count":7,"full_chain_sidecar_count":7,"sequence":"01-07","status":"FULL_CHAIN_AUTHORITY_COHORT"},
+    {"group_id":"LT_PIX_BATCH002_0064","kk_count":7,"full_chain_sidecar_count":7,"sequence":"01-07","status":"FULL_CHAIN_AUTHORITY_COHORT"}
+  ],
+  "tp_validation": {
+    "parent_source_authority": "PASS",
+    "section_number_contiguity": "PASS_ALL_9_FAMILIES",
+    "seven_section_role_order": "PASS_3_LABELED_ALLPOSS_FAMILIES",
+    "dressed_or_sidecar_coverage": "PASS_ALL_9_FAMILIES",
+    "inventory_consolidation": "PASS_TO_7_LOGICAL_REVIEW_SLOTS",
+    "duplicate_family_exact_hash_duration_boundary_equivalence": "REQUIRED_BEFORE_SINGLE_AUTHORITY_SELECTION",
+    "vocal_start_endpoint_audio_qa": "HUMAN_REVIEW_REQUIRED",
+    "vocal_end_endpoint_audio_qa": "HUMAN_REVIEW_REQUIRED",
+    "natural_resolve_audio_qa": "HUMAN_REVIEW_REQUIRED",
+    "twinkle_at_end_final_ii_proof": "NOT_ESTABLISHED_BY_PATH_SCAN",
+    "public_route_proof": "NOT_IN_SCOPE"
+  },
+  "controls": [
+    "USE_EXISTING_PRE_MADE_IIS_ONLY",
+    "NO_REBUILD",
+    "NO_RECUT",
+    "NO_AUDIO_SUBSTITUTION",
+    "NO_DELETE_OF_DUPLICATE_OR_LEGACY_FAMILIES",
+    "TP_REVIEW_IS_QA_AND_LEARNING_NOT_MANUFACTURING",
+    "DO_NOT_SELECT_SINGLE_AUTHORITY_UNTIL_HASH_DURATION_AND_ENDPOINT_EQUIVALENCE_ARE_PROVEN"
+  ],
+  "next_action": "OPEN_SEVEN_EXISTING_II_AUTHORITY_COHORT_IN_EXISTING_TP_REVIEW_ROOM_AND_RECORD_HUMAN_ENDPOINT_DECISIONS"
+}
