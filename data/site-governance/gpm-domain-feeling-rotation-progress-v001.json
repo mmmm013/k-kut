@@ -33,7 +33,17 @@
       "source_binding": "P1_EXACT_NON_INSTRO_MATCH",
       "tpr_status": "NEEDS_TPR_BEFORE_KK_DERIVATION",
       "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "Got Me Smokin' - '24",
+      "status": "HOLD_LOCKED_WAV_FOUND_TPR_REQUIRED_KK_NOT_STARTED",
+      "lt_pix_id": "LTPIX_0257",
+      "source_file": "447 - Lilli O'Dowd - GOT ME SMOKIN' - '24.wav",
+      "source_sha256": "6c47006fe02c22a042111cc49a9ec930ca27d99dbc4ef97c416eb24840efda05",
+      "tpr_status": "NEEDS_TPR_BEFORE_KK_DERIVATION",
+      "kk_status": "KK_NOT_STARTED",
+      "instro_control": "GOT ME SMOKIN' - INSTRO remains INO-PIX/IN-PIX candidate and is not a lyric KK source"
     }
   ],
-  "next_candidate": "Got Me Smokin'"
+  "next_candidate": "Dreamer's Dance"
 }
