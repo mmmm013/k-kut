@@ -19,7 +19,9 @@ export default function PrivacyPage() {
         <h1 className="mt-8 text-4xl font-bold text-white">Privacy Policy</h1>
 
         <p className="mt-4 text-neutral-300">Effective date: May 4, 2026</p>
-        <p className="mt-1 text-neutral-400">SMS privacy terms updated: July 16, 2026</p>
+        <p className="mt-1 text-neutral-400">
+          SMS privacy terms updated: July 16, 2026 — voluntary consent correction
+        </p>
 
         <p className="mt-6 text-neutral-300">
           {A2P_PROGRAM_NAME} is operated by {A2P_OPERATOR}. This Privacy Policy explains
@@ -39,6 +41,11 @@ export default function PrivacyPage() {
           We collect and store a mobile phone number for K-KUT SMS messaging only after
           you deliberately check the separate optional SMS-consent box and submit the
           opt-in form. {A2P_DECLINE_DISCLOSURE}
+        </p>
+        <p className="mt-3 font-semibold text-amber-100">
+          Providing a phone number by itself never authorizes SMS. SMS consent exists only
+          when you deliberately check the separate optional SMS-consent box and submit the
+          opt-in form.
         </p>
 
         <h2 className="mt-8 text-2xl font-semibold text-white">
