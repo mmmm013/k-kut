@@ -79,7 +79,23 @@
       "family_binding": "MATCHED_BASE_TITLE_SAME_ISRC_PRO_WRITERS_AND_98_BPM",
       "required_sequence_after_vocal_source_proof": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
       "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "Ridin' Cloud 10",
+      "status": "STAGED_FOR_PAIRED_MUSICAL_TO_VOCAL_TP_AUTORUN",
+      "family_id": "PIX-FAM-0384",
+      "lt_pix_id": "LTPIX_0218",
+      "vocal_track_id": "75014508",
+      "vocal_artist": "NATU Visinia",
+      "source_file": "407 - NATU Visinia - RIDIN' CLOUD 10 .wav",
+      "source_sha256": "d34462ec261e7685f0050b6cb7a6d21e059536fe9c921895ce2fd76a7abad40e",
+      "associated_musical_track_id": "99484833",
+      "associated_musical_source": "332 - Music Maykers - RIDIN' CLOUD 10 - INSTRO .wav",
+      "associated_musical_source_status": "CONTROLLED_STL_BATCH_008_WAV",
+      "family_binding": "MATCHED_BASE_TITLE_IN_PIX_COMPANION_AND_EQUAL_2M58S_CATALOG_DURATION",
+      "required_sequence": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
+      "kk_status": "KK_NOT_STARTED"
     }
   ],
-  "next_candidate": "Ridin' Cloud 10"
+  "next_candidate": "I Am a Fighter"
 }
