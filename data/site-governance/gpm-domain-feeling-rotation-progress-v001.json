@@ -95,7 +95,21 @@
       "family_binding": "MATCHED_BASE_TITLE_IN_PIX_COMPANION_AND_EQUAL_2M58S_CATALOG_DURATION",
       "required_sequence": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
       "kk_status": "KK_NOT_STARTED"
+    },
+    {
+      "source": "I Am a Fighter",
+      "status": "VOCAL_PARENT_PROVEN_MUSICAL_COMPANION_IDENTITY_BIND_REQUIRED_BEFORE_TP_AUTORUN",
+      "lt_pix_id": "LTPIX_0116",
+      "vocal_artist": "Olivia Joy",
+      "source_file": "290 - Olivia Joy - I AM A FIGHTER .wav",
+      "source_sha256": "8aab543d0e851026540a9e443d58952dfe62155939f475c1a67eecaef0447e46",
+      "musical_candidate": "234 - Music Maykers - I AM A FIGHTER - El Mix INSTRO .wav",
+      "musical_candidate_sha256": "0900b747452acab8596a3058e7d0cd830817b038e0aebd44aebfb4b9c284467e",
+      "identity_control": "MULTIPLE_SAME_TITLE_VOCAL_AND_INSTRO_VERSIONS_AND_TEMPOS_REQUIRE_EXACT_PAIR_BINDING",
+      "prior_kk_control": "OLD_INSTRO_KK_ROWS_ARE_LEARNING_SEEDS_ONLY_NOT_APPROVAL",
+      "required_sequence_after_identity_binding": "MUSICAL_TP_MAP_THEN_LT_PIX_MATCH_THEN_FORWARD_VOCAL_START_AND_BACKWARD_VOCAL_END",
+      "kk_status": "KK_NOT_STARTED"
     }
   ],
-  "next_candidate": "I Am a Fighter"
+  "next_candidate": "Salt of the Earth"
 }
