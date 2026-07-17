@@ -1,0 +1,39 @@
+{
+  "schema_version": "gpm-domain-feeling-rotation-progress-v001",
+  "status": "CANDIDATE_PROOF_PASS_IN_PROGRESS",
+  "production_deployment_authorized": false,
+  "post_list_review_queue": [
+    {
+      "source": "The Foundation",
+      "priority": 1,
+      "action": "IMMEDIATE_GD_REVIEW",
+      "status": "STAGED"
+    }
+  ],
+  "completed_proof_checks": [
+    {
+      "source": "The Foundation",
+      "status": "HOLD_PARENT_AUDIO_READY_NO_II_GENERATION_TP_GD_MARK_PENDING",
+      "lt_pix_id": "LTPIX_0176"
+    },
+    {
+      "source": "Do It Again",
+      "status": "HOLD_PARENT_KK_MAP_APPROVED_NO_FINAL_II_TWINKLE_OR_LIVE_ROUTE_PROOF",
+      "lt_pix_id": "SBTRACK-008",
+      "parent_kk_count": 7,
+      "dkk_rows": 7,
+      "nkk_rows": 7
+    },
+    {
+      "source": "Yours n' Mine",
+      "status": "HOLD_LOCKED_WAV_FOUND_TPR_REQUIRED_KK_NOT_STARTED",
+      "lt_pix_id": "LTPIX_0131",
+      "source_file": "306 - Zach Linley - YOURS N' MINE .wav",
+      "source_sha256": "f306dd1351465feb0f9d55b5df11475f55d10951f802170df17a1da075078379",
+      "source_binding": "P1_EXACT_NON_INSTRO_MATCH",
+      "tpr_status": "NEEDS_TPR_BEFORE_KK_DERIVATION",
+      "kk_status": "KK_NOT_STARTED"
+    }
+  ],
+  "next_candidate": "Got Me Smokin'"
+}
