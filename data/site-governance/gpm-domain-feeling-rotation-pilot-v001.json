@@ -59,12 +59,24 @@
       "status": "adopted_major_missing_theme"
     }
   ],
+  "review_queue": {
+    "trigger": "after_candidate_list_proof_pass_is_complete",
+    "priority_order": [
+      {
+        "source": "The Foundation",
+        "action": "IMMEDIATE_GD_REVIEW",
+        "purpose": "approve_touch_points_and_select_first_reviewable_KK_or_sK",
+        "status": "STAGED"
+      }
+    ]
+  },
   "candidate_pool": [
     {
       "source": "The Foundation",
       "primary_lane": "thank_you_appreciation",
       "secondary_lane": "courage_overcoming",
       "readiness": "HOLD_PARENT_AUDIO_READY_NO_II_GENERATION_TP_GD_MARK_PENDING",
+      "post_list_action": "IMMEDIATE_GD_REVIEW",
       "evidence": {
         "lt_pix_id": "LTPIX_0176",
         "source_title": "THE FOUNDATION - DEMOCRACY",
@@ -75,30 +87,150 @@
         "tp_status": "WAITING_FOR_GD_MARK"
       }
     },
-    {"source":"Do It Again","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Yours & Mine","primary_lane":"romance_sexy","secondary_lane":"awesome_anniversary","readiness":"PROOF_REQUIRED"},
-    {"source":"Got Me Smokin'","primary_lane":"romance_sexy","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Dreamer's Dance","primary_lane":"romance_sexy","secondary_lane":"courage_overcoming","readiness":"PROOF_REQUIRED"},
-    {"source":"Without a Soul","primary_lane":"im_sorry_repair","secondary_lane":"comfort_sympathy_grief","readiness":"PROOF_REQUIRED"},
-    {"source":"Hang On","primary_lane":"courage_overcoming","secondary_lane":"comfort_sympathy_grief","readiness":"PROOF_REQUIRED"},
-    {"source":"Ridin' Cloud 10","primary_lane":"romance_sexy","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"I Am a Fighter","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Salt of the Earth","primary_lane":"thank_you_appreciation","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Your Touch","primary_lane":"romance_sexy","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Misty Midnight Blue","primary_lane":"romance_sexy","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"I Do Swear","primary_lane":"awesome_anniversary","secondary_lane":"romance_sexy","readiness":"PROOF_REQUIRED"},
-    {"source":"My Rock","primary_lane":"thank_you_appreciation","secondary_lane":"awesome_anniversary","readiness":"PROOF_REQUIRED"},
-    {"source":"Dark Cloud v4","primary_lane":"comfort_sympathy_grief","secondary_lane":"im_sorry_repair","readiness":"PROOF_REQUIRED"},
-    {"source":"Awesome Anniversary sKs","primary_lane":"awesome_anniversary","secondary_lane":"romance_sexy","readiness":"PROOF_REQUIRED"},
-    {"source":"Best Birthday sKs","primary_lane":"best_birthday","secondary_lane":"thank_you_appreciation","readiness":"PROOF_REQUIRED"},
-    {"source":"Michael Scherer / Poppin' Out / INO-PIX SWSP","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Michael Scherer / Fight Fright / INO-PIX SWSP","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Michael Scherer / Where Are the Smiles / INO-PIX SWSP","primary_lane":"comfort_sympathy_grief","secondary_lane":"im_sorry_repair","readiness":"PROOF_REQUIRED"},
-    {"source":"Other approved Michael Scherer INO-PIX SWSPs","primary_lane":"AUDIBLE_MEANING_DECIDES","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Michael Clay piano / Even if I Tried [f] / INO-PIX SWSP","primary_lane":"im_sorry_repair","secondary_lane":"comfort_sympathy_grief","readiness":"PROOF_REQUIRED"},
-    {"source":"Michael Clay piano / No Luck w/ Luck / INO-PIX SWSP","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Michael Clay piano / Til I'm Dyin' I'm Tryin' / INO-PIX SWSP","primary_lane":"courage_overcoming","secondary_lane":null,"readiness":"PROOF_REQUIRED"},
-    {"source":"Other approved Michael Clay piano INO-PIX SWSPs","primary_lane":"AUDIBLE_MEANING_DECIDES","secondary_lane":null,"readiness":"PROOF_REQUIRED"}
+    {
+      "source": "Do It Again",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Yours & Mine",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": "awesome_anniversary",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Got Me Smokin'",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Dreamer's Dance",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": "courage_overcoming",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Without a Soul",
+      "primary_lane": "im_sorry_repair",
+      "secondary_lane": "comfort_sympathy_grief",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Hang On",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": "comfort_sympathy_grief",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Ridin' Cloud 10",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "I Am a Fighter",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Salt of the Earth",
+      "primary_lane": "thank_you_appreciation",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Your Touch",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Misty Midnight Blue",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "I Do Swear",
+      "primary_lane": "awesome_anniversary",
+      "secondary_lane": "romance_sexy",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "My Rock",
+      "primary_lane": "thank_you_appreciation",
+      "secondary_lane": "awesome_anniversary",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Dark Cloud v4",
+      "primary_lane": "comfort_sympathy_grief",
+      "secondary_lane": "im_sorry_repair",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Awesome Anniversary sKs",
+      "primary_lane": "awesome_anniversary",
+      "secondary_lane": "romance_sexy",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Best Birthday sKs",
+      "primary_lane": "best_birthday",
+      "secondary_lane": "thank_you_appreciation",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Scherer / Poppin' Out / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Scherer / Fight Fright / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Scherer / Where Are the Smiles / INO-PIX SWSP",
+      "primary_lane": "comfort_sympathy_grief",
+      "secondary_lane": "im_sorry_repair",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Other approved Michael Scherer INO-PIX SWSPs",
+      "primary_lane": "AUDIBLE_MEANING_DECIDES",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Clay piano / Even if I Tried [f] / INO-PIX SWSP",
+      "primary_lane": "im_sorry_repair",
+      "secondary_lane": "comfort_sympathy_grief",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Clay piano / No Luck w/ Luck / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Clay piano / Til I'm Dyin' I'm Tryin' / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Other approved Michael Clay piano INO-PIX SWSPs",
+      "primary_lane": "AUDIBLE_MEANING_DECIDES",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    }
   ],
   "four_week_representation_required": [
     "all_seven_lanes",
