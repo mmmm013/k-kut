@@ -25,7 +25,9 @@ export default function TermsPage() {
         </h1>
 
         <p className="mt-4 text-neutral-300">Effective date: May 4, 2026</p>
-        <p className="mt-1 text-neutral-400">SMS terms updated: July 16, 2026</p>
+        <p className="mt-1 text-neutral-400">
+          SMS terms updated: July 16, 2026 — voluntary consent correction
+        </p>
 
         <p className="mt-6 text-neutral-300">
           These Terms and Conditions govern use of {A2P_PROGRAM_NAME}, a service
@@ -49,6 +51,11 @@ export default function TermsPage() {
         <h2 className="mt-8 text-2xl font-semibold text-white">
           Canonical Voluntary SMS Consent
         </h2>
+        <p className="mt-3 font-semibold text-amber-100">
+          Providing a phone number by itself never authorizes SMS. SMS consent exists only
+          when you deliberately check the separate optional SMS-consent box and submit the
+          opt-in form.
+        </p>
         <p className="mt-3 text-neutral-300">{A2P_CONSENT_DISCLOSURE}</p>
         <p className="mt-3 text-neutral-300">{A2P_NO_CONDITION_DISCLOSURE}</p>
         <p className="mt-3 text-neutral-300">{A2P_NO_IMPLIED_CONSENT_DISCLOSURE}</p>
