@@ -30,12 +30,31 @@ try {
   const store = read("lib/h2PendingOrder.ts");
 
   needs(api, [
-    "EXPECTED_INVENTORY_COUNT = 2611",
+    "EXPECTED_STORAGE_INVENTORY_COUNT = 3867",
+    "EXPECTED_KK_COUNT = 2611",
+    "EXPECTED_SK_COUNT = 1256",
+    "release-gate-v004/",
+    "release-gate-v005-sk/",
     "PUBLIC_STORAGE_VERIFIED",
     "signature_audio_logo_integral_at_end",
     "REGULAR_HUG_PRICE_USD = 7.99",
+    'purchasableFamily: "KK"',
+    'heldInventoryFamily: "sK"',
+    "heldForProductMappingCount: skCount",
     "purchasableCount: publicRecords.length",
+    'status: "BIC_PUBLIC_CATALOG_READY_SK_HELD_FOR_PRODUCT_MAPPING"',
   ], "catalog API");
+
+  needs(api, [
+    'if (family == "SK")',
+    "skCount += 1",
+    "return;",
+    "publicRecords.push",
+  ], "sK product-mapping hold");
+
+  forbids(api, [
+    "EXPECTED_INVENTORY_COUNT = 2611",
+  ], "superseded catalog count gate");
 
   needs(browser, [
     "PublicIiRecord",
@@ -95,17 +114,24 @@ try {
     "consumePendingH2Order",
   ], "pending-order store");
 
-  needs(browse + find + hug, ["$7.99"], "2,611-item HUG path");
-  forbids(browse + find + hug + browser, ["$4.99", "$12.99"], "2,611-item HUG path");
+  needs(browse + find + hug, ["$7.99"], "2,611-item purchasable HUG path");
 
-  console.log("BIC 2611 STOREFRONT AUDIT PASS");
-  console.log("CATALOG: 2611 VERIFIED HUGS AT $7.99");
+  forbids(
+    browse + find + hug + browser,
+    ["$4.99", "$12.99"],
+    "2,611-item purchasable HUG path",
+  );
+
+  console.log("BIC 3867 STORAGE / 2611 STOREFRONT AUDIT PASS");
+  console.log("STORAGE CATALOG: 3867 VERIFIED PUBLIC IIs");
+  console.log("PURCHASABLE: 2611 VERIFIED KK HUGS AT $7.99");
+  console.log("HELD: 1256 sKs AWAITING AUTHORIZED PRODUCT MAPPING");
   console.log("HOME: CURATED SHORT KUT / HUG / BIG HUG");
   console.log("HOME CHECKOUT: POST HIDES CONTROLLED INVENTORY ID");
   console.log("CHECKOUT: H2 EXACT ITEM + 303 STRIPE HANDOFF");
   console.log("FULFILLMENT: MANUAL PRIVATE DELIVERY");
 } catch (error) {
-  console.error("BIC 2611 STOREFRONT AUDIT FAIL");
+  console.error("BIC 3867 STORAGE / 2611 STOREFRONT AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }
