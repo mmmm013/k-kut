@@ -6,18 +6,32 @@
   "tag_types": {
     "source_family": {
       "meaning": "The actual audio/source identity or reusable emotional source family.",
-      "examples": ["thank-you", "no-mystery", "forever-and-a-day"],
+      "examples": [
+        "thank-you",
+        "no-mystery",
+        "forever-and-a-day"
+      ],
       "reuse_allowed": true
     },
     "campaign_use": {
       "meaning": "Where the audio was used, tested, promoted, or grouped before.",
-      "examples": ["mothers_day_2026", "fathers_day_2026", "wedding_pack"],
+      "examples": [
+        "mothers_day_2026",
+        "fathers_day_2026",
+        "wedding_pack"
+      ],
       "reuse_allowed": true,
       "must_not_limit_source_identity": true
     },
     "lyric_declared_occasion": {
       "meaning": "The occasion explicitly announced by the lyric or spoken content.",
-      "examples": ["mothers_day", "fathers_day", "birthday", "christmas", "none"],
+      "examples": [
+        "mothers_day",
+        "fathers_day",
+        "birthday",
+        "christmas",
+        "none"
+      ],
       "reuse_allowed": false,
       "controls_holiday_exclusivity": true
     }
@@ -56,14 +70,18 @@
   "example": {
     "no_mystery": {
       "source_family": "no-mystery",
-      "campaign_use": ["fathers_day_2026"],
+      "campaign_use": [
+        "fathers_day_2026"
+      ],
       "lyric_declared_occasion": "none",
       "fathers_day_eligible": true,
       "reason": "Tagged for Father's Day use, but not inherently a holiday PIX unless the lyric declares the holiday."
     },
     "thank_you": {
       "source_family": "thank-you",
-      "campaign_use": ["mothers_day_2026"],
+      "campaign_use": [
+        "mothers_day_2026"
+      ],
       "lyric_declared_occasion": "none_or_review_required",
       "fathers_day_eligible": "depends_on_recipient_language",
       "reason": "Prior Mother's Day use does not alone block reuse. Explicit Mom/Mum language may block Father's Day."

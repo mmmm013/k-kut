@@ -1,9 +1,0 @@
------ public/mothers-day/samples/thank-you-kk-opening.mp3 -----
-duration=14.000000
-bit_rate=193066
------ public/mothers-day/samples/thank-you-chorus-sample.mp3 -----
-duration=18.000000
-bit_rate=193072
------ public/mothers-day/samples/thank-you-outro-sample.mp3 -----
-duration=18.000000
-bit_rate=193072

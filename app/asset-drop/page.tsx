@@ -11,7 +11,7 @@ const FOLDERS = [
   "05_Video",
   "06_Lyrics Notes Scripts",
   "07_Artwork",
-  "08_Father’s Day",
+  "08_Holiday Theme",
   "09_Holiday Rotation",
   "99_Archive Superseded",
 ];
@@ -107,7 +107,7 @@ export default function AssetDropPage() {
               value={note}
               onChange={(e) => setNote(e.target.value)}
               className="mt-2 min-h-28 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none"
-              placeholder="Example: Father’s Day MC-BOT cowboy dad phrase, rough take."
+              placeholder="Example: Seasonal Holiday Theme phrase, rough take."
             />
           </label>
 

@@ -5,12 +5,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 type PublicIiRecord = {
   id: string;
   label: string;
-  family: string;
+  family: "KK" | "SK";
   lane: string;
-  offer: "K-KUT HUG";
-  priceUsd: 7.99;
+  offer: "sK HUG" | "KK HUG";
+  priceUsd: number;
   audioUrl: string;
-  checkout: "hug";
+  checkout: "sk" | "kk";
   checkoutHref: string;
   personalNoteWordLimit: 13;
 };
@@ -334,7 +334,7 @@ export default function PublicIiBrowser() {
                 {record.checkoutHref ? (
                   <form action="/checkout" method="post" className="mt-5 space-y-3">
                     <input type="hidden" name="ii" value={record.id} />
-                    <input type="hidden" name="offer" value="hug" />
+                    <input type="hidden" name="offer" value={record.checkout} />
 
                     <label className="block">
                       <span className="text-xs font-black uppercase tracking-[0.16em] text-[#FFD54F]">

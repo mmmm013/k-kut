@@ -3,11 +3,14 @@ import { createPendingH2Order } from "@/lib/h2PendingOrder";
 
 export const runtime = "nodejs";
 
-const REGULAR_HUG_PAYMENT_URL =
+const CATALOG_URL =
+  "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
+
+const KK_HUG_PAYMENT_URL =
   "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
-const SHORT_KUT_PRICE_CENTS = 499;
-const REGULAR_HUG_PRICE_CENTS = 799;
-const BIG_HUG_PRICE_CENTS = 1299;
+
+const SK_HUG_PRICE_CENTS = 499;
+const KK_HUG_PRICE_CENTS = 799;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const CLIENT_REFERENCE_LIMIT = 200;
@@ -15,17 +18,57 @@ const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 const BF_PROFILE = "k-kut";
 const STRIPE_REDIRECT_STATUS = 303;
 
-const CURATED_SHORT_KUT_IDS = new Set(["thank-you-cc-012"]);
-const CURATED_BIG_HUG_IDS = new Set(["thank-you-kk7"]);
+const TRUE_VALUES = new Set([
+  "1",
+  "true",
+  "yes",
+  "pass",
+  "passed",
+  "present",
+  "verified",
+  "at_end",
+  "end",
+]);
 
-type OfferCode = "short" | "hug" | "big";
+type InventoryFamily = "SK" | "KK";
+type OfferCode = "sk" | "kk";
 
 type OfferConfig = {
   code: OfferCode;
-  publicProductName: "Short KUT" | "K-KUT HUG" | "Big HUG";
-  priceCents: 499 | 799 | 1299;
+  family: InventoryFamily;
+  publicProductName: "sK HUG" | "KK HUG";
+  priceCents: 499 | 799;
   paymentUrl: string;
 };
+
+type RawCatalogRecord = {
+  inventory_id?: unknown;
+  inventory_family?: unknown;
+  signature_audio_logo_integral_at_end?: unknown;
+  public_storage_status?: unknown;
+};
+
+type RawCatalog = {
+  records?: unknown;
+};
+
+function cleanText(value: unknown, max = 200) {
+  return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+function isTrue(value: unknown) {
+  return TRUE_VALUES.has(cleanText(value, 40).toLowerCase());
+}
+
+function inventoryFamily(value: unknown): InventoryFamily | "" {
+  const normalized = cleanText(value, 20)
+    .replace(/[^A-Za-z]/g, "")
+    .toUpperCase();
+
+  if (normalized === "SK") return "SK";
+  if (normalized === "KK") return "KK";
+  return "";
+}
 
 function configuredPaymentUrl(value: string | undefined) {
   const candidate = String(value || "").trim();
@@ -42,43 +85,30 @@ function configuredPaymentUrl(value: string | undefined) {
 }
 
 function offerConfig(offer: OfferCode): OfferConfig {
-  if (offer === "short") {
+  if (offer === "sk") {
     return {
-      code: "short",
-      publicProductName: "Short KUT",
-      priceCents: SHORT_KUT_PRICE_CENTS,
+      code: "sk",
+      family: "SK",
+      publicProductName: "sK HUG",
+      priceCents: SK_HUG_PRICE_CENTS,
       paymentUrl: configuredPaymentUrl(
-        process.env.NEXT_PUBLIC_MD_MOMENT_KK_LINK,
-      ),
-    };
-  }
-
-  if (offer === "big") {
-    return {
-      code: "big",
-      publicProductName: "Big HUG",
-      priceCents: BIG_HUG_PRICE_CENTS,
-      paymentUrl: configuredPaymentUrl(
-        process.env.NEXT_PUBLIC_MD_FEATURED_KK_LINK,
+        process.env.NEXT_PUBLIC_SK_HUG_LINK,
       ),
     };
   }
 
   return {
-    code: "hug",
-    publicProductName: "K-KUT HUG",
-    priceCents: REGULAR_HUG_PRICE_CENTS,
-    paymentUrl: REGULAR_HUG_PAYMENT_URL,
+    code: "kk",
+    family: "KK",
+    publicProductName: "KK HUG",
+    priceCents: KK_HUG_PRICE_CENTS,
+    paymentUrl: KK_HUG_PAYMENT_URL,
   };
 }
 
-function returnToStore(
-  request: NextRequest,
-  reason: string,
-  offer: OfferCode | null,
-) {
+function returnToStore(request: NextRequest, reason: string) {
   const url = request.nextUrl.clone();
-  url.pathname = offer === "hug" ? "/browse" : "/";
+  url.pathname = "/browse";
   url.search = `?checkout=${encodeURIComponent(reason)}`;
   return NextResponse.redirect(url, STRIPE_REDIRECT_STATUS);
 }
@@ -89,15 +119,7 @@ function safeInventoryId(value: FormDataEntryValue | string | null) {
 }
 
 function safeOffer(value: FormDataEntryValue | string | null): OfferCode | null {
-  return value === "short" || value === "hug" || value === "big"
-    ? value
-    : null;
-}
-
-function offerAllowsInventory(offer: OfferCode, inventoryId: string) {
-  if (offer === "short") return CURATED_SHORT_KUT_IDS.has(inventoryId);
-  if (offer === "big") return CURATED_BIG_HUG_IDS.has(inventoryId);
-  return Boolean(inventoryId);
+  return value === "sk" || value === "kk" ? value : null;
 }
 
 function normalizePersonalNote(value: FormDataEntryValue | null) {
@@ -119,6 +141,46 @@ function originDomain(request: NextRequest) {
   return /^[A-Za-z0-9.-]{1,253}$/.test(host) ? host : "k-kut.com";
 }
 
+async function verifiedInventoryFamily(
+  inventoryId: string,
+): Promise<InventoryFamily | ""> {
+  try {
+    const response = await fetch(CATALOG_URL, {
+      headers: { Accept: "application/json" },
+      cache: "no-store",
+    });
+
+    if (!response.ok) return "";
+
+    const payload = (await response.json()) as RawCatalog;
+    const records = Array.isArray(payload.records)
+      ? (payload.records as RawCatalogRecord[])
+      : [];
+
+    const record = records.find(
+      (candidate) =>
+        cleanText(candidate.inventory_id, 200) === inventoryId,
+    );
+
+    if (!record) return "";
+
+    if (
+      cleanText(record.public_storage_status, 80) !==
+      "PUBLIC_STORAGE_VERIFIED"
+    ) {
+      return "";
+    }
+
+    if (!isTrue(record.signature_audio_logo_integral_at_end)) {
+      return "";
+    }
+
+    return inventoryFamily(record.inventory_family);
+  } catch {
+    return "";
+  }
+}
+
 async function governedCheckout(
   request: NextRequest,
   inventoryId: string,
@@ -128,19 +190,27 @@ async function governedCheckout(
   const personalNoteWordCount = countWords(personalNote);
 
   if (personalNoteWordCount > PERSONAL_NOTE_WORD_LIMIT) {
-    return returnToStore(request, "personal-note-over-13-words", offer);
+    return returnToStore(request, "personal-note-over-13-words");
   }
 
-  if (!offerAllowsInventory(offer, inventoryId)) {
-    return returnToStore(request, "offer-inventory-mismatch", offer);
+  const verifiedFamily = await verifiedInventoryFamily(inventoryId);
+
+  if (!verifiedFamily) {
+    return returnToStore(request, "selection-unavailable");
   }
 
   const config = offerConfig(offer);
+
+  if (verifiedFamily !== config.family) {
+    return returnToStore(request, "offer-inventory-mismatch");
+  }
+
   if (!config.paymentUrl) {
-    return returnToStore(request, "payment-link-unavailable", offer);
+    return returnToStore(request, "payment-link-unavailable");
   }
 
   let token: string;
+
   try {
     token = await createPendingH2Order({
       inventoryId,
@@ -154,29 +224,29 @@ async function governedCheckout(
       "H2_PENDING_ORDER_CREATE_FAILED",
       reason instanceof Error ? reason.message : "unidentified_error",
     );
-    return returnToStore(request, "pending-order-unavailable", offer);
+    return returnToStore(request, "pending-order-unavailable");
   }
 
   const clientReference = `${H2_CLIENT_REFERENCE_PREFIX}${token}`;
+
   if (
     clientReference.length > CLIENT_REFERENCE_LIMIT ||
     !/^[A-Za-z0-9_-]+$/.test(clientReference)
   ) {
-    return returnToStore(request, "pending-order-reference-invalid", offer);
+    return returnToStore(request, "pending-order-reference-invalid");
   }
 
   const checkoutUrl = new URL(config.paymentUrl);
+
   checkoutUrl.searchParams.set("client_reference_id", clientReference);
   checkoutUrl.searchParams.set("utm_source", BF_PROFILE);
   checkoutUrl.searchParams.set("utm_medium", "storefront");
-  checkoutUrl.searchParams.set("utm_campaign", `home_${config.code}`);
+  checkoutUrl.searchParams.set("utm_campaign", `catalog_${config.code}`);
   checkoutUrl.searchParams.set(
     "utm_content",
     personalNote ? `${config.code}_with_note` : config.code,
   );
 
-  // 303 converts the completed storefront POST into a normal GET for Stripe.
-  // A 307 would preserve POST and Stripe CloudFront rejects that method with 403.
   return NextResponse.redirect(checkoutUrl, STRIPE_REDIRECT_STATUS);
 }
 
@@ -185,11 +255,11 @@ export async function GET(request: NextRequest) {
   const offer = safeOffer(request.nextUrl.searchParams.get("offer"));
 
   if (!inventoryId) {
-    return returnToStore(request, "invalid-selection", offer);
+    return returnToStore(request, "invalid-selection");
   }
 
   if (!offer) {
-    return returnToStore(request, "invalid-offer", null);
+    return returnToStore(request, "invalid-offer");
   }
 
   return governedCheckout(request, inventoryId, offer, "");
@@ -202,11 +272,11 @@ export async function POST(request: NextRequest) {
   const personalNote = normalizePersonalNote(formData.get("personal_note"));
 
   if (!inventoryId) {
-    return returnToStore(request, "invalid-selection", offer);
+    return returnToStore(request, "invalid-selection");
   }
 
   if (!offer) {
-    return returnToStore(request, "invalid-offer", null);
+    return returnToStore(request, "invalid-offer");
   }
 
   return governedCheckout(request, inventoryId, offer, personalNote);

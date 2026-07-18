@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     created_at: new Date().toISOString(),
     status: "pending_checkout_or_manual_fulfillment",
 
-    source_page: cleanString(body.source_page, 200) || "/hug/mothers-day",
+    source_page: cleanString(body.source_page, 200) || "/browse",
     product_family: cleanString(body.product_family, 80) || "HUG",
     holiday_set: cleanString(body.holiday_set, 80) || "mothers_day",
     source_song: cleanString(body.source_song, 120) || "Thank You",

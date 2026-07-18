@@ -24,18 +24,6 @@
   ],
   "current_theme_branches": [
     {
-      "id": "fathers-day",
-      "status": "collecting",
-      "mc_bot_role": "Help buyers choose the kind of dad moment: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad.",
-      "phrases": [
-        "What kind of Dad moment are you trying to send?",
-        "Is this more thank you, strength, missing him, or hard to say?",
-        "Some dads are quiet. Some are funny. Some are cowboy all the way.",
-        "Let\u2019s start with the feeling, then find the music.",
-        "You can hear it first. Then send the one that feels right."
-      ]
-    },
-    {
       "id": "more-layer",
       "status": "collecting",
       "mc_bot_role": "Explain Featured, More, and More like this without overwhelming the buyer.",
@@ -52,7 +40,7 @@
       "status": "collecting",
       "mc_bot_role": "Help buyers know where they are and how to return.",
       "phrases": [
-        "You are still in Father\u2019s Day HUGs.",
+        "You are still in Father’s Day HUGs.",
         "You can go back to all Holiday HUGs anytime.",
         "This is a deeper path, not a dead end.",
         "Back up one step, or keep browsing this feeling.",

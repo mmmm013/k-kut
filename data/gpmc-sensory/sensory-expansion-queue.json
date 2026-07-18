@@ -5,14 +5,6 @@
   "critical_warning": "The current sensory record count is only the approved-public seed. It is not the full GPM PIX catalog, not the full K-KUT inventory, and not the emotional-sensory ceiling.",
   "expansion_law": "Expand from reviewed source material into sensory-emotional records before public buyer exposure. Never expose raw inventory directly.",
   "doctrine_law": "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning.",
-  "inventory_reality_reference": {
-    "scanned_files": null,
-    "json_files": null,
-    "audio_files_found_in_repo_tree": null,
-    "pix_mentions": null,
-    "kk_mentions": null,
-    "ii_mentions": null
-  },
   "expansion_lanes": [
     {
       "lane_id": "thank_you_gratitude",

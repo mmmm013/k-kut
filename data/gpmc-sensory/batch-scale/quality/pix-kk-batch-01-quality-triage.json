@@ -38,8 +38,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -59,8 +57,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -80,8 +76,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -101,8 +95,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -122,8 +114,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -143,8 +133,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -164,8 +152,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -185,8 +171,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -206,8 +190,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -227,8 +209,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -248,8 +228,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -269,8 +247,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -290,8 +266,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -311,8 +285,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -332,8 +304,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -353,8 +323,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -374,8 +342,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -395,8 +361,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -416,8 +380,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -437,8 +399,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -458,8 +418,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -479,8 +437,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -500,50 +456,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-024",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "family_parent",
-      "source_file": "data/fathers-day/fathers-day-more-router.json",
-      "audio_status": "NO_AUDIO_HINT_YET",
-      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-025",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "romance_love",
-      "source_file": "data/fathers-day/fathers-day-source-authority.json",
-      "audio_status": "NO_AUDIO_HINT_YET",
-      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -563,8 +475,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -584,8 +494,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -605,8 +513,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -626,29 +532,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-030",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "family_parent",
-      "source_file": "data/holiday-kks/mothers-day-thank-you-kks.json",
-      "audio_status": "AUDIO_HINTS_EXIST_REVIEW_REQUIRED",
-      "quality_status": "INCOME_LANE_REVIEW_READY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -668,8 +551,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -689,8 +570,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -710,8 +589,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -731,8 +608,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -752,8 +627,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -773,8 +646,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -794,8 +665,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -815,8 +684,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -836,8 +703,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -857,8 +722,6 @@
       "high_risk_lane": true,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -878,29 +741,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-042",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "gratitude_thank_you",
-      "source_file": "data/holiday-kks/mothers-day-promo-sets.json",
-      "audio_status": "NO_AUDIO_HINT_YET",
-      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -920,8 +760,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -941,8 +779,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -962,8 +798,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -983,8 +817,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1004,8 +836,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1025,8 +855,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1046,8 +874,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1067,8 +893,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1088,8 +912,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1109,29 +931,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-053",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "family_parent",
-      "source_file": "public/mothers-day/thank-you/kks-expanded/manifest.json",
-      "audio_status": "AUDIO_HINTS_EXIST_REVIEW_REQUIRED",
-      "quality_status": "INCOME_LANE_REVIEW_READY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1151,8 +950,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1172,8 +969,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1193,8 +988,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1214,8 +1007,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1235,29 +1026,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-059",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "friendship",
-      "source_file": "data/fathers-day/no-mystery-kk-structure-standard.json",
-      "audio_status": "NO_AUDIO_HINT_YET",
-      "quality_status": "HOLD_FOR_AUDIO_DISCOVERY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1277,8 +1045,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1298,8 +1064,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1319,8 +1083,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1340,8 +1102,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1361,8 +1121,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1382,8 +1140,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1403,8 +1159,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1424,8 +1178,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1445,8 +1197,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1466,8 +1216,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1487,8 +1235,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",
@@ -1508,29 +1254,6 @@
       "high_risk_lane": false,
       "review_status_before_triage": "needs_human_review",
       "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
-      "buyer_exposure_after_triage": "none",
-      "triage_notes": [
-        "Do not approve public use from this triage step.",
-        "Batch triage only sorts candidates for review priority.",
-        "Audio and human review are required before approve_internal.",
-        "Public promotion remains a separate approved_public step."
-      ]
-    },
-    {
-      "record_id": "pix-kk-batch-01-072",
-      "batch_id": "pix_kk_batch_01",
-      "theme": "gratitude_thank_you",
-      "source_file": "public/mothers-day/thank-you/kks/manifest.json",
-      "audio_status": "AUDIO_HINTS_EXIST_REVIEW_REQUIRED",
-      "quality_status": "INCOME_LANE_REVIEW_READY",
-      "income_lane": true,
-      "high_risk_lane": false,
-      "review_status_before_triage": "needs_human_review",
-      "public_status_after_triage": "not_public",
-      "public_route_after_triage": null,
-      "stripe_url_after_triage": null,
       "buyer_exposure_after_triage": "none",
       "triage_notes": [
         "Do not approve public use from this triage step.",

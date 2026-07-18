@@ -31,8 +31,6 @@
         "public buyer exposure before approval"
       ],
       "public_status_after_intake_plan": "not_public",
-      "public_route_after_intake_plan": null,
-      "stripe_url_after_intake_plan": null,
       "buyer_exposure_after_intake_plan": "none",
       "instruction": "Find or export 8 theme-matched audio candidates for birthday before approve_internal."
     },
@@ -55,8 +53,6 @@
         "public buyer exposure before approval"
       ],
       "public_status_after_intake_plan": "not_public",
-      "public_route_after_intake_plan": null,
-      "stripe_url_after_intake_plan": null,
       "buyer_exposure_after_intake_plan": "none",
       "instruction": "Find or export 7 theme-matched audio candidates for encouragement_support before approve_internal."
     },
@@ -79,8 +75,6 @@
         "public buyer exposure before approval"
       ],
       "public_status_after_intake_plan": "not_public",
-      "public_route_after_intake_plan": null,
-      "stripe_url_after_intake_plan": null,
       "buyer_exposure_after_intake_plan": "none",
       "instruction": "Find or export 8 theme-matched audio candidates for friendship before approve_internal."
     }

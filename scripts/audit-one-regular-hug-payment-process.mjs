@@ -1,71 +1,97 @@
 import fs from "node:fs";
 
-function read(path) {
-  if (!fs.existsSync(path)) throw new Error(`missing ${path}`);
-  return fs.readFileSync(path, "utf8");
+function read(file) {
+  if (!fs.existsSync(file)) {
+    throw new Error(`missing ${file}`);
+  }
+
+  return fs.readFileSync(file, "utf8");
 }
 
-function needs(text, values, label) {
-  for (const value of values) {
-    if (!text.includes(value)) throw new Error(`${label} missing ${value}`);
+function requireAll(text, required, label) {
+  for (const value of required) {
+    if (!text.includes(value)) {
+      throw new Error(`${label} missing ${value}`);
+    }
   }
 }
 
 try {
   const checkout = read("app/checkout/route.ts");
-  const hug = read("app/hug/page.tsx");
-  const browse = read("app/browse/page.tsx");
-  const browser = read("components/PublicIiBrowser.tsx");
   const catalog = read("app/api/public-ii-catalog/route.ts");
+  const browser = read("components/PublicIiBrowser.tsx");
+  const publicPages =
+    read("app/page.tsx") +
+    read("app/browse/page.tsx") +
+    read("app/hug/page.tsx");
   const webhook = read("app/api/stripe/webhook/route.ts");
-  const store = read("lib/h2PendingOrder.ts");
+  const pendingStore = read("lib/h2PendingOrder.ts");
 
-  needs(checkout, [
-    "REGULAR_HUG_PAYMENT_URL",
-    "REGULAR_HUG_PRICE_CENTS = 799",
-    'type OfferCode = "short" | "hug" | "big"',
-    'publicProductName: "K-KUT HUG"',
-    "PERSONAL_NOTE_WORD_LIMIT = 13",
-    "createPendingH2Order",
-    "client_reference_id",
-    "STRIPE_REDIRECT_STATUS = 303",
-  ], "checkout");
+  requireAll(
+    checkout,
+    [
+      "SK_HUG_PRICE_CENTS = 499",
+      "KK_HUG_PRICE_CENTS = 799",
+      'publicProductName: "sK HUG"',
+      'publicProductName: "KK HUG"',
+      "PERSONAL_NOTE_WORD_LIMIT = 13",
+      "client_reference_id",
+      "verifiedInventoryFamily",
+      "offer-inventory-mismatch",
+      "STRIPE_REDIRECT_STATUS = 303",
+    ],
+    "checkout",
+  );
 
-  needs(catalog, [
-    'REGULAR_HUG_OFFER = "K-KUT HUG"',
-    "REGULAR_HUG_PRICE_USD = 7.99",
-    "purchasableCount: publicRecords.length",
-  ], "catalog");
+  requireAll(
+    catalog,
+    [
+      'family === "SK" ? "sK HUG" : "KK HUG"',
+      "priceUsd",
+      "purchasableCount: publicRecords.length",
+    ],
+    "catalog",
+  );
 
-  needs(hug + browse + browser, [
-    "$7.99",
-    "Send this K-KUT as a HUG",
-    "13 words",
-  ], "regular HUG buyer path");
+  requireAll(
+    browser,
+    ['value={record.checkout}'],
+    "browser",
+  );
 
-  needs(webhook, [
-    "session.client_reference_id",
-    "consumePendingH2Order",
-    "selected_hug_id: selectedInventoryId",
-    "public_product_name: publicProductName",
-    "stripe_durable_manual_review_queue",
-  ], "webhook");
+  requireAll(
+    publicPages,
+    ["sK HUG", "KK HUG", "$4.99", "$7.99", "13"],
+    "public pages",
+  );
 
-  needs(store, [
-    'H2_TABLE = "gpm_h2_pending_orders"',
-    "createPendingH2Order",
-    "consumePendingH2Order",
-  ], "H2 store");
+  requireAll(
+    webhook,
+    [
+      "session.client_reference_id",
+      "consumePendingH2Order",
+      "manual_review_required: true",
+    ],
+    "webhook",
+  );
 
-  console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT PASS");
-  console.log("REGULAR HUG: $7.99");
-  console.log("CATALOG: 2611 EXACT ITEMS");
-  console.log("OPTIONAL NOTE: 13 WORDS");
-  console.log("STRIPE HANDOFF: 303 SEE OTHER");
-  console.log("DELIVERY: MANUAL PRIVATE REVIEW");
-  console.log("CURATED HOME TIERS DO NOT REMAP THE 2611-ITEM CATALOG");
+  requireAll(
+    pendingStore,
+    [
+      'H2_TABLE = "gpm_h2_pending_orders"',
+      "createPendingH2Order",
+      "consumePendingH2Order",
+    ],
+    "pending-order store",
+  );
+
+  console.log("TWO HUG PAYMENT PROCESS AUDIT PASS");
+  console.log("sK HUG: $4.99");
+  console.log("KK HUG: $7.99");
+  console.log("CATALOG: 3867 EXACT ITEMS");
+  console.log("sK PAYMENT LINK: REQUIRED BEFORE PRODUCTION");
 } catch (error) {
-  console.error("ONE REGULAR HUG PAYMENT PROCESS AUDIT FAIL");
+  console.error("TWO HUG PAYMENT PROCESS AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }

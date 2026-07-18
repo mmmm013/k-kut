@@ -1,20 +1,19 @@
 const functionPoints = [
-  "Landing page loads",
-  "MC-BOT message appears",
-  "Play MC-BOT voice button appears",
-  "MC-BOT voice files exist",
-  "Step 1 family cards work",
-  "Step 2 HUG-kind cards work",
-  "Step 3 song buttons work",
-  "Mother’s Day Start HUG link opens /hug/mothers-day",
-  "Mother’s Day wizard loads",
-  "Start button works",
-  "Feeling buttons work",
-  "Text field works",
-  "HUG options appear",
-  "Play demo works",
-  "Choose this HUG works",
-  "Checkout opens Stripe",
+  "K-KUT home page loads",
+  "Browse page loads the governed public II catalog",
+  "All 1,256 verified sKs identify as sK HUGs at $4.99",
+  "All 2,611 verified KKs identify as KK HUGs at $7.99",
+  "Every displayed II is playable before purchase",
+  "Every displayed II carries verified GPMx Twinkle-at-end proof",
+  "Optional written note is limited to 13 words",
+  "Checkout verifies the II family on the server",
+  "An sK cannot enter the KK HUG payment path",
+  "A KK cannot enter the sK HUG payment path",
+  "sK checkout requires one active verified $4.99 Stripe Payment Link",
+  "KK checkout uses the existing authorized $7.99 Stripe Payment Link",
+  "Paid orders create an H2 pending-order record",
+  "Paid orders remain manual-review fulfillment items",
+  "No permanent individual-holiday route or checkout gateway exists",
 ];
 
 export default function HugHealthPage() {
@@ -30,14 +29,10 @@ export default function HugHealthPage() {
         </h1>
 
         <p className="mt-4 max-w-3xl text-lg leading-8 text-amber-50/75">
-          This page lists the required working points for the public HUG landing
-          page and Mother’s Day wizard. Run the terminal health check before every
-          deploy:
+          These are the required permanent storefront and fulfillment controls.
+          Seasonal Holiday Theme selections are built freshly and do not create
+          permanent individual-holiday customer routes.
         </p>
-
-        <pre className="mt-5 overflow-auto rounded-2xl bg-black/30 p-5 text-sm text-amber-100">
-{`node scripts/hug-health-check.mjs`}
-        </pre>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {functionPoints.map((point, index) => (

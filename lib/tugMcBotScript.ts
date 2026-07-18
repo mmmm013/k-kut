@@ -97,18 +97,6 @@ export const tugMcBotScript: TugMcBotLine[] = [
     line: "You’re in the right place. We’ll keep this simple.",
   },
   {
-    id: "fathers-day-active",
-    step: "seasonal",
-    label: "Father’s Day active path",
-    line: "For Father’s Day, start with the feeling you want him to receive.",
-  },
-  {
-    id: "fathers-day-active-alt",
-    step: "seasonal",
-    label: "Father’s Day active path alternate",
-    line: "I’ll help you find a Father’s Day K-KUT that sounds complete and lands right.",
-  },
-  {
     id: "wedding-path",
     step: "wedding",
     label: "Wedding path",

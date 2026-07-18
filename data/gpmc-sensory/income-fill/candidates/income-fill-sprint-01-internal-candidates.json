@@ -98,8 +98,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -145,7 +143,6 @@
           "text": "title: \"Birthday\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "birthday joy",
       "deeper_feelings": [
         "celebration",
@@ -190,8 +187,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -235,7 +230,6 @@
           "text": "\"birthday\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "birthday joy",
       "deeper_feelings": [
         "celebration",
@@ -280,8 +274,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -316,7 +308,6 @@
           "text": "\"party\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "birthday joy",
       "deeper_feelings": [
         "celebration",
@@ -361,8 +352,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -397,7 +386,6 @@
           "text": "\"celebration\""
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "birthday joy",
       "deeper_feelings": [
         "celebration",
@@ -442,8 +430,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -531,154 +517,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
-      "route_created": false,
-      "stripe_created": false,
-      "buyer_exposure": "none",
-      "xml_armed": true,
-      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
-    },
-    {
-      "record_id": "income-sprint-01-birthday-07",
-      "sprint_id": "income_fill_sprint_01",
-      "source_id": "data-gpmc-sensory-candidates-thank-you-gratitude-candidates-json-7",
-      "source_type": "repo_source_pool_discovery",
-      "source_file": "data/gpmc-sensory/candidates/thank-you-gratitude-candidates.json",
-      "source_title": "thank-you-gratitude-candidates.json",
-      "candidate_type": "admin_internal_candidate",
-      "lane_id": "birthday",
-      "theme": "birthday",
-      "source_keyword_hits": [
-        "birthday",
-        "celebration"
-      ],
-      "source_snippets": [
-        {
-          "line_number": 595,
-          "text": "\"celebration-only birthday\","
-        }
-      ],
-      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
-      "surface_feeling": "birthday joy",
-      "deeper_feelings": [
-        "celebration",
-        "being remembered",
-        "warm attention",
-        "personal lift"
-      ],
-      "emotional_level": "light_to_warm",
-      "relationship_lane": "friend_family_everyday",
-      "situation_lane": "birthday",
-      "sensory_profile": [
-        "bright",
-        "warm",
-        "uplifting",
-        "personal"
-      ],
-      "good_use_cases": [
-        "birthday greeting",
-        "simple celebration",
-        "warm check-in",
-        "friend or family birthday"
-      ],
-      "bad_use_cases": [
-        "fresh grief birthday",
-        "romantic repair",
-        "high-conflict relationship"
-      ],
-      "risk_notes": [
-        "Keep birthday language warm without assuming closeness or party mood."
-      ],
-      "buyer_words": [
-        "A real birthday HUG.",
-        "Something warmer than a text."
-      ],
-      "receiver_safe_words": [
-        "Thought of you today.",
-        "Wanted to send something warm for your birthday."
-      ],
-      "do_not_say": [
-        "You have to be happy today.",
-        "This fixes a hard year."
-      ],
-      "review_status": "needs_human_review",
-      "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
-      "route_created": false,
-      "stripe_created": false,
-      "buyer_exposure": "none",
-      "xml_armed": true,
-      "generated_from": "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json"
-    },
-    {
-      "record_id": "income-sprint-01-birthday-08",
-      "sprint_id": "income_fill_sprint_01",
-      "source_id": "data-gpmc-sensory-review-queues-thank-you-gratitude-human-review-queue-json-8",
-      "source_type": "repo_source_pool_discovery",
-      "source_file": "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json",
-      "source_title": "thank-you-gratitude-human-review-queue.json",
-      "candidate_type": "admin_internal_candidate",
-      "lane_id": "birthday",
-      "theme": "birthday",
-      "source_keyword_hits": [
-        "birthday",
-        "celebration"
-      ],
-      "source_snippets": [
-        {
-          "line_number": 431,
-          "text": "\"celebration-only birthday\","
-        }
-      ],
-      "audio_delivery_url": "/mothers-day/thank-you/kks-expanded/thank-you-sec-v1a.mp3",
-      "surface_feeling": "birthday joy",
-      "deeper_feelings": [
-        "celebration",
-        "being remembered",
-        "warm attention",
-        "personal lift"
-      ],
-      "emotional_level": "light_to_warm",
-      "relationship_lane": "friend_family_everyday",
-      "situation_lane": "birthday",
-      "sensory_profile": [
-        "bright",
-        "warm",
-        "uplifting",
-        "personal"
-      ],
-      "good_use_cases": [
-        "birthday greeting",
-        "simple celebration",
-        "warm check-in",
-        "friend or family birthday"
-      ],
-      "bad_use_cases": [
-        "fresh grief birthday",
-        "romantic repair",
-        "high-conflict relationship"
-      ],
-      "risk_notes": [
-        "Keep birthday language warm without assuming closeness or party mood."
-      ],
-      "buyer_words": [
-        "A real birthday HUG.",
-        "Something warmer than a text."
-      ],
-      "receiver_safe_words": [
-        "Thought of you today.",
-        "Wanted to send something warm for your birthday."
-      ],
-      "do_not_say": [
-        "You have to be happy today.",
-        "This fixes a hard year."
-      ],
-      "review_status": "needs_human_review",
-      "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -777,8 +615,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -831,7 +667,6 @@
           "text": "title: \"Encouragement\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -876,8 +711,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -927,7 +760,6 @@
           "text": "\"support\""
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -972,8 +804,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1023,7 +853,6 @@
           "text": "\"mc_bot_role\": \"Narrow gratitude: parent, friend, mentor, repair, support, everyday thanks.\""
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -1068,8 +897,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1110,7 +937,6 @@
           "text": "\"source_strategy\": \"Search for strength, test, keep going, carry through, showing the way.\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -1155,8 +981,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1204,7 +1028,6 @@
           "text": "\"carry\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -1249,8 +1072,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1292,7 +1113,6 @@
           "text": "\"no_download\": \"This HUG is delivered through a private link, not a public download.\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -1337,8 +1157,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1380,7 +1198,6 @@
           "text": "\"kk_metadata\": \"KK labels must carry most buyer-match weight and must be robust.\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "encouragement",
       "deeper_feelings": [
         "support",
@@ -1425,8 +1242,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1519,8 +1334,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1565,7 +1378,6 @@
           "text": "\"laugh\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -1610,8 +1422,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1656,7 +1466,6 @@
           "text": "\"supporting_friend\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -1701,8 +1510,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1738,7 +1545,6 @@
           "text": "\"source_strategy\": \"Search for friend, always listening, shared care, warm presence.\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -1783,8 +1589,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1816,7 +1620,6 @@
           "text": "\"Customer delivery audio requires padding + Twinkle together.\""
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -1861,8 +1664,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1902,7 +1703,6 @@
           "text": "paths: [\"Thankful for you\", \"Family warmth\", \"Home\", \"Togetherness\", \"Blessing\"],"
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -1947,8 +1747,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -1992,7 +1790,6 @@
           "text": "paths: [\"Thanks for being there\", \"I’ve got you\", \"Best friend energy\", \"Old friends\"],"
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -2037,8 +1834,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",
@@ -2065,7 +1860,6 @@
           "text": "\"friendship-best-friend-family\","
         }
       ],
-      "audio_delivery_url": null,
       "surface_feeling": "friendship",
       "deeper_feelings": [
         "connection",
@@ -2110,8 +1904,6 @@
       ],
       "review_status": "needs_human_review",
       "public_status": "not_public",
-      "public_route": null,
-      "stripe_url_if_payment_allowed": null,
       "route_created": false,
       "stripe_created": false,
       "buyer_exposure": "none",

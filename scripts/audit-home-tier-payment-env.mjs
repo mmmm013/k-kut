@@ -1,16 +1,3 @@
-const REQUIRED_PAYMENT_LINKS = [
-  {
-    key: "NEXT_PUBLIC_MD_MOMENT_KK_LINK",
-    product: "Short KUT",
-    price: "$4.99",
-  },
-  {
-    key: "NEXT_PUBLIC_MD_FEATURED_KK_LINK",
-    product: "Big HUG",
-    price: "$12.99",
-  },
-];
-
 function validStripePaymentLink(value) {
   try {
     const url = new URL(String(value || "").trim());
@@ -21,27 +8,20 @@ function validStripePaymentLink(value) {
 }
 
 if (process.env.VERCEL !== "1") {
-  console.log("HOME TIER PAYMENT ENV AUDIT: LOCAL SKIP");
-  console.log("Vercel Preview and Production builds enforce the two curated payment mappings.");
+  console.log("HOME HUG PAYMENT ENV AUDIT: LOCAL SKIP");
+  console.log("Production must provide one active sK HUG $4.99 Payment Link.");
   process.exit(0);
 }
 
-const failures = [];
-
-for (const item of REQUIRED_PAYMENT_LINKS) {
-  if (!validStripePaymentLink(process.env[item.key])) {
-    failures.push(`${item.product} ${item.price}: ${item.key} is missing or not a valid Stripe Payment Link.`);
-  }
-}
-
-if (failures.length) {
-  console.error("HOME TIER PAYMENT ENV AUDIT: FAIL");
-  for (const failure of failures) console.error(` - ${failure}`);
+if (!validStripePaymentLink(process.env.NEXT_PUBLIC_SK_HUG_LINK)) {
+  console.error("HOME HUG PAYMENT ENV AUDIT: FAIL");
+  console.error(
+    " - NEXT_PUBLIC_SK_HUG_LINK is missing or is not a valid Stripe Payment Link.",
+  );
   process.exit(1);
 }
 
-console.log("HOME TIER PAYMENT ENV AUDIT: PASS");
-console.log("SHORT KUT $4.99 PAYMENT MAPPING: PRESENT");
-console.log("BIG HUG $12.99 PAYMENT MAPPING: PRESENT");
-console.log("PAYMENT HOST: buy.stripe.com");
+console.log("HOME HUG PAYMENT ENV AUDIT: PASS");
+console.log("sK HUG $4.99 PAYMENT MAPPING: PRESENT");
+console.log("KK HUG $7.99 LINK: EXISTING AUTHORIZED LINK");
 console.log("PAYMENT LINK VALUES: NOT PRINTED");

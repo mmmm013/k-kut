@@ -60,18 +60,7 @@
         "remote_supabase_url_not_required_for_customer_delivery": true,
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-      "delivery_materialization": {
-        "law": "front_padding_and_back_padding_and_twinkle_travel_together",
-        "front_padding_seconds": 1,
-        "back_padding_seconds": 1,
-        "twinkle_path": "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
-        "source_kk_audio_is_raw_not_customer_delivery": true,
-        "source_resolution": "local_gpmc_source",
-        "local_source_path": "/Users/gregoryputnam/GPM STL MP3s/A LOVE LIKE THAT.mp3",
-        "output_path": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-        "materialized_at": "2026-05-29T22:05:57.509Z"
-      }
+      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3"
     },
     {
       "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
@@ -104,18 +93,7 @@
         "remote_supabase_url_not_required_for_customer_delivery": true,
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-      "delivery_materialization": {
-        "law": "front_padding_and_back_padding_and_twinkle_travel_together",
-        "front_padding_seconds": 1,
-        "back_padding_seconds": 1,
-        "twinkle_path": "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
-        "source_kk_audio_is_raw_not_customer_delivery": true,
-        "source_resolution": "local_gpmc_source",
-        "local_source_path": "/Users/gregoryputnam/Movies/G Putnam Music, LLC - Shine the Light (STL) - GPM Inventory 12 2025/YOUR HEART POUNDIN' .mp3",
-        "output_path": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-        "materialized_at": "2026-05-29T22:05:58.066Z"
-      }
+      "delivery_audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3"
     },
     {
       "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
@@ -148,18 +126,7 @@
         "remote_supabase_url_not_required_for_customer_delivery": true,
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
-      "delivery_materialization": {
-        "law": "front_padding_and_back_padding_and_twinkle_travel_together",
-        "front_padding_seconds": 1,
-        "back_padding_seconds": 1,
-        "twinkle_path": "/mothers-day/signatures/get-so-down-4m11-4m19-soft-signature.mp3",
-        "source_kk_audio_is_raw_not_customer_delivery": true,
-        "source_resolution": "local_gpmc_source",
-        "local_source_path": "/Users/gregoryputnam/Music/DON'T CALL IT LOVE -.mp3",
-        "output_path": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
-        "materialized_at": "2026-05-29T22:05:58.602Z"
-      }
+      "delivery_audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
     }
   ],
   "source_resolution_doctrine": [

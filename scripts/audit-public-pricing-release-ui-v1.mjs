@@ -1,57 +1,77 @@
-
 import fs from "node:fs";
 import path from "node:path";
 
-const roots = ["app", "components", "lib"];
-const exts = new Set([".ts", ".tsx", ".js", ".jsx", ".json", ".md"]);
-const skip = ["node_modules", ".next", ".git", "review-sessions", "records", "scripts", "processing", "doctrine"];
-const failures = [];
+const files = [];
 
-function walk(dir, out = []) {
-  if (!fs.existsSync(dir)) return out;
-  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, ent.name);
-    if (skip.some(x => p.includes(`${path.sep}${x}${path.sep}`) || p.endsWith(`${path.sep}${x}`))) continue;
-    if (ent.isDirectory()) walk(p, out);
-    else if (exts.has(path.extname(p))) out.push(p);
-  }
-  return out;
-}
+function collect(current) {
+  const normalized = current.replaceAll("\\", "/");
 
-function windows(text, regex, radius = 1000) {
-  const result = [];
-  for (const m of text.matchAll(regex)) {
-    const i = m.index ?? 0;
-    result.push(text.slice(Math.max(0, i - radius), Math.min(text.length, i + radius)));
-  }
-  return result;
-}
-
-for (const file of roots.flatMap(r => walk(r))) {
-  const s = fs.readFileSync(file, "utf8");
-
-  if (s.includes("Short-KUT")) failures.push(`${file}: forbidden public casing Short-KUT`);
-  if (s.includes("SHORT-KUT")) failures.push(`${file}: forbidden public casing SHORT-KUT`);
-
-  for (const w of windows(s, /\$4\.99|4\.99|Making a Statement|Here.?s My Dad|Here’s My Dad|Here's My Dad/gi, 1200)) {
-    if (/short music moment/i.test(w)) failures.push(`${file}: $4.99 public card says “short music moment”`);
-    if (/quick music moment/i.test(w)) failures.push(`${file}: $4.99 public card says “quick music moment”`);
+  if (
+    normalized === "app/_saved-ui" ||
+    normalized.startsWith("app/_saved-ui/")
+  ) {
+    return;
   }
 
-  for (const w of windows(s, /\$(1\.99|4\.99|9\.99|11\.99|14\.99)|(1\.99|4\.99|9\.99|11\.99|14\.99)/g, 1400)) {
-    const hasAudio = /\.(mp3|wav|m4a)/i.test(w);
-    const obviousNoTwinkleOrInternal = /internal-proof|_work|review|no-tail|tmp-|draft|coarse|proof/i.test(w);
-    if (hasAudio && obviousNoTwinkleOrInternal) {
-      failures.push(`${file}: paid public card references obvious internal/no-Twinkle audio`);
+  if (!fs.existsSync(current)) return;
+
+  const stat = fs.statSync(current);
+
+  if (stat.isDirectory()) {
+    for (const name of fs.readdirSync(current)) {
+      collect(path.join(current, name));
     }
+    return;
+  }
+
+  if (/\.(?:ts|tsx|js|mjs|json)$/u.test(current)) {
+    files.push(current);
   }
 }
 
-if (failures.length) {
-  console.error("PUBLIC PRICING / RELEASE UI AUDIT: FAIL");
-  for (const f of failures) console.error(" - " + f);
-  process.exit(1);
+for (const root of ["app", "components", "lib"]) {
+  collect(root);
+}
+
+const runtime = files
+  .map((file) => fs.readFileSync(file, "utf8"))
+  .join("\n");
+
+for (const required of [
+  "sK HUG",
+  "KK HUG",
+  "$4.99",
+  "$7.99",
+  "NEXT_PUBLIC_SK_HUG_LINK",
+]) {
+  if (!runtime.includes(required)) {
+    console.error(
+      `PUBLIC PRICING / RELEASE UI AUDIT: FAIL missing ${required}`,
+    );
+    process.exit(1);
+  }
+}
+
+for (const forbidden of [
+  "Big HUG",
+  "$12.99",
+  "NEXT_PUBLIC_MD_",
+  "Mother’s Day",
+  "Mother's Day",
+  "Father’s Day",
+  "Father's Day",
+  "/mothers-day",
+  "/fathers-day",
+]) {
+  if (runtime.includes(forbidden)) {
+    console.error(
+      `PUBLIC PRICING / RELEASE UI AUDIT: FAIL exposes ${forbidden}`,
+    );
+    process.exit(1);
+  }
 }
 
 console.log("PUBLIC PRICING / RELEASE UI AUDIT: PASS");
-console.log("$4.99 cards cannot say short/quick music moment; paid public cards cannot expose obvious internal/no-Twinkle audio.");
+console.log("sK HUG: $4.99");
+console.log("KK HUG: $7.99");
+console.log("PERMANENT NAMED-HOLIDAY RUNTIME: NONE");

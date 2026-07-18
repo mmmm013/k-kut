@@ -14,7 +14,7 @@ const allowedFolders = new Set([
   "05_Video",
   "06_Lyrics Notes Scripts",
   "07_Artwork",
-  "08_Father’s Day",
+  "08_Holiday Theme",
   "09_Holiday Rotation",
   "99_Archive Superseded",
 ]);

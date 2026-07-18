@@ -34,20 +34,6 @@
   ],
   "theme_groups": [
     {
-      "id": "fathers-day",
-      "public_label": "Father\u2019s Day",
-      "route_family": "/holiday/fathers-day",
-      "status": "admin_pipeline",
-      "mc_bot_role": "Ask what kind of dad moment this is: thanks, strength, missing dad, repair, proud, support, cowboy, hardworking, funny, quiet, bonus dad."
-    },
-    {
-      "id": "mothers-day",
-      "public_label": "Mother\u2019s Day",
-      "route_family": "/holiday/mothers-day",
-      "status": "independent_released_prototype",
-      "mc_bot_role": "Guide gratitude, repair, mom support, warmth, and thank-you paths."
-    },
-    {
       "id": "birthday",
       "public_label": "Birthday",
       "route_family": "/personal/birthday",
