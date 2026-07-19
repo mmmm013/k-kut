@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "K-KUT | Real Music HUGs from G Putnam Music",
   description:
-    "Listen first, choose one exact sK or KK, add an optional note, and send it as a privately delivered HUG.",
+    "Listen first, choose one exact verified KK, add an optional note, and send it as a privately delivered K-KUT HUG.",
 };
 
 export default function Page() {
@@ -20,23 +20,14 @@ export default function Page() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg font-bold leading-8 text-[#EFEBE9] md:text-xl">
-            Listen first. Choose one exact finished K-KUT. Add up to 13 words, then send it as a privately delivered HUG.
+            Listen first. Choose one exact verified KK. Add up to 13 words,
+            then send it as a privately delivered HUG.
           </p>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <div className="mt-8">
             <article className="rounded-[1.75rem] border border-[#FFD54F]/35 bg-black/25 p-6">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
-                sK HUG
-              </p>
-              <p className="mt-3 text-4xl font-black">$4.99</p>
-              <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-                One exact finished sK, heard before purchase.
-              </p>
-            </article>
-
-            <article className="rounded-[1.75rem] border border-[#FFD54F]/35 bg-black/25 p-6">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
-                KK HUG
+                K-KUT HUG
               </p>
               <p className="mt-3 text-4xl font-black">$7.99</p>
               <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">

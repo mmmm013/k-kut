@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "K-KUT HUGs | G Putnam Music",
   description:
-    "Choose one exact sK HUG or KK HUG from the verified K-KUT catalog.",
+    "Choose one exact verified KK from the governed K-KUT HUG catalog.",
 };
 
 export default function HugPage() {
@@ -24,7 +24,9 @@ export default function HugPage() {
           </p>
 
           <p className="mt-5 max-w-4xl text-base font-bold leading-8 text-[#D7CCC8]">
-            The verified catalog contains 1,256 sK HUGs at $4.99 and 2,611 KK HUGs at $7.99. Each purchase is one exact finished K-KUT with an optional note of up to 13 words.
+            The governed source catalog contains 2,611 verified KKs. Each
+            $7.99 K-KUT HUG uses one exact finished KK with an optional note of
+            up to 13 words.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -50,7 +52,7 @@ export default function HugPage() {
               1 · Listen
             </p>
             <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              Hear the exact finished K-KUT audio.
+              Hear the exact finished KK audio.
             </p>
           </article>
 
@@ -59,7 +61,7 @@ export default function HugPage() {
               2 · Choose
             </p>
             <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              Select one sK HUG or KK HUG.
+              Select one governed K-KUT HUG.
             </p>
           </article>
 

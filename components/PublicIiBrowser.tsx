@@ -5,12 +5,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 type PublicIiRecord = {
   id: string;
   label: string;
-  family: "KK" | "SK";
+  family: "KK";
   lane: string;
-  offer: "sK HUG" | "KK HUG";
+  offer: "K-KUT HUG";
   priceUsd: number;
   audioUrl: string;
-  checkout: "sk" | "kk";
+  checkout: "kk";
   checkoutHref: string;
   personalNoteWordLimit: 13;
 };

@@ -1,18 +1,17 @@
 const functionPoints = [
   "K-KUT home page loads",
-  "Browse page loads the governed public II catalog",
-  "All 1,256 verified sKs identify as sK HUGs at $4.99",
-  "All 2,611 verified KKs identify as KK HUGs at $7.99",
-  "Every displayed II is playable before purchase",
-  "Every displayed II carries verified GPMx Twinkle-at-end proof",
+  "Browse page loads the governed 2,611-KK public source catalog",
+  "All 2,611 verified KKs identify as K-KUT HUGs at $7.99",
+  "The disproven 1,256 supposed sKs are not public pilot inventory",
+  "Every displayed KK is playable before selection",
+  "Every displayed KK carries verified GPMx Twinkle-at-end proof",
   "Optional written note is limited to 13 words",
-  "Checkout verifies the II family on the server",
-  "An sK cannot enter the KK HUG payment path",
-  "A KK cannot enter the sK HUG payment path",
-  "sK checkout requires one active verified $4.99 Stripe Payment Link",
-  "KK checkout uses the existing authorized $7.99 Stripe Payment Link",
+  "Checkout accepts only the governed KK offer code",
+  "Checkout verifies the selected KK on the server",
+  "Checkout uses only the existing authorized $7.99 Stripe Payment Link",
   "Paid orders create an H2 pending-order record",
   "Paid orders remain manual-review fulfillment items",
+  "MyK coordinates remain requests until rendered with lineage, boundary, and hash proof",
   "No permanent individual-holiday route or checkout gateway exists",
 ];
 
@@ -29,9 +28,10 @@ export default function HugHealthPage() {
         </h1>
 
         <p className="mt-4 max-w-3xl text-lg leading-8 text-amber-50/75">
-          These are the required permanent storefront and fulfillment controls.
-          Seasonal Holiday Theme selections are built freshly and do not create
-          permanent individual-holiday customer routes.
+          These are the required permanent storefront, MyK pilot, and
+          fulfillment controls. Seasonal Holiday Theme selections are built
+          freshly and do not create permanent individual-holiday customer
+          routes.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">

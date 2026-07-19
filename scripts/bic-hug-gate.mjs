@@ -41,11 +41,11 @@ try {
   const browser = read("components/PublicIiBrowser.tsx");
 
   for (const required of [
-    "EXPECTED_STORAGE_INVENTORY_COUNT = 3867",
     "EXPECTED_KK_COUNT = 2611",
-    "EXPECTED_SK_COUNT = 1256",
+    "BIC_PUBLIC_KK_CATALOG_READY_2611_HUGS",
     "PUBLIC_STORAGE_VERIFIED",
     "signature_audio_logo_integral_at_end",
+    'checkout: "kk"',
   ]) {
     if (!catalog.includes(required)) {
       throw new Error(`catalog missing ${required}`);
@@ -55,8 +55,9 @@ try {
   for (const required of [
     "verifiedInventoryFamily",
     "offer-inventory-mismatch",
-    "NEXT_PUBLIC_SK_HUG_LINK",
     "KK_HUG_PAYMENT_URL",
+    "KK_HUG_PRICE_CENTS = 799",
+    'type OfferCode = "kk"',
     "createPendingH2Order",
   ]) {
     if (!checkout.includes(required)) {
@@ -66,7 +67,7 @@ try {
 
   if (!browser.includes("value={record.checkout}")) {
     throw new Error(
-      "browser does not submit the governed family checkout code",
+      "browser does not submit the governed KK checkout code",
     );
   }
 
@@ -81,6 +82,12 @@ try {
     .join("\n");
 
   for (const forbidden of [
+    "sK HUG",
+    "$4.99",
+    "NEXT_PUBLIC_SK_HUG_LINK",
+    "SK_HUG_PRICE_CENTS",
+    "EXPECTED_SK_COUNT",
+    "3867",
     "KkutHomeProducts",
     "MothersDayMCBot",
     "hugRealKutManifest",
@@ -101,9 +108,9 @@ try {
   }
 
   console.log("BIC HUG GATE PASS");
-  console.log("VERIFIED PUBLIC INVENTORY: 3867");
-  console.log("sK HUGS: 1256 AT $4.99");
-  console.log("KK HUGS: 2611 AT $7.99");
+  console.log("VERIFIED PUBLIC KK SOURCE: 2611");
+  console.log("K-KUT HUGS: 2611 AT $7.99");
+  console.log("PUBLIC sK ASSUMPTION: NONE");
   console.log("TWINKLE-AT-END GATE: REQUIRED");
   console.log("PERMANENT NAMED-HOLIDAY RUNTIME: NONE");
 } catch (error) {

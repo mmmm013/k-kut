@@ -5,15 +5,10 @@ export const dynamic = "force-dynamic";
 
 const CATALOG_URL =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
+const KK_AUDIO_PREFIX =
+  "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/";
 
-const AUDIO_PREFIX_BY_FAMILY = {
-  KK: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/",
-  SK: "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v005-sk/",
-} as const;
-
-const EXPECTED_STORAGE_INVENTORY_COUNT = 3867;
 const EXPECTED_KK_COUNT = 2611;
-const EXPECTED_SK_COUNT = 1256;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 
 const TRUE_VALUES = new Set([
@@ -28,17 +23,15 @@ const TRUE_VALUES = new Set([
   "end",
 ]);
 
-type InventoryFamily = "KK" | "SK";
-
 type PublicCatalogRecord = {
   id: string;
   label: string;
-  family: InventoryFamily;
+  family: "KK";
   lane: string;
-  offer: "sK HUG" | "KK HUG";
-  priceUsd: number;
+  offer: "K-KUT HUG";
+  priceUsd: 7.99;
   audioUrl: string;
-  checkout: "sk" | "kk";
+  checkout: "kk";
   checkoutHref: string;
   personalNoteWordLimit: typeof PERSONAL_NOTE_WORD_LIMIT;
 };
@@ -66,6 +59,12 @@ function isTrue(value: unknown) {
   return TRUE_VALUES.has(cleanText(value).toLowerCase());
 }
 
+function normalizedFamily(value: unknown) {
+  return cleanText(value, 20)
+    .replace(/[^A-Za-z]/g, "")
+    .toUpperCase();
+}
+
 function prettyLabel(value: unknown) {
   const text = cleanText(value, 80);
   if (!text) return "";
@@ -75,29 +74,19 @@ function prettyLabel(value: unknown) {
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase()
-    .replace(/\w/g, (letter) => letter.toUpperCase());
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-function inventoryFamily(value: unknown): InventoryFamily | "" {
-  const normalized = cleanText(value, 20)
-    .replace(/[^A-Za-z]/g, "")
-    .toUpperCase();
-
-  if (normalized === "KK") return "KK";
-  if (normalized === "SK") return "SK";
-  return "";
-}
-
-function itemLabel(inventoryId: string, family: InventoryFamily, index: number) {
+function itemLabel(inventoryId: string, index: number) {
   const match = inventoryId.match(
-    /(?:ALLPOSS[-_])?(\d{1,6}).*?(?:SK|KK)[-_](\d{1,3})$/i,
+    /(?:ALLPOSS[-_])?(\d{1,6}).*?KK[-_](\d{1,3})$/i,
   );
 
   if (match) {
-    return `${family} ${match[1].padStart(5, "0")} · ${match[2]}`;
+    return `KK ${match[1].padStart(5, "0")} · ${match[2]}`;
   }
 
-  return `${family} ${String(index + 1).padStart(5, "0")}`;
+  return `KK ${String(index + 1).padStart(5, "0")}`;
 }
 
 export async function GET() {
@@ -141,34 +130,16 @@ export async function GET() {
     ? (payload.records as RawCatalogRecord[])
     : [];
 
-  const declaredCount = Number(payload.inventory_count);
-
-  if (
-    declaredCount !== EXPECTED_STORAGE_INVENTORY_COUNT ||
-    records.length !== EXPECTED_STORAGE_INVENTORY_COUNT
-  ) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error: "storage_inventory_count_gate_failed",
-        expected: EXPECTED_STORAGE_INVENTORY_COUNT,
-        declared: declaredCount,
-        received: records.length,
-      },
-      { status: 503 },
-    );
-  }
-
   const seenIds = new Set<string>();
   const publicRecords: PublicCatalogRecord[] = [];
 
-  let kkCount = 0;
-  let skCount = 0;
-
   try {
-    records.forEach((record, index) => {
+    records.forEach((record, sourceIndex) => {
+      if (normalizedFamily(record.inventory_family) !== "KK") {
+        return;
+      }
+
       const id = cleanText(record.inventory_id, 200);
-      const family = inventoryFamily(record.inventory_family);
       const audioUrl = cleanText(record.public_audio_url, 900);
       const storageStatus = cleanText(record.public_storage_status, 80);
       const twinkleAtEnd = isTrue(
@@ -176,48 +147,37 @@ export async function GET() {
       );
 
       if (!/^[A-Za-z0-9_-]+$/.test(id)) {
-        throw new Error(`unsafe_inventory_id_at_${index + 1}`);
+        throw new Error(`unsafe_kk_inventory_id_at_${sourceIndex + 1}`);
       }
 
       if (seenIds.has(id)) {
-        throw new Error(`duplicate_inventory_id_at_${index + 1}`);
+        throw new Error(`duplicate_kk_inventory_id_at_${sourceIndex + 1}`);
       }
 
-      if (!family) {
-        throw new Error(`unsupported_inventory_family_at_${index + 1}`);
-      }
-
-      if (!audioUrl.startsWith(AUDIO_PREFIX_BY_FAMILY[family])) {
-        throw new Error(`unsafe_audio_url_at_${index + 1}`);
+      if (!audioUrl.startsWith(KK_AUDIO_PREFIX)) {
+        throw new Error(`unsafe_kk_audio_url_at_${sourceIndex + 1}`);
       }
 
       if (storageStatus !== "PUBLIC_STORAGE_VERIFIED") {
-        throw new Error(`storage_gate_failed_at_${index + 1}`);
+        throw new Error(`kk_storage_gate_failed_at_${sourceIndex + 1}`);
       }
 
       if (!twinkleAtEnd) {
-        throw new Error(`twinkle_gate_failed_at_${index + 1}`);
+        throw new Error(`kk_twinkle_gate_failed_at_${sourceIndex + 1}`);
       }
 
       seenIds.add(id);
 
-      if (family === "SK") skCount += 1;
-      if (family === "KK") kkCount += 1;
-
-      const checkout = family === "SK" ? "sk" : "kk";
-      const offer = family === "SK" ? "sK HUG" : "KK HUG";
-      const priceUsd = family === "SK" ? 4.99 : 7.99;
-
       publicRecords.push({
         id,
-        label: itemLabel(id, family, publicRecords.length),
-        family,
+        label: itemLabel(id, publicRecords.length),
+        family: "KK",
         lane: prettyLabel(record.primary_use_lane),
-        offer,
-        priceUsd,
+        offer: "K-KUT HUG",
+        priceUsd: 7.99,
         audioUrl,
-        checkout,
-        checkoutHref: `/checkout?ii=${encodeURIComponent(id)}&offer=${checkout}`,
+        checkout: "kk",
+        checkoutHref: `/checkout?ii=${encodeURIComponent(id)}&offer=kk`,
         personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
       });
     });
@@ -225,7 +185,7 @@ export async function GET() {
     return NextResponse.json(
       {
         ok: false,
-        error: "public_release_gate_failed",
+        error: "public_kk_release_gate_failed",
         reason:
           reason instanceof Error
             ? reason.message
@@ -236,47 +196,40 @@ export async function GET() {
   }
 
   if (
-    seenIds.size !== EXPECTED_STORAGE_INVENTORY_COUNT ||
-    kkCount !== EXPECTED_KK_COUNT ||
-    skCount !== EXPECTED_SK_COUNT ||
-    publicRecords.length !== EXPECTED_STORAGE_INVENTORY_COUNT
+    seenIds.size !== EXPECTED_KK_COUNT ||
+    publicRecords.length !== EXPECTED_KK_COUNT
   ) {
     return NextResponse.json(
       {
         ok: false,
-        error: "inventory_family_count_gate_failed",
-        expectedStorage: EXPECTED_STORAGE_INVENTORY_COUNT,
-        receivedStorage: seenIds.size,
+        error: "kk_inventory_count_gate_failed",
         expectedKK: EXPECTED_KK_COUNT,
-        receivedKK: kkCount,
-        expectedSK: EXPECTED_SK_COUNT,
-        receivedSK: skCount,
+        receivedKK: seenIds.size,
       },
       { status: 503 },
     );
   }
 
+  const declaredCount = Number(payload.inventory_count);
+
   return NextResponse.json(
     {
       ok: true,
-      status: "BIC_PUBLIC_CATALOG_READY_3867_HUGS",
-      storageInventoryCount: seenIds.size,
+      status: "BIC_PUBLIC_KK_CATALOG_READY_2611_HUGS",
+      sourceDeclaredCount: Number.isFinite(declaredCount)
+        ? declaredCount
+        : null,
+      sourceRecordCount: records.length,
       inventoryCount: publicRecords.length,
       purchasableCount: publicRecords.length,
-      kkCount,
-      skCount,
+      kkCount: publicRecords.length,
+      heldPublicSkAssumption: true,
       productMapping: {
         personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
         products: [
           {
-            inventoryFamily: "SK",
-            publicProduct: "sK HUG",
-            priceUsd: 4.99,
-            checkoutOffer: "sk",
-          },
-          {
             inventoryFamily: "KK",
-            publicProduct: "KK HUG",
+            publicProduct: "K-KUT HUG",
             priceUsd: 7.99,
             checkoutOffer: "kk",
           },
@@ -289,11 +242,9 @@ export async function GET() {
       status: 200,
       headers: {
         "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
-        "X-KKUT-Storage-Inventory-Count": String(seenIds.size),
         "X-KKUT-Inventory-Count": String(publicRecords.length),
         "X-KKUT-Purchasable-Count": String(publicRecords.length),
-        "X-KKUT-KK-Count": String(kkCount),
-        "X-KKUT-SK-Count": String(skCount),
+        "X-KKUT-KK-Count": String(publicRecords.length),
       },
     },
   );

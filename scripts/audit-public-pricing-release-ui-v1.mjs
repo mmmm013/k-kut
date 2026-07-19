@@ -38,11 +38,9 @@ const runtime = files
   .join("\n");
 
 for (const required of [
-  "sK HUG",
-  "KK HUG",
-  "$4.99",
+  "K-KUT HUG",
   "$7.99",
-  "NEXT_PUBLIC_SK_HUG_LINK",
+  "2,611",
 ]) {
   if (!runtime.includes(required)) {
     console.error(
@@ -53,6 +51,12 @@ for (const required of [
 }
 
 for (const forbidden of [
+  "sK HUG",
+  "$4.99",
+  "SK_HUG_PRICE_CENTS",
+  "NEXT_PUBLIC_SK_HUG_LINK",
+  "EXPECTED_SK_COUNT",
+  "3867",
   "Big HUG",
   "$12.99",
   "NEXT_PUBLIC_MD_",
@@ -72,6 +76,7 @@ for (const forbidden of [
 }
 
 console.log("PUBLIC PRICING / RELEASE UI AUDIT: PASS");
-console.log("sK HUG: $4.99");
-console.log("KK HUG: $7.99");
+console.log("K-KUT HUG: $7.99");
+console.log("VERIFIED KK SOURCE: 2611");
+console.log("PUBLIC sK ASSUMPTION: NONE");
 console.log("PERMANENT NAMED-HOLIDAY RUNTIME: NONE");

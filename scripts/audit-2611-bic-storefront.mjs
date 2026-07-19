@@ -25,34 +25,35 @@ try {
   const hug = read("app/hug/page.tsx");
   const webhook = read("app/api/stripe/webhook/route.ts");
   const pendingStore = read("lib/h2PendingOrder.ts");
+  const customerPath = `${home}\n${browse}\n${hug}\n${browser}`;
+  const controlled = `${catalog}\n${checkout}\n${customerPath}`;
 
   requireAll(
     catalog,
     [
-      "EXPECTED_STORAGE_INVENTORY_COUNT = 3867",
       "EXPECTED_KK_COUNT = 2611",
-      "EXPECTED_SK_COUNT = 1256",
-      'status: "BIC_PUBLIC_CATALOG_READY_3867_HUGS"',
+      'status: "BIC_PUBLIC_KK_CATALOG_READY_2611_HUGS"',
       "purchasableCount: publicRecords.length",
       "signature_audio_logo_integral_at_end",
       "PUBLIC_STORAGE_VERIFIED",
+      'checkout: "kk"',
     ],
     "catalog",
   );
 
   requireAll(
-    home + browse + hug + browser,
-    ["sK HUG", "KK HUG", "$4.99", "$7.99"],
+    customerPath,
+    ["K-KUT HUG", "$7.99", "2,611"],
     "customer path",
   );
 
   requireAll(
     checkout,
     [
-      'type OfferCode = "sk" | "kk"',
-      'publicProductName: "sK HUG"',
-      'publicProductName: "KK HUG"',
-      "NEXT_PUBLIC_SK_HUG_LINK",
+      'type OfferCode = "kk"',
+      'publicProductName: "K-KUT HUG"',
+      "KK_HUG_PRICE_CENTS = 799",
+      "KK_HUG_PAYMENT_URL",
       "verifiedInventoryFamily",
       "offer-inventory-mismatch",
       "createPendingH2Order",
@@ -86,13 +87,29 @@ try {
     "pending-order store",
   );
 
-  console.log("BIC 3867 STOREFRONT AUDIT PASS");
-  console.log("sK HUGS: 1256 AT $4.99");
-  console.log("KK HUGS: 2611 AT $7.99");
-  console.log("TOTAL PURCHASABLE AFTER PAYMENT PROOF: 3867");
+  for (const forbidden of [
+    "sK HUG",
+    "$4.99",
+    "NEXT_PUBLIC_SK_HUG_LINK",
+    "SK_HUG_PRICE_CENTS",
+    "EXPECTED_SK_COUNT",
+    "EXPECTED_STORAGE_INVENTORY_COUNT = 3867",
+    "BIC_PUBLIC_CATALOG_READY_3867_HUGS",
+    "Big HUG",
+    "$12.99",
+  ]) {
+    if (controlled.includes(forbidden)) {
+      throw new Error(`controlled storefront exposes ${forbidden}`);
+    }
+  }
+
+  console.log("BIC 2611 KK STOREFRONT AUDIT PASS");
+  console.log("K-KUT HUGS: 2611 AT $7.99");
+  console.log("PUBLIC sK ASSUMPTION: HELD");
+  console.log("TOTAL PURCHASABLE: 2611");
   console.log("FULFILLMENT: MANUAL PRIVATE REVIEW");
 } catch (error) {
-  console.error("BIC 3867 STOREFRONT AUDIT FAIL");
+  console.error("BIC 2611 KK STOREFRONT AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }

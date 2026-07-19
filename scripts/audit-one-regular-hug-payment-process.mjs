@@ -26,14 +26,15 @@ try {
     read("app/hug/page.tsx");
   const webhook = read("app/api/stripe/webhook/route.ts");
   const pendingStore = read("lib/h2PendingOrder.ts");
+  const controlled =
+    `${checkout}\n${catalog}\n${browser}\n${publicPages}`;
 
   requireAll(
     checkout,
     [
-      "SK_HUG_PRICE_CENTS = 499",
       "KK_HUG_PRICE_CENTS = 799",
-      'publicProductName: "sK HUG"',
-      'publicProductName: "KK HUG"',
+      'type OfferCode = "kk"',
+      'publicProductName: "K-KUT HUG"',
       "PERSONAL_NOTE_WORD_LIMIT = 13",
       "client_reference_id",
       "verifiedInventoryFamily",
@@ -46,8 +47,10 @@ try {
   requireAll(
     catalog,
     [
-      'family === "SK" ? "sK HUG" : "KK HUG"',
-      "priceUsd",
+      "EXPECTED_KK_COUNT = 2611",
+      'offer: "K-KUT HUG"',
+      'checkout: "kk"',
+      "priceUsd: 7.99",
       "purchasableCount: publicRecords.length",
     ],
     "catalog",
@@ -61,7 +64,7 @@ try {
 
   requireAll(
     publicPages,
-    ["sK HUG", "KK HUG", "$4.99", "$7.99", "13"],
+    ["K-KUT HUG", "$7.99", "2,611", "13"],
     "public pages",
   );
 
@@ -85,13 +88,28 @@ try {
     "pending-order store",
   );
 
-  console.log("TWO HUG PAYMENT PROCESS AUDIT PASS");
-  console.log("sK HUG: $4.99");
-  console.log("KK HUG: $7.99");
-  console.log("CATALOG: 3867 EXACT ITEMS");
-  console.log("sK PAYMENT LINK: REQUIRED BEFORE PRODUCTION");
+  for (const forbidden of [
+    "sK HUG",
+    "$4.99",
+    "NEXT_PUBLIC_SK_HUG_LINK",
+    "SK_HUG_PRICE_CENTS",
+    "EXPECTED_SK_COUNT",
+    "3867",
+    "Big HUG",
+    "$12.99",
+  ]) {
+    if (controlled.includes(forbidden)) {
+      throw new Error(`one-offer control exposes ${forbidden}`);
+    }
+  }
+
+  console.log("ONE REGULAR HUG PAYMENT PROCESS AUDIT PASS");
+  console.log("K-KUT HUG: $7.99");
+  console.log("CATALOG: 2611 VERIFIED KKs");
+  console.log("PAYMENT LINK: EXISTING AUTHORIZED REGULAR HUG LINK");
+  console.log("PUBLIC sK ASSUMPTION: NONE");
 } catch (error) {
-  console.error("TWO HUG PAYMENT PROCESS AUDIT FAIL");
+  console.error("ONE REGULAR HUG PAYMENT PROCESS AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }

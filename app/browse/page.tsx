@@ -2,9 +2,9 @@ import Link from "next/link";
 import PublicIiBrowser from "@/components/PublicIiBrowser";
 
 export const metadata = {
-  title: "Browse All K-KUT HUGs | G Putnam Music",
+  title: "Browse K-KUT HUGs | G Putnam Music",
   description:
-    "Listen to verified sKs and KKs, add an optional 13-word note, and send the exact item as a HUG.",
+    "Listen to 2,611 verified KKs, add an optional 13-word note, and send one exact K-KUT HUG.",
 };
 
 export const dynamic = "force-dynamic";
@@ -23,15 +23,14 @@ export default function BrowsePage() {
           </h1>
 
           <p className="mt-5 max-w-4xl text-lg font-bold leading-8 text-[#EFEBE9]">
-            Hear the real finished music first. Choose one exact $4.99 sK HUG or $7.99 KK HUG. Add up to 13 written words, then send it for private delivery.
+            Hear the real finished music first. Choose one exact $7.99 K-KUT
+            HUG from 2,611 verified KKs. Add up to 13 written words, then send
+            it for private delivery.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-4">
             <span className="rounded-full border border-[#FFD54F]/40 px-4 py-2 text-sm font-black text-[#FFD54F]">
-              sK HUG · $4.99
-            </span>
-            <span className="rounded-full border border-[#FFD54F]/40 px-4 py-2 text-sm font-black text-[#FFD54F]">
-              KK HUG · $7.99
+              K-KUT HUG · $7.99
             </span>
           </div>
 
@@ -46,7 +45,8 @@ export default function BrowsePage() {
         <PublicIiBrowser />
 
         <footer className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
-          Every displayed K-KUT must remain publicly playable, preserve its exact identity, and retain the canonical GPMx Twinkle at the end.
+          Every displayed KK must remain publicly playable, preserve its exact
+          identity, and retain the canonical GPMx Twinkle at the end.
         </footer>
       </section>
     </main>
