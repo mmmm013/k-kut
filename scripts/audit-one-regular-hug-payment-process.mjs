@@ -46,8 +46,11 @@ try {
   requireAll(
     catalog,
     [
-      'family === "SK" ? "sK HUG" : "KK HUG"',
-      "priceUsd",
+      'const KK_HUG_OFFER = "KK HUG"',
+      "const KK_HUG_PRICE_USD = 7.99",
+      'checkout: "kk"',
+      'status: "BIC_PUBLIC_CATALOG_READY_2611_KK_HUGS_SK_PAYMENT_PENDING"',
+      'status: "ACTIVE_PAYMENT_LINK_REQUIRED"',
       "purchasableCount: publicRecords.length",
     ],
     "catalog",
@@ -61,7 +64,7 @@ try {
 
   requireAll(
     publicPages,
-    ["sK HUG", "KK HUG", "$4.99", "$7.99", "13"],
+    ["sK HUG", "KK HUG", "$4.99", "$7.99", "13", "DM", "email"],
     "public pages",
   );
 
@@ -85,13 +88,14 @@ try {
     "pending-order store",
   );
 
-  console.log("TWO HUG PAYMENT PROCESS AUDIT PASS");
-  console.log("sK HUG: $4.99");
-  console.log("KK HUG: $7.99");
-  console.log("CATALOG: 3867 EXACT ITEMS");
-  console.log("sK PAYMENT LINK: REQUIRED BEFORE PRODUCTION");
+  console.log("KK HUG PAYMENT PROCESS AUDIT PASS");
+  console.log("KK HUG LIVE: 2611 AT $7.99");
+  console.log("sK HUG PRODUCT LAW: $4.99");
+  console.log("sK PAYMENT STATUS: ACTIVE PAYMENT LINK REQUIRED");
+  console.log("BUYER-CONTROLLED SHARE: DM OR EMAIL");
+  console.log("FULFILLMENT: MANUAL PRIVATE REVIEW");
 } catch (error) {
-  console.error("TWO HUG PAYMENT PROCESS AUDIT FAIL");
+  console.error("KK HUG PAYMENT PROCESS AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }
