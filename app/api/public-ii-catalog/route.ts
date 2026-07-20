@@ -14,6 +14,8 @@ const AUDIO_PREFIX_BY_FAMILY = {
 const EXPECTED_STORAGE_INVENTORY_COUNT = 3867;
 const EXPECTED_KK_COUNT = 2611;
 const EXPECTED_SK_COUNT = 1256;
+const KK_HUG_OFFER = "KK HUG";
+const KK_HUG_PRICE_USD = 7.99;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 
 const TRUE_VALUES = new Set([
@@ -33,12 +35,12 @@ type InventoryFamily = "KK" | "SK";
 type PublicCatalogRecord = {
   id: string;
   label: string;
-  family: InventoryFamily;
+  family: "KK";
   lane: string;
-  offer: "sK HUG" | "KK HUG";
-  priceUsd: number;
+  offer: typeof KK_HUG_OFFER;
+  priceUsd: typeof KK_HUG_PRICE_USD;
   audioUrl: string;
-  checkout: "sk" | "kk";
+  checkout: "kk";
   checkoutHref: string;
   personalNoteWordLimit: typeof PERSONAL_NOTE_WORD_LIMIT;
 };
@@ -75,7 +77,7 @@ function prettyLabel(value: unknown) {
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase()
-    .replace(/\w/g, (letter) => letter.toUpperCase());
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function inventoryFamily(value: unknown): InventoryFamily | "" {
@@ -88,16 +90,16 @@ function inventoryFamily(value: unknown): InventoryFamily | "" {
   return "";
 }
 
-function itemLabel(inventoryId: string, family: InventoryFamily, index: number) {
+function itemLabel(inventoryId: string, index: number) {
   const match = inventoryId.match(
-    /(?:ALLPOSS[-_])?(\d{1,6}).*?(?:SK|KK)[-_](\d{1,3})$/i,
+    /(?:ALLPOSS[-_])?(\d{1,6}).*?KK[-_](\d{1,3})$/i,
   );
 
   if (match) {
-    return `${family} ${match[1].padStart(5, "0")} · ${match[2]}`;
+    return `K-KUT ${match[1].padStart(5, "0")} · ${match[2]}`;
   }
 
-  return `${family} ${String(index + 1).padStart(5, "0")}`;
+  return `K-KUT ${String(index + 1).padStart(5, "0")}`;
 }
 
 export async function GET() {
@@ -201,23 +203,23 @@ export async function GET() {
 
       seenIds.add(id);
 
-      if (family === "SK") skCount += 1;
-      if (family === "KK") kkCount += 1;
+      if (family === "SK") {
+        skCount += 1;
+        return;
+      }
 
-      const checkout = family === "SK" ? "sk" : "kk";
-      const offer = family === "SK" ? "sK HUG" : "KK HUG";
-      const priceUsd = family === "SK" ? 4.99 : 7.99;
+      kkCount += 1;
 
       publicRecords.push({
         id,
-        label: itemLabel(id, family, publicRecords.length),
-        family,
+        label: itemLabel(id, publicRecords.length),
+        family: "KK",
         lane: prettyLabel(record.primary_use_lane),
-        offer,
-        priceUsd,
+        offer: KK_HUG_OFFER,
+        priceUsd: KK_HUG_PRICE_USD,
         audioUrl,
-        checkout,
-        checkoutHref: `/checkout?ii=${encodeURIComponent(id)}&offer=${checkout}`,
+        checkout: "kk",
+        checkoutHref: `/checkout?ii=${encodeURIComponent(id)}&offer=kk`,
         personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
       });
     });
@@ -239,7 +241,7 @@ export async function GET() {
     seenIds.size !== EXPECTED_STORAGE_INVENTORY_COUNT ||
     kkCount !== EXPECTED_KK_COUNT ||
     skCount !== EXPECTED_SK_COUNT ||
-    publicRecords.length !== EXPECTED_STORAGE_INVENTORY_COUNT
+    publicRecords.length !== EXPECTED_KK_COUNT
   ) {
     return NextResponse.json(
       {
@@ -259,28 +261,24 @@ export async function GET() {
   return NextResponse.json(
     {
       ok: true,
-      status: "BIC_PUBLIC_CATALOG_READY_3867_HUGS",
+      status: "BIC_PUBLIC_CATALOG_READY_2611_KK_HUGS_SK_PAYMENT_PENDING",
       storageInventoryCount: seenIds.size,
       inventoryCount: publicRecords.length,
       purchasableCount: publicRecords.length,
       kkCount,
       skCount,
+      skPaymentPendingCount: skCount,
       productMapping: {
+        publicProduct: KK_HUG_OFFER,
+        priceUsd: KK_HUG_PRICE_USD,
+        checkoutOffer: "kk",
         personalNoteWordLimit: PERSONAL_NOTE_WORD_LIMIT,
-        products: [
-          {
-            inventoryFamily: "SK",
-            publicProduct: "sK HUG",
-            priceUsd: 4.99,
-            checkoutOffer: "sk",
-          },
-          {
-            inventoryFamily: "KK",
-            publicProduct: "KK HUG",
-            priceUsd: 7.99,
-            checkoutOffer: "kk",
-          },
-        ],
+        purchasableFamily: "KK",
+        skProductLaw: {
+          publicProduct: "sK HUG",
+          priceUsd: 4.99,
+          status: "ACTIVE_PAYMENT_LINK_REQUIRED",
+        },
       },
       generatedFrom: cleanText(payload.status, 120),
       records: publicRecords,
@@ -293,7 +291,7 @@ export async function GET() {
         "X-KKUT-Inventory-Count": String(publicRecords.length),
         "X-KKUT-Purchasable-Count": String(publicRecords.length),
         "X-KKUT-KK-Count": String(kkCount),
-        "X-KKUT-SK-Count": String(skCount),
+        "X-KKUT-SK-Payment-Pending-Count": String(skCount),
       },
     },
   );

@@ -32,18 +32,27 @@ try {
       "EXPECTED_STORAGE_INVENTORY_COUNT = 3867",
       "EXPECTED_KK_COUNT = 2611",
       "EXPECTED_SK_COUNT = 1256",
-      'status: "BIC_PUBLIC_CATALOG_READY_3867_HUGS"',
+      'status: "BIC_PUBLIC_CATALOG_READY_2611_KK_HUGS_SK_PAYMENT_PENDING"',
+      "publicRecords.length !== EXPECTED_KK_COUNT",
       "purchasableCount: publicRecords.length",
+      'checkout: "kk"',
       "signature_audio_logo_integral_at_end",
       "PUBLIC_STORAGE_VERIFIED",
+      'status: "ACTIVE_PAYMENT_LINK_REQUIRED"',
     ],
     "catalog",
   );
 
   requireAll(
     home + browse + hug + browser,
-    ["sK HUG", "KK HUG", "$4.99", "$7.99"],
+    ["sK HUG", "KK HUG", "$4.99", "$7.99", "13"],
     "customer path",
+  );
+
+  requireAll(
+    home + browse,
+    ["DM", "email", "2,611"],
+    "launch path",
   );
 
   requireAll(
@@ -86,13 +95,14 @@ try {
     "pending-order store",
   );
 
-  console.log("BIC 3867 STOREFRONT AUDIT PASS");
-  console.log("sK HUGS: 1256 AT $4.99");
-  console.log("KK HUGS: 2611 AT $7.99");
-  console.log("TOTAL PURCHASABLE AFTER PAYMENT PROOF: 3867");
+  console.log("BIC 2611 KK HUG STOREFRONT AUDIT PASS");
+  console.log("KK HUGS LIVE: 2611 AT $7.99");
+  console.log("sK HUG PRODUCT LAW: 1256 AT $4.99");
+  console.log("sK PAYMENT STATUS: ACTIVE PAYMENT LINK REQUIRED");
   console.log("FULFILLMENT: MANUAL PRIVATE REVIEW");
+  console.log("BUYER SHARE: DM OR EMAIL");
 } catch (error) {
-  console.error("BIC 3867 STOREFRONT AUDIT FAIL");
+  console.error("BIC 2611 KK HUG STOREFRONT AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }
