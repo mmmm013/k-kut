@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "K-KUT | Real Music HUGs from G Putnam Music",
+  title: "K-KUT | Send a Private Music HUG",
   description:
-    "Listen first, choose one exact sK or KK, add an optional note, and send it as a privately delivered HUG.",
+    "Listen first, choose one exact KK HUG, add an optional note, and share the private delivery link by DM or email.",
 };
 
 export default function Page() {
@@ -16,77 +16,73 @@ export default function Page() {
           </p>
 
           <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[0.96] tracking-tight md:text-7xl">
-            Send the sentimeant with real music.
+            Send a private music HUG now.
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg font-bold leading-8 text-[#EFEBE9] md:text-xl">
-            Listen first. Choose one exact finished K-KUT. Add up to 13 words, then send it as a privately delivered HUG.
+            Listen to the exact finished audio. Choose one KK HUG. Add up to 13 written words. After private delivery, share the link by DM, email, Copy Link, or your own Messages app.
           </p>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            <article className="rounded-[1.75rem] border border-[#FFD54F]/35 bg-black/25 p-6">
+          <div className="mt-8 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
+            <article className="rounded-[1.75rem] border border-[#FFD54F]/45 bg-black/30 p-6 md:p-8">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
-                sK HUG
+                Live now · 2,611 choices
               </p>
-              <p className="mt-3 text-4xl font-black">$4.99</p>
-              <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-                One exact finished sK, heard before purchase.
+              <h2 className="mt-3 text-4xl font-black">KK HUG · $7.99</h2>
+              <p className="mt-4 max-w-2xl text-sm font-bold leading-7 text-[#D7CCC8]">
+                Every displayed KK HUG is playable before purchase and keeps its verified identity and canonical GPMx Twinkle at the end.
               </p>
+              <Link
+                href="/browse"
+                className="mt-6 inline-block rounded-2xl bg-[#FFD54F] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05] transition hover:bg-white"
+              >
+                Browse 2,611 KK HUGs
+              </Link>
             </article>
 
-            <article className="rounded-[1.75rem] border border-[#FFD54F]/35 bg-black/25 p-6">
+            <aside className="rounded-[1.75rem] border border-[#8D6E63]/45 bg-black/20 p-6">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
-                KK HUG
+                Share without A2P
               </p>
-              <p className="mt-3 text-4xl font-black">$7.99</p>
-              <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-                One exact finished KK, heard before purchase.
+              <p className="mt-4 text-sm font-bold leading-7 text-[#D7CCC8]">
+                The buyer controls the share. A private link can be placed into Instagram, Messenger, WhatsApp, TikTok, email, or the buyer&apos;s own text app.
               </p>
-            </article>
+              <p className="mt-4 text-xs font-bold leading-6 text-[#BCAAA4]">
+                K-KUT does not automatically SMS the recipient in this launch lane.
+              </p>
+            </aside>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/browse"
-              className="rounded-2xl bg-[#FFD54F] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05] transition hover:bg-white"
-            >
-              Browse all HUGs
-            </Link>
-
-            <Link
-              href="/find"
-              className="rounded-2xl border border-[#FFD54F]/65 px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#FFD54F] transition hover:bg-[#FFD54F] hover:text-[#160A05]"
-            >
-              Ask MC-BOT
-            </Link>
-          </div>
+          <p className="mt-6 text-sm font-bold leading-7 text-[#BCAAA4]">
+            sK HUG product law remains $4.99. Its checkout opens when its active Stripe Payment Link is connected; it is not part of today&apos;s payment launch.
+          </p>
         </header>
 
         <section className="grid gap-4 md:grid-cols-3">
           <article className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-[#120A06] p-5">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
-              Listen first
+              1 · Listen
             </p>
             <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              The customer hears the exact finished audio before choosing.
+              Hear the exact finished KK HUG before choosing it.
             </p>
           </article>
 
           <article className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-[#120A06] p-5">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
-              Private delivery
+              2 · Purchase
             </p>
             <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              Every paid HUG is manually reviewed before private delivery.
+              Add an optional note of up to 13 words and pay $7.99.
             </p>
           </article>
 
           <article className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-[#120A06] p-5">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
-              Optional note
+              3 · Send privately
             </p>
             <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              Add up to 13 written words without changing the locked audio.
+              Receive the reviewed private link, then share it by DM or email.
             </p>
           </article>
         </section>
