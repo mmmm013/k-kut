@@ -23,6 +23,21 @@ export default function Page() {
             Listen to the exact finished audio. Choose one KK HUG. Add up to 13 written words. After private delivery, share the link by DM, email, Copy Link, or your own Messages app.
           </p>
 
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/find"
+              className="inline-block rounded-2xl bg-[#FFD54F] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05] transition hover:bg-white"
+            >
+              START A HUG
+            </Link>
+            <Link
+              href="/browse"
+              className="inline-block rounded-2xl border border-[#FFD54F]/70 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#FFD54F] transition hover:bg-[#FFD54F] hover:text-[#160A05]"
+            >
+              Browse 2,611 KK HUGs
+            </Link>
+          </div>
+
           <div className="mt-8 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
             <article className="rounded-[1.75rem] border border-[#FFD54F]/45 bg-black/30 p-6 md:p-8">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
@@ -32,12 +47,6 @@ export default function Page() {
               <p className="mt-4 max-w-2xl text-sm font-bold leading-7 text-[#D7CCC8]">
                 Every displayed KK HUG is playable before purchase and keeps its verified identity and canonical GPMx Twinkle at the end.
               </p>
-              <Link
-                href="/browse"
-                className="mt-6 inline-block rounded-2xl bg-[#FFD54F] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05] transition hover:bg-white"
-              >
-                Browse 2,611 KK HUGs
-              </Link>
             </article>
 
             <aside className="rounded-[1.75rem] border border-[#8D6E63]/45 bg-black/20 p-6">
