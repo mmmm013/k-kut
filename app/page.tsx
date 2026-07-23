@@ -1,70 +1,105 @@
 import Link from "next/link";
-import CuteHugCarousel from "@/components/CuteHugCarousel";
 
 export const metadata = {
-  title: "Send a Musical HUG | Sent-i-Meants and K-KUT",
+  title: "K-KUT | Send a Private Music HUG",
   description:
-    "Choose from 2,611 verified finished musical HUGs, listen first, and send a private link by DM or email.",
+    "Listen first, choose one exact KK HUG, add an optional note, and share the private delivery link by DM or email.",
 };
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#09070B] text-white">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-5 sm:px-8 sm:py-10">
-        <header className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-[#8D6E63]/35 bg-[#120A06] px-5 py-4">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.32em] text-[#FFD54F]">
-              Sent-i-Meants · K-KUT · G Putnam Music
-            </p>
-            <p className="mt-1 text-sm font-bold text-[#D7CCC8]">
-              Music that helps you say what matters.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/find" className="rounded-xl bg-[#FFD54F] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-[#160A05]">
-              Start a HUG
+      <section className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-8 sm:px-8 sm:py-12">
+        <header className="rounded-[2.25rem] border border-[#8D6E63]/45 bg-gradient-to-br from-[#3A1F12] via-[#180D08] to-[#050302] p-6 shadow-2xl md:p-10 lg:p-14">
+          <p className="text-xs font-black uppercase tracking-[0.42em] text-[#FFD54F]">
+            G Putnam Music · K-KUT
+          </p>
+
+          <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[0.96] tracking-tight md:text-7xl">
+            Send a private music HUG now.
+          </h1>
+
+          <p className="mt-6 max-w-3xl text-lg font-bold leading-8 text-[#EFEBE9] md:text-xl">
+            Listen to the exact finished audio. Choose one KK HUG. Add up to 13 written words. After private delivery, share the link by DM, email, Copy Link, or your own Messages app.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/find"
+              className="inline-block rounded-2xl bg-[#FFD54F] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05] transition hover:bg-white"
+            >
+              START A HUG
             </Link>
-            <Link href="/browse" className="rounded-xl border border-[#FFD54F]/70 px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-[#FFD54F]">
-              Browse HUGs
+            <Link
+              href="/browse"
+              className="inline-block rounded-2xl border border-[#FFD54F]/70 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#FFD54F] transition hover:bg-[#FFD54F] hover:text-[#160A05]"
+            >
+              Browse 2,611 KK HUGs
             </Link>
           </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
+            <article className="rounded-[1.75rem] border border-[#FFD54F]/45 bg-black/30 p-6 md:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
+                Live now · 2,611 choices
+              </p>
+              <h2 className="mt-3 text-4xl font-black">KK HUG · $7.99</h2>
+              <p className="mt-4 max-w-2xl text-sm font-bold leading-7 text-[#D7CCC8]">
+                Every displayed KK HUG is playable before purchase and keeps its verified identity and canonical GPMx Twinkle at the end.
+              </p>
+            </article>
+
+            <aside className="rounded-[1.75rem] border border-[#8D6E63]/45 bg-black/20 p-6">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
+                Share without A2P
+              </p>
+              <p className="mt-4 text-sm font-bold leading-7 text-[#D7CCC8]">
+                The buyer controls the share. A private link can be placed into Instagram, Messenger, WhatsApp, TikTok, email, or the buyer&apos;s own text app.
+              </p>
+              <p className="mt-4 text-xs font-bold leading-6 text-[#BCAAA4]">
+                K-KUT does not automatically SMS the recipient in this launch lane.
+              </p>
+            </aside>
+          </div>
+
+          <p className="mt-6 text-sm font-bold leading-7 text-[#BCAAA4]">
+            sK HUG product law remains $4.99. Its checkout opens when its active Stripe Payment Link is connected; it is not part of today&apos;s payment launch.
+          </p>
         </header>
 
-        <CuteHugCarousel />
-
-        <section className="grid gap-5 md:grid-cols-[1.25fr_0.75fr]">
-          <article className="rounded-[1.75rem] border border-[#FFD54F]/45 bg-gradient-to-br from-[#3A1F12] via-[#180D08] to-[#050302] p-6 md:p-8">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
-              Live now · 2,611 verified choices
+        <section className="grid gap-4 md:grid-cols-3">
+          <article className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-[#120A06] p-5">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
+              1 · Listen
             </p>
-            <h1 className="mt-3 text-4xl font-black sm:text-5xl">Full musical HUG · $7.99</h1>
-            <p className="mt-4 max-w-3xl text-base font-bold leading-8 text-[#EFEBE9]">
-              Listen to the exact finished audio before purchase. Choose one HUG, add an optional note of up to 13 words, and receive a privately reviewed delivery link to share by DM or email.
+            <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
+              Hear the exact finished KK HUG before choosing it.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/find" className="rounded-2xl bg-[#FFD54F] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05] transition hover:bg-white">
-                Start a HUG now
-              </Link>
-              <Link href="/browse" className="rounded-2xl border border-[#FFD54F]/70 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#FFD54F] transition hover:bg-[#FFD54F] hover:text-[#160A05]">
-                Browse all 2,611
-              </Link>
-            </div>
           </article>
 
-          <aside className="rounded-[1.75rem] border border-[#8D6E63]/45 bg-[#120A06] p-6">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">Simple and private</p>
-            <ol className="mt-4 space-y-4 text-sm font-bold leading-7 text-[#D7CCC8]">
-              <li><strong className="text-white">1. Listen.</strong> Hear the exact finished HUG.</li>
-              <li><strong className="text-white">2. Choose.</strong> Pick the one that fits the feeling.</li>
-              <li><strong className="text-white">3. Send.</strong> Share the reviewed private link your way.</li>
-            </ol>
-          </aside>
+          <article className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-[#120A06] p-5">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
+              2 · Purchase
+            </p>
+            <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
+              Add an optional note of up to 13 words and pay $7.99.
+            </p>
+          </article>
+
+          <article className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-[#120A06] p-5">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
+              3 · Send privately
+            </p>
+            <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
+              Receive the reviewed private link, then share it by DM or email.
+            </p>
+          </article>
         </section>
 
-        <footer className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
+        <footer className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
           Need help with a purchase or delivery? Contact reachus@gputnammusic.com.
         </footer>
-      </div>
+      </section>
     </main>
   );
 }
