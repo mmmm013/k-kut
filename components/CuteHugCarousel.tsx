@@ -5,164 +5,157 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const SLIDES = [
-  { slug: "bad-day", image: "/cute-hugs/bad-day.webp", eyebrow: "Comfort & care", headline: "Bad day? Send a HUG.", text: "A warm musical lift when someone needs care.", alt: "Two friends sharing a musical HUG after a difficult day." },
-  { slug: "big-win", image: "/cute-hugs/big-win.webp", eyebrow: "Celebrate", headline: "Big win? Send a HUG.", text: "Celebrate the moment with music they can keep.", alt: "A friend celebrating a graduation with a musical HUG." },
-  { slug: "make-it-right", image: "/cute-hugs/make-it-right.webp", eyebrow: "Sorry & repair", headline: "Need to make it right? Send a HUG.", text: "A gentle way to say I care and I am sorry.", alt: "Two people reconnecting through a thoughtful musical HUG." },
-  { slug: "just-because-care", image: "/cute-hugs/just-because-care.webp", eyebrow: "Just because", headline: "Just because? Send a HUG.", text: "No occasion needed—just warmth, love, and a smile.", alt: "A cheerful musical HUG sent simply to brighten someone's day." },
-  { slug: "miss-them", image: "/cute-hugs/miss-them.webp", eyebrow: "Love & connection", headline: "Miss them? Send a HUG.", text: "A little closeness for hearts that are far apart.", alt: "Two people staying close across distance with a musical HUG." },
-  { slug: "first-day-nerves", image: "/cute-hugs/first-day-nerves.webp", eyebrow: "Encouragement", headline: "First-day nerves? Send a HUG.", text: "Send courage before school, work, or something new.", alt: "A supportive musical HUG before an important first day." },
-  { slug: "proud-of-them", image: "/cute-hugs/proud-of-them.webp", eyebrow: "Proud of you", headline: "Proud of them? Send a HUG.", text: "Make a brave step or quiet victory feel seen.", alt: "A proud friend recognizing an achievement with a musical HUG." },
-  { slug: "thinking-of-you", image: "/cute-hugs/thinking-of-you.webp", eyebrow: "Thinking of you", headline: "Thinking of you? Send a HUG.", text: "A gentle lift for rest, recovery, and hard days.", alt: "A caring musical HUG shared during rest and recovery." },
-  { slug: "long-week", image: "/cute-hugs/long-week.webp", eyebrow: "A little relief", headline: "Long week? Send a HUG.", text: "A little relief for someone running on empty.", alt: "A comforting musical HUG after a long and tiring week." },
-  { slug: "breakup-blues", image: "/cute-hugs/breakup-blues.webp", eyebrow: "Tender support", headline: "Breakup blues? Send a HUG.", text: "A soft musical landing for a tender heart.", alt: "A friend offering comfort after heartbreak with a musical HUG." },
-  { slug: "new-baby", image: "/cute-hugs/new-baby.webp", eyebrow: "Welcome & celebrate", headline: "New baby? Send a HUG.", text: "A warm hello for sleepy, joyful new parents.", alt: "New parents receiving a warm musical HUG." },
-  { slug: "just-because-smile", image: "/cute-hugs/just-because-smile.webp", eyebrow: "Friendship & joy", headline: "Make them smile. Send a HUG.", text: "A playful surprise for an ordinary day.", alt: "Friends laughing together after receiving a musical HUG." },
-  { slug: "friends", image: "/cute-hugs/friends.webp", eyebrow: "Friendship", headline: "Friend needs you? Send a HUG.", text: "Comfort, laughter, and love from one friend to another.", alt: "Friends sharing comfort and laughter through a musical HUG." },
+  { slug: "bad-day", image: "/cute-hugs/bad-day.webp", headline: "Bad day? Send a HUG.", text: "A warm musical lift when someone needs care." },
+  { slug: "big-win", image: "/cute-hugs/big-win.webp", headline: "Big win? Send a HUG.", text: "Celebrate the moment with music they can keep." },
+  { slug: "make-it-right", image: "/cute-hugs/make-it-right.webp", headline: "Need to make it right? Send a HUG.", text: "A gentle way to say I care and I am sorry." },
+  { slug: "just-because-care", image: "/cute-hugs/just-because-care.webp", headline: "Just because? Send a HUG.", text: "No occasion needed—just warmth, love, and a smile." },
+  { slug: "miss-them", image: "/cute-hugs/miss-them.webp", headline: "Miss them? Send a HUG.", text: "A little closeness for hearts that are far apart." },
+  { slug: "first-day-nerves", image: "/cute-hugs/first-day-nerves.webp", headline: "First-day nerves? Send a HUG.", text: "Send courage before school, work, or something new." },
+  { slug: "proud-of-them", image: "/cute-hugs/proud-of-them.webp", headline: "Proud of them? Send a HUG.", text: "Make a brave step or quiet victory feel seen." },
+  { slug: "thinking-of-you", image: "/cute-hugs/thinking-of-you.webp", headline: "Thinking of you? Send a HUG.", text: "A gentle lift for rest, recovery, and hard days." },
+  { slug: "long-week", image: "/cute-hugs/long-week.webp", headline: "Long week? Send a HUG.", text: "A little relief for someone running on empty." },
+  { slug: "breakup-blues", image: "/cute-hugs/breakup-blues.webp", headline: "Breakup blues? Send a HUG.", text: "A soft musical landing for a tender heart." },
+  { slug: "new-baby", image: "/cute-hugs/new-baby.webp", headline: "New baby? Send a HUG.", text: "A warm hello for sleepy, joyful new parents." },
+  { slug: "just-because-smile", image: "/cute-hugs/just-because-smile.webp", headline: "Make them smile. Send a HUG.", text: "A playful surprise for an ordinary day." },
+  { slug: "friends", image: "/cute-hugs/friends.webp", headline: "Friend needs you? Send a HUG.", text: "Comfort, laughter, and love from one friend to another." },
 ] as const;
 
 const ROTATION_MS = 8000;
 
 export default function CuteHugCarousel() {
   const [index, setIndex] = useState(0);
-  const [manualPaused, setManualPaused] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const [focusWithin, setFocusWithin] = useState(false);
-  const [pageHidden, setPageHidden] = useState(false);
-  const [announcement, setAnnouncement] = useState("");
-  const pointerStart = useRef<{ x: number; y: number } | null>(null);
-  const didSwipe = useRef(false);
+  const touchStart = useRef<number | null>(null);
 
-  const selectSlide = useCallback((next: number, announce = true) => {
-    const normalized = (next + SLIDES.length) % SLIDES.length;
-    setIndex(normalized);
-    if (announce) setAnnouncement(`Story ${normalized + 1} of ${SLIDES.length}: ${SLIDES[normalized].headline}`);
-  }, []);
-
-  const move = useCallback((direction: number, announce = true) => {
-    setIndex((current) => {
-      const next = (current + direction + SLIDES.length) % SLIDES.length;
-      if (announce) setAnnouncement(`Story ${next + 1} of ${SLIDES.length}: ${SLIDES[next].headline}`);
-      return next;
-    });
+  const move = useCallback((direction: number) => {
+    setIndex((current) => (current + direction + SLIDES.length) % SLIDES.length);
   }, []);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const syncMotion = () => setReducedMotion(query.matches);
-    const syncVisibility = () => setPageHidden(document.hidden);
-    syncMotion();
-    syncVisibility();
-    query.addEventListener?.("change", syncMotion);
-    document.addEventListener("visibilitychange", syncVisibility);
-    return () => {
-      query.removeEventListener?.("change", syncMotion);
-      document.removeEventListener("visibilitychange", syncVisibility);
-    };
+    const sync = () => setReducedMotion(query.matches);
+    sync();
+    query.addEventListener?.("change", sync);
+    return () => query.removeEventListener?.("change", sync);
   }, []);
 
-  const autoplayPaused = manualPaused || reducedMotion || hovered || focusWithin || pageHidden;
-
   useEffect(() => {
-    if (autoplayPaused) return;
-    const timer = window.setTimeout(() => move(1, false), ROTATION_MS);
+    if (paused || reducedMotion || document.hidden) return;
+    const timer = window.setTimeout(() => move(1), ROTATION_MS);
     return () => window.clearTimeout(timer);
-  }, [autoplayPaused, index, move]);
-
-  useEffect(() => {
-    const preload = new window.Image();
-    preload.src = SLIDES[(index + 1) % SLIDES.length].image;
-  }, [index]);
+  }, [index, move, paused, reducedMotion]);
 
   const slide = SLIDES[index];
 
   return (
     <section
-      data-cute-hug-carousel="functional-v4"
-      className="overflow-hidden rounded-[2rem] border border-[#eabf92] bg-white shadow-xl"
-      role="region"
+      className="relative overflow-hidden rounded-[2rem] border border-[#8D6E63]/45 bg-[#160c08] shadow-2xl"
       aria-roledescription="carousel"
       aria-label="Thirteen ways to send a musical HUG"
       tabIndex={0}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocusWithin(true)}
-      onBlurCapture={(event) => {
-        const nextTarget = event.relatedTarget as Node | null;
-        if (!nextTarget || !event.currentTarget.contains(nextTarget)) setFocusWithin(false);
-      }}
       onKeyDown={(event) => {
-        if (event.target !== event.currentTarget) return;
-        if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
-        if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
-        if (event.key === "Home") { event.preventDefault(); selectSlide(0); }
-        if (event.key === "End") { event.preventDefault(); selectSlide(SLIDES.length - 1); }
-        if (event.key === " ") { event.preventDefault(); setManualPaused((value) => !value); }
+        if (event.key === "ArrowLeft") move(-1);
+        if (event.key === "ArrowRight") move(1);
+        if (event.key === " ") {
+          event.preventDefault();
+          setPaused((value) => !value);
+        }
+      }}
+      onTouchStart={(event) => {
+        touchStart.current = event.changedTouches[0]?.clientX ?? null;
+      }}
+      onTouchEnd={(event) => {
+        if (touchStart.current === null) return;
+        const finish = event.changedTouches[0]?.clientX ?? touchStart.current;
+        const distance = finish - touchStart.current;
+        if (Math.abs(distance) > 45) move(distance > 0 ? -1 : 1);
+        touchStart.current = null;
       }}
     >
-      <p className="sr-only" aria-live="polite" aria-atomic="true">{announcement}</p>
+      <p className="sr-only" aria-live="polite">
+        Story {index + 1} of {SLIDES.length}: {slide.headline}
+      </p>
 
-      <div className="grid items-stretch lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="flex min-h-[23rem] flex-col justify-center bg-[#fff3e8] px-6 py-8 sm:px-10 lg:px-12">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-[#d65c2f]">{slide.eyebrow}</p>
-          <h2 className="mt-3 text-4xl font-black leading-[1.02] text-[#35180f] sm:text-5xl lg:text-6xl">{slide.headline}</h2>
-          <p className="mt-5 max-w-xl text-base font-semibold leading-8 text-[#6b493c] sm:text-lg">{slide.text}</p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="/find" data-carousel-action="start" className="rounded-2xl bg-[#ef6c3e] px-7 py-4 text-sm font-black uppercase tracking-[0.13em] text-white shadow-lg transition hover:bg-[#d95427] focus:outline-none focus:ring-4 focus:ring-[#ef6c3e]/35">Start this HUG</Link>
-            <Link href="/browse" data-carousel-action="browse" className="rounded-2xl border-2 border-[#ef6c3e] bg-white px-7 py-4 text-sm font-black uppercase tracking-[0.13em] text-[#c94d24] transition hover:bg-[#fff0e7] focus:outline-none focus:ring-4 focus:ring-[#ef6c3e]/25">Browse HUGs</Link>
+      <div className="relative aspect-[16/9] w-full bg-[#f7e8d1]">
+        <Image
+          key={slide.image}
+          src={slide.image}
+          alt="Warm illustrated example of a person sending a musical HUG to someone they care about."
+          fill
+          priority={index === 0}
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/65 to-transparent px-5 pb-6 pt-24 sm:px-8 sm:pb-8">
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-[#FFD54F]">
+            13 musical HUG moments
+          </p>
+          <h2 className="mt-2 max-w-4xl text-3xl font-black leading-tight text-white sm:text-5xl">
+            {slide.headline}
+          </h2>
+          <p className="mt-3 max-w-2xl text-base font-bold leading-7 text-[#EFEBE9] sm:text-lg">
+            {slide.text}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              href={`/find?moment=${slide.slug}`}
+              className="rounded-2xl bg-[#FFD54F] px-6 py-3 text-sm font-black uppercase tracking-[0.12em] text-[#160A05] transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-[#FFD54F]/50"
+            >
+              Start this HUG
+            </Link>
+            <Link
+              href="/browse"
+              className="rounded-2xl border border-white/70 bg-black/25 px-6 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-white hover:text-black focus:outline-none focus:ring-4 focus:ring-white/40"
+            >
+              Browse 2,611 HUGs
+            </Link>
           </div>
-          <p className="mt-5 text-sm font-semibold text-[#765548]">Listen first. Choose the exact finished music. Every paid delivery is reviewed.</p>
         </div>
-
-        <Link
-          href="/find"
-          data-carousel-action="image"
-          aria-label={`Start a HUG for this moment: ${slide.headline}`}
-          className="group relative min-h-[23rem] overflow-hidden bg-[#f8ead9] focus:outline-none focus:ring-4 focus:ring-inset focus:ring-[#ef6c3e] lg:min-h-[36rem]"
-          style={{ touchAction: "pan-y" }}
-          onPointerDown={(event) => { didSwipe.current = false; pointerStart.current = { x: event.clientX, y: event.clientY }; }}
-          onPointerUp={(event) => {
-            const start = pointerStart.current;
-            pointerStart.current = null;
-            if (!start) return;
-            const dx = event.clientX - start.x;
-            const dy = event.clientY - start.y;
-            if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-              didSwipe.current = true;
-              event.preventDefault();
-              move(dx > 0 ? -1 : 1);
-            }
-          }}
-          onClick={(event) => { if (didSwipe.current) { event.preventDefault(); didSwipe.current = false; } }}
-          onPointerCancel={() => { pointerStart.current = null; didSwipe.current = false; }}
-        >
-          <Image key={slide.image} src={slide.image} alt={slide.alt} fill priority={index === 0} sizes="(max-width: 1023px) 100vw, 60vw" className="object-cover transition duration-500 group-hover:scale-[1.015]" />
-          <span className="absolute bottom-4 right-4 rounded-full bg-[#35180f]/85 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-white shadow-lg">Click the picture to start</span>
-        </Link>
       </div>
 
-      <div className="border-t border-[#eabf92] bg-white px-4 py-4 sm:px-6">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <button type="button" onClick={() => move(-1)} aria-label="Previous HUG story" className="grid h-12 w-12 place-items-center rounded-full border-2 border-[#ef6c3e] text-3xl font-black text-[#c94d24] transition hover:bg-[#ef6c3e] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#ef6c3e]/30">‹</button>
-            <p className="min-w-20 text-center text-sm font-black text-[#35180f]" aria-live="off">{index + 1} / {SLIDES.length}</p>
-            <button type="button" onClick={() => move(1)} aria-label="Next HUG story" className="grid h-12 w-12 place-items-center rounded-full border-2 border-[#ef6c3e] text-3xl font-black text-[#c94d24] transition hover:bg-[#ef6c3e] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#ef6c3e]/30">›</button>
-          </div>
+      <button
+        type="button"
+        onClick={() => move(-1)}
+        aria-label="Previous HUG story"
+        className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-black/60 text-3xl font-black text-white shadow-lg transition hover:bg-black focus:outline-none focus:ring-4 focus:ring-[#FFD54F]/50"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        onClick={() => move(1)}
+        aria-label="Next HUG story"
+        className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-black/60 text-3xl font-black text-white shadow-lg transition hover:bg-black focus:outline-none focus:ring-4 focus:ring-[#FFD54F]/50"
+      >
+        ›
+      </button>
 
-          <div className="flex flex-wrap justify-center" aria-label="Choose a HUG story">
-            {SLIDES.map((item, itemIndex) => (
-              <button key={item.slug} type="button" onClick={() => selectSlide(itemIndex)} aria-label={`Show story ${itemIndex + 1}: ${item.headline}`} aria-current={itemIndex === index ? "true" : undefined} className="grid h-11 w-11 place-items-center rounded-full focus:outline-none focus:ring-4 focus:ring-[#ef6c3e]/30">
-                <span aria-hidden="true" className={`h-3 w-3 rounded-full border-2 border-[#ef6c3e] ${itemIndex === index ? "bg-[#ef6c3e]" : "bg-transparent"}`} />
-              </button>
-            ))}
-          </div>
-
-          {!reducedMotion ? (
-            <button type="button" onClick={() => setManualPaused((value) => !value)} aria-pressed={manualPaused} className="min-h-11 rounded-xl border-2 border-[#ef6c3e] px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#c94d24] focus:outline-none focus:ring-4 focus:ring-[#ef6c3e]/30">{manualPaused ? "Resume rotation" : "Pause rotation"}</button>
-          ) : (
-            <span className="rounded-xl border border-[#d8a97d] px-4 py-2 text-xs font-bold text-[#765548]">Reduced motion: manual controls only</span>
-          )}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#8D6E63]/35 bg-[#0d0806] px-4 py-4 sm:px-6">
+        <div className="flex flex-wrap gap-2" aria-label="Choose a HUG story">
+          {SLIDES.map((item, itemIndex) => (
+            <button
+              key={item.slug}
+              type="button"
+              onClick={() => setIndex(itemIndex)}
+              aria-label={`Show story ${itemIndex + 1}: ${item.headline}`}
+              aria-current={itemIndex === index ? "true" : undefined}
+              className={`h-3 w-3 rounded-full border border-[#FFD54F] ${itemIndex === index ? "bg-[#FFD54F]" : "bg-transparent"}`}
+            />
+          ))}
         </div>
+        {!reducedMotion ? (
+          <button
+            type="button"
+            onClick={() => setPaused((value) => !value)}
+            aria-pressed={paused}
+            className="rounded-xl border border-[#FFD54F]/70 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#FFD54F]"
+          >
+            {paused ? "Resume rotation" : "Pause rotation"}
+          </button>
+        ) : (
+          <span className="text-xs font-bold text-[#BCAAA4]">Reduced motion active</span>
+        )}
       </div>
     </section>
   );
