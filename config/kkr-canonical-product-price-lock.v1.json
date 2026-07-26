@@ -1,0 +1,24 @@
+{
+  "schema_version": "KKR_CANONICAL_PRODUCT_PRICE_LOCK_V001",
+  "status": "PERMANENT_CANONICAL_LAW",
+  "owner": "GD / G Putnam Music, LLC",
+  "currency": "USD",
+  "source_authority": "GPMC",
+  "prices_cents": {
+    "VOCAL_NOTE_OR_TYPED_MESSAGE_ADDON": 99,
+    "mKUT": 199,
+    "sBLK": 499,
+    "BLK": 799,
+    "PROMOTIONAL_HUG": 1199,
+    "STANDARD_HUG": 1499
+  },
+  "structural_law": {
+    "sBLK": "One identified structural segment of a BLK, such as Verse 1a, Verse 1b, Verse 2a, or Verse 2b.",
+    "mKUT_is_sBLK": false
+  },
+  "change_control": {
+    "silent_edits_prohibited": true,
+    "new_numbered_lock_required": true,
+    "explicit_GD_decision_required": true
+  }
+}
