@@ -1,9 +1,9 @@
 {
   "schema_version": "STRICT_MUSIC_EMERGENCY_HOLD_V001",
-  "incident_id": "MC_BOT_PUBLIC_CONTAMINATION_20260727",
+  "incident_id": "MC_BOT_AND_SEMANTIC_MATCH_PUBLIC_CONTAMINATION_20260727",
   "status": "STOP_THE_LINE",
   "owner": "GD / G Putnam Music, LLC",
-  "scope": "all customer-facing IIs",
+  "scope": "all customer-facing IIs and all Sentimeant theme assignments",
   "absolute_law": {
     "every_II_must_contain_authorized_music": true,
     "every_II_must_have_LT_PIX_SSOT_parent": true,
@@ -11,15 +11,20 @@
     "MC_BOT_voice_script_is_musical_inventory": false,
     "known_or_suspected_MC_BOT_allowed_public": 0,
     "no_music_audio_allowed_public": 0,
-    "unproven_music_audio_allowed_public": 0
+    "unproven_music_audio_allowed_public": 0,
+    "theme_assignment_requires_dressed_semantic_authority": true,
+    "positional_zip_assignment_allowed": false,
+    "unsupported_semantic_assignment_allowed_public": 0,
+    "individual_GD_theme_review_required": true
   },
   "current_isolation": {
     "catalog_source": "ii-delivery/catalog/public-ii-catalog.json",
     "last_advertised_KK_count": 2611,
-    "isolation_scope": "ENTIRE_CATALOG_UNTIL_PER_ROW_REVALIDATION",
+    "isolation_scope": "ENTIRE_GENERAL_CATALOG_AND_ALL_13_SENTIMEANT_ASSIGNMENTS",
     "public_audio_count": 0,
     "purchasable_count": 0,
-    "delivery_selection_count": 0
+    "delivery_selection_count": 0,
+    "sentimeant_story_audio_count": 0
   },
   "required_per_II_release_evidence": [
     "inventory_id",
@@ -34,15 +39,36 @@
     "rights_status",
     "identity_status"
   ],
-  "release_rule": "Any missing, false, unknown, held, or contradictory field blocks the II.",
+  "required_per_theme_match_evidence": [
+    "theme_id",
+    "dressed_LT_PIX_SSOT_identity",
+    "canonical_song_title",
+    "dressed_KK_id",
+    "KK_structure_label",
+    "DISCO_lyric_evidence",
+    "meaning_match_status",
+    "mood_match_status",
+    "feeling_match_status",
+    "sentiment_match_status",
+    "relationship_POV_match_status",
+    "occasion_use_case_match_status",
+    "audio_presentation_match_status",
+    "duplicate_source_song_check",
+    "GD_individual_review_decision"
+  ],
+  "release_rule": "Any missing, false, unknown, held, contradictory, or unreviewed field blocks the II or theme assignment.",
   "temporary_curated_release": {
-    "status": "GD_AUTHORIZED_13_KK_ONLY",
+    "status": "ISOLATED_AS_SEMANTIC_MISMATCH_EVIDENCE",
     "story_count": 13,
-    "audio_count": 13,
-    "unique_LT_PIX_SSOT_parents": 13,
-    "required_source_gate_status": "MUSIC_PASS_STRICT_AUDIO_GATE",
+    "evidence_audio_count": 13,
+    "evidence_files_preserved": true,
+    "public_story_access": false,
+    "public_audio_access": false,
     "known_or_suspected_MC_BOT_allowed": 0,
     "general_2611_catalog_reopened": false,
-    "checkout_reopened": false
+    "checkout_reopened": false,
+    "rebuild_source_order": "DRESSED_LT_PIX_SSOT_THEN_DRESSED_KK_SEMANTICS_THEN_AUDIO_PRESENTATION",
+    "GD_reviews_required": 13,
+    "GD_reviews_completed": 0
   }
 }
