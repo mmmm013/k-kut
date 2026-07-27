@@ -99,16 +99,16 @@ export default function CuteHugCarousel() {
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Link
-              href={`/find?moment=${slide.slug}`}
+              href={`/sentimeant/${slide.slug}`}
               className="rounded-2xl bg-[#FFD54F] px-6 py-3 text-sm font-black uppercase tracking-[0.12em] text-[#160A05] transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-[#FFD54F]/50"
             >
-              Start this HUG
+              Hear this KK
             </Link>
             <Link
-              href="/browse"
+              href="/"
               className="rounded-2xl border border-white/70 bg-black/25 px-6 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-white hover:text-black focus:outline-none focus:ring-4 focus:ring-white/40"
             >
-              Browse 2,611 HUGs
+              All 13 stories
             </Link>
           </div>
         </div>

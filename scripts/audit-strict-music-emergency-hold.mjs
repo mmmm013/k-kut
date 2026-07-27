@@ -40,14 +40,14 @@ try {
   }
 
   for (const required of [
-    'status: HOLD_STATUS',
-    'inventoryCount: 0',
-    'purchasableCount: 0',
-    'records: []',
+    "status: HOLD_STATUS",
+    "inventoryCount: 0",
+    "purchasableCount: 0",
+    "records: []",
     '"X-KKUT-Strict-Music-Hold": "active"',
     '"Cache-Control": "no-store, max-age=0"',
   ]) {
-    requireText(catalog, required, "catalog hold");
+    requireText(catalog, required, "general catalog hold");
   }
 
   for (const forbidden of [
@@ -62,14 +62,14 @@ try {
   }
   requireText(checkout, '"strict-music-emergency-hold"', "checkout hold");
 
-  const publicCopy = `${kkutHome}\n${sentimeantHome}\n${browse}`;
+  const heldCopy = `${kkutHome}\n${browse}`;
   for (const forbidden of [
     "Live now · 2,611",
     "2,611 verified choices",
     "Browse 2,611 KK HUGs",
     "Browse all 2,611",
   ]) {
-    if (publicCopy.includes(forbidden)) {
+    if (heldCopy.includes(forbidden)) {
       throw new Error(`false public availability claim remains: ${forbidden}`);
     }
   }
@@ -81,18 +81,22 @@ try {
     "Public audio: 0",
     "Purchasable IIs: 0",
   ]) {
-    requireText(publicCopy, required, "public hold copy");
+    requireText(heldCopy, required, "K-KUT hold copy");
   }
 
-  console.log("STRICT MUSIC EMERGENCY HOLD AUDIT PASS");
-  console.log("PUBLIC AUDIO: 0");
-  console.log("PURCHASABLE IIS: 0");
+  requireText(sentimeantHome, "13 strict-music-proven KKs", "curated Sentimeant lane");
+  requireText(sentimeantHome, "former general catalog remain isolated", "catalog isolation");
+
+  console.log("STRICT MUSIC CONTROL AUDIT PASS");
+  console.log("GENERAL PUBLIC CATALOG AUDIO: 0");
+  console.log("GENERAL PURCHASABLE IIS: 0");
+  console.log("CURATED SENTIMEANT STRICT KKS: 13");
   console.log("CHECKOUT: BLOCKED");
   console.log("MC-BOT / NO-MUSIC ALLOWED: 0");
   console.log("LT-PIX SSOT PARENT REQUIRED: YES");
   console.log("AUTHORIZED MUSIC REQUIRED: YES");
 } catch (error) {
-  console.error("STRICT MUSIC EMERGENCY HOLD AUDIT FAIL");
+  console.error("STRICT MUSIC CONTROL AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }

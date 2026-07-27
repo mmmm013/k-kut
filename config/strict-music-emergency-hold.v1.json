@@ -34,5 +34,15 @@
     "rights_status",
     "identity_status"
   ],
-  "release_rule": "Any missing, false, unknown, held, or contradictory field blocks the II."
+  "release_rule": "Any missing, false, unknown, held, or contradictory field blocks the II.",
+  "temporary_curated_release": {
+    "status": "GD_AUTHORIZED_13_KK_ONLY",
+    "story_count": 13,
+    "audio_count": 13,
+    "unique_LT_PIX_SSOT_parents": 13,
+    "required_source_gate_status": "MUSIC_PASS_STRICT_AUDIO_GATE",
+    "known_or_suspected_MC_BOT_allowed": 0,
+    "general_2611_catalog_reopened": false,
+    "checkout_reopened": false
+  }
 }
