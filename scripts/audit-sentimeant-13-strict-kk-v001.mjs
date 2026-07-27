@@ -10,8 +10,8 @@ function sha256(path) {
 }
 
 try {
-  const manifestPath = "data/sentimeant/strict-kk-pool-v001.json";
-  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  const manifest = JSON.parse(fs.readFileSync("data/sentimeant/strict-kk-pool-v001.json", "utf8"));
+  const review = JSON.parse(fs.readFileSync("data/sentimeant/semantic-match-review-v001.json", "utf8"));
   const lock = JSON.parse(fs.readFileSync("config/strict-music-emergency-hold.v1.json", "utf8"));
   const home = fs.readFileSync("app/_sentimeant-home.tsx", "utf8");
   const storyRoute = fs.readFileSync("app/sentimeant/[slug]/page.tsx", "utf8");
@@ -22,6 +22,52 @@ try {
   }
   if (!Array.isArray(manifest.rows) || manifest.rows.length !== 13) {
     stop("all 13 incident rows must remain preserved");
+  }
+
+  if (review.schema_version !== "SENTIMEANT_SEMANTIC_MATCH_REVIEW_V001") {
+    stop("semantic review schema drift");
+  }
+  if (review.status !== "UNMATCHED_HOLD") {
+    stop("semantic review must remain held");
+  }
+  if (review.automatic_assignment_allowed !== false) {
+    stop("automatic semantic assignment must remain forbidden");
+  }
+  if (review.positional_zip_assignment_allowed !== false) {
+    stop("positional zip assignment must remain forbidden");
+  }
+  if (review.approved_theme_count !== 0 || review.required_approved_theme_count !== 13) {
+    stop("semantic approval counts are inaccurate");
+  }
+  if (!Array.isArray(review.rows) || review.rows.length !== 13) {
+    stop("semantic review must contain exactly 13 themes");
+  }
+
+  for (const row of review.rows) {
+    if (row.status !== "UNMATCHED_HOLD") {
+      stop(`${row.theme_id}: theme advanced without review`);
+    }
+    if (row.GD_individual_review_decision !== null) {
+      stop(`${row.theme_id}: unrecorded GD decision represented as complete`);
+    }
+    for (const field of [
+      "dressed_LT_PIX_SSOT_identity",
+      "canonical_song_title",
+      "dressed_KK_id",
+      "DISCO_lyric_evidence",
+      "meaning_match_status",
+      "mood_match_status",
+      "feeling_match_status",
+      "sentiment_match_status",
+      "relationship_POV_match_status",
+      "occasion_use_case_match_status",
+      "audio_presentation_match_status",
+      "duplicate_underlying_song_check",
+    ]) {
+      if (row[field] !== null) {
+        stop(`${row.theme_id}: ${field} changed before controlled review`);
+      }
+    }
   }
 
   const evidence = lock.temporary_curated_release || {};
@@ -98,6 +144,7 @@ try {
   console.log("PUBLIC STORY AUDIO: 0");
   console.log("DIRECT EVIDENCE AUDIO ACCESS: 410 GONE");
   console.log("SEMANTIC MATCHES APPROVED: 0 OF 13");
+  console.log("AUTOMATIC / POSITIONAL ASSIGNMENT: FORBIDDEN");
   console.log("REBUILD AUTHORITY: DRESSED LT-PIX/KK FIRST");
 } catch (error) {
   console.error("SENTIMEANT 13 SEMANTIC-MISMATCH EVIDENCE AUDIT FAIL");
