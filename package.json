@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/audit-home-tier-payment-env.mjs && node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/audit-h2-pending-order-token.mjs && node scripts/audit-2611-bic-storefront.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
+    "prebuild": "node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-sentimeant-use-case-01-bad-day.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/audit-home-tier-payment-env.mjs && node scripts/audit-public-pricing-release-ui-v1.mjs && node scripts/audit-h2-pending-order-token.mjs && node scripts/audit-2611-bic-storefront.mjs && node scripts/check-env.mjs && node scripts/bic-hug-gate.mjs && node scripts/audit-one-regular-hug-payment-process.mjs",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
+    "audit:sentimeant:use-case-01": "node scripts/audit-sentimeant-use-case-01-bad-day.mjs",
     "audit:a2p:optional-consent": "node scripts/audit-a2p-optional-consent.mjs",
     "audit:a2p:live-production": "node scripts/audit-a2p-live-production.mjs",
     "audit:h2:pending-order": "node scripts/audit-h2-pending-order-token.mjs",
