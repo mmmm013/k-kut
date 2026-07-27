@@ -60,6 +60,16 @@ const MC_NEEDS = [
   },
 ] as const;
 
+type McNeedId = (typeof MC_NEEDS)[number]["id"];
+
+const MOMENT_TO_MC_NEED: Partial<Record<string, McNeedId>> = {
+  "bad-day": "love",
+};
+
+function mappedNeed(moment: string): McNeedId {
+  return MOMENT_TO_MC_NEED[moment.trim().toLowerCase()] || "all";
+}
+
 function searchableText(record: PublicIiRecord) {
   return [record.label, record.family, record.lane, record.offer, record.id]
     .join(" ")
@@ -78,7 +88,13 @@ function wordCount(value: string) {
   return normalized ? normalized.split(/\s+/u).filter(Boolean).length : 0;
 }
 
-export default function PublicIiBrowser() {
+type PublicIiBrowserProps = {
+  initialMoment?: string;
+};
+
+export default function PublicIiBrowser({
+  initialMoment = "",
+}: PublicIiBrowserProps) {
   const [records, setRecords] = useState<PublicIiRecord[]>([]);
   const [inventoryCount, setInventoryCount] = useState(0);
   const [purchasableCount, setPurchasableCount] = useState(0);
@@ -86,10 +102,16 @@ export default function PublicIiBrowser() {
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [lane, setLane] = useState("all");
-  const [mcNeed, setMcNeed] = useState<(typeof MC_NEEDS)[number]["id"]>("all");
+  const [mcNeed, setMcNeed] = useState<McNeedId>(() =>
+    mappedNeed(initialMoment),
+  );
   const [page, setPage] = useState(1);
   const [personalNotes, setPersonalNotes] = useState<Record<string, string>>({});
   const audioRefs = useRef(new Map<string, HTMLAudioElement>());
+
+  useEffect(() => {
+    setMcNeed(mappedNeed(initialMoment));
+  }, [initialMoment]);
 
   useEffect(() => {
     let active = true;
