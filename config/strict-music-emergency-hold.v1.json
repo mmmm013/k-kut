@@ -1,5 +1,6 @@
 {
   "schema_version": "STRICT_MUSIC_EMERGENCY_HOLD_V001",
+  "incident_id": "MC_BOT_PUBLIC_CONTAMINATION_20260727",
   "status": "STOP_THE_LINE",
   "owner": "GD / G Putnam Music, LLC",
   "scope": "all customer-facing IIs",
