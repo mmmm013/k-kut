@@ -9,7 +9,18 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default function FindPage() {
+type FindPageProps = {
+  searchParams: Promise<{
+    moment?: string | string[];
+  }>;
+};
+
+export default async function FindPage({ searchParams }: FindPageProps) {
+  const params = await searchParams;
+  const moment = Array.isArray(params.moment)
+    ? params.moment[0] || ""
+    : params.moment || "";
+
   return (
     <main className="min-h-screen bg-[#1A120B] px-5 py-10 text-[#F5E6C8] sm:px-8">
       <section className="mx-auto flex max-w-7xl flex-col gap-8">
@@ -47,7 +58,7 @@ export default function FindPage() {
           </div>
         </header>
 
-        <PublicIiBrowser />
+        <PublicIiBrowser initialMoment={moment} />
       </section>
     </main>
   );
