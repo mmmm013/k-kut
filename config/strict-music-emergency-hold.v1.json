@@ -1,0 +1,38 @@
+{
+  "schema_version": "STRICT_MUSIC_EMERGENCY_HOLD_V001",
+  "incident_id": "MC_BOT_PUBLIC_CONTAMINATION_20260727",
+  "status": "STOP_THE_LINE",
+  "owner": "GD / G Putnam Music, LLC",
+  "scope": "all customer-facing IIs",
+  "absolute_law": {
+    "every_II_must_contain_authorized_music": true,
+    "every_II_must_have_LT_PIX_SSOT_parent": true,
+    "LT_PIX_parent_must_be_strict_music_proven": true,
+    "MC_BOT_voice_script_is_musical_inventory": false,
+    "known_or_suspected_MC_BOT_allowed_public": 0,
+    "no_music_audio_allowed_public": 0,
+    "unproven_music_audio_allowed_public": 0
+  },
+  "current_isolation": {
+    "catalog_source": "ii-delivery/catalog/public-ii-catalog.json",
+    "last_advertised_KK_count": 2611,
+    "isolation_scope": "ENTIRE_CATALOG_UNTIL_PER_ROW_REVALIDATION",
+    "public_audio_count": 0,
+    "purchasable_count": 0,
+    "delivery_selection_count": 0
+  },
+  "required_per_II_release_evidence": [
+    "inventory_id",
+    "LT_PIX_SSOT_parent_id",
+    "LT_PIX_SSOT_parent_audio_sha256",
+    "customer_audio_sha256",
+    "authorized_music_source_status",
+    "strict_music_gate_status",
+    "known_MC_BOT_no_music_SHA_block_status",
+    "human_customer_audio_qa_status",
+    "twinkle_at_end_status",
+    "rights_status",
+    "identity_status"
+  ],
+  "release_rule": "Any missing, false, unknown, held, or contradictory field blocks the II."
+}
