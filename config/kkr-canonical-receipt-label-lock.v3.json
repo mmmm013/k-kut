@@ -1,0 +1,34 @@
+{
+  "schema_version": "KKR_CANONICAL_RECEIPT_LABEL_LOCK_V003",
+  "status": "PERMANENT_CANONICAL_LAW",
+  "owner": "GD / G Putnam Music, LLC",
+  "currency": "USD",
+  "source_authority": "GPMC",
+  "receipt_label_law": {
+    "mKUT": "MyK",
+    "sBLK": "MyK",
+    "scope": "customer_visible_receipt_only",
+    "does_not_redefine_structure": true,
+    "does_not_authorize_storefront_copy_change": true,
+    "does_not_authorize_route_change": true,
+    "does_not_authorize_audio_change": true,
+    "does_not_authorize_inventory_change": true,
+    "does_not_authorize_price_change": true
+  },
+  "structural_law": {
+    "mKUT_is_sBLK": false,
+    "sBLK": "One identified structural segment of a BLK, such as Verse 1a, Verse 1b, Verse 2a, or Verse 2b."
+  },
+  "naming_layers": {
+    "structural_identity": ["mKUT", "sBLK", "BLK"],
+    "storefront_wording": "preserve_existing_approved_copy",
+    "receipt_label": "MyK_for_mKUT_or_sBLK_only",
+    "fulfillment_evidence": "store_receipt_label_and_structural_identity_separately"
+  },
+  "proof_law": {
+    "receipt_proven_only_by_actual_customer_visible_receipt": true,
+    "source_code_alone_is_not_receipt_proof": true,
+    "webhook_health_is_not_naming_authority": true,
+    "historical_webhook_failure_is_not_current_failure_without_current_test": true
+  }
+}

@@ -122,7 +122,7 @@ export default function BirthdayBicPanel() {
         <div className="rounded-3xl bg-white p-5 text-neutral-950">
           <h2 className="text-xl font-black">Receipt display</h2>
           <p className="mt-3 text-sm text-neutral-600">
-            Customer-facing receipts use tracks for PIX and kuts for everything else.
+            Receipt naming is separate from storefront wording. mKUT and sBLK purchases use the receipt label MyK.
           </p>
           <div className="mt-5 rounded-2xl bg-neutral-100 p-4 text-sm">
             <div className="flex justify-between gap-4 border-b border-neutral-200 pb-3">
