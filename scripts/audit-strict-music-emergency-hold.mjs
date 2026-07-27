@@ -15,6 +15,8 @@ try {
   const checkout = read("app/checkout/route.ts");
   const kkutHome = read("app/_kkut-home.tsx");
   const sentimeantHome = read("app/_sentimeant-home.tsx");
+  const storyRoute = read("app/sentimeant/[slug]/page.tsx");
+  const middleware = read("middleware.ts");
   const browse = read("app/browse/page.tsx");
 
   if (lock.schema_version !== "STRICT_MUSIC_EMERGENCY_HOLD_V001") {
@@ -23,20 +25,22 @@ try {
   if (lock.status !== "STOP_THE_LINE") {
     throw new Error("stop-the-line status removed");
   }
-  if (lock.absolute_law?.every_II_must_contain_authorized_music !== true) {
-    throw new Error("authorized music law missing");
-  }
-  if (lock.absolute_law?.every_II_must_have_LT_PIX_SSOT_parent !== true) {
-    throw new Error("LT-PIX SSOT parent law missing");
-  }
-  if (lock.absolute_law?.LT_PIX_parent_must_be_strict_music_proven !== true) {
-    throw new Error("LT-PIX strict music proof law missing");
-  }
-  if (lock.absolute_law?.known_or_suspected_MC_BOT_allowed_public !== 0) {
-    throw new Error("MC-BOT public allowance must remain zero");
-  }
-  if (lock.absolute_law?.no_music_audio_allowed_public !== 0) {
-    throw new Error("no-music public allowance must remain zero");
+
+  const laws = lock.absolute_law || {};
+  for (const [field, expected] of [
+    ["every_II_must_contain_authorized_music", true],
+    ["every_II_must_have_LT_PIX_SSOT_parent", true],
+    ["LT_PIX_parent_must_be_strict_music_proven", true],
+    ["known_or_suspected_MC_BOT_allowed_public", 0],
+    ["no_music_audio_allowed_public", 0],
+    ["theme_assignment_requires_dressed_semantic_authority", true],
+    ["positional_zip_assignment_allowed", false],
+    ["unsupported_semantic_assignment_allowed_public", 0],
+    ["individual_GD_theme_review_required", true],
+  ]) {
+    if (laws[field] !== expected) {
+      throw new Error(`absolute law failed: ${field}`);
+    }
   }
 
   for (const required of [
@@ -84,19 +88,58 @@ try {
     requireText(heldCopy, required, "K-KUT hold copy");
   }
 
-  requireText(sentimeantHome, "13 strict-music-proven KKs", "curated Sentimeant lane");
-  requireText(sentimeantHome, "former general catalog remain isolated", "catalog isolation");
+  for (const required of [
+    "Semantic match hold",
+    "Public story audio: 0",
+    "dressed LT-PIX",
+    "meaning, mood, feeling, sentiment",
+    "individually reviewed semantic match",
+  ]) {
+    requireText(sentimeantHome, required, "Sentimeant semantic hold");
+  }
 
-  console.log("STRICT MUSIC CONTROL AUDIT PASS");
+  if (sentimeantHome.includes("<CuteHugCarousel")) {
+    throw new Error("Sentimeant carousel remains public during semantic hold");
+  }
+  if (storyRoute.includes("<audio") || storyRoute.includes("story.audioUrl")) {
+    throw new Error("direct Sentimeant story audio remains public");
+  }
+  requireText(storyRoute, "Audio blocked", "direct story hold");
+
+  for (const required of [
+    'SENTIMEANT_EVIDENCE_AUDIO_PREFIX = "/sentimeant/strict-kk-v001/"',
+    "status: 410",
+    '"X-Sentimeant-Semantic-Hold": "active"',
+    '"/sentimeant/:path*"',
+  ]) {
+    requireText(middleware, required, "Sentimeant path block");
+  }
+
+  const evidence = lock.temporary_curated_release || {};
+  if (evidence.status !== "ISOLATED_AS_SEMANTIC_MISMATCH_EVIDENCE") {
+    throw new Error("13-file semantic evidence status missing");
+  }
+  if (evidence.evidence_files_preserved !== true) {
+    throw new Error("13-file evidence preservation missing");
+  }
+  if (evidence.public_story_access !== false || evidence.public_audio_access !== false) {
+    throw new Error("13-file public access must remain false");
+  }
+  if (evidence.GD_reviews_completed !== 0) {
+    throw new Error("unreviewed themes cannot be represented as reviewed");
+  }
+
+  console.log("STRICT MUSIC + SEMANTIC CONTROL AUDIT PASS");
   console.log("GENERAL PUBLIC CATALOG AUDIO: 0");
-  console.log("GENERAL PURCHASABLE IIS: 0");
-  console.log("CURATED SENTIMEANT STRICT KKS: 13");
+  console.log("SENTIMEANT PUBLIC STORY AUDIO: 0");
+  console.log("PURCHASABLE IIS: 0");
   console.log("CHECKOUT: BLOCKED");
   console.log("MC-BOT / NO-MUSIC ALLOWED: 0");
-  console.log("LT-PIX SSOT PARENT REQUIRED: YES");
-  console.log("AUTHORIZED MUSIC REQUIRED: YES");
+  console.log("POSITIONAL THEME ASSIGNMENT ALLOWED: NO");
+  console.log("DRESSED SEMANTIC AUTHORITY REQUIRED: YES");
+  console.log("INDIVIDUAL GD THEME REVIEWS REQUIRED: 13");
 } catch (error) {
-  console.error("STRICT MUSIC CONTROL AUDIT FAIL");
+  console.error("STRICT MUSIC + SEMANTIC CONTROL AUDIT FAIL");
   console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 }
