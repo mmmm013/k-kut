@@ -1,16 +1,15 @@
-import HugzDiscoveryGrid from "@/components/HugzDiscoveryGrid";
+import HugzRotatingLanding from "@/components/HugzRotatingLanding";
 
 export const metadata = {
   title: "HUGz Music Choices | K-KUT",
-  description: "Open one of 13 temporary sentiment containers and choose from multiple music options for a $7.99 HUG delivery package.",
+  description:
+    "One temporary HUGz at a time, rotating every 33 seconds. Open a HUGz to choose from multiple music options.",
 };
 
 export default function HugzPage() {
   return (
-    <main className="min-h-screen bg-[#09070B] text-white">
-      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
-        <HugzDiscoveryGrid />
-      </div>
+    <main className="min-h-screen bg-[#050408] p-2 text-white sm:p-4">
+      <HugzRotatingLanding />
     </main>
   );
 }
