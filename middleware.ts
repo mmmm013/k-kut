@@ -9,6 +9,11 @@ const CUSTOMER_PRIVATE_PREFIXES = [
 const SENTIMEANT_EVIDENCE_AUDIO_PREFIX = "/sentimeant/strict-kk-v001/";
 const SENTIMEANT_STORY_PREFIX = "/sentimeant/";
 
+const HUGZ_HOSTS = new Set([
+  "13hugz.com",
+  "www.13hugz.com",
+]);
+
 const VEKTOR_HOSTS = new Set([
   "2gdp.com",
   "www.2gdp.com",
@@ -19,6 +24,16 @@ const VEKTOR_URL = "https://mc-vektor.vercel.app/the-vektor";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const host = request.headers.get("host")?.toLowerCase().split(":")[0] || "";
+
+  if (HUGZ_HOSTS.has(host) && (pathname === "/" || pathname === "")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/hugz";
+    url.search = "";
+
+    const response = NextResponse.rewrite(url);
+    response.headers.set("X-13HUGz-Route", "rotating-hugz");
+    return response;
+  }
 
   if (VEKTOR_HOSTS.has(host) && (pathname === "/" || pathname === "")) {
     return NextResponse.redirect(VEKTOR_URL);
