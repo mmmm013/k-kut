@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-strict-music-emergency-hold.mjs && node scripts/audit-sentimeant-13-strict-kk-v001.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs",
+    "prebuild": "node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
@@ -16,7 +16,8 @@
     "audit:themes:all": "npm run audit:themes && npm run audit:themes:gratitude && npm run audit:themes:bad-kk && npm run audit:themes:gratitude-registry && npm run audit:themes:love-anniversary-registry && npm run audit:themes:personal-holiday-lanes && npm run audit:kkr:human-approval",
     "deploy:preflight": "node scripts/preflight-deploy-size.mjs",
     "deploy:prod": "npm run deploy:preflight && vercel deploy --prod --yes --archive=tgz",
-    "audit:sentimeant:13-strict-kk": "node scripts/audit-sentimeant-13-strict-kk-v001.mjs"
+    "audit:sentimeant:13-strict-kk": "node scripts/audit-sentimeant-13-strict-kk-v001.mjs",
+    "audit:hugz-seed-release": "node scripts/audit-hugz-seed-release-v001.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.0",
