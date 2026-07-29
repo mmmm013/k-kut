@@ -66,7 +66,7 @@ function FitSingleLine({
   return (
     <h1
       ref={ref}
-      className={`block w-full whitespace-nowrap leading-none tracking-[-0.045em] ${className}`}
+      className={`block w-full whitespace-nowrap leading-[0.94] tracking-[-0.045em] ${className}`}
     >
       {children}
     </h1>
@@ -99,17 +99,17 @@ export default function HugzRotatingLanding() {
   return (
     <section
       aria-label="Temporary rotating HUGz discovery landing"
-      className="min-h-[calc(100vh-2rem)] overflow-hidden rounded-[2rem] border border-[#FFD54F]/35 bg-[#09070B] text-white shadow-2xl"
+      className="min-h-[calc(100dvh-4.5rem)] overflow-hidden rounded-[1.5rem] border border-[#FFD54F]/35 bg-[#09070B] text-white shadow-2xl lg:h-full lg:min-h-0"
     >
       <div
         key={active.slug}
-        className="grid min-h-[calc(100vh-2rem)] lg:grid-cols-[1.08fr_0.92fr]"
+        className="grid min-h-[calc(100dvh-4.5rem)] lg:h-full lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
       >
-        <div className="relative min-h-[42vh] overflow-hidden lg:min-h-full">
+        <div className="relative min-h-[36vh] overflow-hidden bg-[#09070B] lg:h-full lg:min-h-0">
           <img
             src={active.imageUrl}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-contain object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#09070B] via-transparent to-black/15 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#09070B]" />
           <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/55 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] backdrop-blur">
@@ -118,37 +118,37 @@ export default function HugzRotatingLanding() {
           </div>
         </div>
 
-        <div className="flex min-w-0 flex-col justify-between p-6 sm:p-9 lg:p-12">
+        <div className="flex min-h-0 min-w-0 flex-col justify-start overflow-hidden p-4 sm:p-5 lg:p-6">
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#FFD54F]">
               HUGz discovery container · {active.seedCount} music choices
             </p>
 
-            <div className="mt-5 min-w-0">
+            <div className="mt-3 min-w-0">
               <FitSingleLine
                 className="font-black"
-                maxPx={84}
+                maxPx={64}
                 minPx={15}
               >
                 {active.headline}
               </FitSingleLine>
             </div>
 
-            <p className="mt-6 max-w-2xl text-base font-bold leading-7 text-[#D7CCC8] sm:text-lg">
+            <p className="mt-3 max-w-2xl text-sm font-bold leading-5 text-[#D7CCC8] sm:text-base sm:leading-6">
               {active.description}
             </p>
 
-            <p className="mt-4 text-sm font-bold leading-6 text-[#BCAAA4]">
+            <p className="mt-2 text-xs font-bold leading-5 text-[#BCAAA4] sm:text-sm">
               One temporary sentiment container. Multiple music choices. Open
               it to hear the full selection, then package the chosen full media
               as a HUG.
             </p>
 
-            <div className="mt-7 space-y-3">
+            <div className="mt-3 space-y-2">
               {active.seeds.slice(0, 3).map((seed) => (
                 <div
                   key={seed.assetId}
-                  className="rounded-2xl border border-[#8D6E63]/40 bg-[#120A06] px-4 py-3 text-sm font-bold text-[#EFEBE9]"
+                  className="rounded-xl border border-[#8D6E63]/40 bg-[#120A06] px-4 py-2 text-xs font-bold text-[#EFEBE9] sm:text-sm"
                 >
                   “{seed.excerpt}”
                 </div>
@@ -156,15 +156,15 @@ export default function HugzRotatingLanding() {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-4">
             <Link
               href={`/hugz/${active.slug}`}
-              className="inline-flex rounded-2xl bg-[#FFD54F] px-7 py-4 text-base font-black text-black"
+              className="inline-flex rounded-xl bg-[#FFD54F] px-6 py-3 text-sm font-black text-black"
             >
               Open this HUGz
             </Link>
 
-            <div className="mt-7 flex items-center justify-between gap-4">
+            <div className="mt-4 flex items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={previous}
@@ -197,7 +197,7 @@ export default function HugzRotatingLanding() {
             </div>
 
             <div
-              className="mt-5 flex flex-wrap justify-center gap-2"
+              className="mt-3 flex flex-wrap justify-center gap-1.5"
               aria-label="Choose a HUGz"
             >
               {hugzSeedCatalog.map((container, index) => (

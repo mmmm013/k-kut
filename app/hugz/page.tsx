@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function HugzPage() {
   return (
-    <main className="min-h-screen bg-[#050408] p-2 text-white sm:p-4">
+    <main className="min-h-[calc(100dvh-4rem)] bg-[#050408] p-2 text-white sm:p-3 lg:h-[calc(100dvh-4rem)] lg:min-h-0 lg:overflow-hidden">
       <HugzRotatingLanding />
     </main>
   );
