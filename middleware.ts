@@ -6,7 +6,6 @@ const CUSTOMER_PRIVATE_PREFIXES = [
   "/mkut",
 ];
 
-const SENTIMEANT_EVIDENCE_AUDIO_PREFIX = "/sentimeant/strict-kk-v001/";
 const SENTIMEANT_STORY_PREFIX = "/sentimeant/";
 
 const HUGZ_HOSTS = new Set([
@@ -37,18 +36,6 @@ export function middleware(request: NextRequest) {
 
   if (VEKTOR_HOSTS.has(host) && (pathname === "/" || pathname === "")) {
     return NextResponse.redirect(VEKTOR_URL);
-  }
-
-  if (pathname.startsWith(SENTIMEANT_EVIDENCE_AUDIO_PREFIX)) {
-    return new NextResponse("Sentimeant semantic-match hold: evidence audio is not public.", {
-      status: 410,
-      headers: {
-        "Cache-Control": "no-store, max-age=0",
-        "Content-Type": "text/plain; charset=utf-8",
-        "X-Sentimeant-Semantic-Hold": "active",
-        "X-Sentimeant-Public-Audio": "0",
-      },
-    });
   }
 
   if (pathname.startsWith(SENTIMEANT_STORY_PREFIX)) {

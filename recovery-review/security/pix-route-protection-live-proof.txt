@@ -1,8 +1,0 @@
-PIX Inventory Route Protection Live Proof
-
-Route tested: https://www.k-kut.com/pix/test
-
-PIX NO TOKEN: 404
-PIX WITH TOKEN: 200
-
-Result: PASS. PIX inventory routes are protected by ADMIN_PREVIEW_TOKEN middleware.

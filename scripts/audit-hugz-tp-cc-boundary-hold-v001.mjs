@@ -25,6 +25,12 @@ if (tray.includes("<audio")) stop("HUGz tray still renders public audio");
 if (tray.includes("href={seed.buyUrl}")) {
   stop("HUGz tray still renders Stripe checkout");
 }
+if (tray.includes("previewUrl") || tray.includes("buyUrl")) {
+  stop("HUGz client payload still accepts private audio or checkout URLs");
+}
+if (!detail.includes("const heldSeeds = container.seeds.map")) {
+  stop("HUGz detail route does not strip private seed fields before client serialization");
+}
 if (!tray.includes("exact vocal-boundary approval")) {
   stop("customer boundary-hold explanation missing");
 }

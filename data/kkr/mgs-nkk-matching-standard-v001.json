@@ -1,0 +1,76 @@
+{
+  "schema_version": "GPMX_MGS_NKK_MATCHING_STANDARD_V001",
+  "status": "CANONICAL_CONTROLLED_VOCABULARY",
+  "scope": ["GPMx", "NKK", "KK", "KOMBO", "KKr-BIZ-MSC", "VOC", "MC-BOT"],
+  "principles": {
+    "broad_candidate_universe": true,
+    "visible_shortlist_is_not_full_universe": true,
+    "user_intent_is_authoritative": true,
+    "voc_may_groom_descriptive_metadata": true,
+    "voc_may_not_change_identity_source_sha_or_tp": true,
+    "original_user_language_is_retained": true,
+    "unknown_terms_fail_to_review_not_guess": true
+  },
+  "dimensions": {
+    "core_feeling": ["sad", "happy", "angry", "afraid", "loving", "hopeful", "regretful", "lonely"],
+    "emotional_shade": ["forlorn", "wistful", "heartbroken", "melancholy", "bittersweet", "numb", "relieved"],
+    "interpersonal_stance": ["tender", "caustic", "apologetic", "pleading", "reassuring", "confrontational", "teasing"],
+    "social_condition": ["alone", "rejected", "separated", "ignored", "misunderstood", "grieving", "missing_someone"],
+    "desired_effect": ["comfort", "validate", "reconnect", "apologize", "encourage", "celebrate", "release", "confront"],
+    "energy": ["still", "restrained", "building", "energetic", "explosive"],
+    "vocal_character": ["warm", "fragile", "weary", "raw", "detached", "sarcastic", "resolute"],
+    "interpretation": ["sincere", "ironic", "sarcastic", "ambiguous", "mixed"],
+    "perspective": ["literal", "vocal", "situational", "relational", "counter_reading", "user_intent"]
+  },
+  "numeric_dimensions": {
+    "intensity": {"minimum": 0, "maximum": 100},
+    "valence": {"minimum": -100, "maximum": 100},
+    "confidence": {"minimum": 0, "maximum": 100}
+  },
+  "aliases": {
+    "alone_and_aching": {"core_feeling": "lonely", "social_condition": "alone"},
+    "abandoned": {"core_feeling": "sad", "emotional_shade": "forlorn", "social_condition": "rejected"},
+    "soft_ache": {"core_feeling": "sad", "emotional_shade": "wistful"},
+    "sharp_tongued": {"interpersonal_stance": "caustic"},
+    "biting": {"interpersonal_stance": "caustic"},
+    "missing_you": {"core_feeling": "lonely", "social_condition": "missing_someone"},
+    "quietly_sad": {"core_feeling": "sad", "energy": "restrained"}
+  },
+  "default_weights_percent": {
+    "user_intent_and_exclusions": 30,
+    "core_feeling_and_social_condition": 20,
+    "desired_effect": 15,
+    "lyric_and_content_evidence": 15,
+    "vocal_character": 10,
+    "relationship_and_scenario": 5,
+    "energy_and_intensity": 5
+  },
+  "hard_gates": [
+    "authorized_lossless_audio",
+    "traceable_source_sha",
+    "valid_tp_cc_boundary",
+    "language",
+    "relationship_constraints",
+    "product_eligibility"
+  ],
+  "hold_conditions": [
+    "unknown_unmapped_term",
+    "title_content_disagreement",
+    "low_confidence",
+    "contradictory_evidence",
+    "duplicate_identity_conflict",
+    "boundary_conflict",
+    "source_identity_conflict"
+  ],
+  "diversity_rules": {
+    "penalize_semantic_repetition": true,
+    "penalize_source_family_flooding": true,
+    "retain_unexpected_but_supported_options": true,
+    "do_not_cap_candidate_universe_to_ui_shortlist": true
+  },
+  "governance": {
+    "required_evidence_types": ["lyric", "vocal", "audio", "user"],
+    "required_change_fields": ["vocabulary_version", "authority", "reason", "timestamp", "prior_value"],
+    "monthly_dmaic_report": true
+  }
+}

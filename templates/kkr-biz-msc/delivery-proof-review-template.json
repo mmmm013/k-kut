@@ -7,6 +7,36 @@
   "recipient_lanes": [],
   "sentiment_lanes": [],
   "situation_lanes": [],
+  "mgs_profile": {
+    "original_user_language": "",
+    "core_feeling": [],
+    "emotional_shade": [],
+    "interpersonal_stance": [],
+    "social_condition": [],
+    "desired_effect": [],
+    "energy": [],
+    "intensity": null,
+    "valence": null,
+    "vocal_character": [],
+    "interpretation": [],
+    "perspectives": [],
+    "exclusions": [],
+    "user_confirmed": false
+  },
+  "mgs_evidence": {
+    "lyric": [],
+    "vocal": [],
+    "audio": [],
+    "user": []
+  },
+  "mgs_governance": {
+    "vocabulary_version": "GPMX_MGS_NKK_MATCHING_STANDARD_V001",
+    "voc_grooming_status": "pending",
+    "unknown_terms_hold": true,
+    "title_content_agreement": null,
+    "broad_candidate_universe_reviewed": false,
+    "visible_shortlist_is_not_full_universe": true
+  },
   "wrong_language_checked": false,
   "wrong_language_notes": "",
   "start_point": {

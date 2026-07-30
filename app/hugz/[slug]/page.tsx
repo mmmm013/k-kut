@@ -17,6 +17,12 @@ export default async function HugzContainerPage({
   const { slug } = await params;
   const container = getHugzContainer(slug);
   if (!container) notFound();
+  const heldSeeds = container.seeds.map(({ rank, assetId, assetKind, excerpt }) => ({
+    rank,
+    assetId,
+    assetKind,
+    excerpt,
+  }));
 
   return (
     <main className="min-h-screen bg-[#09070B] text-white">
@@ -58,7 +64,7 @@ export default async function HugzContainerPage({
 
         <div className="mt-8">
           <HugzThreeChoiceTray
-            seeds={container.seeds}
+            seeds={heldSeeds}
             cardHeadline={container.headline}
           />
         </div>

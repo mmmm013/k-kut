@@ -9,10 +9,6 @@ type HugzSeed = {
   assetId: string;
   assetKind: string;
   excerpt: string;
-  previewUrl: string;
-  buyUrl: string;
-  price: string;
-  reference: string;
 };
 
 export default function HugzThreeChoiceTray({
