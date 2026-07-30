@@ -1,9 +1,9 @@
 import HugzRotatingLanding from "@/components/HugzRotatingLanding";
 
 export const metadata = {
-  title: "HUGz Music Choices | K-KUT",
+  title: "13 HUGz Cards | K-KUT",
   description:
-    "One temporary HUGz at a time, rotating every 33 seconds. Open a HUGz to choose from multiple music options.",
+    "Choose a sentiment HUGz Card, compare three matching $7.99 HUG choices at a time, and send the selected music.",
 };
 
 export default function HugzPage() {

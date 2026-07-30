@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
+import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
 
 const ROTATION_MS = 33_000;
 
@@ -98,7 +99,7 @@ export default function HugzRotatingLanding() {
 
   return (
     <section
-      aria-label="Temporary rotating HUGz discovery landing"
+      aria-label="13 HUGz Card discovery"
       className="min-h-[calc(100dvh-4.5rem)] overflow-hidden rounded-[1.5rem] border border-[#FFD54F]/35 bg-[#09070B] text-white shadow-2xl lg:h-full lg:min-h-0"
     >
       <div
@@ -113,15 +114,14 @@ export default function HugzRotatingLanding() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#09070B] via-transparent to-black/15 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#09070B]" />
           <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/55 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] backdrop-blur">
-            Temporary standalone HUGz {activeIndex + 1} of{" "}
-            {hugzSeedCatalog.length}
+            HUGz Card {activeIndex + 1} of {hugzSeedCatalog.length}
           </div>
         </div>
 
         <div className="flex min-h-0 min-w-0 flex-col justify-start overflow-hidden p-4 sm:p-5 lg:p-6">
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#FFD54F]">
-              HUGz discovery container · {active.seedCount} music choices
+              HUGz Card · {active.seedCount} matching {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} HUG choices
             </p>
 
             <div className="mt-3 min-w-0">
@@ -139,9 +139,7 @@ export default function HugzRotatingLanding() {
             </p>
 
             <p className="mt-2 text-xs font-bold leading-5 text-[#BCAAA4] sm:text-sm">
-              One temporary sentiment container. Multiple music choices. Open
-              it to hear the full selection, then package the chosen full media
-              as a HUG.
+              The HUGz Card is a sentiment container, not an II or media file. Open it to compare three KK or KOMBO HUG choices at a time.
             </p>
 
             <div className="mt-3 space-y-2">
@@ -161,7 +159,7 @@ export default function HugzRotatingLanding() {
               href={`/hugz/${active.slug}`}
               className="inline-flex rounded-xl bg-[#FFD54F] px-6 py-3 text-sm font-black text-black"
             >
-              Open this HUGz
+              Open this HUGz Card
             </Link>
 
             <div className="mt-4 flex items-center justify-between gap-3">
@@ -169,7 +167,7 @@ export default function HugzRotatingLanding() {
                 type="button"
                 onClick={previous}
                 className="rounded-xl border border-[#FFD54F]/55 px-4 py-3 text-sm font-black text-[#FFD54F]"
-                aria-label="Previous HUGz"
+                aria-label="Previous HUGz Card"
               >
                 Previous
               </button>
@@ -182,7 +180,7 @@ export default function HugzRotatingLanding() {
                   />
                 </div>
                 <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.2em] text-[#BCAAA4]">
-                  Next HUGz in 33 seconds
+                  Next HUGz Card in 33 seconds
                 </p>
               </div>
 
@@ -190,7 +188,7 @@ export default function HugzRotatingLanding() {
                 type="button"
                 onClick={next}
                 className="rounded-xl border border-[#FFD54F]/55 px-4 py-3 text-sm font-black text-[#FFD54F]"
-                aria-label="Next HUGz"
+                aria-label="Next HUGz Card"
               >
                 Next
               </button>
@@ -198,7 +196,7 @@ export default function HugzRotatingLanding() {
 
             <div
               className="mt-3 flex flex-wrap justify-center gap-1.5"
-              aria-label="Choose a HUGz"
+              aria-label="Choose a HUGz Card"
             >
               {hugzSeedCatalog.map((container, index) => (
                 <button
