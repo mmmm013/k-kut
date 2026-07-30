@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
+import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
 
 const ROTATION_MS = 33_000;
@@ -140,6 +141,10 @@ export default function HugzRotatingLanding() {
 
             <p className="mt-2 text-xs font-bold leading-5 text-[#BCAAA4] sm:text-sm">
               The HUGz Card is a sentiment container, not an II or media file. Open it to compare three KK or KOMBO HUG choices at a time.
+            </p>
+
+            <p className="mt-3 rounded-xl border border-[#FFD54F]/35 bg-black/30 px-4 py-3 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#FFF8E1]">
+              {HUGZ_BOUNDARY_HOLD.publicMessage}
             </p>
 
             <div className="mt-3 space-y-2">
