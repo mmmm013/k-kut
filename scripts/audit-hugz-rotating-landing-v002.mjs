@@ -22,7 +22,7 @@ if (!component.includes("ResizeObserver")) {
 if (!component.includes("HUGz Card {activeIndex + 1}")) {
   stop("HUGz Card identity is missing");
 }
-if (!component.includes("Open this HUGz Card")) {
+if (!component.includes("Start a New Sentimeant")) {
   stop("HUGz Card entry action is missing");
 }
 if (!component.includes("compare three KK or KOMBO HUG choices at a time")) {

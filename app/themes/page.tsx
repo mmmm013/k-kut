@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
 
 export const metadata = {
   title: "Music Themes | G Putnam Music",
@@ -6,12 +7,7 @@ export const metadata = {
     "Choose a G Putnam Music pathway by feeling, relationship, or occasion.",
 };
 
-const themes = [
-  {
-    href: "/hugz",
-    title: "13 HUGz",
-    description: "Choose a feeling, then compare matching $7.99 KK HUGs.",
-  },
+const featuredThemes = [
   {
     href: "/kupid",
     title: "Kupid",
@@ -21,21 +17,6 @@ const themes = [
     href: "/wedding",
     title: "Wedding",
     description: "Wedding, vow, first-dance, ceremony, and forever feelings.",
-  },
-  {
-    href: "/holiday",
-    title: "Holiday",
-    description: "Seasonal and approved on-demand holiday matching.",
-  },
-  {
-    href: "/personal",
-    title: "Personal",
-    description: "Birthday, gratitude, apology, encouragement, care, and more.",
-  },
-  {
-    href: "/find",
-    title: "Find with MC-BOT",
-    description: "Start with what you need the music moment to do.",
   },
 ];
 
@@ -54,25 +35,76 @@ export default function ThemesPage() {
           </p>
         </header>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {themes.map((theme) => (
-            <article
-              key={theme.href}
-              className="flex flex-col rounded-[1.75rem] border border-[#8D6E63]/40 bg-[#120A06] p-6"
-            >
-              <h2 className="text-3xl font-black">{theme.title}</h2>
-              <p className="mt-3 flex-1 text-sm font-bold leading-7 text-[#D7CCC8]">
-                {theme.description}
-              </p>
-              <Link
-                href={theme.href}
-                className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
+        <section className="mt-8">
+          <p className="text-xs font-black uppercase tracking-[0.32em] text-[#FFD54F]">
+            Featured pathways
+          </p>
+          <div className="mt-4 grid gap-5 md:grid-cols-2">
+            {featuredThemes.map((theme) => (
+              <article
+                key={theme.href}
+                className="flex flex-col rounded-[1.75rem] border border-[#FFD54F]/30 bg-gradient-to-br from-[#2b1430] via-[#140819] to-[#050307] p-6"
               >
-                Open {theme.title}
-              </Link>
+                <h2 className="text-3xl font-black">{theme.title}</h2>
+                <p className="mt-3 flex-1 text-sm font-bold leading-7 text-[#D7CCC8]">
+                  {theme.description}
+                </p>
+                <Link
+                  href={theme.href}
+                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
+                >
+                  Start a New Sentimeant
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-10">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.32em] text-[#FFD54F]">
+                13 HUGz Cards
+              </p>
+              <h2 className="mt-2 text-3xl font-black">
+                Choose the human moment.
+              </h2>
+            </div>
+            <Link
+              href="/find"
+              className="rounded-xl border border-[#FFD54F]/55 px-5 py-3 text-sm font-black text-[#FFD54F]"
+            >
+              Ask MC-BOT to help
+            </Link>
+          </div>
+
+          <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {hugzSeedCatalog.map((theme) => (
+            <article
+              key={theme.slug}
+              className="overflow-hidden rounded-[1.75rem] border border-[#8D6E63]/40 bg-[#120A06]"
+            >
+              <img
+                src={theme.imageUrl}
+                alt=""
+                className="aspect-[16/10] w-full object-cover"
+              />
+              <div className="flex min-h-56 flex-col p-6">
+                <h3 className="text-2xl font-black">{theme.headline}</h3>
+                <p className="mt-3 flex-1 text-sm font-bold leading-7 text-[#D7CCC8]">
+                  {theme.description}
+                </p>
+                <Link
+                  href={`/hugz/${theme.slug}`}
+                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
+                >
+                  Start a New Sentimeant
+                </Link>
+              </div>
             </article>
           ))}
-        </div>
+          </div>
+        </section>
       </section>
     </main>
   );

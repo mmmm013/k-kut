@@ -25,15 +25,22 @@ for (const route of [
 }
 
 for (const route of [
-  "/hugz",
   "/kupid",
   "/wedding",
-  "/holiday",
-  "/personal",
-  "/find",
 ]) {
   if (!themes.includes(`href: "${route}"`)) {
     stop(`Themes hub missing ${route}`);
+  }
+}
+
+for (const required of [
+  "hugzSeedCatalog.map",
+  "theme.imageUrl",
+  "Start a New Sentimeant",
+  "13 HUGz Cards",
+]) {
+  if (!themes.includes(required)) {
+    stop(`visual Themes hub missing ${required}`);
   }
 }
 

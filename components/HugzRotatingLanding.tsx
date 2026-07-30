@@ -164,7 +164,7 @@ export default function HugzRotatingLanding() {
               href={`/hugz/${active.slug}`}
               className="inline-flex rounded-xl bg-[#FFD54F] px-6 py-3 text-sm font-black text-black"
             >
-              Open this HUGz Card
+              Start a New Sentimeant
             </Link>
 
             <div className="mt-4 flex items-center justify-between gap-3">
