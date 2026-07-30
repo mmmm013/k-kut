@@ -1,8 +1,15 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MutableRefObject,
+} from "react";
 import {
   getAdjacentLoveLevels,
+  getLoveLevel,
   getNextLoveStep,
   loveHumanization,
   rankLoveLevels,
@@ -14,7 +21,7 @@ import {
 
 const SOURCE_PAGE = "/hugz/love-review";
 
-function eventSessionId(ref: React.MutableRefObject<string>) {
+function eventSessionId(ref: MutableRefObject<string>) {
   if (ref.current) return ref.current;
 
   const randomPart =
@@ -37,8 +44,8 @@ export default function LoveHumanizationReview() {
   const nextStep = useMemo(() => getNextLoveStep(selections), [selections]);
   const rankedLevels = useMemo(() => rankLoveLevels(selections, 3), [selections]);
   const focusedLevel = useMemo(
-    () => rankedLevels.find((level) => level.id === focusedLevelId) ?? null,
-    [focusedLevelId, rankedLevels],
+    () => (focusedLevelId ? getLoveLevel(focusedLevelId) : null),
+    [focusedLevelId],
   );
   const depthLevels = useMemo(
     () => (focusedLevelId ? getAdjacentLoveLevels(focusedLevelId) : []),
@@ -84,9 +91,30 @@ export default function LoveHumanizationReview() {
       system: loveHumanization.system,
       version: loveHumanization.version,
     });
-    // The first page-view event should run once for this review session.
+    // Run once for this review session.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const presentationKey = useMemo(() => {
+    if (nextStep) {
+      return `step:${nextStep.id}:${nextStep.choices.map((choice) => choice.id).join("|")}`;
+    }
+
+    if (focusedLevelId) {
+      return `depth:${focusedLevelId}:${depthLevels.map((level) => level.id).join("|")}`;
+    }
+
+    return `levels:${rankedLevels.map((level) => level.id).join("|")}`;
+  }, [depthLevels, focusedLevelId, nextStep, rankedLevels]);
+
+  useEffect(() => {
+    postEvent("set_presented", {
+      presentation_key: presentationKey,
+      option_count: 3,
+    });
+    // presentationKey is the controlled trigger for the next-three event.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [presentationKey]);
 
   useEffect(() => {
     const audio = audioRef.current;
