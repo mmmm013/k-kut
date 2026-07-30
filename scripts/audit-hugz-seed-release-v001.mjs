@@ -139,11 +139,11 @@ if (!detail.includes("HugzThreeChoiceTray")) {
 if (!detail.includes("Choose one KK or KOMBO")) {
   stop("HUGz Card must state that HUG choices are KKs or KOMBOs");
 }
-if (!tray.includes("Choose this HUG")) {
-  stop("$7.99 HUG checkout action missing");
+if (!tray.includes("Boundary-quality review in progress")) {
+  stop("TP/CC boundary hold is missing");
 }
-if (!tray.includes("Listening volume")) {
-  stop("local listening-volume control missing");
+if (tray.includes("<audio") || tray.includes("href={seed.buyUrl}")) {
+  stop("audio or checkout escaped the TP/CC boundary hold");
 }
 if (!governance.includes("No other source form is eligible for a BUG")) {
   stop("BUG source restriction missing");
@@ -166,6 +166,7 @@ console.log(`HUG choices: ${totalSeeds}`);
 console.log("HUG choice inventory: 104 distinct full KKs");
 console.log("Phrase/line/TRM choices: 0");
 console.log("Visible choices per tray: 3");
+console.log("Public audio and checkout: HELD FOR TP/CC REVALIDATION");
 console.log("HUG: KK/KOMBO · $7.99");
 console.log("TUG: sK · $4.99");
 console.log("BUG: mK from TRM/XCLM/VSND only · $1.99");
