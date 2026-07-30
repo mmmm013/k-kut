@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
+import { headers } from 'next/headers';
 import './globals.css';
 import SingleAudioPlaybackGuard from "@/components/SingleAudioPlaybackGuard";
 
@@ -18,11 +19,29 @@ export const viewport: Viewport = {
   themeColor: '#0a0a0a',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const HUGZ_HOSTS = new Set(['13hugz.com', 'www.13hugz.com']);
+
+function normalizedHost(headerList: Awaited<ReturnType<typeof headers>>) {
+  return (
+    headerList.get('x-vercel-forwarded-host') ||
+    headerList.get('x-forwarded-host') ||
+    headerList.get('host') ||
+    ''
+  )
+    .split(',')[0]
+    .trim()
+    .toLowerCase()
+    .split(':')[0];
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const host = normalizedHost(await headers());
+  const isHugzHost = HUGZ_HOSTS.has(host);
+
   return (
     <html lang="en">
       <body className="bg-[#0a0a0a] text-[#F5e6c8] antialiased min-h-screen">
-        <header className="sticky top-0 z-50 border-b border-amber-300/20 bg-[#0a0a0a]/90 px-5 py-3 backdrop-blur">
+        {!isHugzHost && <header className="sticky top-0 z-50 border-b border-amber-300/20 bg-[#0a0a0a]/90 px-5 py-3 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
             <a href="/" className="text-lg font-black tracking-[0.22em] text-amber-200">
               GPM
@@ -73,11 +92,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </a>
             </div>
           </nav>
-        </header>
+        </header>}
 
         {children}
+        {isHugzHost && (
+          <footer className="border-t border-amber-300/15 bg-[#050408] px-5 py-4 text-center text-xs font-bold text-amber-50/55">
+            <nav aria-label="13HUGz legal" className="flex items-center justify-center gap-5">
+              <a className="transition hover:text-amber-200" href="/privacy">Privacy</a>
+              <a className="transition hover:text-amber-200" href="/terms">Terms</a>
+              <a className="transition hover:text-amber-200" href="mailto:reachus@gputnammusic.com">Contact</a>
+            </nav>
+          </footer>
+        )}
         <SingleAudioPlaybackGuard />
-          <Analytics />
+        <Analytics />
       </body>
     </html>
   );

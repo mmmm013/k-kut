@@ -14,6 +14,20 @@ const HUGZ_HOSTS = new Set([
   "www.13hugz.com",
 ]);
 
+const HUGZ_KKUT_ONLY_PREFIXES = [
+  "/find",
+  "/personal",
+  "/holiday",
+  "/themes",
+  "/kupid",
+  "/wedding",
+  "/hug",
+  "/browse",
+  "/pix",
+  "/mkut",
+  "/sentimeant",
+];
+
 const VEKTOR_HOSTS = new Set([
   "2gdp.com",
   "www.2gdp.com",
@@ -23,7 +37,16 @@ const VEKTOR_URL = "https://mc-vektor.vercel.app/the-vektor";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const host = request.headers.get("host")?.toLowerCase().split(":")[0] || "";
+  const host = (
+    request.headers.get("x-vercel-forwarded-host") ||
+    request.headers.get("x-forwarded-host") ||
+    request.headers.get("host") ||
+    ""
+  )
+    .split(",")[0]
+    .trim()
+    .toLowerCase()
+    .split(":")[0];
 
   if (HUGZ_HOSTS.has(host) && (pathname === "/" || pathname === "")) {
     const url = request.nextUrl.clone();
@@ -33,6 +56,18 @@ export function middleware(request: NextRequest) {
     const response = NextResponse.rewrite(url);
     response.headers.set("X-13HUGz-Route", "rotating-hugz");
     return response;
+  }
+
+  if (
+    HUGZ_HOSTS.has(host) &&
+    HUGZ_KKUT_ONLY_PREFIXES.some(
+      (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
+    )
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    url.search = "";
+    return NextResponse.redirect(url, 307);
   }
 
   if (VEKTOR_HOSTS.has(host) && (pathname === "/" || pathname === "")) {
@@ -78,5 +113,13 @@ export const config = {
     "/pix/:path*",
     "/mkut/:path*",
     "/sentimeant/:path*",
+    "/find/:path*",
+    "/personal/:path*",
+    "/holiday/:path*",
+    "/themes/:path*",
+    "/kupid/:path*",
+    "/wedding/:path*",
+    "/hug/:path*",
+    "/browse/:path*",
   ],
 };
