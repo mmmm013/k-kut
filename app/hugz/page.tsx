@@ -3,7 +3,7 @@ import HugzRotatingLanding from "@/components/HugzRotatingLanding";
 export const metadata = {
   title: "13 HUGz Cards | K-KUT",
   description:
-    "Choose a sentiment HUGz Card, compare three matching $7.99 HUG choices at a time, and send the selected music.",
+    "Explore 13 sentiment HUGz Cards while their KK and KOMBO vocal boundaries complete quality review.",
 };
 
 export default function HugzPage() {
