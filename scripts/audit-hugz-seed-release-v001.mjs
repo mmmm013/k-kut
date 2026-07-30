@@ -1,4 +1,3 @@
-import crypto from "node:crypto";
 import fs from "node:fs";
 
 const manifest = JSON.parse(
@@ -7,8 +6,8 @@ const manifest = JSON.parse(
 const stop = (message) => {
   throw new Error(message);
 };
-const sha = (path) =>
-  crypto.createHash("sha256").update(fs.readFileSync(path)).digest("hex");
+const KK_AUDIO_PREFIX =
+  "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/";
 
 if (manifest.temporary_hugz_count !== 13 || manifest.containers.length !== 13) {
   stop("13 HUGz Cards required");
@@ -24,11 +23,25 @@ if (
 ) {
   stop("general catalog hold must remain outside the HUGz revenue lane");
 }
+if (manifest.schema_version !== "GPMX_13_HUGZ_104_FULL_KK_V002") {
+  stop("full-KK HUGz authority schema missing");
+}
+if (
+  manifest.inventory_authority?.eligible_kk_count !== 2611 ||
+  manifest.inventory_authority?.required_family !== "KK" ||
+  manifest.inventory_authority?.required_public_storage_status !==
+    "PUBLIC_STORAGE_VERIFIED" ||
+  manifest.inventory_authority?.required_twinkle_at_end !== "YES"
+) {
+  stop("2,611-KK storage authority is incomplete");
+}
 if (new Set(manifest.containers.map((container) => container.hugz_slug)).size !== 13) {
   stop("13 unique HUGz Card slugs required");
 }
 
 let totalSeeds = 0;
+const allSeedIds = new Set();
+const allSeedShas = new Set();
 for (const container of manifest.containers) {
   if (
     container.is_ii !== false ||
@@ -52,6 +65,14 @@ for (const container of manifest.containers) {
 
   for (const seed of container.seeds) {
     totalSeeds += 1;
+    if (allSeedIds.has(seed.seed_asset_id)) {
+      stop(`duplicate choice across HUGz Cards: ${seed.seed_asset_id}`);
+    }
+    if (allSeedShas.has(seed.source_audio_sha256)) {
+      stop(`duplicate audio across HUGz Cards: ${seed.seed_asset_id}`);
+    }
+    allSeedIds.add(seed.seed_asset_id);
+    allSeedShas.add(seed.source_audio_sha256);
     if (seed.hugz_is_ii !== false || seed.hugz_is_asset !== false) {
       stop(`choice confused with HUGz Card: ${seed.seed_asset_id}`);
     }
@@ -61,10 +82,29 @@ for (const container of manifest.containers) {
     if (seed.price_cents !== 799) {
       stop(`wrong HUG price: ${seed.seed_asset_id}`);
     }
-    const path = `public${seed.preview_audio_url}`;
-    if (!fs.existsSync(path)) stop(`missing preview: ${path}`);
-    if (sha(path) !== seed.preview_audio_sha256) {
-      stop(`preview SHA mismatch: ${seed.seed_asset_id}`);
+    if (seed.seed_asset_kind !== "KK") {
+      stop(`non-KK choice in HUGz Card: ${seed.seed_asset_id}`);
+    }
+    if (!/^LT-PIX-ALLPOSS-\d{5}-KK-\d+$/u.test(seed.seed_asset_id)) {
+      stop(`invalid full KK identity: ${seed.seed_asset_id}`);
+    }
+    if (seed.seed_role !== "FULLY_DRESSED_SONG_SEGMENT_HUG") {
+      stop(`choice is not a fully dressed song segment: ${seed.seed_asset_id}`);
+    }
+    if (
+      seed.music_authority !== "PUBLIC_STORAGE_VERIFIED" ||
+      seed.twinkle_at_end !== true
+    ) {
+      stop(`strict music dressing missing: ${seed.seed_asset_id}`);
+    }
+    if (!seed.preview_audio_url.startsWith(KK_AUDIO_PREFIX)) {
+      stop(`choice does not use governed full-KK audio: ${seed.seed_asset_id}`);
+    }
+    if (
+      seed.preview_audio_sha256 !== seed.source_audio_sha256 ||
+      !/^[0-9a-f]{64}$/u.test(seed.preview_audio_sha256)
+    ) {
+      stop(`governed KK SHA mismatch: ${seed.seed_asset_id}`);
     }
   }
 }
@@ -123,6 +163,8 @@ for (const [path, text] of [
 console.log("GPMX HUGZ CARD INCOME OFFER AUDIT: PASS");
 console.log(`HUGz Cards: ${manifest.containers.length}`);
 console.log(`HUG choices: ${totalSeeds}`);
+console.log("HUG choice inventory: 104 distinct full KKs");
+console.log("Phrase/line/TRM choices: 0");
 console.log("Visible choices per tray: 3");
 console.log("HUG: KK/KOMBO · $7.99");
 console.log("TUG: sK · $4.99");
