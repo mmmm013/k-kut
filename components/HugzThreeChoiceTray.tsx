@@ -9,10 +9,6 @@ type HugzSeed = {
   assetId: string;
   assetKind: string;
   excerpt: string;
-  previewUrl: string;
-  buyUrl: string;
-  price: string;
-  reference: string;
 };
 
 export default function HugzThreeChoiceTray({
@@ -59,7 +55,7 @@ export default function HugzThreeChoiceTray({
             {HUGZ_BOUNDARY_HOLD.publicMessage}
           </p>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-[#BCAAA4]">
-            Playback and checkout remain closed until each exact KK or KOMBO passes TP and CC verification.
+            Checkout verifies the exact selected II against the governed public catalog before payment.
           </p>
         </div>
       </div>
@@ -75,8 +71,18 @@ export default function HugzThreeChoiceTray({
             </p>
             <p className="mt-3 flex-1 text-xl font-black leading-8">“{seed.excerpt}”</p>
             <div className="mt-5 rounded-xl border border-[#FFD54F]/35 bg-black/25 px-4 py-4 text-sm font-black text-[#FFF8E1]">
-              Audio and {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} checkout held for exact vocal-boundary approval.
+              Audio preview held for exact vocal-boundary approval.
             </div>
+            <form action="/checkout" method="post" className="mt-4">
+              <input type="hidden" name="ii" value={seed.assetId} />
+              <input type="hidden" name="offer" value="kk" />
+              <button
+                type="submit"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
+              >
+                Choose this HUG · {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}
+              </button>
+            </form>
           </article>
         ))}
       </div>

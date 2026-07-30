@@ -58,7 +58,12 @@ export default async function HugzContainerPage({
 
         <div className="mt-8">
           <HugzThreeChoiceTray
-            seeds={container.seeds}
+            seeds={container.seeds.map((seed) => ({
+              rank: seed.rank,
+              assetId: seed.assetId,
+              assetKind: seed.assetKind,
+              excerpt: seed.excerpt,
+            }))}
             cardHeadline={container.headline}
           />
         </div>
