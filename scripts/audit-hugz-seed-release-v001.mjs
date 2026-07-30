@@ -1,8 +1,8 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 
-const pool = JSON.parse(
-  fs.readFileSync("data/sentimeant/strict-kk-pool-v001.json", "utf8"),
+const manifest = JSON.parse(
+  fs.readFileSync("data/hugz/hugz-seed-catalog-v001.json", "utf8"),
 );
 const stop = (message) => {
   throw new Error(message);
@@ -10,52 +10,120 @@ const stop = (message) => {
 const sha = (path) =>
   crypto.createHash("sha256").update(fs.readFileSync(path)).digest("hex");
 
-if (pool.status !== "GD_AUTHORIZED_TEMPORARY_KK_RELEASE") stop("strict KK authority missing");
-if (pool.story_count !== 13 || pool.audio_count !== 13 || pool.rows.length !== 13) {
-  stop("exactly 13 strict KKs required");
+if (manifest.temporary_hugz_count !== 13 || manifest.containers.length !== 13) {
+  stop("13 HUGz Cards required");
 }
-if (pool.general_2611_catalog_status !== "BLOCKED") stop("general 2,611 catalog hold lost");
-if (pool.checkout_status !== "BLOCKED_SEPARATE_PROOF_REQUIRED") {
-  stop("checkout must remain held until separate proof passes");
+if (manifest.terminology_lock.HUGz_is_II !== false) {
+  stop("HUGz Card must never be classified as an II");
 }
-
-const kkIds = new Set();
-const sourceShas = new Set();
-for (const row of pool.rows) {
-  if (!row.kk_id.includes("-KK-")) stop(`non-KK item found: ${row.kk_id}`);
-  if (row.source_music_gate_status !== "MUSIC_PASS_STRICT_AUDIO_GATE") {
-    stop(`music gate failed: ${row.kk_id}`);
-  }
-  if (row.twinkle_at_end !== true || row.twinkle_sha256 !== pool.twinkle_sha256) {
-    stop(`Twinkle proof failed: ${row.kk_id}`);
-  }
-  if (row.checkout_status !== "BLOCKED_SEPARATE_PROOF_REQUIRED") {
-    stop(`unproven checkout exposed: ${row.kk_id}`);
-  }
-  if (kkIds.has(row.kk_id)) stop(`duplicate KK ID: ${row.kk_id}`);
-  if (sourceShas.has(row.source_audio_sha256)) stop(`duplicate source audio: ${row.kk_id}`);
-  kkIds.add(row.kk_id);
-  sourceShas.add(row.source_audio_sha256);
-
-  const path = `public${row.delivery_audio_url}`;
-  if (!fs.existsSync(path)) stop(`missing strict KK audio: ${path}`);
-  if (sha(path) !== row.delivery_audio_sha256) stop(`delivery SHA mismatch: ${row.kk_id}`);
+if (manifest.terminology_lock.HUGz_is_HUG !== false) {
+  stop("HUGz Card must never be classified as the purchased HUG");
+}
+if (
+  manifest.general_catalog_status !== "HOLD_OUTSIDE_HUGZ_TEMP_REVENUE_LANE"
+) {
+  stop("general catalog hold must remain outside the HUGz revenue lane");
+}
+if (new Set(manifest.containers.map((container) => container.hugz_slug)).size !== 13) {
+  stop("13 unique HUGz Card slugs required");
 }
 
-const catalog = fs.readFileSync("lib/hugzSeedCatalog.ts", "utf8");
+let totalSeeds = 0;
+for (const container of manifest.containers) {
+  if (
+    container.is_ii !== false ||
+    container.is_media_asset !== false ||
+    container.is_hug_dp !== false
+  ) {
+    stop(`HUGz Card identity violation: ${container.hugz_slug}`);
+  }
+  if (container.seed_count < 3 || container.seeds.length < 3) {
+    stop(`HUGz Card must contain at least three choices: ${container.hugz_slug}`);
+  }
+  if (new Set(container.seeds.map((seed) => seed.seed_asset_id)).size !== container.seeds.length) {
+    stop(`duplicate choice inside HUGz Card: ${container.hugz_slug}`);
+  }
+  if (
+    new Set(container.seeds.map((seed) => seed.source_audio_sha256)).size !==
+    container.seeds.length
+  ) {
+    stop(`duplicate source audio inside HUGz Card: ${container.hugz_slug}`);
+  }
+
+  for (const seed of container.seeds) {
+    totalSeeds += 1;
+    if (seed.hugz_is_ii !== false || seed.hugz_is_asset !== false) {
+      stop(`choice confused with HUGz Card: ${seed.seed_asset_id}`);
+    }
+    if (!seed.hug_dp_payment_url.includes("client_reference_id=")) {
+      stop(`missing exact selected-II payment reference: ${seed.seed_asset_id}`);
+    }
+    if (seed.price_cents !== 799) {
+      stop(`wrong HUG price: ${seed.seed_asset_id}`);
+    }
+    const path = `public${seed.preview_audio_url}`;
+    if (!fs.existsSync(path)) stop(`missing preview: ${path}`);
+    if (sha(path) !== seed.preview_audio_sha256) {
+      stop(`preview SHA mismatch: ${seed.seed_asset_id}`);
+    }
+  }
+}
+
+if (totalSeeds !== manifest.total_seed_options || totalSeeds !== 104) {
+  stop("104 existing HUG choices required");
+}
+
+const offerLaw = fs.readFileSync("lib/productOfferLaw.ts", "utf8");
+const detail = fs.readFileSync("app/hugz/[slug]/page.tsx", "utf8");
 const tray = fs.readFileSync("components/HugzThreeChoiceTray.tsx", "utf8");
-if (catalog.includes("KKr-PHR") || catalog.includes("KKr-1LN")) {
-  stop("phrase or line candidates remain in HUGz eligibility");
-}
-if (!catalog.includes('assetKind: "KK"')) stop("strict KK mapping missing");
-if (!tray.includes("Checkout held")) stop("checkout hold is not visible");
-if (tray.includes("href={seed.buyUrl}")) stop("unproven checkout link remains active");
+const governance = fs.readFileSync(
+  "docs/site-governance/K_KUT_HUG_TUG_BUG_OFFER_LAW_V001.md",
+  "utf8",
+);
 
-console.log("HUGZ STRICT KK CORRECTION AUDIT: PASS");
-console.log("HUGz Cards: 13");
-console.log("Proven strict-music KKs: 13");
-console.log("Duplicate KK IDs: 0");
-console.log("Duplicate source audio SHAs: 0");
-console.log("Phrase/line HUG choices: 0");
-console.log("Checkout: BLOCKED_SEPARATE_PROOF_REQUIRED");
-console.log("Production deployment authorized: NO");
+for (const required of [
+  'priceCents: 799',
+  'priceCents: 499',
+  'priceCents: 199',
+  '["KK", "KOMBO"]',
+  '["sK"]',
+  '["TRM", "XCLM", "VSND"]',
+  'optionsVisibleAtOnce: 3',
+]) {
+  if (!offerLaw.includes(required)) stop(`offer law missing: ${required}`);
+}
+
+if (!detail.includes("HugzThreeChoiceTray")) {
+  stop("HUGz Card detail must use the three-choice tray");
+}
+if (!detail.includes("Choose one KK or KOMBO")) {
+  stop("HUGz Card must state that HUG choices are KKs or KOMBOs");
+}
+if (!tray.includes("Choose this HUG")) {
+  stop("$7.99 HUG checkout action missing");
+}
+if (!tray.includes("Listening volume")) {
+  stop("local listening-volume control missing");
+}
+if (!governance.includes("No other source form is eligible for a BUG")) {
+  stop("BUG source restriction missing");
+}
+if (!governance.includes("no obsolete $12.99 offer is displayed or sold")) {
+  stop("obsolete $12.99 prohibition missing from governance");
+}
+
+for (const [path, text] of [
+  ["offer law", offerLaw],
+  ["HUGz detail", detail],
+  ["HUGz tray", tray],
+]) {
+  if (text.includes("12.99")) stop(`obsolete $12.99 found in ${path}`);
+}
+
+console.log("GPMX HUGZ CARD INCOME OFFER AUDIT: PASS");
+console.log(`HUGz Cards: ${manifest.containers.length}`);
+console.log(`HUG choices: ${totalSeeds}`);
+console.log("Visible choices per tray: 3");
+console.log("HUG: KK/KOMBO · $7.99");
+console.log("TUG: sK · $4.99");
+console.log("BUG: mK from TRM/XCLM/VSND only · $1.99");
