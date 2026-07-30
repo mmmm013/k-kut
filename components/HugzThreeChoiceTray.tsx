@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
+import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 import { HUGZ_CARD_RULES, PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
 
 type HugzSeed = {
@@ -22,8 +23,6 @@ export default function HugzThreeChoiceTray({
   cardHeadline: string;
 }) {
   const [startIndex, setStartIndex] = useState(0);
-  const [volumeStep, setVolumeStep] = useState(6);
-  const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
 
   const visibleSeeds = useMemo(() => {
     if (seeds.length === 0) return [];
@@ -33,27 +32,11 @@ export default function HugzThreeChoiceTray({
     });
   }, [seeds, startIndex]);
 
-  useEffect(() => {
-    const volume = volumeStep / 8;
-    Object.values(audioRefs.current).forEach((audio) => {
-      if (audio) audio.volume = volume;
-    });
-  }, [volumeStep, visibleSeeds]);
-
   const move = (direction: 1 | -1) => {
     if (seeds.length <= HUGZ_CARD_RULES.optionsVisibleAtOnce) return;
     setStartIndex((current) => {
       const next = current + direction * HUGZ_CARD_RULES.optionsVisibleAtOnce;
       return ((next % seeds.length) + seeds.length) % seeds.length;
-    });
-  };
-
-  const stopOtherAudio = (activeAssetId: string) => {
-    Object.entries(audioRefs.current).forEach(([assetId, audio]) => {
-      if (assetId !== activeAssetId && audio && !audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
     });
   };
 
@@ -68,29 +51,16 @@ export default function HugzThreeChoiceTray({
   return (
     <section aria-label={`${cardHeadline} HUG choices`}>
       <div className="mb-5 rounded-[1.5rem] border border-[#FFD54F]/35 bg-[#120A06] p-5">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
-              Three HUG choices at a time
-            </p>
-            <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#D7CCC8]">
-              This HUGz Card is the container. Each choice below is one {PRODUCT_OFFER_LAW.HUG.customerName} for {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}.
-            </p>
-          </div>
-
-          <label className="min-w-52 text-xs font-black uppercase tracking-[0.16em] text-[#FFF8E1]">
-            Listening volume · {volumeStep}/8
-            <input
-              className="mt-2 block w-full accent-[#FFD54F]"
-              type="range"
-              min="0"
-              max="8"
-              step="1"
-              value={volumeStep}
-              onChange={(event) => setVolumeStep(Number(event.target.value))}
-              aria-label={`Listening volume ${volumeStep} of 8`}
-            />
-          </label>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
+            Boundary-quality review in progress
+          </p>
+          <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#D7CCC8]">
+            {HUGZ_BOUNDARY_HOLD.publicMessage}
+          </p>
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-[#BCAAA4]">
+            Playback and checkout remain closed until each exact KK or KOMBO passes TP and CC verification.
+          </p>
         </div>
       </div>
 
@@ -104,22 +74,9 @@ export default function HugzThreeChoiceTray({
               Choice {position + 1} of 3 · HUG
             </p>
             <p className="mt-3 flex-1 text-xl font-black leading-8">“{seed.excerpt}”</p>
-            <audio
-              ref={(audio) => {
-                audioRefs.current[seed.assetId] = audio;
-              }}
-              className="mt-5 w-full"
-              controls
-              preload="metadata"
-              src={seed.previewUrl}
-              onPlay={() => stopOtherAudio(seed.assetId)}
-            />
-            <a
-              href={seed.buyUrl}
-              className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
-            >
-              Choose this HUG · {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}
-            </a>
+            <div className="mt-5 rounded-xl border border-[#FFD54F]/35 bg-black/25 px-4 py-4 text-sm font-black text-[#FFF8E1]">
+              Audio and {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} checkout held for exact vocal-boundary approval.
+            </div>
           </article>
         ))}
       </div>
