@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import HugzThreeChoiceTray from "@/components/HugzThreeChoiceTray";
 import { getHugzContainer, hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
 import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
+import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 
 export function generateStaticParams() {
   return hugzSeedCatalog.map((container) => ({ slug: container.slug }));
@@ -46,7 +47,10 @@ export default async function HugzContainerPage({
                 This HUGz Card organizes matching sentiment choices. It is not an II and it is not the music.
               </p>
               <p className="mt-2">
-                Choose one KK or KOMBO packaged as a {PRODUCT_OFFER_LAW.HUG.customerName} for {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}.
+                Choose one KK or KOMBO packaged as a {PRODUCT_OFFER_LAW.HUG.customerName} for {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} after its exact TP and CC boundary approval passes.
+              </p>
+              <p className="mt-2 text-[#FFD54F]">
+                {HUGZ_BOUNDARY_HOLD.publicMessage}
               </p>
             </div>
           </div>
