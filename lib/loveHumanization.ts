@@ -86,7 +86,7 @@ export type LoveLevel = {
 
 export const loveHumanization = rawLoveHumanization as LoveHumanizationData;
 
-const STEP_ORDER = ["direction", "scene", "tone", "intensity", "directness"] as const;
+const LINEAR_STEPS = ["tone", "intensity", "directness"] as const;
 
 function asTriad(choices: LoveChoice[]): [LoveChoice, LoveChoice, LoveChoice] {
   if (choices.length !== 3) {
@@ -122,7 +122,7 @@ export function getNextLoveStep(selections: LoveSelection[]): LovePathStep | nul
     };
   }
 
-  for (const stepId of STEP_ORDER.slice(2)) {
+  for (const stepId of LINEAR_STEPS) {
     if (selected.has(stepId)) continue;
 
     const step = loveHumanization.path_steps[stepId];
@@ -207,6 +207,10 @@ export function rankLoveLevels(selections: LoveSelection[], limit = 3): LoveLeve
   }
 
   return selected;
+}
+
+export function getLoveLevel(levelId: string): LoveLevel | null {
+  return flattenLoveLevels().find((level) => level.id === levelId) ?? null;
 }
 
 export function getAdjacentLoveLevels(levelId: string): LoveLevel[] {
