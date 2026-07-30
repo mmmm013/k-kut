@@ -1,0 +1,326 @@
+{
+  "system": "LOVE HUGz Humanization",
+  "version": "V001",
+  "status": "ADMIN_REVIEW_ONLY",
+  "theme_anchor": "LOVE",
+  "public_checkout_allowed": false,
+  "rules": {
+    "choices_per_set": 3,
+    "minimum_mgs_dimensions_per_music_candidate": 3,
+    "match_broadly_rank_narrowly": true,
+    "stay_inside_theme": true,
+    "unsupported_semantic_assignment_allowed": false,
+    "local_playback_volume_steps": 8,
+    "delivered_audio_gain_changes_allowed": false,
+    "public_release_requires_separate_dp": true
+  },
+  "mgs_dimensions": [
+    "situation",
+    "relationship",
+    "slant",
+    "presentation",
+    "intensity",
+    "directness",
+    "risk_and_exclusion"
+  ],
+  "families": [
+    {
+      "id": "attraction-spark",
+      "label": "Attraction & Spark",
+      "human_promise": "I want them to feel the pull between us.",
+      "match_tokens": ["play", "night-out", "spontaneous", "bold-intimate", "clear", "deep", "direct-words"],
+      "level_names": [
+        "Noticing",
+        "Curiosity",
+        "First Spark",
+        "Mutual Interest",
+        "Flirtation",
+        "Anticipation",
+        "Chemistry",
+        "Magnetic Pull",
+        "Bold Desire",
+        "Can't-Wait Closeness"
+      ]
+    },
+    {
+      "id": "affection-tenderness",
+      "label": "Affection & Tenderness",
+      "human_promise": "I want them to feel gently and unmistakably loved.",
+      "match_tokens": ["care", "choose", "quiet-time", "tender-romantic", "gentle", "clear", "through-actions"],
+      "level_names": [
+        "Fondness",
+        "Sweetness",
+        "Gentle Attention",
+        "Caring Touch",
+        "Soft Reassurance",
+        "Warm Closeness",
+        "Tender Pride",
+        "Cherishing",
+        "Deep Affection",
+        "Treasured Love"
+      ]
+    },
+    {
+      "id": "playful-delight",
+      "label": "Playfulness & Shared Delight",
+      "human_promise": "I want them to remember how good it feels to have fun together.",
+      "match_tokens": ["play", "night-out", "at-home-fun", "spontaneous", "casual-real", "bold-intimate", "clear"],
+      "level_names": [
+        "Shared Smile",
+        "Inside Joke",
+        "Teasing",
+        "Being Silly",
+        "Spontaneous Fun",
+        "Off-Key Together",
+        "Dancing Anywhere",
+        "Playful Date Night",
+        "Flirty Fun",
+        "Joyful Partnership"
+      ]
+    },
+    {
+      "id": "care-restoration",
+      "label": "Care & Restoration",
+      "human_promise": "I want them to feel cared for after life has taken too much out of them.",
+      "match_tokens": ["care", "hard-week", "quiet-time", "show-up", "casual-real", "tender-romantic", "gentle", "through-actions"],
+      "level_names": [
+        "Checking In",
+        "Listening",
+        "Helping Them Exhale",
+        "Comfort After a Hard Day",
+        "Taking Care of Details",
+        "Making Room to Rest",
+        "Protective Care",
+        "Steady Support",
+        "Restorative Love",
+        "I Will Carry This With You"
+      ]
+    },
+    {
+      "id": "presence-companionship",
+      "label": "Presence & Companionship",
+      "human_promise": "I want them to know being together is enough.",
+      "match_tokens": ["care", "choose", "quiet-time", "at-home-fun", "everyday-priority", "casual-real", "gentle", "through-actions"],
+      "level_names": [
+        "Thinking of You",
+        "Sitting Together",
+        "Quiet Company",
+        "Ordinary Time",
+        "Shared Routine",
+        "Staying In Together",
+        "Wherever We Go",
+        "Every Moment Matters",
+        "Life Companion",
+        "Home in Each Other"
+      ]
+    },
+    {
+      "id": "appreciation-admiration",
+      "label": "Appreciation & Admiration",
+      "human_promise": "I want them to feel seen and valued for who they are.",
+      "match_tokens": ["care", "choose", "show-up", "everyday-priority", "tender-romantic", "clear", "direct-words"],
+      "level_names": [
+        "I See You",
+        "Thank You for the Small Things",
+        "Admiring Your Strength",
+        "Proud of You",
+        "Valuing Your Heart",
+        "Gratitude for Us",
+        "Celebrating Who You Are",
+        "Honoring Your Effort",
+        "Deep Appreciation",
+        "I Don't Take You for Granted"
+      ]
+    },
+    {
+      "id": "trust-safety",
+      "label": "Trust & Emotional Safety",
+      "human_promise": "I want them to feel safe, accepted, and able to exhale with me.",
+      "match_tokens": ["care", "hard-week", "show-up", "quiet-time", "tender-romantic", "gentle", "through-actions"],
+      "level_names": [
+        "You Can Be Yourself",
+        "I Will Listen",
+        "I Understand",
+        "No Need to Perform",
+        "Safe to Be Vulnerable",
+        "Accepted Fully",
+        "Reliable Presence",
+        "Emotional Shelter",
+        "Known and Loved",
+        "Peace With You"
+      ]
+    },
+    {
+      "id": "choosing-commitment",
+      "label": "Choosing & Commitment",
+      "human_promise": "I want them to know I choose us on purpose.",
+      "match_tokens": ["choose", "everyday-priority", "still-choosing", "final-destination", "tender-romantic", "deep", "full-declaration"],
+      "level_names": [
+        "I Prefer You",
+        "I Choose Our Time",
+        "We Are a Team",
+        "I Keep Choosing You",
+        "Loyal Love",
+        "Building Together",
+        "A Future With You",
+        "Promise",
+        "Lifelong Partnership",
+        "Forever-Facing Love"
+      ]
+    },
+    {
+      "id": "repair-endurance",
+      "label": "Repair & Endurance",
+      "human_promise": "I want love to remain present while we work through something real.",
+      "match_tokens": ["care", "choose", "show-up", "still-choosing", "tender-romantic", "deep", "direct-words"],
+      "level_names": [
+        "I Still Care",
+        "I Want to Understand",
+        "Gentle Apology",
+        "Making Room for Truth",
+        "Forgiveness",
+        "Reconnecting",
+        "Rebuilding Trust",
+        "Staying Through Hard Seasons",
+        "Love That Endures",
+        "Renewed Commitment"
+      ]
+    },
+    {
+      "id": "belonging-devotion",
+      "label": "Belonging & Life Devotion",
+      "human_promise": "I want them to know they are home, destination, and whole-life love to me.",
+      "match_tokens": ["choose", "final-destination", "still-choosing", "everyday-priority", "tender-romantic", "deep", "full-declaration"],
+      "level_names": [
+        "You Are My Person",
+        "You Feel Like Home",
+        "My Safe Place",
+        "My Favorite Place to Be",
+        "Every Memory With You",
+        "My Destination",
+        "Whole-Life Love",
+        "Deep Belonging",
+        "Life Devotion",
+        "Final Destination"
+      ]
+    }
+  ],
+  "path_steps": {
+    "direction": {
+      "prompt": "What kind of love do you want them to feel first?",
+      "choices": [
+        {"id": "care", "label": "Take care of them", "detail": "They need comfort, rest, reassurance, or steady presence."},
+        {"id": "play", "label": "Have fun together", "detail": "You want laughter, chemistry, play, or a shared adventure."},
+        {"id": "choose", "label": "Tell them they're your person", "detail": "You want to communicate priority, commitment, belonging, or devotion."}
+      ]
+    },
+    "scene_by_direction": {
+      "care": {
+        "prompt": "What kind of care feels most true?",
+        "choices": [
+          {"id": "hard-week", "label": "Help them unwind", "detail": "A hard day or hard week has taken a lot out of them."},
+          {"id": "show-up", "label": "Promise you'll be there", "detail": "They need reliable presence more than a perfect solution."},
+          {"id": "quiet-time", "label": "Choose quiet time together", "detail": "Resting together says more than making elaborate plans."}
+        ]
+      },
+      "play": {
+        "prompt": "What kind of fun belongs to the two of you?",
+        "choices": [
+          {"id": "night-out", "label": "Go out and make a night of it", "detail": "Music, dancing, karaoke, dinner, or a lively shared scene."},
+          {"id": "at-home-fun", "label": "Stay in and make your own fun", "detail": "The plan matters less than the person beside you."},
+          {"id": "spontaneous", "label": "Follow the moment", "detail": "You want playful freedom without overplanning the night."}
+        ]
+      },
+      "choose": {
+        "prompt": "What kind of choosing do you mean?",
+        "choices": [
+          {"id": "everyday-priority", "label": "You matter more than the plans", "detail": "The destination and activity are secondary to being together."},
+          {"id": "still-choosing", "label": "I keep choosing you", "detail": "Love is an ongoing decision, not only a special occasion."},
+          {"id": "final-destination", "label": "You're where I'm headed", "detail": "This is destination-level belonging and future-facing devotion."}
+        ]
+      }
+    },
+    "tone": {
+      "prompt": "How should the love feel when it lands?",
+      "choices": [
+        {"id": "casual-real", "label": "Casual and real", "detail": "Everyday language, familiar life, and no need to overperform."},
+        {"id": "tender-romantic", "label": "Romantic and tender", "detail": "Warm, affectionate, and clearly meant for a partner."},
+        {"id": "bold-intimate", "label": "Bold and intimate", "detail": "Private chemistry, desire, and stronger romantic charge."}
+      ]
+    },
+    "intensity": {
+      "prompt": "How strong should the message be?",
+      "choices": [
+        {"id": "gentle", "label": "Warm, not too strong", "detail": "Easy to receive without creating pressure."},
+        {"id": "clear", "label": "Clearly affectionate", "detail": "The love is unmistakable but still measured."},
+        {"id": "deep", "label": "Deeply felt", "detail": "A serious emotional statement with greater weight."}
+      ]
+    },
+    "directness": {
+      "prompt": "How directly should the music say it?",
+      "choices": [
+        {"id": "through-actions", "label": "Show it through a shared moment", "detail": "Let the scene and behavior carry most of the meaning."},
+        {"id": "direct-words", "label": "Say it clearly", "detail": "Use unmistakable words without making it a vow."},
+        {"id": "full-declaration", "label": "Make it a full declaration", "detail": "Use destination, permanence, belonging, or whole-life language."}
+      ]
+    }
+  },
+  "review_candidates": [
+    {
+      "candidate_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "title": "YOUR HEART POUNDIN'",
+      "status": "ADMIN_AUDIO_REVIEW_CANDIDATE",
+      "preview_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+      "public_checkout_allowed": false,
+      "supported_family_ids": [
+        "attraction-spark",
+        "playful-delight",
+        "presence-companionship",
+        "choosing-commitment",
+        "belonging-devotion"
+      ],
+      "match_choice_ids": [
+        "play",
+        "choose",
+        "night-out",
+        "at-home-fun",
+        "spontaneous",
+        "everyday-priority",
+        "final-destination",
+        "tender-romantic",
+        "bold-intimate",
+        "clear",
+        "deep",
+        "direct-words",
+        "full-declaration"
+      ],
+      "mgs_evidence": [
+        {
+          "dimension": "situation",
+          "tags": ["date-night possibilities", "ordinary shared time", "choosing together over outside plans"],
+          "source": "GD-provided full lyric"
+        },
+        {
+          "dimension": "relationship",
+          "tags": ["established romantic partner", "comfortable familiarity", "mutual private closeness"],
+          "source": "GD-provided full lyric"
+        },
+        {
+          "dimension": "slant",
+          "tags": ["playful", "sensual", "destination-level devotion"],
+          "source": "GD-provided full lyric"
+        }
+      ],
+      "exclusions": [
+        "friendship",
+        "family love",
+        "grief",
+        "apology-only",
+        "workplace use",
+        "minor recipient",
+        "unsupported early-relationship commitment"
+      ],
+      "note": "Existing materialized audio is preserved. Exact BLK, KK, or KOMBO binding remains a separate TP-, MGS-, and GD-controlled decision."
+    }
+  ]
+}
