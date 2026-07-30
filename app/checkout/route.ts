@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
+import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
 
@@ -193,7 +194,10 @@ async function governedCheckout(
     return returnToStore(request, "personal-note-over-13-words");
   }
 
-  const verifiedFamily = await verifiedInventoryFamily(inventoryId);
+  const publicationOption = findApprovedPublicOptionByInventoryId(inventoryId);
+  const verifiedFamily =
+    (await verifiedInventoryFamily(inventoryId)) ||
+    (publicationOption ? "KK" : "");
 
   if (!verifiedFamily) {
     return returnToStore(request, "selection-unavailable");
@@ -205,7 +209,10 @@ async function governedCheckout(
     return returnToStore(request, "offer-inventory-mismatch");
   }
 
-  if (!config.paymentUrl) {
+  const paymentUrl =
+    publicationOption?.stripe_url_if_payment_allowed || config.paymentUrl;
+
+  if (!paymentUrl) {
     return returnToStore(request, "payment-link-unavailable");
   }
 
@@ -236,7 +243,7 @@ async function governedCheckout(
     return returnToStore(request, "pending-order-reference-invalid");
   }
 
-  const checkoutUrl = new URL(config.paymentUrl);
+  const checkoutUrl = new URL(paymentUrl);
 
   checkoutUrl.searchParams.set("client_reference_id", clientReference);
   checkoutUrl.searchParams.set("utm_source", BF_PROFILE);

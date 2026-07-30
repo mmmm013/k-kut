@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-tp-cc-hold",
+    "prebuild": "node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-tp-cc-hold && npm run audit:public-pathways",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
@@ -19,7 +19,8 @@
     "audit:sentimeant:13-strict-kk": "node scripts/audit-sentimeant-13-strict-kk-v001.mjs",
     "audit:hugz-seed-release": "node scripts/audit-hugz-seed-release-v001.mjs",
     "audit:hugz-rotating-landing": "node scripts/audit-hugz-rotating-landing-v002.mjs",
-    "audit:hugz-tp-cc-hold": "node scripts/audit-hugz-tp-cc-boundary-hold-v001.mjs"
+    "audit:hugz-tp-cc-hold": "node scripts/audit-hugz-tp-cc-boundary-hold-v001.mjs",
+    "audit:public-pathways": "node scripts/audit-public-top-level-pathways.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.0",

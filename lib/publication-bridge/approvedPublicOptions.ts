@@ -62,3 +62,21 @@ export function loadApprovedPublicOptions(publicRoute: string): ApprovedPublicOp
       return a.public_option_id.localeCompare(b.public_option_id);
     });
 }
+
+export function findApprovedPublicOptionByInventoryId(
+  inventoryId: string,
+): ApprovedPublicOption | null {
+  if (!fs.existsSync(BRIDGE_PATH)) return null;
+
+  const parsed = JSON.parse(fs.readFileSync(BRIDGE_PATH, "utf8")) as {
+    records?: ApprovedPublicOption[];
+  };
+
+  return (
+    (parsed.records || []).find(
+      (record) =>
+        isApproved(record) &&
+        record.kk_id_or_delivery_object_id === inventoryId,
+    ) || null
+  );
+}

@@ -77,12 +77,20 @@ export default function ApprovedPublicOptionGrid({
               src={record.audio_delivery_url}
             />
 
-            <a
-              className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
-              href={record.stripe_url_if_payment_allowed}
-            >
-              {buttonLabel}
-            </a>
+            <form action="/checkout" method="post" className="mt-5">
+              <input
+                type="hidden"
+                name="ii"
+                value={record.kk_id_or_delivery_object_id}
+              />
+              <input type="hidden" name="offer" value="kk" />
+              <button
+                type="submit"
+                className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
+              >
+                {buttonLabel}
+              </button>
+            </form>
           </article>
         ))}
       </div>
