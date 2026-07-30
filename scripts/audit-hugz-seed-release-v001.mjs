@@ -108,12 +108,14 @@ if (!tray.includes("Listening volume")) {
 if (!governance.includes("No other source form is eligible for a BUG")) {
   stop("BUG source restriction missing");
 }
+if (!governance.includes("no obsolete $12.99 offer is displayed or sold")) {
+  stop("obsolete $12.99 prohibition missing from governance");
+}
 
 for (const [path, text] of [
   ["offer law", offerLaw],
   ["HUGz detail", detail],
   ["HUGz tray", tray],
-  ["governance", governance],
 ]) {
   if (text.includes("12.99")) stop(`obsolete $12.99 found in ${path}`);
 }
