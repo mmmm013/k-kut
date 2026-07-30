@@ -84,7 +84,7 @@ export type LoveLevel = {
   score: number;
 };
 
-export const loveHumanization = rawLoveHumanization as LoveHumanizationData;
+export const loveHumanization = rawLoveHumanization as unknown as LoveHumanizationData;
 
 const LINEAR_STEPS = ["tone", "intensity", "directness"] as const;
 
