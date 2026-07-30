@@ -25,27 +25,38 @@ export default async function HugzContainerPage({
         </Link>
 
         <div className="mt-5 grid gap-7 lg:grid-cols-[0.82fr_1.18fr]">
-          <img src={container.imageUrl} alt="" className="w-full rounded-[2rem] object-cover" />
+          <img
+            src={container.imageUrl}
+            alt=""
+            className="w-full rounded-[2rem] object-cover"
+          />
+
           <div className="rounded-[2rem] border border-[#FFD54F]/35 bg-[#120A06] p-7">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#FFD54F]">
-              HUGz Card · 1 proven strict-music KK
+              HUGz Card · {container.seedCount} matching HUG choices
             </p>
-            <h1 className="mt-3 text-4xl font-black sm:text-6xl">{container.headline}</h1>
-            <p className="mt-4 text-lg font-bold leading-8 text-[#D7CCC8]">{container.description}</p>
+            <h1 className="mt-3 text-4xl font-black sm:text-6xl">
+              {container.headline}
+            </h1>
+            <p className="mt-4 text-lg font-bold leading-8 text-[#D7CCC8]">
+              {container.description}
+            </p>
             <div className="mt-5 rounded-2xl border border-[#8D6E63]/45 bg-black/20 p-5 text-sm font-bold leading-7 text-[#FFF8E1]">
-              <p>This HUGz Card is a sentiment container, not an II or media file.</p>
-              <p className="mt-2">
-                This card currently uses one proven KK. Additional choices remain held until they are proven KKs or approved KOMBOs.
+              <p>
+                This HUGz Card organizes matching sentiment choices. It is not an II and it is not the music.
               </p>
               <p className="mt-2">
-                HUG price: {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}. Checkout remains unavailable until exact selection-to-delivery proof passes.
+                Choose one KK or KOMBO packaged as a {PRODUCT_OFFER_LAW.HUG.customerName} for {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-8">
-          <HugzThreeChoiceTray seeds={container.seeds} cardHeadline={container.headline} />
+          <HugzThreeChoiceTray
+            seeds={container.seeds}
+            cardHeadline={container.headline}
+          />
         </div>
       </section>
     </main>
