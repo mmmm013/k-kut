@@ -27,6 +27,7 @@ const startRoute = fs.readFileSync(
   "utf8",
 );
 const layout = fs.readFileSync("app/layout.tsx", "utf8");
+const middleware = fs.readFileSync("middleware.ts", "utf8");
 
 if (manifest.schema_version !== "SENTIMEANT_MC_BOT_INTENT_FLOW_V002") {
   stop("intent-flow schema version changed");
@@ -122,6 +123,22 @@ if (!startRoute.includes("You started with:")) {
   stop("selected landing-page feeling context is missing from MC-BOT route");
 }
 
+if (!middleware.includes('"/sentimeant/:path*"')) {
+  stop("middleware must inspect Sentimeant routes without blocking them");
+}
+if (!middleware.includes("SENTIMEANT_EVIDENCE_AUDIO_PREFIX")) {
+  stop("non-public Sentimeant evidence-audio block must remain active");
+}
+if (middleware.includes("SENTIMEANT_STORY_PREFIX")) {
+  stop("obsolete all-Sentimeant redirect remains in middleware");
+}
+if (/pathname\.startsWith\(SENTIMEANT_STORY_PREFIX\)/u.test(middleware)) {
+  stop("Sentimeant landing and start routes are still redirected away");
+}
+if (!middleware.includes("return NextResponse.next();")) {
+  stop("middleware must allow safe Sentimeant page routes to continue");
+}
+
 for (const required of [
   "MC-BOT reflects before matching",
   "Ready for later two-sided MGS comparison",
@@ -168,6 +185,9 @@ console.log("ORIGINAL FIVE FEELINGS: PRESERVED");
 console.log("THE MIRROR: PRESERVED");
 console.log("CHOOSE / SHAPE / SEND / CARE: PRESERVED");
 console.log("GPMx UPPER-LEFT IDENTITY: PASS");
+console.log("LANDING TO /SENTIMEANT/START ROUTE: ALLOWED");
+console.log("OBSOLETE ALL-SENTIMEANT REDIRECT: REMOVED");
+console.log("NON-PUBLIC EVIDENCE AUDIO BLOCK: PRESERVED");
 console.log("MC-BOT ON LANDING PAGE: BLOCKED");
 console.log("MC-BOT AFTER FEELING CHOICE: PASS");
 console.log("NKK / BLK ALL-THEME CONSIDERATION: ON");
