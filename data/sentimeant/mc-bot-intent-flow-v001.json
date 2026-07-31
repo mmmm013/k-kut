@@ -1,14 +1,24 @@
 {
   "schema_version": "SENTIMEANT_MC_BOT_INTENT_FLOW_V002",
-  "status": "REVIEW_ONLY_NON_AUDIO",
-  "purpose": "Capture and confirm customer-side intent metadata before later two-sided comparison with verified NKK, BLK, KK, and KOMBO MetaGrab Sets.",
+  "status": "REVIEW_ONLY_WORKING_DETERMINISTIC_NON_AUDIO",
+  "purpose": "Accept one ordinary customer sentence, identify the closest governed public emotional direction, ask one clarification only when confidence is low, and return exactly three direction choices before later two-sided comparison with verified NKK, BLK, KK, and KOMBO MetaGrab Sets.",
+  "engine": "DETERMINISTIC_RULE_BASED",
   "audio_enabled": false,
   "inventory_lookup_enabled": false,
   "ii_assignment_enabled": false,
   "checkout_enabled": false,
   "delivery_enabled": false,
   "persists_customer_data": false,
-  "themes": [
+  "public_directions": [
+    "Comfort & Care",
+    "Celebrate & Be Proud",
+    "Love & Connection",
+    "Encouragement",
+    "Sorry & Repair",
+    "Friendship & Appreciation",
+    "Memory & Remembrance"
+  ],
+  "governed_mgs_themes": [
     "winning",
     "loving",
     "remembering",
@@ -17,75 +27,45 @@
     "comforting",
     "reinforcing"
   ],
-  "starting_directions": [
+  "rules": {
+    "one_ordinary_sentence_is_enough": true,
+    "one_question_at_a_time": true,
+    "maximum_clarifying_questions_per_result": 1,
+    "exactly_three_directions": true,
+    "landing_feeling_is_prior_not_override": true,
+    "customer_sentence_is_stronger_evidence": true,
+    "theme_result_is_not_product_approval": true
+  },
+  "required_qa_cases": [
     {
-      "id": "lift_strengthen",
-      "label": "Lift or strengthen",
-      "helper": "Celebrate, encourage, reinforce confidence, or help someone keep going.",
-      "theme_choices": ["winning", "urging", "reinforcing"]
+      "input": "my wife is mad at me.",
+      "expected_public_direction": "Sorry & Repair",
+      "expected_relationship": "Partner"
     },
     {
-      "id": "love_connect",
-      "label": "Love or connect",
-      "helper": "Express love, share something meaningful, reconnect, or show care.",
-      "theme_choices": ["loving", "sharing", "comforting"]
+      "input": "I said something hurtful to my wife.",
+      "expected_public_direction": "Sorry & Repair",
+      "expected_relationship": "Partner"
     },
     {
-      "id": "remember_honor",
-      "label": "Remember or honor",
-      "helper": "Hold a memory, honor someone, acknowledge absence, or preserve shared meaning.",
-      "theme_choices": ["remembering", "sharing", "comforting"]
-    }
-  ],
-  "tone_choices": [
-    {
-      "id": "gentle_warm",
-      "label": "Gentle and warm",
-      "helper": "Soft, caring, calm, and easy to receive."
+      "input": "My friend is nervous about her first day at work.",
+      "expected_public_direction": "Encouragement",
+      "expected_relationship": "Friend"
     },
     {
-      "id": "clear_confident",
-      "label": "Clear and confident",
-      "helper": "Direct, steady, uplifting, and certain."
+      "input": "My grandson graduated and I’m so proud.",
+      "expected_public_direction": "Celebrate & Be Proud",
+      "expected_relationship": "Family"
     },
     {
-      "id": "deep_heartfelt",
-      "label": "Deep and heartfelt",
-      "helper": "Emotional, sincere, personal, and strongly felt."
-    }
-  ],
-  "relationship_choices": [
-    {
-      "id": "partner",
-      "label": "A partner",
-      "helper": "Spouse, significant other, or romantic relationship."
+      "input": "She has had a terrible week.",
+      "expected_public_direction": "Comfort & Care",
+      "expected_relationship": "Someone else"
     },
     {
-      "id": "family",
-      "label": "Family",
-      "helper": "Parent, child, sibling, grandparent, or another family member."
-    },
-    {
-      "id": "friend_other",
-      "label": "A friend or someone else",
-      "helper": "Friend, coworker, teammate, mentor, neighbor, or another person."
-    }
-  ],
-  "confirmation_choices": [
-    {
-      "id": "confirmed",
-      "label": "Yes — that is right",
-      "helper": "Keep this customer-side MGS direction for later comparison."
-    },
-    {
-      "id": "adjust_direction",
-      "label": "Close — adjust the direction",
-      "helper": "Return to the theme choice and make the meaning more accurate."
-    },
-    {
-      "id": "explain_again",
-      "label": "No — let me explain again",
-      "helper": "Return to the beginning without saving or sending anything."
+      "input": "My best friend just got dumped.",
+      "expected_public_direction": "Comfort & Care",
+      "expected_relationship": "Friend"
     }
   ]
 }
