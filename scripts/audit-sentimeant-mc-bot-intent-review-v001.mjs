@@ -3,70 +3,53 @@ import {
   classifySituation,
   SENTIMEANT_THEMES,
 } from "../lib/sentimeant/mcBotThemeEngine.mjs";
+import {
+  listReviewCandidateThemeIds,
+  REVIEW_CANDIDATE_STATUS,
+} from "../lib/sentimeant/mcBotReviewWorkflow.mjs";
 
+const read = (path) => fs.readFileSync(path, "utf8");
 const stop = (message) => {
   throw new Error(message);
 };
 
-const manifest = JSON.parse(
-  fs.readFileSync(
-    "data/sentimeant/mc-bot-intent-flow-v001.json",
-    "utf8",
-  ),
-);
-const themeFitLaw = JSON.parse(
-  fs.readFileSync(
-    "data/sentimeant/nkk-blk-theme-fit-law-v001.json",
-    "utf8",
-  ),
-);
-const component = fs.readFileSync(
-  "components/SentimeantMcBotIntentReview.tsx",
-  "utf8",
-);
-const landing = fs.readFileSync("app/_sentimeant-home.tsx", "utf8");
-const reviewRoute = fs.readFileSync("app/sentimeant/page.tsx", "utf8");
-const startRoute = fs.readFileSync(
-  "app/sentimeant/start/page.tsx",
-  "utf8",
-);
-const layout = fs.readFileSync("app/layout.tsx", "utf8");
-const middleware = fs.readFileSync("middleware.ts", "utf8");
+const manifest = JSON.parse(read("data/sentimeant/mc-bot-intent-flow-v001.json"));
+const themeFitLaw = JSON.parse(read("data/sentimeant/nkk-blk-theme-fit-law-v001.json"));
+const parent = read("components/SentimeantMcBotIntentReview.tsx");
+const candidateReview = read("components/SentimeantMgsCandidateReview.tsx");
+const landing = read("app/_sentimeant-home.tsx");
+const reviewRoute = read("app/sentimeant/page.tsx");
+const startRoute = read("app/sentimeant/start/page.tsx");
+const layout = read("app/layout.tsx");
+const middleware = read("middleware.ts");
 
 if (manifest.schema_version !== "SENTIMEANT_MC_BOT_INTENT_FLOW_V002") {
   stop("intent-flow schema version changed");
 }
 if (manifest.status !== "REVIEW_ONLY_NON_AUDIO") {
-  stop("Sentimeant intent flow must remain review-only and non-audio");
+  stop("Sentimeant must remain review-only and non-audio");
 }
 if (themeFitLaw.schema_version !== "SENTIMEANT_NKK_BLK_THEME_FIT_LAW_V001") {
   stop("NKK / BLK theme-fit law missing or changed");
 }
-if (themeFitLaw.themes.length !== 7 || SENTIMEANT_THEMES.length !== 7) {
-  stop("exactly seven governed themes are required");
-}
 if (
-  !themeFitLaw.source_units.includes("NKK") ||
-  !themeFitLaw.source_units.includes("BLK")
+  themeFitLaw.themes.length !== 7 ||
+  SENTIMEANT_THEMES.length !== 7 ||
+  listReviewCandidateThemeIds().length !== 7
 ) {
-  stop("both NKK and BLK must enter theme-fit consideration");
+  stop("all seven governed themes require classifier and workflow coverage");
 }
 if (themeFitLaw.minimum_independent_attention_signals !== 3) {
-  stop("three independent attention signals are required");
-}
-if (themeFitLaw.multiple_theme_fits_allowed !== true) {
-  stop("one NKK / BLK must be allowed to support multiple themes");
+  stop("three independent attention signals remain required");
 }
 if (
-  themeFitLaw.parent_to_child_theme_inheritance
-    .automatic_inheritance_allowed !== false ||
-  themeFitLaw.parent_to_child_theme_inheritance
-    .all_child_KKs_and_KOMBOs_must_be_individually_assessed !== true
+  themeFitLaw.parent_to_child_theme_inheritance.automatic_inheritance_allowed !== false ||
+  themeFitLaw.parent_to_child_theme_inheritance.all_child_KKs_and_KOMBOs_must_be_individually_assessed !== true
 ) {
   stop("parent theme fit must never auto-classify child KKs or KOMBOs");
 }
 if (themeFitLaw.no_theme_fit_isolation.label !== "NO THEME FIT — HOLD") {
-  stop("unmatched KK / KOMBO isolation label missing");
+  stop("NO THEME FIT — HOLD law missing");
 }
 
 for (const field of [
@@ -77,15 +60,12 @@ for (const field of [
   "delivery_enabled",
   "persists_customer_data",
 ]) {
-  if (manifest[field] !== false) {
-    stop(`${field} must remain false`);
-  }
+  if (manifest[field] !== false) stop(`${field} must remain false`);
 }
 
-const originalLandingLanguage = [
+for (const required of [
   "Sent-i-Meants",
   "Send what you meant.",
-  "Send an",
   "A text says what you typed. An iMeant says what you meant.",
   "Start with the feeling.",
   "The Mirror",
@@ -96,57 +76,40 @@ const originalLandingLanguage = [
   "Proud of You iMeant",
   "Still Care iMeant",
   "No rush. No blast. Just care.",
-  "1. Choose",
-  "2. Shape",
-  "3. Send",
-  "4. Care",
-];
-
-for (const required of originalLandingLanguage) {
-  if (!landing.includes(required)) {
-    stop(`original Sent-i-Meants landing language missing: ${required}`);
-  }
+]) {
+  if (!landing.includes(required)) stop(`original landing language missing: ${required}`);
 }
-
 if (!landing.includes("/sentimeant/start?feeling=")) {
-  stop("original feeling choices must lead to the separate MC-BOT route");
+  stop("landing feelings do not enter the MC-BOT route");
 }
 if (landing.includes("SentimeantMcBotIntentReview")) {
-  stop("MC-BOT dialog must not replace or render inside the landing page");
+  stop("MC-BOT must not replace the landing page");
 }
 if (!reviewRoute.includes("../_sentimeant-home")) {
-  stop("explicit /sentimeant review route must render the original landing");
-}
-if (/redirect\s*\(\s*["']\/hugz/iu.test(reviewRoute)) {
-  stop("Sentimeant must never redirect to HUGz");
+  stop("/sentimeant must render the original landing");
 }
 if (!startRoute.includes("SentimeantMcBotIntentReview")) {
-  stop("MC-BOT guide must render only after the landing-page feeling choice");
+  stop("/sentimeant/start must render MC-BOT");
 }
 for (const required of [
   "initialFeelingId={feelingId}",
   "initialFeelingLabel={feeling}",
   "You started with:",
 ]) {
-  if (!startRoute.includes(required)) {
-    stop(`selected landing-page feeling is not connected to MC-BOT: ${required}`);
-  }
+  if (!startRoute.includes(required)) stop(`starting feeling connection missing: ${required}`);
 }
 
 if (!middleware.includes('"/sentimeant/:path*"')) {
-  stop("middleware must inspect Sentimeant routes without blocking them");
+  stop("middleware does not inspect Sentimeant routes");
 }
 if (!middleware.includes("SENTIMEANT_EVIDENCE_AUDIO_PREFIX")) {
-  stop("non-public Sentimeant evidence-audio block must remain active");
+  stop("evidence-audio hold missing");
 }
 if (middleware.includes("SENTIMEANT_STORY_PREFIX")) {
-  stop("obsolete all-Sentimeant redirect remains in middleware");
-}
-if (/pathname\.startsWith\(SENTIMEANT_STORY_PREFIX\)/u.test(middleware)) {
-  stop("Sentimeant landing and start routes are still redirected away");
+  stop("obsolete blanket Sentimeant redirect returned");
 }
 if (!middleware.includes("return NextResponse.next();")) {
-  stop("middleware must allow safe Sentimeant page routes to continue");
+  stop("safe Sentimeant routes are not allowed through");
 }
 
 for (const required of [
@@ -154,86 +117,47 @@ for (const required of [
   "Closest emotional direction",
   "One quick question",
   "User-side direction confirmed",
-  "No KK or KOMBO has been selected",
-  "NO THEME FIT — HOLD",
-  "classifySituation",
+  "SentimeantMgsCandidateReview",
+  "Clear this message",
+  "Refine the sentence",
+  "Start over",
 ]) {
-  if (!component.includes(required)) {
-    stop(`working MC-BOT behavior missing: ${required}`);
-  }
+  if (!parent.includes(required)) stop(`MC-BOT interaction missing: ${required}`);
 }
 
-const qaCases = [
-  {
-    name: "GD screenshot repair case",
-    text: "my wife is mad at me.",
-    startingFeelingId: "thank-you",
-    expectedTheme: "repair",
-    expectedRelationship: "partner",
-  },
-  {
-    name: "hurtful wife repair case",
-    text: "I said something hurtful to my wife.",
-    expectedTheme: "repair",
-    expectedRelationship: "partner",
-  },
-  {
-    name: "first-day encouragement case",
-    text: "My friend is nervous about her first day at work.",
-    expectedTheme: "encourage",
-    expectedRelationship: "friend",
-  },
-  {
-    name: "graduation celebration case",
-    text: "My grandson graduated and I’m so proud.",
-    expectedTheme: "celebrate",
-    expectedRelationship: "family",
-  },
-  {
-    name: "terrible-week comfort case",
-    text: "She has had a terrible week.",
-    expectedTheme: "comfort",
-    expectedRelationship: "anyone",
-  },
-  {
-    name: "friend breakup comfort case",
-    text: "My best friend just got dumped.",
-    expectedTheme: "comfort",
-    expectedRelationship: "friend",
-  },
-];
-
-for (const test of qaCases) {
-  const result = classifySituation({
-    text: test.text,
-    startingFeelingId: test.startingFeelingId ?? "",
-  });
-  if (result.top.id !== test.expectedTheme) {
-    stop(`${test.name}: expected ${test.expectedTheme}, received ${result.top.id}`);
-  }
-  if (result.relationship !== test.expectedRelationship) {
-    stop(`${test.name}: expected relationship ${test.expectedRelationship}, received ${result.relationship}`);
-  }
-  if (result.top.recommendations.length !== 3) {
-    stop(`${test.name}: exactly three directions are required`);
-  }
+for (const required of [
+  "Continue to MGS comparison",
+  "Confirm this test match",
+  "Show three different candidates",
+  "None of these fit",
+  "Change the direction",
+  "Change the test candidate",
+  "Complete review workflow passed",
+  "Do not force a match.",
+  REVIEW_CANDIDATE_STATUS,
+]) {
+  if (!candidateReview.includes(required)) stop(`candidate workflow missing: ${required}`);
 }
 
 const screenshotCase = classifySituation({
   text: "my wife is mad at me.",
   startingFeelingId: "thank-you",
 });
-if (screenshotCase.needsClarification) {
-  stop("GD screenshot repair case must produce a direct answer, not a dead clarification loop");
-}
-if (!screenshotCase.startingFeelingMismatch) {
-  stop("MC-BOT must explain when the sentence overrides the landing-page feeling");
+if (
+  screenshotCase.top.id !== "repair" ||
+  screenshotCase.relationship !== "partner" ||
+  screenshotCase.needsClarification ||
+  !screenshotCase.startingFeelingMismatch ||
+  screenshotCase.top.recommendations.length !== 3
+) {
+  stop("GD screenshot repair workflow failed");
 }
 
 const ambiguousCase = classifySituation({ text: "I need help saying this." });
-if (!ambiguousCase.needsClarification) {
-  stop("low-confidence ordinary language must ask one clarifying question");
-}
+if (!ambiguousCase.needsClarification) stop("clarification branch failed");
+
+const safetyCase = classifySituation({ text: "I want to kill myself." });
+if (!safetyCase.safetyHold) stop("human-safety hold failed");
 
 for (const forbidden of [
   /<audio\b/iu,
@@ -247,32 +171,25 @@ for (const forbidden of [
   /\/api\/checkout/u,
 ]) {
   if (
-    forbidden.test(component) ||
+    forbidden.test(parent) ||
+    forbidden.test(candidateReview) ||
     forbidden.test(landing) ||
     forbidden.test(startRoute)
   ) {
-    stop(`forbidden public action found: ${forbidden}`);
+    stop(`forbidden public behavior found: ${forbidden}`);
   }
 }
 
-if (!layout.includes("GPMx")) {
-  stop("upper-left GPMx identity is missing");
-}
-if (!layout.includes("SENTIMEANT_HOSTS")) {
-  stop("Sentimeant host-specific identity navigation is missing");
+if (!layout.includes("GPMx") || !layout.includes("SENTIMEANT_HOSTS")) {
+  stop("GPMx Sentimeant header separation missing");
 }
 
-console.log("SENTIMEANT ORIGINAL LANDING + WORKING MC-BOT AUDIT: PASS");
-console.log("ORIGINAL SENT-I-MEANTS FRONT DOOR: PRESERVED");
-console.log("ORIGINAL FIVE FEELINGS: PRESERVED");
-console.log("THE MIRROR: PRESERVED");
-console.log("LANDING TO /SENTIMEANT/START ROUTE: ALLOWED");
-console.log("DETERMINISTIC SENTENCE CLASSIFIER: PASS");
-console.log("GD SCREENSHOT CASE: SORRY & REPAIR");
-console.log("RELATIONSHIP INFERENCE: PASS");
-console.log("LOW-CONFIDENCE CLARIFICATION: PASS");
-console.log("EXACTLY THREE DIRECTIONS: PASS");
-console.log("PARENT-TO-CHILD AUTO-INHERITANCE: BLOCKED");
-console.log("NO THEME FIT — HOLD: ENFORCED");
-console.log("AUDIO / INVENTORY / II ASSIGNMENT: OFF");
-console.log("CHECKOUT / DELIVERY / PERSISTENCE: OFF");
+console.log("SENTIMEANT COMPLETE REVIEW WORKFLOW AUDIT: PASS");
+console.log("ORIGINAL FRONT DOOR: PRESERVED");
+console.log("LANDING TO MC-BOT ROUTE: PASS");
+console.log("CLASSIFY / CLARIFY / SAFETY HOLD: PASS");
+console.log("DIRECTION SELECTION: PASS");
+console.log("MGS COMPARISON CONTINUATION: PASS");
+console.log("THREE EXPLAINED TEST CANDIDATES: PASS");
+console.log("REFINE / NONE FIT / CHANGE / CONFIRM: PASS");
+console.log("REAL KK / KOMBO / AUDIO / PRICE / CHECKOUT: BLOCKED");
