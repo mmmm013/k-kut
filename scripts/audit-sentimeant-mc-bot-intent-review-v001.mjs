@@ -17,6 +17,7 @@ const manifest = JSON.parse(read("data/sentimeant/mc-bot-intent-flow-v001.json")
 const themeFitLaw = JSON.parse(read("data/sentimeant/nkk-blk-theme-fit-law-v001.json"));
 const parent = read("components/SentimeantMcBotIntentReview.tsx");
 const candidateReview = read("components/SentimeantMgsCandidateReview.tsx");
+const candidateWorkflow = read("lib/sentimeant/mcBotReviewWorkflow.mjs");
 const landing = read("app/_sentimeant-home.tsx");
 const reviewRoute = read("app/sentimeant/page.tsx");
 const startRoute = read("app/sentimeant/start/page.tsx");
@@ -134,9 +135,12 @@ for (const required of [
   "Change the test candidate",
   "Complete review workflow passed",
   "Do not force a match.",
-  REVIEW_CANDIDATE_STATUS,
+  "REVIEW_CANDIDATE_STATUS",
 ]) {
   if (!candidateReview.includes(required)) stop(`candidate workflow missing: ${required}`);
+}
+if (!candidateWorkflow.includes(REVIEW_CANDIDATE_STATUS)) {
+  stop("governed test-candidate status value missing from source-of-truth module");
 }
 
 const screenshotCase = classifySituation({
