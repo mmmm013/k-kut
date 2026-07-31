@@ -20,6 +20,12 @@ export const viewport: Viewport = {
 };
 
 const HUGZ_HOSTS = new Set(['13hugz.com', 'www.13hugz.com']);
+const SENTIMEANT_HOSTS = new Set([
+  'sentimeant.com',
+  'www.sentimeant.com',
+  'sentimeants.com',
+  'www.sentimeants.com',
+]);
 
 function normalizedHost(headerList: Awaited<ReturnType<typeof headers>>) {
   return (
@@ -34,65 +40,74 @@ function normalizedHost(headerList: Awaited<ReturnType<typeof headers>>) {
     .split(':')[0];
 }
 
+function GenericHeader() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-amber-300/20 bg-[#0a0a0a]/90 px-5 py-3 backdrop-blur">
+      <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
+        <a href="/" className="text-lg font-black tracking-[0.22em] text-amber-200">
+          GPMx
+        </a>
+
+        <div className="flex flex-wrap items-center gap-2 text-sm font-black">
+          <a href="/" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Home
+          </a>
+          <a href="/find" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Find
+          </a>
+          <a href="/personal" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Personal
+          </a>
+          <a href="/holiday" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Holiday
+          </a>
+          <a href="/themes" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Themes
+          </a>
+          <a href="/kupid" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Kupid
+          </a>
+          <a href="/wedding" className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200">
+            Wedding
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
+function SentimeantHeader() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-[#d7b49d] bg-[#fffaf4]/95 px-5 py-3 text-[#542c20] backdrop-blur">
+      <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
+        <a href="/" className="text-lg font-black tracking-[0.22em] text-[#7c3d2a]">
+          GPMx
+        </a>
+        <div className="flex flex-wrap items-center gap-3 text-sm font-black">
+          <a className="hover:underline" href="/">
+            Sent-i-Meants
+          </a>
+          <a className="hover:underline" href="/sentimeant/start">
+            Start
+          </a>
+          <a className="hover:underline" href="mailto:reachus@gputnammusic.com">
+            Contact
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const host = normalizedHost(await headers());
   const isHugzHost = HUGZ_HOSTS.has(host);
+  const isSentimeantHost = SENTIMEANT_HOSTS.has(host);
 
   return (
     <html lang="en">
       <body className="bg-[#0a0a0a] text-[#F5e6c8] antialiased min-h-screen">
-        {!isHugzHost && <header className="sticky top-0 z-50 border-b border-amber-300/20 bg-[#0a0a0a]/90 px-5 py-3 backdrop-blur">
-          <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
-            <a href="/" className="text-lg font-black tracking-[0.22em] text-amber-200">
-              GPMx
-            </a>
-
-            <div className="flex flex-wrap items-center gap-2 text-sm font-black">
-              <a
-                href="/"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Home
-              </a>
-              <a
-                href="/find"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Find
-              </a>
-              <a
-                href="/personal"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Personal
-              </a>
-              <a
-                href="/holiday"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Holiday
-              </a>
-              <a
-                href="/themes"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Themes
-              </a>
-              <a
-                href="/kupid"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Kupid
-              </a>
-              <a
-                href="/wedding"
-                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-              >
-                Wedding
-              </a>
-            </div>
-          </nav>
-        </header>}
+        {!isHugzHost && (isSentimeantHost ? <SentimeantHeader /> : <GenericHeader />)}
 
         {children}
         {isHugzHost && (
