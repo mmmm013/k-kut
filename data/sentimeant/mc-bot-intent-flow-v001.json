@@ -1,6 +1,6 @@
 {
   "schema_version": "SENTIMEANT_MC_BOT_INTENT_FLOW_V002",
-  "status": "REVIEW_ONLY_WORKING_DETERMINISTIC_NON_AUDIO",
+  "status": "REVIEW_ONLY_NON_AUDIO",
   "purpose": "Accept one ordinary customer sentence, identify the closest governed public emotional direction, ask one clarification only when confidence is low, and return exactly three direction choices before later two-sided comparison with verified NKK, BLK, KK, and KOMBO MetaGrab Sets.",
   "engine": "DETERMINISTIC_RULE_BASED",
   "audio_enabled": false,
