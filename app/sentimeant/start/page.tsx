@@ -4,7 +4,7 @@ import SentimeantMcBotIntentReview from "@/components/SentimeantMcBotIntentRevie
 export const metadata = {
   title: "Shape your Sent-i-Meant | GPMx",
   description:
-    "A review-only MC-BOT dialog that reflects customer intent before any later MGS comparison or music matching.",
+    "A governed MC-BOT guide that identifies the closest emotional direction before later MGS comparison or music matching.",
 };
 
 const feelingLabels: Record<string, string> = {
@@ -24,7 +24,8 @@ export default async function SentimeantStartPage({ searchParams }: PageProps) {
   const rawFeeling = Array.isArray(params.feeling)
     ? params.feeling[0]
     : params.feeling;
-  const feeling = rawFeeling ? feelingLabels[rawFeeling] : undefined;
+  const feelingId = rawFeeling && feelingLabels[rawFeeling] ? rawFeeling : "";
+  const feeling = feelingId ? feelingLabels[feelingId] : "";
 
   return (
     <main className="min-h-screen bg-[#f7efe4] px-4 py-8 text-[#3b241b] sm:px-8 sm:py-12">
@@ -37,7 +38,7 @@ export default async function SentimeantStartPage({ searchParams }: PageProps) {
             <p className="mt-1 text-sm font-bold text-[#6f4938]">
               {feeling
                 ? `You started with: ${feeling}`
-                : "Start by telling MC-BOT what you mean."}
+                : "Tell MC-BOT what happened in one sentence."}
             </p>
           </div>
           <Link
@@ -48,13 +49,16 @@ export default async function SentimeantStartPage({ searchParams }: PageProps) {
           </Link>
         </div>
 
-        <SentimeantMcBotIntentReview />
+        <SentimeantMcBotIntentReview
+          initialFeelingId={feelingId}
+          initialFeelingLabel={feeling}
+        />
 
         <p className="mt-6 rounded-2xl border border-[#d8b9a3] bg-[#fffaf4] p-5 text-sm font-bold leading-7 text-[#76503f]">
-          Review branch only. The chosen feeling is context for the dialog; it
-          does not select, classify, approve, price, or deliver any KK or
-          KOMBO. No audio, checkout, fulfillment, or customer-data persistence
-          is enabled.
+          Review branch only. The chosen feeling and sentence guide a governed
+          theme result; they do not select, classify, approve, price, or deliver
+          any KK or KOMBO. No audio, checkout, fulfillment, or customer-data
+          persistence is enabled.
         </p>
       </div>
     </main>
