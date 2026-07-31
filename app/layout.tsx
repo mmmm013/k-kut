@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'A HUG is a private music moment you choose by feeling, then send to someone.',
   icons: { icon: '/logo.png', apple: '/logo.png' },
-  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'GPM' },
+  appleWebApp: { capable: true, statusBarStyle: 'black-translucent', title: 'GPMx' },
 };
 
 export const viewport: Viewport = {
@@ -44,7 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {!isHugzHost && <header className="sticky top-0 z-50 border-b border-amber-300/20 bg-[#0a0a0a]/90 px-5 py-3 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
             <a href="/" className="text-lg font-black tracking-[0.22em] text-amber-200">
-              GPM
+              GPMx
             </a>
 
             <div className="flex flex-wrap items-center gap-2 text-sm font-black">
@@ -78,18 +78,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               >
                 Themes
               </a>
-                            <a
+              <a
                 href="/kupid"
                 className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
               >
                 Kupid
               </a>
-                              <a
-                  href="/wedding"
-                  className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
-                >
-                  Wedding
-                </a>
+              <a
+                href="/wedding"
+                className="rounded-full border border-amber-300/20 px-3 py-2 text-amber-50/80 transition hover:border-amber-300/60 hover:text-amber-200"
+              >
+                Wedding
+              </a>
             </div>
           </nav>
         </header>}
