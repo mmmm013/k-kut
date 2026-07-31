@@ -1,80 +1,91 @@
 {
-  "schema_version": "SENTIMEANT_MC_BOT_INTENT_FLOW_V001",
+  "schema_version": "SENTIMEANT_MC_BOT_INTENT_FLOW_V002",
   "status": "REVIEW_ONLY_NON_AUDIO",
-  "purpose": "Capture customer-side intent metadata for later comparison with approved LT-PIX and KK metadata through MetaGrab Sets.",
-  "customer_choice_count_per_step": 3,
+  "purpose": "Capture and confirm customer-side intent metadata before later two-sided comparison with verified NKK, BLK, KK, and KOMBO MetaGrab Sets.",
   "audio_enabled": false,
   "inventory_lookup_enabled": false,
   "ii_assignment_enabled": false,
   "checkout_enabled": false,
   "delivery_enabled": false,
   "persists_customer_data": false,
-  "steps": [
+  "themes": [
+    "winning",
+    "loving",
+    "remembering",
+    "sharing",
+    "urging",
+    "comforting",
+    "reinforcing"
+  ],
+  "starting_directions": [
     {
-      "id": "meaning_use_case",
-      "eyebrow": "Meaning and use",
-      "prompt": "What do you want this Sentimeant to do?",
-      "options": [
-        {
-          "id": "care_support",
-          "label": "Care or support",
-          "helper": "Comfort, encouragement, strength, or simply being there."
-        },
-        {
-          "id": "celebrate_appreciate",
-          "label": "Celebrate or appreciate",
-          "helper": "Pride, gratitude, joy, recognition, or a meaningful thank-you."
-        },
-        {
-          "id": "repair_reconnect",
-          "label": "Repair or reconnect",
-          "helper": "Apology, honesty, healing, understanding, or a way back."
-        }
-      ]
+      "id": "lift_strengthen",
+      "label": "Lift or strengthen",
+      "helper": "Celebrate, encourage, reinforce confidence, or help someone keep going.",
+      "theme_choices": ["winning", "urging", "reinforcing"]
     },
     {
-      "id": "tone_presentation_direction",
-      "eyebrow": "Feeling and presentation",
-      "prompt": "How should it feel?",
-      "options": [
-        {
-          "id": "gentle_warm",
-          "label": "Gentle and warm",
-          "helper": "Soft, caring, calm, and easy to receive."
-        },
-        {
-          "id": "clear_confident",
-          "label": "Clear and confident",
-          "helper": "Direct, steady, uplifting, and certain."
-        },
-        {
-          "id": "deep_heartfelt",
-          "label": "Deep and heartfelt",
-          "helper": "Emotional, sincere, personal, and strongly felt."
-        }
-      ]
+      "id": "love_connect",
+      "label": "Love or connect",
+      "helper": "Express love, share something meaningful, reconnect, or show care.",
+      "theme_choices": ["loving", "sharing", "comforting"]
     },
     {
-      "id": "relationship_pov",
-      "eyebrow": "Relationship and point of view",
-      "prompt": "Who is it for?",
-      "options": [
-        {
-          "id": "partner",
-          "label": "A partner",
-          "helper": "Spouse, significant other, or romantic relationship."
-        },
-        {
-          "id": "family",
-          "label": "Family",
-          "helper": "Parent, child, sibling, grandparent, or other family member."
-        },
-        {
-          "id": "friend_other",
-          "label": "A friend or someone else",
-          "helper": "Friend, coworker, teammate, mentor, neighbor, or another person."
-        }
-      ]
+      "id": "remember_honor",
+      "label": "Remember or honor",
+      "helper": "Hold a memory, honor someone, acknowledge absence, or preserve shared meaning.",
+      "theme_choices": ["remembering", "sharing", "comforting"]
+    }
+  ],
+  "tone_choices": [
+    {
+      "id": "gentle_warm",
+      "label": "Gentle and warm",
+      "helper": "Soft, caring, calm, and easy to receive."
+    },
+    {
+      "id": "clear_confident",
+      "label": "Clear and confident",
+      "helper": "Direct, steady, uplifting, and certain."
+    },
+    {
+      "id": "deep_heartfelt",
+      "label": "Deep and heartfelt",
+      "helper": "Emotional, sincere, personal, and strongly felt."
+    }
+  ],
+  "relationship_choices": [
+    {
+      "id": "partner",
+      "label": "A partner",
+      "helper": "Spouse, significant other, or romantic relationship."
+    },
+    {
+      "id": "family",
+      "label": "Family",
+      "helper": "Parent, child, sibling, grandparent, or another family member."
+    },
+    {
+      "id": "friend_other",
+      "label": "A friend or someone else",
+      "helper": "Friend, coworker, teammate, mentor, neighbor, or another person."
+    }
+  ],
+  "confirmation_choices": [
+    {
+      "id": "confirmed",
+      "label": "Yes — that is right",
+      "helper": "Keep this customer-side MGS direction for later comparison."
+    },
+    {
+      "id": "adjust_direction",
+      "label": "Close — adjust the direction",
+      "helper": "Return to the theme choice and make the meaning more accurate."
+    },
+    {
+      "id": "explain_again",
+      "label": "No — let me explain again",
+      "helper": "Return to the beginning without saving or sending anything."
     }
   ]
 }
