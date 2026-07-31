@@ -1,9 +1,9 @@
 import SentimeantMcBotIntentReview from "@/components/SentimeantMcBotIntentReview";
 
 export const metadata = {
-  title: "Find the Sentimeant | G Putnam Music",
+  title: "Find the Sentimeant | GPMx",
   description:
-    "A review-only, non-audio MC-BOT flow that captures meaning, feeling, and relationship direction before approved music matching.",
+    "A review-only MC-BOT dialog that confirms customer intent before later NKK, BLK, KK, and KOMBO theme-fit comparison through MetaGrab Sets.",
 };
 
 export default function SentimeantHome() {
@@ -13,11 +13,11 @@ export default function SentimeantHome() {
         <SentimeantMcBotIntentReview />
 
         <section className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
-          Customer-side intent metadata will later be compared with the updated LT-PIX and KK metadata through governed MetaGrab Sets. Only independently approved KK or KOMBO inventory may enter a customer offer after boundary, meaning, presentation, identity, and delivery proof pass.
+          After today&apos;s revised KKr digestion and two-sided metadata/MGS outputs are verified, every NKK or BLK can be assessed against Winning, Loving, Remembering, Sharing, Urging, Comforting, and Reinforcing. Each proposed fit must state how well it fits, what evidence supports it, what contradicts it, and how the actual audio presents. Any KK or KOMBO with no defensible theme fit remains isolated from Sentimeant presentation.
         </section>
 
         <footer className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
-          Review branch only. Need help? Contact reachus@gputnammusic.com.
+          Review branch only. No Production change. Need help? Contact reachus@gputnammusic.com.
         </footer>
       </div>
     </main>
