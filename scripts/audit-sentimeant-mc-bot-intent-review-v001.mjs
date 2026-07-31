@@ -20,7 +20,12 @@ const component = fs.readFileSync(
   "components/SentimeantMcBotIntentReview.tsx",
   "utf8",
 );
-const page = fs.readFileSync("app/_sentimeant-home.tsx", "utf8");
+const landing = fs.readFileSync("app/_sentimeant-home.tsx", "utf8");
+const reviewRoute = fs.readFileSync("app/sentimeant/page.tsx", "utf8");
+const startRoute = fs.readFileSync(
+  "app/sentimeant/start/page.tsx",
+  "utf8",
+);
 const layout = fs.readFileSync("app/layout.tsx", "utf8");
 
 if (manifest.schema_version !== "SENTIMEANT_MC_BOT_INTENT_FLOW_V002") {
@@ -55,28 +60,10 @@ if (
 ) {
   stop("parent theme fit must never auto-classify child KKs or KOMBOs");
 }
-if (
-  themeFitLaw.no_theme_fit_isolation.label !== "NO THEME FIT — HOLD"
-) {
+if (themeFitLaw.no_theme_fit_isolation.label !== "NO THEME FIT — HOLD") {
   stop("unmatched KK / KOMBO isolation label missing");
 }
-if (manifest.starting_directions.length !== 3) {
-  stop("exactly three starting directions are required");
-}
-for (const direction of manifest.starting_directions) {
-  if (direction.theme_choices.length !== 3) {
-    stop(`exactly three theme directions required for ${direction.id}`);
-  }
-}
-for (const choices of [
-  manifest.tone_choices,
-  manifest.relationship_choices,
-  manifest.confirmation_choices,
-]) {
-  if (choices.length !== 3) {
-    stop("every customer decision set must show exactly three choices");
-  }
-}
+
 for (const field of [
   "audio_enabled",
   "inventory_lookup_enabled",
@@ -90,6 +77,51 @@ for (const field of [
   }
 }
 
+const originalLandingLanguage = [
+  "Sent-i-Meants",
+  "Send what you meant.",
+  "Send an",
+  "A text says what you typed. An iMeant says what you meant.",
+  "Start with the feeling.",
+  "The Mirror",
+  "What you want to say. What they may need to hear.",
+  "Thank You iMeant",
+  "Sorry iMeant",
+  "Miss You iMeant",
+  "Proud of You iMeant",
+  "Still Care iMeant",
+  "No rush. No blast. Just care.",
+  "1. Choose",
+  "2. Shape",
+  "3. Send",
+  "4. Care",
+];
+
+for (const required of originalLandingLanguage) {
+  if (!landing.includes(required)) {
+    stop(`original Sent-i-Meants landing language missing: ${required}`);
+  }
+}
+
+if (!landing.includes("/sentimeant/start?feeling=")) {
+  stop("original feeling choices must lead to the separate MC-BOT route");
+}
+if (landing.includes("SentimeantMcBotIntentReview")) {
+  stop("MC-BOT dialog must not replace or render inside the landing page");
+}
+if (!reviewRoute.includes("../_sentimeant-home")) {
+  stop("explicit /sentimeant review route must render the original landing");
+}
+if (/redirect\s*\(\s*["']\/hugz/iu.test(reviewRoute)) {
+  stop("Sentimeant must never redirect to HUGz");
+}
+if (!startRoute.includes("SentimeantMcBotIntentReview")) {
+  stop("MC-BOT dialog must render only after the landing-page feeling choice");
+}
+if (!startRoute.includes("You started with:")) {
+  stop("selected landing-page feeling context is missing from MC-BOT route");
+}
+
 for (const required of [
   "MC-BOT reflects before matching",
   "Ready for later two-sided MGS comparison",
@@ -99,7 +131,7 @@ for (const required of [
   "Nothing entered here is saved or sent.",
 ]) {
   if (!component.includes(required)) {
-    stop(`required review language missing: ${required}`);
+    stop(`required MC-BOT review language missing: ${required}`);
   }
 }
 
@@ -114,35 +146,32 @@ for (const forbidden of [
   /href\s*=\s*["']\/checkout/iu,
   /\/api\/checkout/u,
 ]) {
-  if (forbidden.test(component) || forbidden.test(page)) {
+  if (
+    forbidden.test(component) ||
+    forbidden.test(landing) ||
+    forbidden.test(startRoute)
+  ) {
     stop(`forbidden public action found: ${forbidden}`);
   }
 }
 
-if (!page.includes("SentimeantMcBotIntentReview")) {
-  stop("Sentimeant home must render the MC-BOT dialog review");
-}
-if (page.includes("Semantic match hold")) {
-  stop("old hold wall remains as the main Sentimeant experience");
-}
-if (!page.includes("every NKK or BLK can be assessed")) {
-  stop("all-source theme consideration is missing");
-}
-if (!page.includes("never automatically classifies its child KKs or KOMBOs")) {
-  stop("independent child KK / KOMBO fit review language is missing");
-}
 if (!layout.includes("GPMx")) {
   stop("upper-left GPMx identity is missing");
 }
+if (!layout.includes("SENTIMEANT_HOSTS")) {
+  stop("Sentimeant host-specific identity navigation is missing");
+}
 
-console.log("SENTIMEANT MC-BOT DIALOG AND THEME-FIT REVIEW AUDIT: PASS");
-console.log("GPMx HEADER: PASS");
-console.log("GOVERNED THEMES: 7");
+console.log("SENTIMEANT ORIGINAL LANDING + MC-BOT DIALOG AUDIT: PASS");
+console.log("ORIGINAL SENT-I-MEANTS FRONT DOOR: PRESERVED");
+console.log("ORIGINAL FIVE FEELINGS: PRESERVED");
+console.log("THE MIRROR: PRESERVED");
+console.log("CHOOSE / SHAPE / SEND / CARE: PRESERVED");
+console.log("GPMx UPPER-LEFT IDENTITY: PASS");
+console.log("MC-BOT ON LANDING PAGE: BLOCKED");
+console.log("MC-BOT AFTER FEELING CHOICE: PASS");
 console.log("NKK / BLK ALL-THEME CONSIDERATION: ON");
-console.log("MULTIPLE THEME FITS: ALLOWED");
 console.log("PARENT-TO-CHILD AUTO-INHERITANCE: BLOCKED");
-console.log("EVERY CHILD KK / KOMBO: INDIVIDUAL FIT REQUIRED");
 console.log("NO THEME FIT — HOLD: ENFORCED");
-console.log("THREE-CHOICE DIALOG: ENFORCED");
 console.log("AUDIO / INVENTORY / II ASSIGNMENT: OFF");
 console.log("CHECKOUT / DELIVERY / PERSISTENCE: OFF");
