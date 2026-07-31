@@ -76,6 +76,11 @@
   "minimum_independent_attention_signals": 3,
   "multiple_theme_fits_allowed": true,
   "theme_fit_does_not_equal_product_approval": true,
+  "parent_to_child_theme_inheritance": {
+    "automatic_inheritance_allowed": false,
+    "rule": "An NKK or BLK theme fit may nominate themes for child review, but it does not automatically classify any KK or KOMBO. Every child KK or KOMBO must independently prove its own lyric context, relationship or point of view, intended human effect, actual audio presentation, contradictions, identity, and boundaries.",
+    "all_child_KKs_and_KOMBOs_must_be_individually_assessed": true
+  },
   "hard_proof_before_customer_candidate": [
     "authorized_source_identity",
     "correct_NKK_or_BLK_identity",
