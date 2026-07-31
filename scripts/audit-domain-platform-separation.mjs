@@ -15,8 +15,19 @@ for (const host of ["13hugz.com", "www.13hugz.com"]) {
   }
 }
 
-if (!layout.includes("isHugzHost") || !layout.includes("!isHugzHost && <header")) {
-  stop("K-KUT navigation is not isolated from 13HUGz");
+if (!layout.includes("isHugzHost") || !layout.includes("!isHugzHost &&")) {
+  stop("all non-13HUGz navigation is not isolated from 13HUGz");
+}
+if (
+  !layout.includes("isSentimeantHost ? <SentimeantHeader /> : <GenericHeader />")
+) {
+  stop("Sentimeant and general K-KUT headers are not explicitly separated");
+}
+if (!layout.includes("function SentimeantHeader()")) {
+  stop("Sentimeant-specific GPMx header is missing");
+}
+if (!layout.includes("function GenericHeader()")) {
+  stop("general K-KUT navigation header is missing");
 }
 
 for (const legalLink of ['href="/privacy"', 'href="/terms"', 'mailto:reachus@gputnammusic.com']) {
@@ -46,4 +57,5 @@ if (cardCount !== 13) {
 
 console.log("DOMAIN PLATFORM SEPARATION AUDIT: PASS");
 console.log("13HUGz: 13 ROTATING HUGz CARDS · 33 SECONDS · MINIMAL LEGAL FOOTER");
-console.log("K-KUT: FULL NAVIGATION PRESERVED ON K-KUT HOSTS ONLY");
+console.log("SENTIMEANT: GPMx + SENT-I-MEANTS-ONLY HEADER");
+console.log("K-KUT: FULL NAVIGATION PRESERVED ON GENERAL K-KUT HOSTS ONLY");
