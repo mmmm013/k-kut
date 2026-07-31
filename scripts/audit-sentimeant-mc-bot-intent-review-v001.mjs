@@ -48,6 +48,14 @@ if (themeFitLaw.multiple_theme_fits_allowed !== true) {
   stop("one NKK / BLK must be allowed to support multiple themes");
 }
 if (
+  themeFitLaw.parent_to_child_theme_inheritance
+    .automatic_inheritance_allowed !== false ||
+  themeFitLaw.parent_to_child_theme_inheritance
+    .all_child_KKs_and_KOMBOs_must_be_individually_assessed !== true
+) {
+  stop("parent theme fit must never auto-classify child KKs or KOMBOs");
+}
+if (
   themeFitLaw.no_theme_fit_isolation.label !== "NO THEME FIT — HOLD"
 ) {
   stop("unmatched KK / KOMBO isolation label missing");
@@ -120,6 +128,9 @@ if (page.includes("Semantic match hold")) {
 if (!page.includes("every NKK or BLK can be assessed")) {
   stop("all-source theme consideration is missing");
 }
+if (!page.includes("never automatically classifies its child KKs or KOMBOs")) {
+  stop("independent child KK / KOMBO fit review language is missing");
+}
 if (!layout.includes("GPMx")) {
   stop("upper-left GPMx identity is missing");
 }
@@ -129,6 +140,8 @@ console.log("GPMx HEADER: PASS");
 console.log("GOVERNED THEMES: 7");
 console.log("NKK / BLK ALL-THEME CONSIDERATION: ON");
 console.log("MULTIPLE THEME FITS: ALLOWED");
+console.log("PARENT-TO-CHILD AUTO-INHERITANCE: BLOCKED");
+console.log("EVERY CHILD KK / KOMBO: INDIVIDUAL FIT REQUIRED");
 console.log("NO THEME FIT — HOLD: ENFORCED");
 console.log("THREE-CHOICE DIALOG: ENFORCED");
 console.log("AUDIO / INVENTORY / II ASSIGNMENT: OFF");
