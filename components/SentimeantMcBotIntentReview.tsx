@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import SentimeantMgsCandidateReview from "@/components/SentimeantMgsCandidateReview";
 import {
   classifySituation,
   RELATIONSHIP_CHOICES,
@@ -46,7 +47,7 @@ export default function SentimeantMcBotIntentReview({
     window.requestAnimationFrame(() => {
       resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-  }, [manualThemeId, selectedDirection, submitted]);
+  }, [manualThemeId, submitted]);
 
   function resetResult() {
     setSubmitted(false);
@@ -59,6 +60,15 @@ export default function SentimeantMcBotIntentReview({
     setManualThemeId(null);
     setSelectedDirection("");
     setSubmitted(true);
+  }
+
+  function refineSentence() {
+    setSubmitted(false);
+    setManualThemeId(null);
+    setSelectedDirection("");
+    window.requestAnimationFrame(() => {
+      document.getElementById("sentimeant-story")?.focus();
+    });
   }
 
   function startOver() {
@@ -81,13 +91,14 @@ export default function SentimeantMcBotIntentReview({
           </h1>
           <p className="mt-5 max-w-3xl text-base font-bold leading-7 text-[#684334] sm:text-lg sm:leading-8">
             I will identify the closest emotional direction, ask one clarifying
-            question only when needed, and show three directions. No music or
-            inventory is assigned in this review.
+            question only when needed, and show three directions. After you choose
+            one, the review continues through MGS comparison, candidate refinement,
+            and final confirmation.
           </p>
         </div>
 
         <div className="rounded-2xl border border-[#d6ae97] bg-[#f8e7da] px-5 py-4 text-sm font-black leading-6 text-[#6f3827]">
-          Working governed guide
+          Complete review workflow
           <br />
           No audio · No II assignment · No checkout
         </div>
@@ -168,10 +179,17 @@ export default function SentimeantMcBotIntentReview({
                 This should not continue as a sales flow.
               </h2>
               <p className="mt-4 font-bold leading-7">
-                Contact local emergency services or a trusted person who can be
-                physically present now. Sent-i-Meants will not recommend a product
-                from this message.
+                Sent-i-Meants will not recommend or test a product match from this
+                message. Reach a trusted person who can be physically present and
+                contact local emergency services when immediate danger exists.
               </p>
+              <button
+                type="button"
+                onClick={startOver}
+                className="mt-5 rounded-2xl border border-red-800/40 bg-white px-5 py-3 text-sm font-black"
+              >
+                Clear this message
+              </button>
             </section>
           ) : needsClarification ? (
             <section className="mt-7 rounded-[1.75rem] border border-[#d8b9a3] bg-[#fff7ed] p-6 sm:p-8">
@@ -224,11 +242,7 @@ export default function SentimeantMcBotIntentReview({
                 </div>
                 <button
                   type="button"
-                  onClick={() => {
-                    setSubmitted(false);
-                    setManualThemeId(null);
-                    setSelectedDirection("");
-                  }}
+                  onClick={refineSentence}
                   className="rounded-full border border-[#9c624b] px-4 py-2 text-sm font-black text-[#653827] hover:bg-[#f5dfd0]"
                 >
                   Refine the sentence
@@ -283,25 +297,33 @@ export default function SentimeantMcBotIntentReview({
               </div>
 
               {selectedDirection ? (
-                <div className="mt-7 rounded-[1.5rem] border-2 border-emerald-700/35 bg-emerald-50 p-6 text-emerald-950">
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-800">
-                    User-side direction confirmed
-                  </p>
-                  <h3 className="mt-3 font-serif text-2xl font-black sm:text-3xl">
-                    {selectedDirection}
-                  </h3>
-                  <p className="mt-3 font-bold leading-7">
-                    Relationship: {result.relationshipLabel}
-                    <br />
-                    Public direction: {activeTheme.label}
-                    <br />
-                    MGS themes to compare later: {activeTheme.mgsThemes.join(", ")}
-                  </p>
-                  <p className="mt-4 text-sm font-bold leading-6">
-                    No KK or KOMBO has been selected. The next governed system step
-                    is two-sided MGS comparison against verified candidates.
-                  </p>
-                </div>
+                <>
+                  <div className="mt-7 rounded-[1.5rem] border-2 border-emerald-700/35 bg-emerald-50 p-6 text-emerald-950">
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-800">
+                      User-side direction confirmed
+                    </p>
+                    <h3 className="mt-3 font-serif text-2xl font-black sm:text-3xl">
+                      {selectedDirection}
+                    </h3>
+                    <p className="mt-3 font-bold leading-7">
+                      Relationship: {result.relationshipLabel}
+                      <br />
+                      Public direction: {activeTheme.label}
+                      <br />
+                      MGS themes: {activeTheme.mgsThemes.join(", ")}
+                    </p>
+                  </div>
+
+                  <SentimeantMgsCandidateReview
+                    themeId={activeTheme.id}
+                    themeLabel={activeTheme.label}
+                    directionTitle={selectedDirection}
+                    relationshipLabel={result.relationshipLabel}
+                    mgsThemes={activeTheme.mgsThemes}
+                    onRefineSentence={refineSentence}
+                    onChangeDirection={() => setSelectedDirection("")}
+                  />
+                </>
               ) : null}
             </section>
           )}
@@ -314,8 +336,8 @@ export default function SentimeantMcBotIntentReview({
           {SENTIMEANT_THEMES.map((theme) => theme.label).join(" · ")}
         </p>
         <p className="mt-3">
-          Later, each verified NKK or BLK may nominate theme fits, but every child
-          KK or KOMBO must independently prove its own fit. Anything without a
+          Test candidates exercise the workflow only. Real NKK/BLK theme fits and
+          every child KK/KOMBO require independent evidence. Anything without a
           defensible match remains <strong>NO THEME FIT — HOLD</strong>.
         </p>
       </section>
