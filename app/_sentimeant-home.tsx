@@ -13,7 +13,7 @@ export default function SentimeantHome() {
         <SentimeantMcBotIntentReview />
 
         <section className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
-          After today&apos;s revised KKr digestion and two-sided metadata/MGS outputs are verified, every NKK or BLK can be assessed against Winning, Loving, Remembering, Sharing, Urging, Comforting, and Reinforcing. Each proposed fit must state how well it fits, what evidence supports it, what contradicts it, and how the actual audio presents. Any KK or KOMBO with no defensible theme fit remains isolated from Sentimeant presentation.
+          After today&apos;s revised KKr digestion and two-sided metadata/MGS outputs are verified, every NKK or BLK can be assessed against Winning, Loving, Remembering, Sharing, Urging, Comforting, and Reinforcing. Each proposed fit must state how well it fits, what evidence supports it, what contradicts it, and how the actual audio presents. A parent NKK or BLK fit may nominate themes for review, but it never automatically classifies its child KKs or KOMBOs. Each child must prove its own fit. Any KK or KOMBO with no defensible theme fit remains isolated from Sentimeant presentation.
         </section>
 
         <footer className="rounded-[1.5rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
