@@ -1,4 +1,8 @@
 import fs from "node:fs";
+import {
+  classifySituation,
+  SENTIMEANT_THEMES,
+} from "../lib/sentimeant/mcBotThemeEngine.mjs";
 
 const stop = (message) => {
   throw new Error(message);
@@ -38,7 +42,7 @@ if (manifest.status !== "REVIEW_ONLY_NON_AUDIO") {
 if (themeFitLaw.schema_version !== "SENTIMEANT_NKK_BLK_THEME_FIT_LAW_V001") {
   stop("NKK / BLK theme-fit law missing or changed");
 }
-if (themeFitLaw.themes.length !== 7) {
+if (themeFitLaw.themes.length !== 7 || SENTIMEANT_THEMES.length !== 7) {
   stop("exactly seven governed themes are required");
 }
 if (
@@ -117,10 +121,16 @@ if (/redirect\s*\(\s*["']\/hugz/iu.test(reviewRoute)) {
   stop("Sentimeant must never redirect to HUGz");
 }
 if (!startRoute.includes("SentimeantMcBotIntentReview")) {
-  stop("MC-BOT dialog must render only after the landing-page feeling choice");
+  stop("MC-BOT guide must render only after the landing-page feeling choice");
 }
-if (!startRoute.includes("You started with:")) {
-  stop("selected landing-page feeling context is missing from MC-BOT route");
+for (const required of [
+  "initialFeelingId={feelingId}",
+  "initialFeelingLabel={feeling}",
+  "You started with:",
+]) {
+  if (!startRoute.includes(required)) {
+    stop(`selected landing-page feeling is not connected to MC-BOT: ${required}`);
+  }
 }
 
 if (!middleware.includes('"/sentimeant/:path*"')) {
@@ -140,16 +150,89 @@ if (!middleware.includes("return NextResponse.next();")) {
 }
 
 for (const required of [
-  "MC-BOT reflects before matching",
-  "Ready for later two-sided MGS comparison",
-  "Future three-candidate format — no music loaded",
-  "NKK / BLK theme-fit law",
+  "Find the right feeling",
+  "Closest emotional direction",
+  "One quick question",
+  "User-side direction confirmed",
+  "No KK or KOMBO has been selected",
   "NO THEME FIT — HOLD",
-  "Nothing entered here is saved or sent.",
+  "classifySituation",
 ]) {
   if (!component.includes(required)) {
-    stop(`required MC-BOT review language missing: ${required}`);
+    stop(`working MC-BOT behavior missing: ${required}`);
   }
+}
+
+const qaCases = [
+  {
+    name: "GD screenshot repair case",
+    text: "my wife is mad at me.",
+    startingFeelingId: "thank-you",
+    expectedTheme: "repair",
+    expectedRelationship: "partner",
+  },
+  {
+    name: "hurtful wife repair case",
+    text: "I said something hurtful to my wife.",
+    expectedTheme: "repair",
+    expectedRelationship: "partner",
+  },
+  {
+    name: "first-day encouragement case",
+    text: "My friend is nervous about her first day at work.",
+    expectedTheme: "encourage",
+    expectedRelationship: "friend",
+  },
+  {
+    name: "graduation celebration case",
+    text: "My grandson graduated and I’m so proud.",
+    expectedTheme: "celebrate",
+    expectedRelationship: "family",
+  },
+  {
+    name: "terrible-week comfort case",
+    text: "She has had a terrible week.",
+    expectedTheme: "comfort",
+    expectedRelationship: "anyone",
+  },
+  {
+    name: "friend breakup comfort case",
+    text: "My best friend just got dumped.",
+    expectedTheme: "comfort",
+    expectedRelationship: "friend",
+  },
+];
+
+for (const test of qaCases) {
+  const result = classifySituation({
+    text: test.text,
+    startingFeelingId: test.startingFeelingId ?? "",
+  });
+  if (result.top.id !== test.expectedTheme) {
+    stop(`${test.name}: expected ${test.expectedTheme}, received ${result.top.id}`);
+  }
+  if (result.relationship !== test.expectedRelationship) {
+    stop(`${test.name}: expected relationship ${test.expectedRelationship}, received ${result.relationship}`);
+  }
+  if (result.top.recommendations.length !== 3) {
+    stop(`${test.name}: exactly three directions are required`);
+  }
+}
+
+const screenshotCase = classifySituation({
+  text: "my wife is mad at me.",
+  startingFeelingId: "thank-you",
+});
+if (screenshotCase.needsClarification) {
+  stop("GD screenshot repair case must produce a direct answer, not a dead clarification loop");
+}
+if (!screenshotCase.startingFeelingMismatch) {
+  stop("MC-BOT must explain when the sentence overrides the landing-page feeling");
+}
+
+const ambiguousCase = classifySituation({ text: "I need help saying this." });
+if (!ambiguousCase.needsClarification) {
+  stop("low-confidence ordinary language must ask one clarifying question");
 }
 
 for (const forbidden of [
@@ -179,18 +262,16 @@ if (!layout.includes("SENTIMEANT_HOSTS")) {
   stop("Sentimeant host-specific identity navigation is missing");
 }
 
-console.log("SENTIMEANT ORIGINAL LANDING + MC-BOT DIALOG AUDIT: PASS");
+console.log("SENTIMEANT ORIGINAL LANDING + WORKING MC-BOT AUDIT: PASS");
 console.log("ORIGINAL SENT-I-MEANTS FRONT DOOR: PRESERVED");
 console.log("ORIGINAL FIVE FEELINGS: PRESERVED");
 console.log("THE MIRROR: PRESERVED");
-console.log("CHOOSE / SHAPE / SEND / CARE: PRESERVED");
-console.log("GPMx UPPER-LEFT IDENTITY: PASS");
 console.log("LANDING TO /SENTIMEANT/START ROUTE: ALLOWED");
-console.log("OBSOLETE ALL-SENTIMEANT REDIRECT: REMOVED");
-console.log("NON-PUBLIC EVIDENCE AUDIO BLOCK: PRESERVED");
-console.log("MC-BOT ON LANDING PAGE: BLOCKED");
-console.log("MC-BOT AFTER FEELING CHOICE: PASS");
-console.log("NKK / BLK ALL-THEME CONSIDERATION: ON");
+console.log("DETERMINISTIC SENTENCE CLASSIFIER: PASS");
+console.log("GD SCREENSHOT CASE: SORRY & REPAIR");
+console.log("RELATIONSHIP INFERENCE: PASS");
+console.log("LOW-CONFIDENCE CLARIFICATION: PASS");
+console.log("EXACTLY THREE DIRECTIONS: PASS");
 console.log("PARENT-TO-CHILD AUTO-INHERITANCE: BLOCKED");
 console.log("NO THEME FIT — HOLD: ENFORCED");
 console.log("AUDIO / INVENTORY / II ASSIGNMENT: OFF");
