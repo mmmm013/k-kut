@@ -200,7 +200,7 @@ for (const required of [
   'product_family: "CUSTOMER_PACKAGE"',
   'personal_note_placement: "before_package_content"',
   'share_mode: "private_package_link"',
-  "package identity never replaces II identity",
+  "Package identity never replaces II identity",
 ]) {
   if (!webhook.includes(required)) {
     stop(`paid-fulfillment package separation missing: ${required}`);
