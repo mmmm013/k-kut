@@ -33,7 +33,7 @@ A **HUGz Card** is a visual sentiment-discovery container.
 - It is not an II.
 - It is not media.
 - It is not a purchased package.
-- It houses HUG choices only.
+- HUGz Cards house HUG choices only.
 - It never houses TUGs or BUGs.
 - The number 13 applies only to the number of HUGz Cards; it does not set any KK, KOMBO, or HUG inventory count.
 
@@ -61,7 +61,7 @@ Visual HUGz Card discovery and promotion across thirteen sentiment containers.
 
 Customer experience: browse a HUGz Card, understand its emotional direction, and then tell MC-BOT what the sender actually means.
 
-13HUGz may refer to HUG packages only because HUGz Cards house KK/KOMBO HUG choices only.
+13HUGz may refer to HUG packages only. The underlying II identity remains separate and must be independently proven as KK or KOMBO.
 
 ### K-KUT / k-kut.com
 
