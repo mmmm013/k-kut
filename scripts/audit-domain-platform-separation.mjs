@@ -90,9 +90,16 @@ if (cardCount !== 13) {
   stop(`13HUGz catalog must contain exactly 13 cards; found ${cardCount}`);
 }
 
+for (const packageName of ["HUG", "TUG", "BUG"]) {
+  if (!platformLaw.includes(packageName)) {
+    stop(`cross-domain customer-package law is missing: ${packageName}`);
+  }
+}
+
 console.log("DOMAIN PLATFORM SEPARATION AUDIT: PASS");
 console.log("GPMx: MUSIC AUTHORITY & DISCOVERY");
 console.log("SENT-I-MEANTS: MEANING, REFLECTION & MATCHING");
-console.log("13HUGz: 13 VISUAL HUGz CARDS · 33 SECONDS · MINIMAL FOOTER");
+console.log("13HUGz: 13 VISUAL HUGz CARDS · HUG PACKAGES ONLY");
 console.log("K-KUT: EXACT-II CHECKOUT, DELIVERY & SUPPORT");
-console.log("CANONICAL CUSTOMER PRODUCT ACROSS ALL PLATFORMS: HUG");
+console.log("CUSTOMER PACKAGE NAMES ACROSS GPM DOMAINS: HUG · TUG · BUG");
+console.log("PACKAGE NAME REPLACES II IDENTITY: NO");
