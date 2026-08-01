@@ -1,4 +1,9 @@
-import { PRODUCT_OFFER_LAW } from "@/lib/productOfferLaw";
+import {
+  CUSTOMER_PACKAGE_NAMES,
+  PRODUCT_OFFER_LAW,
+  type CanonicalPackageIiKind,
+  type CustomerPackageName,
+} from "@/lib/productOfferLaw";
 
 export type GpmPlatformId = "gpmx" | "sentimeants" | "13hugz" | "k-kut";
 export type GpmExperienceLens =
@@ -9,15 +14,36 @@ export type GpmExperienceLens =
   | "kupid"
   | "wedding";
 
-export const CROSS_DOMAIN_HUG_DP_VERSION = "GPMX_CROSS_DOMAIN_HUG_DP_V001";
+export const CROSS_DOMAIN_PACKAGE_DP_VERSION =
+  "GPMX_CROSS_DOMAIN_PACKAGE_DP_V002";
+
+// Compatibility name retained while the governing scope expands from HUG-only
+// to all three customer packages.
+export const CROSS_DOMAIN_HUG_DP_VERSION = CROSS_DOMAIN_PACKAGE_DP_VERSION;
+
+export const CANONICAL_CUSTOMER_PACKAGES = {
+  HUG: PRODUCT_OFFER_LAW.HUG,
+  TUG: PRODUCT_OFFER_LAW.TUG,
+  BUG: PRODUCT_OFFER_LAW.BUG,
+} as const;
 
 export const CANONICAL_HUG_IDENTITY = {
-  customerName: PRODUCT_OFFER_LAW.HUG.customerName,
-  priceUsd: PRODUCT_OFFER_LAW.HUG.priceUsd,
-  priceCents: PRODUCT_OFFER_LAW.HUG.priceCents,
-  canonicalIiKinds: PRODUCT_OFFER_LAW.HUG.canonicalIiKinds,
-  discoveryContainer: PRODUCT_OFFER_LAW.HUG.discoveryContainer,
+  ...PRODUCT_OFFER_LAW.HUG,
   neverRenameByPlatform: true,
+} as const;
+
+export const CROSS_DOMAIN_PACKAGE_ONLY_LAW = {
+  allowedCustomerPackageNames: CUSTOMER_PACKAGE_NAMES,
+  namesApplyAcrossEveryGpmDomain: true,
+  packageNamesAreNeverIiIdentity: true,
+  packageNamesAreNeverMediaIdentity: true,
+  canonicalIiIdentityRemainsSeparate: true,
+  mapping: {
+    HUG: ["KK", "KOMBO"],
+    TUG: ["sK"],
+    BUG: ["mK"],
+  },
+  bugAllowedSources: PRODUCT_OFFER_LAW.BUG.allowedMkSources,
 } as const;
 
 export const GPM_PLATFORM_ROLES = {
@@ -28,8 +54,8 @@ export const GPM_PLATFORM_ROLES = {
     uniquePurpose:
       "Governing platform, source/catalog authority, rights context, and matching intelligence.",
     customerExperience:
-      "Discover and understand which governed HUG direction may serve the need.",
-    primaryActionLabel: "Discover a HUG",
+      "Discover which governed HUG, TUG, or BUG direction may serve the need without changing the underlying II identity.",
+    primaryActionLabel: "Discover a package",
     checkoutAuthority: false,
     deliveryAuthority: false,
     bfProfile: "gpmx",
@@ -46,7 +72,7 @@ export const GPM_PLATFORM_ROLES = {
     uniquePurpose:
       "Human-meaning front door: user expression, The Mirror, MC-BOT clarification, and two-sided MGS comparison.",
     customerExperience:
-      "Say what happened, confirm what was understood, and refine the need before music is recommended.",
+      "Say what happened, confirm what was understood, and refine the need before a HUG, TUG, or BUG is recommended.",
     primaryActionLabel: "Send what you meant",
     checkoutAuthority: false,
     deliveryAuthority: false,
@@ -59,7 +85,7 @@ export const GPM_PLATFORM_ROLES = {
     uniquePurpose:
       "Visual HUGz Card discovery and promotion across thirteen sentiment containers.",
     customerExperience:
-      "Browse a HUGz Card, compare its direction, then tell MC-BOT what the sender actually means.",
+      "Browse a HUGz Card, compare its direction, then tell MC-BOT what the sender actually means. HUGz Cards house HUG choices only.",
     primaryActionLabel: "Choose a HUGz Card",
     checkoutAuthority: false,
     deliveryAuthority: false,
@@ -70,10 +96,10 @@ export const GPM_PLATFORM_ROLES = {
     displayName: "K-KUT",
     hosts: ["k-kut.com", "www.k-kut.com"] as const,
     uniquePurpose:
-      "Exact-II product selection, governed checkout, fulfillment, private delivery, and support.",
+      "Exact-II package selection, governed checkout, fulfillment, private delivery, and support.",
     customerExperience:
-      "Choose the exact governed HUG, buy it, send it, and receive the correct delivery.",
-    primaryActionLabel: "Choose and send this HUG",
+      "Choose the exact governed HUG, TUG, or BUG, buy it, send it, and receive the correct delivery.",
+    primaryActionLabel: "Choose and send this package",
     checkoutAuthority: true,
     deliveryAuthority: true,
     bfProfile: "k-kut",
@@ -86,15 +112,16 @@ export const GPM_EXPERIENCE_LENSES: Record<
 > = {
   general: {
     displayName: "General",
-    purpose: "Open HUG discovery without assuming a relationship or occasion.",
+    purpose:
+      "Open package discovery without assuming a relationship or occasion.",
   },
   personal: {
     displayName: "Personal",
-    purpose: "Relationship-led discovery for a particular person.",
+    purpose: "Relationship-led package discovery for a particular person.",
   },
   holiday: {
     displayName: "Holiday",
-    purpose: "Holiday context without changing the product identity.",
+    purpose: "Holiday context without changing the package or II identity.",
   },
   themes: {
     displayName: "Themes",
@@ -102,15 +129,17 @@ export const GPM_EXPERIENCE_LENSES: Record<
   },
   kupid: {
     displayName: "Kupid",
-    purpose: "Romantic relationship lens; the purchased product remains a HUG.",
+    purpose:
+      "Romantic relationship lens; the customer package remains HUG, TUG, or BUG.",
   },
   wedding: {
     displayName: "Wedding",
-    purpose: "Wedding occasion lens; the purchased product remains a HUG.",
+    purpose:
+      "Wedding occasion lens; the customer package remains HUG, TUG, or BUG.",
   },
 };
 
-export const CROSS_DOMAIN_HUG_DP_STAGES = [
+export const CROSS_DOMAIN_PACKAGE_DP_STAGES = [
   "USER_EXPRESSION",
   "MC_BOT_REFLECTION",
   "USER_CONFIRMATION",
@@ -118,12 +147,15 @@ export const CROSS_DOMAIN_HUG_DP_STAGES = [
   "THREE_EXPLAINED_CANDIDATES",
   "USER_REFINEMENT_OR_REJECTION",
   "EXACT_II_SELECTION",
+  "CUSTOMER_PACKAGE_ASSIGNMENT",
   "K_KUT_GOVERNED_CHECKOUT",
   "K_KUT_PRIVATE_DELIVERY",
   "ORIGIN_ATTRIBUTION_RETAINED",
 ] as const;
 
-export const CROSS_DOMAIN_HUG_HANDOFF_FIELDS = [
+export const CROSS_DOMAIN_HUG_DP_STAGES = CROSS_DOMAIN_PACKAGE_DP_STAGES;
+
+export const CROSS_DOMAIN_PACKAGE_HANDOFF_FIELDS = [
   "dpVersion",
   "originDomain",
   "originPlatform",
@@ -142,11 +174,15 @@ export const CROSS_DOMAIN_HUG_HANDOFF_FIELDS = [
   "selectedTheme",
   "candidateInventoryId",
   "canonicalIiKind",
+  "customerPackageName",
   "evidenceStatus",
 ] as const;
 
-export type CrossDomainHugHandoff = {
-  dpVersion: typeof CROSS_DOMAIN_HUG_DP_VERSION;
+export const CROSS_DOMAIN_HUG_HANDOFF_FIELDS =
+  CROSS_DOMAIN_PACKAGE_HANDOFF_FIELDS;
+
+export type CrossDomainPackageHandoff = {
+  dpVersion: typeof CROSS_DOMAIN_PACKAGE_DP_VERSION;
   originDomain: string;
   originPlatform: GpmPlatformId;
   originExperience: GpmExperienceLens;
@@ -163,9 +199,12 @@ export type CrossDomainHugHandoff = {
   mgsTerms: string[];
   selectedTheme: string;
   candidateInventoryId: string;
-  canonicalIiKind: "KK" | "KOMBO" | "";
+  canonicalIiKind: CanonicalPackageIiKind | "";
+  customerPackageName: CustomerPackageName | "";
   evidenceStatus: "UNPROVEN" | "CANDIDATE" | "APPROVED" | "NO_THEME_FIT_HOLD";
 };
+
+export type CrossDomainHugHandoff = CrossDomainPackageHandoff;
 
 function normalizeHost(value: string) {
   return value
@@ -195,19 +234,21 @@ export function sentimeantStartHrefFromHugzCard(cardSlug: string) {
   const params = new URLSearchParams({
     source: GPM_PLATFORM_ROLES["13hugz"].id,
     card: cardSlug,
+    package: "HUG",
   });
   return `/sentimeant/start?${params.toString()}`;
 }
 
-export function createEmptyCrossDomainHugHandoff(input: {
+export function createEmptyCrossDomainPackageHandoff(input: {
   originDomain: string;
   originExperience?: GpmExperienceLens;
   exactUserWords?: string;
-}): CrossDomainHugHandoff {
+  customerPackageName?: CustomerPackageName;
+}): CrossDomainPackageHandoff {
   const platform = platformForHost(input.originDomain);
 
   return {
-    dpVersion: CROSS_DOMAIN_HUG_DP_VERSION,
+    dpVersion: CROSS_DOMAIN_PACKAGE_DP_VERSION,
     originDomain: normalizeHost(input.originDomain),
     originPlatform: platform.id,
     originExperience: input.originExperience || "general",
@@ -225,6 +266,10 @@ export function createEmptyCrossDomainHugHandoff(input: {
     selectedTheme: "",
     candidateInventoryId: "",
     canonicalIiKind: "",
+    customerPackageName: input.customerPackageName || "",
     evidenceStatus: "UNPROVEN",
   };
 }
+
+export const createEmptyCrossDomainHugHandoff =
+  createEmptyCrossDomainPackageHandoff;
