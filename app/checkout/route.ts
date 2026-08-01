@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
 import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
+import { bfProfileForHost } from "@/lib/crossDomainHugDp";
 
 export const runtime = "nodejs";
 
@@ -16,7 +17,6 @@ const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const CLIENT_REFERENCE_LIMIT = 200;
 const H2_CLIENT_REFERENCE_PREFIX = "H2_";
-const BF_PROFILE = "k-kut";
 const STRIPE_REDIRECT_STATUS = 303;
 
 const TRUE_VALUES = new Set([
@@ -159,8 +159,7 @@ async function verifiedInventoryFamily(
       : [];
 
     const record = records.find(
-      (candidate) =>
-        cleanText(candidate.inventory_id, 200) === inventoryId,
+      (candidate) => cleanText(candidate.inventory_id, 200) === inventoryId,
     );
 
     if (!record) return "";
@@ -216,14 +215,16 @@ async function governedCheckout(
     return returnToStore(request, "payment-link-unavailable");
   }
 
+  const checkoutOriginDomain = originDomain(request);
+  const bfProfile = bfProfileForHost(checkoutOriginDomain);
   let token: string;
 
   try {
     token = await createPendingH2Order({
       inventoryId,
       personalNote,
-      bfProfile: BF_PROFILE,
-      originDomain: originDomain(request),
+      bfProfile,
+      originDomain: checkoutOriginDomain,
       publicProductName: config.publicProductName,
     });
   } catch (reason) {
@@ -246,9 +247,12 @@ async function governedCheckout(
   const checkoutUrl = new URL(paymentUrl);
 
   checkoutUrl.searchParams.set("client_reference_id", clientReference);
-  checkoutUrl.searchParams.set("utm_source", BF_PROFILE);
+  checkoutUrl.searchParams.set("utm_source", bfProfile);
   checkoutUrl.searchParams.set("utm_medium", "storefront");
-  checkoutUrl.searchParams.set("utm_campaign", `catalog_${config.code}`);
+  checkoutUrl.searchParams.set(
+    "utm_campaign",
+    `${bfProfile}_catalog_${config.code}`,
+  );
   checkoutUrl.searchParams.set(
     "utm_content",
     personalNote ? `${config.code}_with_note` : config.code,
