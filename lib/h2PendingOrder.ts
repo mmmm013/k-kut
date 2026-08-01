@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
+import type { CustomerPackageCode } from "@/lib/productOfferLaw";
 
 const H2_TABLE = "gpm_h2_pending_orders";
 const H2_TOKEN_PATTERN = /^[a-f0-9]{32}$/;
@@ -9,6 +10,11 @@ const ORIGIN_DOMAIN_PATTERN = /^[A-Za-z0-9.-]{1,253}$/;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PUBLIC_PRODUCT_NAME_LIMIT = 120;
+const CUSTOMER_PACKAGE_CODES = new Set<CustomerPackageCode>([
+  "hug",
+  "tug",
+  "bug",
+]);
 
 export type PendingH2Order = {
   token: string;
@@ -17,7 +23,7 @@ export type PendingH2Order = {
   bfProfile: string;
   originDomain: string;
   publicProductName: string;
-  coreOfferCode: "hug";
+  customerPackageCode: CustomerPackageCode;
   status: "awaiting_payment" | "paid_received";
   createdAt: string;
   expiresAt: string;
@@ -29,6 +35,7 @@ type CreatePendingH2OrderInput = {
   bfProfile: string;
   originDomain: string;
   publicProductName: string;
+  customerPackageCode: CustomerPackageCode;
 };
 
 type ConsumePendingH2OrderInput = {
@@ -44,7 +51,7 @@ type PendingH2OrderRow = {
   bf_profile: string;
   origin_domain: string;
   public_product_name: string;
-  core_offer_code: "hug";
+  core_offer_code: CustomerPackageCode;
   status: "awaiting_payment" | "paid_received";
   created_at: string;
   expires_at: string;
@@ -81,7 +88,7 @@ function serverSupabase() {
     },
     global: {
       headers: {
-        "X-Client-Info": "gpm-h2-pending-order-v001",
+        "X-Client-Info": "gpm-h2-pending-order-v002",
       },
     },
   });
@@ -95,7 +102,7 @@ function normalizeRow(row: PendingH2OrderRow): PendingH2Order {
     bfProfile: row.bf_profile,
     originDomain: row.origin_domain,
     publicProductName: row.public_product_name,
-    coreOfferCode: row.core_offer_code,
+    customerPackageCode: row.core_offer_code,
     status: row.status,
     createdAt: row.created_at,
     expiresAt: row.expires_at,
@@ -120,6 +127,10 @@ export async function createPendingH2Order(
     input.publicProductName,
     PUBLIC_PRODUCT_NAME_LIMIT,
   );
+  const customerPackageCode = cleanText(
+    input.customerPackageCode,
+    10,
+  ).toLowerCase() as CustomerPackageCode;
 
   if (!INVENTORY_ID_PATTERN.test(inventoryId)) {
     throw new Error("h2_invalid_inventory_id");
@@ -141,6 +152,10 @@ export async function createPendingH2Order(
     throw new Error("h2_missing_public_product_name");
   }
 
+  if (!CUSTOMER_PACKAGE_CODES.has(customerPackageCode)) {
+    throw new Error("h2_invalid_customer_package_code");
+  }
+
   const token = randomUUID().replaceAll("-", "");
   const supabase = serverSupabase();
   const { data, error } = await supabase
@@ -152,7 +167,7 @@ export async function createPendingH2Order(
       bf_profile: bfProfile,
       origin_domain: originDomain,
       public_product_name: publicProductName,
-      core_offer_code: "hug",
+      core_offer_code: customerPackageCode,
       status: "awaiting_payment",
     })
     .select("token")
