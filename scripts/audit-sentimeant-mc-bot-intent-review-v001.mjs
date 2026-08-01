@@ -23,6 +23,7 @@ const reviewRoute = read("app/sentimeant/page.tsx");
 const startRoute = read("app/sentimeant/start/page.tsx");
 const layout = read("app/layout.tsx");
 const middleware = read("middleware.ts");
+const platformLaw = read("lib/crossDomainHugDp.ts");
 
 if (manifest.schema_version !== "SENTIMEANT_MC_BOT_INTENT_FLOW_V002") {
   stop("intent-flow schema version changed");
@@ -184,8 +185,25 @@ for (const forbidden of [
   }
 }
 
-if (!layout.includes("GPMx") || !layout.includes("SENTIMEANT_HOSTS")) {
-  stop("GPMx Sentimeant header separation missing");
+for (const required of [
+  "GPMx",
+  "platformForHost",
+  "SentimeantHeader",
+]) {
+  if (!layout.includes(required)) {
+    stop(`GPMx Sent-i-Meants header separation missing: ${required}`);
+  }
+}
+for (const required of [
+  'id: "sentimeants"',
+  '"sentimeant.com"',
+  '"www.sentimeant.com"',
+  '"sentimeants.com"',
+  '"www.sentimeants.com"',
+]) {
+  if (!platformLaw.includes(required)) {
+    stop(`shared Sent-i-Meants platform authority missing: ${required}`);
+  }
 }
 
 console.log("SENTIMEANT COMPLETE REVIEW WORKFLOW AUDIT: PASS");
@@ -196,4 +214,5 @@ console.log("DIRECTION SELECTION: PASS");
 console.log("MGS COMPARISON CONTINUATION: PASS");
 console.log("THREE EXPLAINED TEST CANDIDATES: PASS");
 console.log("REFINE / NONE FIT / CHANGE / CONFIRM: PASS");
+console.log("SHARED PLATFORM AUTHORITY: PASS");
 console.log("REAL KK / KOMBO / AUDIO / PRICE / CHECKOUT: BLOCKED");
