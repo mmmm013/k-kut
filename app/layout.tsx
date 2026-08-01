@@ -6,9 +6,9 @@ import SingleAudioPlaybackGuard from "@/components/SingleAudioPlaybackGuard";
 import { platformForHost } from "@/lib/crossDomainHugDp";
 
 export const metadata: Metadata = {
-  title: "HUGs — Private Music Moments",
+  title: "GPMx — HUGs, TUGs & BUGs",
   description:
-    "A HUG is a private music moment you choose by feeling, then send to someone.",
+    "GPM customer packages: HUGs, TUGs, and BUGs. Each package preserves the exact underlying II identity.",
   icons: { icon: "/logo.png", apple: "/logo.png" },
   appleWebApp: {
     capable: true,
@@ -152,7 +152,7 @@ function KkutHeader() {
             href="/browse"
             className="rounded-full border border-[#FFD54F]/25 px-3 py-2 text-[#FFF8E1] transition hover:border-[#FFD54F]/70"
           >
-            Exact HUGs
+            Packages
           </a>
           <a
             href="/find"
