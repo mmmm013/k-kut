@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SentimeantMcBotIntentReview from "@/components/SentimeantMcBotIntentReview";
+import { getHugzContainer } from "@/lib/hugzSeedCatalog";
 
 export const metadata = {
   title: "Shape your Sent-i-Meant | GPMx",
@@ -19,13 +20,19 @@ type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
+function firstValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
 export default async function SentimeantStartPage({ searchParams }: PageProps) {
   const params = await searchParams;
-  const rawFeeling = Array.isArray(params.feeling)
-    ? params.feeling[0]
-    : params.feeling;
+  const rawFeeling = firstValue(params.feeling);
   const feelingId = rawFeeling && feelingLabels[rawFeeling] ? rawFeeling : "";
   const feeling = feelingId ? feelingLabels[feelingId] : "";
+
+  const source = firstValue(params.source) === "13hugz" ? "13hugz" : "";
+  const cardSlug = source ? firstValue(params.card) || "" : "";
+  const sourceCard = cardSlug ? getHugzContainer(cardSlug) : null;
 
   return (
     <main className="min-h-screen bg-[#f7efe4] px-4 py-8 text-[#3b241b] sm:px-8 sm:py-12">
@@ -49,16 +56,39 @@ export default async function SentimeantStartPage({ searchParams }: PageProps) {
           </Link>
         </div>
 
+        {source === "13hugz" && sourceCard ? (
+          <section className="mb-6 rounded-2xl border border-[#cda489] bg-[#fff6eb] p-5 shadow-sm">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#9a4e35]">
+              13HUGz handoff
+            </p>
+            <h1 className="mt-2 text-2xl font-black text-[#4d2c20]">
+              {sourceCard.headline}
+            </h1>
+            <p className="mt-2 max-w-4xl text-sm font-bold leading-6 text-[#74503f]">
+              This HUGz Card is a starting clue, not a decision. MC-BOT must
+              listen to your own words, reflect what it understood, and let you
+              correct the meaning before any MGS comparison or HUG candidate is
+              considered.
+            </p>
+            <a
+              href={`https://13hugz.com/hugz/${sourceCard.slug}`}
+              className="mt-3 inline-flex text-sm font-black text-[#8b402b] underline"
+            >
+              Back to this HUGz Card
+            </a>
+          </section>
+        ) : null}
+
         <SentimeantMcBotIntentReview
           initialFeelingId={feelingId}
           initialFeelingLabel={feeling}
         />
 
         <p className="mt-6 rounded-2xl border border-[#d8b9a3] bg-[#fffaf4] p-5 text-sm font-bold leading-7 text-[#76503f]">
-          Review branch only. The chosen feeling and sentence guide a governed
-          theme result; they do not select, classify, approve, price, or deliver
-          any KK or KOMBO. No audio, checkout, fulfillment, or customer-data
-          persistence is enabled.
+          Review branch only. The chosen feeling, HUGz Card context, and sentence
+          guide a governed theme result; they do not select, classify, approve,
+          price, or deliver any KK or KOMBO. No audio, checkout, fulfillment, or
+          customer-data persistence is enabled.
         </p>
       </div>
     </main>
