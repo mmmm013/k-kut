@@ -3,7 +3,6 @@ const PAGE_URL = "https://www.k-kut.com/romance";
 const EXPECTED_AUDIO = [
   "https://www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
   "https://www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-  "https://www.k-kut.com/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
 ];
 
 const EXPECTED_STRIPE = [
@@ -28,10 +27,8 @@ const REQUIRED_TEXT = [
   "Private Intimate",
   "Sweet Love",
   "Physical Spark",
-  "Repair / Still Love You",
   "A Love Like That",
   "Your Heart Poundin",
-  "Don't Call It Love",
 ];
 
 const FORBIDDEN_TEXT = [
@@ -41,6 +38,8 @@ const FORBIDDEN_TEXT = [
   "raw KK",
   "instrumental",
   "instro",
+  "Don't Call It Love",
+  "Repair / Still Love You",
 ];
 
 async function headOrGet(url) {
