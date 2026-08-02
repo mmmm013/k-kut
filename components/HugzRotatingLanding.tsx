@@ -111,7 +111,7 @@ export default function HugzRotatingLanding() {
           <img
             src={active.imageUrl}
             alt=""
-            className="absolute inset-0 h-full w-full object-contain object-center"
+            className="absolute inset-0 h-full w-full object-contain object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#09070B] via-transparent to-black/15 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#09070B]" />
           <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/55 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] backdrop-blur">
