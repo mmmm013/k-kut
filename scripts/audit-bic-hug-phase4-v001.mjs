@@ -14,12 +14,16 @@ for (const required of [
   'method="post"',
   'name="ii"',
   'name="offer" value="kk"',
-  "Three ready HUG paths",
+  "Two ready HUG paths",
   "exact governed music choice",
+  "song → BLK → NBLK reprocessing",
 ]) {
   if (!page.includes(required)) fail(`pilot page ${required}`);
 }
 if (page.includes("buy.stripe.com")) fail("direct Stripe URL in pilot page");
+if (page.includes("Don't Call It Love")) {
+  fail("held parent title leaked into pilot frontend");
+}
 if (!layout.includes('href="/hug-pilot"') || !layout.includes("Ready HUGs")) {
   fail("K-KUT navigation");
 }
@@ -36,4 +40,4 @@ for (const required of [
   if (!checkout.includes(required)) fail(`checkout ${required}`);
 }
 
-console.log("BIC HUG AUDIT PHASE 4: PASS");
+console.log("BIC HUG AUDIT PHASE 4: PASS · TWO CUSTOMER PATHS");
