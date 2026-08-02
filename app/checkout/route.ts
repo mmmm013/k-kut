@@ -1,22 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
 import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
+import { bfProfileForHost } from "@/lib/crossDomainHugDp";
+import {
+  PRODUCT_OFFER_LAW,
+  type CustomerPackageCode,
+  type CustomerPackageName,
+} from "@/lib/productOfferLaw";
 
 export const runtime = "nodejs";
 
 const CATALOG_URL =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
 
-const KK_HUG_PAYMENT_URL =
+const HUG_PAYMENT_URL =
   "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
-const SK_HUG_PRICE_CENTS = 499;
-const KK_HUG_PRICE_CENTS = 799;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const CLIENT_REFERENCE_LIMIT = 200;
 const H2_CLIENT_REFERENCE_PREFIX = "H2_";
-const BF_PROFILE = "k-kut";
 const STRIPE_REDIRECT_STATUS = 303;
 
 const TRUE_VALUES = new Set([
@@ -37,8 +40,9 @@ type OfferCode = "sk" | "kk";
 type OfferConfig = {
   code: OfferCode;
   family: InventoryFamily;
-  publicProductName: "sK HUG" | "KK HUG";
-  priceCents: 499 | 799;
+  publicProductName: Extract<CustomerPackageName, "HUG" | "TUG">;
+  customerPackageCode: Extract<CustomerPackageCode, "hug" | "tug">;
+  priceCents: number;
   paymentUrl: string;
 };
 
@@ -90,8 +94,9 @@ function offerConfig(offer: OfferCode): OfferConfig {
     return {
       code: "sk",
       family: "SK",
-      publicProductName: "sK HUG",
-      priceCents: SK_HUG_PRICE_CENTS,
+      publicProductName: PRODUCT_OFFER_LAW.TUG.customerName,
+      customerPackageCode: PRODUCT_OFFER_LAW.TUG.packageCode,
+      priceCents: PRODUCT_OFFER_LAW.TUG.priceCents,
       paymentUrl: configuredPaymentUrl(
         process.env.NEXT_PUBLIC_SK_HUG_LINK,
       ),
@@ -101,9 +106,10 @@ function offerConfig(offer: OfferCode): OfferConfig {
   return {
     code: "kk",
     family: "KK",
-    publicProductName: "KK HUG",
-    priceCents: KK_HUG_PRICE_CENTS,
-    paymentUrl: KK_HUG_PAYMENT_URL,
+    publicProductName: PRODUCT_OFFER_LAW.HUG.customerName,
+    customerPackageCode: PRODUCT_OFFER_LAW.HUG.packageCode,
+    priceCents: PRODUCT_OFFER_LAW.HUG.priceCents,
+    paymentUrl: HUG_PAYMENT_URL,
   };
 }
 
@@ -159,8 +165,7 @@ async function verifiedInventoryFamily(
       : [];
 
     const record = records.find(
-      (candidate) =>
-        cleanText(candidate.inventory_id, 200) === inventoryId,
+      (candidate) => cleanText(candidate.inventory_id, 200) === inventoryId,
     );
 
     if (!record) return "";
@@ -216,15 +221,18 @@ async function governedCheckout(
     return returnToStore(request, "payment-link-unavailable");
   }
 
+  const checkoutOriginDomain = originDomain(request);
+  const bfProfile = bfProfileForHost(checkoutOriginDomain);
   let token: string;
 
   try {
     token = await createPendingH2Order({
       inventoryId,
       personalNote,
-      bfProfile: BF_PROFILE,
-      originDomain: originDomain(request),
+      bfProfile,
+      originDomain: checkoutOriginDomain,
       publicProductName: config.publicProductName,
+      customerPackageCode: config.customerPackageCode,
     });
   } catch (reason) {
     console.error(
@@ -246,12 +254,17 @@ async function governedCheckout(
   const checkoutUrl = new URL(paymentUrl);
 
   checkoutUrl.searchParams.set("client_reference_id", clientReference);
-  checkoutUrl.searchParams.set("utm_source", BF_PROFILE);
+  checkoutUrl.searchParams.set("utm_source", bfProfile);
   checkoutUrl.searchParams.set("utm_medium", "storefront");
-  checkoutUrl.searchParams.set("utm_campaign", `catalog_${config.code}`);
+  checkoutUrl.searchParams.set(
+    "utm_campaign",
+    `${bfProfile}_catalog_${config.customerPackageCode}`,
+  );
   checkoutUrl.searchParams.set(
     "utm_content",
-    personalNote ? `${config.code}_with_note` : config.code,
+    personalNote
+      ? `${config.customerPackageCode}_with_note`
+      : config.customerPackageCode,
   );
 
   return NextResponse.redirect(checkoutUrl, STRIPE_REDIRECT_STATUS);

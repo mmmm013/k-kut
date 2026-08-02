@@ -7,7 +7,6 @@ const CUSTOMER_PRIVATE_PREFIXES = [
 ];
 
 const SENTIMEANT_EVIDENCE_AUDIO_PREFIX = "/sentimeant/strict-kk-v001/";
-const SENTIMEANT_STORY_PREFIX = "/sentimeant/";
 
 const HUGZ_HOSTS = new Set([
   "13hugz.com",
@@ -84,13 +83,6 @@ export function middleware(request: NextRequest) {
         "X-Sentimeant-Public-Audio": "0",
       },
     });
-  }
-
-  if (pathname.startsWith(SENTIMEANT_STORY_PREFIX)) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/";
-    url.search = "";
-    return NextResponse.redirect(url, 307);
   }
 
   const isCustomerPrivatePath = CUSTOMER_PRIVATE_PREFIXES.some(

@@ -28,8 +28,7 @@ const routePickOrder = [
   "love-deep-devotion",
   "kupid-physical-spark",
   "wedding-forever",
-  "anniversary-still-choosing-you",
-  "repair-still-love-you"
+  "anniversary-still-choosing-you"
 ];
 
 const forbiddenPublic = [
@@ -42,13 +41,27 @@ const forbiddenPublic = [
   "Lloyd G Miller"
 ];
 
+const heldIds = new Set([
+  "6e959ac6-9546-4bae-87b2-ed6584185682",
+  "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682"
+]);
+
+const heldTitles = new Set(["don't call it love", "dont call it love"]);
 const picks = [];
 
 for (const routeId of routePickOrder) {
   const route = router.routes.find((r) => r.route_id === routeId);
   if (!route) continue;
 
-  const kk = (route.kk_candidates || []).find((c) => c.type === "KK");
+  const kk = (route.kk_candidates || []).find((candidate) => {
+    const title = String(candidate.public_label || "").trim().toLowerCase();
+    return (
+      candidate.type === "KK" &&
+      !heldIds.has(candidate.id) &&
+      !heldIds.has(candidate.source_id) &&
+      !heldTitles.has(title)
+    );
+  });
   if (!kk) continue;
 
   const publicLabel = publicClean(kk.public_label || route.buyer_label);
@@ -80,6 +93,17 @@ for (const routeId of routePickOrder) {
   });
 }
 
+if (
+  picks.some(
+    (pick) =>
+      heldIds.has(pick.kk_id) ||
+      heldIds.has(pick.ii_id) ||
+      heldTitles.has(String(pick.public_label || "").trim().toLowerCase())
+  )
+) {
+  throw new Error("HELD DON'T CALL IT LOVE SOURCE ENTERED ROMANCE SHORTLIST");
+}
+
 const report = {
   report: "romance-sales-shortlist-public",
   status: picks.length ? "ready_for_admin_audio_review" : "blocked_no_public_picks",
@@ -89,8 +113,11 @@ const report = {
     "mKs are ADMIN override only.",
     "No INSTRO.",
     "No duplicate II.",
-    "Raw KK audio is not customer delivery; materialize padding + Twinkle first."
+    "Raw KK audio is not customer delivery; materialize padding + Twinkle first.",
+    "Failed routes and held source identities may not be converted into public picks."
   ],
+  held_route_ids: ["repair-still-love-you"],
+  held_source_ids: [...heldIds],
   picks
 };
 
@@ -98,7 +125,7 @@ fs.writeFileSync(outJson, JSON.stringify(report, null, 2) + "\n");
 
 let md = "# Romance Sales Shortlist\n\n";
 md += `Status: ${report.status}\n\n`;
-md += "Rules: KK only. No mKs. No INSTRO. No internal labels. No duplicate II. Delivery needs padding + Twinkle.\n\n";
+md += "Rules: KK only. No mKs. No INSTRO. No internal labels. No duplicate II. Delivery needs padding + Twinkle. Failed routes and held source identities stay out.\n\n";
 
 for (const p of picks) {
   md += `- ${p.buyer_label} | ${p.public_label} | ${p.start_seconds}-${p.end_seconds}s | kk=${p.kk_id}\n`;
@@ -108,5 +135,6 @@ fs.writeFileSync(outMd, md);
 
 console.log("Romance public sales shortlist created.");
 console.log("Picks:", picks.length);
+console.log("HELD ROUTES EXCLUDED: repair-still-love-you");
 console.log("JSON:", outJson);
 console.log("MD:", outMd);

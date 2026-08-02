@@ -6,6 +6,7 @@ import {
   consumePendingH2Order,
   h2PendingOrderStoreConfigured,
 } from "@/lib/h2PendingOrder";
+import type { CustomerPackageCode } from "@/lib/productOfferLaw";
 
 export const runtime = "nodejs";
 
@@ -16,6 +17,11 @@ const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const LEGACY_CLIENT_REFERENCE_PREFIX = "H1|";
 const H2_CLIENT_REFERENCE_PREFIX = "H2_";
+const CUSTOMER_PACKAGE_CODES = new Set<CustomerPackageCode>([
+  "hug",
+  "tug",
+  "bug",
+]);
 
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
@@ -35,6 +41,11 @@ function cleanString(value: unknown, max = 500) {
 function safeInventoryId(value: unknown) {
   const candidate = cleanString(value, 200);
   return /^[A-Za-z0-9_-]{1,200}$/.test(candidate) ? candidate : "";
+}
+
+function safeCustomerPackageCode(value: unknown): CustomerPackageCode {
+  const candidate = cleanString(value, 10).toLowerCase() as CustomerPackageCode;
+  return CUSTOMER_PACKAGE_CODES.has(candidate) ? candidate : "hug";
 }
 
 function countWords(value: string) {
@@ -161,11 +172,11 @@ function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
     stripe_checkout_session_id: record.stripe_checkout_session_id,
     stripe_payment_intent_id: record.stripe_payment_intent_id,
     amount_paid_usd: record.amount_paid_usd,
-    core_product_name: record.product_name,
+    customer_package_code: record.customer_package_code,
     public_product_name: record.public_product_name,
     bf_profile: record.bf_profile,
     origin_domain: record.origin_domain,
-    selected_hug_id: record.selected_hug_id,
+    selected_inventory_id: record.selected_inventory_id,
     personal_note_present: record.personal_note_present,
     personal_note_word_count: record.personal_note_word_count,
     personal_note_placement: record.personal_note_placement,
@@ -193,9 +204,10 @@ function basePaidRecord(event: Stripe.Event) {
     source: "stripe_webhook",
     durable_order_authority: "stripe_checkout_session",
     manual_review_required: true,
-    product_family: "HUG",
+    product_family: "CUSTOMER_PACKAGE",
     product_name: "",
     public_product_name: "",
+    customer_package_code: "",
     bf_profile: "",
     origin_domain: "",
     amount_paid_usd: "",
@@ -209,26 +221,27 @@ function basePaidRecord(event: Stripe.Event) {
     stripe_customer_id: "",
     customer_email_present: false,
     customer_phone_present: false,
-    selected_hug_id: "",
-    selected_hug_title: "",
+    selected_inventory_id: "",
+    selected_inventory_title: "",
+    canonical_ii_kind: "",
     source_song: "",
     typed_feeling: "",
     personal_note: "",
     personal_note_present: false,
     personal_note_word_count: 0,
     personal_note_word_limit: PERSONAL_NOTE_WORD_LIMIT,
-    personal_note_placement: "before_hug_content",
+    personal_note_placement: "before_package_content",
     personal_note_status: "not_provided",
     client_reference_format: "missing",
     delivery_preference: "manual_review_required",
-    hug_link_status: "not_created",
-    hug_link_url: "",
+    package_link_status: "not_created",
+    package_link_url: "",
     download_allowed: false,
-    share_mode: "private_hug_link",
+    share_mode: "private_package_link",
     sms_enabled: false,
     metadata: {},
     notes:
-      "Stripe Checkout is the durable paid-order authority. H2 stores the exact selected II and optional note server-side before checkout; legacy H1 and inventory-only references remain readable during migration. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
+      "Stripe Checkout is the durable paid-order authority. H2 stores the exact selected II, HUG/TUG/BUG customer package, origin attribution, and optional note server-side before checkout. Production fulfillment remains manual-reviewed until durable MIAL automation is separately approved.",
   };
 }
 
@@ -248,7 +261,7 @@ function personalNoteFields(
     personal_note_present: Boolean(note),
     personal_note_word_count: note ? countWords(note) : 0,
     personal_note_word_limit: PERSONAL_NOTE_WORD_LIMIT,
-    personal_note_placement: "before_hug_content",
+    personal_note_placement: "before_package_content",
     personal_note_status:
       rawWordCount > PERSONAL_NOTE_WORD_LIMIT
         ? "held_over_word_limit"
@@ -265,7 +278,8 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
 
   let selectedInventoryId = parsedReference.inventoryId;
   let referenceNote = parsedReference.personalNote;
-  let publicProductName = "K-KUT HUG";
+  let publicProductName = "HUG";
+  let customerPackageCode: CustomerPackageCode = "hug";
   let bfProfile = "k-kut";
   let originDomain = "k-kut.com";
 
@@ -279,6 +293,7 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
     selectedInventoryId = pendingOrder.inventoryId;
     referenceNote = pendingOrder.personalNote;
     publicProductName = pendingOrder.publicProductName;
+    customerPackageCode = pendingOrder.customerPackageCode;
     bfProfile = pendingOrder.bfProfile;
     originDomain = pendingOrder.originDomain;
   }
@@ -288,8 +303,9 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
   return {
     ...record,
     ...noteFields,
-    product_name: "K-KUT HUG",
+    product_name: publicProductName,
     public_product_name: publicProductName,
+    customer_package_code: customerPackageCode,
     bf_profile: bfProfile,
     origin_domain: originDomain,
     amount_paid_usd: moneyFromCents(session.amount_total),
@@ -303,7 +319,7 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
       session.customer_details?.email || session.customer_email,
     ),
     customer_phone_present: Boolean(session.customer_details?.phone),
-    selected_hug_id: selectedInventoryId,
+    selected_inventory_id: selectedInventoryId,
     client_reference_format: parsedReference.format,
     delivery_preference: selectedInventoryId
       ? "fulfill_exact_selected_ii"
@@ -318,6 +334,7 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
       bf_profile: bfProfile,
       origin_domain: originDomain,
       public_product_name: publicProductName,
+      customer_package_code: customerPackageCode,
     },
   };
 }
@@ -326,18 +343,25 @@ function recordFromPaymentIntent(event: Stripe.Event) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
   const record = basePaidRecord(event);
   const selectedInventoryId = safeInventoryId(
-    paymentIntent.metadata?.selected_hug_id,
+    paymentIntent.metadata?.selected_inventory_id ||
+      paymentIntent.metadata?.selected_hug_id,
   );
   const noteFields = personalNoteFields(paymentIntent.metadata);
+  const customerPackageCode = safeCustomerPackageCode(
+    paymentIntent.metadata?.customer_package_code,
+  );
+  const fallbackPackageName = customerPackageCode.toUpperCase();
 
   return {
     ...record,
     ...noteFields,
     product_name:
-      cleanString(paymentIntent.description, 220) || "K-KUT HUG payment",
+      cleanString(paymentIntent.description, 220) ||
+      `${fallbackPackageName} payment`,
     public_product_name:
       cleanString(paymentIntent.metadata?.public_product_name, 120) ||
-      "K-KUT HUG",
+      fallbackPackageName,
+    customer_package_code: customerPackageCode,
     bf_profile:
       cleanString(paymentIntent.metadata?.bf_profile, 60) || "k-kut",
     origin_domain:
@@ -350,7 +374,7 @@ function recordFromPaymentIntent(event: Stripe.Event) {
     stripe_payment_intent_id: cleanString(paymentIntent.id, 220),
     stripe_customer_id:
       typeof paymentIntent.customer === "string" ? paymentIntent.customer : "",
-    selected_hug_id: selectedInventoryId,
+    selected_inventory_id: selectedInventoryId,
     delivery_preference: selectedInventoryId
       ? "fulfill_exact_selected_ii"
       : "manual_review_missing_selected_ii",
@@ -407,7 +431,7 @@ export async function POST(req: NextRequest) {
 
   if (event.type === "payment_intent.succeeded") {
     const record = recordFromPaymentIntent(event);
-    fulfillmentQueueStatus = record.selected_hug_id
+    fulfillmentQueueStatus = record.selected_inventory_id
       ? stagePaidFulfillmentRecord(record)
       : "event_acknowledged_checkout_session_is_fulfillment_authority";
   }
@@ -426,8 +450,9 @@ export async function GET() {
     route: "/api/stripe/webhook",
     status: stripe && webhookSecret ? "configured" : "missing_env",
     handles: ["checkout.session.completed", "payment_intent.succeeded"],
-    exact_ii_capture: "h2_pending_order_token_to_selected_hug_id",
-    personal_note_capture: "optional_13_words_before_hug_content",
+    exact_ii_capture: "h2_pending_order_token_to_selected_inventory_id",
+    customer_package_capture: "hug_tug_or_bug_separate_from_ii_identity",
+    personal_note_capture: "optional_13_words_before_package_content",
     client_reference_format: "H2_safe_order_token",
     legacy_client_reference_formats: [
       "H1|inventory_id|personal_note",
@@ -442,6 +467,6 @@ export async function GET() {
       ? "disabled_on_read_only_runtime"
       : "local_mial_import_packet",
     rule:
-      "H2 recovers the exact selected II, optional 13-word note, BF profile, origin domain, and public product identity from a server-only pending-order record. No automatic SMS or download. Manual HUG fulfillment review remains required.",
+      "H2 recovers the exact selected II, HUG/TUG/BUG customer package, optional 13-word note, BF profile, and origin domain from a server-only pending-order record. Package identity never replaces II identity. No automatic SMS or download. Manual package fulfillment review remains required.",
   });
 }

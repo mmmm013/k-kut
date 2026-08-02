@@ -1,0 +1,99 @@
+{
+  "schema_version": "GPMX_BIC_HUG_REVENUE_PILOT_V001",
+  "status": "BIC_REVIEW_BRANCH_READY_FOR_PREVIEW_GATE_AFTER_DCLIL_HOLD",
+  "authority": "GD / Greg Putnam · BIC-Level · LL/BP",
+  "package": {
+    "customer_package_code": "HUG",
+    "price_cents": 799,
+    "currency": "USD",
+    "eligible_canonical_kinds": ["KK", "KOMBO"]
+  },
+  "selection_law": {
+    "pilot_size": 2,
+    "separately_approved_inventory_outside_held_429_seed_packet_only": true,
+    "exact_inventory_identity_preserved": true,
+    "shared_need_glossary_required": "GPM_SHARED_NEED_GLOSSARY_V001",
+    "each_need_fit_independently_evidenced": true,
+    "forced_match_prohibited": true,
+    "customer_delivery_audio_reused_without_mutation": true,
+    "governed_checkout_only": true,
+    "direct_stripe_link_in_pilot_ui_prohibited": true,
+    "dont_call_it_love_public_matching_held": true
+  },
+  "records": [
+    {
+      "pilot_rank": 1,
+      "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "canonical_kind": "KK",
+      "kk_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "display_title": "A LOVE LIKE THAT",
+      "start_seconds": 0,
+      "end_seconds": 24,
+      "audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "primary_need_id": "warmth_care",
+      "secondary_need_ids": ["romantic_devotion", "celebration_new_beginning"],
+      "customer_interpretation": "Send warmth, loyal romantic care, or a beautiful commitment-facing moment.",
+      "positive_evidence": [
+        "Existing approved routes identify Sweet Love, Deep Devotion, Wedding / Forever, and Anniversary.",
+        "Publication authority describes the selection as warm, easy to receive, lasting, loyal, serious, ceremonial, and commitment-facing.",
+        "The exact reusable II is shared across those approved need routes instead of being duplicated."
+      ],
+      "exclusions": [
+        "Do not use for a non-romantic relationship unless the user's words independently support romantic love.",
+        "Do not claim permanence, marriage, or reconciliation unless the user confirms that meaning.",
+        "Do not use as grief, apology, or physical-spark material without separate evidence."
+      ],
+      "re_digest_status": "PASS_INDEPENDENT_NEED_FIT_FROM_EXISTING_APPROVED_ROUTE_EVIDENCE",
+      "publication_approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_proof_status": "pass",
+      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
+      "payment_allowed": true,
+      "checkout_offer_code": "kk",
+      "customer_package_code": "HUG",
+      "price_cents": 799,
+      "pilot_ready": true
+    },
+    {
+      "pilot_rank": 2,
+      "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "canonical_kind": "KK",
+      "kk_id": "1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "display_title": "YOUR HEART POUNDIN'",
+      "start_seconds": 0,
+      "end_seconds": 24,
+      "audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+      "primary_need_id": "physical_spark",
+      "secondary_need_ids": [],
+      "customer_interpretation": "Send an adult romantic HUG with bold, intimate, charged energy.",
+      "positive_evidence": [
+        "Existing approved route is Physical Spark.",
+        "Publication authority describes the selection as bold, intimate, and charged.",
+        "The exact reusable II has approved payment and customer-delivery audio evidence."
+      ],
+      "exclusions": [
+        "Adults and consensual romantic context only.",
+        "Never use for children, minors, family relationships, grief, apology, professional relationships, or general friendship.",
+        "Do not infer consent, mutual attraction, or relationship status from the song alone."
+      ],
+      "re_digest_status": "PASS_INDEPENDENT_NEED_FIT_FROM_EXISTING_APPROVED_ROUTE_EVIDENCE",
+      "publication_approval_status": "public_approved_generated_from_reusable_ii",
+      "audio_proof_status": "pass",
+      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
+      "payment_allowed": true,
+      "checkout_offer_code": "kk",
+      "customer_package_code": "HUG",
+      "price_cents": 799,
+      "pilot_ready": true
+    }
+  ],
+  "held_records": [
+    {
+      "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+      "display_title": "Don't Call It Love",
+      "prior_invalid_need_ids": ["repair_apology", "reconnection_still_care"],
+      "status": "HOLD_SONG_BLK_NBLK_REPROCESSING_REQUIRED",
+      "payment_allowed": false,
+      "reason": "Song meaning concerns noncommitment and sexual desire; the repair/continued-care classification was wrong."
+    }
+  ]
+}

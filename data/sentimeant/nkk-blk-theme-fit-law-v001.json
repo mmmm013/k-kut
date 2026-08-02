@@ -1,0 +1,110 @@
+{
+  "schema_version": "SENTIMEANT_NKK_BLK_THEME_FIT_LAW_V001",
+  "status": "REVIEW_SHELL_ONLY_NO_INVENTORY_LINKING",
+  "purpose": "Evaluate every NKK or BLK against every governed Sentimeant theme, record how well each theme fits, and isolate every KK or KOMBO with no defensible theme fit.",
+  "source_units": ["NKK", "BLK"],
+  "customer_candidate_units": ["KK", "KOMBO"],
+  "themes": [
+    {
+      "id": "winning",
+      "label": "Winning",
+      "meaning": "Celebrate achievement, progress, courage, recognition, or a meaningful victory."
+    },
+    {
+      "id": "loving",
+      "label": "Loving",
+      "meaning": "Express affection, devotion, closeness, belonging, or enduring care."
+    },
+    {
+      "id": "remembering",
+      "label": "Remembering",
+      "meaning": "Honor shared history, memory, absence, anniversary, legacy, or someone held in mind."
+    },
+    {
+      "id": "sharing",
+      "label": "Sharing",
+      "meaning": "Reveal, include, thank, reconnect, or communicate a meaningful experience or truth."
+    },
+    {
+      "id": "urging",
+      "label": "Urging",
+      "meaning": "Encourage action, persistence, courage, return, repair, or movement toward something better."
+    },
+    {
+      "id": "comforting",
+      "label": "Comforting",
+      "meaning": "Soothe, reassure, accompany, acknowledge hurt, or help someone feel less alone."
+    },
+    {
+      "id": "reinforcing",
+      "label": "Reinforcing",
+      "meaning": "Affirm identity, worth, belonging, pride, resilience, commitment, or a truth worth repeating."
+    }
+  ],
+  "evidence_dimensions": [
+    "lyric_meaning",
+    "relationship_and_point_of_view",
+    "desired_human_effect",
+    "occasion_or_use_case",
+    "mood_feeling_and_sentiment",
+    "actual_audio_presentation",
+    "structure_and_context",
+    "contradictions_or_exclusions"
+  ],
+  "fit_levels": [
+    {
+      "id": "strong_fit",
+      "label": "Strong fit",
+      "rule": "Meaning, relationship or point of view, desired effect, and actual audio presentation align; no material contradiction is present."
+    },
+    {
+      "id": "supported_fit",
+      "label": "Supported fit",
+      "rule": "At least three independent evidence dimensions align, including actual audio presentation, with no material contradiction. This remains a candidate until all product gates and review decisions pass."
+    },
+    {
+      "id": "possible_fit",
+      "label": "Possible fit — review",
+      "rule": "At least three independent attention signals exist, but one or more required proof dimensions remain incomplete. It is not customer eligible."
+    },
+    {
+      "id": "no_fit",
+      "label": "No fit",
+      "rule": "Fewer than three independent signals align, or a material contradiction defeats the proposed theme."
+    }
+  ],
+  "minimum_independent_attention_signals": 3,
+  "multiple_theme_fits_allowed": true,
+  "theme_fit_does_not_equal_product_approval": true,
+  "parent_to_child_theme_inheritance": {
+    "automatic_inheritance_allowed": false,
+    "rule": "An NKK or BLK theme fit may nominate themes for child review, but it does not automatically classify any KK or KOMBO. Every child KK or KOMBO must independently prove its own lyric context, relationship or point of view, intended human effect, actual audio presentation, contradictions, identity, and boundaries.",
+    "all_child_KKs_and_KOMBOs_must_be_individually_assessed": true
+  },
+  "hard_proof_before_customer_candidate": [
+    "authorized_source_identity",
+    "correct_NKK_or_BLK_identity",
+    "approved_KK_or_contiguous_KOMBO_structure",
+    "strict_music_proof",
+    "start_TP_and_end_TP_proof",
+    "no_next_vocal_contamination",
+    "rendered_audio_identity_and_SHA_proof",
+    "required_Twinkle_at_end_proof"
+  ],
+  "no_theme_fit_isolation": {
+    "label": "NO THEME FIT — HOLD",
+    "rule": "If no governed theme reaches at least Possible fit, isolate the KK or KOMBO from Sentimeant presentation. Preserve it for other valid uses, later metadata improvement, or GD review; do not force it into a theme."
+  },
+  "required_theme_assessment_fields": [
+    "source_identity",
+    "source_unit_type",
+    "candidate_KK_or_KOMBO_identity",
+    "theme_id",
+    "fit_level",
+    "supporting_evidence",
+    "contradictions_or_concerns",
+    "actual_audio_presentation_evidence",
+    "review_status",
+    "reviewer"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": "GPM_SHARED_NEED_GLOSSARY_V001",
+  "status": "BIC_REVIEW_BRANCH_AUTHORITY",
+  "authority": "GD / Greg Putnam · BIC-Level · LL/BP",
+  "company": "G Putnam Music, LLC",
+  "purpose": "Use one controlled vocabulary on both sides of matching: the customer's expressed need and the independently proven meaning of a governed music item.",
+  "package_scope": ["HUG", "TUG", "BUG"],
+  "required_dimensions": [
+    "exact_user_words",
+    "relationship",
+    "point_of_view",
+    "what_happened",
+    "desired_effect",
+    "primary_need",
+    "emotion",
+    "mood",
+    "sentiment",
+    "intensity",
+    "time_orientation",
+    "occasion",
+    "positive_requirements",
+    "exclusions",
+    "contradictions"
+  ],
+  "matching_law": {
+    "exact_user_words_remain_separate_from_interpretation": true,
+    "customer_side_and_music_side_use_same_need_ids": true,
+    "relationship_and_point_of_view_required_when_material": true,
+    "parent_or_total_song_fit_never_auto_approves_a_child": true,
+    "every_KK_KOMBO_sK_or_mK_fit_requires_independent_evidence": true,
+    "one_music_item_may_fit_multiple_needs_only_with_separate_evidence": true,
+    "positive_evidence_required": true,
+    "exclusion_and_contradiction_review_required": true,
+    "minimum_explained_candidates_when_available": 3,
+    "forced_match_prohibited": true,
+    "no_fit_label": "NO THEME FIT — HOLD",
+    "inventory_identity_must_remain_separate_from_package_name": true
+  },
+  "evidence_layers": [
+    "verified lyric or transcript meaning",
+    "relationship and point of view",
+    "desired recipient effect",
+    "emotion mood sentiment and intensity",
+    "audio presentation",
+    "exact boundary and lineage",
+    "rights and source authority",
+    "customer-delivery audio and Twinkle-at-end proof",
+    "conflicts exclusions and contraindications"
+  ],
+  "need_families": [
+    {
+      "need_id": "warmth_care",
+      "customer_need": "Help someone feel cared for, held close, or gently remembered.",
+      "desired_effects": ["comfort", "reassure", "show care", "create closeness"],
+      "positive_terms": ["warmth", "care", "gentle", "close", "here for you"],
+      "common_exclusions": ["romantic pressure when not intended", "false promise", "dismissal of pain"]
+    },
+    {
+      "need_id": "gratitude_appreciation",
+      "customer_need": "Let someone know their effort, presence, or kindness matters.",
+      "desired_effects": ["thank", "recognize", "affirm"],
+      "positive_terms": ["thank you", "appreciate", "grateful", "you matter"],
+      "common_exclusions": ["debt language", "obligation", "romantic implication when not intended"]
+    },
+    {
+      "need_id": "comfort_support",
+      "customer_need": "Help someone through hurt, stress, grief, fear, or a difficult day.",
+      "desired_effects": ["comfort", "support", "steady", "reduce aloneness"],
+      "positive_terms": ["with you", "support", "hold on", "not alone"],
+      "common_exclusions": ["minimizing pain", "forced optimism", "celebratory energy"]
+    },
+    {
+      "need_id": "encouragement_courage",
+      "customer_need": "Help someone face a challenge, new beginning, or uncertain next step.",
+      "desired_effects": ["encourage", "strengthen", "build courage", "help move forward"],
+      "positive_terms": ["believe", "keep going", "brave", "forward"],
+      "common_exclusions": ["pressure", "shaming", "looking backward when forward focus is requested"]
+    },
+    {
+      "need_id": "pride_congratulations",
+      "customer_need": "Recognize achievement, perseverance, growth, or a meaningful milestone.",
+      "desired_effects": ["congratulate", "celebrate effort", "express pride"],
+      "positive_terms": ["proud", "congratulations", "you did it", "earned"],
+      "common_exclusions": ["taking credit for the recipient's achievement", "competitive comparison"]
+    },
+    {
+      "need_id": "celebration_new_beginning",
+      "customer_need": "Mark a joyful event, arrival, transition, or beginning.",
+      "desired_effects": ["celebrate", "welcome", "share joy"],
+      "positive_terms": ["welcome", "new beginning", "joy", "celebrate"],
+      "common_exclusions": ["sad or breakup framing", "unwanted romantic framing"]
+    },
+    {
+      "need_id": "repair_apology",
+      "customer_need": "Acknowledge harm or distance and make a sincere effort to repair it.",
+      "desired_effects": ["apologize", "take responsibility", "open repair"],
+      "positive_terms": ["sorry", "make it right", "I hurt you", "repair"],
+      "common_exclusions": ["excuse making", "blame shifting", "pressure to forgive", "false reconciliation promise"]
+    },
+    {
+      "need_id": "reconnection_still_care",
+      "customer_need": "Show that care remains despite distance, conflict, or time apart.",
+      "desired_effects": ["reconnect", "show continued care", "open a door"],
+      "positive_terms": ["still care", "thinking of you", "door is open"],
+      "common_exclusions": ["demanding a response", "claiming the relationship is restored", "romantic implication when not intended"]
+    },
+    {
+      "need_id": "missing_remembrance",
+      "customer_need": "Express missing, remembering, honoring, or continued emotional connection.",
+      "desired_effects": ["remember", "honor", "express missing", "create closeness across distance"],
+      "positive_terms": ["miss you", "remember", "on my mind", "always with me"],
+      "common_exclusions": ["assuming death when separation is ordinary", "assuming reunion", "celebratory mismatch"]
+    },
+    {
+      "need_id": "friendship_belonging",
+      "customer_need": "Affirm friendship, loyalty, shared history, or belonging.",
+      "desired_effects": ["affirm friendship", "share belonging", "show loyalty"],
+      "positive_terms": ["friend", "together", "belong", "by your side"],
+      "common_exclusions": ["romantic or sexual implication", "possessiveness"]
+    },
+    {
+      "need_id": "romantic_devotion",
+      "customer_need": "Express committed romantic love, loyalty, tenderness, or enduring choice.",
+      "desired_effects": ["express love", "affirm commitment", "show devotion"],
+      "positive_terms": ["love", "choose you", "forever", "devotion"],
+      "common_exclusions": ["use for non-romantic relationships", "coercion", "false permanence"]
+    },
+    {
+      "need_id": "physical_spark",
+      "customer_need": "Express adult romantic attraction, chemistry, or intimate energy.",
+      "desired_effects": ["flirt", "express attraction", "create romantic energy"],
+      "positive_terms": ["spark", "chemistry", "heart pounding", "charged"],
+      "common_exclusions": ["children or minors", "family relationships", "grief", "apology", "non-consensual pressure"]
+    },
+    {
+      "need_id": "gentle_relief",
+      "customer_need": "Offer a small lift, calm, or soft landing without overstating the situation.",
+      "desired_effects": ["relieve", "calm", "soften", "help breathe"],
+      "positive_terms": ["relief", "breathe", "soft landing", "rest"],
+      "common_exclusions": ["medical claims", "forced cheerfulness", "dismissal of a serious problem"]
+    }
+  ],
+  "decision_states": [
+    "PASS_INDEPENDENT_NEED_FIT",
+    "REVIEW_MORE_EVIDENCE",
+    "CONTRADICTORY_FIT — HOLD",
+    "NO THEME FIT — HOLD"
+  ]
+}

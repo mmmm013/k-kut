@@ -1,0 +1,71 @@
+{
+  "schema_version": "SENTIMEANT_MC_BOT_INTENT_FLOW_V002",
+  "status": "REVIEW_ONLY_NON_AUDIO",
+  "purpose": "Accept one ordinary customer sentence, identify the closest governed public emotional direction, ask one clarification only when confidence is low, and return exactly three direction choices before later two-sided comparison with verified NKK, BLK, KK, and KOMBO MetaGrab Sets.",
+  "engine": "DETERMINISTIC_RULE_BASED",
+  "audio_enabled": false,
+  "inventory_lookup_enabled": false,
+  "ii_assignment_enabled": false,
+  "checkout_enabled": false,
+  "delivery_enabled": false,
+  "persists_customer_data": false,
+  "public_directions": [
+    "Comfort & Care",
+    "Celebrate & Be Proud",
+    "Love & Connection",
+    "Encouragement",
+    "Sorry & Repair",
+    "Friendship & Appreciation",
+    "Memory & Remembrance"
+  ],
+  "governed_mgs_themes": [
+    "winning",
+    "loving",
+    "remembering",
+    "sharing",
+    "urging",
+    "comforting",
+    "reinforcing"
+  ],
+  "rules": {
+    "one_ordinary_sentence_is_enough": true,
+    "one_question_at_a_time": true,
+    "maximum_clarifying_questions_per_result": 1,
+    "exactly_three_directions": true,
+    "landing_feeling_is_prior_not_override": true,
+    "customer_sentence_is_stronger_evidence": true,
+    "theme_result_is_not_product_approval": true
+  },
+  "required_qa_cases": [
+    {
+      "input": "my wife is mad at me.",
+      "expected_public_direction": "Sorry & Repair",
+      "expected_relationship": "Partner"
+    },
+    {
+      "input": "I said something hurtful to my wife.",
+      "expected_public_direction": "Sorry & Repair",
+      "expected_relationship": "Partner"
+    },
+    {
+      "input": "My friend is nervous about her first day at work.",
+      "expected_public_direction": "Encouragement",
+      "expected_relationship": "Friend"
+    },
+    {
+      "input": "My grandson graduated and I’m so proud.",
+      "expected_public_direction": "Celebrate & Be Proud",
+      "expected_relationship": "Family"
+    },
+    {
+      "input": "She has had a terrible week.",
+      "expected_public_direction": "Comfort & Care",
+      "expected_relationship": "Someone else"
+    },
+    {
+      "input": "My best friend just got dumped.",
+      "expected_public_direction": "Comfort & Care",
+      "expected_relationship": "Friend"
+    }
+  ]
+}

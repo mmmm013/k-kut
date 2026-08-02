@@ -11,6 +11,7 @@ import {
 import { hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
 import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
+import { sentimeantStartHrefFromHugzCard } from "@/lib/crossDomainHugDp";
 
 const ROTATION_MS = 33_000;
 
@@ -122,15 +123,12 @@ export default function HugzRotatingLanding() {
         <div className="flex min-h-0 min-w-0 flex-col justify-start overflow-hidden p-4 sm:p-5 lg:p-6">
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#FFD54F]">
-              HUGz Card · {active.seedCount} matching {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} HUG choices
+              HUGz Card · {active.seedCount} matching{" "}
+              {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} HUG choices
             </p>
 
             <div className="mt-3 min-w-0">
-              <FitSingleLine
-                className="font-black"
-                maxPx={64}
-                minPx={15}
-              >
+              <FitSingleLine className="font-black" maxPx={64} minPx={15}>
                 {active.headline}
               </FitSingleLine>
             </div>
@@ -140,7 +138,9 @@ export default function HugzRotatingLanding() {
             </p>
 
             <p className="mt-2 text-xs font-bold leading-5 text-[#BCAAA4] sm:text-sm">
-              The HUGz Card is a sentiment container, not an II or media file. Open it to compare three KK or KOMBO HUG choices at a time.
+              The HUGz Card is a sentiment container, not an II or media file.
+              It can suggest a direction, but your words—not the card—must decide
+              what MC-BOT understands.
             </p>
 
             <p className="mt-3 rounded-xl border border-[#FFD54F]/35 bg-black/30 px-4 py-3 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#FFF8E1]">
@@ -160,12 +160,25 @@ export default function HugzRotatingLanding() {
           </div>
 
           <div className="mt-4">
-            <Link
-              href={`/hugz/${active.slug}`}
-              className="inline-flex rounded-xl bg-[#FFD54F] px-6 py-3 text-sm font-black text-black"
-            >
-              Start a New Sentimeant
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={`/hugz/${active.slug}`}
+                className="inline-flex rounded-xl bg-[#FFD54F] px-6 py-3 text-sm font-black text-black"
+              >
+                Open this HUGz Card
+              </Link>
+              <Link
+                href={sentimeantStartHrefFromHugzCard(active.slug)}
+                className="inline-flex rounded-xl border border-[#FFD54F]/70 px-6 py-3 text-sm font-black text-[#FFD54F]"
+              >
+                Tell MC-BOT what you mean
+              </Link>
+            </div>
+
+            <p className="mt-3 text-xs font-bold leading-5 text-[#BCAAA4]">
+              13HUGz provides visual discovery. Sent-i-Meants provides the
+              conversation. The purchased product remains one governed HUG.
+            </p>
 
             <div className="mt-4 flex items-center justify-between gap-3">
               <button

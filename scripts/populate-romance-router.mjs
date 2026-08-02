@@ -80,9 +80,25 @@ const forbiddenCustomerTerms = [
   "father's day"
 ];
 
+const heldSourceIds = new Set([
+  "6e959ac6-9546-4bae-87b2-ed6584185682",
+  "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682"
+]);
+const heldTitles = new Set(["dont call it love"]);
+const heldRouteIds = new Set(["repair-still-love-you"]);
+
 function hasForbiddenCustomerTerm(text) {
   const t = normalize(text);
   return forbiddenCustomerTerms.some((term) => t.includes(normalize(term)));
+}
+
+function isHeldSource({ id, title, sourceId, sourceFile }) {
+  const normalizedTitle = normalize(`${title} ${sourceFile}`);
+  return (
+    heldSourceIds.has(id) ||
+    heldSourceIds.has(sourceId) ||
+    [...heldTitles].some((heldTitle) => normalizedTitle.includes(heldTitle))
+  );
 }
 
 function seedMatches(lineText, seedTitle) {
@@ -90,11 +106,9 @@ function seedMatches(lineText, seedTitle) {
   const seed = normalize(seedTitle);
 
   if (!seed) return false;
-
-  // Direct normalized containment.
+  if (heldTitles.has(seed)) return false;
   if (hay.includes(seed)) return true;
 
-  // Specific loose aliases.
   if (seed === "heart poundin") {
     return hay.includes("heart poundin") || hay.includes("heart pounding") || hay.includes("your heart poundin") || hay.includes("your heart pounding");
   }
@@ -103,43 +117,28 @@ function seedMatches(lineText, seedTitle) {
     return hay.includes("your heart poundin") || hay.includes("your heart pounding");
   }
 
-  if (seed === "your touch") {
-    return hay.includes("your touch");
-  }
-
-  if (seed === "nkd") {
-    return hay.includes("nkd");
-  }
-
-  if (seed === "naked") {
-    return hay.includes("naked");
-  }
-
-  if (seed === "dont call it love" || seed === "don't call it love") {
-    return hay.includes("dont call it love") || hay.includes("don t call it love");
-  }
-
-  if (seed === "a love like that") {
-    return hay.includes("a love like that");
-  }
-
-  if (seed === "forever and a day") {
-    return hay.includes("forever and a day");
-  }
-
+  if (seed === "your touch") return hay.includes("your touch");
+  if (seed === "nkd") return hay.includes("nkd");
+  if (seed === "naked") return hay.includes("naked");
+  if (seed === "a love like that") return hay.includes("a love like that");
+  if (seed === "forever and a day") return hay.includes("forever and a day");
   return false;
 }
 
 const lines = fs.readFileSync(inventoryPath, "utf8").split(/\r?\n/).filter(Boolean);
 const router = JSON.parse(fs.readFileSync(routerPath, "utf8"));
 
+if (!Array.isArray(router.routes)) {
+  throw new Error("ROMANCE ROUTER ROUTES ARE MISSING");
+}
+
 const allRows = [];
+let heldRowsExcluded = 0;
 
 for (const line of lines) {
   if (hasForbiddenCustomerTerm(line)) continue;
 
   const cols = parseCsvLine(line);
-
   const id = cols[0] || "";
   const title = cols[1] || "";
   const type = cols[2] || "";
@@ -151,6 +150,11 @@ for (const line of lines) {
   const audioUrl = cols.find((v) => /^https?:\/\//.test(v)) || "";
 
   if (!id || !["KK", "mK"].includes(type)) continue;
+
+  if (isHeldSource({ id, title, sourceId, sourceFile })) {
+    heldRowsExcluded++;
+    continue;
+  }
 
   allRows.push({
     id,
@@ -168,7 +172,18 @@ for (const line of lines) {
 }
 
 for (const route of router.routes) {
-  const seeds = route.seed_titles || [];
+  if (heldRouteIds.has(route.route_id)) {
+    route.kk_candidates = [];
+    route.admin_only_mk_candidates = [];
+    route.inventory_counts = { kk_candidates: 0, admin_only_mk_candidates: 0 };
+    route.status = "held_failed_route_song_blk_nblk_reprocessing_required";
+    route.updated_at = new Date().toISOString();
+    continue;
+  }
+
+  const seeds = (route.seed_titles || []).filter(
+    (seed) => !heldTitles.has(normalize(seed)),
+  );
   const kk = [];
   const mk = [];
   const seen = new Set();
@@ -192,8 +207,6 @@ for (const route of router.routes) {
       reuse_status: "existing_pre_made_inventory",
       duplicate_policy: "do_not_remint",
       delivery_status: "needs_bookend_twinkle_materialization",
-
-      // Internal proof only. Do not display publicly.
       internal_proof: {
         source_id: row.source_id,
         internal_title: row.title,
@@ -224,7 +237,17 @@ for (const route of router.routes) {
   route.updated_at = new Date().toISOString();
 }
 
-router.status = "populated_from_existing_inventory";
+const serializedRoutes = JSON.stringify(router.routes);
+if (
+  serializedRoutes.includes("6e959ac6-9546-4bae-87b2-ed6584185682") ||
+  normalize(serializedRoutes).includes("dont call it love")
+) {
+  throw new Error("HELD DON'T CALL IT LOVE SOURCE REENTERED ROMANCE ROUTER");
+}
+
+router.status = "populated_from_existing_inventory_with_song_holds";
+router.held_route_ids = [...heldRouteIds];
+router.held_source_ids = [...heldSourceIds];
 router.updated_at = new Date().toISOString();
 
 fs.writeFileSync(routerPath, JSON.stringify(router, null, 2) + "\n");
@@ -234,6 +257,8 @@ const summary = {
   router: routerPath,
   inventory: inventoryPath,
   status: router.status,
+  held_rows_excluded: heldRowsExcluded,
+  held_route_ids: [...heldRouteIds],
   routes: router.routes.map((route) => ({
     route_id: route.route_id,
     buyer_label: route.buyer_label,
@@ -248,7 +273,7 @@ fs.writeFileSync(reportJson, JSON.stringify(summary, null, 2) + "\n");
 
 let md = "# Romance Router Population Report\n\n";
 md += `Status: ${router.status}\n\n`;
-md += "Rules applied: existing inventory only; KK first; mKs ADMIN override only; no INSTRO; no duplicate II; delivery still needs padding + Twinkle.\n\n";
+md += "Rules applied: existing inventory only; KK first; mKs ADMIN override only; no INSTRO; no duplicate II; delivery still needs padding + Twinkle; held source identities and failed routes stay out.\n\n";
 
 for (const route of router.routes) {
   md += `## ${route.buyer_label} (${route.route_id})\n\n`;
@@ -256,8 +281,8 @@ for (const route of router.routes) {
   md += `Seeds: ${(route.seed_titles || []).join(", ") || "none"}\n\n`;
   md += `KK candidates: ${route.kk_candidates.length}\n\n`;
 
-  for (const c of route.kk_candidates.slice(0, 12)) {
-    md += `- ${c.start_seconds}-${c.end_seconds}s | ${c.public_label} | kk=${c.id} | seed=${c.matched_seed}\n`;
+  for (const candidate of route.kk_candidates.slice(0, 12)) {
+    md += `- ${candidate.start_seconds}-${candidate.end_seconds}s | ${candidate.public_label} | kk=${candidate.id} | seed=${candidate.matched_seed}\n`;
   }
 
   if (route.kk_candidates.length > 12) {
@@ -265,8 +290,8 @@ for (const route of router.routes) {
   }
 
   md += `\nADMIN-only mK candidates: ${route.admin_only_mk_candidates.length}\n\n`;
-  for (const c of route.admin_only_mk_candidates.slice(0, 8)) {
-    md += `- ${c.start_seconds}-${c.end_seconds}s | ${c.public_label} | mk=${c.id} | seed=${c.matched_seed}\n`;
+  for (const candidate of route.admin_only_mk_candidates.slice(0, 8)) {
+    md += `- ${candidate.start_seconds}-${candidate.end_seconds}s | ${candidate.public_label} | mk=${candidate.id} | seed=${candidate.matched_seed}\n`;
   }
 
   if (route.admin_only_mk_candidates.length > 8) {
@@ -279,6 +304,8 @@ for (const route of router.routes) {
 fs.writeFileSync(reportMd, md);
 
 console.log("Romance router populated.");
+console.log("HELD SOURCE ROWS EXCLUDED:", heldRowsExcluded);
+console.log("HELD ROUTE: repair-still-love-you");
 console.log("Router:", routerPath);
 console.log("Report JSON:", reportJson);
 console.log("Report MD:", reportMd);
