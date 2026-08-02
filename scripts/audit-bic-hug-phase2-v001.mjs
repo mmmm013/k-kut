@@ -16,10 +16,34 @@ if (
   pilot.package?.customer_package_code !== "HUG" ||
   pilot.package?.price_cents !== 799 ||
   pilot.package?.currency !== "USD" ||
+  pilot.selection_law?.pilot_size !== 2 ||
+  pilot.selection_law?.dont_call_it_love_public_matching_held !== true ||
   !Array.isArray(pilot.records) ||
-  pilot.records.length !== 3
+  pilot.records.length !== 2
 ) {
-  fail("pilot package or count");
+  fail("pilot package, count, or held-source law");
+}
+
+const heldIi = "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682";
+const heldKk = "6e959ac6-9546-4bae-87b2-ed6584185682";
+
+if (
+  pilot.records.some(
+    (record) => record.ii_id === heldIi || record.kk_id === heldKk,
+  )
+) {
+  fail("held Don't Call It Love identity remains in pilot records");
+}
+
+const heldRecord = (pilot.held_records || []).find(
+  (record) => record.ii_id === heldIi,
+);
+if (
+  !heldRecord ||
+  heldRecord.status !== "HOLD_SONG_BLK_NBLK_REPROCESSING_REQUIRED" ||
+  heldRecord.payment_allowed !== false
+) {
+  fail("held Don't Call It Love pilot record is missing or unsafe");
 }
 
 const needIds = new Set(
@@ -90,4 +114,4 @@ for (const record of pilot.records) {
   }
 }
 
-console.log("BIC HUG AUDIT PHASE 2: PASS");
+console.log("BIC HUG AUDIT PHASE 2: PASS · 2 PILOT IIs · 1 SOURCE HELD");
