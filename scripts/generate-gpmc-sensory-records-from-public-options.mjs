@@ -4,7 +4,35 @@ const inputPath = "data/publication-bridge/public-option-records.generated.json"
 const outputPath = "data/gpmc-sensory/sensory-emotional-records.generated.json";
 
 const input = JSON.parse(fs.readFileSync(inputPath, "utf8"));
-const publicRecords = Array.isArray(input.records) ? input.records : [];
+const allRecords = Array.isArray(input.records) ? input.records : [];
+
+const publicRecords = allRecords.filter((record) =>
+  record.approval_status === "public_approved_generated_from_reusable_ii" &&
+  record.payment_allowed === true &&
+  typeof record.public_route === "string" &&
+  record.public_route.startsWith("/") &&
+  typeof record.stripe_url_if_payment_allowed === "string" &&
+  record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/")
+);
+
+const heldRecords = allRecords.filter((record) => !publicRecords.includes(record));
+
+const forbiddenPublicSourceIds = new Set([
+  "6e959ac6-9546-4bae-87b2-ed6584185682",
+  "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+]);
+
+if (
+  publicRecords.some(
+    (record) =>
+      forbiddenPublicSourceIds.has(record.source_pix_id_or_track_id) ||
+      forbiddenPublicSourceIds.has(record.kk_id_or_delivery_object_id),
+  )
+) {
+  throw new Error(
+    "HELD DON'T CALL IT LOVE SOURCE REACHED PUBLIC SENSORY/MGS GENERATION",
+  );
+}
 
 const laneProfiles = {
   romance_love: {
@@ -105,38 +133,12 @@ const laneProfiles = {
     buyer_words: ["This has a spark.", "This feels playful and alive."],
     receiver_safe_words: ["This felt fun and bright.", "I thought you might like the energy."],
     do_not_say: ["This will make them want you.", "This guarantees attraction."]
-  },
-
-  repair_still_care: {
-    surface_feeling: "apology",
-    deeper_feelings: ["repair", "still care", "tenderness", "humility"],
-    sensory_profile: {
-      audio: ["soft", "tender", "low pressure", "careful"],
-      body: ["ache", "settling", "warmth"],
-      visual: ["dim light", "quiet room", "small gesture"],
-      touch: ["soft", "fragile", "held"],
-      memory: ["apology", "lost chance", "returning carefully"]
-    },
-    emotional_coordinates: {
-      valence: "mixed",
-      arousal: "quiet",
-      control_or_agency: "held",
-      social_direction: "returning",
-      time_direction: "present"
-    },
-    good_use_cases: ["apology", "repair", "still care", "soft reconnection"],
-    bad_use_cases: ["pressure to forgive", "grief", "celebration", "playful romance"],
-    risk_notes: ["Keep non-coercive.", "Do not imply forgiveness is owed.", "Avoid if buyer wants pressure or persuasion."],
-    buyer_words: ["I still care.", "I wanted to send this gently."],
-    receiver_safe_words: ["No pressure.", "This is just a small music moment from me."],
-    do_not_say: ["This will make them forgive you.", "You owe me another chance.", "This fixes everything."]
   }
 };
 
 function routeFallbackLane(record) {
   if (record.public_route === "/wedding") return "wedding";
   if (record.public_route === "/personal/anniversary") return "anniversary";
-  if (record.public_route === "/personal/apology") return "repair_still_care";
   if (record.public_route === "/kupid") return "kupid_romance";
   return record.intent_lane || "romance_love";
 }
@@ -169,22 +171,25 @@ const sensoryRecords = publicRecords.map((record) => {
     do_not_say: profile.do_not_say,
     review_status: "approved_public",
     human_review_notes:
-      "Generated from an already approved public option record. Requires future human enrichment before deeper personalization use."
+      "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
   };
 });
 
 const output = {
-  status: "generated",
+  status: "generated_from_explicit_public_approvals_only",
   name: "GPMC Sensory-Emotional Records From Approved Public Options",
   source: inputPath,
   generated_at: new Date().toISOString(),
+  public_source_count: publicRecords.length,
+  held_source_count: heldRecords.length,
   count: sensoryRecords.length,
   doctrine_law:
-    "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning.",
+    "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning. Held records never generate public sensory metadata or MGS.",
   records: sensoryRecords
 };
 
 fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + "\n");
 
 console.log(`GENERATED GPMC SENSORY RECORDS: ${sensoryRecords.length}`);
+console.log(`HELD PUBLICATION RECORDS EXCLUDED: ${heldRecords.length}`);
 console.log(`WROTE ${outputPath}`);

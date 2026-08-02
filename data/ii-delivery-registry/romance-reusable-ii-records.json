@@ -1,14 +1,16 @@
 {
   "registry": "romance-reusable-ii-records",
-  "status": "customer_delivery_audio_materialized",
+  "status": "two_customer_delivery_iis_approved_one_source_held",
   "doctrine": [
     "Same KK across multiple buyer routes creates one reusable II, not duplicate II records.",
-    "Buyer routes can point to the same reusable II.",
+    "Buyer routes can point to the same reusable II only after independent meaning proof.",
     "KK only.",
     "mKs are ADMIN override only and are not in these public records.",
     "No INSTRO.",
     "No public internal labels.",
-    "Delivery audio must be materialized with front padding, back padding, and Twinkle before customer use."
+    "Delivery audio must be materialized with front padding, back padding, and Twinkle before customer use.",
+    "A materialized audio file does not prove customer-need fit.",
+    "A failed route may not be converted into a public reusable II by later generated metadata."
   ],
   "records": [
     {
@@ -98,27 +100,32 @@
     {
       "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
       "kk_id": "6e959ac6-9546-4bae-87b2-ed6584185682",
-      "public_label": "Don't Call It Love",
+      "public_label": "",
+      "internal_source_title": "Don't Call It Love",
       "start_seconds": 0,
       "end_seconds": 23,
-      "routes": [
-        {
-          "route_id": "repair-still-love-you",
-          "buyer_label": "Repair / Still Love You",
-          "buyer_question": "Send something tender when the relationship needs care.",
-          "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r"
-        }
-      ],
-      "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
-      "duplicate_policy": "do_not_create_duplicate_ii",
-      "public_inventory_type": "K-KUT / HUG Moment",
-      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
+      "routes": [],
+      "prior_invalid_route": {
+        "route_id": "repair-still-love-you",
+        "buyer_label": "Repair / Still Love You",
+        "status": "REVOKED"
+      },
+      "reuse_policy": "no_public_reuse_until_song_blk_nblk_reprocessing_passes",
+      "duplicate_policy": "preserve_source_evidence_do_not_publish",
+      "public_inventory_type": "HELD_SOURCE_NOT_PUBLIC_INVENTORY",
+      "public_use_status": "HOLD",
+      "hold_reason": "Song concerns noncommitment and sexual desire. Repair and continued-care matching was wrong. Exact structural BLKs and parent-stripped NBLKs are not yet independently proven.",
+      "delivery_status": "audio_file_preserved_public_meaning_approval_revoked",
       "delivery_requirements": {
         "front_padding_required": true,
         "back_padding_required": true,
         "twinkle_required": true
       },
-      "admin_override_required": false,
+      "admin_override_required": true,
+      "payment_allowed": false,
+      "frontend_allowed": false,
+      "descriptive_metadata_allowed": false,
+      "mgs_allowed": false,
       "local_source_path": "/Users/gregoryputnam/Music/DON'T CALL IT LOVE -.mp3",
       "source_resolution": {
         "method": "local_gpmc_source_first",
@@ -126,14 +133,16 @@
         "remote_supabase_url_not_required_for_customer_delivery": true,
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3"
+      "delivery_audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+      "reprocessing_authority": "data/track-digestion/dont-call-it-love/song-authority-v001.json"
     }
   ],
   "source_resolution_doctrine": [
     "Use local GPMC PIX/source files first.",
     "Supabase source URLs are not required for customer delivery materialization.",
     "No INSTRO / instrumental sources.",
-    "Padding and Twinkle travel together for all customer delivery II records."
+    "Padding and Twinkle travel together for all customer delivery II records.",
+    "Padding and Twinkle do not establish lyric meaning, need fit, or public approval."
   ],
   "delivery_law": {
     "twinkle_and_padding_travel_together": true,
@@ -141,5 +150,5 @@
     "no_raw_kk_customer_delivery": true,
     "no_instrumental_customer_delivery": true
   },
-  "updated_at": "2026-05-29T22:05:58.602Z"
+  "updated_at": "2026-08-01"
 }

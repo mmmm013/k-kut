@@ -9,19 +9,10 @@ const PERSONAL_II_OPTIONS = [
     checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
   },
   {
-    label: "Repair / Still Care",
-    title: "Don't Call It Love",
-    description:
-      "A softer HUG for apology, repair, grief, comfort, missing someone, or a feeling that is hard to say.",
-    audioUrl:
-      "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
-  },
-  {
     label: "Lift / Spark",
     title: "Your Heart Poundin'",
     description:
-      "A more energetic HUG for celebration, confidence, romance, excitement, or playful connection.",
+      "A more energetic HUG for adult romance, attraction, excitement, or playful connection.",
     audioUrl:
       "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
     checkoutUrl: "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
@@ -112,7 +103,7 @@ export default async function PersonalUseCasePage({
             Ready Now
           </p>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2">
             {PERSONAL_II_OPTIONS.map((hug) => (
               <article
                 key={hug.label}
