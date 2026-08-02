@@ -1,6 +1,6 @@
 {
   "schema_version": "GPMX_BIC_HUG_REVENUE_PILOT_V001",
-  "status": "BIC_REVIEW_BRANCH_READY_FOR_PREVIEW_GATE",
+  "status": "BIC_REVIEW_BRANCH_READY_FOR_PREVIEW_GATE_AFTER_DCLIL_HOLD",
   "authority": "GD / Greg Putnam · BIC-Level · LL/BP",
   "package": {
     "customer_package_code": "HUG",
@@ -9,7 +9,7 @@
     "eligible_canonical_kinds": ["KK", "KOMBO"]
   },
   "selection_law": {
-    "pilot_size": 3,
+    "pilot_size": 2,
     "separately_approved_inventory_outside_held_429_seed_packet_only": true,
     "exact_inventory_identity_preserved": true,
     "shared_need_glossary_required": "GPM_SHARED_NEED_GLOSSARY_V001",
@@ -17,7 +17,8 @@
     "forced_match_prohibited": true,
     "customer_delivery_audio_reused_without_mutation": true,
     "governed_checkout_only": true,
-    "direct_stripe_link_in_pilot_ui_prohibited": true
+    "direct_stripe_link_in_pilot_ui_prohibited": true,
+    "dont_call_it_love_public_matching_held": true
   },
   "records": [
     {
@@ -54,38 +55,6 @@
     },
     {
       "pilot_rank": 2,
-      "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
-      "canonical_kind": "KK",
-      "kk_id": "6e959ac6-9546-4bae-87b2-ed6584185682",
-      "display_title": "Don't Call It Love",
-      "start_seconds": 0,
-      "end_seconds": 23,
-      "audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
-      "primary_need_id": "repair_apology",
-      "secondary_need_ids": ["reconnection_still_care"],
-      "customer_interpretation": "Send a tender opening when a relationship needs care, repair, or an honest sign that care remains.",
-      "positive_evidence": [
-        "Existing approved route is Repair / Still Love You.",
-        "Publication authority describes a tender selection for a relationship that needs care.",
-        "The exact reusable II has approved payment and customer-delivery audio evidence."
-      ],
-      "exclusions": [
-        "Do not present the HUG as proof that forgiveness or reconciliation will occur.",
-        "Do not excuse harm, shift blame, or pressure the recipient to respond.",
-        "Do not use for bereavement, celebration, friendship, or physical attraction without separate evidence."
-      ],
-      "re_digest_status": "PASS_INDEPENDENT_NEED_FIT_FROM_EXISTING_APPROVED_ROUTE_EVIDENCE",
-      "publication_approval_status": "public_approved_generated_from_reusable_ii",
-      "audio_proof_status": "pass",
-      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
-      "payment_allowed": true,
-      "checkout_offer_code": "kk",
-      "customer_package_code": "HUG",
-      "price_cents": 799,
-      "pilot_ready": true
-    },
-    {
-      "pilot_rank": 3,
       "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
       "canonical_kind": "KK",
       "kk_id": "1f016b4a-f85d-4945-b881-2e0f571e6a49",
@@ -115,6 +84,16 @@
       "customer_package_code": "HUG",
       "price_cents": 799,
       "pilot_ready": true
+    }
+  ],
+  "held_records": [
+    {
+      "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+      "display_title": "Don't Call It Love",
+      "prior_invalid_need_ids": ["repair_apology", "reconnection_still_care"],
+      "status": "HOLD_SONG_BLK_NBLK_REPROCESSING_REQUIRED",
+      "payment_allowed": false,
+      "reason": "Song meaning concerns noncommitment and sexual desire; the repair/continued-care classification was wrong."
     }
   ]
 }
