@@ -38,17 +38,16 @@ const featuredPromos = [
     cta: "Hear Anniversary HUGs",
     proof: "Audio-backed: Awesome Anniversary",
   },
-    {
+  {
     slug: "romance",
     label: "New invention",
-        title: "Kupid",
+    title: "Kupid",
     line: "Pick the romance level. A signed audio excerpt, chosen for exactly this moment.",
     href: "/kupid",
     cta: "Pick a Level",
     proof: "Signed · Traceable · Permanent",
   },
 ];
-
 
 const PERSONAL_READY_HUGS = [
   {
@@ -58,15 +57,6 @@ const PERSONAL_READY_HUGS = [
       "A warm personal HUG for love, care, thanks, support, or a simple human moment.",
     audioUrl:
       "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
-  },
-  {
-    label: "Repair / Still Care",
-    title: "Don't Call It Love",
-    description:
-      "A tender personal HUG when the feeling is complicated, careful, or not easy to say.",
-    audioUrl:
-      "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
     checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
   },
   {
@@ -176,13 +166,12 @@ export default function PersonalPage() {
           </div>
         </section>
 
-
         <section className="mt-8">
           <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-amber-200">
             Ready Now
           </p>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2">
             {PERSONAL_READY_HUGS.map((hug) => (
               <article
                 key={hug.label}
