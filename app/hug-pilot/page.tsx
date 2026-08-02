@@ -2,17 +2,15 @@ import type { Metadata } from "next";
 import pilot from "@/data/hug-pilot/bic-hug-revenue-pilot-v001.json";
 
 export const metadata: Metadata = {
-  title: "Three Ready HUGs | K-KUT",
+  title: "Two Ready HUGs | K-KUT",
   description:
-    "Three evidence-controlled HUG choices with exact music identity and governed checkout.",
+    "Two evidence-controlled HUG choices with exact music identity and governed checkout.",
 };
 
 const needLabels: Record<string, string> = {
   warmth_care: "Warmth & care",
   romantic_devotion: "Romantic devotion",
   celebration_new_beginning: "Commitment & celebration",
-  repair_apology: "Repair & apology",
-  reconnection_still_care: "Reconnection & continued care",
   physical_spark: "Adult romantic spark",
 };
 
@@ -23,12 +21,12 @@ function price(cents: number) {
 export default function HugPilotPage() {
   return (
     <main className="min-h-screen bg-[#09070B] px-5 py-10 text-[#FFF8E1] sm:px-8">
-      <section className="mx-auto max-w-6xl">
+      <section className="mx-auto max-w-5xl">
         <p className="text-xs font-black uppercase tracking-[0.25em] text-[#FFD54F]">
           K-KUT · BIC-controlled pilot
         </p>
         <h1 className="mt-3 text-4xl font-black sm:text-6xl">
-          Three ready HUG paths
+          Two ready HUG paths
         </h1>
         <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#D7CCC8]">
           Start with what the person needs. Hear the exact governed music choice.
@@ -38,9 +36,14 @@ export default function HugPilotPage() {
 
         <div className="mt-5 rounded-2xl border border-[#FFD54F]/35 bg-[#120A06] p-5 text-sm font-bold leading-7 text-[#EFEBE9]">
           <p>
-            These three HUGs come from separately approved reusable IIs outside
+            These two HUGs come from separately approved reusable IIs outside
             the held 13HUGz seed packet. The current 104 13HUGz associations
             remain held for fresh per-item matching proof.
+          </p>
+          <p className="mt-2">
+            A third candidate was removed after its song meaning was found to
+            conflict with the assigned customer need. It remains held for
+            song → BLK → NBLK reprocessing.
           </p>
           <p className="mt-2 text-[#FFD54F]">
             HUG package: $7.99 · exact KK identity preserved · governed K-KUT
@@ -48,7 +51,7 @@ export default function HugPilotPage() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {pilot.records.map((record) => {
             const needIds = [
               record.primary_need_id,
