@@ -25,14 +25,35 @@ const sensoryData = fs.existsSync(sensoryPath)
   ? JSON.parse(fs.readFileSync(sensoryPath, "utf8"))
   : { records: [] };
 
-const publicRecords = publicData.records || [];
+const publicationRecords = publicData.records || [];
+const publicRecords = publicationRecords.filter(
+  (record) =>
+    record.approval_status === "public_approved_generated_from_reusable_ii" &&
+    record.payment_allowed === true &&
+    typeof record.public_route === "string" &&
+    record.public_route.startsWith("/") &&
+    typeof record.stripe_url_if_payment_allowed === "string" &&
+    record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/"),
+);
+const heldRecords = publicationRecords.filter(
+  (record) => !publicRecords.includes(record),
+);
 const sensoryRecords = sensoryData.records || [];
 
 if (sensoryRecords.length !== publicRecords.length) {
-  fail(`Expected ${publicRecords.length} sensory records, found ${sensoryRecords.length}.`);
+  fail(`Expected ${publicRecords.length} approved-public sensory records, found ${sensoryRecords.length}.`);
+}
+
+if (sensoryData.public_source_count !== publicRecords.length) {
+  fail("public_source_count does not match approved publication records");
+}
+
+if (sensoryData.held_source_count !== heldRecords.length) {
+  fail("held_source_count does not match held publication records");
 }
 
 const publicIds = new Set(publicRecords.map((record) => record.public_option_id));
+const heldIds = new Set(heldRecords.map((record) => record.public_option_id));
 const sensoryPublicIds = new Set();
 
 const requiredTopFields = [
@@ -67,7 +88,11 @@ for (const record of sensoryRecords) {
   }
 
   if (!publicIds.has(record.public_option_id)) {
-    fail(`${record.record_id} references unknown public_option_id ${record.public_option_id}`);
+    fail(`${record.record_id} references non-approved public_option_id ${record.public_option_id}`);
+  }
+
+  if (heldIds.has(record.public_option_id)) {
+    fail(`${record.record_id} was generated from a held publication record`);
   }
 
   sensoryPublicIds.add(record.public_option_id);
@@ -117,9 +142,13 @@ for (const record of sensoryRecords) {
     "mk-products",
     "internal_proof",
     "candidate_not_approved",
-    "raw inventory"
+    "raw inventory",
+    "Don't Call It Love",
+    "dont call it love",
+    "repair-still-love-you",
+    "Repair / Still Love You"
   ]) {
-    if (JSON.stringify(record).includes(forbidden)) {
+    if (JSON.stringify(record).toLowerCase().includes(forbidden.toLowerCase())) {
       fail(`${record.record_id} contains forbidden phrase: ${forbidden}`);
     }
   }
@@ -127,7 +156,7 @@ for (const record of sensoryRecords) {
 
 for (const id of publicIds) {
   if (!sensoryPublicIds.has(id)) {
-    fail(`Missing sensory record for public option ${id}`);
+    fail(`Missing sensory record for approved public option ${id}`);
   }
 }
 
@@ -135,8 +164,7 @@ const requiredRoutes = [
   "/romance",
   "/wedding",
   "/kupid",
-  "/personal/anniversary",
-  "/personal/apology"
+  "/personal/anniversary"
 ];
 
 for (const route of requiredRoutes) {
@@ -145,9 +173,14 @@ for (const route of requiredRoutes) {
   }
 }
 
+if (sensoryRecords.some((record) => record.public_route === "/personal/apology")) {
+  fail("Held Don't Call It Love record still creates an apology sensory/MGS route");
+}
+
 if (failed) {
   console.error("GPMC GENERATED SENSORY RECORDS AUDIT: FAIL");
   process.exit(1);
 }
 
-console.log(`GPMC GENERATED SENSORY RECORDS AUDIT: PASS (${sensoryRecords.length} records)`);
+console.log(`GPMC GENERATED SENSORY RECORDS AUDIT: PASS (${sensoryRecords.length} approved-public records)`);
+console.log(`HELD PUBLICATION RECORDS EXCLUDED: ${heldRecords.length}`);
