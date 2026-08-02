@@ -1,0 +1,54 @@
+{
+  "schema_version": "GPMX_DONT_CALL_IT_LOVE_LEGACY_WINDOW_RECONCILIATION_V001",
+  "status": "ALL_LEGACY_WINDOWS_HELD_NOT_BLKS",
+  "authority": "GD / Greg Putnam · BIC-Level · LL/BP",
+  "source_track": "Don't Call It Love",
+  "legacy_evidence": {
+    "candidate_sets_found": 3,
+    "legacy_kk_candidate_count": 24,
+    "admin_only_mk_candidate_count": 90,
+    "shown_candidate_status": "BAD",
+    "legacy_route_result": "NO REACHABLE KK FOUND FOR ROUTE: repair-still-love-you",
+    "repair_route_usable_count": 0
+  },
+  "time_windows": [
+    {"legacy_window": "0-23s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "23-47s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "47-71s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "71-95s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "95-118s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "118-142s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "142-166s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"},
+    {"legacy_window": "166-190s", "status": "HOLD_NOT_BLK", "reason": "arbitrary legacy candidate window; structural and lyric meaning not proven"}
+  ],
+  "processing_queue": [
+    {
+      "sequence": 1,
+      "task": "Resolve the complete authorized song audio identity and lyric authority.",
+      "result_required": "one proven song parent authority"
+    },
+    {
+      "sequence": 2,
+      "task": "Listen and map the real structure before assigning any BLK boundaries.",
+      "result_required": "exact structural BLK map with Start TP and End TP"
+    },
+    {
+      "sequence": 3,
+      "task": "Render exact lyric meaning and audio presentation for every BLK.",
+      "result_required": "independent BLK MGS and contraindications"
+    },
+    {
+      "sequence": 4,
+      "task": "Find every complete standalone meaning inside each BLK without forcing a cut.",
+      "result_required": "zero or more NBLK candidates per BLK"
+    },
+    {
+      "sequence": 5,
+      "task": "Process each NBLK as a unique solo II with parent-stripped public metadata and MGS.",
+      "result_required": "unique NBLK identity plus ADMIN-only parent lineage"
+    }
+  ],
+  "public_inventory_created": 0,
+  "audio_mutated": 0,
+  "old_candidate_deleted": 0
+}
