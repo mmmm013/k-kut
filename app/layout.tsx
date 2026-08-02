@@ -149,6 +149,12 @@ function KkutHeader() {
             Home
           </a>
           <a
+            href="/hug-pilot"
+            className="rounded-full border border-[#FFD54F]/70 bg-[#FFD54F]/10 px-3 py-2 text-[#FFD54F] transition hover:bg-[#FFD54F]/20"
+          >
+            Ready HUGs
+          </a>
+          <a
             href="/browse"
             className="rounded-full border border-[#FFD54F]/25 px-3 py-2 text-[#FFF8E1] transition hover:border-[#FFD54F]/70"
           >
