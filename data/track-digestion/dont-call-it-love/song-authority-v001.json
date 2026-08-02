@@ -1,0 +1,91 @@
+{
+  "schema_version": "GPMX_DONT_CALL_IT_LOVE_SONG_AUTHORITY_V001",
+  "status": "GD_MEANING_LOCKED_PUBLIC_MATCHING_HELD",
+  "authority": "GD / Greg Putnam · BIC-Level · LL/BP",
+  "track": {
+    "internal_parent_title": "Don't Call It Love",
+    "performer_metadata": "Billy Harper",
+    "publisher_metadata": "G Putnam Music",
+    "copyright_year": 2022,
+    "duration_seconds": 190.1,
+    "known_source_paths": [
+      "/Users/gregoryputnam/Music/DON'T CALL IT LOVE -.mp3",
+      "/Users/gregoryputnam/Music/DON'T CALL IT LOVE.wav",
+      "/Users/gregoryputnam/Music/Converted by MediaHuman/01 Don't Call It Love.wav"
+    ],
+    "known_registry_kk_id": "6e959ac6-9546-4bae-87b2-ed6584185682",
+    "known_registry_ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+    "known_customer_delivery_audio": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+    "source_audio_mutated": false
+  },
+  "song_level_meaning": {
+    "primary_statement": "The song is about lack of commitment and wanting sex; it rejects or resists calling the relationship love.",
+    "core_tension": "physical desire versus emotional commitment or relationship labeling",
+    "relationship_dynamic": [
+      "sexual desire or physical attraction",
+      "commitment avoidance",
+      "refusal or resistance to a love label",
+      "possible mismatch between what the people want",
+      "ambiguity about intimacy and emotional responsibility"
+    ],
+    "adult_context_required": true,
+    "song_level_mgs_terms": [
+      "physical desire",
+      "sexual attraction",
+      "sex without commitment",
+      "commitment avoidance",
+      "refusal to label the relationship",
+      "desire versus love",
+      "relationship ambiguity",
+      "emotional distance",
+      "boundaries",
+      "incompatible expectations"
+    ],
+    "song_level_exclusions": [
+      "repair",
+      "apology",
+      "continued care",
+      "grief",
+      "comfort",
+      "sympathy",
+      "family",
+      "children or minors",
+      "holiday warmth",
+      "unconditional love",
+      "commitment",
+      "wedding",
+      "anniversary devotion"
+    ]
+  },
+  "correction": {
+    "invalid_prior_route": "repair-still-love-you",
+    "invalid_prior_interpretation": "tender repair or continued care",
+    "why_invalid": "That interpretation conflicts with GD's authoritative song meaning and with earlier processing evidence that marked the timed candidates BAD and reported no reachable KK for the repair-still-love-you route.",
+    "publication_approval_revoked": true,
+    "payment_approval_revoked": true,
+    "frontend_removal_required": true,
+    "descriptive_metadata_removal_required": true,
+    "mgs_removal_required": true
+  },
+  "evidence_state": {
+    "gd_song_meaning_authority": "PASS",
+    "full_authorized_source_identity_found": true,
+    "full_authorized_source_audio_access_in_current_agent_runtime": false,
+    "connected_drive_authorized_lyrics_found": false,
+    "connected_drive_structural_section_map_found": false,
+    "gmail_inventory_attachment_found_but_attachment_read_failed": true,
+    "legacy_timed_candidates_are_structural_blks": false,
+    "legacy_timed_candidates_prior_status": "BAD",
+    "exact_blk_boundaries_proven": false,
+    "exact_blk_lyrics_proven": false,
+    "public_song_level_fit": "HOLD"
+  },
+  "next_processing_order": [
+    "preserve and understand the complete authorized song",
+    "identify exact lyric and structural BLKs from authorized audio and lyric evidence",
+    "interpret every BLK independently without inheriting the total-song meaning",
+    "derive zero or more NBLKs only where standalone meaning is complete",
+    "give each NBLK its own unique identity, descriptive metadata, MGS, exclusions, and evidence",
+    "keep parent lineage ADMIN-only for NBLK public presentation"
+  ]
+}
