@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import HugzThreeChoiceTray from "@/components/HugzThreeChoiceTray";
 import { getHugzContainer, hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
 import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
 import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
@@ -55,10 +56,16 @@ export default async function HugzContainerPage({
           </div>
         </div>
 
-        <div className="mt-8 rounded-[1.5rem] border border-[#FFD54F]/35 bg-[#120A06] p-6 text-center">
-          <p className="text-lg font-black text-[#FFF8E1]">
-            Music choices are being prepared. Please check back soon.
-          </p>
+        <div className="mt-8">
+          <HugzThreeChoiceTray
+            seeds={container.seeds.map((seed) => ({
+              rank: seed.rank,
+              assetId: seed.assetId,
+              assetKind: seed.assetKind,
+              excerpt: seed.excerpt,
+            }))}
+            cardHeadline={container.headline}
+          />
         </div>
       </section>
     </main>
