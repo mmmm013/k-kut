@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 import { HUGZ_CARD_RULES, PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
 
+const PUBLIC_CHOICE_TITLES_APPROVED = false;
+
 type HugzSeed = {
   rank: number;
   assetId: string;
@@ -35,6 +37,24 @@ export default function HugzThreeChoiceTray({
       return ((next % seeds.length) + seeds.length) % seeds.length;
     });
   };
+
+  if (!PUBLIC_CHOICE_TITLES_APPROVED) {
+    return (
+      <section aria-label={`${cardHeadline} HUG choices`}>
+        <div className="rounded-[1.5rem] border border-[#FFD54F]/35 bg-[#120A06] p-6 text-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#FFD54F]">
+            Boundary-quality review in progress
+          </p>
+          <p className="mt-3 text-lg font-black text-[#FFF8E1]">
+            Music choices are being prepared. Please check back soon.
+          </p>
+          <p className="mt-3 text-sm font-bold leading-6 text-[#D7CCC8]">
+            {HUGZ_BOUNDARY_HOLD.publicMessage}
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   if (visibleSeeds.length === 0) {
     return (
