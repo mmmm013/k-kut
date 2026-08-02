@@ -1,0 +1,65 @@
+{
+  "schema_version": "GPMX_13HUGZ_RECONCILIATION_BIC_V001",
+  "status": "BIC_FAIL_CLOSED_RECONCILIATION_COMPLETE",
+  "generated_for": "13HUGz current seed associations",
+  "brand_display": "13HUGz",
+  "authority": "GD / Greg Putnam · BIC-Level · LL/BP",
+  "source_catalog": "lib/hugzSeedCatalog.ts",
+  "summary": {
+    "hugz_card_count": 13,
+    "existing_seed_association_count": 104,
+    "current_pass_count": 0,
+    "current_hold_count": 104,
+    "deleted_count": 0,
+    "inventory_mutated_count": 0,
+    "audio_mutated_count": 0,
+    "checkout_mutated_count": 0,
+    "production_mutated_count": 0
+  },
+  "decision": {
+    "status_for_every_existing_seed_association": "HOLD_CURRENT_THEME_FIT_REPROOF_REQUIRED",
+    "reason": "The newest complete validation authority approves zero records for 13HUGz seeding and supplies no current per-II need-fit approval for the 104 existing card associations.",
+    "association_hold_does_not_delete_or_reject_the_underlying_audio": true,
+    "association_hold_does_not_invalidate_separately_approved_inventory_outside_the_429_packet": true,
+    "forced_reuse_prohibited": true,
+    "release_requirement": "Each KK or KOMBO must independently pass the shared-need glossary, lyric/meaning, relationship/POV, audio-presentation, boundary, rights, source-authority, customer-delivery, Twinkle-at-end, exclusion, and contradiction gates."
+  },
+  "current_card_results": [
+    {"slug": "bad-day", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "big-win", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "make-it-right", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "just-because-care", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "miss-them", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "first-day-nerves", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "proud-of-them", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "thinking-of-you", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "long-week", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "breakup-blues", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "new-baby", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "just-because-smile", "existing_seeds": 8, "pass": 0, "hold": 8},
+    {"slug": "friends", "existing_seeds": 8, "pass": 0, "hold": 8}
+  ],
+  "429_validation_evidence_gaps": {
+    "lt_pix_identity_pass": 429,
+    "audio_authority_metadata_pass": 429,
+    "shared_audio_identity_hold_records": 217,
+    "shared_audio_identity_groups": 89,
+    "usable_lyric_or_transcript_authorities": 0,
+    "validated_total_song_stories": 0,
+    "validated_mgs_records": 0,
+    "rights_or_provenance_evidence_records": 0,
+    "structural_kk_or_blk_maps": 0,
+    "public_catalog_passes": 0,
+    "approved_13hugz_seeds": 0,
+    "invalidated_deterministic_story_drafts_may_not_be_used": true
+  },
+  "read_only_controls": {
+    "current_seed_file_changed_by_this_reconciliation": false,
+    "source_audio_changed": false,
+    "public_inventory_changed": false,
+    "checkout_changed": false,
+    "stripe_changed": false,
+    "production_changed": false
+  },
+  "next_authorized_lane": "Use separately evidenced inventory outside the held 429 packet for a minimal BIC HUG pilot while the 104 card associations remain held."
+}
