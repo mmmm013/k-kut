@@ -146,17 +146,6 @@ export default function HugzRotatingLanding() {
             <p className="mt-3 rounded-xl border border-[#FFD54F]/35 bg-black/30 px-4 py-3 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#FFF8E1]">
               {HUGZ_BOUNDARY_HOLD.publicMessage}
             </p>
-
-            <div className="mt-3 space-y-2">
-              {active.seeds.slice(0, 3).map((seed) => (
-                <div
-                  key={seed.assetId}
-                  className="rounded-xl border border-[#8D6E63]/40 bg-[#120A06] px-4 py-2 text-xs font-bold text-[#EFEBE9] sm:text-sm"
-                >
-                  “{seed.excerpt}”
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="mt-4">
