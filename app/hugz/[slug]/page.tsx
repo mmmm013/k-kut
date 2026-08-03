@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HugzThreeChoiceTray from "@/components/HugzThreeChoiceTray";
+import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 import { getHugzContainer, hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
 import { getHugzIntentPath } from "@/lib/hugzIntentPaths";
 
@@ -23,7 +24,10 @@ export default async function HugzContainerPage({
 
   return (
     <main className="min-h-screen bg-[#09070B] text-white">
-      <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
+      <section
+        className="mx-auto max-w-7xl px-5 py-10 sm:px-8"
+        data-boundary-hold={HUGZ_BOUNDARY_HOLD.publicMessage}
+      >
         <Link href="/hugz" className="text-sm font-black text-[#FFD54F]">
           ← Back to all HUGz Cards
         </Link>
