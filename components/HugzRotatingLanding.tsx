@@ -122,7 +122,7 @@ export default function HugzRotatingLanding() {
         <div className="flex min-h-0 min-w-0 flex-col justify-start overflow-hidden p-4 sm:p-5 lg:p-6">
           <div className="min-w-0">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#FFD54F]">
-              HUGz Card · {active.seedCount} matching {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} HUG choices
+              HUGz Card · {active.seedCount} HUG choices · {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)} each
             </p>
 
             <div className="mt-3 min-w-0">
@@ -140,10 +140,10 @@ export default function HugzRotatingLanding() {
             </p>
 
             <p className="mt-2 text-xs font-bold leading-5 text-[#BCAAA4] sm:text-sm">
-              The HUGz Card is a sentiment container, not an II or media file. Open it to compare three KK or KOMBO HUG choices at a time.
+              Open this card and choose what you want your HUG to do. We’ll guide you to the closest match.
             </p>
 
-            <p className="mt-3 rounded-xl border border-[#FFD54F]/35 bg-black/30 px-4 py-3 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#FFF8E1]">
+            <p className="mt-3 rounded-xl border border-[#FFD54F]/35 bg-black/30 px-4 py-3 text-sm font-bold leading-6 text-[#FFF8E1]">
               {HUGZ_BOUNDARY_HOLD.publicMessage}
             </p>
           </div>
@@ -153,7 +153,7 @@ export default function HugzRotatingLanding() {
               href={`/hugz/${active.slug}`}
               className="inline-flex rounded-xl bg-[#FFD54F] px-6 py-3 text-sm font-black text-black"
             >
-              Start a New Sentimeant
+              Choose this HUG
             </Link>
 
             <div className="mt-4 flex items-center justify-between gap-3">
