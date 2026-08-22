@@ -7,11 +7,8 @@ export const runtime = "nodejs";
 const CATALOG_URL =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
 
-const KK_HUG_PAYMENT_URL =
-  "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
-
-const SK_HUG_PRICE_CENTS = 499;
-const KK_HUG_PRICE_CENTS = 799;
+const TUG_PRICE_CENTS = 499;
+const HUG_PRICE_CENTS = 799;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const CLIENT_REFERENCE_LIMIT = 200;
@@ -37,7 +34,7 @@ type OfferCode = "sk" | "kk";
 type OfferConfig = {
   code: OfferCode;
   family: InventoryFamily;
-  publicProductName: "sK HUG" | "KK HUG";
+  publicProductName: "TUG" | "HUG";
   priceCents: 499 | 799;
   paymentUrl: string;
 };
@@ -90,20 +87,18 @@ function offerConfig(offer: OfferCode): OfferConfig {
     return {
       code: "sk",
       family: "SK",
-      publicProductName: "sK HUG",
-      priceCents: SK_HUG_PRICE_CENTS,
-      paymentUrl: configuredPaymentUrl(
-        process.env.NEXT_PUBLIC_SK_HUG_LINK,
-      ),
+      publicProductName: "TUG",
+      priceCents: TUG_PRICE_CENTS,
+      paymentUrl: configuredPaymentUrl(process.env.SK_TUG_PAYMENT_URL),
     };
   }
 
   return {
     code: "kk",
     family: "KK",
-    publicProductName: "KK HUG",
-    priceCents: KK_HUG_PRICE_CENTS,
-    paymentUrl: KK_HUG_PAYMENT_URL,
+    publicProductName: "HUG",
+    priceCents: HUG_PRICE_CENTS,
+    paymentUrl: configuredPaymentUrl(process.env.KK_HUG_PAYMENT_URL),
   };
 }
 
@@ -209,8 +204,7 @@ async function governedCheckout(
     return returnToStore(request, "offer-inventory-mismatch");
   }
 
-  const paymentUrl =
-    publicationOption?.stripe_url_if_payment_allowed || config.paymentUrl;
+  const paymentUrl = config.paymentUrl;
 
   if (!paymentUrl) {
     return returnToStore(request, "payment-link-unavailable");

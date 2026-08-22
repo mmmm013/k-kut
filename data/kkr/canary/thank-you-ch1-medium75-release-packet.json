@@ -1,0 +1,67 @@
+{
+  "schema_version": "KKUT_THANK_YOU_CH1_CANARY_V001",
+  "status": "PREVIEW_CANARY_LISTENING_REQUIRED",
+  "owner_approvals": [
+    "APPROVE CANARY: Thank You — USE GITHUB",
+    "MEDIUM = 75%",
+    "FINAL PRICES: HUG $7.99; TUG $4.99; BUG $1.99 with 3 total timed Sends",
+    "APPROVE CLEANUP: RUNTIME ONLY",
+    "BUG MODES: REPEAT AND STORY ARC",
+    "APPROVE ADD-ON: STORY BUG +$0.99 = $2.98 TOTAL"
+  ],
+  "inventory_id": "thank-you-sec-ch1",
+  "public_label": "Thank You · Chorus 1",
+  "lt_pix_ssot_parent_id": null,
+  "lt_pix_ssot_parent_title": "Thank You",
+  "lt_pix_ssot_parent_status": "LEGACY_SSOT_HASH_VERIFIED_NUMERIC_ID_PENDING",
+  "lt_pix_parent_audio_sha256": "ab2cf02369f75c8f5d64b9f8f24203e0ac6196fcf3c64f39da3ddf7c4b83c5bd",
+  "raw_customer_excerpt_sha256": "b61666979accedc6e53444d68d17c98b78a732ff467d16530cd7bcc17e8ceeaa",
+  "customer_audio_url": "/kkr/ii-canary/thank-you/thank-you-sec-ch1-ii-pad135s-audio-logo-medium75.mp3",
+  "customer_audio_sha256": "b9c3959dc93ee6fd162df61026be858b302317bd7d69e5e85e1362a975e0cf8d",
+  "customer_audio_duration_seconds": 55.484082,
+  "authorized_music_source_status": "OWNER_APPROVED_PREVIEW_CANARY_FROM_HASH_VERIFIED_THANK_YOU_PARENT",
+  "strict_music_gate_status": "PREVIEW_PASS_PARENT_HASH_AND_MC_BOT_SHA_BLOCK_NUMERIC_LT_PIX_ID_PENDING",
+  "known_mc_bot_no_music_sha256_blocklist": [
+    "b5c089fafaeaf75019db38a99a164e6074d335cf5a7907c0662e6dc8d5958fb2",
+    "dc05fc30d88b3cb56db31550aa7f701a8aa8f5b139e941d76b78e62bc884b84d"
+  ],
+  "known_mc_bot_no_music_sha_match": false,
+  "human_customer_audio_qa": "CANARY_LISTENING_REQUIRED",
+  "audio_logo": {
+    "role": "closing_audio_logo",
+    "column": "MEDIUM",
+    "gain": 0.75,
+    "source_sha256": "26221e344fed1fb7abe579c24cff276cfd86f271f940dfde93d3ed507419f19f",
+    "at_end": true
+  },
+  "rights_status": "OWNER_APPROVED_PREVIEW_CANARY_PRODUCTION_PACKET_PENDING",
+  "identity_status": "HASH_LOCKED",
+  "release_scope": "PREVIEW_PLAYBACK_ONLY",
+  "production_eligible": false,
+  "checkout_enabled": false,
+  "pricing": {
+    "HUG_USD": 7.99,
+    "TUG_USD": 4.99,
+    "BUG_USD": 1.99,
+    "BUG_TOTAL_TIMED_SENDS": 3,
+    "BUG_DELIVERY_MODES": [
+      "REPEAT",
+      "STORY_ARC"
+    ],
+    "REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND": true,
+    "STORY_BUG_DISTINCT_RELATED_SEQUENCE": [
+      "HOOK",
+      "BUILD",
+      "PAYOFF"
+    ],
+    "STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY": true,
+    "STORY_BUG_SEQUENCING_ADDON_USD": 0.99,
+    "STORY_BUG_TOTAL_USD": 2.98,
+    "BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE": true,
+    "BUG_BILLING_COUNT": 1
+  },
+  "blockers_before_production": [
+    "numeric_LT_PIX_parent_ID",
+    "human_listening_approval_of_75_percent_render"
+  ]
+}

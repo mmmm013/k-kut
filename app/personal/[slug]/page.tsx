@@ -6,7 +6,7 @@ const PERSONAL_II_OPTIONS = [
       "A warm, flexible HUG for care, thanks, support, friendship, family, and everyday connection.",
     audioUrl:
       "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+    checkoutUrl: "",
   },
   {
     label: "Lift / Spark",
@@ -15,7 +15,7 @@ const PERSONAL_II_OPTIONS = [
       "A more energetic HUG for adult romance, attraction, excitement, or playful connection.",
     audioUrl:
       "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+    checkoutUrl: "",
   },
 ];
 
@@ -126,12 +126,9 @@ export default async function PersonalUseCasePage({
                   src={hug.audioUrl}
                 />
 
-                <a
-                  className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
-                  href={hug.checkoutUrl}
-                >
-                  Send this Personal HUG
-                </a>
+                <p className="mt-5 rounded-2xl border border-pink-200/30 px-5 py-3 text-center font-black text-pink-100">
+                  Preview available · checkout closed
+                </p>
               </article>
             ))}
           </div>

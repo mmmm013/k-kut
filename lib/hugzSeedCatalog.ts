@@ -12,7 +12,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00507-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00507-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00507-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00507-KK-01"
       },
@@ -22,7 +22,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00559-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00559-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00559-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00559-KK-01"
       },
@@ -32,7 +32,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00511-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00511-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00511-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00511-KK-01"
       },
@@ -42,7 +42,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00338-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00338-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00338-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00338-KK-01"
       },
@@ -52,7 +52,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00561-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00561-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00561-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00561-KK-01"
       },
@@ -62,7 +62,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00569-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00569-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00569-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00569-KK-01"
       },
@@ -72,7 +72,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00519-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00519-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00519-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00519-KK-01"
       },
@@ -82,7 +82,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00574-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00574-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_bad-day_LT-PIX-ALLPOSS-00574-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=bad-day",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_bad-day_LT-PIX-ALLPOSS-00574-KK-01"
       }
@@ -101,7 +101,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00340-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00340-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00340-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00340-KK-01"
       },
@@ -111,7 +111,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00390-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00390-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00390-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00390-KK-01"
       },
@@ -121,7 +121,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00526-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00526-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00526-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00526-KK-01"
       },
@@ -131,7 +131,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00525-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00525-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00525-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00525-KK-01"
       },
@@ -141,7 +141,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00377-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00377-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00377-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00377-KK-01"
       },
@@ -151,7 +151,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00376-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00376-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00376-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00376-KK-01"
       },
@@ -161,7 +161,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00304-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00304-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00304-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00304-KK-01"
       },
@@ -171,7 +171,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00139-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00139-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_big-win_LT-PIX-ALLPOSS-00139-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=big-win",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_big-win_LT-PIX-ALLPOSS-00139-KK-01"
       }
@@ -190,7 +190,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00376-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00376-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00376-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00376-KK-02"
       },
@@ -200,7 +200,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00547-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00547-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00547-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00547-KK-01"
       },
@@ -210,7 +210,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00456-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00456-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00456-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00456-KK-01"
       },
@@ -220,7 +220,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00495-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00495-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00495-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00495-KK-01"
       },
@@ -230,7 +230,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00580-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00580-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00580-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00580-KK-01"
       },
@@ -240,7 +240,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00564-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00564-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00564-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00564-KK-01"
       },
@@ -250,7 +250,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00516-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00516-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00516-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00516-KK-01"
       },
@@ -260,7 +260,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00419-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00419-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_make-it-right_LT-PIX-ALLPOSS-00419-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=make-it-right",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_make-it-right_LT-PIX-ALLPOSS-00419-KK-01"
       }
@@ -279,7 +279,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00516-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00516-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00516-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00516-KK-02"
       },
@@ -289,7 +289,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00548-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00548-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00548-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00548-KK-01"
       },
@@ -299,7 +299,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00387-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00387-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00387-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00387-KK-01"
       },
@@ -309,7 +309,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00543-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00543-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00543-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00543-KK-01"
       },
@@ -319,7 +319,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00576-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00576-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00576-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00576-KK-01"
       },
@@ -329,7 +329,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00314-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00314-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00314-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00314-KK-01"
       },
@@ -339,7 +339,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00566-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00566-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00566-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00566-KK-01"
       },
@@ -349,7 +349,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00536-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00536-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-care_LT-PIX-ALLPOSS-00536-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-care",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-care_LT-PIX-ALLPOSS-00536-KK-01"
       }
@@ -368,7 +368,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00501-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00501-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00501-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00501-KK-01"
       },
@@ -378,7 +378,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00579-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00579-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00579-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00579-KK-01"
       },
@@ -388,7 +388,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00505-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00505-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00505-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00505-KK-01"
       },
@@ -398,7 +398,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00384-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00384-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00384-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00384-KK-01"
       },
@@ -408,7 +408,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00436-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00436-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00436-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00436-KK-01"
       },
@@ -418,7 +418,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00352-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00352-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00352-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00352-KK-01"
       },
@@ -428,7 +428,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00332-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00332-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00332-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00332-KK-01"
       },
@@ -438,7 +438,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00350-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00350-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_miss-them_LT-PIX-ALLPOSS-00350-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=miss-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_miss-them_LT-PIX-ALLPOSS-00350-KK-01"
       }
@@ -457,7 +457,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00581-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00581-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00581-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00581-KK-01"
       },
@@ -467,7 +467,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00524-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00524-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00524-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00524-KK-01"
       },
@@ -477,7 +477,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00390-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00390-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00390-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00390-KK-02"
       },
@@ -487,7 +487,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00380-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00380-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00380-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00380-KK-01"
       },
@@ -497,7 +497,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00332-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00332-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00332-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00332-KK-02"
       },
@@ -507,7 +507,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00509-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00509-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00509-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00509-KK-01"
       },
@@ -517,7 +517,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00580-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00580-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00580-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00580-KK-02"
       },
@@ -527,7 +527,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00339-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00339-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_first-day-nerves_LT-PIX-ALLPOSS-00339-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=first-day-nerves",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_first-day-nerves_LT-PIX-ALLPOSS-00339-KK-01"
       }
@@ -546,7 +546,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00504-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00504-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00504-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00504-KK-01"
       },
@@ -556,7 +556,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00573-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00573-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00573-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00573-KK-01"
       },
@@ -566,7 +566,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00436-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00436-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00436-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00436-KK-02"
       },
@@ -576,7 +576,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00724-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00724-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00724-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00724-KK-01"
       },
@@ -586,7 +586,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00505-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00505-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00505-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00505-KK-02"
       },
@@ -596,7 +596,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00384-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00384-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00384-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00384-KK-02"
       },
@@ -606,7 +606,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00334-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00334-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00334-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00334-KK-01"
       },
@@ -616,7 +616,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00526-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00526-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_proud-of-them_LT-PIX-ALLPOSS-00526-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=proud-of-them",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_proud-of-them_LT-PIX-ALLPOSS-00526-KK-02"
       }
@@ -635,7 +635,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00571-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00571-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00571-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00571-KK-01"
       },
@@ -645,7 +645,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00331-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00331-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00331-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00331-KK-01"
       },
@@ -655,7 +655,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00560-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00560-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00560-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00560-KK-01"
       },
@@ -665,7 +665,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00507-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00507-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00507-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00507-KK-02"
       },
@@ -675,7 +675,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00345-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00345-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00345-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00345-KK-01"
       },
@@ -685,7 +685,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00521-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00521-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00521-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00521-KK-01"
       },
@@ -695,7 +695,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00513-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00513-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00513-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00513-KK-01"
       },
@@ -705,7 +705,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00582-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00582-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_thinking-of-you_LT-PIX-ALLPOSS-00582-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=thinking-of-you",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_thinking-of-you_LT-PIX-ALLPOSS-00582-KK-01"
       }
@@ -724,7 +724,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00466-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00466-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00466-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00466-KK-01"
       },
@@ -734,7 +734,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00541-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00541-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00541-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00541-KK-01"
       },
@@ -744,7 +744,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00520-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00520-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00520-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00520-KK-01"
       },
@@ -754,7 +754,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00355-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00355-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00355-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00355-KK-01"
       },
@@ -764,7 +764,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00346-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00346-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00346-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00346-KK-01"
       },
@@ -774,7 +774,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00338-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00338-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00338-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00338-KK-02"
       },
@@ -784,7 +784,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00343-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00343-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00343-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00343-KK-01"
       },
@@ -794,7 +794,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00368-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00368-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_long-week_LT-PIX-ALLPOSS-00368-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=long-week",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_long-week_LT-PIX-ALLPOSS-00368-KK-01"
       }
@@ -813,7 +813,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00595-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00595-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00595-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00595-KK-01"
       },
@@ -823,7 +823,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00512-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00512-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00512-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00512-KK-01"
       },
@@ -833,7 +833,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00538-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00538-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00538-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00538-KK-01"
       },
@@ -843,7 +843,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00579-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00579-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00579-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00579-KK-02"
       },
@@ -853,7 +853,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00559-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00559-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00559-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00559-KK-02"
       },
@@ -863,7 +863,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00395-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00395-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00395-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00395-KK-01"
       },
@@ -873,7 +873,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00569-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00569-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00569-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00569-KK-02"
       },
@@ -883,7 +883,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00564-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00564-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_breakup-blues_LT-PIX-ALLPOSS-00564-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=breakup-blues",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_breakup-blues_LT-PIX-ALLPOSS-00564-KK-02"
       }
@@ -902,7 +902,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00588-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00588-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00588-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00588-KK-01"
       },
@@ -912,7 +912,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00495-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00495-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00495-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00495-KK-02"
       },
@@ -922,7 +922,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00393-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00393-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00393-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00393-KK-01"
       },
@@ -932,7 +932,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00385-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00385-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00385-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00385-KK-01"
       },
@@ -942,7 +942,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00541-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00541-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00541-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00541-KK-02"
       },
@@ -952,7 +952,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00348-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00348-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00348-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00348-KK-01"
       },
@@ -962,7 +962,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00528-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00528-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00528-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00528-KK-01"
       },
@@ -972,7 +972,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00448-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00448-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_new-baby_LT-PIX-ALLPOSS-00448-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=new-baby",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_new-baby_LT-PIX-ALLPOSS-00448-KK-01"
       }
@@ -991,7 +991,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00518-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00518-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00518-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00518-KK-01"
       },
@@ -1001,7 +1001,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00594-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00594-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00594-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00594-KK-01"
       },
@@ -1011,7 +1011,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00425-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00425-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00425-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00425-KK-01"
       },
@@ -1021,7 +1021,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00515-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00515-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00515-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00515-KK-01"
       },
@@ -1031,7 +1031,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00339-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00339-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00339-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00339-KK-02"
       },
@@ -1041,7 +1041,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00373-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00373-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00373-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00373-KK-01"
       },
@@ -1051,7 +1051,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00570-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00570-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00570-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00570-KK-01"
       },
@@ -1061,7 +1061,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00331-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00331-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_just-because-smile_LT-PIX-ALLPOSS-00331-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=just-because-smile",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_just-because-smile_LT-PIX-ALLPOSS-00331-KK-02"
       }
@@ -1080,7 +1080,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00562-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00562-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00562-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00562-KK-01"
       },
@@ -1090,7 +1090,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00496-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00496-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00496-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00496-KK-01"
       },
@@ -1100,7 +1100,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00554-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00554-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00554-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00554-KK-01"
       },
@@ -1110,7 +1110,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00350-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00350-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00350-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00350-KK-02"
       },
@@ -1120,7 +1120,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00392-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00392-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00392-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00392-KK-01"
       },
@@ -1130,7 +1130,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00515-KK-02",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00515-KK-02-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00515-KK-02&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00515-KK-02"
       },
@@ -1140,7 +1140,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00381-KK-01",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00381-KK-01-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00381-KK-01&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00381-KK-01"
       },
@@ -1150,7 +1150,7 @@ export const hugzSeedCatalog = [
         "assetKind": "KK",
         "excerpt": "Full KK song segment · LT-PIX-ALLPOSS-00331-KK-03",
         "previewUrl": "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/release-gate-v004/LT-PIX-ALLPOSS-00331-KK-03-gpmx-delivery-capsule.mp3",
-        "buyUrl": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A?client_reference_id=hugdp_friends_LT-PIX-ALLPOSS-00331-KK-03&utm_source=hugz&utm_medium=music-discovery&utm_campaign=temporary_revenue_v001&utm_content=friends",
+        "buyUrl": "",
         "price": "$7.99",
         "reference": "hugdp_friends_LT-PIX-ALLPOSS-00331-KK-03"
       }

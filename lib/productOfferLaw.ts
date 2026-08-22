@@ -19,6 +19,22 @@ export const PRODUCT_OFFER_LAW = {
     priceCents: 199,
     canonicalIiKinds: ["mK"] as const,
     allowedMkSources: ["TRM", "XCLM", "VSND"] as const,
+    totalTimedSends: 3,
+    deliveryModes: ["REPEAT", "STORY_ARC"] as const,
+    repeatMode: {
+      sameExactBugEachSend: true,
+      contentHashMustMatchAcrossSends: true,
+    },
+    storyArcMode: {
+      distinctBugEachSend: true,
+      relatedThemeRequired: true,
+      sequenceRoles: ["HOOK", "BUILD", "PAYOFF"] as const,
+      randomizedOnlyAtAssembly: true,
+      sequencingAddOnCents: 99,
+      totalPriceCents: 298,
+    },
+    packageLockedBeforeSendOne: true,
+    billingCount: 1,
     discoveryContainer: null,
   },
 } as const;

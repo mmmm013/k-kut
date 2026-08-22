@@ -1,0 +1,46 @@
+{
+  "schema_version": "KKR_CANONICAL_PRODUCT_PRICE_LOCK_V002",
+  "status": "PERMANENT_CANONICAL_LAW",
+  "owner": "GD / G Putnam Music, LLC",
+  "currency": "USD",
+  "source_authority": "GD_DIRECT_DECISION_2026_08_22",
+  "supersedes": "KKR_CANONICAL_PRODUCT_PRICE_LOCK_V001",
+  "prices_cents": {
+    "HUG": 799,
+    "TUG": 499,
+    "BUG": 199
+  },
+  "delivery_law": {
+    "BUG_TOTAL_TIMED_SENDS": 3,
+    "BUG_DELIVERY_MODES": [
+      "REPEAT",
+      "STORY_ARC"
+    ],
+    "REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND": true,
+    "REPEAT_BUG_CONTENT_HASH_MUST_MATCH_ACROSS_SENDS": true,
+    "STORY_BUG_DISTINCT_BUG_EACH_SEND": true,
+    "STORY_BUG_RELATED_THEME_REQUIRED": true,
+    "STORY_BUG_SEQUENCE_ROLES": [
+      "HOOK",
+      "BUILD",
+      "PAYOFF"
+    ],
+    "STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY": true,
+    "STORY_BUG_SEQUENCING_ADDON_CENTS": 99,
+    "STORY_BUG_TOTAL_CENTS": 298,
+    "BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE": true,
+    "BUG_BILLING_COUNT": 1
+  },
+  "change_control": {
+    "silent_edits_prohibited": true,
+    "new_numbered_lock_required": true,
+    "explicit_GD_decision_required": true
+  },
+  "addons_cents": {
+    "STORY_BUG_SEQUENCING": 99
+  },
+  "package_totals_cents": {
+    "REPEAT_BUG": 199,
+    "STORY_BUG": 298
+  }
+}

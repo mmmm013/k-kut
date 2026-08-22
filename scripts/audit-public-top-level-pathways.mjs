@@ -62,7 +62,7 @@ if (grid.includes("href={record.stripe_url_if_payment_allowed}")) {
 for (const required of [
   "findApprovedPublicOptionByInventoryId",
   "publicationOption",
-  "publicationOption?.stripe_url_if_payment_allowed",
+  "const paymentUrl = config.paymentUrl",
 ]) {
   if (!checkout.includes(required)) {
     stop(`checkout missing publication authority: ${required}`);
@@ -75,6 +75,6 @@ if (!bridge.includes("record.kk_id_or_delivery_object_id === inventoryId")) {
 
 console.log("PUBLIC TOP-LEVEL PATHWAY AUDIT: PASS");
 console.log("THEMES ROUTE: PRESENT");
-console.log("WEDDING CHECKOUT: GOVERNED EXACT-II");
-console.log("KUPID CHECKOUT: GOVERNED EXACT-II");
+console.log("WEDDING CHECKOUT: CENTRAL GATE · EMBEDDED LINKS 0");
+console.log("KUPID CHECKOUT: CENTRAL GATE · EMBEDDED LINKS 0");
 console.log("DIRECT STRIPE BYPASS: 0");

@@ -28,8 +28,8 @@
         "https://www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3"
       ],
       "expectedStripe": [
-        "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
-        "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k"
+        "",
+        ""
       ]
     },
     {
@@ -49,7 +49,7 @@
         "https://www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3"
       ],
       "expectedStripe": [
-        "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k"
+        ""
       ]
     },
     {
@@ -66,9 +66,9 @@
         "https://www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3"
       ],
       "expectedStripe": [
-        "https://buy.stripe.com/4gM6oG5cifaW41C7Js4ow0t",
-        "https://buy.stripe.com/bJeaEW8ou2oa0PqfbU4ow0u",
-        "https://buy.stripe.com/dRm6oG34agf0dCcaVE4ow0v"
+        "",
+        "",
+        ""
       ]
     },
     {
@@ -100,8 +100,8 @@
         "https://www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3"
       ],
       "expectedStripe": [
-        "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
-        "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k"
+        "",
+        ""
       ]
     }
   ]

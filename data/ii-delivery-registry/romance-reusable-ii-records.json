@@ -24,25 +24,25 @@
           "route_id": "love-sweet",
           "buyer_label": "Sweet Love",
           "buyer_question": "Send something warm, sweet, and easy to receive.",
-          "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r"
+          "checkout_url": ""
         },
         {
           "route_id": "love-deep-devotion",
           "buyer_label": "Deep Devotion",
           "buyer_question": "Send something that feels lasting, loyal, and serious.",
-          "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r"
+          "checkout_url": ""
         },
         {
           "route_id": "wedding-forever",
           "buyer_label": "Wedding / Forever",
           "buyer_question": "Send something ceremonial, beautiful, and forever-facing.",
-          "checkout_url": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q"
+          "checkout_url": ""
         },
         {
           "route_id": "anniversary-still-choosing-you",
           "buyer_label": "Anniversary",
           "buyer_question": "Send something that says I still choose you.",
-          "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r"
+          "checkout_url": ""
         }
       ],
       "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
@@ -75,7 +75,7 @@
           "route_id": "kupid-physical-spark",
           "buyer_label": "Physical Spark",
           "buyer_question": "Send something bold, intimate, and charged.",
-          "checkout_url": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k"
+          "checkout_url": ""
         }
       ],
       "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
