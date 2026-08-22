@@ -26,7 +26,7 @@ export const personalCategories = {
         "Suggested clip feasibility: verse/chorus or two conjoined verses",
         "Thank-you phrase options for the wedding party",
         "12 keepsake message ideas for the couple",
-        "Routine buy options remain available",
+        "Routine browsing remains available; checkout stays behind the centralized gate",
       ],
       notes: [
         "Ceremonial, exciting, surprising, and pageant-like.",
@@ -34,7 +34,7 @@ export const personalCategories = {
         "Final audio selections require GPM review before fulfillment.",
         "Future versions may use new KLEIGH / Michael Clay uploads.",
       ],
-      checkoutUrl: "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
+      checkoutUrl: "",
     },
   },
   birthday: {

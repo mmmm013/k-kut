@@ -29,11 +29,10 @@ const publicationRecords = publicData.records || [];
 const publicRecords = publicationRecords.filter(
   (record) =>
     record.approval_status === "public_approved_generated_from_reusable_ii" &&
-    record.payment_allowed === true &&
+    record.payment_allowed === false &&
     typeof record.public_route === "string" &&
     record.public_route.startsWith("/") &&
-    typeof record.stripe_url_if_payment_allowed === "string" &&
-    record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/"),
+    record.stripe_url_if_payment_allowed === "",
 );
 const heldRecords = publicationRecords.filter(
   (record) => !publicRecords.includes(record),

@@ -9,8 +9,8 @@
     "Customer delivery audio must include front padding, back padding, and Signature End Sound / Twinkle."
   ],
   "payment_links": {
-    "kupid_valentine_reuse": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
-    "admin_override_mk_only": "https://buy.stripe.com/9B6eVcawC7Iu1Tu2p84ow0w"
+    "kupid_valentine_reuse": "",
+    "admin_override_mk_only": ""
   },
   "ii_delivery_paths": [
     {
@@ -1495,7 +1495,7 @@
         "back_padding_required": true,
         "twinkle_required": true
       },
-      "checkout_url": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+      "checkout_url": "",
       "notes": "Seeded from existing Your Touch inventory. Fill kk_candidates from reports/kk-inventory/k_kuts.auto.csv. Do not mint a duplicate II.",
       "inventory_counts": {
         "kk_candidates": 21,

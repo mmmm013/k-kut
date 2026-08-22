@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-thank-you-medium75-canary.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
+    "prebuild": "node scripts/audit-runtime-price-payment-cleanup-v001.mjs && node scripts/audit-thank-you-medium75-canary.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",

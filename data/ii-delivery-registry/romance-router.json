@@ -13,10 +13,10 @@
     "No public Music Maykers, LT-PIX, raw source labels, mK, mini-KUT, or internal IDs."
   ],
   "payment_links": {
-    "kupid_valentine_reuse": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
-    "admin_override_mk_only": "https://buy.stripe.com/9B6eVcawC7Iu1Tu2p84ow0w",
-    "personal_hug": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
-    "wedding_track_pack": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q"
+    "kupid_valentine_reuse": "",
+    "admin_override_mk_only": "",
+    "personal_hug": "",
+    "wedding_track_pack": ""
   },
   "routes": [
     {
@@ -4788,7 +4788,7 @@
           "admin_override_required": true
         }
       ],
-      "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "checkout_url": "",
       "status": "populated_existing_kk_inventory",
       "inventory_counts": {
         "kk_candidates": 48,
@@ -9565,7 +9565,7 @@
           "admin_override_required": true
         }
       ],
-      "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "checkout_url": "",
       "status": "populated_existing_kk_inventory",
       "inventory_counts": {
         "kk_candidates": 48,
@@ -13753,7 +13753,7 @@
           "admin_override_required": true
         }
       ],
-      "checkout_url": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+      "checkout_url": "",
       "status": "populated_existing_kk_inventory",
       "inventory_counts": {
         "kk_candidates": 42,
@@ -18531,7 +18531,7 @@
           "admin_override_required": true
         }
       ],
-      "checkout_url": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
+      "checkout_url": "",
       "status": "populated_existing_kk_inventory",
       "inventory_counts": {
         "kk_candidates": 48,
@@ -23308,7 +23308,7 @@
           "admin_override_required": true
         }
       ],
-      "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "checkout_url": "",
       "status": "populated_existing_kk_inventory",
       "inventory_counts": {
         "kk_candidates": 48,
@@ -25589,7 +25589,7 @@
           "admin_override_required": true
         }
       ],
-      "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "checkout_url": "",
       "status": "populated_existing_kk_inventory",
       "inventory_counts": {
         "kk_candidates": 24,
@@ -25610,7 +25610,7 @@
       "seed_titles": [],
       "kk_candidates": [],
       "admin_only_mk_candidates": [],
-      "checkout_url": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "checkout_url": "",
       "status": "blocked_no_kk_candidates_found",
       "inventory_counts": {
         "kk_candidates": 0,

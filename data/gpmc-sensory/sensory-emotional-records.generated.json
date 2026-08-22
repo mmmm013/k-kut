@@ -17,17 +17,46 @@
       "public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
       "public_route": "/romance",
       "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "stripe_url_if_payment_allowed": "",
       "surface_feeling": "romance",
-      "deeper_feelings": ["warm love", "sweet connection", "chosen closeness"],
+      "deeper_feelings": [
+        "warm love",
+        "sweet connection",
+        "chosen closeness"
+      ],
       "interpretation_summary": "Send something warm, sweet, and easy to receive.",
-      "action_object_meaning": {"verb": "send", "object": "warmth", "situation": "Sweet Love"},
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "warmth",
+        "situation": "Sweet Love"
+      },
       "sensory_profile": {
-        "audio": ["warm", "soft lift", "romantic", "resolved ending"],
-        "body": ["open", "warm", "settled"],
-        "visual": ["warm light", "close-up", "soft motion"],
-        "touch": ["held", "soft", "warm"],
-        "memory": ["first love", "shared feeling", "returning"]
+        "audio": [
+          "warm",
+          "soft lift",
+          "romantic",
+          "resolved ending"
+        ],
+        "body": [
+          "open",
+          "warm",
+          "settled"
+        ],
+        "visual": [
+          "warm light",
+          "close-up",
+          "soft motion"
+        ],
+        "touch": [
+          "held",
+          "soft",
+          "warm"
+        ],
+        "memory": [
+          "first love",
+          "shared feeling",
+          "returning"
+        ]
       },
       "emotional_coordinates": {
         "valence": "positive_warm",
@@ -36,12 +65,32 @@
         "social_direction": "toward",
         "time_direction": "present"
       },
-      "good_use_cases": ["romance", "sweet love", "warm connection"],
-      "bad_use_cases": ["fresh breakup", "grief", "unclear friendship"],
-      "risk_notes": ["Romantic context should be clear.", "Do not imply guaranteed response."],
-      "buyer_words": ["This made me think of us.", "I wanted to send something warm."],
-      "receiver_safe_words": ["I thought you might like this.", "No pressure — just a warm music moment."],
-      "do_not_say": ["This proves you love me.", "You have to feel this too."],
+      "good_use_cases": [
+        "romance",
+        "sweet love",
+        "warm connection"
+      ],
+      "bad_use_cases": [
+        "fresh breakup",
+        "grief",
+        "unclear friendship"
+      ],
+      "risk_notes": [
+        "Romantic context should be clear.",
+        "Do not imply guaranteed response."
+      ],
+      "buyer_words": [
+        "This made me think of us.",
+        "I wanted to send something warm."
+      ],
+      "receiver_safe_words": [
+        "I thought you might like this.",
+        "No pressure — just a warm music moment."
+      ],
+      "do_not_say": [
+        "This proves you love me.",
+        "You have to feel this too."
+      ],
       "review_status": "approved_public",
       "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
     },
@@ -54,17 +103,46 @@
       "public_option_id": "generated-love-deep-devotion-d3dfd13c-7421-4671-8261-0c735cb51f38",
       "public_route": "/romance",
       "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "stripe_url_if_payment_allowed": "",
       "surface_feeling": "romance",
-      "deeper_feelings": ["warm love", "sweet connection", "chosen closeness"],
+      "deeper_feelings": [
+        "warm love",
+        "sweet connection",
+        "chosen closeness"
+      ],
       "interpretation_summary": "Send something that feels lasting, loyal, and serious.",
-      "action_object_meaning": {"verb": "send", "object": "devotion", "situation": "Deep Devotion"},
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "devotion",
+        "situation": "Deep Devotion"
+      },
       "sensory_profile": {
-        "audio": ["warm", "soft lift", "romantic", "resolved ending"],
-        "body": ["open", "warm", "settled"],
-        "visual": ["warm light", "close-up", "soft motion"],
-        "touch": ["held", "soft", "warm"],
-        "memory": ["first love", "shared feeling", "returning"]
+        "audio": [
+          "warm",
+          "soft lift",
+          "romantic",
+          "resolved ending"
+        ],
+        "body": [
+          "open",
+          "warm",
+          "settled"
+        ],
+        "visual": [
+          "warm light",
+          "close-up",
+          "soft motion"
+        ],
+        "touch": [
+          "held",
+          "soft",
+          "warm"
+        ],
+        "memory": [
+          "first love",
+          "shared feeling",
+          "returning"
+        ]
       },
       "emotional_coordinates": {
         "valence": "positive_warm",
@@ -73,12 +151,32 @@
         "social_direction": "toward",
         "time_direction": "present"
       },
-      "good_use_cases": ["romance", "sweet love", "warm connection"],
-      "bad_use_cases": ["fresh breakup", "grief", "unclear friendship"],
-      "risk_notes": ["Romantic context should be clear.", "Do not imply guaranteed response."],
-      "buyer_words": ["This made me think of us.", "I wanted to send something warm."],
-      "receiver_safe_words": ["I thought you might like this.", "No pressure — just a warm music moment."],
-      "do_not_say": ["This proves you love me.", "You have to feel this too."],
+      "good_use_cases": [
+        "romance",
+        "sweet love",
+        "warm connection"
+      ],
+      "bad_use_cases": [
+        "fresh breakup",
+        "grief",
+        "unclear friendship"
+      ],
+      "risk_notes": [
+        "Romantic context should be clear.",
+        "Do not imply guaranteed response."
+      ],
+      "buyer_words": [
+        "This made me think of us.",
+        "I wanted to send something warm."
+      ],
+      "receiver_safe_words": [
+        "I thought you might like this.",
+        "No pressure — just a warm music moment."
+      ],
+      "do_not_say": [
+        "This proves you love me.",
+        "You have to feel this too."
+      ],
       "review_status": "approved_public",
       "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
     },
@@ -91,17 +189,47 @@
       "public_option_id": "generated-wedding-forever-d3dfd13c-7421-4671-8261-0c735cb51f38",
       "public_route": "/wedding",
       "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/bJe5kCeMSd2OeGg4xg4ow0q",
+      "stripe_url_if_payment_allowed": "",
       "surface_feeling": "wedding",
-      "deeper_feelings": ["commitment", "devotion", "ceremony", "shared future"],
+      "deeper_feelings": [
+        "commitment",
+        "devotion",
+        "ceremony",
+        "shared future"
+      ],
       "interpretation_summary": "Send something ceremonial, beautiful, and forever-facing.",
-      "action_object_meaning": {"verb": "send", "object": "commitment", "situation": "Wedding / Forever"},
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "commitment",
+        "situation": "Wedding / Forever"
+      },
       "sensory_profile": {
-        "audio": ["warm", "steady", "ceremonial", "resolved ending"],
-        "body": ["settled", "open", "lifted"],
-        "visual": ["warm light", "shared room", "slow motion"],
-        "touch": ["held", "soft", "steady"],
-        "memory": ["first dance", "promise", "shared future"]
+        "audio": [
+          "warm",
+          "steady",
+          "ceremonial",
+          "resolved ending"
+        ],
+        "body": [
+          "settled",
+          "open",
+          "lifted"
+        ],
+        "visual": [
+          "warm light",
+          "shared room",
+          "slow motion"
+        ],
+        "touch": [
+          "held",
+          "soft",
+          "steady"
+        ],
+        "memory": [
+          "first dance",
+          "promise",
+          "shared future"
+        ]
       },
       "emotional_coordinates": {
         "valence": "positive_warm",
@@ -110,12 +238,32 @@
         "social_direction": "staying",
         "time_direction": "future"
       },
-      "good_use_cases": ["wedding", "first dance", "ceremonial love"],
-      "bad_use_cases": ["breakup", "ambiguous apology", "grief"],
-      "risk_notes": ["Use only where commitment context is clear.", "Do not overpromise forever as a guaranteed outcome."],
-      "buyer_words": ["This feels like us.", "This could carry the moment."],
-      "receiver_safe_words": ["I wanted this music moment to be part of us.", "This felt warm and real."],
-      "do_not_say": ["This guarantees forever.", "This proves the marriage will be perfect."],
+      "good_use_cases": [
+        "wedding",
+        "first dance",
+        "ceremonial love"
+      ],
+      "bad_use_cases": [
+        "breakup",
+        "ambiguous apology",
+        "grief"
+      ],
+      "risk_notes": [
+        "Use only where commitment context is clear.",
+        "Do not overpromise forever as a guaranteed outcome."
+      ],
+      "buyer_words": [
+        "This feels like us.",
+        "This could carry the moment."
+      ],
+      "receiver_safe_words": [
+        "I wanted this music moment to be part of us.",
+        "This felt warm and real."
+      ],
+      "do_not_say": [
+        "This guarantees forever.",
+        "This proves the marriage will be perfect."
+      ],
       "review_status": "approved_public",
       "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
     },
@@ -128,17 +276,47 @@
       "public_option_id": "generated-anniversary-still-choosing-you-d3dfd13c-7421-4671-8261-0c735cb51f38",
       "public_route": "/personal/anniversary",
       "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "stripe_url_if_payment_allowed": "",
       "surface_feeling": "anniversary",
-      "deeper_feelings": ["devotion", "continuity", "still choosing", "soft gratitude"],
+      "deeper_feelings": [
+        "devotion",
+        "continuity",
+        "still choosing",
+        "soft gratitude"
+      ],
       "interpretation_summary": "Send something that says I still choose you.",
-      "action_object_meaning": {"verb": "send", "object": "devotion", "situation": "Anniversary"},
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "devotion",
+        "situation": "Anniversary"
+      },
       "sensory_profile": {
-        "audio": ["warm", "steady", "soft lift", "resolved ending"],
-        "body": ["settled", "open", "warm"],
-        "visual": ["warm light", "close-up", "stillness"],
-        "touch": ["held", "soft", "warm"],
-        "memory": ["still choosing", "shared history", "returning"]
+        "audio": [
+          "warm",
+          "steady",
+          "soft lift",
+          "resolved ending"
+        ],
+        "body": [
+          "settled",
+          "open",
+          "warm"
+        ],
+        "visual": [
+          "warm light",
+          "close-up",
+          "stillness"
+        ],
+        "touch": [
+          "held",
+          "soft",
+          "warm"
+        ],
+        "memory": [
+          "still choosing",
+          "shared history",
+          "returning"
+        ]
       },
       "emotional_coordinates": {
         "valence": "positive_warm",
@@ -147,12 +325,34 @@
         "social_direction": "staying",
         "time_direction": "past_present_future"
       },
-      "good_use_cases": ["anniversary", "longtime love", "still choosing you"],
-      "bad_use_cases": ["fresh breakup", "ambiguous apology", "grief", "pressure to reconcile"],
-      "risk_notes": ["Romantic context required.", "Do not imply the song fixes the relationship."],
-      "buyer_words": ["I still choose you.", "We are still here."],
-      "receiver_safe_words": ["This made me think of us.", "I wanted to send something warm."],
-      "do_not_say": ["This fixes everything.", "You have to feel the same.", "This proves forever."],
+      "good_use_cases": [
+        "anniversary",
+        "longtime love",
+        "still choosing you"
+      ],
+      "bad_use_cases": [
+        "fresh breakup",
+        "ambiguous apology",
+        "grief",
+        "pressure to reconcile"
+      ],
+      "risk_notes": [
+        "Romantic context required.",
+        "Do not imply the song fixes the relationship."
+      ],
+      "buyer_words": [
+        "I still choose you.",
+        "We are still here."
+      ],
+      "receiver_safe_words": [
+        "This made me think of us.",
+        "I wanted to send something warm."
+      ],
+      "do_not_say": [
+        "This fixes everything.",
+        "You have to feel the same.",
+        "This proves forever."
+      ],
       "review_status": "approved_public",
       "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
     },
@@ -165,17 +365,47 @@
       "public_option_id": "generated-kupid-physical-spark-1f016b4a-f85d-4945-b881-2e0f571e6a49",
       "public_route": "/kupid",
       "audio_delivery_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+      "stripe_url_if_payment_allowed": "",
       "surface_feeling": "spark",
-      "deeper_feelings": ["attraction", "playful energy", "pulse", "romantic confidence"],
+      "deeper_feelings": [
+        "attraction",
+        "playful energy",
+        "pulse",
+        "romantic confidence"
+      ],
       "interpretation_summary": "Send something bold, intimate, and charged.",
-      "action_object_meaning": {"verb": "send", "object": "spark", "situation": "Physical Spark"},
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "spark",
+        "situation": "Physical Spark"
+      },
       "sensory_profile": {
-        "audio": ["charged", "rhythmic", "energetic", "sparked"],
-        "body": ["pulse", "lifted", "electric"],
-        "visual": ["bright motion", "close-up", "night light"],
-        "touch": ["warm", "alive", "charged"],
-        "memory": ["first spark", "flirtation", "romantic excitement"]
+        "audio": [
+          "charged",
+          "rhythmic",
+          "energetic",
+          "sparked"
+        ],
+        "body": [
+          "pulse",
+          "lifted",
+          "electric"
+        ],
+        "visual": [
+          "bright motion",
+          "close-up",
+          "night light"
+        ],
+        "touch": [
+          "warm",
+          "alive",
+          "charged"
+        ],
+        "memory": [
+          "first spark",
+          "flirtation",
+          "romantic excitement"
+        ]
       },
       "emotional_coordinates": {
         "valence": "positive_warm",
@@ -184,12 +414,33 @@
         "social_direction": "toward",
         "time_direction": "present"
       },
-      "good_use_cases": ["romantic spark", "playful connection", "confident attraction"],
-      "bad_use_cases": ["grief", "apology", "anniversary repair", "family support"],
-      "risk_notes": ["Use only for clearly playful or romantic contexts.", "Avoid where softness or grief safety is needed."],
-      "buyer_words": ["This has a spark.", "This feels playful and alive."],
-      "receiver_safe_words": ["This felt fun and bright.", "I thought you might like the energy."],
-      "do_not_say": ["This will make them want you.", "This guarantees attraction."],
+      "good_use_cases": [
+        "romantic spark",
+        "playful connection",
+        "confident attraction"
+      ],
+      "bad_use_cases": [
+        "grief",
+        "apology",
+        "anniversary repair",
+        "family support"
+      ],
+      "risk_notes": [
+        "Use only for clearly playful or romantic contexts.",
+        "Avoid where softness or grief safety is needed."
+      ],
+      "buyer_words": [
+        "This has a spark.",
+        "This feels playful and alive."
+      ],
+      "receiver_safe_words": [
+        "This felt fun and bright.",
+        "I thought you might like the energy."
+      ],
+      "do_not_say": [
+        "This will make them want you.",
+        "This guarantees attraction."
+      ],
       "review_status": "approved_public",
       "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
     }

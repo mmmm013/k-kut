@@ -69,7 +69,7 @@ export default function HugPage() {
             </p>
             <h2 className="mt-3 text-3xl font-black">mK</h2>
             <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              BUGs stay outside HUGz Cards and may use only TRM, XCLM, or VSND source forms.
+              Choose Repeat BUG for the same exact BUG three times, or Story BUG for three different but related BUGs in Hook, Build, and Payoff order. Both use three timed Sends and one charge.
             </p>
           </article>
         </section>

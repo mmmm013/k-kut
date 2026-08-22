@@ -76,8 +76,8 @@ for (const container of manifest.containers) {
     if (seed.hugz_is_ii !== false || seed.hugz_is_asset !== false) {
       stop(`choice confused with HUGz Card: ${seed.seed_asset_id}`);
     }
-    if (!seed.hug_dp_payment_url.includes("client_reference_id=")) {
-      stop(`missing exact selected-II payment reference: ${seed.seed_asset_id}`);
+    if (seed.hug_dp_payment_url !== "") {
+      stop(`embedded payment URL remains: ${seed.seed_asset_id}`);
     }
     if (seed.price_cents !== 799) {
       stop(`wrong HUG price: ${seed.seed_asset_id}`);
@@ -170,7 +170,7 @@ console.log("HUG choice inventory: 104 distinct full KKs");
 console.log("Phrase/line/TRM choices: 0");
 console.log("Visible choices per tray: 3");
 console.log("Public audio: HELD FOR TP/CC REVALIDATION");
-console.log("Verified KK HUG checkout: ACTIVE");
+console.log("HUG checkout: CENTRAL GATE ONLY · EMBEDDED LINKS 0");
 console.log("HUG: KK/KOMBO · $7.99");
 console.log("TUG: sK · $4.99");
 console.log("BUG: mK from TRM/XCLM/VSND only · $1.99");

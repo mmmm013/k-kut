@@ -7,7 +7,7 @@
       "path": "/hug",
       "purpose": "General buyer-ready K-KUT HUG doorway.",
       "user_goal": "Understand HUGs and buy a regular/basic HUG.",
-      "payment_allowed": true,
+      "payment_allowed": false,
       "audio_allowed": true,
       "must_not_show": [
         "internal candidate language",
@@ -23,8 +23,8 @@
       "path": "/checkout",
       "purpose": "Regular/basic HUG payment redirect.",
       "user_goal": "Go to Stripe checkout.",
-      "payment_allowed": true,
-      "required_target": "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y",
+      "payment_allowed": false,
+      "required_target": "",
       "proof": [
         "HTTP 307",
         "location is regular HUG Stripe link"
@@ -34,7 +34,7 @@
       "path": "/find",
       "purpose": "Find/Search entry for KKs and HUG use cases.",
       "user_goal": "Find suitable KKs by feeling, theme, or scenario.",
-      "payment_allowed": "only after approved option selection",
+      "payment_allowed": false,
       "must_not_show": [
         "weak keyword matches",
         "unapproved high-risk results"
@@ -44,7 +44,7 @@
       "path": "/personal",
       "purpose": "Personal HUG lane index.",
       "user_goal": "Choose a personal use case.",
-      "payment_allowed": "lane-dependent",
+      "payment_allowed": false,
       "must_not_show": [
         "mK language",
         "unsafe high-risk lane cards"
@@ -72,7 +72,7 @@
     {
       "name": "Regular HUG",
       "primary_path": "/checkout",
-      "stripe_link": "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y",
+      "stripe_link": "",
       "status": "buyer_ready"
     }
   ],

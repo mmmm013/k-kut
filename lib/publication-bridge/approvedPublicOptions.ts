@@ -37,9 +37,9 @@ function isApproved(record: ApprovedPublicOption): boolean {
   return Boolean(
     APPROVED_PUBLICATION_STATUSES.has(record.approval_status) &&
       record.audio_proof_status === "pass" &&
-      record.payment_allowed === true &&
+      record.payment_allowed === false &&
       record.audio_delivery_url?.startsWith("/") &&
-      record.stripe_url_if_payment_allowed?.startsWith("https://buy.stripe.com/") &&
+      record.stripe_url_if_payment_allowed === "" &&
       record.public_route?.startsWith("/") &&
       record.display_title?.trim() &&
       record.interpretation_summary?.trim()

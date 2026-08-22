@@ -27,7 +27,7 @@ const featuredPromos = [
     line: "A reviewed wedding song package built around Forever & A Day.",
     href: "/personal/wedding",
     cta: "Open Wedding Pack",
-    proof: "Dedicated wedding checkout",
+    proof: "Dedicated wedding package",
   },
   {
     slug: "anniversary",
@@ -57,7 +57,7 @@ const PERSONAL_READY_HUGS = [
       "A warm personal HUG for love, care, thanks, support, or a simple human moment.",
     audioUrl:
       "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+    checkoutUrl: "",
   },
   {
     label: "Romance / Physical Spark",
@@ -66,7 +66,7 @@ const PERSONAL_READY_HUGS = [
       "A bold personal romance HUG for desire, passion, and private intimate energy.",
     audioUrl:
       "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-    checkoutUrl: "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
+    checkoutUrl: "",
   },
 ];
 
@@ -196,12 +196,9 @@ export default function PersonalPage() {
                   src={hug.audioUrl}
                 />
 
-                <a
-                  className="mt-5 block rounded-2xl bg-amber-200 px-5 py-3 text-center text-sm font-black text-[#150b07] transition hover:bg-amber-100"
-                  href={hug.checkoutUrl}
-                >
-                  Send this Personal HUG
-                </a>
+                <p className="mt-5 rounded-2xl border border-amber-200/30 px-5 py-3 text-center text-sm font-black text-amber-100">
+                  Preview available · checkout closed
+                </p>
               </article>
             ))}
           </div>
