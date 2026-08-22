@@ -23,7 +23,8 @@
     "audit:hugz-tp-cc-hold": "node scripts/audit-hugz-tp-cc-boundary-hold-v001.mjs",
     "audit:public-pathways": "node scripts/audit-public-top-level-pathways.mjs",
     "audit:dont-call-it-love-public-hold": "node scripts/audit-dont-call-it-love-public-hold-v001.mjs",
-    "audit:gpmc-sensory-public": "node scripts/audit-gpmc-sensory-records-generated.mjs"
+    "audit:gpmc-sensory-public": "node scripts/audit-gpmc-sensory-records-generated.mjs",
+    "audit:thank-you:twinkle-loudness": "node scripts/audit-thank-you-ch1-twinkle-loudness.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.0",
