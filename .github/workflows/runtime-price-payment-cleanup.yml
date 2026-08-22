@@ -168,26 +168,26 @@ jobs:
           replaceRequired(
             "app/personal/page.tsx",
             `<a
-                          className="mt-5 block rounded-2xl bg-amber-200 px-5 py-3 text-center text-sm font-black text-[#150b07] transition hover:bg-amber-100"
-                          href={hug.checkoutUrl}
-                        >
-                          Send this Personal HUG
-                        </a>`,
+                            className="mt-5 block rounded-2xl bg-amber-200 px-5 py-3 text-center text-sm font-black text-[#150b07] transition hover:bg-amber-100"
+                            href={hug.checkoutUrl}
+                          >
+                            Send this Personal HUG
+                          </a>`,
             `<p className="mt-5 rounded-2xl border border-amber-200/30 px-5 py-3 text-center text-sm font-black text-amber-100">
-                          Preview available · checkout closed
-                        </p>`,
+                            Preview available · checkout closed
+                          </p>`,
           );
           replaceRequired(
             "app/personal/[slug]/page.tsx",
             `<a
-                          className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
-                          href={hug.checkoutUrl}
-                        >
-                          Send this Personal HUG
-                        </a>`,
+                            className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
+                            href={hug.checkoutUrl}
+                          >
+                            Send this Personal HUG
+                          </a>`,
             `<p className="mt-5 rounded-2xl border border-pink-200/30 px-5 py-3 text-center font-black text-pink-100">
-                          Preview available · checkout closed
-                        </p>`,
+                            Preview available · checkout closed
+                          </p>`,
           );
           replaceRequired(
             "lib/personalSeeds.ts",
