@@ -31,7 +31,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          test "$GITHUB_REF_NAME" = "canary/thank-you-ch1-medium75"
+          test "$GITHUB_HEAD_REF" = "canary/thank-you-ch1-medium75"
           command -v ffmpeg >/dev/null
           command -v ffprobe >/dev/null
 
