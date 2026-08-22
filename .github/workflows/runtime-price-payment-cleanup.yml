@@ -198,25 +198,25 @@ jobs:
           replaceRequired(
             "lib/productOfferLaw.ts",
             `allowedMkSources: ["TRM", "XCLM", "VSND"] as const,
-                discoveryContainer: null,`,
+              discoveryContainer: null,`,
             `allowedMkSources: ["TRM", "XCLM", "VSND"] as const,
-                totalTimedSends: 3,
-                deliveryModes: ["REPEAT", "STORY_ARC"] as const,
-                repeatMode: {
-                  sameExactBugEachSend: true,
-                  contentHashMustMatchAcrossSends: true,
-                },
-                storyArcMode: {
-                  distinctBugEachSend: true,
-                  relatedThemeRequired: true,
-                  sequenceRoles: ["HOOK", "BUILD", "PAYOFF"] as const,
-                  randomizedOnlyAtAssembly: true,
-                  sequencingAddOnCents: 99,
-                  totalPriceCents: 298,
-                },
-                packageLockedBeforeSendOne: true,
-                billingCount: 1,
-                discoveryContainer: null,`,
+              totalTimedSends: 3,
+              deliveryModes: ["REPEAT", "STORY_ARC"] as const,
+              repeatMode: {
+                sameExactBugEachSend: true,
+                contentHashMustMatchAcrossSends: true,
+              },
+              storyArcMode: {
+                distinctBugEachSend: true,
+                relatedThemeRequired: true,
+                sequenceRoles: ["HOOK", "BUILD", "PAYOFF"] as const,
+                randomizedOnlyAtAssembly: true,
+                sequencingAddOnCents: 99,
+                totalPriceCents: 298,
+              },
+              packageLockedBeforeSendOne: true,
+              billingCount: 1,
+              discoveryContainer: null,`,
           );
           replaceRequired(
             "app/hug/page.tsx",
@@ -358,11 +358,11 @@ jobs:
           replaceRequired(
             "scripts/audit-hugz-seed-release-v001.mjs",
             `if (!seed.hug_dp_payment_url.includes("client_reference_id=")) {
-                  stop(\`missing exact selected-II payment reference: \${seed.seed_asset_id}\`);
-                }`,
+                stop(\`missing exact selected-II payment reference: \${seed.seed_asset_id}\`);
+              }`,
             `if (seed.hug_dp_payment_url !== "") {
-                  stop(\`embedded payment URL remains: \${seed.seed_asset_id}\`);
-                }`,
+                stop(\`embedded payment URL remains: \${seed.seed_asset_id}\`);
+              }`,
           );
           replaceRequired(
             "scripts/audit-hugz-seed-release-v001.mjs",
@@ -386,14 +386,14 @@ jobs:
           replaceRequired(
             "scripts/audit-gpmc-sensory-records-generated.mjs",
             `record.payment_allowed === true &&
-                typeof record.public_route === "string" &&
-                record.public_route.startsWith("/") &&
-                typeof record.stripe_url_if_payment_allowed === "string" &&
-                record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/"),`,
+              typeof record.public_route === "string" &&
+              record.public_route.startsWith("/") &&
+              typeof record.stripe_url_if_payment_allowed === "string" &&
+              record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/"),`,
             `record.payment_allowed === false &&
-                typeof record.public_route === "string" &&
-                record.public_route.startsWith("/") &&
-                record.stripe_url_if_payment_allowed === "",`,
+              typeof record.public_route === "string" &&
+              record.public_route.startsWith("/") &&
+              record.stripe_url_if_payment_allowed === "",`,
           );
 
           const envPath = ".env.example";
