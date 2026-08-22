@@ -16,9 +16,9 @@
   "lt_pix_ssot_parent_status": "LEGACY_SSOT_HASH_VERIFIED_NUMERIC_ID_PENDING",
   "lt_pix_parent_audio_sha256": "ab2cf02369f75c8f5d64b9f8f24203e0ac6196fcf3c64f39da3ddf7c4b83c5bd",
   "raw_customer_excerpt_sha256": "b61666979accedc6e53444d68d17c98b78a732ff467d16530cd7bcc17e8ceeaa",
-  "customer_audio_url": "/kkr/ii-canary/thank-you/thank-you-sec-ch1-ii-pad135s-audio-logo-medium75.mp3",
-  "customer_audio_sha256": "b9c3959dc93ee6fd162df61026be858b302317bd7d69e5e85e1362a975e0cf8d",
-  "customer_audio_duration_seconds": 55.484082,
+  "customer_audio_url": "/kkr/ii-review/thank-you/thank-you-sec-ch1-ii-pad1s-twinkle.mp3",
+  "customer_audio_sha256": "971b3536af6e5d2b217ce8260909526cea551aa4e6c174970431c82a95b2c511",
+  "customer_audio_duration_seconds": null,
   "authorized_music_source_status": "OWNER_APPROVED_PREVIEW_CANARY_FROM_HASH_VERIFIED_THANK_YOU_PARENT",
   "strict_music_gate_status": "PREVIEW_PASS_PARENT_HASH_AND_MC_BOT_SHA_BLOCK_NUMERIC_LT_PIX_ID_PENDING",
   "known_mc_bot_no_music_sha256_blocklist": [
@@ -63,5 +63,13 @@
   "blockers_before_production": [
     "numeric_LT_PIX_parent_ID",
     "human_listening_approval_of_75_percent_render"
-  ]
+  ],
+  "transition": {
+    "tail_padding_before_twinkle_seconds": 1.0,
+    "twinkle_tail_seconds": 2.0,
+    "preceding_window_seconds": 3.0,
+    "max_integrated_lufs_delta": 1.5,
+    "validation_command": "npm run audit:thank-you:twinkle-loudness",
+    "status": "PREVIEW_MEASUREMENT_REQUIRED_BEFORE_PROMOTION"
+  }
 }

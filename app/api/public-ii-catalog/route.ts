@@ -25,7 +25,7 @@ export async function GET() {
             lane: "Gratitude",
             offer: "KK HUG",
             priceUsd: 7.99,
-            audioUrl: "/kkr/ii-canary/thank-you/thank-you-sec-ch1-ii-pad135s-audio-logo-medium75.mp3",
+            audioUrl: "/kkr/ii-review/thank-you/thank-you-sec-ch1-ii-pad1s-twinkle.mp3",
             checkout: "kk",
             checkoutHref: "",
             personalNoteWordLimit: 13,
