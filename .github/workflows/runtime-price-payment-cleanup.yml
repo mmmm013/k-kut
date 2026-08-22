@@ -156,7 +156,7 @@ jobs:
           );
           replaceRequired(
             "lib/publication-bridge/approvedPublicOptions.ts",
-            `record.stripe_url_if_payment_allowed?.startsWith("") &&`,
+            `record.stripe_url_if_payment_allowed?.startsWith("https://buy.stripe.com/") &&`,
             `record.stripe_url_if_payment_allowed === "" &&`,
           );
 
