@@ -3,7 +3,8 @@
   "status": "PREVIEW_CANARY_LISTENING_REQUIRED",
   "owner_approvals": [
     "APPROVE CANARY: Thank You — USE GITHUB",
-    "MEDIUM = 75%"
+    "MEDIUM = 75%",
+    "FINAL PRICES: HUG $7.99; TUG $4.99; BUG $1.99 with 3 total timed Sends"
   ],
   "inventory_id": "thank-you-sec-ch1",
   "public_label": "Thank You · Chorus 1",
@@ -36,7 +37,10 @@
   "production_eligible": false,
   "checkout_enabled": false,
   "pricing": {
-    "HUG_KK_USD": 9.99
+    "HUG_USD": 7.99,
+    "TUG_USD": 4.99,
+    "BUG_USD": 1.99,
+    "BUG_TOTAL_TIMED_SENDS": 3
   },
   "blockers_before_production": [
     "numeric_LT_PIX_parent_ID",

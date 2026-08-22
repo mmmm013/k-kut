@@ -24,7 +24,7 @@ export async function GET() {
             family: "KK",
             lane: "Gratitude",
             offer: "KK HUG",
-            priceUsd: 9.99,
+            priceUsd: 7.99,
             audioUrl: "/kkr/ii-canary/thank-you/thank-you-sec-ch1-ii-pad135s-audio-logo-medium75.mp3",
             checkout: "kk",
             checkoutHref: "",

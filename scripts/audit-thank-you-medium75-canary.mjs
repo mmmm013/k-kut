@@ -14,7 +14,10 @@ if (policy.default_delivery_gain_label !== "75% · MEDIUM") stop("MEDIUM Audio L
 if (packet.release_scope !== "PREVIEW_PLAYBACK_ONLY") stop("canary scope escaped Preview");
 if (packet.production_eligible !== false) stop("canary became production eligible");
 if (packet.checkout_enabled !== false) stop("canary checkout opened");
-if (packet.pricing?.HUG_KK_USD !== 9.99) stop("HUG price must equal $9.99");
+if (packet.pricing?.HUG_USD !== 7.99) stop("HUG price must equal $7.99");
+if (packet.pricing?.TUG_USD !== 4.99) stop("TUG price must equal $4.99");
+if (packet.pricing?.BUG_USD !== 1.99) stop("BUG price must equal $1.99");
+if (packet.pricing?.BUG_TOTAL_TIMED_SENDS !== 3) stop("BUG must include exactly 3 timed Sends");
 if (packet.lt_pix_ssot_parent_id !== null) stop("unproven LT-PIX ID was invented");
 if (packet.human_customer_audio_qa !== "CANARY_LISTENING_REQUIRED") stop("human listening gate weakened");
 if (!fs.existsSync(audioPath)) stop("canary audio missing");
@@ -22,7 +25,7 @@ if (sha256(audioPath) !== packet.customer_audio_sha256) stop("canary audio SHA m
 if (!route.includes('process.env.VERCEL_ENV === "preview"')) stop("Preview environment gate missing");
 if (!route.includes('process.env.VERCEL_GIT_COMMIT_REF === CANARY_BRANCH')) stop("exact branch gate missing");
 if (!route.includes('checkoutHref: ""')) stop("checkout must remain disabled");
-if (!route.includes("priceUsd: 9.99")) stop("buyer-visible HUG price must equal $9.99");
+if (!route.includes("priceUsd: 7.99")) stop("buyer-visible HUG price must equal $7.99");
 if (!route.includes("inventoryCount: 0") || !route.includes("purchasableCount: 0") || !route.includes("records: []")) stop("Production hold literals missing");
 
 console.log("THANK YOU MEDIUM75 PREVIEW CANARY AUDIT PASS");
