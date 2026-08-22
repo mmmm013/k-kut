@@ -1,4 +1,5 @@
 name: Build Thank You medium Audio Logo canary
+# Registered workflow retrigger
 
 on:
   push:
