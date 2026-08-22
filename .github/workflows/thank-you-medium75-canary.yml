@@ -32,8 +32,10 @@ jobs:
           set -euo pipefail
 
           test "$GITHUB_HEAD_REF" = "canary/thank-you-ch1-medium75"
-          command -v ffmpeg >/dev/null
-          command -v ffprobe >/dev/null
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
 
           mkdir -p /tmp/thank-you-medium75
           mkdir -p public/kkr/ii-canary/thank-you
