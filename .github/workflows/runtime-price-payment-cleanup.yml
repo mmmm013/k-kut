@@ -110,7 +110,7 @@ jobs:
           replaceRequired(
             "app/checkout/route.ts",
             `const KK_HUG_PAYMENT_URL =
-          "";
+            "";
 
           const SK_HUG_PRICE_CENTS = 499;
           const KK_HUG_PRICE_CENTS = 799;`,
