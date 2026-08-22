@@ -1,10 +1,9 @@
 name: Build Thank You medium Audio Logo canary
-# Registered workflow retrigger
 
 on:
-  push:
+  pull_request:
     branches:
-      - canary/thank-you-ch1-medium75
+      - main
     paths:
       - .github/workflows/thank-you-medium75-canary.yml
 
@@ -17,7 +16,7 @@ concurrency:
 
 jobs:
   build-canary:
-    if: github.actor != 'github-actions[bot]'
+    if: github.head_ref == 'canary/thank-you-ch1-medium75' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -25,6 +24,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: canary/thank-you-ch1-medium75
 
       - name: Reconstruct source and render 75% Audio Logo
         shell: bash
