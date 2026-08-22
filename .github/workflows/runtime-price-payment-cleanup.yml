@@ -1,0 +1,675 @@
+name: Govern runtime price and payment cleanup
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/runtime-price-payment-cleanup.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: runtime-price-payment-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup-runtime:
+    if: github.head_ref == 'canary/thank-you-ch1-medium75' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out governed branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: canary/thank-you-ch1-medium75
+
+      - name: Remove runtime links and lock both BUG delivery modes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_HEAD_REF" = "canary/thank-you-ch1-medium75"
+
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          import path from "node:path";
+
+          const read = (file) => fs.readFileSync(file, "utf8");
+          const write = (file, content) => fs.writeFileSync(file, content);
+          const replaceRequired = (file, before, after) => {
+            const source = read(file);
+            if (!source.includes(before)) {
+              if (source.includes(after)) return;
+              throw new Error(`Required cleanup marker missing in ${file}`);
+            }
+            write(file, source.replace(before, after));
+          };
+
+          const walk = (root) => {
+            if (!fs.existsSync(root)) return [];
+            return fs.readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
+              const full = path.join(root, entry.name);
+              return entry.isDirectory() ? walk(full) : [full];
+            });
+          };
+
+          const sanitizeJson = (value) => {
+            if (Array.isArray(value)) return value.map(sanitizeJson);
+            if (!value || typeof value !== "object") {
+              if (typeof value === "string") {
+                if (/^https:\/\/buy\.stripe\.com\//u.test(value)) return "";
+                if (/^\$(?:11\.99|12\.99|14\.99)$/u.test(value)) return null;
+                return value.replace(/\$(?:11\.99|12\.99|14\.99)/gu, "");
+              }
+              if ([11.99, 12.99, 14.99].includes(value)) return null;
+              return value;
+            }
+
+            const result = {};
+            for (const [key, raw] of Object.entries(value)) {
+              if (key === "payment_allowed") {
+                result[key] = false;
+              } else if (
+                key === "stripe_url_if_payment_allowed" ||
+                key === "hug_dp_payment_url" ||
+                key === "buyUrl" ||
+                key === "checkoutUrl" ||
+                key === "payment_url" ||
+                key === "payment_link"
+              ) {
+                result[key] = "";
+              } else {
+                result[key] = sanitizeJson(raw);
+              }
+            }
+            return result;
+          };
+
+          for (const root of ["data", "manifests"]) {
+            for (const file of walk(root).filter((candidate) => candidate.endsWith(".json"))) {
+              const parsed = JSON.parse(read(file));
+              const sanitized = sanitizeJson(parsed);
+              if (JSON.stringify(parsed) !== JSON.stringify(sanitized)) {
+                write(file, JSON.stringify(sanitized, null, 2) + "\n");
+              }
+            }
+          }
+
+          for (const root of ["app", "components", "lib"]) {
+            for (const file of walk(root).filter((candidate) => /\.(?:ts|tsx|js|mjs)$/u.test(candidate))) {
+              const source = read(file);
+              const cleaned = source
+                .replace(/https:\/\/buy\.stripe\.com\/[A-Za-z0-9?&=_-]+/gu, "")
+                .replace(/\$(?:11\.99|12\.99|14\.99)/gu, "");
+              if (cleaned !== source) write(file, cleaned);
+            }
+          }
+
+          replaceRequired(
+            "app/checkout/route.ts",
+            `const KK_HUG_PAYMENT_URL =
+          "";
+
+          const SK_HUG_PRICE_CENTS = 499;
+          const KK_HUG_PRICE_CENTS = 799;`,
+            `const TUG_PRICE_CENTS = 499;
+          const HUG_PRICE_CENTS = 799;`,
+          );
+          replaceRequired(
+            "app/checkout/route.ts",
+            `publicProductName: "sK HUG" | "KK HUG";`,
+            `publicProductName: "TUG" | "HUG";`,
+          );
+          replaceRequired(
+            "app/checkout/route.ts",
+            `publicProductName: "sK HUG",
+                priceCents: SK_HUG_PRICE_CENTS,
+                paymentUrl: configuredPaymentUrl(
+                  process.env.NEXT_PUBLIC_SK_HUG_LINK,
+                ),`,
+            `publicProductName: "TUG",
+                priceCents: TUG_PRICE_CENTS,
+                paymentUrl: configuredPaymentUrl(process.env.SK_TUG_PAYMENT_URL),`,
+          );
+          replaceRequired(
+            "app/checkout/route.ts",
+            `publicProductName: "KK HUG",
+              priceCents: KK_HUG_PRICE_CENTS,
+              paymentUrl: KK_HUG_PAYMENT_URL,`,
+            `publicProductName: "HUG",
+              priceCents: HUG_PRICE_CENTS,
+              paymentUrl: configuredPaymentUrl(process.env.KK_HUG_PAYMENT_URL),`,
+          );
+          replaceRequired(
+            "app/checkout/route.ts",
+            `const paymentUrl =
+              publicationOption?.stripe_url_if_payment_allowed || config.paymentUrl;`,
+            `const paymentUrl = config.paymentUrl;`,
+          );
+
+          replaceRequired(
+            "lib/publication-bridge/approvedPublicOptions.ts",
+            `record.payment_allowed === true &&
+                record.audio_delivery_url?.startsWith("https://") &&
+                record.stripe_url_if_payment_allowed?.startsWith("") &&`,
+            `record.payment_allowed === false &&
+                record.audio_delivery_url?.startsWith("https://") &&
+                record.stripe_url_if_payment_allowed === "" &&`,
+          );
+
+          replaceRequired(
+            "app/personal/page.tsx",
+            `proof: "Dedicated wedding checkout",`,
+            `proof: "Dedicated wedding package",`,
+          );
+          replaceRequired(
+            "app/personal/page.tsx",
+            `<a
+                          className="mt-5 block rounded-2xl bg-amber-200 px-5 py-3 text-center text-sm font-black text-[#150b07] transition hover:bg-amber-100"
+                          href={hug.checkoutUrl}
+                        >
+                          Send this Personal HUG
+                        </a>`,
+            `<p className="mt-5 rounded-2xl border border-amber-200/30 px-5 py-3 text-center text-sm font-black text-amber-100">
+                          Preview available · checkout closed
+                        </p>`,
+          );
+          replaceRequired(
+            "app/personal/[slug]/page.tsx",
+            `<a
+                          className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
+                          href={hug.checkoutUrl}
+                        >
+                          Send this Personal HUG
+                        </a>`,
+            `<p className="mt-5 rounded-2xl border border-pink-200/30 px-5 py-3 text-center font-black text-pink-100">
+                          Preview available · checkout closed
+                        </p>`,
+          );
+          replaceRequired(
+            "lib/personalSeeds.ts",
+            `"Routine buy options remain available",`,
+            `"Routine browsing remains available; checkout stays behind the centralized gate",`,
+          );
+
+          replaceRequired(
+            "lib/productOfferLaw.ts",
+            `allowedMkSources: ["TRM", "XCLM", "VSND"] as const,
+                discoveryContainer: null,`,
+            `allowedMkSources: ["TRM", "XCLM", "VSND"] as const,
+                totalTimedSends: 3,
+                deliveryModes: ["REPEAT", "STORY_ARC"] as const,
+                repeatMode: {
+                  sameExactBugEachSend: true,
+                  contentHashMustMatchAcrossSends: true,
+                },
+                storyArcMode: {
+                  distinctBugEachSend: true,
+                  relatedThemeRequired: true,
+                  sequenceRoles: ["HOOK", "BUILD", "PAYOFF"] as const,
+                  randomizedOnlyAtAssembly: true,
+                  sequencingAddOnCents: 99,
+                  totalPriceCents: 298,
+                },
+                packageLockedBeforeSendOne: true,
+                billingCount: 1,
+                discoveryContainer: null,`,
+          );
+          replaceRequired(
+            "app/hug/page.tsx",
+            `BUGs stay outside HUGz Cards and may use only TRM, XCLM, or VSND source forms.`,
+            `Choose Repeat BUG for the same exact BUG three times, or Story BUG for three different but related BUGs in Hook, Build, and Payoff order. Both use three timed Sends and one charge.`,
+          );
+
+          const lockPath = "config/kkr-canonical-product-price-lock.v2.json";
+          const lock = JSON.parse(read(lockPath));
+          lock.delivery_law = {
+            BUG_TOTAL_TIMED_SENDS: 3,
+            BUG_DELIVERY_MODES: ["REPEAT", "STORY_ARC"],
+            REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND: true,
+            REPEAT_BUG_CONTENT_HASH_MUST_MATCH_ACROSS_SENDS: true,
+            STORY_BUG_DISTINCT_BUG_EACH_SEND: true,
+            STORY_BUG_RELATED_THEME_REQUIRED: true,
+            STORY_BUG_SEQUENCE_ROLES: ["HOOK", "BUILD", "PAYOFF"],
+            STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY: true,
+            STORY_BUG_SEQUENCING_ADDON_CENTS: 99,
+            STORY_BUG_TOTAL_CENTS: 298,
+            BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE: true,
+            BUG_BILLING_COUNT: 1,
+          };
+          lock.addons_cents = {
+            STORY_BUG_SEQUENCING: 99,
+          };
+          lock.package_totals_cents = {
+            REPEAT_BUG: 199,
+            STORY_BUG: 298,
+          };
+          write(lockPath, JSON.stringify(lock, null, 2) + "\n");
+
+          const packetPath = "data/kkr/canary/thank-you-ch1-medium75-release-packet.json";
+          const packet = JSON.parse(read(packetPath));
+          for (const approval of [
+            "APPROVE CLEANUP: RUNTIME ONLY",
+            "BUG MODES: REPEAT AND STORY ARC",
+            "APPROVE ADD-ON: STORY BUG +$0.99 = $2.98 TOTAL",
+          ]) {
+            if (!packet.owner_approvals.includes(approval)) packet.owner_approvals.push(approval);
+          }
+          packet.pricing.BUG_TOTAL_TIMED_SENDS = 3;
+          packet.pricing.BUG_DELIVERY_MODES = ["REPEAT", "STORY_ARC"];
+          packet.pricing.REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND = true;
+          packet.pricing.STORY_BUG_DISTINCT_RELATED_SEQUENCE = ["HOOK", "BUILD", "PAYOFF"];
+          packet.pricing.STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY = true;
+          packet.pricing.STORY_BUG_SEQUENCING_ADDON_USD = 0.99;
+          packet.pricing.STORY_BUG_TOTAL_USD = 2.98;
+          packet.pricing.BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE = true;
+          packet.pricing.BUG_BILLING_COUNT = 1;
+          write(packetPath, JSON.stringify(packet, null, 2) + "\n");
+
+          replaceRequired(
+            "lib/kkr-canonical-pricing.ts",
+            `export const KKR_DELIVERY_LAW = Object.freeze({`,
+            `export const KKR_CANONICAL_ADDONS_USD_CENTS = Object.freeze({
+              STORY_BUG_SEQUENCING: 99,
+            } as const);
+
+            export const KKR_CANONICAL_PACKAGE_TOTALS_USD_CENTS = Object.freeze({
+              REPEAT_BUG: 199,
+              STORY_BUG: 298,
+            } as const);
+
+            export const KKR_DELIVERY_LAW = Object.freeze({`,
+          );
+          replaceRequired(
+            "lib/kkr-canonical-pricing.ts",
+            `BUG_TOTAL_TIMED_SENDS: 3,`,
+            `BUG_TOTAL_TIMED_SENDS: 3,
+              BUG_DELIVERY_MODES: ["REPEAT", "STORY_ARC"],
+              REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND: true,
+              REPEAT_BUG_CONTENT_HASH_MUST_MATCH_ACROSS_SENDS: true,
+              STORY_BUG_DISTINCT_BUG_EACH_SEND: true,
+              STORY_BUG_RELATED_THEME_REQUIRED: true,
+              STORY_BUG_SEQUENCE_ROLES: ["HOOK", "BUILD", "PAYOFF"],
+              STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY: true,
+              STORY_BUG_SEQUENCING_ADDON_CENTS: 99,
+              STORY_BUG_TOTAL_CENTS: 298,
+              BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE: true,
+              BUG_BILLING_COUNT: 1,`,
+          );
+
+          replaceRequired(
+            "scripts/audit-kkr-canonical-pricing-lock.mjs",
+            `if (lock.delivery_law?.BUG_TOTAL_TIMED_SENDS !== 3) fail("BUG must remain exactly 3 total timed Sends");`,
+            `if (lock.delivery_law?.BUG_TOTAL_TIMED_SENDS !== 3) fail("BUG must remain exactly 3 total timed Sends");
+          if (lock.addons_cents?.STORY_BUG_SEQUENCING !== 99) fail("Story BUG sequencing add-on must remain 99 cents");
+          if (lock.package_totals_cents?.REPEAT_BUG !== 199) fail("Repeat BUG total must remain 199 cents");
+          if (lock.package_totals_cents?.STORY_BUG !== 298) fail("Story BUG total must remain 298 cents");
+          if (JSON.stringify(lock.delivery_law?.BUG_DELIVERY_MODES) !== JSON.stringify(["REPEAT", "STORY_ARC"])) fail("BUG delivery modes changed");
+          if (lock.delivery_law?.REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND !== true) fail("Repeat BUG must reuse the same exact BUG");
+          if (lock.delivery_law?.REPEAT_BUG_CONTENT_HASH_MUST_MATCH_ACROSS_SENDS !== true) fail("Repeat BUG hashes must match");
+          if (lock.delivery_law?.STORY_BUG_DISTINCT_BUG_EACH_SEND !== true) fail("Story BUG must use three distinct BUGs");
+          if (lock.delivery_law?.STORY_BUG_RELATED_THEME_REQUIRED !== true) fail("Story BUGs must be related");
+          if (JSON.stringify(lock.delivery_law?.STORY_BUG_SEQUENCE_ROLES) !== JSON.stringify(["HOOK", "BUILD", "PAYOFF"])) fail("Story BUG sequence changed");
+          if (lock.delivery_law?.STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY !== true) fail("Story BUG may randomize only at assembly");
+          if (lock.delivery_law?.STORY_BUG_SEQUENCING_ADDON_CENTS !== 99) fail("Story BUG sequencing add-on must remain 99 cents");
+          if (lock.delivery_law?.STORY_BUG_TOTAL_CENTS !== 298) fail("Story BUG total must remain 298 cents");
+          if (lock.delivery_law?.BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE !== true) fail("BUG package must lock before Send 1");
+          if (lock.delivery_law?.BUG_BILLING_COUNT !== 1) fail("BUG must be billed once");`,
+          );
+          replaceRequired(
+            "scripts/audit-kkr-canonical-pricing-lock.mjs",
+            `if (!mirror.includes("BUG_TOTAL_TIMED_SENDS: 3")) fail("BUG timed Sends mirror drift");`,
+            `if (!mirror.includes("BUG_TOTAL_TIMED_SENDS: 3")) fail("BUG timed Sends mirror drift");
+          if (!mirror.includes("STORY_BUG_SEQUENCING: 99")) fail("Story BUG add-on price mirror drift");
+          if (!mirror.includes("REPEAT_BUG: 199")) fail("Repeat BUG total mirror drift");
+          if (!mirror.includes("STORY_BUG: 298")) fail("Story BUG total price mirror drift");
+          if (!mirror.includes('BUG_DELIVERY_MODES: ["REPEAT", "STORY_ARC"]')) fail("BUG modes mirror drift");
+          if (!mirror.includes("REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND: true")) fail("Repeat BUG mirror drift");
+          if (!mirror.includes("STORY_BUG_DISTINCT_BUG_EACH_SEND: true")) fail("Story BUG distinctness mirror drift");
+          if (!mirror.includes('STORY_BUG_SEQUENCE_ROLES: ["HOOK", "BUILD", "PAYOFF"]')) fail("Story BUG sequence mirror drift");
+          if (!mirror.includes("STORY_BUG_SEQUENCING_ADDON_CENTS: 99")) fail("Story BUG add-on mirror drift");
+          if (!mirror.includes("STORY_BUG_TOTAL_CENTS: 298")) fail("Story BUG total mirror drift");
+          if (!mirror.includes("BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE: true")) fail("BUG package-lock mirror drift");
+          if (!mirror.includes("BUG_BILLING_COUNT: 1")) fail("BUG billing mirror drift");`,
+          );
+          replaceRequired(
+            "scripts/audit-kkr-canonical-pricing-lock.mjs",
+            `console.log("BUG: $1.99 · 3 total timed Sends");`,
+            `console.log("BUG: $1.99 · Repeat or Story Arc · 3 timed Sends · billed once");`,
+          );
+
+          replaceRequired(
+            "scripts/audit-thank-you-medium75-canary.mjs",
+            `if (packet.pricing?.BUG_TOTAL_TIMED_SENDS !== 3) stop("BUG must include exactly 3 timed Sends");`,
+            `if (packet.pricing?.BUG_TOTAL_TIMED_SENDS !== 3) stop("BUG must include exactly 3 timed Sends");
+          if (JSON.stringify(packet.pricing?.BUG_DELIVERY_MODES) !== JSON.stringify(["REPEAT", "STORY_ARC"])) stop("BUG delivery modes changed");
+          if (packet.pricing?.REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND !== true) stop("Repeat BUG law missing");
+          if (JSON.stringify(packet.pricing?.STORY_BUG_DISTINCT_RELATED_SEQUENCE) !== JSON.stringify(["HOOK", "BUILD", "PAYOFF"])) stop("Story BUG sequence changed");
+          if (packet.pricing?.STORY_BUG_RANDOMIZED_ONLY_AT_ASSEMBLY !== true) stop("Story BUG randomization boundary changed");
+          if (packet.pricing?.STORY_BUG_SEQUENCING_ADDON_USD !== 0.99) stop("Story BUG add-on must equal $0.99");
+          if (packet.pricing?.STORY_BUG_TOTAL_USD !== 2.98) stop("Story BUG total must equal $2.98");
+          if (packet.pricing?.BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE !== true) stop("BUG package-lock law missing");
+          if (packet.pricing?.BUG_BILLING_COUNT !== 1) stop("BUG must be billed once");`,
+          );
+
+          replaceRequired(
+            "scripts/audit-hugz-seed-release-v001.mjs",
+            `if (!seed.hug_dp_payment_url.includes("client_reference_id=")) {
+                  stop(\`missing exact selected-II payment reference: \${seed.seed_asset_id}\`);
+                }`,
+            `if (seed.hug_dp_payment_url !== "") {
+                  stop(\`embedded payment URL remains: \${seed.seed_asset_id}\`);
+                }`,
+          );
+          replaceRequired(
+            "scripts/audit-hugz-seed-release-v001.mjs",
+            `console.log("Verified KK HUG checkout: ACTIVE");`,
+            `console.log("HUG checkout: CENTRAL GATE ONLY · EMBEDDED LINKS 0");`,
+          );
+
+          replaceRequired(
+            "scripts/audit-public-top-level-pathways.mjs",
+            `"publicationOption?.stripe_url_if_payment_allowed",`,
+            `"const paymentUrl = config.paymentUrl",`,
+          );
+          replaceRequired(
+            "scripts/audit-public-top-level-pathways.mjs",
+            `console.log("WEDDING CHECKOUT: GOVERNED EXACT-II");
+          console.log("KUPID CHECKOUT: GOVERNED EXACT-II");`,
+            `console.log("WEDDING CHECKOUT: CENTRAL GATE · EMBEDDED LINKS 0");
+          console.log("KUPID CHECKOUT: CENTRAL GATE · EMBEDDED LINKS 0");`,
+          );
+
+          replaceRequired(
+            "scripts/audit-gpmc-sensory-records-generated.mjs",
+            `record.payment_allowed === true &&
+                typeof record.public_route === "string" &&
+                record.public_route.startsWith("/") &&
+                typeof record.stripe_url_if_payment_allowed === "string" &&
+                record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/"),`,
+            `record.payment_allowed === false &&
+                typeof record.public_route === "string" &&
+                record.public_route.startsWith("/") &&
+                record.stripe_url_if_payment_allowed === "",`,
+          );
+
+          const envPath = ".env.example";
+          const env = read(envPath);
+          const paymentMarker = "# K-KUT curated homepage Stripe Payment Links";
+          const markerIndex = env.indexOf(paymentMarker);
+          if (markerIndex < 0) throw new Error("payment section missing from .env.example");
+          write(
+            envPath,
+            env.slice(0, markerIndex) +
+              `# K-KUT centralized checkout gate (server-side only)\n` +
+              `# Keep blank while checkout is held. Never embed provider links in runtime catalogs.\n` +
+              `KK_HUG_PAYMENT_URL=\n` +
+              `SK_TUG_PAYMENT_URL=\n`,
+          );
+
+          const bugPackageLaw = `export const BUG_PACKAGE_LAW = Object.freeze({
+            basePriceCents: 199,
+            totalTimedSends: 3,
+            billingCount: 1,
+            packageLockedBeforeSendOne: true,
+            modes: {
+              REPEAT: {
+                totalPriceCents: 199,
+                sameExactBugEachSend: true,
+                contentHashMustMatchAcrossSends: true,
+              },
+              STORY_ARC: {
+                sequencingAddOnCents: 99,
+                totalPriceCents: 298,
+                distinctBugEachSend: true,
+                relatedThemeRequired: true,
+                sequenceRoles: ["HOOK", "BUILD", "PAYOFF"],
+                randomizedOnlyAtAssembly: true,
+              },
+            },
+          } as const);
+
+          export type BugPackageMode = keyof typeof BUG_PACKAGE_LAW.modes;
+          export type BugStoryRole = "HOOK" | "BUILD" | "PAYOFF";
+
+          export type BugPackageSend = {
+            sendIndex: 1 | 2 | 3;
+            storyRole: BugStoryRole;
+            bugId: string;
+            contentSha256: string;
+            audioSha256: string;
+            scheduledAt: string;
+          };
+
+          export type BugPackageManifest = {
+            packageId: string;
+            mode: BugPackageMode;
+            storyArcId: string;
+            approvedPoolVersion: string;
+            selectionSeedSha256: string;
+            lockedAt: string;
+            billingTotalCents: 199 | 298;
+            sends: [BugPackageSend, BugPackageSend, BugPackageSend];
+          };
+
+          const SHA256 = /^[0-9a-f]{64}$/u;
+          const EXPECTED_ROLES: BugStoryRole[] = ["HOOK", "BUILD", "PAYOFF"];
+
+          export function assertBugPackageManifest(manifest: BugPackageManifest) {
+            if (!manifest.packageId || !manifest.lockedAt) throw new Error("BUG package must lock before Send 1");
+            if (manifest.sends.length !== 3) throw new Error("BUG package must contain exactly 3 Sends");
+            if (manifest.billingTotalCents !== (manifest.mode === "REPEAT" ? 199 : 298)) {
+              throw new Error("BUG package billing total is invalid");
+            }
+
+            manifest.sends.forEach((send, index) => {
+              if (send.sendIndex !== index + 1) throw new Error("BUG Send order is invalid");
+              if (send.storyRole !== EXPECTED_ROLES[index]) throw new Error("BUG story role order is invalid");
+              if (!SHA256.test(send.contentSha256) || !SHA256.test(send.audioSha256)) {
+                throw new Error("BUG Send hash is invalid");
+              }
+              if (!send.scheduledAt) throw new Error("BUG Send schedule is missing");
+            });
+
+            const bugIds = new Set(manifest.sends.map((send) => send.bugId));
+            const contentHashes = new Set(manifest.sends.map((send) => send.contentSha256));
+            const audioHashes = new Set(manifest.sends.map((send) => send.audioSha256));
+
+            if (manifest.mode === "REPEAT") {
+              if (bugIds.size !== 1 || contentHashes.size !== 1 || audioHashes.size !== 1) {
+                throw new Error("Repeat BUG must use the same exact BUG for all 3 Sends");
+              }
+            } else {
+              if (!manifest.storyArcId || !manifest.approvedPoolVersion || !SHA256.test(manifest.selectionSeedSha256)) {
+                throw new Error("Story BUG assembly proof is incomplete");
+              }
+              if (bugIds.size !== 3 || contentHashes.size !== 3 || audioHashes.size !== 3) {
+                throw new Error("Story BUG must use 3 distinct related BUGs");
+              }
+            }
+
+            return manifest;
+          }
+          `;
+          write("lib/bugPackageLaw.ts", bugPackageLaw);
+
+          const handoff = `# Vercel BUG Package Deployment Handoff V001
+
+          Status: PREVIEW CONTRACT ONLY. Sending, checkout, merge, and Production promotion remain disabled.
+
+          ## Product contract
+
+          - HUG: $7.99.
+          - TUG: $4.99.
+          - Repeat BUG: $1.99 total; the same exact BUG is delivered in 3 timed Sends.
+          - Story BUG: $1.99 base plus the approved $0.99 Sequenced Story add-on, $2.98 total.
+          - Story BUG contains 3 different but related BUGs in HOOK, BUILD, PAYOFF order.
+          - Both BUG modes are billed once and contain exactly 3 timed Sends.
+          - Holiday and Promo remain valid content lanes.
+
+          ## Immutable assembly rule
+
+          Randomness is allowed only during Story BUG assembly inside a retryable server step. The step selects from one approved related pool, returns three distinct BUG IDs, and persists the complete manifest. Before Send 1, lock package ID, mode, story-arc ID, pool version, selection-seed hash, all content/audio hashes, role order, and all three scheduled times. Delivery must never rerandomize.
+
+          ## Durable Vercel integration
+
+          Use Vercel Workflow DevKit for the delivery engine after provider and persistence approval:
+
+          1. A server-only assembly step validates lib/bugPackageLaw.ts and persists the locked manifest.
+          2. Start one durable workflow run per package only after the single billing event is confirmed.
+          3. The workflow orchestrator performs a durable sleep to each locked scheduled time.
+          4. Each delivery is a use-step function with full Node access, automatic retry, and no selection logic.
+          5. Each send uses idempotency key packageId:sendIndex and an outbox uniqueness constraint on the same pair.
+          6. HTTP 429 and transient 5xx failures are retryable; invalid package, recipient, authorization, or hash proof is fatal.
+          7. Persist provider receipt, attempt count, sent timestamp, and final state without logging message or recipient content.
+
+          ## Required runtime state
+
+          Store one package row plus three immutable send rows. Minimum package fields are package_id, mode, story_arc_id, approved_pool_version, selection_seed_sha256, locked_at, billing_total_cents, workflow_run_id, and status. Each send row stores send_index, story_role, bug_id, content_sha256, audio_sha256, scheduled_at, idempotency_key, provider_receipt_id, attempt_count, sent_at, and status.
+
+          ## Security and payment boundary
+
+          - No provider payment URLs may be embedded in app, component, library, catalog, or manifest files.
+          - Checkout links are server-only configuration behind the centralized gate.
+          - Delivery-provider credentials are server-only and must never use a NEXT_PUBLIC prefix.
+          - Verify billing exactly once before starting the workflow.
+          - Validate webhook signatures and reject duplicate or mismatched package events.
+          - Keep BUG_WORKFLOW_ENABLED false until dry-run acceptance and explicit Production approval.
+
+          ## Preview acceptance matrix
+
+          - Repeat BUG: all three BUG IDs and hashes match; send times and idempotency keys differ.
+          - Story BUG: three BUG IDs and hashes are distinct, share one story arc, and roles are HOOK, BUILD, PAYOFF.
+          - Story selection remains unchanged across retry, redeploy, and workflow replay.
+          - Duplicate start events create one workflow run and one billing event.
+          - Duplicate send attempts produce one provider delivery per send index.
+          - A simulated transient failure retries without advancing the sequence.
+          - A fatal validation failure stops the package before sending.
+          - Holiday and Promo discovery lanes remain reachable.
+          - Production strict hold remains unchanged.
+
+          ## Deployment sequence
+
+          1. Merge nothing until the draft PR build and Preview checks pass.
+          2. Deploy the contract and cleanup to Preview with sending disabled.
+          3. Add Workflow DevKit using the version-matched bundled documentation and implement dry-run delivery steps.
+          4. Run both BUG modes in Preview against a non-delivering provider adapter.
+          5. Record human approval, workflow run IDs, manifests, and idempotency evidence.
+          6. Request a separate explicit approval before merge or Production promotion.
+
+          ## Rollback
+
+          Set BUG_WORKFLOW_ENABLED false, stop new starts, cancel affected Preview workflow runs, and retain locked manifests plus delivery receipts for audit. Do not delete evidence or modify already-sent package history.
+          `;
+          fs.mkdirSync("docs/deployment", { recursive: true });
+          write("docs/deployment/VERCEL_BUG_PACKAGE_HANDOFF_V001.md", handoff.replace(/^          /gmu, ""));
+
+          const runtimeAudit = `import fs from "node:fs";
+          import path from "node:path";
+
+          const roots = ["app", "components", "lib", "data", "manifests"];
+          const walk = (root) => fs.readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
+            const full = path.join(root, entry.name);
+            return entry.isDirectory() ? walk(full) : [full];
+          });
+          const files = roots.flatMap(walk).filter((file) => /\\.(?:ts|tsx|js|mjs|json)$/u.test(file));
+          const stop = (message) => { throw new Error(message); };
+
+          for (const file of files) {
+            const text = fs.readFileSync(file, "utf8");
+            if (text.includes("https://buy.stripe.com/")) stop("embedded Stripe URL remains in " + file);
+            if (/\\$(?:11\\.99|12\\.99|14\\.99)/u.test(text)) stop("obsolete display price remains in " + file);
+          }
+
+          const offerLaw = fs.readFileSync("lib/productOfferLaw.ts", "utf8");
+          for (const required of [
+            'priceCents: 799',
+            'priceCents: 499',
+            'priceCents: 199',
+            'totalTimedSends: 3',
+            'deliveryModes: ["REPEAT", "STORY_ARC"]',
+            'sameExactBugEachSend: true',
+            'distinctBugEachSend: true',
+            'sequenceRoles: ["HOOK", "BUILD", "PAYOFF"]',
+            'sequencingAddOnCents: 99',
+            'totalPriceCents: 298',
+            'packageLockedBeforeSendOne: true',
+            'billingCount: 1',
+          ]) if (!offerLaw.includes(required)) stop("offer law missing " + required);
+
+          const checkout = fs.readFileSync("app/checkout/route.ts", "utf8");
+          if (!checkout.includes("process.env.KK_HUG_PAYMENT_URL")) stop("central HUG gate missing");
+          if (!checkout.includes("process.env.SK_TUG_PAYMENT_URL")) stop("central TUG gate missing");
+          if (!checkout.includes("const paymentUrl = config.paymentUrl")) stop("per-record payment link still used");
+
+          const personal = fs.readFileSync("app/personal/page.tsx", "utf8");
+          if (!personal.includes("featuredPromos") || !personal.includes("Promo universe")) stop("Promo lane removed");
+          if (!fs.existsSync("app/holiday/page.tsx")) stop("Holiday lane removed");
+
+          const lock = JSON.parse(fs.readFileSync("config/kkr-canonical-product-price-lock.v2.json", "utf8"));
+          if (JSON.stringify(lock.prices_cents) !== JSON.stringify({ HUG: 799, TUG: 499, BUG: 199 })) stop("V002 prices drifted");
+          if (lock.addons_cents.STORY_BUG_SEQUENCING !== 99) stop("Story BUG add-on price drifted");
+          if (lock.package_totals_cents.REPEAT_BUG !== 199 || lock.package_totals_cents.STORY_BUG !== 298) stop("BUG package totals drifted");
+          if (lock.delivery_law.BUG_TOTAL_TIMED_SENDS !== 3) stop("BUG send count drifted");
+          if (JSON.stringify(lock.delivery_law.BUG_DELIVERY_MODES) !== JSON.stringify(["REPEAT", "STORY_ARC"])) stop("BUG modes drifted");
+          if (lock.delivery_law.REPEAT_BUG_SAME_EXACT_BUG_EACH_SEND !== true) stop("Repeat BUG law drifted");
+          if (lock.delivery_law.STORY_BUG_DISTINCT_BUG_EACH_SEND !== true) stop("Story BUG distinctness drifted");
+          if (JSON.stringify(lock.delivery_law.STORY_BUG_SEQUENCE_ROLES) !== JSON.stringify(["HOOK", "BUILD", "PAYOFF"])) stop("Story BUG sequence drifted");
+          if (lock.delivery_law.STORY_BUG_SEQUENCING_ADDON_CENTS !== 99) stop("Story BUG add-on drifted");
+          if (lock.delivery_law.STORY_BUG_TOTAL_CENTS !== 298) stop("Story BUG total drifted");
+          if (lock.delivery_law.BUG_PACKAGE_LOCKED_BEFORE_SEND_ONE !== true) stop("BUG package lock drifted");
+          if (lock.delivery_law.BUG_BILLING_COUNT !== 1) stop("BUG billing law drifted");
+
+          console.log("RUNTIME PRICE / PAYMENT CLEANUP AUDIT PASS");
+          console.log("HUG $7.99 · TUG $4.99 · BUG $1.99");
+          console.log("BUG REPEAT: SAME EXACT BUG · 3 TIMED SENDS · $1.99");
+          console.log("BUG STORY: 3 RELATED BUGS · HOOK/BUILD/PAYOFF · $2.98");
+          console.log("EMBEDDED PAYMENT LINKS: 0");
+          console.log("HOLIDAY: KEPT");
+          console.log("PROMO: KEPT");
+          `;
+          write("scripts/audit-runtime-price-payment-cleanup-v001.mjs", runtimeAudit);
+
+          const packagePath = "package.json";
+          const pkg = JSON.parse(read(packagePath));
+          const auditCommand = "node scripts/audit-runtime-price-payment-cleanup-v001.mjs";
+          if (!pkg.scripts.prebuild.includes(auditCommand)) {
+            pkg.scripts.prebuild = `${auditCommand} && ${pkg.scripts.prebuild}`;
+          }
+          write(packagePath, JSON.stringify(pkg, null, 2) + "\n");
+          NODE
+
+      - name: Build before commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci
+          VERCEL=1 npm run build
+
+      - name: Commit only validated cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/runtime-price-payment-cleanup.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            .env.example \
+            app \
+            components \
+            config/kkr-canonical-product-price-lock.v2.json \
+            data \
+            docs/deployment/VERCEL_BUG_PACKAGE_HANDOFF_V001.md \
+            lib \
+            manifests \
+            package.json \
+            scripts/audit-gpmc-sensory-records-generated.mjs \
+            scripts/audit-hugz-seed-release-v001.mjs \
+            scripts/audit-kkr-canonical-pricing-lock.mjs \
+            scripts/audit-public-top-level-pathways.mjs \
+            scripts/audit-runtime-price-payment-cleanup-v001.mjs \
+            scripts/audit-thank-you-medium75-canary.mjs
+          git commit -m "Clean runtime prices and embedded payment links"
+          git push origin HEAD:canary/thank-you-ch1-medium75
