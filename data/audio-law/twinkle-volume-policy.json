@@ -1,9 +1,9 @@
 {
   "status": "locked_rule",
-  "rule_name": "Twinkle Half-Volume User/Ad-Hoc Policy",
+  "rule_name": "Twinkle Medium Audio Logo Policy",
   "twinkle_role": "closing_signature_layer",
-  "default_delivery_gain": 0.5,
-  "default_delivery_gain_label": "50%",
+  "default_delivery_gain": 0.75,
+  "default_delivery_gain_label": "75% · MEDIUM",
   "applies_to": [
     "user_ad_hoc_hug_delivery",
     "future_hug_layering",
@@ -15,11 +15,11 @@
     "manual_admin_experiment_unless_explicitly_selected"
   ],
   "core_law": [
-    "Twinkle is a closing signature layer.",
-    "Twinkle must not overpower the emotional audio payload.",
-    "Default Twinkle gain for user/ad-hoc delivery is 0.5.",
-    "Original Twinkle source audio remains unchanged.",
-    "Delivery copies may be materialized at half volume."
+    "Twinkle is the closing Audio Logo layer for every II.",
+    "MEDIUM is the default Audio Logo column.",
+    "Default MEDIUM Audio Logo gain is 0.75.",
+    "Original Audio Logo source remains unchanged.",
+    "Delivery copies must materialize the Audio Logo at 75%."
   ],
-  "publication_rule": "Any user/ad-hoc delivery using Twinkle should use the 50% delivery layer unless admin explicitly overrides it."
+  "publication_rule": "Every newly materialized II uses the 75% MEDIUM Audio Logo unless the owner explicitly approves another governed column."
 }
