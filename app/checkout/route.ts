@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import Stripe from "stripe";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
 import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
 
@@ -6,9 +7,6 @@ export const runtime = "nodejs";
 
 const CATALOG_URL =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
-
-const RETIRED_KK_HUG_PAYMENT_URL =
-  "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
 const SK_HUG_PRICE_CENTS = 499;
 const KK_HUG_PRICE_CENTS = 799;
@@ -39,7 +37,6 @@ type OfferConfig = {
   family: InventoryFamily;
   publicProductName: "sK HUG" | "KK HUG";
   priceCents: 499 | 799;
-  paymentUrl: string;
 };
 
 type RawCatalogRecord = {
@@ -71,22 +68,6 @@ function inventoryFamily(value: unknown): InventoryFamily | "" {
   return "";
 }
 
-function configuredPaymentUrl(value: string | undefined) {
-  const candidate = String(value || "").trim();
-  if (!candidate) return "";
-
-  try {
-    const url = new URL(candidate);
-    return url.protocol === "https:" &&
-      url.hostname === "buy.stripe.com" &&
-      url.toString() !== RETIRED_KK_HUG_PAYMENT_URL
-      ? url.toString()
-      : "";
-  } catch {
-    return "";
-  }
-}
-
 function offerConfig(offer: OfferCode): OfferConfig {
   if (offer === "sk") {
     return {
@@ -94,9 +75,6 @@ function offerConfig(offer: OfferCode): OfferConfig {
       family: "SK",
       publicProductName: "sK HUG",
       priceCents: SK_HUG_PRICE_CENTS,
-      paymentUrl: configuredPaymentUrl(
-        process.env.NEXT_PUBLIC_SK_HUG_LINK,
-      ),
     };
   }
 
@@ -105,9 +83,6 @@ function offerConfig(offer: OfferCode): OfferConfig {
     family: "KK",
     publicProductName: "KK HUG",
     priceCents: KK_HUG_PRICE_CENTS,
-    paymentUrl: configuredPaymentUrl(
-      process.env.NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL,
-    ),
   };
 }
 
@@ -218,13 +193,6 @@ async function governedCheckout(
     return returnToStore(request, "offer-inventory-mismatch");
   }
 
-  // Catalog rows govern II eligibility; environment-scoped commerce authority
-  // governs price. A catalog row can never override the locked product price.
-  const paymentUrl = config.paymentUrl;
-
-  if (!paymentUrl) {
-    return returnToStore(request, "payment-link-unavailable");
-  }
 
   let token: string;
 
@@ -253,18 +221,73 @@ async function governedCheckout(
     return returnToStore(request, "pending-order-reference-invalid");
   }
 
-  const checkoutUrl = new URL(paymentUrl);
+  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
 
-  checkoutUrl.searchParams.set("client_reference_id", clientReference);
-  checkoutUrl.searchParams.set("utm_source", BF_PROFILE);
-  checkoutUrl.searchParams.set("utm_medium", "storefront");
-  checkoutUrl.searchParams.set("utm_campaign", `catalog_${config.code}`);
-  checkoutUrl.searchParams.set(
-    "utm_content",
-    personalNote ? `${config.code}_with_note` : config.code,
-  );
+  if (!stripeSecretKey) {
+    return returnToStore(request, "stripe-not-configured");
+  }
 
-  return NextResponse.redirect(checkoutUrl, STRIPE_REDIRECT_STATUS);
+  const siteOrigin = new URL(request.url).origin;
+  const stripe = new Stripe(stripeSecretKey);
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      client_reference_id: clientReference,
+      line_items: [
+        {
+          quantity: 1,
+          price_data: {
+            currency: "usd",
+            unit_amount: config.priceCents,
+            product_data: {
+              name: `K-KUT ${config.publicProductName}`,
+              description:
+                "A private, stream-only music moment from G Putnam Music.",
+              images: ["https://www.k-kut.com/logo.png"],
+            },
+          },
+        },
+      ],
+      success_url: `${siteOrigin}/?checkout=paid&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteOrigin}/hug?checkout=cancelled`,
+      custom_text: {
+        submit: {
+          message:
+            "K-KUT by G Putnam Music · private, stream-only delivery · no download.",
+        },
+      },
+      metadata: {
+        selected_hug_id: inventoryId,
+        public_product_name: config.publicProductName,
+        bf_profile: BF_PROFILE,
+        origin_domain: originDomain(request),
+        locked_price_cents: String(config.priceCents),
+      },
+      payment_intent_data: {
+        description: `K-KUT ${config.publicProductName}`,
+        metadata: {
+          selected_hug_id: inventoryId,
+          public_product_name: config.publicProductName,
+          bf_profile: BF_PROFILE,
+          origin_domain: originDomain(request),
+          locked_price_cents: String(config.priceCents),
+        },
+      },
+    });
+
+    if (!session.url) {
+      return returnToStore(request, "stripe-session-url-missing");
+    }
+
+    return NextResponse.redirect(session.url, STRIPE_REDIRECT_STATUS);
+  } catch (reason) {
+    console.error(
+      "K_KUT_CHECKOUT_SESSION_CREATE_FAILED",
+      reason instanceof Error ? reason.message : "unidentified_error",
+    );
+    return returnToStore(request, "stripe-session-unavailable");
+  }
 }
 
 export async function GET(request: NextRequest) {
