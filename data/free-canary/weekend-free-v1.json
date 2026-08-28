@@ -1,0 +1,30 @@
+{
+  "schema_version": "weekend-free-v1",
+  "public_name": "Weekend Free",
+  "replaces_public_name": "2-day Free",
+  "mode_id": "FREE_CANARY_MODE_V1",
+  "access_window_hours": 48,
+  "eligible_products": [
+    "HUG",
+    "TUG",
+    "BUG"
+  ],
+  "payments_enabled": false,
+  "replay_window_days": 14,
+  "downloads_enabled": false,
+  "targeting_cookies": false,
+  "data_sale": false,
+  "privacy_operator": "GPM NPI",
+  "audio_sequence": [
+    "governed_music_moment",
+    "TWINKLE_LAST"
+  ],
+  "activation_gate": "only_STAGED_first_production_canary_IIs",
+  "network_distribution": "private_link_to_Gregory_network",
+  "production_release": false,
+  "notes": [
+    "This changes the campaign name, not the approved 48-hour product flow.",
+    "Weekend Free may activate only after at least one II passes the first Production canary gate.",
+    "Holiday remains a theme/event container and never becomes part of a track title."
+  ]
+}
