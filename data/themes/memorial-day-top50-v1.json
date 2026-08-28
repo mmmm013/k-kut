@@ -1,0 +1,418 @@
+{
+  "schema_version": "memorial-day-top50-v1",
+  "event_container": {
+    "name": "Memorial Day",
+    "type": "holiday_theme_event_container",
+    "track_title_mutation": false
+  },
+  "ranking_law": [
+    "These seeds rank meaning and context only; they never establish or alter BLK/VTP/InTP boundaries.",
+    "All customer audio must come from separately STAGED LT-PIX lineage.",
+    "Memorial Day primarily honors U.S. military personnel who died while serving.",
+    "Living service-member appreciation is retained as a separate contextual lane, not presented as the holiday's primary meaning.",
+    "Seeds are original abstractions derived from public sentiment-pattern research; no greeting-card copy is stored."
+  ],
+  "count": 50,
+  "seeds": [
+    {
+      "rank": 1,
+      "seed_id": "REMEMBER_THEM",
+      "theme": "remembrance",
+      "recipient_context": "fallen service member",
+      "meaning_target": "name and memory",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 2,
+      "seed_id": "NEVER_FORGOTTEN",
+      "theme": "remembrance",
+      "recipient_context": "fallen service member",
+      "meaning_target": "lasting remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 3,
+      "seed_id": "SAY_THEIR_NAME",
+      "theme": "remembrance",
+      "recipient_context": "fallen service member",
+      "meaning_target": "personal recognition",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 4,
+      "seed_id": "LIFE_OF_SERVICE",
+      "theme": "remembrance",
+      "recipient_context": "fallen service member",
+      "meaning_target": "life and duty",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 5,
+      "seed_id": "ULTIMATE_SACRIFICE",
+      "theme": "sacrifice",
+      "recipient_context": "fallen service member",
+      "meaning_target": "sacrifice",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 6,
+      "seed_id": "COURAGE_REMAINS",
+      "theme": "legacy",
+      "recipient_context": "fallen service member",
+      "meaning_target": "enduring courage",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 7,
+      "seed_id": "HONOR_LIVES_ON",
+      "theme": "legacy",
+      "recipient_context": "fallen service member",
+      "meaning_target": "continuing honor",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 8,
+      "seed_id": "LEGACY_OF_BRAVERY",
+      "theme": "legacy",
+      "recipient_context": "fallen service member",
+      "meaning_target": "bravery passed forward",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 9,
+      "seed_id": "FREEDOM_HAS_A_NAME",
+      "theme": "legacy",
+      "recipient_context": "fallen service member",
+      "meaning_target": "personal cost of freedom",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 10,
+      "seed_id": "WHAT_THEY_GAVE",
+      "theme": "sacrifice",
+      "recipient_context": "fallen service member",
+      "meaning_target": "gift to country",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 11,
+      "seed_id": "WE_CARRY_THEM",
+      "theme": "shared grief",
+      "recipient_context": "family/community",
+      "meaning_target": "collective remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 12,
+      "seed_id": "WITH_YOU_IN_MEMORY",
+      "theme": "comfort",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "companionship in grief",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 13,
+      "seed_id": "YOUR_LOVED_ONE_IS_REMEMBERED",
+      "theme": "comfort",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "assurance of remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 14,
+      "seed_id": "A_FAMILY_SACRIFICE",
+      "theme": "family honor",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "shared sacrifice",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 15,
+      "seed_id": "HELD_IN_OUR_HEARTS",
+      "theme": "comfort",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "tender remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 16,
+      "seed_id": "LOVE_OUTLASTS_LOSS",
+      "theme": "comfort",
+      "recipient_context": "bereaved family",
+      "meaning_target": "enduring love",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 17,
+      "seed_id": "MEMORIES_STAY_CLOSE",
+      "theme": "comfort",
+      "recipient_context": "bereaved family",
+      "meaning_target": "cherished memories",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 18,
+      "seed_id": "GRIEF_AND_PRIDE_TOGETHER",
+      "theme": "family honor",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "mixed emotions",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 19,
+      "seed_id": "WE_REMEMBER_WITH_YOU",
+      "theme": "shared grief",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "solidarity",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 20,
+      "seed_id": "THEIR_STORY_CONTINUES",
+      "theme": "legacy",
+      "recipient_context": "family/community",
+      "meaning_target": "storykeeping",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 21,
+      "seed_id": "A_PARENT_REMEMBERS",
+      "theme": "parents",
+      "recipient_context": "parent of fallen",
+      "meaning_target": "parental remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 22,
+      "seed_id": "PROUD_OF_YOUR_CHILD",
+      "theme": "parents",
+      "recipient_context": "parent of fallen",
+      "meaning_target": "pride and loss",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 23,
+      "seed_id": "A_MOTHER_CARRIES_THEIR_NAME",
+      "theme": "parents",
+      "recipient_context": "mother of fallen",
+      "meaning_target": "maternal legacy",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 24,
+      "seed_id": "A_FATHER_HOLDS_THEIR_STORY",
+      "theme": "parents",
+      "recipient_context": "father of fallen",
+      "meaning_target": "paternal legacy",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 25,
+      "seed_id": "YOUR_LOVE_SHAPED_A_HERO",
+      "theme": "parents",
+      "recipient_context": "parents of fallen",
+      "meaning_target": "parental influence",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 26,
+      "seed_id": "BROTHER_SISTER_ALWAYS",
+      "theme": "family",
+      "recipient_context": "sibling of fallen",
+      "meaning_target": "sibling bond",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 27,
+      "seed_id": "HOME_REMEMBERS",
+      "theme": "family",
+      "recipient_context": "family of fallen",
+      "meaning_target": "home and absence",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 28,
+      "seed_id": "GENERATIONS_OF_HONOR",
+      "theme": "family",
+      "recipient_context": "military family",
+      "meaning_target": "family legacy",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 29,
+      "seed_id": "CHILD_OF_A_HERO",
+      "theme": "family",
+      "recipient_context": "child of fallen",
+      "meaning_target": "inheritance of courage",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 30,
+      "seed_id": "FAMILY_STANDS_TOGETHER",
+      "theme": "family",
+      "recipient_context": "military family",
+      "meaning_target": "unity",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 31,
+      "seed_id": "THANK_YOU_FOR_CARRYING_THEIR_MEMORY",
+      "theme": "appreciation",
+      "recipient_context": "Gold Star family",
+      "meaning_target": "gratitude for remembrance work",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 32,
+      "seed_id": "YOUR_SERVICE_MATTERS",
+      "theme": "service appreciation",
+      "recipient_context": "living service member",
+      "meaning_target": "respect without conflating holiday",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 33,
+      "seed_id": "STANDING_WITH_THOSE_WHO_SERVE",
+      "theme": "service appreciation",
+      "recipient_context": "living service member",
+      "meaning_target": "support",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 34,
+      "seed_id": "COURAGE_IN_UNIFORM",
+      "theme": "service appreciation",
+      "recipient_context": "living service member",
+      "meaning_target": "courage",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 35,
+      "seed_id": "COME_HOME_SAFE",
+      "theme": "support",
+      "recipient_context": "deployed service member",
+      "meaning_target": "care and safe return",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 36,
+      "seed_id": "WE_HOLD_THE_WATCH_WITH_YOU",
+      "theme": "support",
+      "recipient_context": "service member/family",
+      "meaning_target": "solidarity",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 37,
+      "seed_id": "SERVICE_BEFORE_SELF",
+      "theme": "service appreciation",
+      "recipient_context": "service member",
+      "meaning_target": "selflessness",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 38,
+      "seed_id": "STRENGTH_BEHIND_THE_SERVICE",
+      "theme": "family honor",
+      "recipient_context": "military spouse/family",
+      "meaning_target": "family support",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 39,
+      "seed_id": "WAITING_WITH_LOVE",
+      "theme": "family support",
+      "recipient_context": "deployed family",
+      "meaning_target": "separation and love",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 40,
+      "seed_id": "CONNECTED_ACROSS_DISTANCE",
+      "theme": "family support",
+      "recipient_context": "deployed family",
+      "meaning_target": "distance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 41,
+      "seed_id": "FLAGS_FOR_THE_FALLEN",
+      "theme": "ritual",
+      "recipient_context": "community",
+      "meaning_target": "flag remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 42,
+      "seed_id": "FLOWERS_OF_REMEMBRANCE",
+      "theme": "ritual",
+      "recipient_context": "family/community",
+      "meaning_target": "grave decoration",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 43,
+      "seed_id": "TAPS_AND_SILENCE",
+      "theme": "ritual",
+      "recipient_context": "community",
+      "meaning_target": "solemn reflection",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 44,
+      "seed_id": "THREE_O_CLOCK_REMEMBRANCE",
+      "theme": "ritual",
+      "recipient_context": "community",
+      "meaning_target": "National Moment of Remembrance",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 45,
+      "seed_id": "A_TOWN_REMEMBERS",
+      "theme": "community",
+      "recipient_context": "community",
+      "meaning_target": "local ceremony",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 46,
+      "seed_id": "STORIES_ACROSS_GENERATIONS",
+      "theme": "community",
+      "recipient_context": "family/community",
+      "meaning_target": "family history",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 47,
+      "seed_id": "GATHER_IN_THEIR_HONOR",
+      "theme": "community",
+      "recipient_context": "community",
+      "meaning_target": "togetherness",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 48,
+      "seed_id": "PEACE_AFTER_SACRIFICE",
+      "theme": "prayer/comfort",
+      "recipient_context": "bereaved family",
+      "meaning_target": "peace",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 49,
+      "seed_id": "PRAYER_FOR_THOSE_WHO_MOURN",
+      "theme": "prayer/comfort",
+      "recipient_context": "bereaved family",
+      "meaning_target": "spiritual care",
+      "status": "ACTIVE_RANKING_SEED"
+    },
+    {
+      "rank": 50,
+      "seed_id": "LIVE_WORTHY_OF_THEIR_GIFT",
+      "theme": "legacy/action",
+      "recipient_context": "everyone",
+      "meaning_target": "purposeful gratitude",
+      "status": "ACTIVE_RANKING_SEED"
+    }
+  ]
+}
