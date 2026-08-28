@@ -62,15 +62,16 @@ if (grid.includes("href={record.stripe_url_if_payment_allowed}")) {
 for (const required of [
   "findApprovedPublicOptionByInventoryId",
   "publicationOption",
-  "const paymentUrl = config.paymentUrl",
+  "stripe.checkout.sessions.create",
 ]) {
   if (!checkout.includes(required)) {
     stop(`checkout missing publication authority: ${required}`);
   }
 }
 
-if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||")) {
-  stop("catalog publication row illegally overrides commerce price authority");
+if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||") ||
+    checkout.includes("buy.stripe.com")) {
+  stop("catalog or Payment Link illegally overrides commerce price authority");
 }
 
 if (!bridge.includes("record.kk_id_or_delivery_object_id === inventoryId")) {
