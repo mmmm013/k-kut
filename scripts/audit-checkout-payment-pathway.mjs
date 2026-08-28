@@ -1,8 +1,6 @@
 import fs from "node:fs";
 
 const checkoutPath = "app/checkout/route.ts";
-const retiredHugStripe = "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
-
 let failed = false;
 
 function fail(message) {
@@ -10,7 +8,7 @@ function fail(message) {
   failed = true;
 }
 
-console.log("CHECKOUT PRICE / PREVIEW SAFETY AUDIT");
+console.log("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT");
 
 if (!fs.existsSync(checkoutPath)) fail(`Missing ${checkoutPath}`);
 
@@ -18,44 +16,46 @@ const checkout = fs.existsSync(checkoutPath)
   ? fs.readFileSync(checkoutPath, "utf8")
   : "";
 
-if (!checkout.includes('process.env.VERCEL_ENV !== "production"')) {
-  fail("Checkout must block every non-Production environment.");
+for (const required of [
+  'process.env.VERCEL_ENV !== "production"',
+  '"preview-payment-disabled"',
+  "new Stripe(stripeSecretKey)",
+  "stripe.checkout.sessions.create",
+  "unit_amount: config.priceCents",
+  "const KK_HUG_PRICE_CENTS = 799",
+  '"https://www.k-kut.com/logo.png"',
+  "K-KUT by G Putnam Music",
+  "client_reference_id: clientReference",
+  "locked_price_cents: String(config.priceCents)",
+]) {
+  if (!checkout.includes(required)) fail(`Checkout missing: ${required}`);
 }
 
-if (!checkout.includes('"preview-payment-disabled"')) {
-  fail("Checkout must expose the governed Preview-disabled reason.");
+for (const forbidden of [
+  "buy.stripe.com",
+  "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL",
+  "stripe_url_if_payment_allowed ||",
+]) {
+  if (checkout.includes(forbidden)) {
+    fail(`Checkout contains forbidden Payment Link authority: ${forbidden}`);
+  }
 }
 
-if (!checkout.includes("NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL")) {
-  fail("HUG checkout must use the environment-scoped commerce authority.");
+if (!checkout.includes("priceCents: KK_HUG_PRICE_CENTS")) {
+  fail("HUG offer is not bound to the 799-cent price constant.");
 }
 
-if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||")) {
-  fail("Catalog rows must never override product-price authority.");
-}
-
-if (!checkout.includes("priceCents: KK_HUG_PRICE_CENTS") ||
-    !checkout.includes("const KK_HUG_PRICE_CENTS = 799")) {
-  fail("HUG price law must remain locked at 799 cents.");
-}
-
-const retiredCount = checkout.split(retiredHugStripe).length - 1;
-if (retiredCount !== 1 ||
-    !checkout.includes("RETIRED_KK_HUG_PAYMENT_URL") ||
-    !checkout.includes("url.toString() !== RETIRED_KK_HUG_PAYMENT_URL")) {
-  fail("The $9.99 link may exist only as an explicit deny-list value.");
-}
-
-if (!checkout.includes("NextResponse.redirect")) {
-  fail("Checkout route must use a governed redirect.");
+if (!checkout.includes("NextResponse.redirect(session.url")) {
+  fail("Checkout does not redirect only to its newly created Stripe Session.");
 }
 
 if (failed) {
-  console.error("CHECKOUT PRICE / PREVIEW SAFETY AUDIT: FAIL");
+  console.error("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT: FAIL");
   process.exit(1);
 }
 
-console.log("CHECKOUT PRICE / PREVIEW SAFETY AUDIT: PASS");
+console.log("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT: PASS");
 console.log("HUG_PRICE_CENTS=799");
 console.log("PREVIEW_LIVE_PAYMENT=BLOCKED");
-console.log("RETIRED_9_99_LINK=DENIED");
+console.log("PAYMENT_LINK_DEPENDENCY=0");
+console.log("K_KUT_BRANDED_SESSION=REQUIRED");
