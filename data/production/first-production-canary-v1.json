@@ -1,0 +1,57 @@
+{
+  "schema_version": "first-production-canary-v1",
+  "law": [
+    "This set prosecutes independently of the 429-item catalog.",
+    "STAGE requires LT-PIX SSOT identity and hash, complete canonical lyrics, sequential BLK identity, exact VTP/InTP boundaries, vocals proven, customer-delivery hash, Twinkle/bookend proof, playback proof, and exact 799-cent server checkout.",
+    "TRIAGE means evidence exists but the current authority join is incomplete.",
+    "No legacy section label, fixed clock window, derived file, filename, or prior generic pass can establish BLK/VTP/InTP authority.",
+    "Only STAGE records may be returned by the Production storefront."
+  ],
+  "price": {
+    "product": "HUG",
+    "currency": "usd",
+    "unit_amount_cents": 799,
+    "checkout": "server_created_stripe_checkout_session"
+  },
+  "records": [
+    {
+      "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "title": "A LOVE LIKE THAT",
+      "lt_pix_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "delivery_sha256": "cae66c0b527fca1674ad72c7c6deef7b2506610626f9fc36c62d7fa0f77516b5",
+      "duration_seconds": 34.429388,
+      "status": "TRIAGE",
+      "missing_current_proof": [
+        "ssot_audio_sha256_join",
+        "complete_canonical_lyrics",
+        "sequential_blk_identity",
+        "exact_vtp_intp_boundaries",
+        "owner_listening_approval_on_current_delivery_hash"
+      ]
+    },
+    {
+      "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "title": "YOUR HEART POUNDIN'",
+      "lt_pix_id": "1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "delivery_audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+      "delivery_sha256": "bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8",
+      "duration_seconds": 34.429388,
+      "status": "TRIAGE",
+      "missing_current_proof": [
+        "ssot_audio_sha256_join",
+        "complete_canonical_lyrics",
+        "sequential_blk_identity",
+        "exact_vtp_intp_boundaries",
+        "owner_listening_approval_on_current_delivery_hash"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+      "title": "DON'T CALL IT LOVE",
+      "reason": "Existing public hold; meaning and BLK authority not approved."
+    }
+  ]
+}
