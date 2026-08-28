@@ -62,11 +62,15 @@ if (grid.includes("href={record.stripe_url_if_payment_allowed}")) {
 for (const required of [
   "findApprovedPublicOptionByInventoryId",
   "publicationOption",
-  "publicationOption?.stripe_url_if_payment_allowed",
+  "const paymentUrl = config.paymentUrl",
 ]) {
   if (!checkout.includes(required)) {
     stop(`checkout missing publication authority: ${required}`);
   }
+}
+
+if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||")) {
+  stop("catalog publication row illegally overrides commerce price authority");
 }
 
 if (!bridge.includes("record.kk_id_or_delivery_object_id === inventoryId")) {
