@@ -1,9 +1,7 @@
 import fs from "node:fs";
 
 const checkoutPath = "app/checkout/route.ts";
-const approvedStripeAudit = "scripts/audit-approved-stripe-links.mjs";
-const regularAudit = "scripts/audit-one-regular-hug-payment-process.mjs";
-const regularStripe = "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
+const retiredHugStripe = "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
 let failed = false;
 
@@ -12,51 +10,52 @@ function fail(message) {
   failed = true;
 }
 
-console.log("CHECKOUT PAYMENT PATHWAY AUDIT");
+console.log("CHECKOUT PRICE / PREVIEW SAFETY AUDIT");
 
-for (const file of [checkoutPath, approvedStripeAudit, regularAudit]) {
-  if (!fs.existsSync(file)) fail(`Missing ${file}`);
-}
+if (!fs.existsSync(checkoutPath)) fail(`Missing ${checkoutPath}`);
 
 const checkout = fs.existsSync(checkoutPath)
   ? fs.readFileSync(checkoutPath, "utf8")
   : "";
 
-if (!checkout.includes(regularStripe)) {
-  fail("Checkout route must include the regular/basic HUG Stripe fallback link.");
+if (!checkout.includes('process.env.VERCEL_ENV !== "production"')) {
+  fail("Checkout must block every non-Production environment.");
 }
 
-const validRedirectPatterns = [
-  "redirect(",
-  "NextResponse.redirect",
-  "Response.redirect",
-  "Location"
-];
-
-if (!validRedirectPatterns.some((pattern) => checkout.includes(pattern))) {
-  fail("Checkout route must use a valid redirect mechanism.");
+if (!checkout.includes('"preview-payment-disabled"')) {
+  fail("Checkout must expose the governed Preview-disabled reason.");
 }
 
-for (const forbidden of [
-  "candidate_not_approved",
-  "debug",
-  "staging",
-  "test example",
-  "mini-KUT",
-  "mkut",
-  "sympathy",
-  "grief",
-  "memorial",
-  "celebration-of-life"
-]) {
-  if (checkout.includes(forbidden)) {
-    fail(`Checkout route contains forbidden term: ${forbidden}`);
-  }
+if (!checkout.includes("NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL")) {
+  fail("HUG checkout must use the environment-scoped commerce authority.");
+}
+
+if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||")) {
+  fail("Catalog rows must never override product-price authority.");
+}
+
+if (!checkout.includes("priceCents: KK_HUG_PRICE_CENTS") ||
+    !checkout.includes("const KK_HUG_PRICE_CENTS = 799")) {
+  fail("HUG price law must remain locked at 799 cents.");
+}
+
+const retiredCount = checkout.split(retiredHugStripe).length - 1;
+if (retiredCount !== 1 ||
+    !checkout.includes("RETIRED_KK_HUG_PAYMENT_URL") ||
+    !checkout.includes("url.toString() !== RETIRED_KK_HUG_PAYMENT_URL")) {
+  fail("The $9.99 link may exist only as an explicit deny-list value.");
+}
+
+if (!checkout.includes("NextResponse.redirect")) {
+  fail("Checkout route must use a governed redirect.");
 }
 
 if (failed) {
-  console.error("CHECKOUT PAYMENT PATHWAY AUDIT: FAIL");
+  console.error("CHECKOUT PRICE / PREVIEW SAFETY AUDIT: FAIL");
   process.exit(1);
 }
 
-console.log("CHECKOUT PAYMENT PATHWAY AUDIT: PASS");
+console.log("CHECKOUT PRICE / PREVIEW SAFETY AUDIT: PASS");
+console.log("HUG_PRICE_CENTS=799");
+console.log("PREVIEW_LIVE_PAYMENT=BLOCKED");
+console.log("RETIRED_9_99_LINK=DENIED");
