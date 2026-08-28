@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 const CATALOG_URL =
   "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
 
-const KK_HUG_PAYMENT_URL =
+const RETIRED_KK_HUG_PAYMENT_URL =
   "https://buy.stripe.com/fZu8wOawC4wicy8fbU4ow0y";
 
 const SK_HUG_PRICE_CENTS = 499;
@@ -77,7 +77,9 @@ function configuredPaymentUrl(value: string | undefined) {
 
   try {
     const url = new URL(candidate);
-    return url.protocol === "https:" && url.hostname === "buy.stripe.com"
+    return url.protocol === "https:" &&
+      url.hostname === "buy.stripe.com" &&
+      url.toString() !== RETIRED_KK_HUG_PAYMENT_URL
       ? url.toString()
       : "";
   } catch {
@@ -103,7 +105,9 @@ function offerConfig(offer: OfferCode): OfferConfig {
     family: "KK",
     publicProductName: "KK HUG",
     priceCents: KK_HUG_PRICE_CENTS,
-    paymentUrl: KK_HUG_PAYMENT_URL,
+    paymentUrl: configuredPaymentUrl(
+      process.env.NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL,
+    ),
   };
 }
 
@@ -188,6 +192,11 @@ async function governedCheckout(
   offer: OfferCode,
   personalNote: string,
 ) {
+  // Preview and local builds must never open a live payment surface.
+  if (process.env.VERCEL_ENV !== "production") {
+    return returnToStore(request, "preview-payment-disabled");
+  }
+
   const personalNoteWordCount = countWords(personalNote);
 
   if (personalNoteWordCount > PERSONAL_NOTE_WORD_LIMIT) {
@@ -209,8 +218,9 @@ async function governedCheckout(
     return returnToStore(request, "offer-inventory-mismatch");
   }
 
-  const paymentUrl =
-    publicationOption?.stripe_url_if_payment_allowed || config.paymentUrl;
+  // Catalog rows govern II eligibility; environment-scoped commerce authority
+  // governs price. A catalog row can never override the locked product price.
+  const paymentUrl = config.paymentUrl;
 
   if (!paymentUrl) {
     return returnToStore(request, "payment-link-unavailable");
