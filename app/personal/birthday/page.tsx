@@ -7,7 +7,7 @@ export const metadata = {
 const BIRTHDAY_HUGS = [
   {
     label: "Milestone Birthday",
-    title: "Don't Call It Love",
+    title: "Reflective birthday feeling",
     description:
       "Tender, reflective, and meaningful for a bigger life moment.",
     bestFor: "30th, 40th, 50th, 60th, and big-year birthdays.",
@@ -15,7 +15,7 @@ const BIRTHDAY_HUGS = [
   },
   {
     label: "Birthday Party Lift",
-    title: "Your Heart Poundin'",
+    title: "Lively birthday feeling",
     description:
       "Energetic, playful, and bold for a livelier birthday message.",
     bestFor: "Celebration energy, playful romance, fun message.",
@@ -65,7 +65,7 @@ export default function BirthdayPage() {
 
         <section>
           <p className="mb-4 text-xs font-black uppercase tracking-[0.35em] text-[#FFD54F]">
-            Ready Now
+            Under review
           </p>
 
           <div className="grid gap-5 md:grid-cols-2">
@@ -99,7 +99,7 @@ export default function BirthdayPage() {
 
                 <a
                   className="mt-5 block rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
-                  href="/find?intent=birthday"
+                  href="/hugz/big-win"
                 >
                   Help me choose a birthday feeling
                 </a>

@@ -23,7 +23,7 @@ export default function Page() {
             The 13 Sent-i-Meants stories are temporarily closed. Music presence alone is not enough. Every KK must match its story through dressed LT-PIX and KK evidence for meaning, mood, feeling, sentiment, relationship, occasion, and actual audio presentation.
           </p>
 
-          <div className="mt-8 rounded-[1.5rem] border border-red-400/40 bg-red-950/30 p-6">
+          <div id="release-status" className="mt-8 rounded-[1.5rem] border border-red-400/40 bg-red-950/30 p-6">
             <p className="text-sm font-black uppercase tracking-[0.2em] text-red-200">
               Public story audio: 0 · Checkout: blocked
             </p>
@@ -33,10 +33,10 @@ export default function Page() {
           </div>
 
           <Link
-            href="/browse"
+            href="#release-status"
             className="mt-7 inline-block rounded-2xl border border-[#FFD54F]/70 px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#FFD54F]"
           >
-            View inventory hold status
+            View release status
           </Link>
         </header>
 

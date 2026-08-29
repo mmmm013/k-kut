@@ -20,11 +20,11 @@ export default function ApprovedPublicOptionGrid({
     return (
       <section className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
         <p className="text-xs font-black uppercase tracking-[0.3em] text-[#FFD54F]">
-          MIAL publication review active
+          Customer release review active
         </p>
         <h2 className="mt-3 text-2xl font-black">{emptyTitle}</h2>
         <p className="mt-3 text-sm font-bold leading-7 text-white/70">
-          Audio, route fit, rights, and GD approval must all pass before a player or payment link appears.
+          Meaning, audio, route fit, rights, and final approval must all pass before a player or payment button appears.
         </p>
       </section>
     );

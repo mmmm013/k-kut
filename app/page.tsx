@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import { headers } from "next/headers";
-import KKutHome from "./_kkut-home";
-import SentimeantHome from "./_sentimeant-home";
+import KKutHome, { kKutMetadata } from "./_kkut-home";
+import SentimeantHome, { metadata as sentimeantMetadata } from "./_sentimeant-home";
 
 export const dynamic = "force-dynamic";
 
@@ -15,13 +16,24 @@ function isSentimeantHost(hostname: string): boolean {
   );
 }
 
-export default async function Home() {
+async function requestHost() {
   const requestHeaders = await headers();
-  const host =
+  return (
     requestHeaders.get("x-vercel-forwarded-host") ||
     requestHeaders.get("x-forwarded-host") ||
     requestHeaders.get("host") ||
-    "";
+    ""
+  );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return isSentimeantHost(await requestHost())
+    ? sentimeantMetadata
+    : kKutMetadata;
+}
+
+export default async function Home() {
+  const host = await requestHost();
 
   return isSentimeantHost(host) ? <SentimeantHome /> : <KKutHome />;
 }
