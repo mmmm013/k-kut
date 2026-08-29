@@ -53,7 +53,15 @@ function StatusPill({ state }: { state: string }) {
 export default function BirthdayBicPanel() {
   const [selected, setSelected] = useState(birthdayOptions[0]);
   const [audioArmed, setAudioArmed] = useState(false);
-  const receipt = useMemo(() => customerFacingReceiptLine(selected), [selected]);
+  const receipt = useMemo(
+    () =>
+      customerFacingReceiptLine({
+        title: selected.name,
+        type: selected.type,
+        priceCents: selected.priceCents,
+      }),
+    [selected],
+  );
 
   return (
     <section className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl sm:p-8">

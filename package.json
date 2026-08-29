@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
+    "prebuild": "node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
@@ -21,6 +21,7 @@
     "audit:hugz-rotating-landing": "node scripts/audit-hugz-rotating-landing-v002.mjs",
     "audit:hugz-domain-separation": "node scripts/audit-domain-platform-separation.mjs",
     "audit:hugz-tp-cc-hold": "node scripts/audit-hugz-tp-cc-boundary-hold-v001.mjs",
+    "audit:customer-pathways": "node scripts/audit-customer-pathways-v001.mjs",
     "audit:public-pathways": "node scripts/audit-public-top-level-pathways.mjs",
     "audit:dont-call-it-love-public-hold": "node scripts/audit-dont-call-it-love-public-hold-v001.mjs",
     "audit:gpmc-sensory-public": "node scripts/audit-gpmc-sensory-records-generated.mjs",
