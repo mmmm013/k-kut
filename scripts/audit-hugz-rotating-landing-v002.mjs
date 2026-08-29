@@ -22,7 +22,7 @@ if (!component.includes("ResizeObserver")) {
 if (!component.includes("HUGz Card {activeIndex + 1}")) {
   stop("HUGz Card identity is missing");
 }
-if (!component.includes("Choose this HUG")) {
+if (!component.includes("Open this HUGz Card")) {
   stop("plain customer entry action is missing");
 }
 if (

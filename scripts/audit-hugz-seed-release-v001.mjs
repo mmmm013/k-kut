@@ -139,14 +139,14 @@ if (!detail.includes("HugzThreeChoiceTray")) {
 if (!detail.includes("Choose one KK or KOMBO")) {
   stop("HUGz Card must state that HUG choices are KKs or KOMBOs");
 }
-if (!tray.includes("Boundary-quality review in progress")) {
+if (!tray.includes("Exact music choices in release review")) {
   stop("TP/CC boundary hold is missing");
 }
 if (tray.includes("<audio") || tray.includes("href={seed.buyUrl}")) {
   stop("private audio or direct Stripe URL escaped the TP/CC boundary hold");
 }
-if (!tray.includes('action="/checkout"')) {
-  stop("governed $7.99 HUG checkout is missing");
+if (tray.includes('action="/checkout"')) {
+  stop("HUGz checkout escaped while exact customer choices are held");
 }
 if (!governance.includes("No other source form is eligible for a BUG")) {
   stop("BUG source restriction missing");
@@ -170,7 +170,7 @@ console.log("HUG choice inventory: 104 distinct full KKs");
 console.log("Phrase/line/TRM choices: 0");
 console.log("Visible choices per tray: 3");
 console.log("Public audio: HELD FOR TP/CC REVALIDATION");
-console.log("Verified KK HUG checkout: ACTIVE");
+console.log("HUGz checkout: HELD UNTIL EXACT CHOICE RELEASE");
 console.log("HUG: KK/KOMBO · $7.99");
 console.log("TUG: sK · $4.99");
 console.log("BUG: mK from TRM/XCLM/VSND only · $1.99");

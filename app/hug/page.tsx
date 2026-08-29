@@ -4,8 +4,38 @@ import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
 export const metadata = {
   title: "K-KUT HUGs, TUGs & BUGs | G Putnam Music",
   description:
-    "K-KUT customer offers: $7.99 HUGs from KKs or KOMBOs, $4.99 TUGs from sKs, and $1.99 BUGs from approved mKs.",
+    "Choose a K-KUT offer and see its current customer availability.",
 };
+
+const offers = [
+  {
+    name: "HUG",
+    price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
+    heading: "A full music moment",
+    description:
+      "Browse 13 HUGz Cards by human feeling. Exact customer music choices remain behind the current release gate.",
+    href: "/hugz",
+    cta: "Browse HUGz Cards",
+  },
+  {
+    name: "TUG",
+    price: formatUsd(PRODUCT_OFFER_LAW.TUG.priceUsd),
+    heading: "A shorter music moment",
+    description:
+      "TUG inventory is verified at storage level, but its customer product mapping is not approved yet.",
+    href: "/tug",
+    cta: "View TUG status",
+  },
+  {
+    name: "BUG",
+    price: formatUsd(PRODUCT_OFFER_LAW.BUG.priceUsd),
+    heading: "A mini music moment",
+    description:
+      "BUG has strict source rules. No customer-ready BUG inventory is currently published.",
+    href: "/bug",
+    cta: "View BUG status",
+  },
+] as const;
 
 export default function HugPage() {
   return (
@@ -15,63 +45,35 @@ export default function HugPage() {
           <p className="text-xs font-black uppercase tracking-[0.42em] text-[#FFD54F]">
             G Putnam Music · K-KUT
           </p>
-
           <h1 className="mt-4 text-5xl font-black tracking-tight md:text-7xl">
             Send the sentimeant.
           </h1>
-
           <p className="mt-5 max-w-4xl text-xl font-black leading-9 text-[#FFF8E1] md:text-3xl">
-            Hear the music. Choose the fit. Send the exact item.
+            Pick the size of the music moment. See what is ready before payment.
           </p>
-
-          <p className="mt-5 max-w-4xl text-base font-bold leading-8 text-[#D7CCC8]">
-            Every customer item remains traceable to its original LT-PIX lineage. HUG, TUG, and BUG are clear customer offers; they do not replace the permanent II identity.
-          </p>
-
-          <Link
-            href="/hugz"
-            className="mt-8 inline-flex rounded-2xl bg-[#FFD54F] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05]"
-          >
-            Open the 13 HUGz Cards
-          </Link>
         </header>
 
-        <section className="grid gap-5 md:grid-cols-3">
-          <article className="rounded-[1.75rem] border border-[#FFD54F]/45 bg-[#120A06] p-6">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-              HUG · {formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd)}
-            </p>
-            <h2 className="mt-3 text-3xl font-black">KK or KOMBO</h2>
-            <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              HUGs are the only customer items housed inside the 13 HUGz Cards. Each card shows three matching choices at a time.
-            </p>
-            <Link
-              href="/hugz"
-              className="mt-5 inline-flex rounded-xl bg-[#FFD54F] px-5 py-3 text-sm font-black text-black"
+        <section aria-label="HUG, TUG, and BUG offers" className="grid gap-5 md:grid-cols-3">
+          {offers.map((offer) => (
+            <article
+              key={offer.name}
+              className="flex flex-col rounded-[1.75rem] border border-[#FFD54F]/35 bg-[#120A06] p-6"
             >
-              Choose a HUG
-            </Link>
-          </article>
-
-          <article className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-[#120A06] p-6">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-              TUG · {formatUsd(PRODUCT_OFFER_LAW.TUG.priceUsd)}
-            </p>
-            <h2 className="mt-3 text-3xl font-black">sK</h2>
-            <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              TUGs use sKs and stay in their own offer lane. They do not appear inside HUGz Cards.
-            </p>
-          </article>
-
-          <article className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-[#120A06] p-6">
-            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-              BUG · {formatUsd(PRODUCT_OFFER_LAW.BUG.priceUsd)}
-            </p>
-            <h2 className="mt-3 text-3xl font-black">mK</h2>
-            <p className="mt-3 text-sm font-bold leading-7 text-[#D7CCC8]">
-              BUGs stay outside HUGz Cards and may use only TRM, XCLM, or VSND source forms.
-            </p>
-          </article>
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
+                {offer.name} · {offer.price}
+              </p>
+              <h2 className="mt-3 text-3xl font-black">{offer.heading}</h2>
+              <p className="mt-3 flex-1 text-sm font-bold leading-7 text-[#D7CCC8]">
+                {offer.description}
+              </p>
+              <Link
+                href={offer.href}
+                className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
+              >
+                {offer.cta}
+              </Link>
+            </article>
+          ))}
         </section>
       </section>
     </main>

@@ -2,11 +2,13 @@ export const HUGZ_BOUNDARY_HOLD = {
   active: true,
   status: "STOP_LINE_TP_CC_REVALIDATION_REQUIRED",
   reason:
-    "KK/KOMBO vocal boundaries must be revalidated from the authorized LT-PIX source before public playback, delivery, or fulfillment.",
+    "Exact music titles and vocal boundaries must be revalidated from the authorized source before public playback, checkout, delivery, or fulfillment.",
   publicMessage:
-    "Audio previews are temporarily held while every vocal start and ending is rechecked. Verified HUG inventory remains available for purchase at $7.99.",
+    "Exact music titles, audio previews, and checkout are temporarily held while every vocal start, ending, meaning, and delivery file is rechecked.",
   blockedActions: [
+    "public_choice_titles",
     "public_audio",
+    "checkout",
     "delivery",
     "fulfillment",
   ],

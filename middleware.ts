@@ -22,11 +22,43 @@ const HUGZ_KKUT_ONLY_PREFIXES = [
   "/kupid",
   "/wedding",
   "/hug",
+  "/tug",
+  "/bug",
   "/browse",
   "/pix",
   "/mkut",
   "/sentimeant",
 ];
+
+const SENTIMEANT_HOSTS = new Set([
+  "sentimeant.com",
+  "www.sentimeant.com",
+  "sentimeants.com",
+  "www.sentimeants.com",
+]);
+
+const SENTIMEANT_KKUT_ONLY_PREFIXES = [
+  "/find",
+  "/personal",
+  "/holiday",
+  "/themes",
+  "/kupid",
+  "/wedding",
+  "/hug",
+  "/hugz",
+  "/tug",
+  "/bug",
+  "/browse",
+  "/checkout",
+  "/pix",
+  "/mkut",
+];
+
+const CONVENTIONAL_ICON_PATHS = new Set([
+  "/favicon.ico",
+  "/apple-touch-icon.png",
+  "/apple-touch-icon-precomposed.png",
+]);
 
 const VEKTOR_HOSTS = new Set([
   "2gdp.com",
@@ -48,6 +80,13 @@ export function middleware(request: NextRequest) {
     .toLowerCase()
     .split(":")[0];
 
+  if (CONVENTIONAL_ICON_PATHS.has(pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/logo.png";
+    url.search = "";
+    return NextResponse.redirect(url, 307);
+  }
+
   if (HUGZ_HOSTS.has(host) && (pathname === "/" || pathname === "")) {
     const url = request.nextUrl.clone();
     url.pathname = "/hugz";
@@ -61,6 +100,18 @@ export function middleware(request: NextRequest) {
   if (
     HUGZ_HOSTS.has(host) &&
     HUGZ_KKUT_ONLY_PREFIXES.some(
+      (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
+    )
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    url.search = "";
+    return NextResponse.redirect(url, 307);
+  }
+
+  if (
+    SENTIMEANT_HOSTS.has(host) &&
+    SENTIMEANT_KKUT_ONLY_PREFIXES.some(
       (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
     )
   ) {
@@ -120,6 +171,13 @@ export const config = {
     "/kupid/:path*",
     "/wedding/:path*",
     "/hug/:path*",
+    "/hugz/:path*",
+    "/tug/:path*",
+    "/bug/:path*",
     "/browse/:path*",
+    "/checkout/:path*",
+    "/favicon.ico",
+    "/apple-touch-icon.png",
+    "/apple-touch-icon-precomposed.png",
   ],
 };

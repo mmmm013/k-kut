@@ -15,7 +15,7 @@ for (const host of ["13hugz.com", "www.13hugz.com"]) {
   }
 }
 
-if (!layout.includes("isHugzHost") || !layout.includes("!isHugzHost && <header")) {
+if (!layout.includes("isHugzHost") || !layout.includes("!isStandaloneHost ? <header")) {
   stop("K-KUT navigation is not isolated from 13HUGz");
 }
 

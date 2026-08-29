@@ -5,8 +5,6 @@ import { HUGZ_BOUNDARY_HOLD } from "@/lib/hugzBoundaryHold";
 import { getHugzContainer, hugzSeedCatalog } from "@/lib/hugzSeedCatalog";
 import { getHugzIntentPath } from "@/lib/hugzIntentPaths";
 
-const PUBLIC_MUSIC_CHOICES_READY = false;
-
 export function generateStaticParams() {
   return hugzSeedCatalog.map((container) => ({ slug: container.slug }));
 }
@@ -102,19 +100,17 @@ export default async function HugzContainerPage({
           </div>
         </section>
 
-        {PUBLIC_MUSIC_CHOICES_READY ? (
-          <div className="mt-8">
-            <HugzThreeChoiceTray
-              seeds={container.seeds.map((seed) => ({
-                rank: seed.rank,
-                assetId: seed.assetId,
-                assetKind: seed.assetKind,
-                excerpt: seed.excerpt,
-              }))}
-              cardHeadline={container.headline}
-            />
-          </div>
-        ) : null}
+        <div className="mt-8">
+          <HugzThreeChoiceTray
+            seeds={container.seeds.map((seed) => ({
+              rank: seed.rank,
+              assetId: seed.assetId,
+              assetKind: seed.assetKind,
+              excerpt: seed.excerpt,
+            }))}
+            cardHeadline={container.headline}
+          />
+        </div>
       </section>
     </main>
   );
