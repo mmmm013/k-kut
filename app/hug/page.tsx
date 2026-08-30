@@ -46,7 +46,7 @@ export default function HugPage() {
             G Putnam Music · K-KUT
           </p>
           <h1 className="mt-4 text-5xl font-black tracking-tight md:text-7xl">
-            Send the sentimeant.
+            Send the Sent-i-Meant.
           </h1>
           <p className="mt-5 max-w-4xl text-xl font-black leading-9 text-[#FFF8E1] md:text-3xl">
             Pick the size of the music moment. See what is ready before payment.
