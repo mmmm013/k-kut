@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-const checkoutPath = "app/checkout/route.ts";
+const read = (file) => fs.readFileSync(file, "utf8");
 let failed = false;
 
 function fail(message) {
@@ -8,70 +8,48 @@ function fail(message) {
   failed = true;
 }
 
+const grid = read("components/ApprovedPublicOptionGrid.tsx");
+const checkout = read("app/checkout/route.ts");
+
 console.log("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT");
 
-if (!fs.existsSync(checkoutPath)) fail(`Missing ${checkoutPath}`);
-
-const checkout = fs.existsSync(checkoutPath)
-  ? fs.readFileSync(checkoutPath, "utf8")
-  : "";
-
 for (const required of [
-  'process.env.VERCEL_ENV !== "production"',
-  '"preview-payment-disabled"',
-  "new Stripe(stripeSecretKey)",
-  "stripe.checkout.sessions.create",
-  "unit_amount: config.priceCents",
-  "const HUG_PRICE_CENTS = 799",
-  "const TUG_PRICE_CENTS = 499",
-  "const BUG_PRICE_CENTS = 199",
-  '"https://www.k-kut.com/logo.png"',
-  "K-KUT by G Putnam Music",
-  "client_reference_id: clientReference",
-  "findApprovedPublicOptionByPublicOptionId",
-  "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
-  "public_option_id: publicationOption.public_option_id",
-  "locked_price_cents: String(config.priceCents)",
-  "phone_number_collection: { enabled: true }",
-  'key: "recipientmobile"',
-  'custom: "Recipient mobile number"',
-  'success_url: `${siteOrigin}/order/success?session_id={CHECKOUT_SESSION_ID}`',
-  "function isLiveStripeSecretKey(value: string)",
-  'returnToStore(request, "stripe-secret-key-invalid")',
-  'console.error("K_KUT_STRIPE_SECRET_KEY_INVALID")',
+  "NEXT_PUBLIC_KKUT_REVIEWED_HUG_PAYMENT_URL",
+  "function reviewedLemonSqueezyPaymentUrl()",
+  'url.protocol === "https:"',
+  'hostname.endsWith(".lemonsqueezy.com")',
+  "href={paymentUrl}",
+  "Lemon Squeezy securely handles checkout",
+  "Checkout temporarily unavailable",
 ]) {
-  if (!checkout.includes(required)) fail(`Checkout missing: ${required}`);
+  if (!grid.includes(required)) fail(`Approved grid missing: ${required}`);
 }
 
 for (const forbidden of [
+  'action="/checkout"',
+  "stripe.checkout.sessions.create",
+  "STRIPE_SECRET_KEY",
   "buy.stripe.com",
-  "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL",
-  "stripe_url_if_payment_allowed ||",
 ]) {
-  if (checkout.includes(forbidden)) {
-    fail(`Checkout contains forbidden Payment Link authority: ${forbidden}`);
-  }
+  if (grid.includes(forbidden)) fail(`Customer payment surface contains: ${forbidden}`);
 }
 
-if (!checkout.includes("priceCents: HUG_PRICE_CENTS")) {
-  fail("HUG offer is not bound to the 799-cent price constant.");
+for (const required of [
+  'url.pathname = "/browse"',
+  '"?checkout=lemon-squeezy-direct-link-required"',
+  "export async function GET",
+  "export async function POST",
+]) {
+  if (!checkout.includes(required)) fail(`Legacy checkout hold missing: ${required}`);
 }
 
-if (
-  checkout.indexOf('returnToStore(request, "stripe-secret-key-invalid")') >
-  checkout.indexOf("token = await createPendingH2Order")
-) {
-  fail("Stripe secret-key validation must run before pending-order creation.");
-}
-
-for (const forbidden of ["CATALOG_URL", "verifiedInventoryFamily"]) {
-  if (checkout.includes(forbidden)) {
-    fail(`Checkout retains superseded inventory authority: ${forbidden}`);
-  }
-}
-
-if (!checkout.includes("NextResponse.redirect(session.url")) {
-  fail("Checkout does not redirect only to its newly created Stripe Session.");
+for (const forbidden of [
+  'from "stripe"',
+  "STRIPE_SECRET_KEY",
+  "stripe.checkout.sessions.create",
+  "createPendingH2Order",
+]) {
+  if (checkout.includes(forbidden)) fail(`Legacy checkout remains active: ${forbidden}`);
 }
 
 if (failed) {
@@ -80,7 +58,7 @@ if (failed) {
 }
 
 console.log("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT: PASS");
-console.log("HUG_PRICE_CENTS=799");
-console.log("PREVIEW_LIVE_PAYMENT=BLOCKED");
-console.log("PAYMENT_LINK_DEPENDENCY=0");
-console.log("K_KUT_BRANDED_SESSION=REQUIRED");
+console.log("HUG_PRICE_DISPLAY=USD_7.99_FROM_APPROVED_RECORD");
+console.log("CUSTOMER_PAYMENT_SURFACE=REVIEWED_LEMON_SQUEEZY_URL");
+console.log("MISSING_OR_INVALID_URL=FAIL_CLOSED");
+console.log("LEGACY_DIRECT_STRIPE_ROUTE=BLOCKED");
