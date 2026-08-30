@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const policy = JSON.parse(
   fs.readFileSync("data/audio-law/twinkle-volume-policy.json", "utf8")

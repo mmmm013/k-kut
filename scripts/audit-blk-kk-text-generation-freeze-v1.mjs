@@ -13,7 +13,10 @@ const requiredGuardedScripts = [
   "scripts/generate-sympathy-candidates-from-inventory.mjs",
   "scripts/generate-thank-you-gratitude-internal-approval-decisions.mjs",
   "scripts/build-line-cc-inventory.mjs",
-  "scripts/promote-line-cc-ready-inventory.mjs"
+  "scripts/promote-line-cc-ready-inventory.mjs",
+  "scripts/materialize-a-love-like-that-boundary-repair-v1.mjs",
+  "scripts/materialize-ii-delivery-bookend-twinkle.mjs",
+  "scripts/materialize-half-volume-twinkle-assets.mjs"
 ].sort();
 
 function fail(message) {

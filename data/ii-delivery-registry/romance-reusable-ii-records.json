@@ -1,6 +1,6 @@
 {
   "registry": "romance-reusable-ii-records",
-  "status": "one_controlled_purchase_ii_all_other_routes_held",
+  "status": "all_routes_held_boundary_and_twinkle_integrity",
   "doctrine": [
     "Same KK across multiple buyer routes creates one reusable II, not duplicate II records.",
     "Buyer routes can point to the same reusable II only after independent meaning proof.",
@@ -24,8 +24,8 @@
           "route_id": "love-sweet",
           "buyer_label": "Sweet Love",
           "buyer_question": "Send something warm, sweet, and easy to receive.",
-          "payment_allowed": true,
-          "checkout_authority": "server_created_stripe_checkout_session"
+          "payment_allowed": false,
+          "checkout_authority": "HOLD"
         },
         {
           "route_id": "love-deep-devotion",
@@ -52,7 +52,7 @@
       "reuse_policy": "single_reusable_ii_for_same_kk_across_multiple_routes",
       "duplicate_policy": "do_not_create_duplicate_ii",
       "public_inventory_type": "K-KUT / HUG Moment",
-      "delivery_status": "delivery_audio_materialized_bookend_twinkle",
+      "delivery_status": "HOLD_UNVERIFIED_BOUNDARY_AND_CORRUPTED_TWINKLE",
       "delivery_requirements": {
         "front_padding_required": true,
         "back_padding_required": true,
@@ -76,14 +76,14 @@
         "boundary_end_seconds": 34.875,
         "prior_invalid_fixed_window_end_seconds": 24,
         "repair_reason": "Owner reported that the 24-second fixed window entered the next VTP/InTP and stopped mid-vocal.",
-        "owner_confirmation_state": "APPROVED_FOR_CONTROLLED_PURCHASE_CANARY_2026_08_30"
+        "owner_confirmation_state": "REVOKED_BY_OWNER_BOUNDARY_FAILURE_2026_08_30"
       },
       "delivery_audio_url": "",
       "private_delivery_audio": {
         "bucket": "ii-delivery",
         "object_path": "current-ii/romance/ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
         "visibility": "private",
-        "apply_state": "UPLOADED_AND_HASH_VERIFIED_2026_08_30"
+        "apply_state": "CONTAINED_EVIDENCE_DO_NOT_SERVE"
       },
       "delivery_materialization": {
         "shape": "front_padding -> governed_kk -> back_padding -> gpmx_twinkle -> stop",
@@ -94,14 +94,14 @@
         "source_kk_audio_is_raw_not_customer_delivery": true,
         "delivery_sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
         "delivery_duration_seconds": 41.273469,
-        "materialized_at": "2026-08-30"
+        "materialized_at": "2026-08-30",
+        "integrity_state": "HOLD_CORRUPTED_TWINKLE_REPORTED_BY_OWNER"
       },
       "release_gate": {
-        "state": "STAGE_CONTROLLED_PURCHASE_CANARY",
-        "authorized_public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
-        "authorized_price_cents": 799,
-        "authorized_at": "2026-08-30",
-        "rule": "Only the Sweet Love public option may expose a short-lived preview and server-created Stripe checkout."
+        "state": "HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY",
+        "contained_at": "2026-08-30",
+        "authorized_by": "owner",
+        "rule": "No audio or payment exposure until single-BLK VTP/InTP boundary and owner-approved Twinkle are independently proven."
       }
     },
     {

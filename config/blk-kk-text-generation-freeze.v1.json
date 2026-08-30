@@ -9,7 +9,8 @@
       "mass or batch BLK/KK text candidate creation",
       "mass CC extraction that could be mistaken for BLK structure",
       "automated promotion of mass-created CC candidates",
-      "automated internal approval decisions for mass-created KK candidates"
+      "automated internal approval decisions for mass-created KK candidates",
+      "all Twinkle and customer-delivery audio materialization pending owner-approved integrity restoration"
     ],
     "allowed": [
       "read-only source inventory",
@@ -22,10 +23,8 @@
     ],
     "unchanged": [
       "production catalog",
-      "audio files",
       "checkout",
-      "deployments",
-      "already-approved customer products"
+      "deployments"
     ]
   },
   "status_vocabulary": {
@@ -74,6 +73,9 @@
     "scripts/generate-sympathy-candidates-from-inventory.mjs",
     "scripts/generate-thank-you-gratitude-internal-approval-decisions.mjs",
     "scripts/build-line-cc-inventory.mjs",
-    "scripts/promote-line-cc-ready-inventory.mjs"
+    "scripts/promote-line-cc-ready-inventory.mjs",
+    "scripts/materialize-a-love-like-that-boundary-repair-v1.mjs",
+    "scripts/materialize-ii-delivery-bookend-twinkle.mjs",
+    "scripts/materialize-half-volume-twinkle-assets.mjs"
   ]
 }

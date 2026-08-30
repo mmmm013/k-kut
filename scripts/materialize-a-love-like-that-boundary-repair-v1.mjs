@@ -2,6 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const SOURCE_PATH = process.env.A_LOVE_LIKE_THAT_SOURCE_PATH?.trim();
 const SOURCE_SHA256 = "6ea1bca85e3f33b2bac0e03b70f6ae8037e83dee53c3d87bf9012f39cfa29afb";
