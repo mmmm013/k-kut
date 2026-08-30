@@ -12,7 +12,7 @@ const BACK_PAD_SECONDS = 1;
 const TWINKLE_GAIN = 0.75;
 const TWINKLE_PATH = "public/signature/sti/gpm-sti-twinkle-v001-stop-at-audio-end.mp3";
 const OUTPUT_PATH =
-  "public/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3";
+  "staging/current-ii-private-audio-v1/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3";
 
 function fail(message) {
   console.error(`FAIL: ${message}`);
@@ -84,3 +84,4 @@ execFileSync(
 console.log("PASS: A LOVE LIKE THAT boundary-repair candidate materialized.");
 console.log(`Boundary: ${START_SECONDS.toFixed(3)}-${END_SECONDS.toFixed(3)}`);
 console.log(`SHA-256: ${sha256(OUTPUT_PATH)}`);
+console.log("Output: local non-deploying private-audio staging");

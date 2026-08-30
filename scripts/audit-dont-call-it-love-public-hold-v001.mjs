@@ -12,10 +12,15 @@ const legacy = json("data/track-digestion/dont-call-it-love/legacy-window-reconc
 const registry = json("data/ii-delivery-registry/romance-reusable-ii-records.json");
 const publication = json("data/publication-bridge/public-option-records.generated.json");
 const sensory = json("data/gpmc-sensory/sensory-emotional-records.generated.json");
+const privateAudio = json("config/current-ii-private-audio.v1.json");
 
 const heldKk = "6e959ac6-9546-4bae-87b2-ed6584185682";
 const heldIi = "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682";
-const heldAudio = "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3";
+const heldPrivateAudio = (privateAudio.records || []).find(
+  (record) => record.ii_id === heldIi,
+);
+if (!heldPrivateAudio) fail("held private-audio record is missing");
+const heldAudio = heldPrivateAudio.former_public_static_path;
 const parentTitle = "Don't Call It Love";
 
 if (
@@ -122,7 +127,10 @@ if (
   registryRecord.frontend_allowed !== false ||
   registryRecord.descriptive_metadata_allowed !== false ||
   registryRecord.mgs_allowed !== false ||
-  registryRecord.delivery_audio_url !== heldAudio
+  registryRecord.delivery_audio_url !== "" ||
+  registryRecord.private_delivery_audio?.object_path !==
+    heldPrivateAudio.storage_object_path ||
+  registryRecord.private_delivery_audio?.visibility !== "private"
 ) {
   fail("registry held-source state is unsafe");
 }
@@ -216,8 +224,15 @@ for (const required of [
 }
 
 const preservedAudioPath = `public${heldAudio}`;
-if (!fs.existsSync(preservedAudioPath)) {
-  fail("preserved delivery-audio evidence file is missing");
+if (fs.existsSync(preservedAudioPath)) {
+  fail("held delivery-audio evidence remains publicly reachable");
+}
+if (
+  heldPrivateAudio.sha256 !==
+    "75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d" ||
+  heldPrivateAudio.owner_review_enabled !== false
+) {
+  fail("held private delivery-audio evidence is incomplete");
 }
 
 console.log("DON'T CALL IT LOVE PUBLIC HOLD AUDIT: PASS");
@@ -227,4 +242,4 @@ console.log("LEGACY WINDOWS: 8 HOLD · 0 STRUCTURAL BLKs CLAIMED");
 console.log("PUBLIC SENSORY METADATA / MGS: 0 RECORDS");
 console.log("PUBLICATION / PAYMENT / FRONTEND: HELD");
 console.log("NBLK PUBLIC PARENT LEAKAGE: PROHIBITED");
-console.log("AUDIO PRESERVED · AUDIO MUTATION: 0");
+console.log("AUDIO PRESERVATION LOCKED TO PRIVATE TARGET · UPLOAD PENDING APPLY · AUDIO MUTATION: 0");

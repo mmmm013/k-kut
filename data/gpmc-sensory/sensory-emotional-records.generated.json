@@ -2,99 +2,10 @@
   "status": "generated_from_explicit_public_approvals_only",
   "name": "GPMC Sensory-Emotional Records From Approved Public Options",
   "source": "data/publication-bridge/public-option-records.generated.json",
-  "generated_at": "2026-08-30T02:25:53.950Z",
-  "public_source_count": 1,
-  "held_source_count": 5,
-  "count": 1,
+  "generated_at": "2026-08-30T17:44:52.287Z",
+  "public_source_count": 0,
+  "held_source_count": 6,
+  "count": 0,
   "doctrine_law": "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning. Held records never generate public sensory metadata or MGS.",
-  "records": [
-    {
-      "record_id": "sensory-generated-kupid-physical-spark-1f016b4a-f85d-4945-b881-2e0f571e6a49",
-      "source_public_option_id": "generated-kupid-physical-spark-1f016b4a-f85d-4945-b881-2e0f571e6a49",
-      "source_pix_id_or_track_id": "1f016b4a-f85d-4945-b881-2e0f571e6a49",
-      "source_title": "YOUR HEART POUNDIN'",
-      "source_type": "II",
-      "public_option_id": "generated-kupid-physical-spark-1f016b4a-f85d-4945-b881-2e0f571e6a49",
-      "public_route": "/kupid",
-      "audio_delivery_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/5kQ8wO206bYKcy88Nw4ow0k",
-      "surface_feeling": "spark",
-      "deeper_feelings": [
-        "attraction",
-        "playful energy",
-        "pulse",
-        "romantic confidence"
-      ],
-      "interpretation_summary": "Send something bold, intimate, and charged.",
-      "action_object_meaning": {
-        "verb": "send",
-        "object": "spark",
-        "situation": "Physical Spark"
-      },
-      "sensory_profile": {
-        "audio": [
-          "charged",
-          "rhythmic",
-          "energetic",
-          "sparked"
-        ],
-        "body": [
-          "pulse",
-          "lifted",
-          "electric"
-        ],
-        "visual": [
-          "bright motion",
-          "close-up",
-          "night light"
-        ],
-        "touch": [
-          "warm",
-          "alive",
-          "charged"
-        ],
-        "memory": [
-          "first spark",
-          "flirtation",
-          "romantic excitement"
-        ]
-      },
-      "emotional_coordinates": {
-        "valence": "positive_warm",
-        "arousal": "charged",
-        "control_or_agency": "empowering",
-        "social_direction": "toward",
-        "time_direction": "present"
-      },
-      "good_use_cases": [
-        "romantic spark",
-        "playful connection",
-        "confident attraction"
-      ],
-      "bad_use_cases": [
-        "grief",
-        "apology",
-        "anniversary repair",
-        "family support"
-      ],
-      "risk_notes": [
-        "Use only for clearly playful or romantic contexts.",
-        "Avoid where softness or grief safety is needed."
-      ],
-      "buyer_words": [
-        "This has a spark.",
-        "This feels playful and alive."
-      ],
-      "receiver_safe_words": [
-        "This felt fun and bright.",
-        "I thought you might like the energy."
-      ],
-      "do_not_say": [
-        "This will make them want you.",
-        "This guarantees attraction."
-      ],
-      "review_status": "approved_public",
-      "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
-    }
-  ]
+  "records": []
 }

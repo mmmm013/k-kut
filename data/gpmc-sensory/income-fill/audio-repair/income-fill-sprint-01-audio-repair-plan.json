@@ -17,7 +17,7 @@
     {
       "record_id": "income-sprint-01-birthday-01",
       "theme": "birthday",
-      "current_audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "current_audio_delivery_url": "",
       "current_audio_status": "WRONG_LANE_AUDIO_HINT",
       "current_quality_status": "HOLD_FOR_AUDIO_REPAIR",
       "repair_need": "replace_wrong_lane_audio",
@@ -78,7 +78,7 @@
     {
       "record_id": "income-sprint-01-birthday-06",
       "theme": "birthday",
-      "current_audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "current_audio_delivery_url": "",
       "current_audio_status": "WRONG_LANE_AUDIO_HINT",
       "current_quality_status": "HOLD_FOR_AUDIO_REPAIR",
       "repair_need": "replace_wrong_lane_audio",
@@ -91,7 +91,7 @@
     {
       "record_id": "income-sprint-01-encouragement_support-01",
       "theme": "encouragement_support",
-      "current_audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "current_audio_delivery_url": "",
       "current_audio_status": "WRONG_LANE_AUDIO_HINT",
       "current_quality_status": "HOLD_FOR_AUDIO_REPAIR",
       "repair_need": "replace_wrong_lane_audio",
@@ -188,7 +188,7 @@
     {
       "record_id": "income-sprint-01-friendship-01",
       "theme": "friendship",
-      "current_audio_delivery_url": "//www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "current_audio_delivery_url": "",
       "current_audio_status": "WRONG_LANE_AUDIO_HINT",
       "current_quality_status": "HOLD_FOR_AUDIO_REPAIR",
       "repair_need": "replace_wrong_lane_audio",

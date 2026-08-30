@@ -1,10 +1,6 @@
 import fs from "node:fs";
-import { createHash } from "node:crypto";
-import { spawnSync } from "node:child_process";
 
 const II_ID = "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38";
-const AUDIO_PATH =
-  "public/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3";
 const EXPECTED_SHA256 = "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1";
 const EXPECTED_START = 0;
 const EXPECTED_END = 34.875;
@@ -19,11 +15,17 @@ function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
-function sha256(filePath) {
-  return createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
-}
-
 const registry = readJson("data/ii-delivery-registry/romance-reusable-ii-records.json");
+const privateAudio = readJson("config/current-ii-private-audio.v1.json");
+const privateRecord = privateAudio.records?.find((item) => item.ii_id === II_ID);
+if (!privateRecord) fail("A LOVE LIKE THAT private-audio record is missing.");
+if (
+  privateRecord.sha256 !== EXPECTED_SHA256 ||
+  privateRecord.duration_seconds !== EXPECTED_DELIVERY_DURATION ||
+  privateRecord.owner_review_enabled !== true
+) {
+  fail("A LOVE LIKE THAT private-audio evidence is stale.");
+}
 const record = registry.records?.find((item) => item.ii_id === II_ID);
 if (!record) fail("A LOVE LIKE THAT registry record is missing.");
 if (record.start_seconds !== EXPECTED_START || record.end_seconds !== EXPECTED_END) {
@@ -47,6 +49,12 @@ if (
 if (record.release_gate?.state !== "HOLD_PENDING_OWNER_LISTEN") {
   fail("A LOVE LIKE THAT release hold is missing.");
 }
+if (
+  record.delivery_audio_url !== "" ||
+  record.private_delivery_audio?.object_path !== privateRecord.storage_object_path
+) {
+  fail("A LOVE LIKE THAT must use the private delivery locator.");
+}
 
 const canary = readJson("data/production/first-production-canary-v1.json");
 const canaryRecord = canary.records?.find((item) => item.ii_id === II_ID);
@@ -67,42 +75,13 @@ const bridgeRows = (bridge.records || []).filter(
 if (!bridgeRows.length) fail("A LOVE LIKE THAT publication rows are missing.");
 for (const row of bridgeRows) {
   if (row.payment_allowed !== false) fail(`${row.public_option_id} still allows payment.`);
+  if (row.audio_delivery_url !== "") fail(`${row.public_option_id} still exposes audio.`);
   if (row.audio_proof_status !== "boundary_repair_pending_owner_listening") {
     fail(`${row.public_option_id} has an invalid audio proof state.`);
   }
 }
 
-if (!fs.existsSync(AUDIO_PATH)) fail("A LOVE LIKE THAT repaired delivery audio is missing.");
-if (sha256(AUDIO_PATH) !== EXPECTED_SHA256) fail("Repaired delivery audio hash does not match authority.");
-
-const probe = spawnSync(
-  "ffprobe",
-  [
-    "-v",
-    "error",
-    "-show_entries",
-    "format=duration",
-    "-of",
-    "default=noprint_wrappers=1:nokey=1",
-    AUDIO_PATH,
-  ],
-  { encoding: "utf8" },
-);
-
-let duration = EXPECTED_DELIVERY_DURATION;
-if (probe.error?.code === "ENOENT") {
-  console.log(
-    `Duration: ${EXPECTED_DELIVERY_DURATION.toFixed(6)} seconds (locked by verified audio hash; ffprobe unavailable)`,
-  );
-} else {
-  if (probe.error) fail(`ffprobe failed: ${probe.error.message}`);
-  if (probe.status !== 0) fail(`ffprobe failed: ${probe.stderr?.trim() || `status ${probe.status}`}`);
-  duration = Number(probe.stdout.trim());
-  if (!Number.isFinite(duration) || duration < 41.2 || duration > 41.35) {
-    fail(`Unexpected repaired delivery duration: ${duration}`);
-  }
-}
-
 console.log("PASS: A LOVE LIKE THAT uses 0.000-34.875 and remains held for owner listening.");
 console.log(`SHA-256: ${EXPECTED_SHA256}`);
-if (!probe.error) console.log(`Duration: ${duration.toFixed(6)} seconds`);
+console.log(`Duration: ${EXPECTED_DELIVERY_DURATION.toFixed(6)} seconds`);
+console.log("Delivery access: private Supabase target; upload pending APPLY");

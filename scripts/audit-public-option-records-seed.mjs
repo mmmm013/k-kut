@@ -28,12 +28,12 @@ for (const record of seed.records || []) {
     fail(`${record.public_option_id} allows payment but lacks Stripe URL.`);
   }
 
-  if (record.audio_proof_status !== "pass") {
-    fail(`${record.public_option_id} audio proof must be pass.`);
+  if (record.audio_proof_status !== "superseded_by_current_ii_authority") {
+    fail(`${record.public_option_id} must remain a non-authoritative historical seed.`);
   }
 
-  if (!record.audio_delivery_url?.startsWith("/")) {
-    fail(`${record.public_option_id} audio URL must be site-relative.`);
+  if (record.audio_delivery_url !== "" || record.payment_allowed !== false) {
+    fail(`${record.public_option_id} historical seed exposes audio or payment.`);
   }
 
   if (!contract.known_public_routes.includes(record.public_route)) {
