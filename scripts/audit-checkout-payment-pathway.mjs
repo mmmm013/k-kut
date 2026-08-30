@@ -5,7 +5,6 @@ const fail = (message) => {
   throw new Error(`CHECKOUT PAYMENT PATHWAY AUDIT FAIL: ${message}`);
 };
 
-const LOCKED_LINK = "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r";
 const grid = read("components/ApprovedPublicOptionGrid.tsx");
 const checkout = read("app/checkout/route.ts");
 const bridge = JSON.parse(
@@ -16,15 +15,22 @@ const linked = (bridge.records || []).filter(
   (record) => record.stripe_url_if_payment_allowed,
 );
 
+if (linked.length !== 0) {
+  fail("Stripe link exposure must remain zero during the owner integrity hold");
+}
+const held = (bridge.records || []).find(
+  (record) =>
+    record.public_option_id ===
+    "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+);
 if (
-  linked.length !== 1 ||
-  linked[0].public_option_id !==
-    "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38" ||
-  linked[0].price_cents !== 799 ||
-  linked[0].payment_allowed !== true ||
-  linked[0].stripe_url_if_payment_allowed !== LOCKED_LINK
+  !held ||
+  held.price_cents !== 799 ||
+  held.payment_allowed !== false ||
+  held.stripe_url_if_payment_allowed !== "" ||
+  held.audio_delivery_url !== ""
 ) {
-  fail("exact locked Sweet Love Stripe mapping drifted");
+  fail("exact Sweet Love II is not fully contained");
 }
 
 for (const required of [
@@ -62,7 +68,7 @@ for (const forbidden of [
 }
 
 console.log("CHECKOUT PAYMENT PATHWAY AUDIT: PASS");
-console.log("LOCKED II PAYMENT LINKS: 1");
+console.log("EXPOSED II PAYMENT LINKS: 0");
 console.log("LOCKED PRICE: USD 7.99");
-console.log("PAYMENT AUTHORITY: EXISTING STRIPE PAYMENT LINK");
+console.log("PAYMENT AUTHORITY: HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY");
 console.log("SUPERSEDED API-CREATED CHECKOUT: BLOCKED");
