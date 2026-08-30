@@ -86,19 +86,28 @@ for (const forbidden of [
 }
 
 for (const required of [
-  "findApprovedPublicOptionByPublicOptionId",
-  "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
-  "public_option_id: publicationOption.public_option_id",
-  "publicationOption.inventory_family !== config.family",
-  "publicationOption.product_family !== config.productFamily",
-  "publicationOption.price_cents !== config.priceCents",
+  'url.pathname = "/browse"',
+  '"?checkout=locked-payment-link-required"',
+  "export async function GET",
+  "export async function POST",
 ]) {
-  if (!checkout.includes(required)) fail(`checkout missing ${required}`);
+  if (!checkout.includes(required)) fail(`superseded checkout hold missing ${required}`);
+}
+
+for (const forbidden of [
+  'from "stripe"',
+  "STRIPE_SECRET_KEY",
+  "stripe.checkout.sessions.create",
+  "createPendingH2Order",
+]) {
+  if (checkout.includes(forbidden)) fail(`superseded checkout remains active ${forbidden}`);
 }
 
 for (const required of [
-  'name="public_option_id"',
-  "value={record.public_option_id}",
+  "lockedStripePaymentLink",
+  "record.stripe_url_if_payment_allowed",
+  "href={paymentLink}",
+  'url.hostname === "buy.stripe.com"',
 ]) {
   if (!publicOptionGrid.includes(required)) {
     fail(`public option grid missing ${required}`);
