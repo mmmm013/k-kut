@@ -82,7 +82,7 @@ for (const [name, page] of [
   }
 }
 
-for (const brand of ["K-KUT", "13HUGz", "Sent-i-Meants"]) {
+for (const brand of ["K-KUT", "13HUGz", "Sent-i-Meant"]) {
   if (!publicDomainIdentity.includes(`publicName: "${brand}"`)) {
     stop(`Public legal identity is missing: ${brand}`);
   }
@@ -99,5 +99,5 @@ if (cardCount !== 13) {
 
 console.log("DOMAIN PLATFORM SEPARATION AUDIT: PASS");
 console.log("13HUGz: 13 ROTATING HUGz CARDS · GOVERNED FIND/PERSONAL ROUTES · 33 SECONDS");
-console.log("LEGAL: HOST-AWARE K-KUT · 13HUGz · SENT-I-MEANTS BRANDING");
+console.log("LEGAL: HOST-AWARE K-KUT · 13HUGz · SENT-I-MEANT BRANDING");
 console.log("K-KUT-ONLY ROUTES: HOST SEPARATION PRESERVED");

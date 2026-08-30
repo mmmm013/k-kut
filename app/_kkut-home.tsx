@@ -46,7 +46,7 @@ export default function KKutHome() {
             G Putnam Music · K-KUT
           </p>
           <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-            Send the sentimeant.
+            Send the Sent-i-Meant.
           </h1>
           <p className="mt-6 max-w-3xl text-lg font-bold leading-8 text-[#EFEBE9]">
             Choose the human moment first. K-KUT shows a player or payment button only when that exact music item is customer-ready.

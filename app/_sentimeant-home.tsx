@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Sent-i-Meants | Semantic Match Hold",
+  title: "Sent-i-Meant | Semantic Match Hold",
   description:
-    "Sent-i-Meants previews are temporarily unavailable while each theme is rebuilt from dressed LT-PIX and KK meaning, mood, feeling, and sentiment authority.",
+    "Sent-i-Meant previews are temporarily unavailable while each theme is rebuilt from dressed LT-PIX and KK meaning, mood, feeling, and sentiment authority.",
 };
 
 export default function Page() {
@@ -12,7 +12,7 @@ export default function Page() {
       <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10 sm:px-8">
         <header className="rounded-[2rem] border border-[#FFD54F]/45 bg-gradient-to-br from-[#3A1F12] via-[#180D08] to-[#050302] p-7 shadow-2xl md:p-12">
           <p className="text-xs font-black uppercase tracking-[0.32em] text-[#FFD54F]">
-            Sent-i-Meants · K-KUT · G Putnam Music
+            Sent-i-Meant · K-KUT · G Putnam Music
           </p>
 
           <h1 className="mt-5 text-4xl font-black leading-tight sm:text-6xl">
@@ -20,7 +20,7 @@ export default function Page() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg font-bold leading-8 text-[#EFEBE9]">
-            The 13 Sent-i-Meants stories are temporarily closed. Music presence alone is not enough. Every KK must match its story through dressed LT-PIX and KK evidence for meaning, mood, feeling, sentiment, relationship, occasion, and actual audio presentation.
+            The 13 Sent-i-Meant stories are temporarily closed. Music presence alone is not enough. Every KK must match its story through dressed LT-PIX and KK evidence for meaning, mood, feeling, sentiment, relationship, occasion, and actual audio presentation.
           </p>
 
           <div id="release-status" className="mt-8 rounded-[1.5rem] border border-red-400/40 bg-red-950/30 p-6">
