@@ -25,7 +25,7 @@
       "source_audio_sha256": "6ea1bca85e3f33b2bac0e03b70f6ae8037e83dee53c3d87bf9012f39cfa29afb",
       "boundary_start_seconds": 0,
       "boundary_end_seconds": 34.875,
-      "delivery_audio_url": "/api/ii-delivery/generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "delivery_audio_url": "",
       "private_delivery_audio": {
         "bucket": "ii-delivery",
         "object_path": "current-ii/romance/ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
@@ -34,22 +34,20 @@
       },
       "delivery_sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
       "duration_seconds": 41.273469,
-      "status": "STAGE",
-      "missing_current_proof": [],
+      "status": "TRIAGE",
+      "missing_current_proof": [
+        "authoritative_single_blk_id",
+        "authoritative_vtp_intp_start_end",
+        "rendered_audio_endpoint_within_blk",
+        "uncorrupted_owner_approved_twinkle",
+        "owner_listening_approval_on_repaired_delivery_hash"
+      ],
       "release_authority": {
-        "scope": "ONE_II_ONE_PUBLIC_OPTION_CONTROLLED_PURCHASE_CANARY",
-        "authorized_at": "2026-08-30",
+        "scope": "HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY",
+        "contained_at": "2026-08-30",
         "authorized_by": "owner",
-        "authorized_public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
-        "locked_price_cents": 799,
-        "delivery_mode": "private_stream_only_manual_fulfillment",
-        "evidence": [
-          "canonical LT-PIX and source hash joined",
-          "governed 0.000-34.875 VTP/InTP boundary joined",
-          "customer delivery hash and 75-percent Twinkle joined",
-          "private Supabase object uploaded and re-downloaded for hash verification",
-          "owner explicitly authorized the controlled purchase canary"
-        ]
+        "prior_delivery_sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
+        "rule": "No customer audio or payment until independent boundary and Twinkle re-prosecution passes and owner explicitly re-approves."
       }
     },
     {
