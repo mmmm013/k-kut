@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 
 export type PublicDomainIdentity = {
-  publicName: "K-KUT" | "13HUGz" | "Sent-i-Meants";
+  publicName: "K-KUT" | "13HUGz" | "Sent-i-Meant";
   legalDescription: string;
 };
 
@@ -38,8 +38,8 @@ export async function getPublicDomainIdentity(): Promise<PublicDomainIdentity> {
 
   if (SENTIMEANT_HOSTS.has(host)) {
     return {
-      publicName: "Sent-i-Meants",
-      legalDescription: "Sent-i-Meants legal terms from G Putnam Music, LLC.",
+      publicName: "Sent-i-Meant",
+      legalDescription: "Sent-i-Meant legal terms from G Putnam Music, LLC.",
     };
   }
 
