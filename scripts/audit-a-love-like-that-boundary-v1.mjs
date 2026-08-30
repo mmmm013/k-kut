@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { execFileSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 
 const II_ID = "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38";
 const AUDIO_PATH =
@@ -8,6 +8,7 @@ const AUDIO_PATH =
 const EXPECTED_SHA256 = "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1";
 const EXPECTED_START = 0;
 const EXPECTED_END = 34.875;
+const EXPECTED_DELIVERY_DURATION = 41.273469;
 
 function fail(message) {
   console.error(`FAIL: ${message}`);
@@ -74,25 +75,34 @@ for (const row of bridgeRows) {
 if (!fs.existsSync(AUDIO_PATH)) fail("A LOVE LIKE THAT repaired delivery audio is missing.");
 if (sha256(AUDIO_PATH) !== EXPECTED_SHA256) fail("Repaired delivery audio hash does not match authority.");
 
-const duration = Number(
-  execFileSync(
-    "ffprobe",
-    [
-      "-v",
-      "error",
-      "-show_entries",
-      "format=duration",
-      "-of",
-      "default=noprint_wrappers=1:nokey=1",
-      AUDIO_PATH,
-    ],
-    { encoding: "utf8" },
-  ).trim(),
+const probe = spawnSync(
+  "ffprobe",
+  [
+    "-v",
+    "error",
+    "-show_entries",
+    "format=duration",
+    "-of",
+    "default=noprint_wrappers=1:nokey=1",
+    AUDIO_PATH,
+  ],
+  { encoding: "utf8" },
 );
-if (!Number.isFinite(duration) || duration < 41.2 || duration > 41.35) {
-  fail(`Unexpected repaired delivery duration: ${duration}`);
+
+let duration = EXPECTED_DELIVERY_DURATION;
+if (probe.error?.code === "ENOENT") {
+  console.log(
+    `Duration: ${EXPECTED_DELIVERY_DURATION.toFixed(6)} seconds (locked by verified audio hash; ffprobe unavailable)`,
+  );
+} else {
+  if (probe.error) fail(`ffprobe failed: ${probe.error.message}`);
+  if (probe.status !== 0) fail(`ffprobe failed: ${probe.stderr?.trim() || `status ${probe.status}`}`);
+  duration = Number(probe.stdout.trim());
+  if (!Number.isFinite(duration) || duration < 41.2 || duration > 41.35) {
+    fail(`Unexpected repaired delivery duration: ${duration}`);
+  }
 }
 
 console.log("PASS: A LOVE LIKE THAT uses 0.000-34.875 and remains held for owner listening.");
 console.log(`SHA-256: ${EXPECTED_SHA256}`);
-console.log(`Duration: ${duration.toFixed(6)} seconds`);
+if (!probe.error) console.log(`Duration: ${duration.toFixed(6)} seconds`);
