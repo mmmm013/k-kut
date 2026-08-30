@@ -1,0 +1,46 @@
+{
+  "schema_version": "GPMX_LT_PIX_BLK_REVIEW_GATE_V1_DRAFT",
+  "status": "DRAFT_PENDING_OWNER_LOCK",
+  "default_incomplete_state": "TRIAGE",
+  "stage_is_uncertainty_state": false,
+  "hold_is_default_uncertainty_state": false,
+  "stage_requirements": [
+    "exact LT-PIX SSOT identity and source hash",
+    "rights authority and lineage",
+    "complete canonical lyrics or transcript",
+    "all required human listening passes complete",
+    "complete sequential BLK identity for the LT-PIX",
+    "each BLK label supported rather than guessed",
+    "exact Start TP and End TP with audible opening and closing proof",
+    "no vocal cut mid-word, mid-phrase, or before the section's intended completion",
+    "each BLK meaning reviewed independently from whole-song meaning",
+    "CCs used only as evidence and never as structural definitions",
+    "no legacy fixed window represented as a BLK",
+    "sub-10-second control passed or exact locked exception applied",
+    "customer-delivery identity and hash",
+    "Twinkle/bookend and padding proof",
+    "playback and next-item transition proof",
+    "exact server-side checkout price proof",
+    "named human structural-listening approval"
+  ],
+  "triage_rules": [
+    "Any incomplete proof remains TRIAGE unless a specific hard-stop condition applies.",
+    "An uncertain section label remains null with evidence notes; it is never guessed.",
+    "An uncertain boundary remains unresolved; a convenient timestamp is never substituted.",
+    "TRIAGE records cannot be returned by the production storefront."
+  ],
+  "hold_conditions": [
+    "legacy fixed window presented as a BLK",
+    "known source or rights conflict",
+    "unsafe or contradictory public use not yet controlled",
+    "missing indispensable authority source with no valid recovery path",
+    "owner-directed stop",
+    "attempted CC-to-BLK substitution",
+    "attempted mass-generation bypass"
+  ],
+  "unlock_requirements": {
+    "all_four_governance_artifacts_owner_locked": true,
+    "separate_owner_authorization_to_lift_freeze": true,
+    "automatic_mass_generation_resume": false
+  }
+}

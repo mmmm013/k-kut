@@ -1,0 +1,36 @@
+{
+  "schema_version": "GPMX_KK_SHORT_DURATION_EXCEPTION_REGISTRY_V1_DRAFT",
+  "status": "DRAFT_PENDING_OWNER_LOCK",
+  "normal_source_content_floor_seconds": 10,
+  "measurement_rule": "Measure only the authorized source musical content bound to the proposed KK. Exclude delivery padding, silence added for delivery, and Twinkle/bookends.",
+  "structural_rule": "Duration never establishes BLK identity. A normal structurally proven KK below 10.000 seconds is blocked unless an exact locked exception applies.",
+  "existing_law_reconciliation": {
+    "status": "TRIAGE_OWNER_DECISION_REQUIRED",
+    "existing_source": "docs/KKR_KK_TEXT_STRUCTURE_LAW.md",
+    "existing_statement": "Duration is not a KK qualification rule.",
+    "proposed_reconciliation": "Structure and meaning qualify the BLK/KK; the 10-second control is a release anomaly gate with exact one-off exceptions, not a slicing rule or structural definition."
+  },
+  "exceptions": [
+    {
+      "exception_id": "short-kk-best-birthday",
+      "display_family": "Best Birthday",
+      "lt_pix_id": null,
+      "source_audio_sha256": null,
+      "allowed_minimum_seconds": null,
+      "status": "TRIAGE_BINDING_REQUIRED",
+      "use_rule": "Not exercisable until exact LT-PIX identity, source hash, structural proof, owner approval, and minimum duration are locked. Title matching is forbidden."
+    },
+    {
+      "exception_id": "short-kk-sorry",
+      "display_family": "Sorry / I'm Sorry",
+      "lt_pix_id": null,
+      "source_audio_sha256": null,
+      "allowed_minimum_seconds": null,
+      "status": "TRIAGE_BINDING_REQUIRED",
+      "use_rule": "Not exercisable until exact LT-PIX identity, source hash, structural proof, owner approval, and minimum duration are locked. Title matching is forbidden."
+    }
+  ],
+  "wildcard_exceptions_allowed": false,
+  "title_only_exception_matching_allowed": false,
+  "automatic_exception_creation_allowed": false
+}

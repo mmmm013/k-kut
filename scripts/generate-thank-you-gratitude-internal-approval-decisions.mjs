@@ -1,4 +1,7 @@
 import fs from "node:fs";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const queuePath = "data/gpmc-sensory/review-queues/thank-you-gratitude-human-review-queue.json";
 const outputPath = "data/gpmc-sensory/review-decisions/thank-you-gratitude-internal-approval-decisions.json";

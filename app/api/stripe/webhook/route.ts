@@ -6,6 +6,7 @@ import {
   consumePendingH2Order,
   h2PendingOrderStoreConfigured,
 } from "@/lib/h2PendingOrder";
+import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
 
@@ -148,8 +149,13 @@ function writeLocalPaidFulfillmentPacket(record: Record<string, unknown>) {
 }
 
 function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
+  const authorityHeld = record.status === "paid_held_current_ii_authority";
+
   if (!isVercelProduction) {
-    return writeLocalPaidFulfillmentPacket(record);
+    writeLocalPaidFulfillmentPacket(record);
+    return authorityHeld
+      ? "local_paid_hold_packet_written"
+      : "local_mial_import_packet_written";
   }
 
   const productionEvidence = {
@@ -166,6 +172,10 @@ function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
     bf_profile: record.bf_profile,
     origin_domain: record.origin_domain,
     selected_hug_id: record.selected_hug_id,
+    selected_public_option_id: record.selected_public_option_id,
+    current_ii_authority: record.current_ii_authority,
+    current_ii_product_family: record.current_ii_product_family,
+    current_ii_inventory_family: record.current_ii_inventory_family,
     personal_note_present: record.personal_note_present,
     personal_note_word_count: record.personal_note_word_count,
     personal_note_placement: record.personal_note_placement,
@@ -182,7 +192,39 @@ function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
     JSON.stringify(productionEvidence),
   );
 
-  return "stripe_durable_manual_review_queue";
+  return authorityHeld
+    ? "paid_held_current_ii_authority"
+    : "stripe_durable_manual_review_queue";
+}
+
+function enforceCurrentIiAuthority(
+  record: Record<string, unknown>,
+): Record<string, unknown> {
+  const inventoryId = safeInventoryId(record.selected_hug_id);
+  const publicOptionId = safeInventoryId(record.selected_public_option_id);
+  const option = publicOptionId
+    ? findApprovedPublicOptionByPublicOptionId(publicOptionId)
+    : null;
+
+  if (!option || option.kk_id_or_delivery_object_id !== inventoryId) {
+    return {
+      ...record,
+      status: "paid_held_current_ii_authority",
+      current_ii_authority: "HOLD",
+      current_ii_product_family: "",
+      current_ii_inventory_family: "",
+      delivery_preference: "manual_review_no_delivery",
+      hug_link_status: "blocked_current_ii_hold",
+      manual_review_required: true,
+    };
+  }
+
+  return {
+    ...record,
+    current_ii_authority: "STAGE",
+    current_ii_product_family: option.product_family,
+    current_ii_inventory_family: option.inventory_family,
+  };
 }
 
 function basePaidRecord(event: Stripe.Event) {
@@ -210,6 +252,7 @@ function basePaidRecord(event: Stripe.Event) {
     customer_email_present: false,
     customer_phone_present: false,
     selected_hug_id: "",
+    selected_public_option_id: "",
     selected_hug_title: "",
     source_song: "",
     typed_feeling: "",
@@ -304,6 +347,9 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
     ),
     customer_phone_present: Boolean(session.customer_details?.phone),
     selected_hug_id: selectedInventoryId,
+    selected_public_option_id: safeInventoryId(
+      session.metadata?.public_option_id,
+    ),
     client_reference_format: parsedReference.format,
     delivery_preference: selectedInventoryId
       ? "fulfill_exact_selected_ii"
@@ -351,6 +397,9 @@ function recordFromPaymentIntent(event: Stripe.Event) {
     stripe_customer_id:
       typeof paymentIntent.customer === "string" ? paymentIntent.customer : "",
     selected_hug_id: selectedInventoryId,
+    selected_public_option_id: safeInventoryId(
+      paymentIntent.metadata?.public_option_id,
+    ),
     delivery_preference: selectedInventoryId
       ? "fulfill_exact_selected_ii"
       : "manual_review_missing_selected_ii",
@@ -391,7 +440,9 @@ export async function POST(req: NextRequest) {
 
   if (event.type === "checkout.session.completed") {
     try {
-      const record = await recordFromCheckoutSession(event);
+      const record = enforceCurrentIiAuthority(
+        await recordFromCheckoutSession(event),
+      );
       fulfillmentQueueStatus = stagePaidFulfillmentRecord(record);
     } catch (reason) {
       console.error(
@@ -406,10 +457,19 @@ export async function POST(req: NextRequest) {
   }
 
   if (event.type === "payment_intent.succeeded") {
-    const record = recordFromPaymentIntent(event);
-    fulfillmentQueueStatus = record.selected_hug_id
-      ? stagePaidFulfillmentRecord(record)
-      : "event_acknowledged_checkout_session_is_fulfillment_authority";
+    const record = enforceCurrentIiAuthority(recordFromPaymentIntent(event));
+    console.info(
+      "K_KUT_PAYMENT_INTENT_AUTHORITY_EVIDENCE",
+      JSON.stringify({
+        stripe_event_id: record.stripe_event_id,
+        selected_hug_id: record.selected_hug_id,
+        selected_public_option_id: record.selected_public_option_id,
+        current_ii_authority: record.current_ii_authority,
+        fulfillment_authority: "checkout.session.completed",
+      }),
+    );
+    fulfillmentQueueStatus =
+      "event_acknowledged_checkout_session_is_fulfillment_authority";
   }
 
   return NextResponse.json({
@@ -426,7 +486,8 @@ export async function GET() {
     route: "/api/stripe/webhook",
     status: stripe && webhookSecret ? "configured" : "missing_env",
     handles: ["checkout.session.completed", "payment_intent.succeeded"],
-    exact_ii_capture: "h2_pending_order_token_to_selected_hug_id",
+    exact_ii_capture:
+      "h2_pending_order_token_to_selected_hug_id_plus_server_stripe_public_option_id",
     personal_note_capture: "optional_13_words_before_hug_content",
     client_reference_format: "H2_safe_order_token",
     legacy_client_reference_formats: [
@@ -437,6 +498,8 @@ export async function GET() {
       ? "configured"
       : "missing_env",
     durable_order_authority: "stripe_checkout_session",
+    payment_intent_rule:
+      "Evidence only; payment_intent.succeeded never creates a second fulfillment packet.",
     production_fulfillment_mode: "manual_review_from_stripe_order",
     local_packet_mode: isVercelProduction
       ? "disabled_on_read_only_runtime"

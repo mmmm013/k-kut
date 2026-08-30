@@ -7,6 +7,18 @@ function titleCase(value: string) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+function checkoutOffer(record: ApprovedPublicOption) {
+  if (record.product_family === "TUG" && record.inventory_family === "SK") {
+    return "sk";
+  }
+
+  if (record.product_family === "BUG" && record.inventory_family === "MK") {
+    return "mk";
+  }
+
+  return "kk";
+}
+
 export default function ApprovedPublicOptionGrid({
   records,
   emptyTitle = "No approved K-KUT HUGs are published for this route yet.",
@@ -48,7 +60,7 @@ export default function ApprovedPublicOptionGrid({
             className="rounded-[1.75rem] border border-pink-200/15 bg-[#0d0711] p-5 shadow-xl"
           >
             <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-              {titleCase(record.intent_lane)}
+              {record.product_family} · {titleCase(record.intent_lane)}
             </p>
             <h2 className="mt-3 text-2xl font-black">{record.display_title}</h2>
             <p className="mt-3 min-h-[72px] text-sm leading-6 text-white/68">
@@ -83,7 +95,16 @@ export default function ApprovedPublicOptionGrid({
                 name="ii"
                 value={record.kk_id_or_delivery_object_id}
               />
-              <input type="hidden" name="offer" value="kk" />
+              <input
+                type="hidden"
+                name="public_option_id"
+                value={record.public_option_id}
+              />
+              <input
+                type="hidden"
+                name="offer"
+                value={checkoutOffer(record)}
+              />
               <button
                 type="submit"
                 className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"

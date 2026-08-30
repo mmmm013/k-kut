@@ -22,10 +22,15 @@ for (const required of [
   "new Stripe(stripeSecretKey)",
   "stripe.checkout.sessions.create",
   "unit_amount: config.priceCents",
-  "const KK_HUG_PRICE_CENTS = 799",
+  "const HUG_PRICE_CENTS = 799",
+  "const TUG_PRICE_CENTS = 499",
+  "const BUG_PRICE_CENTS = 199",
   '"https://www.k-kut.com/logo.png"',
   "K-KUT by G Putnam Music",
   "client_reference_id: clientReference",
+  "findApprovedPublicOptionByPublicOptionId",
+  "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
+  "public_option_id: publicationOption.public_option_id",
   "locked_price_cents: String(config.priceCents)",
 ]) {
   if (!checkout.includes(required)) fail(`Checkout missing: ${required}`);
@@ -41,8 +46,14 @@ for (const forbidden of [
   }
 }
 
-if (!checkout.includes("priceCents: KK_HUG_PRICE_CENTS")) {
+if (!checkout.includes("priceCents: HUG_PRICE_CENTS")) {
   fail("HUG offer is not bound to the 799-cent price constant.");
+}
+
+for (const forbidden of ["CATALOG_URL", "verifiedInventoryFamily"]) {
+  if (checkout.includes(forbidden)) {
+    fail(`Checkout retains superseded inventory authority: ${forbidden}`);
+  }
 }
 
 if (!checkout.includes("NextResponse.redirect(session.url")) {

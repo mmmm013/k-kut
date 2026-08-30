@@ -161,10 +161,7 @@ for (const id of publicIds) {
 }
 
 const requiredRoutes = [
-  "/romance",
-  "/wedding",
-  "/kupid",
-  "/personal/anniversary"
+  ...new Set(publicRecords.map((record) => record.public_route).filter(Boolean)),
 ];
 
 for (const route of requiredRoutes) {

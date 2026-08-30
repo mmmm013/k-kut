@@ -1,5 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const outDir = "data/intent-candidates/sympathy";
 const outJson = `${outDir}/action-candidates.json`;

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
+    "prebuild": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs && npm run audit:current-ii-authority && node scripts/audit-a-love-like-that-boundary-v1.mjs && node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
@@ -25,7 +25,11 @@
     "audit:public-pathways": "node scripts/audit-public-top-level-pathways.mjs",
     "audit:dont-call-it-love-public-hold": "node scripts/audit-dont-call-it-love-public-hold-v001.mjs",
     "audit:gpmc-sensory-public": "node scripts/audit-gpmc-sensory-records-generated.mjs",
-    "audit:production:canary": "node scripts/audit-first-production-canary-v1.mjs"
+    "audit:production:canary": "node scripts/audit-first-production-canary-v1.mjs",
+    "audit:current-ii-authority": "node scripts/audit-current-ii-authority-enforcement-v1.mjs",
+    "smoke:current-ii-pathways": "node scripts/smoke-current-ii-pathways-v1.mjs",
+    "audit:audio:a-love-like-that": "node scripts/audit-a-love-like-that-boundary-v1.mjs",
+    "audit:blk-kk-text-freeze": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.0",

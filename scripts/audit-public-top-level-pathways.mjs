@@ -47,8 +47,9 @@ for (const required of [
 for (const required of [
   'action="/checkout"',
   'name="ii"',
+  'name="public_option_id"',
   "record.kk_id_or_delivery_object_id",
-  'name="offer" value="kk"',
+  "checkoutOffer(record)",
 ]) {
   if (!grid.includes(required)) {
     stop(`approved option grid missing ${required}`);
@@ -60,8 +61,11 @@ if (grid.includes("href={record.stripe_url_if_payment_allowed}")) {
 }
 
 for (const required of [
-  "findApprovedPublicOptionByInventoryId",
+  "findApprovedPublicOptionByPublicOptionId",
   "publicationOption",
+  "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
+  "publicationOption.inventory_family !== config.family",
+  "publicationOption.product_family !== config.productFamily",
   "stripe.checkout.sessions.create",
 ]) {
   if (!checkout.includes(required)) {
@@ -74,8 +78,13 @@ if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||") ||
   stop("catalog or Payment Link illegally overrides commerce price authority");
 }
 
-if (!bridge.includes("record.kk_id_or_delivery_object_id === inventoryId")) {
+if (!bridge.includes("record.kk_id_or_delivery_object_id === inventoryId") ||
+    !bridge.includes("staged.get(record.kk_id_or_delivery_object_id)")) {
   stop("publication bridge lacks exact-II lookup");
+}
+
+if (checkout.includes("CATALOG_URL") || checkout.includes("verifiedInventoryFamily")) {
+  stop("legacy public Storage catalog still acts as checkout authority");
 }
 
 console.log("PUBLIC TOP-LEVEL PATHWAY AUDIT: PASS");

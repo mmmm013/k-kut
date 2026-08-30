@@ -1,4 +1,7 @@
 import fs from "node:fs";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const source = "manifests/kkr/line-cc/lnduo-lntrio-rmst-cc-inventory.json";
 const outReady = "manifests/kkr/line-cc/line-cc-ready-registry.json";

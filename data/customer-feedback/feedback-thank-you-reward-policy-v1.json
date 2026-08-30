@@ -1,0 +1,29 @@
+{
+  "policy_id": "GPMX_FEEDBACK_THANK_YOU_REWARD_V1",
+  "status": "ACTIVE_POLICY_REWARD_DETAILS_PENDING",
+  "owner": "G Putnam Music, LLC",
+  "effective_date": "2026-08-30",
+  "core_rule": "Thank every legitimate human correspondent who provides feedback and recognize useful feedback with a governed reward.",
+  "eligible": [
+    "A real person who submits sincere product, delivery, accessibility, audio, checkout, or customer-experience feedback.",
+    "A real person whose report identifies a reproducible defect, safety concern, confusing experience, or useful improvement."
+  ],
+  "excluded": [
+    "bots",
+    "hackers or unauthorized access attempts",
+    "fraudulent or fabricated submissions",
+    "spam",
+    "abusive, threatening, or deliberately disruptive submissions"
+  ],
+  "required_actions": [
+    "Acknowledge and thank the eligible correspondent.",
+    "Record the feedback and its resulting action or decision.",
+    "Do not promise or issue a reward until the reward type, value, eligibility proof, and fulfillment controls are approved."
+  ],
+  "reward": {
+    "type": "TO_BE_APPROVED",
+    "value": "TO_BE_APPROVED",
+    "automatic_issuance": false,
+    "payment_or_credit_creation_authorized": false
+  }
+}

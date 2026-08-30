@@ -18,7 +18,7 @@
       "kk_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
       "public_label": "A LOVE LIKE THAT",
       "start_seconds": 0,
-      "end_seconds": 24,
+      "end_seconds": 34.875,
       "routes": [
         {
           "route_id": "love-sweet",
@@ -57,12 +57,41 @@
       "admin_override_required": false,
       "local_source_path": "/Users/gregoryputnam/GPM STL MP3s/A LOVE LIKE THAT.mp3",
       "source_resolution": {
-        "method": "local_gpmc_source_first",
+        "method": "canonical_supabase_lt_pix_storage_object",
         "local_source_path": "/Users/gregoryputnam/GPM STL MP3s/A LOVE LIKE THAT.mp3",
-        "remote_supabase_url_not_required_for_customer_delivery": true,
+        "canonical_track_id": "41c9fe20-76cf-42ad-85d5-beab1d433dea",
+        "storage_object_id": "bff29597-87f0-46c2-8b27-9392635f0df7",
+        "storage_bucket": "tracks",
+        "storage_object_name": "A LOVE LIKE THAT.mp3",
+        "source_audio_sha256": "6ea1bca85e3f33b2bac0e03b70f6ae8037e83dee53c3d87bf9012f39cfa29afb",
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3"
+      "boundary_authority": {
+        "source": "gpmc_v012_ii_inventory_item_v1",
+        "inventory_item_id": 1290,
+        "ii_key": "II_V012_d020683f679f3df4390a86ae15ed24a042ce6eb36e6f16faec6898a9760ce2ed",
+        "boundary_start_seconds": 0,
+        "boundary_end_seconds": 34.875,
+        "prior_invalid_fixed_window_end_seconds": 24,
+        "repair_reason": "Owner reported that the 24-second fixed window entered the next VTP/InTP and stopped mid-vocal.",
+        "owner_confirmation_state": "PENDING_CURRENT_DELIVERY_HASH_LISTEN"
+      },
+      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "delivery_materialization": {
+        "shape": "front_padding -> governed_kk -> back_padding -> gpmx_twinkle -> stop",
+        "front_padding_seconds": 1,
+        "back_padding_seconds": 1,
+        "twinkle_path": "/signature/sti/gpm-sti-twinkle-v001-stop-at-audio-end.mp3",
+        "twinkle_gain": 0.75,
+        "source_kk_audio_is_raw_not_customer_delivery": true,
+        "delivery_sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
+        "delivery_duration_seconds": 41.273469,
+        "materialized_at": "2026-08-30"
+      },
+      "release_gate": {
+        "state": "HOLD_PENDING_OWNER_LISTEN",
+        "required_proof": "Owner confirms the complete vocal phrase, lawful 34.875-second boundary, final Twinkle, and current delivery hash."
+      }
     },
     {
       "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
@@ -150,5 +179,5 @@
     "no_raw_kk_customer_delivery": true,
     "no_instrumental_customer_delivery": true
   },
-  "updated_at": "2026-08-01"
+  "updated_at": "2026-08-30"
 }

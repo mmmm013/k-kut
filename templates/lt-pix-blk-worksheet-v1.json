@@ -1,0 +1,109 @@
+{
+  "schema_version": "GPMX_LT_PIX_BLK_WORKSHEET_V1_DRAFT",
+  "governance_status": "DRAFT_PENDING_OWNER_LOCK",
+  "worksheet_status": "TRIAGE",
+  "instruction": "Create one copy per LT-PIX. Null means unresolved; never replace null with a guessed section label or boundary.",
+  "lt_pix_identity": {
+    "lt_pix_id": null,
+    "canonical_title": null,
+    "source_audio_uri": null,
+    "source_audio_sha256": null,
+    "source_duration_seconds": null,
+    "rights_authority_reference": null,
+    "canonical_lyric_source": null,
+    "canonical_lyrics_complete": false,
+    "authority_join_complete": false
+  },
+  "source_coverage": {
+    "audio_identity_proven": false,
+    "audio_hash_proven": false,
+    "rights_lineage_proven": false,
+    "complete_lyrics_or_transcript_proven": false,
+    "all_known_source_conflicts_resolved": false,
+    "coverage_notes": []
+  },
+  "human_listening_passes": [
+    {
+      "pass": "composition_map",
+      "status": "NOT_STARTED",
+      "reviewer": null,
+      "reviewed_at": null,
+      "notes": []
+    },
+    {
+      "pass": "lyric_vocal_function_map",
+      "status": "NOT_STARTED",
+      "reviewer": null,
+      "reviewed_at": null,
+      "notes": []
+    },
+    {
+      "pass": "boundary_and_transition_map",
+      "status": "NOT_STARTED",
+      "reviewer": null,
+      "reviewed_at": null,
+      "notes": []
+    },
+    {
+      "pass": "independent_blk_meaning_map",
+      "status": "NOT_STARTED",
+      "reviewer": null,
+      "reviewed_at": null,
+      "notes": []
+    },
+    {
+      "pass": "full_song_sequence_relisten",
+      "status": "NOT_STARTED",
+      "reviewer": null,
+      "reviewed_at": null,
+      "notes": []
+    }
+  ],
+  "song_context": {
+    "observed_form_summary": null,
+    "tempo_or_meter_notes": null,
+    "repetition_notes": null,
+    "transition_notes": null,
+    "section_count_target": null,
+    "section_count_target_rule": "FORBIDDEN"
+  },
+  "sequential_blk_map": [],
+  "blk_record_template": {
+    "sequence": null,
+    "blk_id": null,
+    "structural_label": null,
+    "label_evidence": [],
+    "start_tp_seconds": null,
+    "end_tp_seconds": null,
+    "source_content_duration_seconds": null,
+    "opening_boundary_proof": null,
+    "closing_boundary_proof": null,
+    "lyrics_or_transcript": null,
+    "composition_function": null,
+    "vocal_function": null,
+    "meaning_summary": null,
+    "unsafe_or_contradictory_uses": [],
+    "cc_evidence_ids": [],
+    "cc_defines_structure": false,
+    "legacy_window_used_as_structure": false,
+    "short_duration_exception_id": null,
+    "status": "TRIAGE",
+    "triage_reasons": []
+  },
+  "sequence_checks": {
+    "whole_source_covered_without_unexplained_gaps": false,
+    "no_overlaps_without_audible_explanation": false,
+    "no_legacy_fixed_window_claimed_as_blk": false,
+    "no_cc_claimed_as_blk": false,
+    "no_vocal_cut_mid_word_or_mid_phrase": false,
+    "repeated_sections_sequentially_distinguished": false
+  },
+  "unresolved_items": [],
+  "review_decision": {
+    "status": "TRIAGE",
+    "stage_eligible": false,
+    "human_structural_listener": null,
+    "human_structural_listening_approved_at": null,
+    "decision_notes": []
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "GPMX_BLK_KK_TEXT_GENERATION_FREEZE_V1",
+  "status": "ACTIVE_OWNER_AUTHORIZED_FREEZE",
+  "effective_date": "2026-08-30",
+  "owner_instruction": "Freeze mass BLK/KK text generation until the ontology, per-LT-PIX worksheet, exception registry, and review gate are locked.",
+  "reason": "Near-perfect BLK/KK work requires complete source coverage, controlled uncertainty, and human structural listening rather than fixed-window or high-speed slicing.",
+  "scope": {
+    "blocked": [
+      "mass or batch BLK/KK text candidate creation",
+      "mass CC extraction that could be mistaken for BLK structure",
+      "automated promotion of mass-created CC candidates",
+      "automated internal approval decisions for mass-created KK candidates"
+    ],
+    "allowed": [
+      "read-only source inventory",
+      "complete lyric capture",
+      "human structural listening",
+      "one LT-PIX worksheet at a time",
+      "read-only audits and reports",
+      "review of already-existing candidates",
+      "work needed to lock the four prerequisites"
+    ],
+    "unchanged": [
+      "production catalog",
+      "audio files",
+      "checkout",
+      "deployments",
+      "already-approved customer products"
+    ]
+  },
+  "status_vocabulary": {
+    "TRIAGE": "Evidence exists, but the authority join, structural identity, boundary proof, or review proof is incomplete. Preserve the uncertainty; do not guess a section label.",
+    "STAGE": "Every required source, lyric, sequential BLK, boundary, vocal, delivery, playback, pricing, and human-review proof is complete. STAGE is never an uncertainty state.",
+    "HOLD": "A deliberate hard stop for a known conflict, unsafe use, disqualified object, missing required authority source, or owner-directed stop. HOLD is not the ordinary incomplete-evidence state.",
+    "HOLD_NOT_BLK": "A hard disqualification applied to legacy fixed clock windows so they cannot be represented as BLKs. A new authoritative BLK record may be created only after complete structural proof."
+  },
+  "legacy_window_rule": {
+    "fixed_23_to_24_second_windows_are_blks": false,
+    "fixed_clock_windows_may_establish_structure": false,
+    "required_legacy_status": "HOLD_NOT_BLK",
+    "promotion_rule": "Never relabel a legacy window in place. Create a separately proven BLK record from authorized lyric and audio evidence."
+  },
+  "unlock_rule": {
+    "mode": "ALL_PREREQUISITES_MUST_BE_OWNER_LOCKED",
+    "automatic_unlock": false,
+    "prerequisites": [
+      {
+        "id": "ontology",
+        "path": "docs/governance/GPMX_LT_PIX_BLK_ONTOLOGY_V1_DRAFT.md",
+        "status": "DRAFT_PENDING_OWNER_LOCK"
+      },
+      {
+        "id": "per_lt_pix_worksheet",
+        "path": "templates/lt-pix-blk-worksheet-v1.json",
+        "status": "DRAFT_PENDING_OWNER_LOCK"
+      },
+      {
+        "id": "exception_registry",
+        "path": "config/kk-short-duration-exception-registry.v1.json",
+        "status": "DRAFT_PENDING_OWNER_LOCK"
+      },
+      {
+        "id": "review_gate",
+        "path": "config/lt-pix-blk-review-gate.v1.json",
+        "status": "DRAFT_PENDING_OWNER_LOCK"
+      }
+    ]
+  },
+  "guarded_scripts": [
+    "scripts/generate-pix-kk-batch-01-internal-candidates.mjs",
+    "scripts/generate-pix-kk-batch-01-internal-review-decisions.mjs",
+    "scripts/generate-income-fill-sprint-01-internal-candidates.mjs",
+    "scripts/generate-sympathy-action-candidates.mjs",
+    "scripts/generate-sympathy-candidates-from-inventory.mjs",
+    "scripts/generate-thank-you-gratitude-internal-approval-decisions.mjs",
+    "scripts/build-line-cc-inventory.mjs",
+    "scripts/promote-line-cc-ready-inventory.mjs"
+  ]
+}

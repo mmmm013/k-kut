@@ -27,6 +27,7 @@ check("HUG downloads disallowed", rules.product_control.hug_download_allowed ===
 check("TUG downloads disallowed", rules.product_control.tug_download_allowed === false);
 check("Song downloads only when explicitly sold", rules.product_control.song_downloads_only_when_explicitly_sold === true);
 check("Required fields include session_id", rules.required_event_fields.includes("session_id"));
+check("Required fields include selected_public_option_id", rules.required_event_fields.includes("selected_public_option_id"));
 check("Required fields include selected_hug_id", rules.required_event_fields.includes("selected_hug_id"));
 
 console.log("\nSUMMARY");
