@@ -7,20 +7,31 @@ function titleCase(value: string) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-function checkoutOffer(record: ApprovedPublicOption) {
-  if (record.product_family === "TUG" && record.inventory_family === "SK") {
-    return "sk";
-  }
-
-  if (record.product_family === "BUG" && record.inventory_family === "MK") {
-    return "mk";
-  }
-
-  return "kk";
+function formatPrice(cents: number) {
+  return `${(cents / 100).toFixed(2)}`;
 }
 
-function formatPrice(cents: number) {
-  return `$${(cents / 100).toFixed(2)}`;
+function reviewedLemonSqueezyPaymentUrl() {
+  const configured = String(
+    process.env.NEXT_PUBLIC_KKUT_REVIEWED_HUG_PAYMENT_URL || "",
+  ).trim();
+
+  try {
+    const url = new URL(configured);
+    const hostname = url.hostname.toLowerCase();
+
+    if (
+      url.protocol === "https:" &&
+      (hostname === "lemonsqueezy.com" ||
+        hostname.endsWith(".lemonsqueezy.com"))
+    ) {
+      return url.toString();
+    }
+  } catch {
+    // A missing or malformed reviewed URL keeps payment closed.
+  }
+
+  return "";
 }
 
 export default function ApprovedPublicOptionGrid({
@@ -32,6 +43,8 @@ export default function ApprovedPublicOptionGrid({
   emptyTitle?: string;
   buttonLabel?: string;
 }) {
+  const paymentUrl = reviewedLemonSqueezyPaymentUrl();
+
   if (records.length === 0) {
     return (
       <section className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
@@ -95,48 +108,24 @@ export default function ApprovedPublicOptionGrid({
               src={record.audio_delivery_url}
             />
 
-            <form action="/checkout" method="post" className="mt-5">
-              <input
-                type="hidden"
-                name="ii"
-                value={record.kk_id_or_delivery_object_id}
-              />
-              <input
-                type="hidden"
-                name="public_option_id"
-                value={record.public_option_id}
-              />
-              <input
-                type="hidden"
-                name="offer"
-                value={checkoutOffer(record)}
-              />
-              <label className="mb-4 block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-[#FFD54F]">
-                  Optional personal note
-                </span>
-                <span className="mt-1 block text-xs font-bold text-white/55">
-                  Up to 13 words. It appears before the HUG.
-                </span>
-                <input
-                  type="text"
-                  name="personal_note"
-                  maxLength={160}
-                  placeholder="Your note"
-                  className="mt-2 w-full rounded-xl border border-white/15 bg-black/35 px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-white/35 focus:border-[#FFD54F]"
-                />
-              </label>
-              <button
-                type="submit"
-                className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
-              >
-                {buttonLabel}
-              </button>
-              <p className="mt-3 text-xs font-bold leading-5 text-white/50">
-                Stripe securely collects payment and the recipient mobile number.
-                GPM reviews the exact HUG before private delivery.
+            {paymentUrl ? (
+              <>
+                <a
+                  href={paymentUrl}
+                  className="mt-5 block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
+                >
+                  {buttonLabel}
+                </a>
+                <p className="mt-3 text-xs font-bold leading-5 text-white/50">
+                  Lemon Squeezy securely handles checkout. GPM reviews the exact
+                  HUG before private delivery.
+                </p>
+              </>
+            ) : (
+              <p className="mt-5 rounded-2xl border border-amber-300/35 bg-amber-950/25 px-5 py-3 text-center text-sm font-black text-amber-100">
+                Checkout temporarily unavailable
               </p>
-            </form>
+            )}
           </article>
         ))}
       </div>
