@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+import { prosecuteSingleBlkCc } from "./lib/cc-single-blk-boundary-law.mjs";
 
 assertBlkKkMassGenerationAllowed(import.meta.url);
 
@@ -15,9 +16,25 @@ if (!fs.existsSync(source)) {
 
 const payload = JSON.parse(fs.readFileSync(source, "utf8"));
 const candidates = payload.candidates || [];
+const prosecuted = candidates.map((candidate) => {
+  const boundary = prosecuteSingleBlkCc(candidate, { requireRenderedEndpoint: true });
+  if (candidate.status === "READY_FOR_CC" && boundary.passed) {
+    return { ...candidate, boundary_prosecution: boundary };
+  }
+  return {
+    ...candidate,
+    status: "HOLD_UNVERIFIED_BOUNDARY",
+    hold_reasons: [
+      ...(Array.isArray(candidate.hold_reasons) ? candidate.hold_reasons : []),
+      ...(candidate.status === "READY_FOR_CC" ? [] : [`source status was ${candidate.status || "missing"}`]),
+      ...boundary.reasons,
+    ],
+    boundary_prosecution: boundary,
+  };
+});
 
-const ready = candidates.filter((c) => c.status === "READY_FOR_CC");
-const hold = candidates.filter((c) => c.status !== "READY_FOR_CC");
+const ready = prosecuted.filter((c) => c.status === "READY_FOR_CC" && c.boundary_prosecution?.passed === true);
+const hold = prosecuted.filter((c) => c.status !== "READY_FOR_CC" || c.boundary_prosecution?.passed !== true);
 
 const byType = {};
 for (const row of ready) {
@@ -31,6 +48,9 @@ const readyRegistry = {
     no_placeholders: true,
     cc_requires_ssot_audio_url: true,
     cc_requires_exact_start_end: true,
+    cc_requires_exactly_one_blk_id: true,
+    cc_requires_authoritative_blk_containment: true,
+    cc_requires_ffprobe_verified_rendered_endpoint: true,
     instrumental_rejected: true,
     ready_for_cc_requires_final_materialization_or_existing_delivery_path: true
   },
@@ -46,7 +66,8 @@ const holdRegistry = {
   generated_at: new Date().toISOString(),
   doctrine: {
     rejected_not_deleted: true,
-    hold_requires_review_reason: true
+    hold_requires_review_reason: true,
+    unverified_boundary_defaults_to_hold: true
   },
   totals: {
     hold_total: hold.length
@@ -61,16 +82,17 @@ let md = `# II Inventory Rounded Totals — Line CC Recovery\n\n`;
 md += `Generated: ${new Date().toISOString()}\n\n`;
 md += `## Line CC Review Result\n\n`;
 md += `- Total reviewed: ${candidates.length}\n`;
-md += `- READY_FOR_CC: ${ready.length}\n`;
-md += `- HOLD_REVIEW: ${hold.length}\n\n`;
+md += `- READY_FOR_CC after boundary prosecution: ${ready.length}\n`;
+md += `- HOLD_UNVERIFIED_BOUNDARY / other hold: ${hold.length}\n\n`;
 md += `## READY_FOR_CC by type\n\n`;
 for (const [type, count] of Object.entries(byType).sort()) {
   md += `- ${type}: ${count}\n`;
 }
 md += `\n## Doctrine\n\n`;
 md += `- These are CC-ready inventory records, not automatic public release.\n`;
-md += `- Each READY_FOR_CC item has SSOT audio reference, exact start/end, lyric text, and non-instrumental eligibility.\n`;
-md += `- HOLD_REVIEW items are preserved, not deleted.\n`;
+md += `- Each READY_FOR_CC item proves exactly one blk_id and CC.start >= BLK.start and CC.end <= BLK.end.\n`;
+md += `- Each READY_FOR_CC item has an existing rendered audio file whose duration is measured by ffprobe and matches the CC source window.\n`;
+md += `- Unverified or cross-BLK items are reclassified HOLD_UNVERIFIED_BOUNDARY and preserved, not deleted.\n`;
 md += `- Final customer-facing use still requires delivery path / dressing-room approval.\n`;
 
 fs.writeFileSync(outTotals, md);
