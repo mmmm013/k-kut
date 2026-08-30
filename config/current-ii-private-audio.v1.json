@@ -1,0 +1,49 @@
+{
+  "schema_version": "current-ii-private-audio-v1",
+  "supabase_project_id": "vwlzubxshjjonabpeagd",
+  "storage_bucket": "ii-delivery",
+  "bucket_must_be_public": false,
+  "signed_url_ttl_seconds": 300,
+  "apply_requires_upload_before_deploy": true,
+  "records": [
+    {
+      "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "review_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "title": "A LOVE LIKE THAT",
+      "authority_state": "TRIAGE",
+      "owner_review_enabled": true,
+      "former_public_static_path": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "staging_source_path": "staging/current-ii-private-audio-v1/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
+      "storage_object_path": "current-ii/romance/ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
+      "sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
+      "size_bytes": 663487,
+      "duration_seconds": 41.273469
+    },
+    {
+      "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "review_id": "1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "title": "YOUR HEART POUNDIN'",
+      "authority_state": "TRIAGE",
+      "owner_review_enabled": true,
+      "former_public_static_path": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
+      "staging_source_path": "staging/current-ii-private-audio-v1/bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8.mp3",
+      "storage_object_path": "current-ii/romance/ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49/bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8.mp3",
+      "sha256": "bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8",
+      "size_bytes": 710637,
+      "duration_seconds": 34.429388
+    },
+    {
+      "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
+      "review_id": "6e959ac6-9546-4bae-87b2-ed6584185682",
+      "title": "HELD ROMANCE SOURCE",
+      "authority_state": "HOLD",
+      "owner_review_enabled": false,
+      "former_public_static_path": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+      "staging_source_path": "staging/current-ii-private-audio-v1/75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d.mp3",
+      "storage_object_path": "current-ii/romance/ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682/75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d.mp3",
+      "sha256": "75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d",
+      "size_bytes": 676819,
+      "duration_seconds": 33.436735
+    }
+  ]
+}

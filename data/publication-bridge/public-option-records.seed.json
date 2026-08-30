@@ -6,6 +6,9 @@
       "public_option_id": "personal-warmth-a-love-like-that-seed",
       "source_pix_id_or_track_id": "unknown_existing_delivery_source",
       "kk_id_or_delivery_object_id": "a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle",
+      "product_family": "HUG",
+      "inventory_family": "KK",
+      "price_cents": 799,
       "display_title": "A Love Like That",
       "interpretation_summary": "A warm personal HUG for love, care, thanks, support, or a simple human moment.",
       "action_object_meaning": {
@@ -21,14 +24,14 @@
       "intent_lane": "personal_warmth",
       "risk_level": "standard",
       "approval_status": "public_approved_seed",
-      "audio_delivery_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-      "audio_proof_status": "pass",
-      "payment_allowed": true,
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/aFabJ0cEK5Amaq09RA4ow0A",
+      "audio_delivery_url": "",
+      "audio_proof_status": "superseded_by_current_ii_authority",
+      "payment_allowed": false,
+      "stripe_url_if_payment_allowed": "",
       "public_route": "/personal",
       "more_for_this_feeling_allowed": true,
       "more_from_this_track_allowed": true,
-      "public_notes": "Seed record only. Proves bridge shape before catalog-scale publication."
+      "public_notes": "Historical seed shape only. Not current-II publication authority."
     }
   ]
 }

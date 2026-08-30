@@ -15,7 +15,8 @@
     ],
     "known_registry_kk_id": "6e959ac6-9546-4bae-87b2-ed6584185682",
     "known_registry_ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
-    "known_customer_delivery_audio": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+    "known_customer_delivery_audio": "",
+    "known_private_delivery_audio_object": "current-ii/romance/ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682/75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d.mp3",
     "source_audio_mutated": false
   },
   "song_level_meaning": {

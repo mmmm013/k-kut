@@ -12,6 +12,7 @@ tsconfig.tsbuildinfo
 # Local processing artifacts
 reports/
 tmp/
+staging/
 app/page Bup Text.tsx
 scripts/gpmx-first-pass-process.mjs
 .vercel

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { currentIiOwnerReviewRecords } from "@/lib/currentIiPrivateAudio";
 
 export const dynamic = "force-dynamic";
 
@@ -6,21 +7,6 @@ export const metadata = {
   title: "KKr Canary Authority Review",
   robots: { index: false, follow: false },
 };
-
-const candidates = [
-  {
-    title: "A LOVE LIKE THAT",
-    id: "d3dfd13c-7421-4671-8261-0c735cb51f38",
-    audio:
-      "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
-  },
-  {
-    title: "YOUR HEART POUNDIN’",
-    id: "1f016b4a-f85d-4945-b881-2e0f571e6a49",
-    audio:
-      "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
-  },
-] as const;
 
 type Props = {
   searchParams?: Promise<{ token?: string | string[] }>;
@@ -36,6 +22,7 @@ export default async function KkrAuthorityPage({ searchParams }: Props) {
   if (!expected || supplied !== expected) notFound();
 
   const token = encodeURIComponent(supplied);
+  const candidates = currentIiOwnerReviewRecords();
 
   return (
     <main className="min-h-screen bg-stone-950 px-5 py-10 text-stone-100">
@@ -62,7 +49,7 @@ export default async function KkrAuthorityPage({ searchParams }: Props) {
 
         {candidates.map((candidate, index) => (
           <article
-            key={candidate.id}
+            key={candidate.ii_id}
             className="rounded-3xl border border-stone-700 bg-stone-900 p-6"
           >
             <p className="text-xs font-black uppercase tracking-[0.25em] text-amber-300">
@@ -70,13 +57,16 @@ export default async function KkrAuthorityPage({ searchParams }: Props) {
             </p>
             <h2 className="mt-2 text-2xl font-black">{candidate.title}</h2>
             <p className="mt-2 break-all text-xs text-stone-400">
-              {candidate.id}
+              {candidate.review_id}
             </p>
             <audio
               className="mt-5 w-full"
               controls
               preload="metadata"
-              src={candidate.audio}
+              src={
+                `/api/admin/kkr-authority/audio/${encodeURIComponent(candidate.ii_id)}` +
+                `?token=${token}`
+              }
             />
             <p className="mt-4 text-sm leading-6 text-stone-300">
               Listen to the complete delivered file. Approval must cover the

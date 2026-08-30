@@ -41,10 +41,6 @@ for (const record of generated.records || []) {
     if (!(field in record)) fail(`${record.public_option_id} missing required field: ${field}`);
   }
 
-  if (!record.audio_delivery_url?.startsWith("/ii-delivery/")) {
-    fail(`${record.public_option_id} audio must be public II delivery audio.`);
-  }
-
   if (record.public_route && !contract.known_public_routes.includes(record.public_route) && !record.public_route.startsWith("/personal/")) {
     fail(`${record.public_option_id} public route not allowed: ${record.public_route}`);
   }
@@ -57,6 +53,11 @@ for (const record of generated.records || []) {
     if (record.audio_proof_status !== "pass" || record.payment_allowed !== true) {
       fail(`${record.public_option_id} STAGE record lacks audio/payment proof.`);
     }
+    if (!record.audio_delivery_url?.startsWith("/api/ii-delivery/")) {
+      fail(`${record.public_option_id} STAGE audio must use controlled delivery.`);
+    }
+  } else if (record.audio_delivery_url !== "" || record.payment_allowed !== false) {
+    fail(`${record.public_option_id} held record exposes audio or payment.`);
   }
 
   const text = JSON.stringify(record).toLowerCase();

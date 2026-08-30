@@ -4,6 +4,15 @@ import path from "node:path";
 const root = process.cwd();
 const manifestPath = path.join(root, "data", "production", "first-production-canary-v1.json");
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+const privateAudio = JSON.parse(
+  fs.readFileSync(
+    path.join(root, "config", "current-ii-private-audio.v1.json"),
+    "utf8",
+  ),
+);
+const privateAudioById = new Map(
+  (privateAudio.records || []).map((record) => [record.ii_id, record]),
+);
 
 const allowed = new Set(["STAGE", "TRIAGE", "BLOCKED_MISSING_AUTHORITY"]);
 const productLaw = new Map([
@@ -34,8 +43,21 @@ for (const record of manifest.records) {
   if (!/^[a-f0-9]{64}$/.test(record.delivery_sha256 || "")) {
     throw new Error(`Missing delivery hash: ${record.ii_id}`);
   }
-  const file = path.join(root, "public", record.delivery_audio_url.replace(/^\//, ""));
-  if (!fs.existsSync(file)) throw new Error(`Delivery audio absent: ${record.ii_id}`);
+  const privateRecord = privateAudioById.get(record.ii_id);
+  if (!privateRecord) throw new Error(`Private delivery record absent: ${record.ii_id}`);
+  if (
+    record.private_delivery_audio?.bucket !== privateAudio.storage_bucket ||
+    record.private_delivery_audio?.object_path !== privateRecord.storage_object_path ||
+    privateRecord.sha256 !== record.delivery_sha256
+  ) {
+    throw new Error(`Private delivery authority mismatch: ${record.ii_id}`);
+  }
+  if (record.delivery_audio_url?.startsWith("/ii-delivery/")) {
+    throw new Error(`Static public delivery audio forbidden: ${record.ii_id}`);
+  }
+  if (record.status !== "STAGE" && record.delivery_audio_url !== "") {
+    throw new Error(`Held record exposes delivery audio: ${record.ii_id}`);
+  }
   if (record.status === "STAGE" && record.missing_current_proof?.length) {
     throw new Error(`STAGE record still has missing proof: ${record.ii_id}`);
   }

@@ -76,7 +76,13 @@
         "repair_reason": "Owner reported that the 24-second fixed window entered the next VTP/InTP and stopped mid-vocal.",
         "owner_confirmation_state": "PENDING_CURRENT_DELIVERY_HASH_LISTEN"
       },
-      "delivery_audio_url": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
+      "delivery_audio_url": "",
+      "private_delivery_audio": {
+        "bucket": "ii-delivery",
+        "object_path": "current-ii/romance/ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
+        "visibility": "private",
+        "apply_state": "UPLOAD_REQUIRED_BEFORE_DEPLOY"
+      },
       "delivery_materialization": {
         "shape": "front_padding -> governed_kk -> back_padding -> gpmx_twinkle -> stop",
         "front_padding_seconds": 1,
@@ -124,7 +130,16 @@
         "remote_supabase_url_not_required_for_customer_delivery": true,
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3"
+      "delivery_audio_url": "",
+      "private_delivery_audio": {
+        "bucket": "ii-delivery",
+        "object_path": "current-ii/romance/ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49/bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8.mp3",
+        "visibility": "private",
+        "apply_state": "UPLOAD_REQUIRED_BEFORE_DEPLOY",
+        "sha256": "bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8",
+        "size_bytes": 710637,
+        "duration_seconds": 34.429388
+      }
     },
     {
       "ii_id": "ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682",
@@ -144,7 +159,7 @@
       "public_inventory_type": "HELD_SOURCE_NOT_PUBLIC_INVENTORY",
       "public_use_status": "HOLD",
       "hold_reason": "Song concerns noncommitment and sexual desire. Repair and continued-care matching was wrong. Exact structural BLKs and parent-stripped NBLKs are not yet independently proven.",
-      "delivery_status": "audio_file_preserved_public_meaning_approval_revoked",
+      "delivery_status": "audio_evidence_private_upload_pending_public_meaning_approval_revoked",
       "delivery_requirements": {
         "front_padding_required": true,
         "back_padding_required": true,
@@ -162,7 +177,16 @@
         "remote_supabase_url_not_required_for_customer_delivery": true,
         "no_instrumental_allowed": true
       },
-      "delivery_audio_url": "/ii-delivery/romance/dont-call-it-love-6e959ac6-9546-4bae-87b2-ed6584185682-bookend-twinkle.mp3",
+      "delivery_audio_url": "",
+      "private_delivery_audio": {
+        "bucket": "ii-delivery",
+        "object_path": "current-ii/romance/ii-romance-reuse-6e959ac6-9546-4bae-87b2-ed6584185682/75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d.mp3",
+        "visibility": "private",
+        "apply_state": "UPLOAD_REQUIRED_BEFORE_DEPLOY",
+        "sha256": "75e92da12f0110977539ae646ad5d1a2339027f7c2300e0ca8f9a0392f50831d",
+        "size_bytes": 676819,
+        "duration_seconds": 33.436735
+      },
       "reprocessing_authority": "data/track-digestion/dont-call-it-love/song-authority-v001.json"
     }
   ],

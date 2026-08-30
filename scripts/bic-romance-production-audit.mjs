@@ -1,6 +1,6 @@
 const PAGE_URL = "https://www.k-kut.com/romance";
 
-const EXPECTED_AUDIO = [
+const CONTAINED_AUDIO = [
   "https://www.k-kut.com/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
   "https://www.k-kut.com/ii-delivery/romance/your-heart-poundin-1f016b4a-f85d-4945-b881-2e0f571e6a49-bookend-twinkle.mp3",
 ];
@@ -116,8 +116,8 @@ console.log("---- PAGE SRCS ----");
 for (const src of srcs) console.log(src);
 
 console.log("");
-console.log("---- EXPECTED AUDIO URLS ----");
-for (const url of EXPECTED_AUDIO) {
+console.log("---- CONTAINED STATIC AUDIO URLS ----");
+for (const url of CONTAINED_AUDIO) {
   const res = await headOrGet(url);
 
   if (!res) {
@@ -130,8 +130,7 @@ for (const url of EXPECTED_AUDIO) {
 
   console.log(res.status, contentType, contentLength, url);
 
-  if (res.status !== 200) fail(`Audio not 200: ${url}`);
-  if (!contentType.includes("audio")) fail(`Audio content-type not audio: ${url} => ${contentType}`);
+  if (res.status !== 404) fail(`Contained static audio is still reachable: ${url}`);
 }
 
 console.log("");
@@ -182,19 +181,7 @@ for (const href of hrefs) {
 console.log("");
 console.log("---- AUDIO SRC CHECK ----");
 for (const src of srcs.filter((s) => s.includes("/ii-delivery/"))) {
-  const url = src.startsWith("http") ? src : new URL(src, PAGE_URL).toString();
-  const res = await headOrGet(url);
-
-  if (!res) {
-    fail(`Audio src failed: ${url}`);
-    continue;
-  }
-
-  const contentType = res.headers.get("content-type") || "";
-  console.log(res.status, contentType, url);
-
-  if (res.status !== 200) fail(`Audio src not 200: ${url}`);
-  if (!contentType.includes("audio")) fail(`Audio src content-type not audio: ${url}`);
+  fail(`Page still renders a static II-delivery audio source: ${src}`);
 }
 
 console.log("");
