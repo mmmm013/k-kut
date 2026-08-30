@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   A2P_CHARGES_DISCLOSURE,
   A2P_CONSENT_DISCLOSURE,
@@ -11,16 +12,31 @@ import {
   A2P_OPT_OUT_DISCLOSURE,
   A2P_PROGRAM_NAME,
 } from "../../lib/a2p-consent";
+import { getPublicDomainIdentity } from "../../lib/publicDomainIdentity";
 
-export default function TermsPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const identity = await getPublicDomainIdentity();
+
+  return {
+    title: `Terms and Conditions | ${identity.publicName}`,
+    description: identity.legalDescription,
+  };
+}
+
+export default async function TermsPage() {
+  const identity = await getPublicDomainIdentity();
+
   return (
     <main className="min-h-screen bg-neutral-950 px-6 py-12 text-neutral-100">
       <section className="mx-auto max-w-3xl">
         <a href="/" className="text-sm text-amber-300">
-          ← Back to K-KUT
+          ← Back to {identity.publicName}
         </a>
+        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+          {identity.publicName} · G Putnam Music legal
+        </p>
 
-        <h1 className="mt-8 text-4xl font-bold text-white">
+        <h1 className="mt-3 text-4xl font-bold text-white">
           Terms and Conditions
         </h1>
 
