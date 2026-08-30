@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs && npm run audit:cc-single-blk-boundary && npm run audit:homepage-hold-alignment && npm run audit:sent-i-meant-display && npm run audit:current-ii-authority && npm run audit:static-audio-containment && npm run audit:controlled-purchase-canary && node scripts/audit-a-love-like-that-boundary-v1.mjs && node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
+    "prebuild": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs && npm run audit:cc-single-blk-boundary && npm run audit:homepage-hold-alignment && npm run audit:hug-hold-alignment && npm run audit:sent-i-meant-display && npm run audit:current-ii-authority && npm run audit:static-audio-containment && npm run audit:controlled-purchase-canary && node scripts/audit-a-love-like-that-boundary-v1.mjs && node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
@@ -36,7 +36,8 @@
     "audit:blk-kk-text-freeze": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs",
     "audit:cc-single-blk-boundary": "node scripts/audit-cc-single-blk-boundary-law-v1.mjs",
     "audit:homepage-hold-alignment": "node scripts/audit-homepage-hold-alignment-v1.mjs",
-    "audit:sent-i-meant-display": "node scripts/audit-sent-i-meant-display-standard-v1.mjs"
+    "audit:sent-i-meant-display": "node scripts/audit-sent-i-meant-display-standard-v1.mjs",
+    "audit:hug-hold-alignment": "node scripts/audit-hug-hold-alignment-v1.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.0",
