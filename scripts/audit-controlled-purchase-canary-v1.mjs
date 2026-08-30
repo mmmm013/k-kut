@@ -94,8 +94,16 @@ for (const required of [
   'custom: "Recipient mobile number"',
   'sales_canary: "one_ii_one_public_option"',
   "/order/success?session_id={CHECKOUT_SESSION_ID}",
+  "function isLiveStripeSecretKey(value: string)",
+  'returnToStore(request, "stripe-secret-key-invalid")',
 ]) {
   if (!checkout.includes(required)) fail(`checkout missing ${required}`);
+}
+if (
+  checkout.indexOf('returnToStore(request, "stripe-secret-key-invalid")') >
+  checkout.indexOf("token = await createPendingH2Order")
+) {
+  fail("invalid Stripe key can create an orphan pending order");
 }
 for (const forbidden of ["buy.stripe.com", "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL"]) {
   if (checkout.includes(forbidden)) fail(`checkout contains bypass ${forbidden}`);

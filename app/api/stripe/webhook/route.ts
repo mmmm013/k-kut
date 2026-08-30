@@ -18,6 +18,10 @@ const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const LEGACY_CLIENT_REFERENCE_PREFIX = "H1|";
 const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 
+function isLiveStripeSecretKey(value: string) {
+  return /^(?:sk|rk)_live_[A-Za-z0-9]+$/u.test(value.trim());
+}
+
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 type ParsedClientReference = {
@@ -502,10 +506,21 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET() {
+  const checkoutSessionCreationReady = isLiveStripeSecretKey(stripeSecretKey);
+  const webhookReady = Boolean(stripe && webhookSecret);
+
   return NextResponse.json({
     ok: true,
     route: "/api/stripe/webhook",
-    status: stripe && webhookSecret ? "configured" : "missing_env",
+    status:
+      webhookReady && checkoutSessionCreationReady
+        ? "configured"
+        : webhookReady
+          ? "webhook_configured_checkout_blocked"
+          : "missing_env",
+    checkout_session_creation: checkoutSessionCreationReady
+      ? "configured"
+      : "invalid_or_missing_live_secret_key",
     handles: ["checkout.session.completed", "payment_intent.succeeded"],
     exact_ii_capture:
       "h2_pending_order_token_to_selected_hug_id_plus_server_stripe_public_option_id",
