@@ -2,6 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const configPath = "manifests/kkr/audio/ii-delivery-bookend-twinkle.json";
 
