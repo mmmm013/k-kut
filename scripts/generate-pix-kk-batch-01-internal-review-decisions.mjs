@@ -1,4 +1,7 @@
 import fs from "node:fs";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const queuePath = "data/gpmc-sensory/batch-scale/review-queues/pix-kk-batch-01-review-priority-queue.json";
 const outputPath = "data/gpmc-sensory/batch-scale/approval/pix-kk-batch-01-internal-review-decisions.json";

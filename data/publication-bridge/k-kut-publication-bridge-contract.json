@@ -4,8 +4,12 @@
   "purpose": "Define the required bridge from PIX/KK/II inventory to public buyer-facing K-KUT options.",
   "core_rule": "Inventory does not equal public. Candidate does not equal approved. Approved meaning does not equal payable. Public buyer options require a complete publish-safe bridge record.",
   "required_bridge_fields": [
+    "public_option_id",
     "source_pix_id_or_track_id",
     "kk_id_or_delivery_object_id",
+    "product_family",
+    "inventory_family",
+    "price_cents",
     "interpretation_summary",
     "action_object_meaning",
     "positive_connotations",
@@ -26,6 +30,9 @@
   ],
   "publication_laws": [
     "No raw inventory item may publish directly to buyer UI.",
+    "No item may publish, play, enter checkout, deliver, or fulfill unless its exact ii_id is STAGE in the current production canary.",
+    "Checkout and fulfillment must preserve the exact public_option_id and its exact ii_id together so semantic context cannot collapse to an ambiguous inventory match.",
+    "HUG requires KK at 799 cents; TUG requires sK at 499 cents; BUG requires mK at 199 cents unless a separately governed Story BUG add-on is selected.",
     "No one-term search may publish directly to buyer UI.",
     "No title-only match may publish directly to buyer UI.",
     "No mood-only match may publish directly to buyer UI.",

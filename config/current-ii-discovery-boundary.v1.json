@@ -1,0 +1,31 @@
+{
+  "schema_version": "current-ii-discovery-boundary-v1",
+  "status": "ACTIVE_CURRENT_II_DISCOVERY_BOUNDARY",
+  "repo_keyword_discovery_is_authority": false,
+  "current_source_authority": [
+    "Supabase public.tracks LT-PIX SSOT records",
+    "DISCO lineage links",
+    "owner-locked per-LT-PIX worksheet and review gate"
+  ],
+  "excluded_directory_names": [
+    "archive",
+    "archives",
+    "backup",
+    "backups",
+    "recovery-review",
+    "staging",
+    "superseded"
+  ],
+  "excluded_path_prefixes": [
+    "data/gpmc-sensory/batch-scale",
+    "data/hugz",
+    "data/ii-delivery-registry",
+    "data/production",
+    "data/publication-bridge",
+    "data/sentimeant",
+    "lib/hugzSeedCatalog.ts",
+    "lib/sentimeantStrictKkPool.ts",
+    "public"
+  ],
+  "output_authority_status": "SUPERSEDED_KEYWORD_DISCOVERY_NOT_CURRENT_II"
+}

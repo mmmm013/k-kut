@@ -47,6 +47,7 @@
     "sentiment_product_type",
     "typed_feeling",
     "interpreted_feeling",
+    "selected_public_option_id",
     "selected_hug_id",
     "selected_hug_title",
     "delivery_preference",

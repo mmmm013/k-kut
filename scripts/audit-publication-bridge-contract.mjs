@@ -17,8 +17,12 @@ if (!fs.existsSync(path)) {
   const data = JSON.parse(fs.readFileSync(path, "utf8"));
 
   for (const field of [
+    "public_option_id",
     "source_pix_id_or_track_id",
     "kk_id_or_delivery_object_id",
+    "product_family",
+    "inventory_family",
+    "price_cents",
     "interpretation_summary",
     "shared_emotion_ids",
     "intent_lane",
@@ -36,6 +40,8 @@ if (!fs.existsSync(path)) {
 
   for (const law of [
     "No raw inventory item may publish directly to buyer UI.",
+    "No item may publish, play, enter checkout, deliver, or fulfill unless its exact ii_id is STAGE in the current production canary.",
+    "Checkout and fulfillment must preserve the exact public_option_id and its exact ii_id together so semantic context cannot collapse to an ambiguous inventory match.",
     "No one-term search may publish directly to buyer UI.",
     "No title-only match may publish directly to buyer UI.",
     "No payment appears until approval_status is public_approved and payment_allowed is true.",

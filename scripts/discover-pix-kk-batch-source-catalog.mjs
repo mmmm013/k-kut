@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const outputPath = "data/gpmc-sensory/batch-scale/pix-kk-batch-source-catalog.json";
+const boundaryPath = "config/current-ii-discovery-boundary.v1.json";
+const boundary = JSON.parse(fs.readFileSync(boundaryPath, "utf8"));
 
 const scanRoots = ["data", "lib", "public"].filter((p) => fs.existsSync(p));
 const allowedExtensions = new Set([".json", ".jsonl", ".ts", ".tsx", ".js", ".mjs", ".md", ".txt"]);
@@ -21,11 +23,24 @@ const themeKeywords = {
   kupid_spark: ["kupid", "spark", "crush"]
 };
 
+function normalized(value) {
+  return value.replaceAll("\\", "/").replace(/^\.\//, "");
+}
+
+function excluded(value, directoryName = "") {
+  const candidate = normalized(value);
+  if (boundary.excluded_directory_names.includes(directoryName)) return true;
+  return boundary.excluded_path_prefixes.some(
+    (prefix) => candidate === prefix || candidate.startsWith(`${prefix}/`),
+  );
+}
+
 function walk(dir) {
   const out = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (entry.name.startsWith(".") || entry.name === "node_modules" || entry.name === ".next" || entry.name === ".git") continue;
     const full = path.join(dir, entry.name);
+    if (excluded(full, entry.isDirectory() ? entry.name : "")) continue;
     if (entry.isDirectory()) out.push(...walk(full));
     else if (allowedExtensions.has(path.extname(entry.name).toLowerCase())) out.push(full);
   }
@@ -80,8 +95,9 @@ for (const file of files) {
     primary_theme_score: themeScores[0].score,
     audio_hints: audioHints(text),
     audio_hint_count: audioHints(text).length,
-    candidate_generation_status: "ready_for_batch_candidate_generation",
-    review_status: "not_reviewed",
+    candidate_generation_status: "superseded_keyword_discovery_only",
+    review_status: "breadcrumb_only",
+    authority_status: boundary.output_authority_status,
     public_status: "not_public",
     public_route: null,
     stripe_url_if_payment_allowed: null,
@@ -104,15 +120,17 @@ const output = {
   routes_created: false,
   stripe_created: false,
   scan_roots: scanRoots,
+  discovery_boundary: boundaryPath,
+  repo_keyword_discovery_is_authority: false,
   files_scanned: files.length,
   source_records_found: records.length,
   preferred_batch_size: 100,
   minimum_batch_size: 25,
   theme_counts: themeCounts,
   critical_warning:
-    "This is batch source discovery only. It does not approve candidates, publish records, create routes, create Stripe links, or expose candidates in buyer flow.",
+    "This is a superseded keyword-discovery breadcrumb only. Current candidate authority begins with Supabase tracks LT-PIX SSOT plus DISCO lineage and the owner-locked per-LT-PIX gate.",
   batch_rule:
-    "Use this catalog to generate internal candidates in batches. Deep manual review is required only for exceptions, high-risk lanes, internal approval, or public promotion.",
+    "Never use this catalog to generate, promote, publish, price, deliver, or rediscover a current II.",
   records
 };
 

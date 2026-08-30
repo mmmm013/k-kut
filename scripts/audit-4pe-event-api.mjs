@@ -20,6 +20,7 @@ check("Route has SMS disabled response", route.includes("sms_enabled: false"));
 check("Route validates event types", route.includes("ALLOWED_EVENT_TYPES"));
 check("Route captures feeling_entered", route.includes('"feeling_entered"'));
 check("Route captures option_selected", route.includes('"option_selected"'));
+check("Route captures selected public option", route.includes("selected_public_option_id"));
 check("Route captures checkout_clicked", route.includes('"checkout_clicked"'));
 check("Route captures delivery preference", route.includes("delivery_preference"));
 check("Route captures consent_sms", route.includes("consent_sms"));

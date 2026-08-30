@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
-import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
+import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
 
-const CATALOG_URL =
-  "https://vwlzubxshjjonabpeagd.supabase.co/storage/v1/object/public/ii-delivery/catalog/public-ii-catalog.json";
-
-const SK_HUG_PRICE_CENTS = 499;
-const KK_HUG_PRICE_CENTS = 799;
+const TUG_PRICE_CENTS = 499;
+const HUG_PRICE_CENTS = 799;
+const BUG_PRICE_CENTS = 199;
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const CLIENT_REFERENCE_LIMIT = 200;
@@ -17,72 +15,45 @@ const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 const BF_PROFILE = "k-kut";
 const STRIPE_REDIRECT_STATUS = 303;
 
-const TRUE_VALUES = new Set([
-  "1",
-  "true",
-  "yes",
-  "pass",
-  "passed",
-  "present",
-  "verified",
-  "at_end",
-  "end",
-]);
-
-type InventoryFamily = "SK" | "KK";
-type OfferCode = "sk" | "kk";
+type InventoryFamily = "SK" | "KK" | "MK";
+type ProductFamily = "TUG" | "HUG" | "BUG";
+type OfferCode = "sk" | "kk" | "mk";
 
 type OfferConfig = {
   code: OfferCode;
   family: InventoryFamily;
-  publicProductName: "sK HUG" | "KK HUG";
-  priceCents: 499 | 799;
+  productFamily: ProductFamily;
+  publicProductName: ProductFamily;
+  priceCents: 499 | 799 | 199;
 };
-
-type RawCatalogRecord = {
-  inventory_id?: unknown;
-  inventory_family?: unknown;
-  signature_audio_logo_integral_at_end?: unknown;
-  public_storage_status?: unknown;
-};
-
-type RawCatalog = {
-  records?: unknown;
-};
-
-function cleanText(value: unknown, max = 200) {
-  return typeof value === "string" ? value.trim().slice(0, max) : "";
-}
-
-function isTrue(value: unknown) {
-  return TRUE_VALUES.has(cleanText(value, 40).toLowerCase());
-}
-
-function inventoryFamily(value: unknown): InventoryFamily | "" {
-  const normalized = cleanText(value, 20)
-    .replace(/[^A-Za-z]/g, "")
-    .toUpperCase();
-
-  if (normalized === "SK") return "SK";
-  if (normalized === "KK") return "KK";
-  return "";
-}
 
 function offerConfig(offer: OfferCode): OfferConfig {
   if (offer === "sk") {
     return {
       code: "sk",
       family: "SK",
-      publicProductName: "sK HUG",
-      priceCents: SK_HUG_PRICE_CENTS,
+      productFamily: "TUG",
+      publicProductName: "TUG",
+      priceCents: TUG_PRICE_CENTS,
+    };
+  }
+
+  if (offer === "mk") {
+    return {
+      code: "mk",
+      family: "MK",
+      productFamily: "BUG",
+      publicProductName: "BUG",
+      priceCents: BUG_PRICE_CENTS,
     };
   }
 
   return {
     code: "kk",
     family: "KK",
-    publicProductName: "KK HUG",
-    priceCents: KK_HUG_PRICE_CENTS,
+    productFamily: "HUG",
+    publicProductName: "HUG",
+    priceCents: HUG_PRICE_CENTS,
   };
 }
 
@@ -99,7 +70,7 @@ function safeInventoryId(value: FormDataEntryValue | string | null) {
 }
 
 function safeOffer(value: FormDataEntryValue | string | null): OfferCode | null {
-  return value === "sk" || value === "kk" ? value : null;
+  return value === "sk" || value === "kk" || value === "mk" ? value : null;
 }
 
 function normalizePersonalNote(value: FormDataEntryValue | null) {
@@ -121,48 +92,9 @@ function originDomain(request: NextRequest) {
   return /^[A-Za-z0-9.-]{1,253}$/.test(host) ? host : "k-kut.com";
 }
 
-async function verifiedInventoryFamily(
-  inventoryId: string,
-): Promise<InventoryFamily | ""> {
-  try {
-    const response = await fetch(CATALOG_URL, {
-      headers: { Accept: "application/json" },
-      cache: "no-store",
-    });
-
-    if (!response.ok) return "";
-
-    const payload = (await response.json()) as RawCatalog;
-    const records = Array.isArray(payload.records)
-      ? (payload.records as RawCatalogRecord[])
-      : [];
-
-    const record = records.find(
-      (candidate) =>
-        cleanText(candidate.inventory_id, 200) === inventoryId,
-    );
-
-    if (!record) return "";
-
-    if (
-      cleanText(record.public_storage_status, 80) !==
-      "PUBLIC_STORAGE_VERIFIED"
-    ) {
-      return "";
-    }
-
-    if (!isTrue(record.signature_audio_logo_integral_at_end)) {
-      return "";
-    }
-
-    return inventoryFamily(record.inventory_family);
-  } catch {
-    return "";
-  }
-}
-
 async function governedCheckout(
   request: NextRequest,
+  publicOptionId: string,
   inventoryId: string,
   offer: OfferCode,
   personalNote: string,
@@ -178,18 +110,19 @@ async function governedCheckout(
     return returnToStore(request, "personal-note-over-13-words");
   }
 
-  const publicationOption = findApprovedPublicOptionByInventoryId(inventoryId);
-  const verifiedFamily =
-    (await verifiedInventoryFamily(inventoryId)) ||
-    (publicationOption ? "KK" : "");
-
-  if (!verifiedFamily) {
+  const publicationOption = findApprovedPublicOptionByPublicOptionId(publicOptionId);
+  if (!publicationOption) {
     return returnToStore(request, "selection-unavailable");
   }
 
   const config = offerConfig(offer);
 
-  if (verifiedFamily !== config.family) {
+  if (
+    publicationOption.kk_id_or_delivery_object_id !== inventoryId ||
+    publicationOption.inventory_family !== config.family ||
+    publicationOption.product_family !== config.productFamily ||
+    publicationOption.price_cents !== config.priceCents
+  ) {
     return returnToStore(request, "offer-inventory-mismatch");
   }
 
@@ -258,7 +191,10 @@ async function governedCheckout(
         },
       },
       metadata: {
+        public_option_id: publicationOption.public_option_id,
         selected_hug_id: inventoryId,
+        product_family: config.productFamily,
+        inventory_family: config.family,
         public_product_name: config.publicProductName,
         bf_profile: BF_PROFILE,
         origin_domain: originDomain(request),
@@ -267,7 +203,10 @@ async function governedCheckout(
       payment_intent_data: {
         description: `K-KUT ${config.publicProductName}`,
         metadata: {
+          public_option_id: publicationOption.public_option_id,
           selected_hug_id: inventoryId,
+          product_family: config.productFamily,
+          inventory_family: config.family,
           public_product_name: config.publicProductName,
           bf_profile: BF_PROFILE,
           origin_domain: originDomain(request),
@@ -291,8 +230,15 @@ async function governedCheckout(
 }
 
 export async function GET(request: NextRequest) {
+  const publicOptionId = safeInventoryId(
+    request.nextUrl.searchParams.get("public_option_id"),
+  );
   const inventoryId = safeInventoryId(request.nextUrl.searchParams.get("ii"));
   const offer = safeOffer(request.nextUrl.searchParams.get("offer"));
+
+  if (!publicOptionId) {
+    return returnToStore(request, "invalid-public-option");
+  }
 
   if (!inventoryId) {
     return returnToStore(request, "invalid-selection");
@@ -302,14 +248,19 @@ export async function GET(request: NextRequest) {
     return returnToStore(request, "invalid-offer");
   }
 
-  return governedCheckout(request, inventoryId, offer, "");
+  return governedCheckout(request, publicOptionId, inventoryId, offer, "");
 }
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
+  const publicOptionId = safeInventoryId(formData.get("public_option_id"));
   const inventoryId = safeInventoryId(formData.get("ii"));
   const offer = safeOffer(formData.get("offer"));
   const personalNote = normalizePersonalNote(formData.get("personal_note"));
+
+  if (!publicOptionId) {
+    return returnToStore(request, "invalid-public-option");
+  }
 
   if (!inventoryId) {
     return returnToStore(request, "invalid-selection");
@@ -319,5 +270,11 @@ export async function POST(request: NextRequest) {
     return returnToStore(request, "invalid-offer");
   }
 
-  return governedCheckout(request, inventoryId, offer, personalNote);
+  return governedCheckout(
+    request,
+    publicOptionId,
+    inventoryId,
+    offer,
+    personalNote,
+  );
 }

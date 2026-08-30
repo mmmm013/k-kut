@@ -1,4 +1,7 @@
 import fs from "node:fs";
+import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+
+assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const sourcePath = "data/gpmc-sensory/income-fill/source-discovery/income-fill-sprint-01-source-pool.json";
 const outputPath = "data/gpmc-sensory/income-fill/candidates/income-fill-sprint-01-internal-candidates.json";

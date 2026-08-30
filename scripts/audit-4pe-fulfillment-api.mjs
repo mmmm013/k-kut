@@ -15,6 +15,8 @@ console.log("=============================\n");
 
 check("Fulfillment route exists", fs.existsSync(routePath));
 check("Route requires selected HUG id", route.includes("missing_selected_hug_id"));
+check("Route requires selected public option id", route.includes("missing_selected_public_option_id"));
+check("Route joins public option to exact II", route.includes("currentOption.kk_id_or_delivery_object_id !== selectedHugId"));
 check("Route captures selected_hug_title", route.includes("selected_hug_title"));
 check("Route captures delivery preference", route.includes("delivery_preference"));
 check("Route captures customer_email", route.includes("customer_email"));

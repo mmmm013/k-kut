@@ -14,6 +14,18 @@ console.log("GENERATED PUBLIC OPTION RECORDS AUDIT");
 
 const contract = JSON.parse(fs.readFileSync(contractPath, "utf8"));
 const generated = JSON.parse(fs.readFileSync(generatedPath, "utf8"));
+const canary = JSON.parse(
+  fs.readFileSync("data/production/first-production-canary-v1.json", "utf8"),
+);
+const stagedIds = new Set(
+  (canary.records || [])
+    .filter(
+      (record) =>
+        record.status === "STAGE" &&
+        (record.missing_current_proof?.length || 0) === 0,
+    )
+    .map((record) => record.ii_id),
+);
 
 if (!Array.isArray(generated.records) || generated.records.length < 1) {
   fail("Generated bridge registry must contain at least one record.");
@@ -29,28 +41,22 @@ for (const record of generated.records || []) {
     if (!(field in record)) fail(`${record.public_option_id} missing required field: ${field}`);
   }
 
-  if (record.approval_status !== "public_approved_generated_from_reusable_ii") {
-    fail(`${record.public_option_id} has wrong approval status.`);
-  }
-
-  if (record.audio_proof_status !== "pass") {
-    fail(`${record.public_option_id} audio_proof_status must be pass.`);
-  }
-
   if (!record.audio_delivery_url?.startsWith("/ii-delivery/")) {
     fail(`${record.public_option_id} audio must be public II delivery audio.`);
   }
 
-  if (record.payment_allowed !== true) {
-    fail(`${record.public_option_id} generated public records must be payable.`);
-  }
-
-  if (!record.stripe_url_if_payment_allowed?.startsWith("https://buy.stripe.com/")) {
-    fail(`${record.public_option_id} missing Stripe URL.`);
-  }
-
-  if (!contract.known_public_routes.includes(record.public_route) && !record.public_route.startsWith("/personal/")) {
+  if (record.public_route && !contract.known_public_routes.includes(record.public_route) && !record.public_route.startsWith("/personal/")) {
     fail(`${record.public_option_id} public route not allowed: ${record.public_route}`);
+  }
+
+  const staged = stagedIds.has(record.kk_id_or_delivery_object_id);
+  if (staged) {
+    if (record.approval_status !== "public_approved_generated_from_reusable_ii") {
+      fail(`${record.public_option_id} STAGE record has wrong approval status.`);
+    }
+    if (record.audio_proof_status !== "pass" || record.payment_allowed !== true) {
+      fail(`${record.public_option_id} STAGE record lacks audio/payment proof.`);
+    }
   }
 
   const text = JSON.stringify(record).toLowerCase();

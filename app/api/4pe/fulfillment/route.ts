@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
+import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
 
@@ -41,12 +42,38 @@ export async function POST(req: NextRequest) {
   }
 
   const selectedHugId = cleanString(body.selected_hug_id, 160);
+  const selectedPublicOptionId = cleanString(body.selected_public_option_id, 200);
   const selectedHugTitle = cleanString(body.selected_hug_title, 220);
 
   if (!selectedHugId) {
     return NextResponse.json(
       { ok: false, error: "missing_selected_hug_id" },
       { status: 400 }
+    );
+  }
+
+  if (!selectedPublicOptionId) {
+    return NextResponse.json(
+      { ok: false, error: "missing_selected_public_option_id" },
+      { status: 400 },
+    );
+  }
+
+  const currentOption = findApprovedPublicOptionByPublicOptionId(
+    selectedPublicOptionId,
+  );
+
+  if (
+    !currentOption ||
+    currentOption.kk_id_or_delivery_object_id !== selectedHugId
+  ) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "current_ii_not_staged",
+        selected_hug_id: selectedHugId,
+      },
+      { status: 409 },
     );
   }
 
@@ -59,13 +86,15 @@ export async function POST(req: NextRequest) {
     status: "pending_checkout_or_manual_fulfillment",
 
     source_page: cleanString(body.source_page, 200) || "/browse",
-    product_family: cleanString(body.product_family, 80) || "HUG",
+    product_family: currentOption.product_family,
+    inventory_family: currentOption.inventory_family,
     holiday_set: cleanString(body.holiday_set, 80) || "mothers_day",
     source_song: cleanString(body.source_song, 120) || "Thank You",
 
     selected_hug_id: selectedHugId,
+    selected_public_option_id: selectedPublicOptionId,
     selected_hug_title: selectedHugTitle,
-    sentiment_product_type: cleanString(body.sentiment_product_type, 80) || "HUG",
+    sentiment_product_type: currentOption.product_family,
 
     typed_feeling: cleanString(body.typed_feeling, 500),
     interpreted_feeling: cleanString(body.interpreted_feeling, 220),
@@ -106,6 +135,7 @@ export async function POST(req: NextRequest) {
     ok: true,
     fulfillment_id: record.fulfillment_id,
     selected_hug_id: record.selected_hug_id,
+    selected_public_option_id: record.selected_public_option_id,
     status: record.status,
     sms_enabled: false,
     download_allowed: false,
@@ -116,7 +146,7 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     route: "/api/4pe/fulfillment",
-    status: "ready",
-    rule: "Creates pending HUG fulfillment records only. No SMS. No download. No UI wiring.",
+    status: "current_ii_gate_active",
+    rule: "Creates a pending fulfillment record only for an exact STAGE-authorized II. No SMS. No download. No UI wiring.",
   });
 }

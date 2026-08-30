@@ -84,6 +84,7 @@ export async function POST(req: NextRequest) {
     sentiment_product_type: cleanString(body.sentiment_product_type, 80),
     typed_feeling: cleanString(body.typed_feeling, 500),
     interpreted_feeling: cleanString(body.interpreted_feeling, 200),
+    selected_public_option_id: cleanString(body.selected_public_option_id, 200),
     selected_hug_id: cleanString(body.selected_hug_id, 160),
     selected_hug_title: cleanString(body.selected_hug_title, 200),
     delivery_preference: deliveryPreference,

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
 import EofSignatureAudio from "@/components/EofSignatureAudio";
+import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const dynamic = "force-dynamic";
 
@@ -13,12 +14,6 @@ type HugRow = {
   sender_name?: string;
   recipient_name?: string;
   remaining_forwards?: number;
-};
-
-type AudioQcRow = {
-  delivered_url_or_path: string;
-  audio_http_status: number | null;
-  audio_content_type: string | null;
 };
 
 function getSupabase() {
@@ -42,21 +37,6 @@ function firstString(...values: unknown[]) {
   }
 
   return "";
-}
-
-function isSafePlayableUrl(value: string) {
-  const raw = value.trim().toLowerCase();
-
-  return (
-    raw.startsWith("https://") &&
-    raw.includes(".mp3") &&
-    !raw.includes("instro") &&
-    !raw.includes("instrumental") &&
-    !raw.includes("mk-products") &&
-    !raw.includes("/mks/") &&
-    !raw.includes("mini") &&
-    !raw.endsWith(".wav")
-  );
 }
 
 export default async function HugDeliveryPage({
@@ -87,25 +67,13 @@ export default async function HugDeliveryPage({
 
   const hug = data as HugRow;
   const kutId = firstString(hug.kut_id, hug.k_kut_id, hug.id);
-
-  const { data: qcData } = await supabase
-    .from("k_kut_audio_qc")
-    .select(
-      "delivered_url_or_path, audio_http_status, audio_content_type",
-    )
-    .eq("kut_id", kutId)
-    .eq("audio_status", "playable")
-    .maybeSingle();
-
-  const playable = qcData as AudioQcRow | null;
-  const audioUrl = playable?.delivered_url_or_path ?? "";
-
+  const currentOption = findApprovedPublicOptionByInventoryId(kutId);
   const verifiedPlayable = Boolean(
-    playable &&
-      playable.audio_http_status === 200 &&
-      playable.audio_content_type?.startsWith("audio/") &&
-      isSafePlayableUrl(audioUrl),
+    currentOption &&
+      currentOption.product_family === "HUG" &&
+      currentOption.inventory_family === "KK",
   );
+  const audioUrl = verifiedPlayable ? currentOption?.audio_delivery_url || "" : "";
 
   const sender = firstString(hug.sender_name) || "Someone";
   const recipient = firstString(hug.recipient_name) || "you";
@@ -132,7 +100,7 @@ export default async function HugDeliveryPage({
           <EofSignatureAudio src={audioUrl} className="mt-8 w-full" />
         ) : (
           <div className="mt-8 rounded-2xl border border-[#d6a400]/30 bg-[#160d08] p-5 text-[#ffd36a]">
-            Audio is being verified for this HUG.
+            Audio is held until this exact HUG reaches the current-II STAGE gate.
           </div>
         )}
 
