@@ -1,5 +1,5 @@
 {
-  "status": "generated_with_single_ii_locked_stripe_payment_link_canary",
+  "status": "EMERGENCY_HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY",
   "source": "data/ii-delivery-registry/romance-reusable-ii-records.json",
   "generated_at": "2026-06-01T00:31:32.582Z",
   "corrected_at": "2026-08-01",
@@ -44,14 +44,14 @@
       "intent_lane": "romance_love",
       "risk_level": "standard",
       "approval_status": "public_approved_generated_from_reusable_ii",
-      "audio_delivery_url": "/api/ii-delivery/generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
-      "audio_proof_status": "pass",
-      "payment_allowed": true,
-      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "audio_delivery_url": "",
+      "audio_proof_status": "HOLD_UNVERIFIED_BOUNDARY_AND_CORRUPTED_TWINKLE",
+      "payment_allowed": false,
+      "stripe_url_if_payment_allowed": "",
       "public_route": "/romance",
       "more_for_this_feeling_allowed": true,
       "more_from_this_track_allowed": true,
-      "public_notes": "Owner-authorized one-II controlled purchase canary. Private 60-second signed preview; locked Stripe Payment Link; manual fulfillment review."
+      "public_notes": "Emergency owner-authorized hold: boundary and Twinkle integrity require independent re-prosecution. No audio or payment exposure."
     },
     {
       "public_option_id": "generated-love-deep-devotion-d3dfd13c-7421-4671-8261-0c735cb51f38",
@@ -95,13 +95,13 @@
       "risk_level": "standard",
       "approval_status": "public_approved_generated_from_reusable_ii",
       "audio_delivery_url": "",
-      "audio_proof_status": "boundary_repair_pending_owner_listening",
+      "audio_proof_status": "HOLD_UNVERIFIED_BOUNDARY_AND_CORRUPTED_TWINKLE",
       "payment_allowed": false,
       "stripe_url_if_payment_allowed": "",
       "public_route": "/romance",
       "more_for_this_feeling_allowed": true,
       "more_from_this_track_allowed": true,
-      "public_notes": "Release-held until owner approves the repaired 0.000-34.875 VTP/InTP boundary and current delivery hash."
+      "public_notes": "Emergency owner-authorized hold: boundary and Twinkle integrity require independent re-prosecution. No audio or payment exposure."
     },
     {
       "public_option_id": "generated-wedding-forever-d3dfd13c-7421-4671-8261-0c735cb51f38",
@@ -143,13 +143,13 @@
       "risk_level": "standard",
       "approval_status": "public_approved_generated_from_reusable_ii",
       "audio_delivery_url": "",
-      "audio_proof_status": "boundary_repair_pending_owner_listening",
+      "audio_proof_status": "HOLD_UNVERIFIED_BOUNDARY_AND_CORRUPTED_TWINKLE",
       "payment_allowed": false,
       "stripe_url_if_payment_allowed": "",
       "public_route": "/wedding",
       "more_for_this_feeling_allowed": true,
       "more_from_this_track_allowed": true,
-      "public_notes": "Release-held until owner approves the repaired 0.000-34.875 VTP/InTP boundary and current delivery hash."
+      "public_notes": "Emergency owner-authorized hold: boundary and Twinkle integrity require independent re-prosecution. No audio or payment exposure."
     },
     {
       "public_option_id": "generated-anniversary-still-choosing-you-d3dfd13c-7421-4671-8261-0c735cb51f38",
@@ -193,13 +193,13 @@
       "risk_level": "standard",
       "approval_status": "public_approved_generated_from_reusable_ii",
       "audio_delivery_url": "",
-      "audio_proof_status": "boundary_repair_pending_owner_listening",
+      "audio_proof_status": "HOLD_UNVERIFIED_BOUNDARY_AND_CORRUPTED_TWINKLE",
       "payment_allowed": false,
       "stripe_url_if_payment_allowed": "",
       "public_route": "/personal/anniversary",
       "more_for_this_feeling_allowed": true,
       "more_from_this_track_allowed": true,
-      "public_notes": "Release-held until owner approves the repaired 0.000-34.875 VTP/InTP boundary and current delivery hash."
+      "public_notes": "Emergency owner-authorized hold: boundary and Twinkle integrity require independent re-prosecution. No audio or payment exposure."
     },
     {
       "public_option_id": "generated-kupid-physical-spark-1f016b4a-f85d-4945-b881-2e0f571e6a49",
@@ -290,5 +290,6 @@
       "public_notes": "Not approved for frontend, matching, descriptive metadata, MGS, checkout, or delivery. Preserve audio and lineage for ADMIN-only reprocessing."
     }
   ],
-  "locked_stripe_payment_link_restored_at": "2026-08-30"
+  "locked_stripe_payment_link_restored_at": "2026-08-30",
+  "contained_at": "2026-08-30"
 }
