@@ -33,6 +33,11 @@ try {
 } finally {
   fs.rmSync(dir, { recursive: true, force: true });
 }
+const promoterSource = fs.readFileSync("scripts/promote-line-cc-ready-inventory.mjs", "utf8");
+const packageSource = fs.readFileSync("package.json", "utf8");
+if (!promoterSource.includes("prosecuteSingleBlkCc(candidate, { requireRenderedEndpoint: true })")) fail("promotion gate does not require rendered endpoint prosecution");
+if (!promoterSource.includes('status: "HOLD_UNVERIFIED_BOUNDARY"')) fail("promotion gate does not fail closed to boundary hold");
+if (!packageSource.includes("npm run audit:cc-single-blk-boundary")) fail("prebuild does not invoke CC boundary audit");
 console.log("CC SINGLE-BLK + RENDERED ENDPOINT LAW: PASS");
 console.log("RULE: CC.start >= BLK.start");
 console.log("RULE: CC.end <= BLK.end");
