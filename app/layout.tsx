@@ -111,7 +111,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {children}
         {isStandaloneHost ? (
           <footer className="border-t border-amber-300/15 bg-[#050408] px-5 py-4 text-center text-xs font-bold text-amber-50/55">
-            <nav aria-label={isHugzHost ? "13HUGz legal" : "Sent-i-Meants legal"} className="flex items-center justify-center gap-5">
+            <nav aria-label={isHugzHost ? "13HUGz legal" : "Sent-i-Meant legal"} className="flex items-center justify-center gap-5">
               <a className="transition hover:text-amber-200" href="/privacy">Privacy</a>
               <a className="transition hover:text-amber-200" href="/terms">Terms</a>
               <a className="transition hover:text-amber-200" href="mailto:reachus@gputnammusic.com">Contact</a>
