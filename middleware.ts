@@ -28,11 +28,14 @@ const HUGZ_KKUT_ONLY_PREFIXES = [
   "/sentimeant",
 ];
 
+const SENTIMEANT_DEFENSIVE_HOSTS = new Set([
+  "sentimeants.com",
+  "www.sentimeants.com",
+]);
+
 const SENTIMEANT_HOSTS = new Set([
   "sentimeant.com",
   "www.sentimeant.com",
-  "sentimeants.com",
-  "www.sentimeants.com",
 ]);
 
 const SENTIMEANT_KKUT_ONLY_PREFIXES = [
@@ -77,6 +80,14 @@ export function middleware(request: NextRequest) {
     .trim()
     .toLowerCase()
     .split(":")[0];
+
+  if (SENTIMEANT_DEFENSIVE_HOSTS.has(host)) {
+    const url = request.nextUrl.clone();
+    url.protocol = "https:";
+    url.hostname = "sentimeant.com";
+    url.port = "";
+    return NextResponse.redirect(url, 308);
+  }
 
   if (CONVENTIONAL_ICON_PATHS.has(pathname)) {
     const url = request.nextUrl.clone();
