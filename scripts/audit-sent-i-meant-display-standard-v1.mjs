@@ -25,6 +25,27 @@ for (const host of ["sentimeant.com", "www.sentimeant.com", "sentimeants.com", "
   if (!layout.includes(`'${host}'`)) fail(`technical hostname missing: ${host}`);
 }
 
+const middleware = fs.readFileSync("middleware.ts", "utf8");
+for (const required of [
+  "SENTIMEANT_DEFENSIVE_HOSTS",
+  'url.hostname = "sentimeant.com"',
+  "NextResponse.redirect(url, 308)",
+]) {
+  if (!middleware.includes(required)) fail(`defensive-domain forwarding missing: ${required}`);
+}
+if (standard.defensive_domain_behavior?.destination !== "https://sentimeant.com") {
+  fail("defensive domains must forward to canonical https://sentimeant.com");
+}
+if (standard.defensive_domain_behavior?.status_code !== 308) {
+  fail("defensive-domain forwarding must be permanent (308)");
+}
+if (
+  standard.defensive_domain_behavior?.preserve_path !== true ||
+  standard.defensive_domain_behavior?.preserve_query !== true
+) {
+  fail("defensive-domain forwarding must preserve path and query");
+}
+
 const publicFiles = [
   "app/_sentimeant-home.tsx",
   "app/_kkut-home.tsx",
@@ -64,4 +85,4 @@ console.log("SENT-I-MEANT DISPLAY STANDARD AUDIT: PASS");
 console.log("DEFAULT PUBLIC DISPLAY: Sent-i-Meant");
 console.log("IMMUTABLE: false");
 console.log("MARKETING VARIANTS: EXPLICIT APPROVAL REQUIRED");
-console.log("TECHNICAL IDENTIFIERS AND DEFENSIVE DOMAINS: UNCHANGED");
+console.log("DEFENSIVE DOMAINS: OWNED · 308 TO https://sentimeant.com · PATH/QUERY PRESERVED");
