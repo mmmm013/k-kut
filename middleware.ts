@@ -15,8 +15,6 @@ const HUGZ_HOSTS = new Set([
 ]);
 
 const HUGZ_KKUT_ONLY_PREFIXES = [
-  "/find",
-  "/personal",
   "/holiday",
   "/themes",
   "/kupid",
