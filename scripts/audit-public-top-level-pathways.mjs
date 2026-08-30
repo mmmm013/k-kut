@@ -45,37 +45,33 @@ for (const required of [
 }
 
 for (const required of [
-  'action="/checkout"',
-  'name="ii"',
-  'name="public_option_id"',
-  "record.kk_id_or_delivery_object_id",
-  "checkoutOffer(record)",
+  "NEXT_PUBLIC_KKUT_REVIEWED_HUG_PAYMENT_URL",
+  "reviewedLemonSqueezyPaymentUrl",
+  "href={paymentUrl}",
+  'hostname.endsWith(".lemonsqueezy.com")',
+  "record.price_cents",
 ]) {
   if (!grid.includes(required)) {
     stop(`approved option grid missing ${required}`);
   }
 }
 
-if (grid.includes("href={record.stripe_url_if_payment_allowed}")) {
-  stop("Wedding/Kupid still bypass governed checkout");
-}
-
-for (const required of [
-  "findApprovedPublicOptionByPublicOptionId",
-  "publicationOption",
-  "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
-  "publicationOption.inventory_family !== config.family",
-  "publicationOption.product_family !== config.productFamily",
-  "stripe.checkout.sessions.create",
+for (const forbidden of [
+  'action="/checkout"',
+  "href={record.stripe_url_if_payment_allowed}",
+  "buy.stripe.com",
 ]) {
-  if (!checkout.includes(required)) {
-    stop(`checkout missing publication authority: ${required}`);
+  if (grid.includes(forbidden)) {
+    stop(`approved option grid bypasses reviewed Lemon authority: ${forbidden}`);
   }
 }
 
-if (checkout.includes("publicationOption?.stripe_url_if_payment_allowed ||") ||
-    checkout.includes("buy.stripe.com")) {
-  stop("catalog or Payment Link illegally overrides commerce price authority");
+if (
+  !checkout.includes("lemon-squeezy-direct-link-required") ||
+  checkout.includes("stripe.checkout.sessions.create") ||
+  checkout.includes("STRIPE_SECRET_KEY")
+) {
+  stop("legacy direct-Stripe checkout route is not closed");
 }
 
 if (!bridge.includes("record.kk_id_or_delivery_object_id === inventoryId") ||
@@ -89,6 +85,6 @@ if (checkout.includes("CATALOG_URL") || checkout.includes("verifiedInventoryFami
 
 console.log("PUBLIC TOP-LEVEL PATHWAY AUDIT: PASS");
 console.log("THEMES ROUTE: PRESENT");
-console.log("WEDDING CHECKOUT: GOVERNED EXACT-II");
-console.log("KUPID CHECKOUT: GOVERNED EXACT-II");
-console.log("DIRECT STRIPE BYPASS: 0");
+console.log("APPROVED PAYMENT SURFACE: REVIEWED LEMON SQUEEZY");
+console.log("LEGACY DIRECT STRIPE ROUTE: BLOCKED");
+console.log("UNAPPROVED PAYMENT BYPASS: 0");
