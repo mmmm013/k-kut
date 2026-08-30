@@ -42,6 +42,16 @@ export function prosecuteSingleBlkCc(candidate, options = {}) {
   }
 
   const requireRenderedEndpoint = options.requireRenderedEndpoint !== false;
+  const probeRenderedEndpoint = options.probeRenderedEndpoint || ((renderedPath) => {
+    const measuredDuration = Number(execFileSync("ffprobe", [
+      "-v", "error",
+      "-show_entries", "format=duration",
+      "-of", "default=noprint_wrappers=1:nokey=1",
+      renderedPath,
+    ], { encoding: "utf8" }).trim());
+    const sha256 = createHash("sha256").update(fs.readFileSync(renderedPath)).digest("hex");
+    return { path: renderedPath, measured_duration_seconds: measuredDuration, sha256 };
+  });
   let rendered = null;
   if (requireRenderedEndpoint) {
     const renderedPath = String(candidate?.rendered_audio_path || "").trim();
@@ -52,14 +62,8 @@ export function prosecuteSingleBlkCc(candidate, options = {}) {
       reasons.push("rendered_duration_unverifiable");
     } else {
       try {
-        const measuredDuration = Number(execFileSync("ffprobe", [
-          "-v", "error",
-          "-show_entries", "format=duration",
-          "-of", "default=noprint_wrappers=1:nokey=1",
-          renderedPath,
-        ], { encoding: "utf8" }).trim());
-        const sha256 = createHash("sha256").update(fs.readFileSync(renderedPath)).digest("hex");
-        rendered = { path: renderedPath, measured_duration_seconds: measuredDuration, sha256 };
+        rendered = probeRenderedEndpoint(renderedPath);
+        const measuredDuration = Number(rendered?.measured_duration_seconds);
         if (!Number.isFinite(measuredDuration)) reasons.push("rendered_duration_unverifiable");
         else if (Math.abs(measuredDuration - expectedDuration) > RENDER_TOLERANCE_SECONDS) {
           reasons.push("rendered_endpoint_duration_mismatch");
