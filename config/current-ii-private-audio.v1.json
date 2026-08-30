@@ -11,14 +11,15 @@
       "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
       "review_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
       "title": "A LOVE LIKE THAT",
-      "authority_state": "STAGE_CONTROLLED_PURCHASE_CANARY",
-      "owner_review_enabled": true,
+      "authority_state": "HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY",
+      "owner_review_enabled": false,
       "former_public_static_path": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
       "staging_source_path": "staging/current-ii-private-audio-v1/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
       "storage_object_path": "current-ii/romance/ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",
       "sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
       "size_bytes": 663487,
-      "duration_seconds": 41.273469
+      "duration_seconds": 41.273469,
+      "integrity_state": "CONTAINED_EVIDENCE_DO_NOT_SERVE"
     },
     {
       "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
