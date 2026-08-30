@@ -18,14 +18,26 @@
     "public_option_id": "optional approved public option id when published",
     "public_route": "optional buyer-facing route when approved",
     "surface_feeling": "simple buyer-recognizable feeling",
-    "deeper_feelings": ["more specific emotional meanings"],
+    "deeper_feelings": [
+      "more specific emotional meanings"
+    ],
     "interpretation_summary": "plain-language emotional meaning",
     "sensory_profile": {
-      "audio": ["tempo, softness, vocal grain, silence, lift, tension, release, ending feel"],
-      "body": ["warmth, ache, pulse, settling, pressure, release, grounded"],
-      "visual": ["light, dark, color, distance, weather, motion, stillness"],
-      "touch": ["soft, sharp, held, heavy, airy, fragile, warm, cold"],
-      "memory": ["first love, old home, parent care, apology, lost chance, still choosing, goodbye"]
+      "audio": [
+        "tempo, softness, vocal grain, silence, lift, tension, release, ending feel"
+      ],
+      "body": [
+        "warmth, ache, pulse, settling, pressure, release, grounded"
+      ],
+      "visual": [
+        "light, dark, color, distance, weather, motion, stillness"
+      ],
+      "touch": [
+        "soft, sharp, held, heavy, airy, fragile, warm, cold"
+      ],
+      "memory": [
+        "first love, old home, parent care, apology, lost chance, still choosing, goodbye"
+      ]
     },
     "emotional_coordinates": {
       "valence": "positive_warm | painful | mixed | neutral_safe | bittersweet",
@@ -34,12 +46,24 @@
       "social_direction": "toward | away | returning | staying | releasing | witnessing",
       "time_direction": "memory | present | future | past_present_future | last_goodbye"
     },
-    "good_use_cases": ["where this record may help"],
-    "bad_use_cases": ["where this record may confuse, pressure, or harm"],
-    "risk_notes": ["human safety notes"],
-    "buyer_words": ["buyer-facing phrases"],
-    "receiver_safe_words": ["receiver-safe phrasing"],
-    "do_not_say": ["forbidden claims or pressure language"],
+    "good_use_cases": [
+      "where this record may help"
+    ],
+    "bad_use_cases": [
+      "where this record may confuse, pressure, or harm"
+    ],
+    "risk_notes": [
+      "human safety notes"
+    ],
+    "buyer_words": [
+      "buyer-facing phrases"
+    ],
+    "receiver_safe_words": [
+      "receiver-safe phrasing"
+    ],
+    "do_not_say": [
+      "forbidden claims or pressure language"
+    ],
     "review_status": "unreviewed | held | approved_internal | approved_public | rejected_public",
     "human_review_notes": "why this status is safe or not safe"
   },
@@ -54,13 +78,13 @@
   "public_approval_gate": [
     "audio_delivery_url must be public and working",
     "public route must exist",
-    "Stripe link must be approved if payment is allowed",
     "no raw inventory language",
     "no internal proof language",
     "no mKs in buyer flow",
     "good_use_cases and bad_use_cases must both be present",
     "risk_notes must be present",
-    "review_status must be approved_public"
+    "review_status must be approved_public",
+    "sensory approval is independent of payment state, price, and payment provider"
   ],
   "example_record": {
     "record_id": "example-anniversary-still-choosing",
@@ -78,11 +102,32 @@
     ],
     "interpretation_summary": "Send something that says I still choose you.",
     "sensory_profile": {
-      "audio": ["warm", "steady", "soft lift", "resolved ending"],
-      "body": ["settled", "open", "warm"],
-      "visual": ["warm light", "close-up", "stillness"],
-      "touch": ["held", "soft", "warm"],
-      "memory": ["still choosing", "shared history", "returning"]
+      "audio": [
+        "warm",
+        "steady",
+        "soft lift",
+        "resolved ending"
+      ],
+      "body": [
+        "settled",
+        "open",
+        "warm"
+      ],
+      "visual": [
+        "warm light",
+        "close-up",
+        "stillness"
+      ],
+      "touch": [
+        "held",
+        "soft",
+        "warm"
+      ],
+      "memory": [
+        "still choosing",
+        "shared history",
+        "returning"
+      ]
     },
     "emotional_coordinates": {
       "valence": "positive_warm",

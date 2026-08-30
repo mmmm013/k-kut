@@ -26,19 +26,23 @@ const sensoryData = fs.existsSync(sensoryPath)
   : { records: [] };
 
 const publicationRecords = publicData.records || [];
+const sensoryRecords = sensoryData.records || [];
+const sensorySourceIds = new Set(
+  sensoryRecords.map(
+    (record) => record.source_public_option_id || record.public_option_id,
+  ),
+);
 const publicRecords = publicationRecords.filter(
   (record) =>
+    sensorySourceIds.has(record.public_option_id) &&
     record.approval_status === "public_approved_generated_from_reusable_ii" &&
-    record.payment_allowed === true &&
+    record.audio_proof_status === "pass" &&
     typeof record.public_route === "string" &&
-    record.public_route.startsWith("/") &&
-    typeof record.stripe_url_if_payment_allowed === "string" &&
-    record.stripe_url_if_payment_allowed.startsWith("https://buy.stripe.com/"),
+    record.public_route.startsWith("/"),
 );
 const heldRecords = publicationRecords.filter(
   (record) => !publicRecords.includes(record),
 );
-const sensoryRecords = sensoryData.records || [];
 
 if (sensoryRecords.length !== publicRecords.length) {
   fail(`Expected ${publicRecords.length} approved-public sensory records, found ${sensoryRecords.length}.`);
@@ -65,7 +69,6 @@ const requiredTopFields = [
   "public_option_id",
   "public_route",
   "audio_delivery_url",
-  "stripe_url_if_payment_allowed",
   "surface_feeling",
   "deeper_feelings",
   "interpretation_summary",

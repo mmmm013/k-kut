@@ -1,86 +1,68 @@
 import fs from "node:fs";
 
-const checkoutPath = "app/checkout/route.ts";
-let failed = false;
+const read = (file) => fs.readFileSync(file, "utf8");
+const fail = (message) => {
+  throw new Error(`CHECKOUT PAYMENT PATHWAY AUDIT FAIL: ${message}`);
+};
 
-function fail(message) {
-  console.error("FAIL:", message);
-  failed = true;
+const LOCKED_LINK = "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r";
+const grid = read("components/ApprovedPublicOptionGrid.tsx");
+const checkout = read("app/checkout/route.ts");
+const bridge = JSON.parse(
+  read("data/publication-bridge/public-option-records.generated.json"),
+);
+
+const linked = (bridge.records || []).filter(
+  (record) => record.stripe_url_if_payment_allowed,
+);
+
+if (
+  linked.length !== 1 ||
+  linked[0].public_option_id !==
+    "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38" ||
+  linked[0].price_cents !== 799 ||
+  linked[0].payment_allowed !== true ||
+  linked[0].stripe_url_if_payment_allowed !== LOCKED_LINK
+) {
+  fail("exact locked Sweet Love Stripe mapping drifted");
 }
 
-console.log("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT");
+for (const required of [
+  "function lockedStripePaymentLink(record: ApprovedPublicOption)",
+  'url.hostname === "buy.stripe.com"',
+  "record.stripe_url_if_payment_allowed",
+  "href={paymentLink}",
+  "Checkout held for this exact II",
+]) {
+  if (!grid.includes(required)) fail(`approved grid missing ${required}`);
+}
 
-if (!fs.existsSync(checkoutPath)) fail(`Missing ${checkoutPath}`);
-
-const checkout = fs.existsSync(checkoutPath)
-  ? fs.readFileSync(checkoutPath, "utf8")
-  : "";
+if (grid.includes('action="/checkout"')) {
+  fail("visible button still posts to superseded API checkout");
+}
 
 for (const required of [
-  'process.env.VERCEL_ENV !== "production"',
-  '"preview-payment-disabled"',
-  "new Stripe(stripeSecretKey)",
-  "stripe.checkout.sessions.create",
-  "unit_amount: config.priceCents",
-  "const HUG_PRICE_CENTS = 799",
-  "const TUG_PRICE_CENTS = 499",
-  "const BUG_PRICE_CENTS = 199",
-  '"https://www.k-kut.com/logo.png"',
-  "K-KUT by G Putnam Music",
-  "client_reference_id: clientReference",
-  "findApprovedPublicOptionByPublicOptionId",
-  "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
-  "public_option_id: publicationOption.public_option_id",
-  "locked_price_cents: String(config.priceCents)",
-  "phone_number_collection: { enabled: true }",
-  'key: "recipientmobile"',
-  'custom: "Recipient mobile number"',
-  'success_url: `${siteOrigin}/order/success?session_id={CHECKOUT_SESSION_ID}`',
-  "function isLiveStripeSecretKey(value: string)",
-  'returnToStore(request, "stripe-secret-key-invalid")',
-  'console.error("K_KUT_STRIPE_SECRET_KEY_INVALID")',
+  'url.pathname = "/browse"',
+  '"?checkout=locked-payment-link-required"',
+  "export async function GET",
+  "export async function POST",
 ]) {
-  if (!checkout.includes(required)) fail(`Checkout missing: ${required}`);
+  if (!checkout.includes(required)) fail(`legacy checkout hold missing ${required}`);
 }
 
 for (const forbidden of [
-  "buy.stripe.com",
-  "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL",
-  "stripe_url_if_payment_allowed ||",
+  'from "stripe"',
+  "STRIPE_SECRET_KEY",
+  "stripe.checkout.sessions.create",
+  "createPendingH2Order",
 ]) {
   if (checkout.includes(forbidden)) {
-    fail(`Checkout contains forbidden Payment Link authority: ${forbidden}`);
+    fail(`legacy API-created checkout remains active: ${forbidden}`);
   }
 }
 
-if (!checkout.includes("priceCents: HUG_PRICE_CENTS")) {
-  fail("HUG offer is not bound to the 799-cent price constant.");
-}
-
-if (
-  checkout.indexOf('returnToStore(request, "stripe-secret-key-invalid")') >
-  checkout.indexOf("token = await createPendingH2Order")
-) {
-  fail("Stripe secret-key validation must run before pending-order creation.");
-}
-
-for (const forbidden of ["CATALOG_URL", "verifiedInventoryFamily"]) {
-  if (checkout.includes(forbidden)) {
-    fail(`Checkout retains superseded inventory authority: ${forbidden}`);
-  }
-}
-
-if (!checkout.includes("NextResponse.redirect(session.url")) {
-  fail("Checkout does not redirect only to its newly created Stripe Session.");
-}
-
-if (failed) {
-  console.error("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT: FAIL");
-  process.exit(1);
-}
-
-console.log("CHECKOUT PRICE / BRAND / PREVIEW SAFETY AUDIT: PASS");
-console.log("HUG_PRICE_CENTS=799");
-console.log("PREVIEW_LIVE_PAYMENT=BLOCKED");
-console.log("PAYMENT_LINK_DEPENDENCY=0");
-console.log("K_KUT_BRANDED_SESSION=REQUIRED");
+console.log("CHECKOUT PAYMENT PATHWAY AUDIT: PASS");
+console.log("LOCKED II PAYMENT LINKS: 1");
+console.log("LOCKED PRICE: USD 7.99");
+console.log("PAYMENT AUTHORITY: EXISTING STRIPE PAYMENT LINK");
+console.log("SUPERSEDED API-CREATED CHECKOUT: BLOCKED");

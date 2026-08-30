@@ -11,6 +11,8 @@ const II_ID =
 const PUBLIC_OPTION_ID =
   "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38";
 const AUDIO_ROUTE = `/api/ii-delivery/${PUBLIC_OPTION_ID}`;
+const LOCKED_STRIPE_LINK =
+  "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r";
 const DELIVERY_SHA256 =
   "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1";
 
@@ -19,11 +21,10 @@ const bridge = parse(
   "data/publication-bridge/public-option-records.generated.json",
 );
 const privateAudio = parse("config/current-ii-private-audio.v1.json");
+const grid = read("components/ApprovedPublicOptionGrid.tsx");
 const checkout = read("app/checkout/route.ts");
-const webhook = read("app/api/stripe/webhook/route.ts");
 const audioRoute = read("app/api/ii-delivery/[publicOptionId]/route.ts");
 const catalogRoute = read("app/api/public-ii-catalog/route.ts");
-const successPage = read("app/order/success/page.tsx");
 
 const staged = (canary.records || []).filter(
   (record) =>
@@ -47,9 +48,18 @@ if (
 const purchasable = (bridge.records || []).filter(
   (record) => record.payment_allowed === true,
 );
-if (purchasable.length !== 1 || purchasable[0].public_option_id !== PUBLIC_OPTION_ID) {
-  fail("exactly one public option must be purchasable");
+const linked = (bridge.records || []).filter(
+  (record) => record.stripe_url_if_payment_allowed,
+);
+if (
+  purchasable.length !== 1 ||
+  linked.length !== 1 ||
+  purchasable[0].public_option_id !== PUBLIC_OPTION_ID ||
+  linked[0].public_option_id !== PUBLIC_OPTION_ID
+) {
+  fail("exactly one public option and Stripe link must be purchasable");
 }
+
 const option = purchasable[0];
 if (
   option.kk_id_or_delivery_object_id !== II_ID ||
@@ -58,14 +68,20 @@ if (
   option.price_cents !== 799 ||
   option.audio_proof_status !== "pass" ||
   option.audio_delivery_url !== AUDIO_ROUTE ||
+  option.stripe_url_if_payment_allowed !== LOCKED_STRIPE_LINK ||
   option.public_route !== "/romance"
 ) {
   fail("purchasable public option exceeds the locked canary");
 }
+
 for (const held of (bridge.records || []).filter(
   (record) => record.public_option_id !== PUBLIC_OPTION_ID,
 )) {
-  if (held.payment_allowed !== false || held.audio_delivery_url !== "") {
+  if (
+    held.payment_allowed !== false ||
+    held.audio_delivery_url !== "" ||
+    held.stripe_url_if_payment_allowed !== ""
+  ) {
     fail(`held option exposes payment or audio ${held.public_option_id}`);
   }
 }
@@ -83,40 +99,22 @@ if (
 }
 
 for (const required of [
-  'process.env.VERCEL_ENV !== "production"',
-  "findApprovedPublicOptionByPublicOptionId",
-  "publicationOption.price_cents !== config.priceCents",
-  "unit_amount: config.priceCents",
-  "stripe.checkout.sessions.create",
-  'returnToStore(request, "checkout-post-required")',
-  "phone_number_collection: { enabled: true }",
-  'key: "recipientmobile"',
-  'custom: "Recipient mobile number"',
-  'sales_canary: "one_ii_one_public_option"',
-  "/order/success?session_id={CHECKOUT_SESSION_ID}",
-  "function isLiveStripeSecretKey(value: string)",
-  'returnToStore(request, "stripe-secret-key-invalid")',
+  "lockedStripePaymentLink",
+  "record.stripe_url_if_payment_allowed",
+  "href={paymentLink}",
+  'url.hostname === "buy.stripe.com"',
 ]) {
-  if (!checkout.includes(required)) fail(`checkout missing ${required}`);
+  if (!grid.includes(required)) fail(`payment surface missing ${required}`);
+}
+if (grid.includes('action="/checkout"')) {
+  fail("payment surface still posts to superseded checkout");
 }
 if (
-  checkout.indexOf('returnToStore(request, "stripe-secret-key-invalid")') >
-  checkout.indexOf("token = await createPendingH2Order")
+  !checkout.includes("locked-payment-link-required") ||
+  checkout.includes("stripe.checkout.sessions.create") ||
+  checkout.includes("STRIPE_SECRET_KEY")
 ) {
-  fail("invalid Stripe key can create an orphan pending order");
-}
-for (const forbidden of ["buy.stripe.com", "NEXT_PUBLIC_KKUT_HUG_PAYMENT_URL"]) {
-  if (checkout.includes(forbidden)) fail(`checkout contains bypass ${forbidden}`);
-}
-
-for (const required of [
-  'checkoutTextField(session, "recipientmobile")',
-  "recipient_mobile_present",
-  'recipient_mobile_source: recipientMobile',
-  "fulfill_exact_selected_ii_to_recipient_mobile",
-  "enforceCurrentIiAuthority",
-]) {
-  if (!webhook.includes(required)) fail(`webhook missing ${required}`);
+  fail("superseded API-created checkout remains active");
 }
 
 for (const required of [
@@ -131,16 +129,8 @@ for (const required of [
 for (const forbidden of ["getPublicUrl(", "/object/public/"]) {
   if (audioRoute.includes(forbidden)) fail(`audio route exposes ${forbidden}`);
 }
-
 if (!catalogRoute.includes("loadAllApprovedPublicOptions")) {
   fail("public catalog is not sourced from the exact approval gate");
-}
-for (const required of [
-  "stripe.checkout.sessions.retrieve(sessionId)",
-  'session.payment_status === "paid"',
-  "recipient mobile number entered at checkout",
-]) {
-  if (!successPage.includes(required)) fail(`success page missing ${required}`);
 }
 
 console.log("CONTROLLED PURCHASE CANARY AUDIT: PASS");
@@ -148,5 +138,5 @@ console.log(`STAGE II: ${II_ID}`);
 console.log(`PUBLIC OPTION: ${PUBLIC_OPTION_ID}`);
 console.log("PRICE: USD 7.99");
 console.log("OTHER PURCHASABLE IIs: 0");
-console.log("CHECKOUT: SERVER-CREATED STRIPE SESSION");
-console.log("FULFILLMENT: EXACT II · RECIPIENT MOBILE · MANUAL REVIEW");
+console.log("CHECKOUT: LOCKED STRIPE PAYMENT LINK");
+console.log("FULFILLMENT: EXACT II · MANUAL REVIEW");
