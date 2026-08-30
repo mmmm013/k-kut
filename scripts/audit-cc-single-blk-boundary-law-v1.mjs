@@ -1,7 +1,4 @@
 import fs from "node:fs";
-import os from "node:os";
-import path from "node:path";
-import { execFileSync } from "node:child_process";
 import { prosecuteSingleBlkCc } from "./lib/cc-single-blk-boundary-law.mjs";
 
 function fail(message) {
@@ -24,15 +21,20 @@ const missing = structuredClone(base);
 delete missing.lines[0].blk_id;
 if (prosecuteSingleBlkCc(missing, { requireRenderedEndpoint: false }).passed) fail("missing blk_id passed");
 
-const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cc-endpoint-"));
-const audio = path.join(dir, "two-seconds.wav");
-try {
-  execFileSync("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", "2", audio]);
-  if (!prosecuteSingleBlkCc({ ...base, rendered_audio_path: audio }).passed) fail("measured two-second render rejected");
-  if (prosecuteSingleBlkCc({ ...base, end: 11, rendered_audio_path: audio }).passed) fail("render extending past CC endpoint passed");
-} finally {
-  fs.rmSync(dir, { recursive: true, force: true });
-}
+const measuredTwoSeconds = () => ({
+  path: "package.json",
+  measured_duration_seconds: 2,
+  sha256: "synthetic-build-audit",
+});
+if (!prosecuteSingleBlkCc(
+  { ...base, rendered_audio_path: "package.json" },
+  { probeRenderedEndpoint: measuredTwoSeconds },
+).passed) fail("measured two-second render rejected");
+if (prosecuteSingleBlkCc(
+  { ...base, end: 11, rendered_audio_path: "package.json" },
+  { probeRenderedEndpoint: measuredTwoSeconds },
+).passed) fail("render extending past CC endpoint passed");
+
 const promoterSource = fs.readFileSync("scripts/promote-line-cc-ready-inventory.mjs", "utf8");
 const packageSource = fs.readFileSync("package.json", "utf8");
 if (!promoterSource.includes("prosecuteSingleBlkCc(candidate, { requireRenderedEndpoint: true })")) fail("promotion gate does not require rendered endpoint prosecution");
