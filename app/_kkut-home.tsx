@@ -11,9 +11,9 @@ const offers = [
   {
     name: "HUG",
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
-    status: "One approved $7.99 HUG is live",
+    status: "No public inventory yet",
     description:
-      "The Sweet Love canary is ready to hear and buy. Every other HUG remains behind its exact release gate.",
+      "HUG inventory remains behind exact release review. No player or payment button appears until one specific HUG clears every gate.",
     href: "/hugz",
     cta: "Browse 13 HUGz Cards",
   },
@@ -69,17 +69,17 @@ export default function KKutHome() {
 
         <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
           <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
-            Ready now · controlled sales canary
+            Customer release review active
           </p>
-          <h2 className="mt-3 text-3xl font-black">A LOVE LIKE THAT · Sweet Love HUG · $7.99</h2>
+          <h2 className="mt-3 text-3xl font-black">No approved K-KUT HUGs are published yet.</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            Hear the approved music moment and pay through its locked Stripe Payment Link.
+            Meaning, audio, route fit, rights, and final approval must all pass before a player or payment button appears.
           </p>
           <Link
             href="/romance"
-            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-pink-200 px-5 py-3 text-sm font-black text-[#160915]"
+            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
           >
-            Hear it and send this HUG
+            View Romance review status
           </Link>
         </section>
 
