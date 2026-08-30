@@ -36,6 +36,9 @@ for (const required of [
   'key: "recipientmobile"',
   'custom: "Recipient mobile number"',
   'success_url: `${siteOrigin}/order/success?session_id={CHECKOUT_SESSION_ID}`',
+  "function isLiveStripeSecretKey(value: string)",
+  'returnToStore(request, "stripe-secret-key-invalid")',
+  'console.error("K_KUT_STRIPE_SECRET_KEY_INVALID")',
 ]) {
   if (!checkout.includes(required)) fail(`Checkout missing: ${required}`);
 }
@@ -52,6 +55,13 @@ for (const forbidden of [
 
 if (!checkout.includes("priceCents: HUG_PRICE_CENTS")) {
   fail("HUG offer is not bound to the 799-cent price constant.");
+}
+
+if (
+  checkout.indexOf('returnToStore(request, "stripe-secret-key-invalid")') >
+  checkout.indexOf("token = await createPendingH2Order")
+) {
+  fail("Stripe secret-key validation must run before pending-order creation.");
 }
 
 for (const forbidden of ["CATALOG_URL", "verifiedInventoryFamily"]) {

@@ -92,6 +92,10 @@ function originDomain(request: NextRequest) {
   return /^[A-Za-z0-9.-]{1,253}$/.test(host) ? host : "k-kut.com";
 }
 
+function isLiveStripeSecretKey(value: string) {
+  return /^(?:sk|rk)_live_[A-Za-z0-9]+$/u.test(value);
+}
+
 async function governedCheckout(
   request: NextRequest,
   publicOptionId: string,
@@ -126,6 +130,14 @@ async function governedCheckout(
     return returnToStore(request, "offer-inventory-mismatch");
   }
 
+  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
+
+  // Fail before creating the server-only pending order. A publishable key can
+  // never create Checkout Sessions and must not leave an orphan order behind.
+  if (!isLiveStripeSecretKey(stripeSecretKey)) {
+    console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
+    return returnToStore(request, "stripe-secret-key-invalid");
+  }
 
   let token: string;
 
@@ -152,12 +164,6 @@ async function governedCheckout(
     !/^[A-Za-z0-9_-]+$/.test(clientReference)
   ) {
     return returnToStore(request, "pending-order-reference-invalid");
-  }
-
-  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
-
-  if (!stripeSecretKey) {
-    return returnToStore(request, "stripe-not-configured");
   }
 
   const siteOrigin = new URL(request.url).origin;
