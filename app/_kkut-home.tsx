@@ -73,7 +73,7 @@ export default function KKutHome() {
           </p>
           <h2 className="mt-3 text-3xl font-black">A LOVE LIKE THAT · Sweet Love HUG · $7.99</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            Hear the approved music moment, add an optional 13-word note, and pay securely with Stripe.
+            Hear the approved music moment and pay through its locked Stripe Payment Link.
           </p>
           <Link
             href="/romance"
