@@ -182,6 +182,8 @@ function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
     client_reference_format: record.client_reference_format,
     customer_email_present: record.customer_email_present,
     customer_phone_present: record.customer_phone_present,
+    recipient_mobile_present: record.recipient_mobile_present,
+    recipient_mobile_source: record.recipient_mobile_source,
     delivery_preference: record.delivery_preference,
     durable_order_authority: "stripe_checkout_session",
     manual_review_required: true,
@@ -251,6 +253,9 @@ function basePaidRecord(event: Stripe.Event) {
     stripe_customer_id: "",
     customer_email_present: false,
     customer_phone_present: false,
+    recipient_mobile: "",
+    recipient_mobile_present: false,
+    recipient_mobile_source: "not_provided",
     selected_hug_id: "",
     selected_public_option_id: "",
     selected_hug_title: "",
@@ -301,6 +306,11 @@ function personalNoteFields(
   };
 }
 
+function checkoutTextField(session: Stripe.Checkout.Session, key: string) {
+  const field = session.custom_fields?.find((candidate) => candidate.key === key);
+  return field?.type === "text" ? cleanString(field.text?.value, 40) : "";
+}
+
 async function recordFromCheckoutSession(event: Stripe.Event) {
   const session = event.data.object as Stripe.Checkout.Session;
   const record = basePaidRecord(event);
@@ -327,6 +337,7 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
   }
 
   const noteFields = personalNoteFields(session.metadata, referenceNote);
+  const recipientMobile = checkoutTextField(session, "recipientmobile");
 
   return {
     ...record,
@@ -345,14 +356,23 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
     customer_email_present: Boolean(
       session.customer_details?.email || session.customer_email,
     ),
-    customer_phone_present: Boolean(session.customer_details?.phone),
+    customer_phone_present: Boolean(
+      session.customer_details?.phone || recipientMobile,
+    ),
+    recipient_mobile: recipientMobile,
+    recipient_mobile_present: Boolean(recipientMobile),
+    recipient_mobile_source: recipientMobile
+      ? "stripe_checkout_custom_field"
+      : "not_provided",
     selected_hug_id: selectedInventoryId,
     selected_public_option_id: safeInventoryId(
       session.metadata?.public_option_id,
     ),
     client_reference_format: parsedReference.format,
     delivery_preference: selectedInventoryId
-      ? "fulfill_exact_selected_ii"
+      ? recipientMobile
+        ? "fulfill_exact_selected_ii_to_recipient_mobile"
+        : "manual_review_missing_recipient_mobile"
       : "manual_review_missing_selected_ii",
     metadata: {
       ...(session.metadata || {}),
@@ -364,6 +384,7 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
       bf_profile: bfProfile,
       origin_domain: originDomain,
       public_product_name: publicProductName,
+      recipient_mobile_present: Boolean(recipientMobile),
     },
   };
 }

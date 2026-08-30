@@ -59,14 +59,13 @@ await check("Sent-i-Meants evidence audio blocked", async () => {
   assert.match(text, /evidence audio is not public/u);
 });
 
-await check("unstaged direct K-KUT blocked", async () => {
+await check("single staged K-KUT is customer-visible", async () => {
   const { response, text } = await request(
     "/k/ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
   );
   assert.equal(response.status, 200);
-  assert.match(text, /Current-II release review/u);
-  assert.match(text, /not customer-ready\./u);
-  assert.doesNotMatch(text, /<audio/u);
+  assert.match(text, /A LOVE LIKE THAT/u);
+  assert.match(text, /<audio/u);
 });
 
 await check("legacy mini route customer-private", async () => {
@@ -91,7 +90,7 @@ await check("checkout disabled in preview", async () => {
   );
 });
 
-await check("fulfillment rejects unstaged II", async () => {
+await check("fulfillment accepts the exact staged II", async () => {
   const { response, text } = await request("/api/4pe/fulfillment", {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -102,14 +101,15 @@ await check("fulfillment rejects unstaged II", async () => {
         "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
     }),
   });
-  assert.equal(response.status, 409);
-  assert.equal(JSON.parse(text).error, "current_ii_not_staged");
+  assert.equal(response.status, 200);
+  assert.equal(JSON.parse(text).ok, true);
 });
 
-await check("public catalog remains held", async () => {
+await check("public catalog exposes one controlled canary", async () => {
   const { response, text } = await request("/api/public-ii-catalog");
-  assert.equal(response.status, 503);
-  assert.equal(JSON.parse(text).purchasableCount, 0);
+  assert.equal(response.status, 200);
+  assert.equal(JSON.parse(text).purchasableCount, 1);
+  assert.equal(JSON.parse(text).records.length, 1);
 });
 
 await check("BOT inventory remains empty", async () => {

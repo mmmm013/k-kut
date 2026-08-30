@@ -11,9 +11,9 @@ const offers = [
   {
     name: "HUG",
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
-    status: "Cards open · exact music choices in review",
+    status: "One approved $7.99 HUG is live",
     description:
-      "Start with one of 13 human moments. Exact music titles, previews, and checkout remain gated until their current release proof is complete.",
+      "The Sweet Love canary is ready to hear and buy. Every other HUG remains behind its exact release gate.",
     href: "/hugz",
     cta: "Browse 13 HUGz Cards",
   },
@@ -66,6 +66,22 @@ export default function KKutHome() {
             </Link>
           </div>
         </header>
+
+        <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
+          <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
+            Ready now · controlled sales canary
+          </p>
+          <h2 className="mt-3 text-3xl font-black">A LOVE LIKE THAT · Sweet Love HUG · $7.99</h2>
+          <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
+            Hear the approved music moment, add an optional 13-word note, and pay securely with Stripe.
+          </p>
+          <Link
+            href="/romance"
+            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-pink-200 px-5 py-3 text-sm font-black text-[#160915]"
+          >
+            Hear it and send this HUG
+          </Link>
+        </section>
 
         <section aria-label="K-KUT offer availability" className="grid gap-5 md:grid-cols-3">
           {offers.map((offer) => (

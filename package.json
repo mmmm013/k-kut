@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs && npm run audit:current-ii-authority && npm run audit:static-audio-containment && node scripts/audit-a-love-like-that-boundary-v1.mjs && node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
+    "prebuild": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs && npm run audit:current-ii-authority && npm run audit:static-audio-containment && npm run audit:controlled-purchase-canary && node scripts/audit-a-love-like-that-boundary-v1.mjs && node scripts/audit-first-production-canary-v1.mjs && node scripts/audit-checkout-payment-pathway.mjs && node scripts/audit-kkr-canonical-pricing-lock.mjs && node scripts/audit-kkr-receipt-label-lock.mjs && node scripts/audit-a2p-optional-consent.mjs && node scripts/check-env.mjs && npm run audit:hugz-seed-release && npm run audit:hugz-rotating-landing && npm run audit:hugz-domain-separation && npm run audit:hugz-tp-cc-hold && npm run audit:customer-pathways && npm run audit:public-pathways && npm run audit:dont-call-it-love-public-hold && npm run audit:gpmc-sensory-public",
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
@@ -31,6 +31,7 @@
     "audit:audio:a-love-like-that": "node scripts/audit-a-love-like-that-boundary-v1.mjs",
     "audit:static-audio-containment": "node scripts/audit-static-audio-containment-v1.mjs",
     "audit:static-audio-staging": "node scripts/audit-static-audio-staging-v1.mjs",
+    "audit:controlled-purchase-canary": "node scripts/audit-controlled-purchase-canary-v1.mjs",
     "apply:static-audio-containment": "node scripts/apply-static-audio-containment-v1.mjs",
     "audit:blk-kk-text-freeze": "node scripts/audit-blk-kk-text-generation-freeze-v1.mjs"
   },

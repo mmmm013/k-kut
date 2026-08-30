@@ -13,7 +13,7 @@ const offers = [
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
     heading: "A full music moment",
     description:
-      "Browse 13 HUGz Cards by human feeling. Exact customer music choices remain behind the current release gate.",
+      "One Sweet Love HUG is approved for the $7.99 purchase canary. All other exact choices remain gated.",
     href: "/hugz",
     cta: "Browse HUGz Cards",
   },
@@ -52,6 +52,19 @@ export default function HugPage() {
             Pick the size of the music moment. See what is ready before payment.
           </p>
         </header>
+
+        <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
+          <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
+            One approved HUG is ready now
+          </p>
+          <h2 className="mt-3 text-3xl font-black">A LOVE LIKE THAT · Sweet Love · $7.99</h2>
+          <Link
+            href="/romance"
+            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-pink-200 px-5 py-3 text-sm font-black text-[#160915]"
+          >
+            Hear it and send it
+          </Link>
+        </section>
 
         <section aria-label="HUG, TUG, and BUG offers" className="grid gap-5 md:grid-cols-3">
           {offers.map((offer) => (

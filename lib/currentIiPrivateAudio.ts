@@ -5,6 +5,8 @@ export type CurrentIiPrivateAudioRecord = (typeof manifest.records)[number];
 export const currentIiPrivateAudio = {
   bucket: manifest.storage_bucket,
   signedUrlTtlSeconds: manifest.signed_url_ttl_seconds,
+  customerPreviewSignedUrlTtlSeconds:
+    manifest.customer_preview_signed_url_ttl_seconds,
   records: manifest.records,
 } as const;
 

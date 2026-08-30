@@ -34,8 +34,11 @@ if (record.start_seconds !== EXPECTED_START || record.end_seconds !== EXPECTED_E
 if (record.boundary_authority?.prior_invalid_fixed_window_end_seconds !== 24) {
   fail("The superseded 24-second fixed-window defect is not documented.");
 }
-if (record.boundary_authority?.owner_confirmation_state !== "PENDING_CURRENT_DELIVERY_HASH_LISTEN") {
-  fail("The repaired boundary must remain held for owner listening approval.");
+if (
+  record.boundary_authority?.owner_confirmation_state !==
+  "APPROVED_FOR_CONTROLLED_PURCHASE_CANARY_2026_08_30"
+) {
+  fail("The repaired boundary lacks the controlled-canary owner approval.");
 }
 if (record.delivery_materialization?.twinkle_gain !== 0.75) {
   fail("A LOVE LIKE THAT must use the locked medium 75% Twinkle gain.");
@@ -46,8 +49,8 @@ if (
 ) {
   fail("A LOVE LIKE THAT must end with the governed GPMx Twinkle.");
 }
-if (record.release_gate?.state !== "HOLD_PENDING_OWNER_LISTEN") {
-  fail("A LOVE LIKE THAT release hold is missing.");
+if (record.release_gate?.state !== "STAGE_CONTROLLED_PURCHASE_CANARY") {
+  fail("A LOVE LIKE THAT controlled purchase stage is missing.");
 }
 if (
   record.delivery_audio_url !== "" ||
@@ -59,7 +62,10 @@ if (
 const canary = readJson("data/production/first-production-canary-v1.json");
 const canaryRecord = canary.records?.find((item) => item.ii_id === II_ID);
 if (!canaryRecord) fail("A LOVE LIKE THAT canary record is missing.");
-if (canaryRecord.status !== "TRIAGE") fail("A LOVE LIKE THAT must not be STAGE before owner approval.");
+if (canaryRecord.status !== "STAGE") fail("A LOVE LIKE THAT is not STAGE for the approved canary.");
+if (canaryRecord.missing_current_proof?.length) {
+  fail("A LOVE LIKE THAT STAGE record retains missing proof.");
+}
 if (canaryRecord.delivery_sha256 !== EXPECTED_SHA256) fail("Canary delivery hash is stale.");
 if (
   canaryRecord.boundary_start_seconds !== EXPECTED_START ||
@@ -73,15 +79,23 @@ const bridgeRows = (bridge.records || []).filter(
   (item) => item.kk_id_or_delivery_object_id === II_ID,
 );
 if (!bridgeRows.length) fail("A LOVE LIKE THAT publication rows are missing.");
+const authorizedOptionId =
+  "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38";
 for (const row of bridgeRows) {
-  if (row.payment_allowed !== false) fail(`${row.public_option_id} still allows payment.`);
-  if (row.audio_delivery_url !== "") fail(`${row.public_option_id} still exposes audio.`);
-  if (row.audio_proof_status !== "boundary_repair_pending_owner_listening") {
-    fail(`${row.public_option_id} has an invalid audio proof state.`);
+  if (row.public_option_id === authorizedOptionId) {
+    if (row.payment_allowed !== true) fail("Controlled canary payment is disabled.");
+    if (
+      row.audio_delivery_url !== `/api/ii-delivery/${authorizedOptionId}` ||
+      row.audio_proof_status !== "pass"
+    ) {
+      fail("Controlled canary audio authority is invalid.");
+    }
+  } else if (row.payment_allowed !== false || row.audio_delivery_url !== "") {
+    fail(`${row.public_option_id} exceeds the one-option canary scope.`);
   }
 }
 
-console.log("PASS: A LOVE LIKE THAT uses 0.000-34.875 and remains held for owner listening.");
+console.log("PASS: A LOVE LIKE THAT uses 0.000-34.875 and is owner-authorized for one controlled purchase option.");
 console.log(`SHA-256: ${EXPECTED_SHA256}`);
 console.log(`Duration: ${EXPECTED_DELIVERY_DURATION.toFixed(6)} seconds`);
-console.log("Delivery access: private Supabase target; upload pending APPLY");
+console.log("Delivery access: private Supabase target; upload and hash verification complete");
