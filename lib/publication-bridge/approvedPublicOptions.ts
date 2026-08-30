@@ -82,6 +82,10 @@ function allRecords(): ApprovedPublicOption[] {
   return (parsed.records || []).filter(record => isApproved(record, staged));
 }
 
+export function loadAllApprovedPublicOptions(): ApprovedPublicOption[] {
+  return allRecords();
+}
+
 export function loadApprovedPublicOptions(publicRoute: string): ApprovedPublicOption[] {
   return allRecords()
     .filter(record => record.public_route === publicRoute)

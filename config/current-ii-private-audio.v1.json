@@ -4,13 +4,14 @@
   "storage_bucket": "ii-delivery",
   "bucket_must_be_public": false,
   "signed_url_ttl_seconds": 300,
+  "customer_preview_signed_url_ttl_seconds": 60,
   "apply_requires_upload_before_deploy": true,
   "records": [
     {
       "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
       "review_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
       "title": "A LOVE LIKE THAT",
-      "authority_state": "TRIAGE",
+      "authority_state": "STAGE_CONTROLLED_PURCHASE_CANARY",
       "owner_review_enabled": true,
       "former_public_static_path": "/ii-delivery/romance/a-love-like-that-d3dfd13c-7421-4671-8261-0c735cb51f38-bookend-twinkle.mp3",
       "staging_source_path": "staging/current-ii-private-audio-v1/21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1.mp3",

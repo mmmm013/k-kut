@@ -19,6 +19,9 @@ const adminPage = read("app/admin/kkr-authority/page.tsx");
 const ownerAudioRoute = read(
   "app/api/admin/kkr-authority/audio/[id]/route.ts",
 );
+const customerAudioRoute = read(
+  "app/api/ii-delivery/[publicOptionId]/route.ts",
+);
 
 if (manifest.schema_version !== "current-ii-private-audio-v1") {
   fail("wrong manifest schema");
@@ -31,9 +34,10 @@ if (
 }
 if (
   manifest.signed_url_ttl_seconds !== 300 ||
+  manifest.customer_preview_signed_url_ttl_seconds !== 60 ||
   manifest.apply_requires_upload_before_deploy !== true
 ) {
-  fail("five-minute signing and upload-before-deploy law are not locked");
+  fail("owner/customer signing and upload-before-deploy law are not locked");
 }
 if (!Array.isArray(manifest.records) || manifest.records.length !== 3) {
   fail("expected exactly three contained romance objects");
@@ -77,20 +81,17 @@ for (const record of manifest.records) {
     registryRecord.private_delivery_audio?.bucket !== manifest.storage_bucket ||
     registryRecord.private_delivery_audio?.object_path !==
       record.storage_object_path ||
-    registryRecord.private_delivery_audio?.visibility !== "private" ||
-    registryRecord.private_delivery_audio?.apply_state !==
-      "UPLOAD_REQUIRED_BEFORE_DEPLOY"
+    registryRecord.private_delivery_audio?.visibility !== "private"
   ) {
     fail(`registry private locator mismatch ${record.ii_id}`);
   }
 
   const canaryRecord = canaryById.get(record.ii_id);
   if (record.owner_review_enabled) {
-    if (!canaryRecord || canaryRecord.status !== "TRIAGE") {
-      fail(`owner-review record is not TRIAGE ${record.ii_id}`);
+    if (!canaryRecord || !["TRIAGE", "STAGE"].includes(canaryRecord.status)) {
+      fail(`owner-review record has invalid authority ${record.ii_id}`);
     }
     if (
-      canaryRecord.delivery_audio_url !== "" ||
       canaryRecord.delivery_sha256 !== record.sha256 ||
       canaryRecord.private_delivery_audio?.object_path !==
         record.storage_object_path
@@ -103,8 +104,23 @@ for (const record of manifest.records) {
     (row) => row.kk_id_or_delivery_object_id === record.ii_id,
   );
   if (!bridgeRows.length) fail(`publication record missing ${record.ii_id}`);
+  const authorizedOptionId =
+    canaryRecord?.status === "STAGE"
+      ? canaryRecord.release_authority?.authorized_public_option_id
+      : "";
   for (const row of bridgeRows) {
-    if (row.audio_delivery_url !== "" || row.payment_allowed !== false) {
+    if (row.public_option_id === authorizedOptionId) {
+      if (
+        row.audio_delivery_url !== `/api/ii-delivery/${authorizedOptionId}` ||
+        row.payment_allowed !== true ||
+        row.audio_proof_status !== "pass" ||
+        record.authority_state !== "STAGE_CONTROLLED_PURCHASE_CANARY" ||
+        registryRecord.private_delivery_audio?.apply_state !==
+          "UPLOADED_AND_HASH_VERIFIED_2026_08_30"
+      ) {
+        fail(`controlled canary authority mismatch ${row.public_option_id}`);
+      }
+    } else if (row.audio_delivery_url !== "" || row.payment_allowed !== false) {
       fail(`held publication row can expose audio or payment ${row.public_option_id}`);
     }
   }
@@ -150,8 +166,26 @@ for (const forbidden of ["getPublicUrl(", "/object/public/"]) {
   }
 }
 
+for (const required of [
+  "findApprovedPublicOptionByPublicOptionId",
+  "findCurrentIiPrivateAudio",
+  'privateAudio.authority_state !== "STAGE_CONTROLLED_PURCHASE_CANARY"',
+  "createSignedUrl(",
+  "currentIiPrivateAudio.customerPreviewSignedUrlTtlSeconds",
+  '"Cache-Control": "private, no-store, max-age=0"',
+]) {
+  if (!customerAudioRoute.includes(required)) {
+    fail(`customer canary audio route missing ${required}`);
+  }
+}
+for (const forbidden of ["getPublicUrl(", "/object/public/"]) {
+  if (customerAudioRoute.includes(forbidden)) {
+    fail(`customer audio route contains public access primitive ${forbidden}`);
+  }
+}
+
 console.log("STATIC AUDIO CONTAINMENT AUDIT: PASS");
-console.log("ROMANCE OBJECTS: 3 PRIVATE TARGETS PREPARED · 0 VERCEL-STATIC");
-console.log("PUBLIC AUDIO / PAYMENT AUTHORITY: 0");
+console.log("ROMANCE OBJECTS: 3 PRIVATE TARGETS VERIFIED · 0 VERCEL-STATIC");
+console.log("CONTROLLED CUSTOMER PREVIEW / PAYMENT AUTHORITY: 1 EXACT OPTION");
 console.log("OWNER PLAYBACK: TOKEN-GATED · 300-SECOND SIGNED URL");
-console.log("APPLY ORDER: PRIVATE UPLOAD REQUIRED BEFORE DEPLOY");
+console.log("CUSTOMER CANARY PREVIEW: 60-SECOND SIGNED URL");

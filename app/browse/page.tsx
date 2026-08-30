@@ -19,15 +19,21 @@ export default function BrowsePage() {
             Browse the human moments.
           </h1>
           <p className="mt-5 max-w-4xl text-lg font-bold leading-8 text-[#EFEBE9]">
-            The 13 HUGz Cards are open. Exact customer music choices, public audio, checkout, delivery, and fulfillment stay held until each item passes the current release gate.
+            The 13 HUGz Cards are open. One exact Sweet Love HUG is approved for the controlled $7.99 purchase canary; every other item remains held.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <span className="rounded-2xl border border-amber-300/35 bg-amber-950/25 px-4 py-3 text-sm font-black text-amber-100">
               HUGz Cards: 13
             </span>
             <span className="rounded-2xl border border-red-400/35 bg-red-950/25 px-4 py-3 text-sm font-black text-red-100">
-              Customer-ready exact choices: 0
+              Customer-ready exact choices: 1
             </span>
+            <Link
+              href="/romance"
+              className="rounded-2xl bg-pink-200 px-5 py-3 text-sm font-black text-[#160915]"
+            >
+              Hear & buy the approved HUG
+            </Link>
             <Link
               href="/hug"
               className="rounded-2xl border border-[#FFD54F]/60 px-5 py-3 text-sm font-black text-[#FFD54F]"

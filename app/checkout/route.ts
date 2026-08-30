@@ -182,8 +182,23 @@ async function governedCheckout(
           },
         },
       ],
-      success_url: `${siteOrigin}/?checkout=paid&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteOrigin}/hug?checkout=cancelled`,
+      success_url: `${siteOrigin}/order/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteOrigin}/romance?checkout=cancelled`,
+      phone_number_collection: { enabled: true },
+      custom_fields: [
+        {
+          key: "recipientmobile",
+          label: {
+            type: "custom",
+            custom: "Recipient mobile number",
+          },
+          type: "text",
+          text: {
+            minimum_length: 7,
+            maximum_length: 20,
+          },
+        },
+      ],
       custom_text: {
         submit: {
           message:
@@ -199,6 +214,7 @@ async function governedCheckout(
         bf_profile: BF_PROFILE,
         origin_domain: originDomain(request),
         locked_price_cents: String(config.priceCents),
+        sales_canary: "one_ii_one_public_option",
       },
       payment_intent_data: {
         description: `K-KUT ${config.publicProductName}`,
@@ -211,6 +227,7 @@ async function governedCheckout(
           bf_profile: BF_PROFILE,
           origin_domain: originDomain(request),
           locked_price_cents: String(config.priceCents),
+          sales_canary: "one_ii_one_public_option",
         },
       },
     });
@@ -230,25 +247,7 @@ async function governedCheckout(
 }
 
 export async function GET(request: NextRequest) {
-  const publicOptionId = safeInventoryId(
-    request.nextUrl.searchParams.get("public_option_id"),
-  );
-  const inventoryId = safeInventoryId(request.nextUrl.searchParams.get("ii"));
-  const offer = safeOffer(request.nextUrl.searchParams.get("offer"));
-
-  if (!publicOptionId) {
-    return returnToStore(request, "invalid-public-option");
-  }
-
-  if (!inventoryId) {
-    return returnToStore(request, "invalid-selection");
-  }
-
-  if (!offer) {
-    return returnToStore(request, "invalid-offer");
-  }
-
-  return governedCheckout(request, publicOptionId, inventoryId, offer, "");
+  return returnToStore(request, "checkout-post-required");
 }
 
 export async function POST(request: NextRequest) {

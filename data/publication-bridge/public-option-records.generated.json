@@ -1,8 +1,9 @@
 {
-  "status": "generated_with_bic_correction_hold",
+  "status": "generated_with_single_ii_controlled_purchase_canary",
   "source": "data/ii-delivery-registry/romance-reusable-ii-records.json",
   "generated_at": "2026-06-01T00:31:32.582Z",
   "corrected_at": "2026-08-01",
+  "sales_canary_activated_at": "2026-08-30",
   "records": [
     {
       "public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
@@ -26,14 +27,14 @@
       "intent_lane": "romance_love",
       "risk_level": "standard",
       "approval_status": "public_approved_generated_from_reusable_ii",
-      "audio_delivery_url": "",
-      "audio_proof_status": "boundary_repair_pending_owner_listening",
-      "payment_allowed": false,
+      "audio_delivery_url": "/api/ii-delivery/generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "audio_proof_status": "pass",
+      "payment_allowed": true,
       "stripe_url_if_payment_allowed": "",
       "public_route": "/romance",
       "more_for_this_feeling_allowed": true,
       "more_from_this_track_allowed": true,
-      "public_notes": "Release-held until owner approves the repaired 0.000-34.875 VTP/InTP boundary and current delivery hash."
+      "public_notes": "Owner-authorized one-II controlled purchase canary. Private 60-second signed preview; server-created Stripe Checkout; manual fulfillment review."
     },
     {
       "public_option_id": "generated-love-deep-devotion-d3dfd13c-7421-4671-8261-0c735cb51f38",

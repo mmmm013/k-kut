@@ -17,14 +17,14 @@ const generated = JSON.parse(fs.readFileSync(generatedPath, "utf8"));
 const canary = JSON.parse(
   fs.readFileSync("data/production/first-production-canary-v1.json", "utf8"),
 );
-const stagedIds = new Set(
+const stagedById = new Map(
   (canary.records || [])
     .filter(
       (record) =>
         record.status === "STAGE" &&
         (record.missing_current_proof?.length || 0) === 0,
     )
-    .map((record) => record.ii_id),
+    .map((record) => [record.ii_id, record]),
 );
 
 if (!Array.isArray(generated.records) || generated.records.length < 1) {
@@ -45,8 +45,11 @@ for (const record of generated.records || []) {
     fail(`${record.public_option_id} public route not allowed: ${record.public_route}`);
   }
 
-  const staged = stagedIds.has(record.kk_id_or_delivery_object_id);
-  if (staged) {
+  const staged = stagedById.get(record.kk_id_or_delivery_object_id);
+  const authorizedOption =
+    staged?.release_authority?.authorized_public_option_id ===
+    record.public_option_id;
+  if (authorizedOption) {
     if (record.approval_status !== "public_approved_generated_from_reusable_ii") {
       fail(`${record.public_option_id} STAGE record has wrong approval status.`);
     }

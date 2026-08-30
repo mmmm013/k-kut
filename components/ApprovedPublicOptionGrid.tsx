@@ -19,10 +19,14 @@ function checkoutOffer(record: ApprovedPublicOption) {
   return "kk";
 }
 
+function formatPrice(cents: number) {
+  return `$${(cents / 100).toFixed(2)}`;
+}
+
 export default function ApprovedPublicOptionGrid({
   records,
   emptyTitle = "No approved K-KUT HUGs are published for this route yet.",
-  buttonLabel = "Send this GPM HUG",
+  buttonLabel = "Buy & send this GPM HUG",
 }: {
   records: ApprovedPublicOption[];
   emptyTitle?: string;
@@ -60,7 +64,8 @@ export default function ApprovedPublicOptionGrid({
             className="rounded-[1.75rem] border border-pink-200/15 bg-[#0d0711] p-5 shadow-xl"
           >
             <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-              {record.product_family} · {titleCase(record.intent_lane)}
+              {record.product_family} · {formatPrice(record.price_cents)} ·{" "}
+              {titleCase(record.intent_lane)}
             </p>
             <h2 className="mt-3 text-2xl font-black">{record.display_title}</h2>
             <p className="mt-3 min-h-[72px] text-sm leading-6 text-white/68">
@@ -85,6 +90,7 @@ export default function ApprovedPublicOptionGrid({
             <audio
               className="mt-5 w-full"
               controls
+              controlsList="nodownload noplaybackrate"
               preload="metadata"
               src={record.audio_delivery_url}
             />
@@ -105,12 +111,31 @@ export default function ApprovedPublicOptionGrid({
                 name="offer"
                 value={checkoutOffer(record)}
               />
+              <label className="mb-4 block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-[#FFD54F]">
+                  Optional personal note
+                </span>
+                <span className="mt-1 block text-xs font-bold text-white/55">
+                  Up to 13 words. It appears before the HUG.
+                </span>
+                <input
+                  type="text"
+                  name="personal_note"
+                  maxLength={160}
+                  placeholder="Your note"
+                  className="mt-2 w-full rounded-xl border border-white/15 bg-black/35 px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-white/35 focus:border-[#FFD54F]"
+                />
+              </label>
               <button
                 type="submit"
                 className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white"
               >
                 {buttonLabel}
               </button>
+              <p className="mt-3 text-xs font-bold leading-5 text-white/50">
+                Stripe securely collects payment and the recipient mobile number.
+                GPM reviews the exact HUG before private delivery.
+              </p>
             </form>
           </article>
         ))}

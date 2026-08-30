@@ -1,36 +1,49 @@
 import { NextResponse } from "next/server";
+import { loadAllApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const HOLD_STATUS = "STRICT_MUSIC_EMERGENCY_HOLD";
-
 export async function GET() {
+  const records = loadAllApprovedPublicOptions().map((record) => ({
+    public_option_id: record.public_option_id,
+    ii_id: record.kk_id_or_delivery_object_id,
+    product_family: record.product_family,
+    inventory_family: record.inventory_family,
+    price_cents: record.price_cents,
+    display_title: record.display_title,
+    interpretation_summary: record.interpretation_summary,
+    intent_lane: record.intent_lane,
+    audio_delivery_url: record.audio_delivery_url,
+    public_route: record.public_route,
+    payment_allowed: record.payment_allowed,
+  }));
+
   return NextResponse.json(
     {
-      ok: false,
-      status: HOLD_STATUS,
-      error: "strict_music_proof_required",
+      ok: true,
+      status: "CONTROLLED_PURCHASE_CANARY_ACTIVE",
       message:
-        "Public playback and purchase are disabled until every II has explicit authorized-music proof and all MC-BOT/no-music records are isolated.",
-      inventoryCount: 0,
-      purchasableCount: 0,
-      records: [],
-      absoluteRequirements: {
-        every_II_contains_authorized_music: true,
-        known_MC_BOT_or_no_music_rows_allowed: 0,
-        unproven_music_rows_allowed: 0,
-        strict_music_proof_required_per_row: true,
-        customer_audio_canary_required: true,
+        "Only explicitly STAGE-authorized IIs are returned. Every other II remains held.",
+      inventoryCount: records.length,
+      purchasableCount: records.filter((record) => record.payment_allowed).length,
+      records,
+      controls: {
+        unapproved_records_returned: 0,
+        permanent_public_storage_urls: 0,
+        checkout_authority: "server_created_stripe_checkout_session",
+        fulfillment_mode: "manual_review_private_delivery",
       },
     },
     {
-      status: 503,
+      status: 200,
       headers: {
         "Cache-Control": "no-store, max-age=0",
-        "X-KKUT-Strict-Music-Hold": "active",
-        "X-KKUT-Inventory-Count": "0",
-        "X-KKUT-Purchasable-Count": "0",
+        "X-KKUT-Controlled-Canary": "active",
+        "X-KKUT-Inventory-Count": String(records.length),
+        "X-KKUT-Purchasable-Count": String(
+          records.filter((record) => record.payment_allowed).length,
+        ),
       },
     },
   );

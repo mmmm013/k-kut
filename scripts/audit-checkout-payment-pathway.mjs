@@ -32,6 +32,10 @@ for (const required of [
   "publicationOption.kk_id_or_delivery_object_id !== inventoryId",
   "public_option_id: publicationOption.public_option_id",
   "locked_price_cents: String(config.priceCents)",
+  "phone_number_collection: { enabled: true }",
+  'key: "recipientmobile"',
+  'custom: "Recipient mobile number"',
+  'success_url: `${siteOrigin}/order/success?session_id={CHECKOUT_SESSION_ID}`',
 ]) {
   if (!checkout.includes(required)) fail(`Checkout missing: ${required}`);
 }
