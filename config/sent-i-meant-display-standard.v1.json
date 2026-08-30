@@ -12,5 +12,11 @@
   "canonical_domains": [
     "sentimeant.com",
     "www.sentimeant.com"
-  ]
+  ],
+  "defensive_domain_behavior": {
+    "destination": "https://sentimeant.com",
+    "status_code": 308,
+    "preserve_path": true,
+    "preserve_query": true
+  }
 }
