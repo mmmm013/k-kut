@@ -169,6 +169,14 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "sentimeants.com" }],
+    },
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "www.sentimeants.com" }],
+    },
     "/",
     "/pix/:path*",
     "/mkut/:path*",
