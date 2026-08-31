@@ -1,0 +1,112 @@
+{
+  "schema_version": "A_LOVE_LIKE_THAT_TWINKLE_REPROSECUTION_MANIFEST_V1",
+  "authority": "OWNER_APPROVED_PREPARE_AND_TEST_ONLY_2026_08_30",
+  "execution_state": "PREPARED_NOT_EXECUTED",
+  "production_state": "HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY",
+  "write_policy": "NO_AUDIO_DATABASE_STORAGE_PAYMENT_OR_PRODUCTION_WRITES",
+  "subject": {
+    "title": "A LOVE LIKE THAT",
+    "canonical_lt_pix_track_id": "41c9fe20-76cf-42ad-85d5-beab1d433dea",
+    "canonical_storage_bucket": "tracks",
+    "canonical_storage_object_id": "bff29597-87f0-46c2-8b27-9392635f0df7",
+    "canonical_storage_object_name": "A LOVE LIKE THAT.mp3",
+    "canonical_source_sha256": "6ea1bca85e3f33b2bac0e03b70f6ae8037e83dee53c3d87bf9012f39cfa29afb",
+    "legacy_kk_id_not_lt_pix_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+    "legacy_kk_window_seconds": { "start": 0, "end": 24 },
+    "legacy_kk_disposition": "HOLD_NOT_BLK"
+  },
+  "revoked_claims": [
+    {
+      "claim": "0.000-34.875 is an authoritative BLK",
+      "state": "REVOKED_BY_OWNER_BOUNDARY_FAILURE_2026_08_30"
+    },
+    {
+      "claim": "the contained bookend-Twinkle delivery is customer-safe",
+      "delivery_sha256": "21155af2dbfefdf2ff90bec6b0a2458485dfd178994b430054edca8aa635b6b1",
+      "duration_seconds": 41.273469,
+      "state": "CONTAINED_EVIDENCE_DO_NOT_SERVE"
+    }
+  ],
+  "existing_candidate_evidence": [
+    { "manifest_id": 1192, "kk_no": "01", "ii_key": "II_V012_d020683f679f3df4390a86ae15ed24a042ce6eb36e6f16faec6898a9760ce2ed", "legacy_window": [0, 34.875] },
+    { "manifest_id": 1193, "kk_no": "02", "ii_key": "II_V012_08995dec3892db3714ef3aad18aa23f2560e38ac8b25746823d35abf08939051", "legacy_window": [34.875, 77.625] },
+    { "manifest_id": 1194, "kk_no": "03", "ii_key": "II_V012_d7e8b0f97d0f30692925cd02a714216610e496efeebb9e483420b8e138ebefe9", "legacy_window": [77.625, 119.625] },
+    { "manifest_id": 1195, "kk_no": "04", "ii_key": "II_V012_8b2026eebc3ba8f01eac3e2aa852fce2ab7b6e75220c15524a592f94db97c8e3", "legacy_window": [119.625, 154.125] },
+    { "manifest_id": 1196, "kk_no": "05", "ii_key": "II_V012_d6e49c873eedd2f24f86b3b2705a8489dd571f9fedd6f879549d57cbd23c4050", "legacy_window": [154.125, 196] }
+  ],
+  "candidate_evidence_law": {
+    "evidence_only": true,
+    "may_establish_blk": false,
+    "may_establish_vtp_intp": false,
+    "may_be_relabelled_in_place": false,
+    "may_be_served_or_sold": false
+  },
+  "single_linear_reprosecution": [
+    {
+      "step": 1,
+      "action": "resolve_and_hash_canonical_lt_pix",
+      "required_result": "track 41c9fe20-76cf-42ad-85d5-beab1d433dea and SHA-256 match",
+      "state": "PENDING_EXECUTION"
+    },
+    {
+      "step": 2,
+      "action": "capture_complete_canonical_lyrics_and_time_alignment",
+      "required_result": "no lyric omission and no generated meaning",
+      "state": "PENDING_EXECUTION"
+    },
+    {
+      "step": 3,
+      "action": "prosecute_sequential_blk_identity_by_human_listening",
+      "required_result": "one nonempty blk_id per candidate; no fixed-window inheritance",
+      "state": "PENDING_EXECUTION"
+    },
+    {
+      "step": 4,
+      "action": "prosecute_intp_and_vtp_boundaries",
+      "required_result": "BLK1 begins fractionally before first verified InTP/VTP trigger; every end preserves complete vocal phrase",
+      "state": "PENDING_EXECUTION"
+    },
+    {
+      "step": 5,
+      "action": "render_one_private_candidate_without_twinkle",
+      "required_result": "CC.start >= BLK.start; CC.end <= BLK.end; exactly one blk_id",
+      "state": "BLOCKED_PENDING_STEPS_1_TO_4"
+    },
+    {
+      "step": 6,
+      "action": "probe_rendered_audio_bytes",
+      "required_result": "decoded duration, source hash lineage, no cutoff, no cross-BLK audio",
+      "state": "BLOCKED_PENDING_STEP_5"
+    },
+    {
+      "step": 7,
+      "action": "resolve_owner_approved_twinkle_asset_and_placement",
+      "required_result": "registry ID, audio hash, duration, 75-percent standard gain, placement, and owner listening proof",
+      "state": "BLOCKED_PENDING_OWNER_APPROVAL"
+    },
+    {
+      "step": 8,
+      "action": "render_private_customer_delivery_and_reprobe",
+      "required_result": "primary CC remains unaltered; Twinkle does not damage or truncate it",
+      "state": "BLOCKED_PENDING_STEPS_6_AND_7"
+    },
+    {
+      "step": 9,
+      "action": "owner_listening_decision_on_exact_delivery_hash",
+      "required_result": "explicit approval tied to immutable delivery SHA-256",
+      "state": "BLOCKED_PENDING_STEP_8"
+    }
+  ],
+  "release_gate": {
+    "automatic_release": false,
+    "audio_allowed": false,
+    "payment_allowed": false,
+    "stripe_allowed": false,
+    "twinkle_materialization_allowed": false,
+    "database_mutation_allowed": false,
+    "storage_mutation_allowed": false,
+    "merge_allowed_by_this_authority": false,
+    "production_deploy_allowed_by_this_authority": false,
+    "required_future_authority": "SEPARATE_EXPLICIT_OWNER_APPROVAL"
+  }
+}
