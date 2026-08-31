@@ -1,0 +1,45 @@
+{
+  "schema_version": "two-day-free-canary-v1",
+  "authority": "OWNER_APPROVED_PREPARE_AND_TEST_ONLY",
+  "state": "BLOCKED_NO_ELIGIBLE_II",
+  "window": {
+    "duration_hours": 48,
+    "starts_at": null,
+    "ends_at": null,
+    "activation_requires_separate_owner_approval": true
+  },
+  "commerce": {
+    "customer_charge_cents": 0,
+    "stripe_used": false,
+    "canonical_prices_unchanged": true
+  },
+  "selection_law": [
+    "Select exactly one II only when it is independently STAGE-authorized.",
+    "Require complete current proof, audio proof pass, private delivery authority, and owner listening approval.",
+    "Exclude every held, TRIAGE, DRAFT, unverified, or incomplete II.",
+    "Free status never overrides II, BLK, VTP/InTP, CC, Twinkle, delivery, or owner authority."
+  ],
+  "selected_records": [],
+  "evaluated_records": [
+    {
+      "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "title": "A LOVE LIKE THAT",
+      "result": "EXCLUDED",
+      "reason": "HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY"
+    },
+    {
+      "ii_id": "ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49",
+      "title": "YOUR HEART POUNDIN'",
+      "result": "EXCLUDED",
+      "reason": "TRIAGE_MISSING_CURRENT_PROOF_AND_PRIVATE_OBJECT"
+    }
+  ],
+  "prohibited_changes": {
+    "audio_generation": true,
+    "audio_mutation": true,
+    "sensory_generation_or_mutation": true,
+    "stripe_or_payment_link_use": true,
+    "production_merge_or_deploy": true
+  },
+  "next": "Complete independent proof for one non-held II, obtain owner listening approval, then request separate activation approval."
+}
