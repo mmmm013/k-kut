@@ -11,9 +11,9 @@ const offers = [
   {
     name: "HUG",
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
-    status: "No public inventory yet",
+    status: "36 Gregory-approved IIs",
     description:
-      "HUG inventory remains behind exact release review. No player or payment button appears until one specific HUG clears every gate.",
+      "Hear 30 regular HUG moments at $7.99 and six intrinsically Christmas moments in the $14.99 holiday container.",
     href: "/hugz",
     cta: "Browse 13 HUGz Cards",
   },
@@ -69,17 +69,17 @@ export default function KKutHome() {
 
         <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
           <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
-            Customer release review active
+            Approved real-music release
           </p>
-          <h2 className="mt-3 text-3xl font-black">No approved K-KUT HUGs are published yet.</h2>
+          <h2 className="mt-3 text-3xl font-black">36 Gregory-approved IIs are ready to hear.</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            Meaning, audio, route fit, rights, and final approval must all pass before a player or payment button appears.
+            Choose the exact music moment first. Checkout appears only when its matching Stripe link is active at the locked price.
           </p>
           <Link
-            href="/romance"
+            href="/approved-iis"
             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
           >
-            View Romance review status
+            Hear the approved music moments
           </Link>
         </section>
 
@@ -111,7 +111,7 @@ export default function KKutHome() {
             Release control
           </p>
           <p className="mt-3 text-sm font-bold leading-7 text-amber-50/80">
-            The general music catalog is under strict review. Browsing routes remain open, but unapproved audio, titles, delivery, and payment stay unavailable. A missing payment button means the exact item has not cleared release—not that your browser failed.
+            Only the 36-item Gregory-approved subset is released here. A LOVE LIKE THAT and the rest of the general catalog remain held. A missing payment button means Stripe price verification is still pending—not that your browser failed.
           </p>
         </section>
 

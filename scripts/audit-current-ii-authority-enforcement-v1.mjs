@@ -152,6 +152,8 @@ for (const required of [
   "enforceCurrentIiAuthority",
   "findApprovedPublicOptionByPublicOptionId",
   "option.kk_id_or_delivery_object_id !== inventoryId",
+  "findApprovedIiReleaseByPublicOptionId",
+  "approvedSubsetOption.priceCents",
   "selected_public_option_id",
   "paid_held_current_ii_authority",
   "hug_link_status: \"blocked_current_ii_hold\"",

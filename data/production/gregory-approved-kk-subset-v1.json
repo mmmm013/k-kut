@@ -1,0 +1,109 @@
+{
+  "schema_version": "gregory-approved-kk-subset-v1",
+  "supabase_project_id": "vwlzubxshjjonabpeagd",
+  "storage_bucket": "tracks",
+  "signed_url_ttl_seconds": 60,
+  "release_authority": {
+    "inventory_table": "public.gpmc_kk_rendered_deployable_inventory_ee",
+    "required_deploy_state": "DEPLOYABLE_INVENTORY",
+    "decision_table": "public.gpmc_kk_gregory_review_decision_ee",
+    "required_gregory_decision": "APPROVE_KK_TRIMMED",
+    "storage_objects_verified_at": "2026-08-31T00:00:00Z"
+  },
+  "prices_cents": {
+    "regular_hug": 799,
+    "holiday_hug": 1499
+  },
+  "titles": [
+    {
+      "source_title": "ALIVE N' KICKIN'",
+      "public_title": "Alive N' Kickin'",
+      "container": "regular_hug",
+      "intent_lane": "Keep-going support",
+      "interpretation_summary": "For encouraging someone to keep going with strength and determination.",
+      "items": [
+        { "batch_item_id": 638, "moment_number": 1, "section_label": "V1", "section_role": "VERSE_1", "storage_object_path": "638_alive-n-kickin_blk1_v1.mp3" },
+        { "batch_item_id": 639, "moment_number": 2, "section_label": "CH1", "section_role": "CHORUS_1", "storage_object_path": "639_alive-n-kickin_blk2_ch1.mp3" },
+        { "batch_item_id": 640, "moment_number": 3, "section_label": "V2", "section_role": "VERSE_2", "storage_object_path": "640_alive-n-kickin_blk3_v2.mp3" },
+        { "batch_item_id": 641, "moment_number": 4, "section_label": "CH2", "section_role": "CHORUS_2", "storage_object_path": "641_alive-n-kickin_blk4_ch2.mp3" },
+        { "batch_item_id": 642, "moment_number": 5, "section_label": "BR", "section_role": "BRIDGE", "storage_object_path": "642_alive-n-kickin_blk5_br.mp3" },
+        { "batch_item_id": 643, "moment_number": 6, "section_label": "CH3_OUTRO", "section_role": "FINAL_CHORUS_OUTRO", "storage_object_path": "643_alive-n-kickin_blk6_ch3-outro.mp3" }
+      ]
+    },
+    {
+      "source_title": "ALL ALONE",
+      "public_title": "All Alone",
+      "container": "regular_hug",
+      "intent_lane": "Comfort after separation",
+      "interpretation_summary": "For comforting someone after separation or during loneliness.",
+      "items": [
+        { "batch_item_id": 644, "moment_number": 1, "section_label": "V1", "section_role": "VERSE_1", "storage_object_path": "644_all-alone_blk1_v1.mp3" },
+        { "batch_item_id": 645, "moment_number": 2, "section_label": "CH1", "section_role": "CHORUS_1", "storage_object_path": "645_all-alone_blk2_ch1.mp3" },
+        { "batch_item_id": 646, "moment_number": 3, "section_label": "V2", "section_role": "VERSE_2", "storage_object_path": "646_all-alone_blk3_v2.mp3" },
+        { "batch_item_id": 647, "moment_number": 4, "section_label": "CH2", "section_role": "CHORUS_2", "storage_object_path": "647_all-alone_blk4_ch2.mp3" },
+        { "batch_item_id": 648, "moment_number": 5, "section_label": "BR", "section_role": "BRIDGE", "storage_object_path": "648_all-alone_blk5_br.mp3" },
+        { "batch_item_id": 649, "moment_number": 6, "section_label": "CH3_OUTRO", "section_role": "FINAL_CHORUS_OUTRO", "storage_object_path": "649_all-alone_blk6_ch3-outro.mp3" }
+      ]
+    },
+    {
+      "source_title": "BABY COMES FIRST",
+      "public_title": "Baby Comes First",
+      "container": "regular_hug",
+      "intent_lane": "Love-priority affirmation",
+      "interpretation_summary": "For affirming devotion and putting someone you love first.",
+      "items": [
+        { "batch_item_id": 662, "moment_number": 1, "section_label": "V1", "section_role": "VERSE_1", "storage_object_path": "662_baby-comes-first_blk1_v1.mp3" },
+        { "batch_item_id": 663, "moment_number": 2, "section_label": "CH1", "section_role": "CHORUS_1", "storage_object_path": "663_baby-comes-first_blk2_ch1.mp3" },
+        { "batch_item_id": 664, "moment_number": 3, "section_label": "V2", "section_role": "VERSE_2", "storage_object_path": "664_baby-comes-first_blk3_v2.mp3" },
+        { "batch_item_id": 665, "moment_number": 4, "section_label": "CH2", "section_role": "CHORUS_2", "storage_object_path": "665_baby-comes-first_blk4_ch2.mp3" },
+        { "batch_item_id": 666, "moment_number": 5, "section_label": "BR", "section_role": "BRIDGE", "storage_object_path": "666_baby-comes-first_blk5_br.mp3" },
+        { "batch_item_id": 667, "moment_number": 6, "section_label": "CH3_OUTRO", "section_role": "FINAL_CHORUS_OUTRO", "storage_object_path": "667_baby-comes-first_blk6_ch3-outro.mp3" }
+      ]
+    },
+    {
+      "source_title": "BABY WE'RE THROUGH",
+      "public_title": "Baby We're Through",
+      "container": "regular_hug",
+      "intent_lane": "Breakup closure",
+      "interpretation_summary": "For closure after a breakup and accepting that it is over.",
+      "items": [
+        { "batch_item_id": 668, "moment_number": 1, "section_label": "V1", "section_role": "VERSE_1", "storage_object_path": "668_baby-we-re-through_blk1_v1.mp3" },
+        { "batch_item_id": 669, "moment_number": 2, "section_label": "CH1", "section_role": "CHORUS_1", "storage_object_path": "669_baby-we-re-through_blk2_ch1.mp3" },
+        { "batch_item_id": 670, "moment_number": 3, "section_label": "V2", "section_role": "VERSE_2", "storage_object_path": "670_baby-we-re-through_blk3_v2.mp3" },
+        { "batch_item_id": 671, "moment_number": 4, "section_label": "CH2", "section_role": "CHORUS_2", "storage_object_path": "671_baby-we-re-through_blk4_ch2.mp3" },
+        { "batch_item_id": 672, "moment_number": 5, "section_label": "BR", "section_role": "BRIDGE", "storage_object_path": "672_baby-we-re-through_blk5_br.mp3" },
+        { "batch_item_id": 673, "moment_number": 6, "section_label": "CH3_OUTRO", "section_role": "FINAL_CHORUS_OUTRO", "storage_object_path": "673_baby-we-re-through_blk6_ch3-outro.mp3" }
+      ]
+    },
+    {
+      "source_title": "C'MON CHRISTMAS!",
+      "public_title": "C'mon Christmas!",
+      "container": "holiday_hug",
+      "intent_lane": "Christmas warmth",
+      "interpretation_summary": "A warm Christmas-season music moment from an intrinsically Christmas title.",
+      "items": [
+        { "batch_item_id": 674, "moment_number": 1, "section_label": "V1", "section_role": "VERSE_1", "storage_object_path": "674_c-mon-christmas_blk1_v1.mp3" },
+        { "batch_item_id": 675, "moment_number": 2, "section_label": "CH1", "section_role": "CHORUS_1", "storage_object_path": "675_c-mon-christmas_blk2_ch1.mp3" },
+        { "batch_item_id": 676, "moment_number": 3, "section_label": "V2", "section_role": "VERSE_2", "storage_object_path": "676_c-mon-christmas_blk3_v2.mp3" },
+        { "batch_item_id": 677, "moment_number": 4, "section_label": "CH2", "section_role": "CHORUS_2", "storage_object_path": "677_c-mon-christmas_blk4_ch2.mp3" },
+        { "batch_item_id": 678, "moment_number": 5, "section_label": "BR", "section_role": "BRIDGE", "storage_object_path": "678_c-mon-christmas_blk5_br.mp3" },
+        { "batch_item_id": 679, "moment_number": 6, "section_label": "CH3_OUTRO", "section_role": "FINAL_CHORUS_OUTRO", "storage_object_path": "679_c-mon-christmas_blk6_ch3-outro.mp3" }
+      ]
+    },
+    {
+      "source_title": "COME BACK-COME BACK",
+      "public_title": "Come Back-Come Back",
+      "container": "regular_hug",
+      "intent_lane": "Reconciliation appeal",
+      "interpretation_summary": "For reaching out with longing and asking for reconciliation.",
+      "items": [
+        { "batch_item_id": 686, "moment_number": 1, "section_label": "V1", "section_role": "VERSE_1", "storage_object_path": "686_come-back-come-back_blk1_v1.mp3" },
+        { "batch_item_id": 687, "moment_number": 2, "section_label": "CH1", "section_role": "CHORUS_1", "storage_object_path": "687_come-back-come-back_blk2_ch1.mp3" },
+        { "batch_item_id": 688, "moment_number": 3, "section_label": "V2", "section_role": "VERSE_2", "storage_object_path": "688_come-back-come-back_blk3_v2.mp3" },
+        { "batch_item_id": 689, "moment_number": 4, "section_label": "CH2", "section_role": "CHORUS_2", "storage_object_path": "689_come-back-come-back_blk4_ch2.mp3" },
+        { "batch_item_id": 690, "moment_number": 5, "section_label": "BR", "section_role": "BRIDGE", "storage_object_path": "690_come-back-come-back_blk5_br.mp3" },
+        { "batch_item_id": 691, "moment_number": 6, "section_label": "CH3_OUTRO", "section_role": "FINAL_CHORUS_OUTRO", "storage_object_path": "691_come-back-come-back_blk6_ch3-outro.mp3" }
+      ]
+    }
+  ]
+}

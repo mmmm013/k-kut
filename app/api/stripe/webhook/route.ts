@@ -6,6 +6,7 @@ import {
   consumePendingH2Order,
   h2PendingOrderStoreConfigured,
 } from "@/lib/h2PendingOrder";
+import { findApprovedIiReleaseByPublicOptionId } from "@/lib/approvedIiRelease";
 import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
@@ -211,6 +212,26 @@ function enforceCurrentIiAuthority(
   const option = publicOptionId
     ? findApprovedPublicOptionByPublicOptionId(publicOptionId)
     : null;
+  const approvedSubsetOption =
+    findApprovedIiReleaseByPublicOptionId(publicOptionId) ||
+    findApprovedIiReleaseByPublicOptionId(inventoryId);
+
+  const approvedSubsetAuthorized = Boolean(
+    approvedSubsetOption &&
+      approvedSubsetOption.publicOptionId === inventoryId &&
+      record.amount_paid_usd ===
+        (approvedSubsetOption.priceCents / 100).toFixed(2),
+  );
+
+  if (approvedSubsetAuthorized && approvedSubsetOption) {
+    return {
+      ...record,
+      selected_public_option_id: approvedSubsetOption.publicOptionId,
+      current_ii_authority: "STAGE",
+      current_ii_product_family: approvedSubsetOption.productFamily,
+      current_ii_inventory_family: approvedSubsetOption.inventoryFamily,
+    };
+  }
 
   if (!option || option.kk_id_or_delivery_object_id !== inventoryId) {
     return {

@@ -13,7 +13,7 @@ const offers = [
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
     heading: "A full music moment",
     description:
-      "No public HUG inventory is currently published. Each exact choice remains gated until audio, route fit, rights, and final approval all pass.",
+      "Thirty regular HUG IIs are approved at $7.99. Six C'mon Christmas! IIs remain in their intrinsic $14.99 holiday container.",
     href: "/hugz",
     cta: "Browse HUGz Cards",
   },
@@ -55,17 +55,17 @@ export default function HugPage() {
 
         <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
           <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
-            Customer release review active
+            Approved real-music release
           </p>
-          <h2 className="mt-3 text-3xl font-black">No approved K-KUT HUGs are published yet.</h2>
+          <h2 className="mt-3 text-3xl font-black">36 Gregory-approved IIs are ready to hear.</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            A LOVE LIKE THAT remains held. No player or payment button appears until its exact audio and purchase surface clear release review.
+            This release does not reopen A LOVE LIKE THAT; it remains held. Payment appears only after the exact regular or holiday Stripe price is verified.
           </p>
           <Link
-            href="/romance"
+            href="/approved-iis"
             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
           >
-            View Romance review status
+            Hear the approved IIs
           </Link>
         </section>
 

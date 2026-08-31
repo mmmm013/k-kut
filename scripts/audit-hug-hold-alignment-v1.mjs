@@ -8,13 +8,14 @@ const page = fs.readFileSync("app/hug/page.tsx", "utf8");
 
 const required = [
   "Send the Sent-i-Meant.",
-  "Customer release review active",
-  "No approved K-KUT HUGs are published yet.",
-  "A LOVE LIKE THAT remains held.",
-  "No player or payment button appears",
-  'href="/romance"',
-  "View Romance review status",
-  "No public HUG inventory is currently published.",
+  "Approved real-music release",
+  "36 Gregory-approved IIs are ready to hear.",
+  "This release does not reopen A LOVE LIKE THAT; it remains held.",
+  "exact regular or holiday Stripe price is verified",
+  'href="/approved-iis"',
+  "Hear the approved IIs",
+  "Thirty regular HUG IIs are approved at $7.99.",
+  "$14.99 holiday container",
 ];
 
 const forbidden = [
@@ -32,9 +33,8 @@ for (const phrase of forbidden) {
   if (page.includes(phrase)) fail(`/hug retains stale sales claim: ${phrase}`);
 }
 
-console.log("HUG HOLD ALIGNMENT AUDIT: PASS");
-console.log("HUG SALES CLAIM: REMOVED");
+console.log("HUG RELEASE ALIGNMENT AUDIT: PASS");
+console.log("APPROVED II RELEASE PATH: PRESENT");
 console.log("A LOVE LIKE THAT: HELD");
-console.log("ROMANCE STATUS PATH: PRESERVED");
 console.log("SENT-I-MEANT DISPLAY: PRESERVED");
-console.log("AUDIO / PAYMENT / INVENTORY AUTHORITY: UNCHANGED");
+console.log("REGULAR / HOLIDAY PRICE BOUNDARY: PRESERVED");
