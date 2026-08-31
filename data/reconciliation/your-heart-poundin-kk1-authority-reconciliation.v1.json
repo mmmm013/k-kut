@@ -1,0 +1,76 @@
+{
+  "schema_version": "YOUR_HEART_POUNDIN_KK1_AUTHORITY_RECONCILIATION_V1",
+  "authority": "OWNER_APPROVED_PREPARE_AND_TEST_ONLY_2026_08_31",
+  "execution_state": "PREPARED_NOT_RELEASED",
+  "write_policy": "EXISTING_AUDIO_ONLY_NO_AUDIO_GENERATION_NO_SENSORY_NO_STRIPE",
+  "subject": {
+    "title": "YOUR HEART POUNDIN'",
+    "canonical_track_id": "c88dd65a-b536-485f-bf76-3c53fdf8a1e1",
+    "canonical_parent_id": "00074",
+    "kk_no": "01",
+    "inventory_item_id": 735,
+    "ii_key": "II_V012_79308ff257e8cc95602d360ef6051a434fc24eca999a54ece2e1614403693988",
+    "candidate_audio_sha256": "79308ff257e8cc95602d360ef6051a434fc24eca999a54ece2e1614403693988"
+  },
+  "authority_snapshot": {
+    "source": "gpmc_v012_kk_boundary_review_queue_ee",
+    "captured_at_utc": "2026-08-31",
+    "original_start_seconds": 0,
+    "original_end_seconds": 34.125,
+    "intp_start_seconds": 0,
+    "intp_end_seconds": 34.125,
+    "vtp_start_seconds": null,
+    "vtp_end_seconds": null,
+    "final_start_seconds": null,
+    "final_end_seconds": null,
+    "lyric_gate_state": "NEEDS_LYRIC_TANDEM_REVIEW",
+    "intp_vtp_gate_state": "NEEDS_INTP_VTP_REVIEW",
+    "no_cutoff_gate_state": "NEEDS_NO_CUTOFF_REVIEW",
+    "kk_review_state": "READY_FOR_KK_BOUNDARY_REVIEW",
+    "kk_decision": null,
+    "approval_state": "NEEDS_GREGORY_REVIEW",
+    "public_state": "NOT_PUBLIC"
+  },
+  "superseded_registry_claim": {
+    "start_seconds": 0,
+    "end_seconds": 24,
+    "disposition": "SUPERSEDED_FIXED_WINDOW_NOT_AUTHORITY"
+  },
+  "existing_private_delivery_object": {
+    "project_id": "vwlzubxshjjonabpeagd",
+    "bucket": "ii-delivery",
+    "bucket_public": false,
+    "object_id": "a31f3082-55b2-4030-8664-5d8bd12e9040",
+    "object_path": "current-ii/romance/ii-romance-reuse-1f016b4a-f85d-4945-b881-2e0f571e6a49/bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8.mp3",
+    "expected_sha256": "bb13f84796e362ed5d43e6b79e2bf8d99b9dbc26311448587214330dcd9faed8",
+    "size_bytes": 710637,
+    "duration_seconds": 34.429388,
+    "storage_presence_verified_at_utc": "2026-08-31",
+    "storage_presence_state": "PRESENT_PRIVATE_OBJECT",
+    "rendered_hash_verified_from_storage_bytes": false,
+    "rendered_audio_listening_verified": false
+  },
+  "reconciliation_result": {
+    "registry_start_seconds": 0,
+    "registry_end_seconds": 34.125,
+    "private_object_apply_state": "PRESENT_PRIVATE_OBJECT_UNRELEASED",
+    "release_state": "HOLD_PENDING_KK1_BOUNDARY_AND_RENDERED_OBJECT_PROOF",
+    "free_canary_eligible": false,
+    "reason": "The existing private object is present, but VTP/final boundaries, rendered-byte hash proof, no-cutoff listening proof, and owner approval remain unresolved."
+  },
+  "release_gate": {
+    "automatic_release": false,
+    "public_audio_allowed": false,
+    "free_delivery_allowed": false,
+    "payment_allowed": false,
+    "stripe_allowed": false,
+    "audio_generation_allowed": false,
+    "audio_mutation_allowed": false,
+    "sensory_changes_allowed": false,
+    "database_mutation_allowed": false,
+    "storage_mutation_allowed": false,
+    "merge_allowed_by_this_authority": false,
+    "production_deploy_allowed_by_this_authority": false,
+    "required_future_authority": "SEPARATE_EXPLICIT_OWNER_APPROVAL"
+  }
+}
