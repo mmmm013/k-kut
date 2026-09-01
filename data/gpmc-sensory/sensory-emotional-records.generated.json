@@ -2,10 +2,97 @@
   "status": "generated_from_explicit_public_approvals_only",
   "name": "GPMC Sensory-Emotional Records From Approved Public Options",
   "source": "data/publication-bridge/public-option-records.generated.json",
-  "generated_at": "2026-08-30T17:44:52.287Z",
-  "public_source_count": 0,
-  "held_source_count": 6,
-  "count": 0,
+  "generated_at": "2026-09-01T04:50:22.671Z",
+  "public_source_count": 1,
+  "held_source_count": 5,
+  "count": 1,
   "doctrine_law": "Slice as thinly as the emotional meaning remains complete. Do not slice thinner than human meaning. Held records never generate public sensory metadata or MGS.",
-  "records": []
+  "records": [
+    {
+      "record_id": "sensory-generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_pix_id_or_track_id": "d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "source_title": "A LOVE LIKE THAT",
+      "source_type": "II",
+      "public_option_id": "generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "public_route": "/romance",
+      "audio_delivery_url": "/api/ii-delivery/generated-love-sweet-d3dfd13c-7421-4671-8261-0c735cb51f38",
+      "stripe_url_if_payment_allowed": "https://buy.stripe.com/28EfZg6gme6S8hS1l44ow0r",
+      "surface_feeling": "romance",
+      "deeper_feelings": [
+        "warm love",
+        "sweet connection",
+        "chosen closeness"
+      ],
+      "interpretation_summary": "Send something warm, sweet, and easy to receive.",
+      "action_object_meaning": {
+        "verb": "send",
+        "object": "warmth",
+        "situation": "Sweet Love"
+      },
+      "sensory_profile": {
+        "audio": [
+          "warm",
+          "soft lift",
+          "romantic",
+          "resolved ending"
+        ],
+        "body": [
+          "open",
+          "warm",
+          "settled"
+        ],
+        "visual": [
+          "warm light",
+          "close-up",
+          "soft motion"
+        ],
+        "touch": [
+          "held",
+          "soft",
+          "warm"
+        ],
+        "memory": [
+          "first love",
+          "shared feeling",
+          "returning"
+        ]
+      },
+      "emotional_coordinates": {
+        "valence": "positive_warm",
+        "arousal": "settled",
+        "control_or_agency": "steady",
+        "social_direction": "toward",
+        "time_direction": "present"
+      },
+      "good_use_cases": [
+        "romance",
+        "sweet love",
+        "warm connection"
+      ],
+      "bad_use_cases": [
+        "fresh breakup",
+        "grief",
+        "unclear friendship"
+      ],
+      "risk_notes": [
+        "Romantic context should be clear.",
+        "Do not imply guaranteed response."
+      ],
+      "buyer_words": [
+        "This made me think of us.",
+        "I wanted to send something warm."
+      ],
+      "receiver_safe_words": [
+        "I thought you might like this.",
+        "No pressure — just a warm music moment."
+      ],
+      "do_not_say": [
+        "This proves you love me.",
+        "You have to feel this too."
+      ],
+      "review_status": "approved_public",
+      "human_review_notes": "Generated only from an explicitly approved, payment-enabled public option. Requires future human enrichment before deeper personalization use."
+    }
+  ]
 }
