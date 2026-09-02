@@ -9,7 +9,7 @@
   "deduplication_key": "EXACT_CAPTURE_START_SEC_PLUS_STORED_CAPTURE_END_SEC",
   "source_record_count": 98,
   "deduplicated_capture_count": 96,
-  "hard_stop_rule": "CORRECT_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE_END",
+  "hard_stop_rule": "END_AT_EXACT_ACOUSTIC_END_OF_LAST_AUDIBLE_VOCAL_NOTE",
   "uncertain_boundary": "HOLD",
   "materialization_gate": {
     "required_worklist_status": "CAPTURED_CC_CORRECTIONS_COMPLETE",
@@ -44,7 +44,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -68,7 +69,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -92,7 +94,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -116,7 +119,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -140,7 +144,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -164,7 +169,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -188,7 +194,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -212,7 +219,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -236,7 +244,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -260,7 +269,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -284,7 +294,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -308,7 +319,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -332,7 +344,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -356,7 +369,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -380,7 +394,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -404,7 +419,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -428,7 +444,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -452,7 +469,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -476,10 +494,13 @@
         "Moving Slow"
       ],
       "correction": {
-        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "review_state": "OWNER_REPORTED_TRESPASS_REQUIRES_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false,
+        "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END",
+        "required_action": "SHORTEN_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE"
       }
     },
     {
@@ -500,10 +521,13 @@
         "There's Just So Long I Can Wait"
       ],
       "correction": {
-        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "review_state": "OWNER_REPORTED_TRESPASS_REQUIRES_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false,
+        "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END",
+        "required_action": "SHORTEN_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE"
       }
     },
     {
@@ -521,14 +545,18 @@
         "TUG"
       ],
       "display_titles": [
-        "Only So Much Space and Faith"
+        "Only So Much Space and Fate"
       ],
       "correction": {
-        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "review_state": "OWNER_REPORTED_TRESPASS_REQUIRES_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
-      }
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false,
+        "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END",
+        "required_action": "SHORTEN_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE"
+      },
+      "title_correction": "FATE_NOT_FAITH"
     },
     {
       "work_item_id": "comin_true_cc_022",
@@ -551,7 +579,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -575,7 +604,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -599,7 +629,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -623,7 +654,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -647,7 +679,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -671,7 +704,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -695,7 +729,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -719,7 +754,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -743,7 +779,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -767,7 +804,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -791,7 +829,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -815,7 +854,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -839,7 +879,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -863,7 +904,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -887,7 +929,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -911,7 +954,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -937,7 +981,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -961,7 +1006,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -985,7 +1031,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1009,7 +1056,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1033,7 +1081,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1057,7 +1106,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1081,7 +1131,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1105,7 +1156,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1129,7 +1181,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1153,7 +1206,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1177,7 +1231,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1201,7 +1256,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1225,7 +1281,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1249,7 +1306,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1273,7 +1331,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1297,7 +1356,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1321,7 +1381,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1345,7 +1406,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1369,7 +1431,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1393,7 +1456,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1417,7 +1481,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1441,7 +1506,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1465,7 +1531,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1489,7 +1556,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1513,7 +1581,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1537,7 +1606,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1561,7 +1631,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1585,7 +1656,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1609,7 +1681,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1633,7 +1706,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1657,7 +1731,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1681,7 +1756,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1705,7 +1781,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1729,7 +1806,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1753,7 +1831,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1777,7 +1856,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1801,7 +1881,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1825,7 +1906,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1849,7 +1931,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1873,7 +1956,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1897,7 +1981,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1921,7 +2006,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1945,7 +2031,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1969,7 +2056,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -1993,7 +2081,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2017,7 +2106,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2041,7 +2131,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2065,7 +2156,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2089,7 +2181,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2113,7 +2206,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2137,7 +2231,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2161,7 +2256,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2185,7 +2281,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2209,7 +2306,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2233,7 +2331,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2257,7 +2356,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2281,7 +2381,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2305,7 +2406,8 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     },
     {
@@ -2329,8 +2431,17 @@
         "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
         "corrected_capture_end_sec": null,
         "boundary_prosecution_state": "HOLD",
-        "listening_verified": false
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
       }
     }
-  ]
+  ],
+  "separator_policy": {
+    "always_distinct_between_trms": true,
+    "gap_is_separator_not_tail": true,
+    "no_room_before_next_fresh_vocal": "MAKE_DISTINCT_HARD_CUTS_AT_THE_BREAK",
+    "default_padding_after_last_vocal_note_sec": 0,
+    "inherited_renderer_tail_forbidden": true
+  },
+  "calibration_note": "A new vocal start, however close, never extends the preceding captured CC. Every TRM has a break and must remain distinct."
 }
