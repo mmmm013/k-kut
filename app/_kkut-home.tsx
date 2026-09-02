@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PRODUCT_OFFER_LAW, formatUsd } from "@/lib/productOfferLaw";
+import HtbHero from "@/components/landing/HtbHero";
 
 export const kKutMetadata = {
   title: "K-KUT | Private Music Moments",
@@ -43,35 +44,13 @@ const offers = [
   },
 ] as const;
 
+const standardHeadline = "Send the Sent-i-Meant.";
+
 export default function KKutHome() {
   return (
     <main className="min-h-screen bg-[#09070B] text-white">
       <section className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-10 sm:px-8 sm:py-14">
-        <header className="rounded-[2.25rem] border border-[#FFD54F]/45 bg-gradient-to-br from-[#3A1F12] via-[#180D08] to-[#050302] p-7 shadow-2xl md:p-12">
-          <p className="text-xs font-black uppercase tracking-[0.42em] text-[#FFD54F]">
-            G Putnam Music · K-KUT
-          </p>
-          <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-            Send the Sent-i-Meant.
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg font-bold leading-8 text-[#EFEBE9]">
-            Choose the human moment first. K-KUT shows a player or payment button only when that exact music item is customer-ready.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/hug"
-              className="rounded-2xl bg-[#FFD54F] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#160A05]"
-            >
-              See all offers
-            </Link>
-            <Link
-              href="/find"
-              className="rounded-2xl border border-[#FFD54F]/70 px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-[#FFD54F]"
-            >
-              Find the right moment
-            </Link>
-          </div>
-        </header>
+        <HtbHero headline={standardHeadline} />
 
         <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
           <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
