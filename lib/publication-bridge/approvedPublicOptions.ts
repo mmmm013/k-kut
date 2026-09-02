@@ -29,8 +29,30 @@ type CanaryRecord = {
   missing_current_proof?: string[];
 };
 
+type ProvedFamilyItem = {
+  ii_key?: string;
+  display_title?: string;
+  buyer_intent?: string;
+  audio_url?: string;
+  price_usd?: string;
+  llbp_state?: string;
+};
+
+type ProvedFamilyManifest = {
+  status?: string;
+  source_title?: string;
+  source_catalog_track_id?: string | number;
+  source_audio_unchanged?: boolean;
+  theme?: string;
+  counts?: { hug?: number; tug?: number; bug?: number };
+  hugs?: ProvedFamilyItem[];
+  tugs?: ProvedFamilyItem[];
+  bugs?: ProvedFamilyItem[];
+};
+
 const BRIDGE_PATH = path.join(process.cwd(), "data", "publication-bridge", "public-option-records.generated.json");
 const CANARY_PATH = path.join(process.cwd(), "data", "production", "first-production-canary-v1.json");
+const COMIN_TRUE_PATH = path.join(process.cwd(), "data", "ii-delivery-registry", "comin-true-full-family-v1.json");
 
 const APPROVED_PUBLICATION_STATUSES = new Set([
   "public_approved_from_mial",
@@ -75,11 +97,90 @@ function isApproved(
   );
 }
 
-function allRecords(): ApprovedPublicOption[] {
+function exactPriceCents(value: string | undefined, expected: 799 | 499 | 199) {
+  const normalized = String(value || "").trim();
+  const expectedUsd = (expected / 100).toFixed(2);
+  return normalized === expectedUsd ? expected : null;
+}
+
+function provedFamilyRecords(): ApprovedPublicOption[] {
+  if (!fs.existsSync(COMIN_TRUE_PATH)) return [];
+  const manifest = JSON.parse(fs.readFileSync(COMIN_TRUE_PATH, "utf8")) as ProvedFamilyManifest;
+
+  if (
+    manifest.status !== "PUBLIC_READY_COMPLETE_FAMILY" ||
+    manifest.source_audio_unchanged !== true
+  ) {
+    return [];
+  }
+
+  const families = [
+    { items: manifest.hugs || [], product: "HUG" as const, inventory: "KK" as const, price: 799 as const, count: manifest.counts?.hug },
+    { items: manifest.tugs || [], product: "TUG" as const, inventory: "SK" as const, price: 499 as const, count: manifest.counts?.tug },
+    { items: manifest.bugs || [], product: "BUG" as const, inventory: "MK" as const, price: 199 as const, count: manifest.counts?.bug },
+  ];
+
+  if (families.some((family) => family.count !== family.items.length)) return [];
+
+  const sourceId = String(manifest.source_catalog_track_id || "comin_true");
+  const intentLane = String(manifest.theme || "Motivation");
+  const records: ApprovedPublicOption[] = [];
+
+  for (const family of families) {
+    for (const item of family.items) {
+      const iiKey = String(item.ii_key || "").trim();
+      const displayTitle = String(item.display_title || "").trim();
+      const interpretation = String(item.buyer_intent || "").trim();
+      const audioUrl = String(item.audio_url || "").trim();
+      const priceCents = exactPriceCents(item.price_usd, family.price);
+
+      if (
+        !/^[A-Za-z0-9_-]{1,200}$/.test(iiKey) ||
+        !displayTitle ||
+        !interpretation ||
+        !audioUrl.startsWith("/") ||
+        item.llbp_state !== "PUBLIC_PASS" ||
+        priceCents === null
+      ) {
+        continue;
+      }
+
+      records.push({
+        public_option_id: `public_comin_true_${iiKey}`,
+        source_pix_id_or_track_id: sourceId,
+        kk_id_or_delivery_object_id: iiKey,
+        product_family: family.product,
+        inventory_family: family.inventory,
+        price_cents: priceCents,
+        display_title: displayTitle,
+        interpretation_summary: interpretation,
+        intent_lane: intentLane,
+        approval_status: "public_approved_generated_from_reusable_ii",
+        audio_delivery_url: audioUrl,
+        audio_proof_status: "pass",
+        payment_allowed: true,
+        stripe_url_if_payment_allowed: "",
+        public_route: "/hugs/comin-true",
+      });
+    }
+  }
+
+  return records;
+}
+
+function generatedBridgeRecords(): ApprovedPublicOption[] {
   if (!fs.existsSync(BRIDGE_PATH)) return [];
   const parsed = JSON.parse(fs.readFileSync(BRIDGE_PATH, "utf8")) as { records?: ApprovedPublicOption[] };
   const staged = stagedCanaryRecords();
-  return (parsed.records || []).filter(record => isApproved(record, staged));
+  return (parsed.records || []).filter((record) => isApproved(record, staged));
+}
+
+function allRecords(): ApprovedPublicOption[] {
+  const byPublicOptionId = new Map<string, ApprovedPublicOption>();
+  for (const record of [...generatedBridgeRecords(), ...provedFamilyRecords()]) {
+    byPublicOptionId.set(record.public_option_id, record);
+  }
+  return [...byPublicOptionId.values()];
 }
 
 export function loadAllApprovedPublicOptions(): ApprovedPublicOption[] {
