@@ -60,13 +60,14 @@ const APPROVED_PUBLICATION_STATUSES = new Set([
   "public_approved_generated_from_reusable_ii",
 ]);
 
-const STRICT_DERIVED_BOUNDARY_PASS = "STRICT_INTP_VTP_END_NO_CUTOFF_PASS";
+// Universal audio-boundary law: every governed II, including KK/HUG, must stop
+// exactly at the last audible vocal note (VTP-END). No post-vocal tail and no
+// entry into the next InTP/VTP pair. Old trim timestamps are not authority.
+const STRICT_BOUNDARY_PASS = "STRICT_VTP_END_NO_CUTOFF_PASS";
 
 function stagedCanaryRecords(): Map<string, CanaryRecord> {
   if (!fs.existsSync(CANARY_PATH)) return new Map();
-  const parsed = JSON.parse(fs.readFileSync(CANARY_PATH, "utf8")) as {
-    records?: CanaryRecord[];
-  };
+  const parsed = JSON.parse(fs.readFileSync(CANARY_PATH, "utf8")) as { records?: CanaryRecord[] };
   return new Map(
     (parsed.records || [])
       .filter(
@@ -79,12 +80,8 @@ function stagedCanaryRecords(): Map<string, CanaryRecord> {
   );
 }
 
-function isApproved(
-  record: ApprovedPublicOption,
-  staged: Map<string, CanaryRecord>,
-): boolean {
+function isApproved(record: ApprovedPublicOption, staged: Map<string, CanaryRecord>): boolean {
   const canary = staged.get(record.kk_id_or_delivery_object_id);
-
   return Boolean(
     canary &&
       canary.product_family === record.product_family &&
@@ -109,22 +106,15 @@ function exactPriceCents(value: string | undefined, expected: 799 | 499 | 199) {
 function provedFamilyRecords(): ApprovedPublicOption[] {
   if (!fs.existsSync(COMIN_TRUE_PATH)) return [];
   const manifest = JSON.parse(fs.readFileSync(COMIN_TRUE_PATH, "utf8")) as ProvedFamilyManifest;
-
-  if (
-    manifest.status !== "PUBLIC_READY_COMPLETE_FAMILY" ||
-    manifest.source_audio_unchanged !== true
-  ) {
-    return [];
-  }
+  if (manifest.status !== "PUBLIC_READY_COMPLETE_FAMILY" || manifest.source_audio_unchanged !== true) return [];
 
   const families = [
-    { items: manifest.hugs || [], product: "HUG" as const, inventory: "KK" as const, price: 799 as const, count: manifest.counts?.hug, derived: false },
-    { items: manifest.tugs || [], product: "TUG" as const, inventory: "SK" as const, price: 499 as const, count: manifest.counts?.tug, derived: true },
-    { items: manifest.bugs || [], product: "BUG" as const, inventory: "MK" as const, price: 199 as const, count: manifest.counts?.bug, derived: true },
+    { items: manifest.hugs || [], product: "HUG" as const, inventory: "KK" as const, price: 799 as const, count: manifest.counts?.hug },
+    { items: manifest.tugs || [], product: "TUG" as const, inventory: "SK" as const, price: 499 as const, count: manifest.counts?.tug },
+    { items: manifest.bugs || [], product: "BUG" as const, inventory: "MK" as const, price: 199 as const, count: manifest.counts?.bug },
   ];
 
   if (families.some((family) => family.count !== family.items.length)) return [];
-
   const sourceId = String(manifest.source_catalog_track_id || "comin_true");
   const intentLane = String(manifest.theme || "Motivation");
   const records: ApprovedPublicOption[] = [];
@@ -136,20 +126,9 @@ function provedFamilyRecords(): ApprovedPublicOption[] {
       const interpretation = String(item.buyer_intent || "").trim();
       const audioUrl = String(item.audio_url || "").trim();
       const priceCents = exactPriceCents(item.price_usd, family.price);
-      const strictBoundaryPassed =
-        !family.derived || item.boundary_prosecution_state === STRICT_DERIVED_BOUNDARY_PASS;
+      const strictBoundaryPassed = item.boundary_prosecution_state === STRICT_BOUNDARY_PASS;
 
-      if (
-        !/^[A-Za-z0-9_-]{1,200}$/.test(iiKey) ||
-        !displayTitle ||
-        !interpretation ||
-        !audioUrl.startsWith("/") ||
-        item.llbp_state !== "PUBLIC_PASS" ||
-        !strictBoundaryPassed ||
-        priceCents === null
-      ) {
-        continue;
-      }
+      if (!/^[A-Za-z0-9_-]{1,200}$/.test(iiKey) || !displayTitle || !interpretation || !audioUrl.startsWith("/") || item.llbp_state !== "PUBLIC_PASS" || !strictBoundaryPassed || priceCents === null) continue;
 
       records.push({
         public_option_id: `public_comin_true_${iiKey}`,
@@ -170,7 +149,6 @@ function provedFamilyRecords(): ApprovedPublicOption[] {
       });
     }
   }
-
   return records;
 }
 
@@ -183,48 +161,18 @@ function generatedBridgeRecords(): ApprovedPublicOption[] {
 
 function allRecords(): ApprovedPublicOption[] {
   const byPublicOptionId = new Map<string, ApprovedPublicOption>();
-  for (const record of [...generatedBridgeRecords(), ...provedFamilyRecords()]) {
-    byPublicOptionId.set(record.public_option_id, record);
-  }
+  for (const record of [...generatedBridgeRecords(), ...provedFamilyRecords()]) byPublicOptionId.set(record.public_option_id, record);
   return [...byPublicOptionId.values()];
 }
 
-export function loadAllApprovedPublicOptions(): ApprovedPublicOption[] {
-  return allRecords();
-}
-
+export function loadAllApprovedPublicOptions(): ApprovedPublicOption[] { return allRecords(); }
 export function loadApprovedPublicOptions(publicRoute: string): ApprovedPublicOption[] {
-  return allRecords()
-    .filter(record => record.public_route === publicRoute)
-    .sort((a, b) => a.display_title.localeCompare(b.display_title) || a.public_option_id.localeCompare(b.public_option_id));
+  return allRecords().filter(record => record.public_route === publicRoute).sort((a, b) => a.display_title.localeCompare(b.display_title) || a.public_option_id.localeCompare(b.public_option_id));
 }
-
-export function findApprovedPublicOptionByInventoryId(inventoryId: string): ApprovedPublicOption | null {
-  return allRecords().find(record => record.kk_id_or_delivery_object_id === inventoryId) || null;
-}
-
-export function findApprovedPublicOptionByPublicOptionId(publicOptionId: string): ApprovedPublicOption | null {
-  return allRecords().find(record => record.public_option_id === publicOptionId) || null;
-}
-
-export function findApprovedPublicOptionByAnyId(id: string): ApprovedPublicOption | null {
-  return (
-    allRecords().find(
-      (record) =>
-        record.kk_id_or_delivery_object_id === id ||
-        record.public_option_id === id,
-    ) || null
-  );
-}
-
+export function findApprovedPublicOptionByInventoryId(inventoryId: string): ApprovedPublicOption | null { return allRecords().find(record => record.kk_id_or_delivery_object_id === inventoryId) || null; }
+export function findApprovedPublicOptionByPublicOptionId(publicOptionId: string): ApprovedPublicOption | null { return allRecords().find(record => record.public_option_id === publicOptionId) || null; }
+export function findApprovedPublicOptionByAnyId(id: string): ApprovedPublicOption | null { return allRecords().find(record => record.kk_id_or_delivery_object_id === id || record.public_option_id === id) || null; }
 export function currentIiAuthoritySummary() {
   const records = allRecords();
-
-  return {
-    status: records.length > 0 ? "CURRENT_II_STAGE_ACTIVE" : "CURRENT_II_HOLD",
-    authorizedIiCount: new Set(
-      records.map((record) => record.kk_id_or_delivery_object_id),
-    ).size,
-    authorizedPublicOptionCount: records.length,
-  } as const;
+  return { status: records.length > 0 ? "CURRENT_II_STAGE_ACTIVE" : "CURRENT_II_HOLD", authorizedIiCount: new Set(records.map((record) => record.kk_id_or_delivery_object_id)).size, authorizedPublicOptionCount: records.length } as const;
 }
