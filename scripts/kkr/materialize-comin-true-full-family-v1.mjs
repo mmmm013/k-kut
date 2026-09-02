@@ -11,13 +11,13 @@ if (worklist.schema_version !== "GPMX_DEDUPLICATED_CAPTURED_CC_CORRECTION_WORKLI
   throw new Error("CAPTURED-CC WORKLIST INVALID: wrong schema");
 }
 if (worklist.authority_source_kind !== "CAPTURED_CC_AUTHORITY_ONLY") {
-  throw new Error("CAPTURED-CC WORKLIST INVALID: LT-PIX/VTP/InTP may not be source authority");
+  throw new Error("CAPTURED-CC WORKLIST INVALID: only captured CC may be source authority");
 }
 if (worklist.discovery_search_permitted !== false || worklist.fresh_lt_pix_pass_permitted !== false) {
   throw new Error("CAPTURED-CC WORKLIST INVALID: fresh discovery/search is forbidden");
 }
 
 throw new Error(
-  "LEGACY MATERIALIZER RETIRED. Use scripts/kkr/materialize-from-vtp-end-authority-v1.mjs " +
+  "LEGACY MATERIALIZER RETIRED. Use scripts/kkr/materialize-from-captured-cc-worklist-v1.mjs " +
   worklistPath
 );
