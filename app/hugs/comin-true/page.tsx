@@ -13,7 +13,8 @@ type AudioII = {
   price_usd: string;
 };
 
-function AudioCard({ ii, product }: { ii: AudioII; product: string }) {
+function AudioCard({ ii, product }: { ii: AudioII; product: "HUG" | "TUG" | "BUG" }) {
+  const publicOptionId = `public_comin_true_${ii.ii_key}`;
   return (
     <article className="rounded-3xl border border-white/10 bg-[#151020] p-6 shadow-xl">
       <p className="text-xs font-black uppercase tracking-[0.24em] text-violet-200">
@@ -22,14 +23,18 @@ function AudioCard({ ii, product }: { ii: AudioII; product: string }) {
       <h3 className="mt-3 text-2xl font-black">{ii.display_title}</h3>
       <p className="mt-3 min-h-14 text-sm font-semibold leading-6 text-white/68">{ii.buyer_intent}</p>
       <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={ii.audio_url} />
-      <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">
-        Public audio preview · {product} ${ii.price_usd}
-      </p>
+      <form action="/checkout" method="post" className="mt-6">
+        <input type="hidden" name="public_option_id" value={publicOptionId} />
+        <input type="hidden" name="ii" value={ii.ii_key} />
+        <button type="submit" className="w-full rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100 transition hover:bg-violet-200/20">
+          Buy {product} · ${ii.price_usd}
+        </button>
+      </form>
     </article>
   );
 }
 
-function ProductSection({ id, title, description, product, items }: { id: string; title: string; description: string; product: string; items: AudioII[] }) {
+function ProductSection({ id, title, description, product, items }: { id: string; title: string; description: string; product: "HUG" | "TUG" | "BUG"; items: AudioII[] }) {
   return (
     <section id={id} className="mt-14 scroll-mt-8">
       <h2 className="text-4xl font-black">{title}</h2>
@@ -53,7 +58,7 @@ export default function CominTrueIIFamilyPage() {
           <p className="mt-5 max-w-3xl text-lg font-bold leading-8 text-white/75">
             101 finished music IIs, each cut directly from the same full vocal recording. Choose a larger musical HUG, a meaningful lyric TUG, a compact BUG, or a three-part Story BUG.
           </p>
-          <p className="mt-4 text-sm font-bold text-violet-100/75">Public audio preview · stream only · original recording unchanged · exact-price checkout links pending</p>
+          <p className="mt-4 text-sm font-bold text-violet-100/75">Public audio preview · stream only · original recording unchanged · HUG/TUG/BUG exact-price checkout active</p>
           <nav className="mt-7 grid gap-3 sm:grid-cols-4">
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#hugs">15 HUGs</a>
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#tugs">49 TUGs</a>
@@ -87,7 +92,7 @@ export default function CominTrueIIFamilyPage() {
                     );
                   })}
                 </div>
-                <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">Public three-part preview · Story BUG ${story.price_usd}</p>
+                <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">Public three-part preview · Story BUG ${story.price_usd} · checkout remains held pending Story BUG shared-product-law support</p>
               </article>
             ))}
           </div>
