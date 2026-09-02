@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "audit:kkr:receipt-label": "node scripts/audit-kkr-receipt-label-lock.mjs",
+    "audit:kkr:comin-true-batch-prosecution": "node scripts/kkr/audit-captured-cc-endpoint-prosecution-v1.mjs",
     "audit:strict-music-hold": "node scripts/audit-strict-music-emergency-hold.mjs",
     "audit:a2p:optional-consent": "node scripts/audit-a2p-optional-consent.mjs",
     "audit:a2p:live-production": "node scripts/audit-a2p-live-production.mjs",

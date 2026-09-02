@@ -1,0 +1,1055 @@
+{
+  "schema_version": "GPMX_CAPTURED_CC_ENDPOINT_PROSECUTION_V1",
+  "status": "KKR_BATCH_PROSECUTION_EXCEPTIONS_HELD",
+  "generated_at": "2026-09-02T14:53:05.980Z",
+  "authority": {
+    "worklist_path": "data/kkr-captured-cc-correction-worklists/comin_true.deduplicated-v1.json",
+    "boundary_truth_path": "data/kkr-boundary-truth/comin_true.json",
+    "source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+    "owner_action_required_for_routine_prosecution": false,
+    "owner_correction_role": "EXCEPTION_FEEDBACK_NOT_APPROVAL_QUEUE",
+    "fresh_lt_pix_discovery_used": false,
+    "canonical_full_lyrics_read": true,
+    "canonical_lyric_path": "data/kkr-lyric-authority/comin_true.txt",
+    "canonical_lyric_sha256": "5aaf82229eba525452ff671ee121ebf4f2bd3ab101e1b30e33a51c290f9efaa5",
+    "text_strategy": "PRESERVE_EXISTING_CAPTURED_CC_TEXT_AND_TITLES_NO_REAUTHORING"
+  },
+  "source_proof": {
+    "vocal_sha256": "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda",
+    "instrumental_sha256": "c776bd6fdc6f62c13a5cf70abbcfbec79140401d0ade369db77199869633d5a9",
+    "sample_rate_hz": 8000
+  },
+  "method": {
+    "name": "ALIGNED_DUAL_MASTER_RESIDUAL_SEPARATOR_PROSECUTION",
+    "locked_alignment_lag_sec": 0.051,
+    "measured_alignment": {
+      "lag_sec": 0.051125,
+      "instrumental_scale": 0.908124258046931,
+      "residual_mse": 0.04336680677433854,
+      "correlation": 0.7844411044996843
+    },
+    "frame_ms": 20,
+    "hop_ms": 10,
+    "residual_ratio_separator_threshold": 0.7,
+    "strong_vocal_ratio_threshold": 0.78,
+    "minimum_separator_sec": 0.05,
+    "rule": "End at the first proved residual drop after the last audible vocal energy; the following gap remains separator, never tail."
+  },
+  "controls": {
+    "public_audio_authorized": false,
+    "purchase_authorized": false,
+    "materialization_authorized": false,
+    "post_vocal_padding_sec": 0,
+    "exceptions_remain_hold": true
+  },
+  "counts": {
+    "source_work_items": 96,
+    "distinct_endpoints": 44,
+    "locked_reference_pass": 5,
+    "scientific_batch_pass": 20,
+    "exception_review": 19
+  },
+  "endpoints": [
+    {
+      "stored_end_sec": 15,
+      "work_item_ids": [
+        "comin_true_cc_016",
+        "comin_true_cc_064"
+      ],
+      "titles": [
+        "I've Been Waiting Like Good Luck",
+        "Good Luck"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 14.911,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.97,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.34,
+        "pre_vocal_ratio": 0.9908,
+        "separator_ratio": 0.2505,
+        "post_vocal_ratio": 0.8989
+      }
+    },
+    {
+      "stored_end_sec": 19,
+      "work_item_ids": [
+        "comin_true_cc_017",
+        "comin_true_cc_043",
+        "comin_true_cc_065"
+      ],
+      "titles": [
+        "Keep the Lights Turned Up",
+        "Waiting with the Lights Turned Up",
+        "Lights Turned Up"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 18.351,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.932,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.66,
+        "pre_vocal_ratio": 0.8253,
+        "separator_ratio": 0.1867,
+        "post_vocal_ratio": 0.7972
+      }
+    },
+    {
+      "stored_end_sec": 22,
+      "work_item_ids": [
+        "comin_true_cc_018",
+        "comin_true_cc_066"
+      ],
+      "titles": [
+        "Laying a Little Low",
+        "A Little Low"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 21.201,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.902,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 1.07,
+        "pre_vocal_ratio": 0.8662,
+        "separator_ratio": 0.1415,
+        "post_vocal_ratio": 0.987
+      }
+    },
+    {
+      "stored_end_sec": 25,
+      "work_item_ids": [
+        "comin_true_cc_019",
+        "comin_true_cc_044",
+        "comin_true_cc_055"
+      ],
+      "titles": [
+        "Moving Through It Slow",
+        "Moving Slow",
+        "A Little Low, Still Moving",
+        "Waiting, Laying Low, Still Moving"
+      ],
+      "owner_reported_defects": [
+        {
+          "work_item_id": "comin_true_cc_019",
+          "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END"
+        }
+      ],
+      "proposed_end_sec": 24.381,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.938,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.32,
+        "pre_vocal_ratio": 0.9149,
+        "separator_ratio": 0.368,
+        "post_vocal_ratio": 0.9876
+      }
+    },
+    {
+      "stored_end_sec": 28,
+      "work_item_ids": [
+        "comin_true_cc_020",
+        "comin_true_cc_067"
+      ],
+      "titles": [
+        "There's Just So Long I Can Wait",
+        "Wait"
+      ],
+      "owner_reported_defects": [
+        {
+          "work_item_id": "comin_true_cc_020",
+          "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END"
+        }
+      ],
+      "proposed_end_sec": 27.351,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.932,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.53,
+        "pre_vocal_ratio": 0.994,
+        "separator_ratio": 0.1869,
+        "post_vocal_ratio": 0.9666
+      }
+    },
+    {
+      "stored_end_sec": 32,
+      "work_item_ids": [
+        "comin_true_cc_021",
+        "comin_true_cc_045",
+        "comin_true_cc_068"
+      ],
+      "titles": [
+        "Only So Much Space and Fate",
+        "Waiting, Space and Faith",
+        "Space and Faith"
+      ],
+      "owner_reported_defects": [
+        {
+          "work_item_id": "comin_true_cc_021",
+          "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END"
+        }
+      ],
+      "proposed_end_sec": 31.721,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.8,
+      "evidence": {
+        "authority": "ALIGNED_DUAL_MASTER_PRONOUNCED_LOCAL_SEPARATOR",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.1976,
+        "separator_ratio": 0.1385,
+        "post_vocal_ratio": 0.9683
+      }
+    },
+    {
+      "stored_end_sec": 35,
+      "work_item_ids": [
+        "comin_true_cc_022",
+        "comin_true_cc_069"
+      ],
+      "titles": [
+        "Time to Make Some Room",
+        "Make Some Room"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 33.971,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.696,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.6298,
+        "separator_ratio": 0.1349,
+        "post_vocal_ratio": 0.2378
+      }
+    },
+    {
+      "stored_end_sec": 37.884,
+      "work_item_ids": [
+        "comin_true_cc_001"
+      ],
+      "titles": [
+        "Waiting for the Light"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 37.884,
+      "prosecution_state": "LOCKED_KKR_REFERENCE_PASS",
+      "confidence": 1,
+      "evidence": {
+        "authority": "OWNER_LOCKED_SCRIPT_AUDITED_KKR_BOUNDARY_TRUTH",
+        "separator_duration_sec": null,
+        "pre_vocal_ratio": null,
+        "separator_ratio": null,
+        "post_vocal_ratio": null
+      }
+    },
+    {
+      "stored_end_sec": 38,
+      "work_item_ids": [
+        "comin_true_cc_023",
+        "comin_true_cc_046",
+        "comin_true_cc_056",
+        "comin_true_cc_070"
+      ],
+      "titles": [
+        "Let the Flowers Bloom",
+        "Make Room—Let the Flowers Bloom",
+        "Faith Makes Room to Bloom",
+        "Flowers Bloom"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 37.661,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.89,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.68,
+        "pre_vocal_ratio": 0.8521,
+        "separator_ratio": 0.1967,
+        "post_vocal_ratio": 0
+      }
+    },
+    {
+      "stored_end_sec": 42,
+      "work_item_ids": [
+        "comin_true_cc_024",
+        "comin_true_cc_071"
+      ],
+      "titles": [
+        "I'm Newly New",
+        "Newly New"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 41.601,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.89,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.43,
+        "pre_vocal_ratio": 0.8355,
+        "separator_ratio": 0.3465,
+        "post_vocal_ratio": 0.7687
+      }
+    },
+    {
+      "stored_end_sec": 46,
+      "work_item_ids": [
+        "comin_true_cc_025",
+        "comin_true_cc_047",
+        "comin_true_cc_072"
+      ],
+      "titles": [
+        "I'm Coming True",
+        "Newly New and Coming True",
+        "Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 44.981,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.643,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.4582,
+        "separator_ratio": 0.1318,
+        "post_vocal_ratio": 0.2461
+      }
+    },
+    {
+      "stored_end_sec": 48,
+      "work_item_ids": [
+        "comin_true_cc_073"
+      ],
+      "titles": [
+        "Old Paint"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 47.381,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.861,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.11,
+        "pre_vocal_ratio": 0.797,
+        "separator_ratio": 0.4641,
+        "post_vocal_ratio": 0.9042
+      }
+    },
+    {
+      "stored_end_sec": 52,
+      "work_item_ids": [
+        "comin_true_cc_026",
+        "comin_true_cc_074"
+      ],
+      "titles": [
+        "Old Paint About to Fade",
+        "Fade"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 50.931,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.445,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.1883,
+        "separator_ratio": 0.1128,
+        "post_vocal_ratio": 0.1684
+      }
+    },
+    {
+      "stored_end_sec": 54,
+      "work_item_ids": [
+        "comin_true_cc_075"
+      ],
+      "titles": [
+        "Fresh Outlook"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 53.091,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.764,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.08,
+        "pre_vocal_ratio": 0.8547,
+        "separator_ratio": 0.5314,
+        "post_vocal_ratio": 0.8169
+      }
+    },
+    {
+      "stored_end_sec": 57,
+      "work_item_ids": [
+        "comin_true_cc_027",
+        "comin_true_cc_048",
+        "comin_true_cc_057"
+      ],
+      "titles": [
+        "Put a Fresh Outlook in Its Place",
+        "Old Paint, Fresh Outlook",
+        "Coming True with a Fresh Outlook"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 57.181,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.608,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.2487,
+        "separator_ratio": 0.1189,
+        "post_vocal_ratio": 0.2624
+      }
+    },
+    {
+      "stored_end_sec": 60,
+      "work_item_ids": [
+        "comin_true_cc_076"
+      ],
+      "titles": [
+        "Newly New"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 58.861,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.754,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.24,
+        "pre_vocal_ratio": 1.0189,
+        "separator_ratio": 0.5776,
+        "post_vocal_ratio": 0.7517
+      }
+    },
+    {
+      "stored_end_sec": 63,
+      "work_item_ids": [
+        "comin_true_cc_028",
+        "comin_true_cc_077"
+      ],
+      "titles": [
+        "I'm Newly New—I'm Coming True",
+        "Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 62.001,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.708,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.15,
+        "pre_vocal_ratio": 0.8244,
+        "separator_ratio": 0.6106,
+        "post_vocal_ratio": 0.7527
+      }
+    },
+    {
+      "stored_end_sec": 66.585,
+      "work_item_ids": [
+        "comin_true_cc_002",
+        "comin_true_cc_006"
+      ],
+      "titles": [
+        "Make Room for Hope",
+        "Light, Patience & Hope"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 66.585,
+      "prosecution_state": "LOCKED_KKR_REFERENCE_PASS",
+      "confidence": 1,
+      "evidence": {
+        "authority": "OWNER_LOCKED_SCRIPT_AUDITED_KKR_BOUNDARY_TRUTH",
+        "separator_duration_sec": null,
+        "pre_vocal_ratio": null,
+        "separator_ratio": null,
+        "post_vocal_ratio": null
+      }
+    },
+    {
+      "stored_end_sec": 67,
+      "work_item_ids": [
+        "comin_true_cc_029"
+      ],
+      "titles": [
+        "I'm Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 65.781,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.74,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 1.56,
+        "pre_vocal_ratio": 0.8453,
+        "separator_ratio": 0.2198,
+        "post_vocal_ratio": 0
+      }
+    },
+    {
+      "stored_end_sec": 70,
+      "work_item_ids": [
+        "comin_true_cc_078"
+      ],
+      "titles": [
+        "Hopeful Ooh"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 69.461,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.74,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.12,
+        "pre_vocal_ratio": 0.7973,
+        "separator_ratio": 0.6098,
+        "post_vocal_ratio": 0.6805
+      }
+    },
+    {
+      "stored_end_sec": 72.19,
+      "work_item_ids": [
+        "comin_true_cc_079"
+      ],
+      "titles": [
+        "Take a Little"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 71.441,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.912,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.35,
+        "pre_vocal_ratio": 0.9463,
+        "separator_ratio": 0.5914,
+        "post_vocal_ratio": 0.923
+      }
+    },
+    {
+      "stored_end_sec": 73,
+      "work_item_ids": [
+        "comin_true_cc_030",
+        "comin_true_cc_080"
+      ],
+      "titles": [
+        "Take a Little, Take a Lot",
+        "Take a Lot"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 72.591,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.89,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.56,
+        "pre_vocal_ratio": 0.902,
+        "separator_ratio": 0.2133,
+        "post_vocal_ratio": 0.7729
+      }
+    },
+    {
+      "stored_end_sec": 77,
+      "work_item_ids": [
+        "comin_true_cc_031",
+        "comin_true_cc_049",
+        "comin_true_cc_081"
+      ],
+      "titles": [
+        "I'll Give You Everything I've Got",
+        "Take What You Need—I'll Give What I've Got",
+        "Everything I've Got"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 76.151,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.812,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.24,
+        "pre_vocal_ratio": 0.9442,
+        "separator_ratio": 0.6127,
+        "post_vocal_ratio": 0.6779
+      }
+    },
+    {
+      "stored_end_sec": 80,
+      "work_item_ids": [
+        "comin_true_cc_032",
+        "comin_true_cc_082"
+      ],
+      "titles": [
+        "I've Been Holding On",
+        "Holding On"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 79.241,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.91,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 1.01,
+        "pre_vocal_ratio": 0.9323,
+        "separator_ratio": 0.23,
+        "post_vocal_ratio": 0.8232
+      }
+    },
+    {
+      "stored_end_sec": 82,
+      "work_item_ids": [
+        "comin_true_cc_033",
+        "comin_true_cc_050",
+        "comin_true_cc_058",
+        "comin_true_cc_083"
+      ],
+      "titles": [
+        "To What I Thought Was Gone",
+        "Holding On to What I Thought Was Gone",
+        "Give Everything—Hold On—Find What Remains",
+        "Gone"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 81.651,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.789,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.12,
+        "pre_vocal_ratio": 0.8551,
+        "separator_ratio": 0.6261,
+        "post_vocal_ratio": 0.7266
+      }
+    },
+    {
+      "stored_end_sec": 82.831,
+      "work_item_ids": [
+        "comin_true_cc_003",
+        "comin_true_cc_007",
+        "comin_true_cc_010"
+      ],
+      "titles": [
+        "I'm Coming True",
+        "From Waiting to Coming True",
+        "Make Room—I'm Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 82.831,
+      "prosecution_state": "LOCKED_KKR_REFERENCE_PASS",
+      "confidence": 1,
+      "evidence": {
+        "authority": "OWNER_LOCKED_SCRIPT_AUDITED_KKR_BOUNDARY_TRUTH",
+        "separator_duration_sec": null,
+        "pre_vocal_ratio": null,
+        "separator_ratio": null,
+        "post_vocal_ratio": null
+      }
+    },
+    {
+      "stored_end_sec": 83.84,
+      "work_item_ids": [
+        "comin_true_cc_084"
+      ],
+      "titles": [
+        "Waste Time"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 83.011,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.862,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.38,
+        "pre_vocal_ratio": 0.813,
+        "separator_ratio": 0.5804,
+        "post_vocal_ratio": 0.7806
+      }
+    },
+    {
+      "stored_end_sec": 85,
+      "work_item_ids": [
+        "comin_true_cc_034",
+        "comin_true_cc_085"
+      ],
+      "titles": [
+        "I Won't Waste Time Looking Back",
+        "Looking Back"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 84.731,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.774,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.08,
+        "pre_vocal_ratio": 0.9267,
+        "separator_ratio": 0.5746,
+        "post_vocal_ratio": 0.6511
+      }
+    },
+    {
+      "stored_end_sec": 89,
+      "work_item_ids": [
+        "comin_true_cc_035",
+        "comin_true_cc_051"
+      ],
+      "titles": [
+        "It Doesn't Matter What I've Had",
+        "No Looking Back—The Past Doesn't Matter"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 88.271,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.815,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.29,
+        "pre_vocal_ratio": 0.8097,
+        "separator_ratio": 0.5612,
+        "post_vocal_ratio": 0.759
+      }
+    },
+    {
+      "stored_end_sec": 92,
+      "work_item_ids": [
+        "comin_true_cc_036",
+        "comin_true_cc_086"
+      ],
+      "titles": [
+        "Now I'm Moving On",
+        "Moving On"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 92.031,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.664,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.3464,
+        "separator_ratio": 0.1273,
+        "post_vocal_ratio": 0.2393
+      }
+    },
+    {
+      "stored_end_sec": 96,
+      "work_item_ids": [
+        "comin_true_cc_037",
+        "comin_true_cc_052",
+        "comin_true_cc_059",
+        "comin_true_cc_061",
+        "comin_true_cc_087"
+      ],
+      "titles": [
+        "Getting Back Where I Belong",
+        "Moving On to Where I Belong",
+        "Release the Past—Return Where You Belong",
+        "From Holding On to Moving On",
+        "Belong"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 94.951,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.675,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.5622,
+        "separator_ratio": 0.2516,
+        "post_vocal_ratio": 0.6289
+      }
+    },
+    {
+      "stored_end_sec": 96.584,
+      "work_item_ids": [
+        "comin_true_cc_004",
+        "comin_true_cc_008",
+        "comin_true_cc_011",
+        "comin_true_cc_013"
+      ],
+      "titles": [
+        "Like Brand New",
+        "The Reinvention Journey",
+        "Hope to Brand New",
+        "Coming True, Like Brand New"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 96.584,
+      "prosecution_state": "LOCKED_KKR_REFERENCE_PASS",
+      "confidence": 1,
+      "evidence": {
+        "authority": "OWNER_LOCKED_SCRIPT_AUDITED_KKR_BOUNDARY_TRUTH",
+        "separator_duration_sec": null,
+        "pre_vocal_ratio": null,
+        "separator_ratio": null,
+        "post_vocal_ratio": null
+      }
+    },
+    {
+      "stored_end_sec": 99,
+      "work_item_ids": [
+        "comin_true_cc_088"
+      ],
+      "titles": [
+        "Newly New"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 99.001,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.66,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.7659,
+        "separator_ratio": 0.6274,
+        "post_vocal_ratio": 0.8413
+      }
+    },
+    {
+      "stored_end_sec": 103,
+      "work_item_ids": [
+        "comin_true_cc_038",
+        "comin_true_cc_062",
+        "comin_true_cc_089"
+      ],
+      "titles": [
+        "I'm Newly New—I'm Coming True",
+        "Newly New and Coming True",
+        "No Looking Back—I'm Coming True",
+        "Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 102.831,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.89,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.51,
+        "pre_vocal_ratio": 0.8058,
+        "separator_ratio": 0.262,
+        "post_vocal_ratio": 0
+      }
+    },
+    {
+      "stored_end_sec": 106.77,
+      "work_item_ids": [
+        "comin_true_cc_090"
+      ],
+      "titles": [
+        "Old Paint"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 106.841,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.8,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.6862,
+        "separator_ratio": 0.154,
+        "post_vocal_ratio": 0.7317
+      }
+    },
+    {
+      "stored_end_sec": 109,
+      "work_item_ids": [
+        "comin_true_cc_039",
+        "comin_true_cc_091"
+      ],
+      "titles": [
+        "Took Off That Old Paint About to Fade",
+        "Fade"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 108.941,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.601,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.2447,
+        "separator_ratio": 0.1103,
+        "post_vocal_ratio": 0.1633
+      }
+    },
+    {
+      "stored_end_sec": 112.68,
+      "work_item_ids": [
+        "comin_true_cc_092"
+      ],
+      "titles": [
+        "Fresh Outlook"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 112.191,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.964,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.44,
+        "pre_vocal_ratio": 0.804,
+        "separator_ratio": 0.3893,
+        "post_vocal_ratio": 0.8709
+      }
+    },
+    {
+      "stored_end_sec": 115,
+      "work_item_ids": [
+        "comin_true_cc_040",
+        "comin_true_cc_053",
+        "comin_true_cc_060"
+      ],
+      "titles": [
+        "Put a Fresh Outlook in Its Place",
+        "Shed the Old—Choose a Fresh Outlook",
+        "Come True—Replace the Old with a Fresh Outlook"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 113.781,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.658,
+      "evidence": {
+        "authority": "NO_HIGH_CONFIDENCE_SEPARATOR_PROVED",
+        "separator_duration_sec": 0,
+        "pre_vocal_ratio": 0.6884,
+        "separator_ratio": 0.1129,
+        "post_vocal_ratio": 0.1607
+      }
+    },
+    {
+      "stored_end_sec": 121,
+      "work_item_ids": [
+        "comin_true_cc_041",
+        "comin_true_cc_093"
+      ],
+      "titles": [
+        "I'm Newly New—I'm Coming True",
+        "Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 120.041,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.824,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.29,
+        "pre_vocal_ratio": 0.803,
+        "separator_ratio": 0.5857,
+        "post_vocal_ratio": 0.8607
+      }
+    },
+    {
+      "stored_end_sec": 124,
+      "work_item_ids": [
+        "comin_true_cc_054",
+        "comin_true_cc_063"
+      ],
+      "titles": [
+        "Newly New, Coming True",
+        "Old Paint to Fresh Outlook to Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 122.761,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.647,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.1,
+        "pre_vocal_ratio": 0.7892,
+        "separator_ratio": 0.5179,
+        "post_vocal_ratio": 0.521
+      }
+    },
+    {
+      "stored_end_sec": 127,
+      "work_item_ids": [
+        "comin_true_cc_094"
+      ],
+      "titles": [
+        "Renewing Ooh"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 126.941,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.71,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.06,
+        "pre_vocal_ratio": 0.8758,
+        "separator_ratio": 0.6485,
+        "post_vocal_ratio": 0.6568
+      }
+    },
+    {
+      "stored_end_sec": 131,
+      "work_item_ids": [
+        "comin_true_cc_042",
+        "comin_true_cc_095"
+      ],
+      "titles": [
+        "I'm Coming True",
+        "Coming True"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 131.011,
+      "prosecution_state": "KKR_SCIENTIFIC_BATCH_PASS",
+      "confidence": 0.85,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 0.22,
+        "pre_vocal_ratio": 0.8176,
+        "separator_ratio": 0.5923,
+        "post_vocal_ratio": 0.6085
+      }
+    },
+    {
+      "stored_end_sec": 135,
+      "work_item_ids": [
+        "comin_true_cc_096"
+      ],
+      "titles": [
+        "Final Ooh"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 133.761,
+      "prosecution_state": "KKR_EXCEPTION_REVIEW",
+      "confidence": 0.74,
+      "evidence": {
+        "authority": "ALIGNED_VOCAL_INSTRUMENTAL_RESIDUAL_SEPARATOR",
+        "separator_duration_sec": 1.42,
+        "pre_vocal_ratio": 0.9825,
+        "separator_ratio": 0.5525,
+        "post_vocal_ratio": 0.5429
+      }
+    },
+    {
+      "stored_end_sec": 135.497,
+      "work_item_ids": [
+        "comin_true_cc_005",
+        "comin_true_cc_009",
+        "comin_true_cc_012",
+        "comin_true_cc_014",
+        "comin_true_cc_015"
+      ],
+      "titles": [
+        "A Fresh Look Forward",
+        "The Full Coming True Story",
+        "Hope and a Fresh Start",
+        "Coming True with a Fresh Look",
+        "Brand New, Fresh Look"
+      ],
+      "owner_reported_defects": [],
+      "proposed_end_sec": 135.497,
+      "prosecution_state": "LOCKED_KKR_REFERENCE_PASS",
+      "confidence": 1,
+      "evidence": {
+        "authority": "OWNER_LOCKED_SCRIPT_AUDITED_KKR_BOUNDARY_TRUTH",
+        "separator_duration_sec": null,
+        "pre_vocal_ratio": null,
+        "separator_ratio": null,
+        "post_vocal_ratio": null
+      }
+    }
+  ]
+}
