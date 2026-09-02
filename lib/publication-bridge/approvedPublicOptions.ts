@@ -61,9 +61,9 @@ const APPROVED_PUBLICATION_STATUSES = new Set([
 ]);
 
 // Universal audio-boundary law: every governed II, including KK/HUG, must stop
-// exactly at the last audible vocal note (VTP-END). No post-vocal tail and no
+// exactly at the last audible vocal note (last audible vocal-note END). No post-vocal tail and no
 // entry into the next InTP/VTP pair. Old trim timestamps are not authority.
-const STRICT_BOUNDARY_PASS = "STRICT_VTP_END_NO_CUTOFF_PASS";
+const STRICT_BOUNDARY_PASS = "STRICT_LAST_VOCAL_NOTE_END_PASS";
 
 function stagedCanaryRecords(): Map<string, CanaryRecord> {
   if (!fs.existsSync(CANARY_PATH)) return new Map();
