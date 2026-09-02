@@ -36,6 +36,7 @@ type ProvedFamilyItem = {
   audio_url?: string;
   price_usd?: string;
   llbp_state?: string;
+  boundary_prosecution_state?: string;
 };
 
 type ProvedFamilyManifest = {
@@ -58,6 +59,8 @@ const APPROVED_PUBLICATION_STATUSES = new Set([
   "public_approved_from_mial",
   "public_approved_generated_from_reusable_ii",
 ]);
+
+const STRICT_DERIVED_BOUNDARY_PASS = "STRICT_INTP_VTP_END_NO_CUTOFF_PASS";
 
 function stagedCanaryRecords(): Map<string, CanaryRecord> {
   if (!fs.existsSync(CANARY_PATH)) return new Map();
@@ -115,9 +118,9 @@ function provedFamilyRecords(): ApprovedPublicOption[] {
   }
 
   const families = [
-    { items: manifest.hugs || [], product: "HUG" as const, inventory: "KK" as const, price: 799 as const, count: manifest.counts?.hug },
-    { items: manifest.tugs || [], product: "TUG" as const, inventory: "SK" as const, price: 499 as const, count: manifest.counts?.tug },
-    { items: manifest.bugs || [], product: "BUG" as const, inventory: "MK" as const, price: 199 as const, count: manifest.counts?.bug },
+    { items: manifest.hugs || [], product: "HUG" as const, inventory: "KK" as const, price: 799 as const, count: manifest.counts?.hug, derived: false },
+    { items: manifest.tugs || [], product: "TUG" as const, inventory: "SK" as const, price: 499 as const, count: manifest.counts?.tug, derived: true },
+    { items: manifest.bugs || [], product: "BUG" as const, inventory: "MK" as const, price: 199 as const, count: manifest.counts?.bug, derived: true },
   ];
 
   if (families.some((family) => family.count !== family.items.length)) return [];
@@ -133,6 +136,8 @@ function provedFamilyRecords(): ApprovedPublicOption[] {
       const interpretation = String(item.buyer_intent || "").trim();
       const audioUrl = String(item.audio_url || "").trim();
       const priceCents = exactPriceCents(item.price_usd, family.price);
+      const strictBoundaryPassed =
+        !family.derived || item.boundary_prosecution_state === STRICT_DERIVED_BOUNDARY_PASS;
 
       if (
         !/^[A-Za-z0-9_-]{1,200}$/.test(iiKey) ||
@@ -140,6 +145,7 @@ function provedFamilyRecords(): ApprovedPublicOption[] {
         !interpretation ||
         !audioUrl.startsWith("/") ||
         item.llbp_state !== "PUBLIC_PASS" ||
+        !strictBoundaryPassed ||
         priceCents === null
       ) {
         continue;
