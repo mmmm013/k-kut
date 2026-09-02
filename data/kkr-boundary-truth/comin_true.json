@@ -1,0 +1,83 @@
+{
+  "schema_version": "GPMX_KKR_BOUNDARY_TRUTH_V1",
+  "status": "OWNER_LOCKED_SCRIPT_AUDITED",
+  "lt_pix_key": "comin_true",
+  "title": "Comin' True",
+  "sources": {
+    "relationship": "SAME_SONG_ALIGNED_MASTERS",
+    "authority_split": {
+      "musical_structure": "INSTRUMENTAL_MASTER",
+      "exact_cc_boundaries": "VOCAL_MASTER_PLUS_CANONICAL_LYRICS",
+      "either_master_may_substitute_for_the_other": false
+    },
+    "vocal": {
+      "role": "VOCAL_FULL_TRACK_SSOT",
+      "catalog_project": "tlbqzzhhypixfbejoucr",
+      "catalog_track_id": 168275759,
+      "full_track_file": "COMIN_TRUE_FULL_LT_PIX_SSOT.mp3",
+      "authority_relative_path": "comin_true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3",
+      "duration_seconds": 140.097856,
+      "sha256": "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda"
+    },
+    "instrumental": {
+      "role": "INSTRUMENTAL_STRUCTURE_GUIDE",
+      "full_track_file": "385 - Music Maykers - COMIN' TRUE - INSTRO.wav",
+      "authority_relative_path": "385 - Music Maykers - COMIN' TRUE - INSTRO.wav",
+      "duration_seconds": 140.037868,
+      "sha256": "c776bd6fdc6f62c13a5cf70abbcfbec79140401d0ade369db77199869633d5a9"
+    }
+  },
+  "lyrics": {
+    "authority": "CANONICAL_FULL_LYRICS",
+    "authority_file": "data/kkr-lyric-authority/comin_true.txt",
+    "sha256": "5aaf82229eba525452ff671ee121ebf4f2bd3ab101e1b30e33a51c290f9efaa5",
+    "source_lineage": [
+      "GPM_LOCAL_VAULT/09_Registry/LYRIC_INTAKE_REGISTER/LYRIC_INTAKE_REGISTER_20260703-212136/LT_PIX_LYRIC_STABILIZATION_20260703-214820/BLOCKER_01_TEXT_EXTRACTION_20260703-230942/TEXT_EXTRACTS/LT_PIX_LYRIC_STAB_000598_Coming_True.txt",
+      "GPM_LOCAL_VAULT/09_Registry/LYRIC_INTAKE_REGISTER/LYRIC_INTAKE_REGISTER_20260703-212136/LT_PIX_LYRIC_STABILIZATION_20260703-214820/BLOCKER_01_TEXT_EXTRACTION_20260703-231630/TEXT_EXTRACTS/LT_PIX_LYRIC_STAB_000598_Coming_True.txt",
+      "SUPABASE_CATALOG_AUTHORITY/tlbqzzhhypixfbejoucr/catalog/Track ID=168275759/Lyrics"
+    ]
+  },
+  "kkr_biz_msc_prosecution": {
+    "operator": "KKr",
+    "status": "KK_BOUNDARY_PASS",
+    "owner_action_required": false,
+    "prosecution_basis": "OWNER_KNOWN_GOOD_CALIBRATION_PLUS_KKR_DUAL_MASTER_PHYSICS_AND_TEXT_LOOP_REPROSECUTION",
+    "completed_order": ["LT_PIX_WHOLE_TRACK", "KK_MAJOR_BLKS"],
+    "next_order": ["MK_WITHIN_KK", "SK_WITHIN_AND_ACROSS_VALID_KK_CONTEXT", "BLURRY_BORDER_CLEANUP", "VOC_PRODUCT_FIT", "DMAIC_CONTROL"],
+    "full_instrumental_processed": true,
+    "full_vocal_processed": true,
+    "canonical_lyrics_read_in_full": true,
+    "text_loops_applied": true,
+    "quality_standard": "EXCELLENT_NOT_PERFECT",
+    "physics_evidence": {
+      "vocal_instrumental_alignment_lag_seconds": 0.051,
+      "instrumental_least_squares_scale": 0.797763,
+      "vocal_residual_median_rms": 0.175553,
+      "method": "Aligned full masters; instrumental subtraction/residual and instrumental spectral-novelty checks around every locked BLK border"
+    },
+    "calibration_learning": "The owner-confirmed working BLKs are retained as a positive training exemplar. Routine future tracks are prosecuted by KKr; owner correction is exception feedback, not an approval queue."
+  },
+  "intro": { "included_as_kut": false },
+  "structure_revision": {
+    "revision_id": "COMIN_TRUE_FIVE_MAJOR_BLK_OWNER_ADJUSTMENT_2026_09_01",
+    "major_blk_count": 5,
+    "rule": "Major BLKs follow complete song-section architecture. Structural subblocks may preserve meaningful internal parts but are not independent sK products.",
+    "supersedes": "COMIN_TRUE_FIRST_TIME_OWNER_LOCK_2026_09_01_SIX_MAJOR_BLK_MODEL",
+    "lineage_map": {
+      "former_BLK1": "sBLK1a_WITHIN_BLK1",
+      "former_BLK2": "sBLK1b_WITHIN_BLK1",
+      "former_BLK3": "BLK2",
+      "former_BLK4": "BLK3",
+      "former_BLK5": "BLK4",
+      "former_BLK6": "BLK5"
+    }
+  },
+  "sections": [
+    {"section_id":"BLK1","start_sec":12.036,"end_sec":37.884,"approved":true,"kkr_listening_approved":true,"inpar_id":"COMIN_TRUE_BLK1_INPAR","intp_id":"COMIN_TRUE_BLK1_INTP","vtp_id":"COMIN_TRUE_BLK1_VTP","structure_match":{"instrumental_measures_verified":true,"vocal_phrase_fitted_to_structure":true,"kkr_text_loop_verified":true},"complete_meaningful_thought":true,"last_vocal_resonance_preserved":true,"boundary_authority":"INSTRUMENTAL_STRUCTURE_PLUS_VOCAL_LYRIC_VTP","subblocks":[{"subblock_id":"sBLK1a","product_form":"STRUCTURAL_SUBBLK_NOT_SK","start_sec":12.036,"end_sec":24.263,"lineage_from":"former_BLK1"},{"subblock_id":"sBLK1b","product_form":"STRUCTURAL_SUBBLK_NOT_SK","start_sec":24.884,"end_sec":37.884,"lineage_from":"former_BLK2"}]},
+    {"section_id":"BLK2","start_sec":38.739,"end_sec":66.585,"approved":true,"kkr_listening_approved":true,"inpar_id":"COMIN_TRUE_BLK2_INPAR","intp_id":"COMIN_TRUE_BLK2_INTP","vtp_id":"COMIN_TRUE_BLK2_VTP","structure_match":{"instrumental_measures_verified":true,"vocal_phrase_fitted_to_structure":true,"kkr_text_loop_verified":true},"complete_meaningful_thought":true,"last_vocal_resonance_preserved":true,"boundary_authority":"INSTRUMENTAL_STRUCTURE_PLUS_VOCAL_LYRIC_VTP","lineage_from":"former_BLK3"},
+    {"section_id":"BLK3","start_sec":70.097,"end_sec":82.831,"approved":true,"kkr_listening_approved":true,"inpar_id":"COMIN_TRUE_BLK3_INPAR","intp_id":"COMIN_TRUE_BLK3_INTP","vtp_id":"COMIN_TRUE_BLK3_VTP","structure_match":{"instrumental_measures_verified":true,"vocal_phrase_fitted_to_structure":true,"kkr_text_loop_verified":true},"complete_meaningful_thought":true,"last_vocal_resonance_preserved":true,"boundary_authority":"INSTRUMENTAL_STRUCTURE_PLUS_VOCAL_LYRIC_VTP","lineage_from":"former_BLK4"},
+    {"section_id":"BLK4","start_sec":83.573,"end_sec":96.584,"approved":true,"kkr_listening_approved":true,"inpar_id":"COMIN_TRUE_BLK4_INPAR","intp_id":"COMIN_TRUE_BLK4_INTP","vtp_id":"COMIN_TRUE_BLK4_VTP","structure_match":{"instrumental_measures_verified":true,"vocal_phrase_fitted_to_structure":true,"kkr_text_loop_verified":true},"complete_meaningful_thought":true,"last_vocal_resonance_preserved":true,"boundary_authority":"INSTRUMENTAL_STRUCTURE_PLUS_VOCAL_LYRIC_VTP","lineage_from":"former_BLK5"},
+    {"section_id":"BLK5","start_sec":96.671,"end_sec":135.497,"approved":true,"kkr_listening_approved":true,"inpar_id":"COMIN_TRUE_BLK5_INPAR","intp_id":"COMIN_TRUE_BLK5_INTP","vtp_id":"COMIN_TRUE_BLK5_VTP","structure_match":{"instrumental_measures_verified":true,"vocal_phrase_fitted_to_structure":true,"kkr_text_loop_verified":true},"complete_meaningful_thought":true,"last_vocal_resonance_preserved":true,"boundary_authority":"INSTRUMENTAL_STRUCTURE_PLUS_VOCAL_LYRIC_VTP","lineage_from":"former_BLK6"}
+  ],
+  "release_state": "KK_BOUNDARY_PASS_PRIVATE_DERIVATION_ONLY_MK_SK_PENDING"
+}
