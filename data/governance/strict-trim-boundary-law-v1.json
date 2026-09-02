@@ -1,0 +1,36 @@
+{
+  "schema_version": "GPMX_STRICT_TRIM_BOUNDARY_LAW_V1",
+  "status": "OWNER_DIRECTED_REPROSECUTION_REQUIRED",
+  "effective_date": "2026-09-01",
+  "scope": ["KK", "SK", "MK", "HUG", "TUG", "BUG"],
+  "source_authority": "LT_PIX_VOCAL_SSOT_PLUS_CANONICAL_LYRICS_PLUS_GOVERNING_INTP_VTP_PAIR",
+  "rules": {
+    "same_pair_only": true,
+    "start_must_be_within_governing_intp_vtp": true,
+    "never_cross_vtp_end": true,
+    "never_cross_intp_end": true,
+    "never_enter_next_intp_vtp_pair": true,
+    "mid_vocal_cutoff_forbidden": true,
+    "on_valid_end_stop": true,
+    "tail_policy": {
+      "allowed": true,
+      "purpose": "natural vocal or musical decay only",
+      "may_contain_new_lyric_or_vocal_attack": false,
+      "may_enter_next_intp_vtp_pair": false,
+      "hard_ceiling": "earliest_of_governing_intp_end_governing_vtp_end_next_intp_start_next_vtp_start"
+    },
+    "uncertain_boundary": "HOLD",
+    "old_trim_reuse_without_reprosecution": false
+  },
+  "required_pass_state": "STRICT_INTP_VTP_END_NO_CUTOFF_PASS",
+  "required_checks": [
+    "canonical lyric tandem review",
+    "governing InTP start and end",
+    "governing VTP start and end",
+    "no next-pair trespass",
+    "no mid-vocal cutoff",
+    "tail contains decay only",
+    "rendered audio listening verification"
+  ],
+  "publication_law": "Derived SK/MK may not be served or sold until the required pass state is recorded after rerender and listening verification."
+}
