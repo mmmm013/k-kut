@@ -1,37 +1,35 @@
 {
-  "schema_version": "GPMX_STRICT_TRIM_BOUNDARY_LAW_V2",
-  "status": "OWNER_DIRECTED_REPROSECUTION_REQUIRED",
+  "schema_version": "GPMX_STRICT_TRIM_BOUNDARY_LAW_V3",
+  "status": "OWNER_DIRECTED_CAPTURED_CC_CORRECTION_REQUIRED",
   "effective_date": "2026-09-02",
-  "scope": ["KK", "SK", "MK", "HUG", "TUG", "BUG"],
-  "source_authority": "LT_PIX_VOCAL_SSOT_PLUS_CANONICAL_LYRICS_PLUS_GOVERNING_INTP_VTP_PAIR",
+  "scope": [
+    "KK",
+    "SK",
+    "MK",
+    "HUG",
+    "TUG",
+    "BUG"
+  ],
+  "source_authority": "CAPTURED_CC_AUTHORITY_ONLY",
   "rules": {
-    "same_pair_only": true,
-    "start_must_be_within_governing_intp_vtp": true,
-    "hard_stop": "VTP_END",
-    "stop_exactly_at_vocal_end": true,
+    "universal_materializer_input": "DEDUPLICATED_CAPTURED_CC_CORRECTION_WORKLIST",
+    "fresh_lt_pix_discovery_or_search_forbidden": true,
+    "stored_captured_cc_must_be_reviewed": true,
+    "hard_stop": "EXACT_LAST_AUDIBLE_VOCAL_NOTE_END",
+    "corrected_end_replaces_stored_capture_end": true,
+    "stop_exactly_at_last_vocal_note_end": true,
     "post_vocal_tail_allowed": false,
-    "never_cross_vtp_end": true,
-    "never_enter_next_intp_vtp_pair": true,
     "mid_vocal_cutoff_forbidden": true,
-    "preceding_complete_step_must_be_sensible_as_ii": true,
-    "edge_music_policy": {
-      "goal": "small audible music around the CC when naturally available",
-      "roughly_equal_on_both_ends": true,
-      "may_extend_past_vtp_end": false,
-      "music_not_available_is_acceptable": true
-    },
     "uncertain_boundary": "HOLD",
-    "old_trim_reuse_without_reprosecution": false
+    "old_trim_reuse_without_review": false
   },
-  "required_pass_state": "STRICT_VTP_END_NO_CUTOFF_PASS",
+  "required_pass_state": "STRICT_LAST_VOCAL_NOTE_END_PASS",
   "required_checks": [
-    "canonical lyric tandem review",
-    "governing VTP start and exact vocal end",
-    "preceding complete step is sensible as an II",
-    "no next-pair trespass",
-    "no mid-vocal cutoff",
-    "no audio after VTP-END",
+    "review the already captured CC",
+    "correct its stored END to the exact last audible vocal note",
+    "confirm no mid-vocal cutoff",
+    "confirm no audio after the last vocal note",
     "rendered audio listening verification"
   ],
-  "publication_law": "Derived SK/MK may not be served or sold until the required pass state is recorded after rerender and listening verification."
+  "publication_law": "No governed II may be materialized, served, or sold until its deduplicated captured-CC work item passes the exact last-vocal-note END review."
 }
