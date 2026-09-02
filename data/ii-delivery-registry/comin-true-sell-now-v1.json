@@ -1,0 +1,423 @@
+{
+  "schema_version": "GPMX_COMIN_TRUE_SELL_NOW_V1",
+  "status": "PUBLIC_READY",
+  "source_title": "Comin' True",
+  "source_sha256": "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda",
+  "boundary_truth": "data/kkr-boundary-truth/comin_true.json",
+  "theme": "Motivation",
+  "sentiment": "Chasing your dreams",
+  "total_iis": 15,
+  "counts": {
+    "kk": 5,
+    "kombo": 10
+  },
+  "song_section_labels_public": false,
+  "source_audio_unchanged": true,
+  "items": [
+    {
+      "ii_key": "comin_true_kk1",
+      "product_form": "KK",
+      "display_title": "Waiting for the Light",
+      "buyer_intent": "Encouragement for someone moving patiently through a difficult beginning.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK1",
+      "source_blk_last": "BLK1",
+      "start_sec": 12.036,
+      "end_sec": 37.884,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk1-dp.mp3",
+      "sha256": "c237caabbb8a8809931d7f14f052521f3e2d0fa580fb55dd82ab25fc40c6d9f4",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kk1",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kk2",
+      "product_form": "KK",
+      "display_title": "Make Room for Hope",
+      "buyer_intent": "A hopeful push to make room for possibility and keep going.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK2",
+      "source_blk_last": "BLK2",
+      "start_sec": 38.739,
+      "end_sec": 66.585,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk2-dp.mp3",
+      "sha256": "f12b92fe68c1be51b38c0dc2152b8200054489827c02f55b38a2f7ce6ce029e5",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kk2",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kk3",
+      "product_form": "KK",
+      "display_title": "I'm Coming True",
+      "buyer_intent": "A concise confidence and becoming-yourself HUG.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK3",
+      "source_blk_last": "BLK3",
+      "start_sec": 70.097,
+      "end_sec": 82.831,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk3-dp.mp3",
+      "sha256": "2daa6f6c761319327f2f0ea47147edd09da62b51701aad90f774c54336573892",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kk3",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kk4",
+      "product_form": "KK",
+      "display_title": "Like Brand New",
+      "buyer_intent": "A fresh-start HUG for renewal, recovery, or reinvention.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK4",
+      "source_blk_last": "BLK4",
+      "start_sec": 83.573,
+      "end_sec": 96.584,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk4-dp.mp3",
+      "sha256": "8a93b7db80441432854057a632b2f7546b04668fa2e81f6ba41df75698ef8727",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kk4",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kk5",
+      "product_form": "KK",
+      "display_title": "A Fresh Look Forward",
+      "buyer_intent": "A fuller closing HUG about replacing what is fading with something renewed.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK5",
+      "source_blk_last": "BLK5",
+      "start_sec": 96.671,
+      "end_sec": 135.497,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk5-dp.mp3",
+      "sha256": "7f457cb363fbb5b4715d776b6b4ef82e71b37a561e883ce099954f1b89ce791d",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kk5",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo1_2",
+      "product_form": "KK_KOMBO",
+      "display_title": "Light, Patience & Hope",
+      "buyer_intent": "Encouragement that carries waiting, persistence, and hope together.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK1",
+      "source_blk_last": "BLK2",
+      "start_sec": 12.036,
+      "end_sec": 66.585,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_2-dp.mp3",
+      "sha256": "1da474d6c63bbf9823d3c31d8df2ddefe1f8d67edf8704faa33d00ecf8f515d2",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo1_2",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo1_3",
+      "product_form": "KK_KOMBO",
+      "display_title": "From Waiting to Coming True",
+      "buyer_intent": "A fuller progression from patient struggle into self-belief.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK1",
+      "source_blk_last": "BLK3",
+      "start_sec": 12.036,
+      "end_sec": 82.831,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_3-dp.mp3",
+      "sha256": "52d762ed5bb4e179b80ed574249548b725af5cf10b6ffa8ade9b4e84f910f0b9",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo1_3",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo1_4",
+      "product_form": "KK_KOMBO",
+      "display_title": "The Reinvention Journey",
+      "buyer_intent": "A long-form encouragement HUG that reaches the brand-new turning point.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK1",
+      "source_blk_last": "BLK4",
+      "start_sec": 12.036,
+      "end_sec": 96.584,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_4-dp.mp3",
+      "sha256": "ec499c911968883f8f19fce2d8f74c369d5e23708685810f59dba8e4ecc69d77",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo1_4",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo1_5",
+      "product_form": "KK_KOMBO",
+      "display_title": "The Full Coming True Story",
+      "buyer_intent": "The complete motivational story from waiting through renewal.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK1",
+      "source_blk_last": "BLK5",
+      "start_sec": 12.036,
+      "end_sec": 135.497,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_5-dp.mp3",
+      "sha256": "d3d082cd12ca0eef6c07fbc9711afaadebca316ef00d9281e5f81daa1997b654",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo1_5",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo2_3",
+      "product_form": "KK_KOMBO",
+      "display_title": "Make Room—I'm Coming True",
+      "buyer_intent": "Hope and self-belief joined as one forward-moving message.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK2",
+      "source_blk_last": "BLK3",
+      "start_sec": 38.739,
+      "end_sec": 82.831,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo2_3-dp.mp3",
+      "sha256": "ccf0d7a7e18bb94b2b3f2e09c8154c8646a509a2256028cc06ad756abe94f865",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo2_3",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo2_4",
+      "product_form": "KK_KOMBO",
+      "display_title": "Hope to Brand New",
+      "buyer_intent": "A change-and-renewal HUG moving from hope into a fresh start.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK2",
+      "source_blk_last": "BLK4",
+      "start_sec": 38.739,
+      "end_sec": 96.584,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo2_4-dp.mp3",
+      "sha256": "825924f5c306818558165eaa0e5c8751f0c1687ffc719e1dd792b8f982d1b805",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo2_4",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo2_5",
+      "product_form": "KK_KOMBO",
+      "display_title": "Hope and a Fresh Start",
+      "buyer_intent": "A fuller renewal HUG for someone rebuilding or beginning again.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK2",
+      "source_blk_last": "BLK5",
+      "start_sec": 38.739,
+      "end_sec": 135.497,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo2_5-dp.mp3",
+      "sha256": "fa6f75c89f409d4ad858f9d3f07807af595b6b1d0c21f3e836e1d7f951a33eca",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo2_5",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo3_4",
+      "product_form": "KK_KOMBO",
+      "display_title": "Coming True, Like Brand New",
+      "buyer_intent": "A direct confidence HUG about becoming and renewal.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK3",
+      "source_blk_last": "BLK4",
+      "start_sec": 70.097,
+      "end_sec": 96.584,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo3_4-dp.mp3",
+      "sha256": "529ecf0de49797e07c9adeafa7d11b047a9d6fd1aaefba1fbe9e95063d11bb7d",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo3_4",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo3_5",
+      "product_form": "KK_KOMBO",
+      "display_title": "Coming True with a Fresh Look",
+      "buyer_intent": "A confident, complete message of reinvention and forward movement.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK3",
+      "source_blk_last": "BLK5",
+      "start_sec": 70.097,
+      "end_sec": 135.497,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo3_5-dp.mp3",
+      "sha256": "d1c76c5baa752b9c84ed8e5491f3d08560bcda60e60d3eb7258a9b37236910c1",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo3_5",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    },
+    {
+      "ii_key": "comin_true_kombo4_5",
+      "product_form": "KK_KOMBO",
+      "display_title": "Brand New, Fresh Look",
+      "buyer_intent": "A compact renewal HUG for a new chapter.",
+      "inherited_lt_pix_mgs": "Motivation / Chasing your dreams / Hope / Determination / Renewal",
+      "llbp_state": "PUBLIC_PASS",
+      "llbp_basis": "Owner-approved boundary truth, canonical lyrics, confirmed LT-PIX semantics, multi-MGS fit, contraindication review, and KKr confidence review.",
+      "contraindications": [
+        "Do not present as a guarantee of success",
+        "Do not substitute for crisis or medical support"
+      ],
+      "source_blk_first": "BLK4",
+      "source_blk_last": "BLK5",
+      "start_sec": 83.573,
+      "end_sec": 135.497,
+      "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo4_5-dp.mp3",
+      "sha256": "a54c7e5647f9d5b9ecf6f21ea04b6a91b20cad2dcb386a473de887d266cc014a",
+      "price_usd": "4.99",
+      "checkout_url": "/checkout?ii=comin_true_kombo4_5",
+      "dp": {
+        "lead_padding_sec": 1.35,
+        "content_end_fade_sec": 0.6,
+        "tail_before_twinkle_sec": 0.75,
+        "twinkle_gain": 0.75
+      }
+    }
+  ]
+}
