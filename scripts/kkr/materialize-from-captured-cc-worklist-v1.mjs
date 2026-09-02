@@ -39,6 +39,9 @@ if (worklist.discovery_search_permitted !== false || worklist.fresh_lt_pix_pass_
   fail("fresh LT-PIX discovery/search is forbidden");
 }
 if (worklist.status !== "CAPTURED_CC_CORRECTIONS_COMPLETE") fail("correction worklist is incomplete; HOLD");
+if (worklist.separator_policy?.default_padding_after_last_vocal_note_sec !== 0) fail("post-vocal padding must be exactly zero");
+if (worklist.separator_policy?.gap_is_separator_not_tail !== true) fail("the gap before a fresh vocal must remain a separator");
+if (worklist.separator_policy?.always_distinct_between_trms !== true) fail("adjacent TRMs require distinct cuts");
 if (!Array.isArray(worklist.items) || worklist.items.length === 0) fail("worklist is empty");
 if (!worklist.source_audio_path || !fs.existsSync(worklist.source_audio_path)) fail("render source audio is missing");
 if (spawnSync("ffmpeg", ["-version"], { stdio: "ignore" }).status !== 0) fail("ffmpeg is required");
@@ -89,7 +92,9 @@ for (const item of worklist.items) {
       captured_cc_start_sec: start,
       original_stored_cc_end_sec: storedEnd,
       corrected_captured_cc_end_sec: correctedEnd,
-      hard_stop_rule: "EXACT_LAST_AUDIBLE_VOCAL_NOTE_END",
+      hard_stop_rule: "EXACT_ACOUSTIC_END_OF_LAST_AUDIBLE_VOCAL_NOTE",
+      post_vocal_padding_sec: 0,
+      gap_before_next_vocal_is_separator: true,
       boundary_prosecution_state: STRICT_PASS,
       discovery_search_used: false,
       post_vocal_audio_allowed: false,
@@ -107,7 +112,9 @@ const output = {
   authority_source_kind: AUTHORITY_KIND,
   upstream_worklist_path: worklistPath,
   discovery_search_permitted: false,
-  hard_stop_rule: "EXACT_LAST_AUDIBLE_VOCAL_NOTE_END",
+  hard_stop_rule: "EXACT_ACOUSTIC_END_OF_LAST_AUDIBLE_VOCAL_NOTE",
+  post_vocal_padding_sec: 0,
+  gap_before_next_vocal_is_separator: true,
   item_count: rendered.length,
   items: rendered
 };
