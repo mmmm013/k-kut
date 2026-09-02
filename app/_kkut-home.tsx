@@ -11,29 +11,35 @@ const offers = [
   {
     name: "HUG",
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
-    status: "No public inventory yet",
+    status: "15 Comin' True HUGs live",
     description:
-      "HUG inventory remains behind exact release review. No player or payment button appears until one specific HUG clears every gate.",
-    href: "/hugz",
-    cta: "Browse 13 HUGz Cards",
+      "Hear 15 released HUG and KOMBO moments from Comin' True. Exact-price checkout links remain held until corrected.",
+    href: "/hugs/comin-true#hugs",
+    cta: "Hear 15 HUGs",
+    statusHref: "/hugz",
+    statusCta: "Browse HUGz Cards",
   },
   {
     name: "TUG",
     price: formatUsd(PRODUCT_OFFER_LAW.TUG.priceUsd),
-    status: "Product mapping in review",
+    status: "49 Comin' True TUGs live",
     description:
-      "TUG is the shorter music-moment offer. Its inventory cannot be sold until each released item is mapped to this customer offer.",
-    href: "/tug",
-    cta: "View TUG status",
+      "Hear 49 released phrase, hook, one-line, line-pair, line-trio, twist, idiom, and metaphor moments.",
+    href: "/hugs/comin-true#tugs",
+    cta: "Hear 49 TUGs",
+    statusHref: "/tug",
+    statusCta: "View all TUG status",
   },
   {
     name: "BUG",
     price: formatUsd(PRODUCT_OFFER_LAW.BUG.priceUsd),
-    status: "No public inventory yet",
+    status: "34 BUGs + 3 Story BUGs live",
     description:
-      "BUG is the mini music-moment offer. No customer-ready BUG inventory is published, so no payment button is shown.",
-    href: "/bug",
-    cta: "View BUG status",
+      "Hear 34 released compact vocal moments plus three Story BUG progressions.",
+    href: "/hugs/comin-true#bugs",
+    cta: "Hear BUGs",
+    statusHref: "/bug",
+    statusCta: "View all BUG status",
   },
 ] as const;
 
@@ -71,15 +77,15 @@ export default function KKutHome() {
           <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
             Customer release review active
           </p>
-          <h2 className="mt-3 text-3xl font-black">No approved K-KUT HUGs are published yet.</h2>
+          <h2 className="mt-3 text-3xl font-black">101 Comin&apos; True IIs are published now.</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            Meaning, audio, route fit, rights, and final approval must all pass before a player or payment button appears.
+            Hear 15 HUGs, 49 TUGs, 34 BUGs, and three Story BUGs. The audio is live; purchase buttons remain held until exact-price Stripe links are corrected.
           </p>
           <Link
-            href="/romance"
+            href="/hugs/comin-true"
             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
           >
-            View Romance review status
+            Hear Comin&apos; True IIs
           </Link>
         </section>
 
@@ -102,6 +108,12 @@ export default function KKutHome() {
               >
                 {offer.cta}
               </Link>
+              <Link
+                href={offer.statusHref}
+                className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-[#D7CCC8] underline underline-offset-4"
+              >
+                {offer.statusCta}
+              </Link>
             </article>
           ))}
         </section>
@@ -111,7 +123,7 @@ export default function KKutHome() {
             Release control
           </p>
           <p className="mt-3 text-sm font-bold leading-7 text-amber-50/80">
-            The general music catalog is under strict review. Browsing routes remain open, but unapproved audio, titles, delivery, and payment stay unavailable. A missing payment button means the exact item has not cleared release—not that your browser failed.
+            Comin&apos; True is the governed public release. Other catalog audio, titles, delivery, and payment remain unavailable until approved. A missing payment button means the exact-price checkout link is not active—not that your browser failed.
           </p>
         </section>
 

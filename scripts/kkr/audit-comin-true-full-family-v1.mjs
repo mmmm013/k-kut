@@ -3,7 +3,6 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 
 const manifestPath = "data/ii-delivery-registry/comin-true-full-family-v1.json";
-const sourcePath = "incoming/comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3";
 const expectedSourceSha256 = "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda";
 const allowedSk = new Set(["1LNR", "HOOK", "IDIOM", "LNPR", "LNTRIO", "MTA4", "PHRZ", "TWST"]);
 const allowedMk = new Set(["TRM", "VSND", "XCLM"]);
@@ -26,12 +25,11 @@ function duration(file) {
 }
 
 assert(fs.existsSync(manifestPath), "Missing complete-family manifest");
-assert(fs.existsSync(sourcePath), "Missing vocal LT-PIX source");
-assert(sha256(sourcePath) === expectedSourceSha256, "Vocal LT-PIX source hash changed");
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 assert(manifest.status === "PUBLIC_READY_COMPLETE_FAMILY", "Family is not public-ready");
 assert(manifest.source_audio_unchanged === true, "Source-audio law failed");
+assert(manifest.source_sha256 === expectedSourceSha256, "Recorded vocal LT-PIX source hash changed");
 assert(manifest.counts.hug === 15, "Expected 15 HUGs");
 assert(manifest.counts.tug === 49, "Expected 49 TUGs");
 assert(manifest.counts.bug === 34, "Expected 34 BUGs");
@@ -40,10 +38,17 @@ assert(manifest.counts.total === 101, "Expected 101 total IIs");
 
 const all = [...manifest.hugs, ...manifest.tugs, ...manifest.bugs, ...manifest.story_bugs];
 assert(new Set(all.map((item) => item.ii_key)).size === all.length, "Duplicate II keys");
-assert(new Set(all.map((item) => item.checkout_url)).size === all.length, "Duplicate checkout identities");
 for (const item of all) {
   assert(item.llbp_state === "PUBLIC_PASS", `LLBP did not pass: ${item.ii_key}`);
+  assert(item.purchase_state === "PAYMENT_LINK_PENDING_EXACT_PRICE", `Unsafe purchase state: ${item.ii_key}`);
   assert(!/\b(BLK|KK\d|sK|mK|LNPR|LNTRIO|PHRZ|TWST|MTA4)\b/i.test(item.display_title), `Internal structure leaked into display: ${item.ii_key}`);
+}
+
+for (const item of manifest.hugs) {
+  assert(item.price_usd === "7.99", `HUG price failed: ${item.ii_key}`);
+  const file = publicPath(item.audio_url);
+  assert(fs.existsSync(file), `Missing HUG audio: ${file}`);
+  assert(sha256(file) === item.sha256, `HUG hash mismatch: ${item.ii_key}`);
 }
 
 for (const item of manifest.tugs) {

@@ -13,27 +13,33 @@ const offers = [
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
     heading: "A full music moment",
     description:
-      "No public HUG inventory is currently published. Each exact choice remains gated until audio, route fit, rights, and final approval all pass.",
-    href: "/hugz",
-    cta: "Browse HUGz Cards",
+      "15 Comin' True HUG and KOMBO audio previews are published. Exact-price checkout remains held.",
+    href: "/hugs/comin-true#hugs",
+    cta: "Hear 15 HUGs",
+    statusHref: "/hugz",
+    statusCta: "Browse HUGz Cards",
   },
   {
     name: "TUG",
     price: formatUsd(PRODUCT_OFFER_LAW.TUG.priceUsd),
     heading: "A shorter music moment",
     description:
-      "TUG inventory is verified at storage level, but its customer product mapping is not approved yet.",
-    href: "/tug",
-    cta: "View TUG status",
+      "49 Comin' True TUG audio previews are published from meaningful lyric combinations.",
+    href: "/hugs/comin-true#tugs",
+    cta: "Hear 49 TUGs",
+    statusHref: "/tug",
+    statusCta: "View all TUG status",
   },
   {
     name: "BUG",
     price: formatUsd(PRODUCT_OFFER_LAW.BUG.priceUsd),
     heading: "A mini music moment",
     description:
-      "BUG has strict source rules. No customer-ready BUG inventory is currently published.",
-    href: "/bug",
-    cta: "View BUG status",
+      "34 Comin' True BUGs and three Story BUG progressions are published under the strict mK source rules.",
+    href: "/hugs/comin-true#bugs",
+    cta: "Hear BUGs",
+    statusHref: "/bug",
+    statusCta: "View all BUG status",
   },
 ] as const;
 
@@ -57,15 +63,15 @@ export default function HugPage() {
           <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
             Customer release review active
           </p>
-          <h2 className="mt-3 text-3xl font-black">No approved K-KUT HUGs are published yet.</h2>
+          <h2 className="mt-3 text-3xl font-black">101 Comin&apos; True IIs are published now.</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            A LOVE LIKE THAT remains held. No player or payment button appears until its exact audio and purchase surface clear release review.
+            Comin&apos; True audio is live. A LOVE LIKE THAT remains held, and exact-price payment links remain closed until corrected.
           </p>
           <Link
-            href="/romance"
+            href="/hugs/comin-true"
             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
           >
-            View Romance review status
+            Hear Comin&apos; True IIs
           </Link>
         </section>
 
@@ -87,6 +93,12 @@ export default function HugPage() {
                 className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FFD54F] px-5 py-3 text-center text-sm font-black text-black"
               >
                 {offer.cta}
+              </Link>
+              <Link
+                href={offer.statusHref}
+                className="mt-3 text-center text-xs font-black uppercase tracking-[0.12em] text-[#D7CCC8] underline underline-offset-4"
+              >
+                {offer.statusCta}
               </Link>
             </article>
           ))}

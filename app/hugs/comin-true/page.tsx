@@ -11,7 +11,6 @@ type AudioII = {
   buyer_intent: string;
   audio_url: string;
   price_usd: string;
-  checkout_url: string;
 };
 
 function AudioCard({ ii, product }: { ii: AudioII; product: string }) {
@@ -22,10 +21,10 @@ function AudioCard({ ii, product }: { ii: AudioII; product: string }) {
       </p>
       <h3 className="mt-3 text-2xl font-black">{ii.display_title}</h3>
       <p className="mt-3 min-h-14 text-sm font-semibold leading-6 text-white/68">{ii.buyer_intent}</p>
-      <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" disablePictureInPicture preload="metadata" src={ii.audio_url} />
-      <a className="mt-6 block rounded-2xl bg-violet-200 px-6 py-4 text-center font-black text-[#120b1b] transition hover:bg-violet-100" href={ii.checkout_url}>
-        Send this {product} · ${ii.price_usd}
-      </a>
+      <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={ii.audio_url} />
+      <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">
+        Public audio preview · {product} ${ii.price_usd}
+      </p>
     </article>
   );
 }
@@ -54,7 +53,7 @@ export default function CominTrueIIFamilyPage() {
           <p className="mt-5 max-w-3xl text-lg font-bold leading-8 text-white/75">
             101 finished music IIs, each cut directly from the same full vocal recording. Choose a larger musical HUG, a meaningful lyric TUG, a compact BUG, or a three-part Story BUG.
           </p>
-          <p className="mt-4 text-sm font-bold text-violet-100/75">Private-link delivery · stream only · original recording unchanged</p>
+          <p className="mt-4 text-sm font-bold text-violet-100/75">Public audio preview · stream only · original recording unchanged · exact-price checkout links pending</p>
           <nav className="mt-7 grid gap-3 sm:grid-cols-4">
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#hugs">15 HUGs</a>
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#tugs">49 TUGs</a>
@@ -63,7 +62,7 @@ export default function CominTrueIIFamilyPage() {
           </nav>
         </section>
 
-        <ProductSection id="hugs" title="HUGs" description="Larger musical moments and contiguous KOMBOs for a fuller emotional message. $4.99 each." product="HUG" items={manifest.hugs} />
+        <ProductSection id="hugs" title="HUGs" description="Larger musical moments and contiguous KOMBOs for a fuller emotional message. $7.99 each." product="HUG" items={manifest.hugs} />
         <ProductSection id="tugs" title="TUGs" description="Exact meaningful lyric moments: phrases, one-liners, line pairs, line trios, hooks, idioms, twists, and metaphors. $4.99 each." product="TUG" items={manifest.tugs} />
         <ProductSection id="bugs" title="BUGs" description="Compact emotional terms and vocal sounds derived directly from the full recording. $1.99 each." product="BUG" items={manifest.bugs} />
 
@@ -83,12 +82,12 @@ export default function CominTrueIIFamilyPage() {
                     return (
                       <div key={key} className="rounded-2xl bg-black/25 p-3">
                         <p className="mb-2 text-sm font-black">{index + 1}. {bug.display_title}</p>
-                        <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture preload="metadata" src={bug.audio_url} className="w-full" />
+                        <audio controls controlsList="nodownload noplaybackrate" preload="metadata" src={bug.audio_url} className="w-full" />
                       </div>
                     );
                   })}
                 </div>
-                <a className="mt-6 block rounded-2xl bg-violet-200 px-6 py-4 text-center font-black text-[#120b1b]" href={story.checkout_url}>Send this Story BUG · ${story.price_usd}</a>
+                <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">Public three-part preview · Story BUG ${story.price_usd}</p>
               </article>
             ))}
           </div>

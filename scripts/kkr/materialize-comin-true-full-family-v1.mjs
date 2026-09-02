@@ -176,7 +176,7 @@ const tugItems = tugs.map(([key, start, end, displayTitle, formKeys, buyerIntent
     audio_url: `/ii-delivery/tugs/comin-true/${path.basename(out)}`,
     sha256: sha256(out),
     price_usd: "4.99",
-    checkout_url: `/checkout?ii=comin_true_tug_${slug(key).replaceAll("-", "_")}`,
+    purchase_state: "PAYMENT_LINK_PENDING_EXACT_PRICE",
     llbp_state: "PUBLIC_PASS",
     source_audio_unchanged: true,
   };
@@ -204,7 +204,7 @@ const bugItems = bugs.map(([key, start, end, displayTitle, formKey, buyerIntent]
     audio_url: `/ii-delivery/bugs/comin-true/${path.basename(out)}`,
     sha256: sha256(out),
     price_usd: "1.99",
-    checkout_url: `/checkout?ii=comin_true_bug_${slug(key).replaceAll("-", "_")}`,
+    purchase_state: "PAYMENT_LINK_PENDING_EXACT_PRICE",
     llbp_state: "PUBLIC_PASS",
     source_audio_unchanged: true,
   };
@@ -225,7 +225,7 @@ const storyBugItems = storyBugs.map(([key, displayTitle, componentKeys, buyerInt
     buyer_intent: buyerIntent,
     component_bug_keys: components,
     price_usd: "2.98",
-    checkout_url: `/checkout?ii=comin_true_story_bug_${slug(key).replaceAll("-", "_")}`,
+    purchase_state: "PAYMENT_LINK_PENDING_EXACT_PRICE",
     llbp_state: "PUBLIC_PASS",
     source_audio_unchanged: true,
   };

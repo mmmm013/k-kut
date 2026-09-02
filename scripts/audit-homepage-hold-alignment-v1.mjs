@@ -7,11 +7,11 @@ function fail(message) {
 const home = fs.readFileSync("app/_kkut-home.tsx", "utf8");
 const required = [
   "Customer release review active",
-  "No approved K-KUT HUGs are published yet.",
-  "No public inventory yet",
-  "before a player or payment button appears",
-  'href="/romance"',
-  "View Romance review status",
+  "101 Comin&apos; True IIs are published now.",
+  "15 Comin' True HUGs live",
+  "purchase buttons remain held",
+  'href="/hugs/comin-true"',
+  "Hear Comin&apos; True IIs",
 ];
 const forbidden = [
   "Ready now · controlled sales canary",
@@ -31,6 +31,6 @@ for (const phrase of forbidden) {
 }
 
 console.log("HOMEPAGE HOLD ALIGNMENT AUDIT: PASS");
-console.log("HOME SALES CLAIM: REMOVED");
+console.log("HOME COMIN TRUE PUBLIC AUDIO CLAIM: ACTIVE");
 console.log("ROMANCE STATUS PATH: PRESERVED");
-console.log("AUDIO / PAYMENT / INVENTORY AUTHORITY: UNCHANGED");
+console.log("PAYMENT AUTHORITY: HELD PENDING EXACT-PRICE LINKS");

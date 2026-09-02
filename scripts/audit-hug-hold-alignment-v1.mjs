@@ -9,12 +9,12 @@ const page = fs.readFileSync("app/hug/page.tsx", "utf8");
 const required = [
   "Send the Sent-i-Meant.",
   "Customer release review active",
-  "No approved K-KUT HUGs are published yet.",
-  "A LOVE LIKE THAT remains held.",
-  "No player or payment button appears",
-  'href="/romance"',
-  "View Romance review status",
-  "No public HUG inventory is currently published.",
+  "101 Comin&apos; True IIs are published now.",
+  "A LOVE LIKE THAT remains held",
+  "exact-price payment links remain closed",
+  'href="/hugs/comin-true"',
+  "Hear Comin&apos; True IIs",
+  "15 Comin' True HUG and KOMBO audio previews are published.",
 ];
 
 const forbidden = [
@@ -33,8 +33,8 @@ for (const phrase of forbidden) {
 }
 
 console.log("HUG HOLD ALIGNMENT AUDIT: PASS");
-console.log("HUG SALES CLAIM: REMOVED");
+console.log("COMIN TRUE PUBLIC AUDIO: 101 IIs");
 console.log("A LOVE LIKE THAT: HELD");
 console.log("ROMANCE STATUS PATH: PRESERVED");
 console.log("SENT-I-MEANT DISPLAY: PRESERVED");
-console.log("AUDIO / PAYMENT / INVENTORY AUTHORITY: UNCHANGED");
+console.log("PAYMENT AUTHORITY: HELD PENDING EXACT-PRICE LINKS");

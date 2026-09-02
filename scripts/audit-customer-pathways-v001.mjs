@@ -25,7 +25,10 @@ for (const [name, text] of [
   ["offers", offers],
 ]) {
   for (const route of ["/hugz", "/tug", "/bug"]) {
-    if (!text.includes(`href: "${route}"`)) {
+    if (
+      !text.includes(`href: "${route}"`) &&
+      !text.includes(`statusHref: "${route}"`)
+    ) {
       stop(`${name} is missing the ${route} offer destination`);
     }
   }

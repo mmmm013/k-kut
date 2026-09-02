@@ -46,14 +46,14 @@
       "end_sec": 37.884,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk1-dp.mp3",
       "sha256": "c237caabbb8a8809931d7f14f052521f3e2d0fa580fb55dd82ab25fc40c6d9f4",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kk1",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kk2",
@@ -73,14 +73,14 @@
       "end_sec": 66.585,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk2-dp.mp3",
       "sha256": "f12b92fe68c1be51b38c0dc2152b8200054489827c02f55b38a2f7ce6ce029e5",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kk2",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kk3",
@@ -100,14 +100,14 @@
       "end_sec": 82.831,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk3-dp.mp3",
       "sha256": "2daa6f6c761319327f2f0ea47147edd09da62b51701aad90f774c54336573892",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kk3",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kk4",
@@ -127,14 +127,14 @@
       "end_sec": 96.584,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk4-dp.mp3",
       "sha256": "8a93b7db80441432854057a632b2f7546b04668fa2e81f6ba41df75698ef8727",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kk4",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kk5",
@@ -154,14 +154,14 @@
       "end_sec": 135.497,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kk5-dp.mp3",
       "sha256": "7f457cb363fbb5b4715d776b6b4ef82e71b37a561e883ce099954f1b89ce791d",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kk5",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo1_2",
@@ -181,14 +181,14 @@
       "end_sec": 66.585,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_2-dp.mp3",
       "sha256": "1da474d6c63bbf9823d3c31d8df2ddefe1f8d67edf8704faa33d00ecf8f515d2",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo1_2",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo1_3",
@@ -208,14 +208,14 @@
       "end_sec": 82.831,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_3-dp.mp3",
       "sha256": "52d762ed5bb4e179b80ed574249548b725af5cf10b6ffa8ade9b4e84f910f0b9",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo1_3",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo1_4",
@@ -235,14 +235,14 @@
       "end_sec": 96.584,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_4-dp.mp3",
       "sha256": "ec499c911968883f8f19fce2d8f74c369d5e23708685810f59dba8e4ecc69d77",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo1_4",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo1_5",
@@ -262,14 +262,14 @@
       "end_sec": 135.497,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo1_5-dp.mp3",
       "sha256": "d3d082cd12ca0eef6c07fbc9711afaadebca316ef00d9281e5f81daa1997b654",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo1_5",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo2_3",
@@ -289,14 +289,14 @@
       "end_sec": 82.831,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo2_3-dp.mp3",
       "sha256": "ccf0d7a7e18bb94b2b3f2e09c8154c8646a509a2256028cc06ad756abe94f865",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo2_3",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo2_4",
@@ -316,14 +316,14 @@
       "end_sec": 96.584,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo2_4-dp.mp3",
       "sha256": "825924f5c306818558165eaa0e5c8751f0c1687ffc719e1dd792b8f982d1b805",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo2_4",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo2_5",
@@ -343,14 +343,14 @@
       "end_sec": 135.497,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo2_5-dp.mp3",
       "sha256": "fa6f75c89f409d4ad858f9d3f07807af595b6b1d0c21f3e836e1d7f951a33eca",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo2_5",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo3_4",
@@ -370,14 +370,14 @@
       "end_sec": 96.584,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo3_4-dp.mp3",
       "sha256": "529ecf0de49797e07c9adeafa7d11b047a9d6fd1aaefba1fbe9e95063d11bb7d",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo3_4",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo3_5",
@@ -397,14 +397,14 @@
       "end_sec": 135.497,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo3_5-dp.mp3",
       "sha256": "d1c76c5baa752b9c84ed8e5491f3d08560bcda60e60d3eb7258a9b37236910c1",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo3_5",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_kombo4_5",
@@ -424,14 +424,14 @@
       "end_sec": 135.497,
       "audio_url": "/ii-delivery/hugs/comin-true/comin-true-kombo4_5-dp.mp3",
       "sha256": "a54c7e5647f9d5b9ecf6f21ea04b6a91b20cad2dcb386a473de887d266cc014a",
-      "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_kombo4_5",
+      "price_usd": "7.99",
       "dp": {
         "lead_padding_sec": 1.35,
         "content_end_fade_sec": 0.6,
         "tail_before_twinkle_sec": 0.75,
         "twinkle_gain": 0.75
-      }
+      },
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     }
   ],
   "tugs": [
@@ -453,9 +453,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-waiting-good-luck-dp.mp3",
       "sha256": "a5b883bdbaeffc6c5999c8a4e6355e0f4df3f056d18e9331bba2c5dd2ea92310",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_waiting_good_luck",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_lights_turned_up",
@@ -475,9 +475,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-lights-turned-up-dp.mp3",
       "sha256": "7df4811c5055b6148c666818f05835132ab2b9ac4648625fc9c70ff0c529da4d",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_lights_turned_up",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_laying_low",
@@ -497,9 +497,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-laying-low-dp.mp3",
       "sha256": "d6990da902add8ede5c6c4c5843aed8b7bd03657dec28b7e8e0b2285a425af77",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_laying_low",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_moving_slow",
@@ -519,9 +519,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-moving-slow-dp.mp3",
       "sha256": "c4b8d8c35347f584c5a65d06578b22f2fb162c01e43ef8f2f8cb09b7c0b46a7e",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_moving_slow",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_long_wait",
@@ -541,9 +541,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-long-wait-dp.mp3",
       "sha256": "48e166d2dccc3d951fb56fbf110a38c00457f74bd5a93522ec1ae901356da077",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_long_wait",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_space_and_faith",
@@ -563,9 +563,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-space-and-faith-dp.mp3",
       "sha256": "b57b0ffbe71682858fc2e665673b043964acae99ac5e5108ba04ce373383c9bd",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_space_and_faith",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_make_room",
@@ -585,9 +585,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-make-room-dp.mp3",
       "sha256": "02e29f1dc964967fc561a86048ef1870fea161e9e6d4f62da5d0a66d2a344f4f",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_make_room",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_flowers_bloom",
@@ -607,9 +607,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-flowers-bloom-dp.mp3",
       "sha256": "398caca97604b6ef2876b7d434bebaa5688b27f557e0c482d0883dcc60dd941e",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_flowers_bloom",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_newly_new",
@@ -629,9 +629,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-newly-new-dp.mp3",
       "sha256": "6130385cf8d4b52f87d5801e327d9700afa5f867533b8aa997f6e7f09e5e9ff7",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_newly_new",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_coming_true_first",
@@ -651,9 +651,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-coming-true-first-dp.mp3",
       "sha256": "ca82b081af0d8d9b14c0d9d67aeb5003ed2268eb87cf2244e2869bde84f3c848",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_coming_true_first",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_old_paint_fade",
@@ -673,9 +673,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-old-paint-fade-dp.mp3",
       "sha256": "9144a22767d792a99c7a2cb51a5923d4ec458fee36046e919cddbe8a0fb34735",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_old_paint_fade",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_fresh_outlook_place",
@@ -696,9 +696,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-fresh-outlook-place-dp.mp3",
       "sha256": "bf47b065e5e04e8471024873a1e9f5f3f7ad4ac79e3b339aa7ffd2f112446ac0",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_fresh_outlook_place",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_newly_coming_true_1",
@@ -718,9 +718,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-newly-coming-true-1-dp.mp3",
       "sha256": "664e69c2b6736c6938091965e8cba54f2da176b922d5d8baf54a9e6ba4971d4f",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_newly_coming_true_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_coming_true_repeat",
@@ -740,9 +740,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-coming-true-repeat-dp.mp3",
       "sha256": "ce7c67bd61b2b1b30b925791d19becb09a89597d80e6374eefef641f8e4cd315",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_coming_true_repeat",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_take_little_lot",
@@ -762,9 +762,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-take-little-lot-dp.mp3",
       "sha256": "8d16484e45b1158ed31cf2124eabd5d139a0eb407cc67d1503057dcf59bf0d72",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_take_little_lot",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_everything_got",
@@ -784,9 +784,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-everything-got-dp.mp3",
       "sha256": "ccced8b18fbc78a174a8c2e9498923c8c746cc75e59f1b01e8067dc859c79548",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_everything_got",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_holding_on",
@@ -806,9 +806,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-holding-on-dp.mp3",
       "sha256": "ad26d6c9712433b3ca359a4c3be5b448ea8c56b117ed1963aebfb43a13b9a15e",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_holding_on",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_thought_was_gone",
@@ -828,9 +828,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-thought-was-gone-dp.mp3",
       "sha256": "518ae196def94003f8a88eb0972a6498f2d2585bfe7921ca1484e64ea5bc69cd",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_thought_was_gone",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_no_looking_back",
@@ -850,9 +850,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-no-looking-back-dp.mp3",
       "sha256": "0334adfc0b43d0a28a52b8e26576416fad2abeda336d3d4e412f13ea9e972fdc",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_no_looking_back",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_what_ive_had",
@@ -872,9 +872,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-what-ive-had-dp.mp3",
       "sha256": "2b85c0519d1dcf6522d7679d27e1f72d0fc153cdb234aa49ee0ab89ddcf5e2bd",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_what_ive_had",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_moving_on",
@@ -894,9 +894,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-moving-on-dp.mp3",
       "sha256": "73ab3e52b43d69fc5595facecaae64015a7954bd35fc49dbbc626dd66f4c9d1c",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_moving_on",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_where_belong",
@@ -916,9 +916,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-where-belong-dp.mp3",
       "sha256": "fd5258e9c4fd5b66fbb7a8544efa5797f5a3783681cadb47c818a9c2f3faefae",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_where_belong",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_newly_coming_true_2",
@@ -938,9 +938,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-newly-coming-true-2-dp.mp3",
       "sha256": "305238799f5ffc31d2dd919321d5044dd2abc36c29a58a2a3ee137f88a46a654",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_newly_coming_true_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_old_paint_fade_2",
@@ -960,9 +960,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-old-paint-fade-2-dp.mp3",
       "sha256": "c4f681f535485dd30927211ae6423a95901d9fbc2e53ca97f4d45e11e03272f9",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_old_paint_fade_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_fresh_outlook_place_2",
@@ -983,9 +983,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-fresh-outlook-place-2-dp.mp3",
       "sha256": "49231c6c1cf0783b5f72f35269fde458f58f1c83b1268a42615ee2da215c3214",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_fresh_outlook_place_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_newly_coming_true_3",
@@ -1005,9 +1005,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-newly-coming-true-3-dp.mp3",
       "sha256": "695d0c2dd5d08dad3e43a941f222c587540a34ff448d4af51ee13e5cc060b8fa",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_newly_coming_true_3",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_coming_true_final",
@@ -1027,9 +1027,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-coming-true-final-dp.mp3",
       "sha256": "9bf7a7f8448ba58b440ef211dde8b2620b2573995860e356ad52e1afbdfd2aa9",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_coming_true_final",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_waiting_lights",
@@ -1049,9 +1049,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-waiting-lights-dp.mp3",
       "sha256": "10e4dc3963bd326674f62f0e563856926473e805534fd090abef2261aa7a07df",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_waiting_lights",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_low_but_moving",
@@ -1071,9 +1071,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-low-but-moving-dp.mp3",
       "sha256": "3bca589bfecd34b48ac16c92a0ed9bd2d2abc23cf0279621c6ec2c200584c7b8",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_low_but_moving",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_wait_space_faith",
@@ -1093,9 +1093,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-wait-space-faith-dp.mp3",
       "sha256": "a3c0e5c933f5afac182e137437a550a53350858db762fda775ed8a5b39e80b56",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_wait_space_faith",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_room_to_bloom",
@@ -1116,9 +1116,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-room-to-bloom-dp.mp3",
       "sha256": "95048f8fac9e325af5e2c70594d5c066f60aab560ef269e94d7b6a5a83487683",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_room_to_bloom",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_new_to_true",
@@ -1138,9 +1138,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-new-to-true-dp.mp3",
       "sha256": "9c73e424011ad4b6515a617acfb3c9ffbfff05913bc480af7bb45a9a631fd2db",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_new_to_true",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_paint_to_outlook",
@@ -1161,9 +1161,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-paint-to-outlook-dp.mp3",
       "sha256": "ad93ceca43e1202b69527621581d67e41a19fc08d7d72dfce4a1fce0f088708d",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_paint_to_outlook",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_take_and_give",
@@ -1183,9 +1183,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-take-and-give-dp.mp3",
       "sha256": "c21bc839a5b366803d637633e13602daecc4811ed1e3155291080458e427094d",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_take_and_give",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_holding_what_remains",
@@ -1205,9 +1205,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-holding-what-remains-dp.mp3",
       "sha256": "28b8b05764005bd1bbdf87cba797c7c3146227ce57212cb94781a2776aad41ce",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_holding_what_remains",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_past_doesnt_matter",
@@ -1227,9 +1227,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-past-doesnt-matter-dp.mp3",
       "sha256": "f42b1053cfba6ad66bf5d2ebc5a2250e81ec11e532aed004fbc518b8d0531431",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_past_doesnt_matter",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_moving_where_belong",
@@ -1249,9 +1249,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-moving-where-belong-dp.mp3",
       "sha256": "a4e57486ec366cec8f3edddb4961f0393277f166fbe95c7105c7a946521f7c19",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_moving_where_belong",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_renewal_refrain",
@@ -1271,9 +1271,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-renewal-refrain-dp.mp3",
       "sha256": "305238799f5ffc31d2dd919321d5044dd2abc36c29a58a2a3ee137f88a46a654",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_renewal_refrain",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_shed_and_replace",
@@ -1294,9 +1294,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-shed-and-replace-dp.mp3",
       "sha256": "fa84c85376ae01c98768f98e1963b87c0ded981f8a317f8dcc9a86e17956e11f",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_shed_and_replace",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_closing_renewal",
@@ -1316,9 +1316,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-closing-renewal-dp.mp3",
       "sha256": "d6d58d5c56db422f36eddda0159fc6d520df3db2ce3d46c660535e0df36787a0",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_closing_renewal",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_waiting_low_moving",
@@ -1338,9 +1338,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-waiting-low-moving-dp.mp3",
       "sha256": "7c761e21979d8d44203aed28b2fcf9f3ea94c40ffefe111fbe01085b696d5465",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_waiting_low_moving",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_faith_room_bloom",
@@ -1361,9 +1361,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-faith-room-bloom-dp.mp3",
       "sha256": "2d6777efc3fd8cfecfbe2a631e1660d6614e8b01dd23314229cdbe8ed2bdbe70",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_faith_room_bloom",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_renewal_transformation",
@@ -1384,9 +1384,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-renewal-transformation-dp.mp3",
       "sha256": "49ded993d0ebf08fa2e1bb54f2a15a0675d87aa6e87f57bb60b4dc3cc10532ef",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_renewal_transformation",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_give_hold_find",
@@ -1406,9 +1406,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-give-hold-find-dp.mp3",
       "sha256": "6b21464dac4cc874b95a9ca0408d2965d04c351768fdeb630c917ef4dcc60703",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_give_hold_find",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_release_return",
@@ -1428,9 +1428,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-release-return-dp.mp3",
       "sha256": "a831b838e969aeec4bb6df81902ffe24cf7fc3abd68579bfd5d012665aeb31c8",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_release_return",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_renew_and_replace",
@@ -1451,9 +1451,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-renew-and-replace-dp.mp3",
       "sha256": "ea6032fcdffb71cb509cbebe974941763e7c13125856acbb7f16de36f938631f",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_renew_and_replace",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_holding_to_belonging",
@@ -1473,9 +1473,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-holding-to-belonging-dp.mp3",
       "sha256": "3a456132e395da856046774cc00afc296a526a97220e2c2ed4f652100d8cba93",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_holding_to_belonging",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_past_to_coming_true",
@@ -1496,9 +1496,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-past-to-coming-true-dp.mp3",
       "sha256": "6cff2e96fea80f911636db27e860403d11e6500c61fae9914efbfd7b53f0280b",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_past_to_coming_true",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_tug_fresh_final_arc",
@@ -1519,9 +1519,9 @@
       "audio_url": "/ii-delivery/tugs/comin-true/comin-true-tug-fresh-final-arc-dp.mp3",
       "sha256": "8965c3aa8bcc020775d6e5ca27eafcbd7292a5ed0eb630dc8dde2eebed99ff72",
       "price_usd": "4.99",
-      "checkout_url": "/checkout?ii=comin_true_tug_fresh_final_arc",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     }
   ],
   "bugs": [
@@ -1540,9 +1540,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-good-luck-dp.mp3",
       "sha256": "b52aab70b99ec6bb3ce2b4a547c306933bb19cf2f79f912af271c78bef492291",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_good_luck",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_lights_up",
@@ -1559,9 +1559,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-lights-up-dp.mp3",
       "sha256": "f5324d184d8c50f8a480df0d3fabf65de6c1424f9734d19a49d36790246ba772",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_lights_up",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_little_low",
@@ -1578,9 +1578,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-little-low-dp.mp3",
       "sha256": "36eeeea586da1c4d6ca965f1fad747197a3e7058852f6e4545edc4ba79fb9cb4",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_little_low",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_moving_slow",
@@ -1597,9 +1597,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-moving-slow-dp.mp3",
       "sha256": "bc86fa07259cc4ffda75b3791d6813adbfc5aa6c3a700b81910f2d729d5c6b2e",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_moving_slow",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_wait",
@@ -1616,9 +1616,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-wait-dp.mp3",
       "sha256": "dd7a037deead5de0aa4fd4dec80358f4b5bb8d46477a49301adcdfd46b8abf40",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_wait",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_space_faith",
@@ -1635,9 +1635,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-space-faith-dp.mp3",
       "sha256": "630c778b9dbfb1d722e1df7d4a64799e96c3d6c8272e3800abf00dd89332d105",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_space_faith",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_make_room",
@@ -1654,9 +1654,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-make-room-dp.mp3",
       "sha256": "70ea1b22645a2275709e742503707de56c616400b4c23ff01a8b6ff99ee58628",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_make_room",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_flowers_bloom",
@@ -1673,9 +1673,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-flowers-bloom-dp.mp3",
       "sha256": "b3de76ae882de06fd3598c8f9cc98051691e687f06269f7288035d2dd263797d",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_flowers_bloom",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_newly_new_1",
@@ -1692,9 +1692,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-newly-new-1-dp.mp3",
       "sha256": "20090991863cfb6ebddbaac2f8a1b09cddffd6d396075b0d995e160b85d50ca3",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_newly_new_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_coming_true_1",
@@ -1711,9 +1711,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-coming-true-1-dp.mp3",
       "sha256": "58b7af87282fec361979501e364ecdcb4e9a4981e16c64435df884064028eaf3",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_coming_true_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_old_paint_1",
@@ -1730,9 +1730,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-old-paint-1-dp.mp3",
       "sha256": "d8d5b10ae483e7ef9e3787b66e3cdbce2d5e46465e1ba3d09f8c5b3eb3247beb",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_old_paint_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_fade_1",
@@ -1749,9 +1749,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-fade-1-dp.mp3",
       "sha256": "93d627d6e0c8f71a00c077c93bb6a289fe673d612bc7f0344d42af929c7efc95",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_fade_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_fresh_outlook_1",
@@ -1768,9 +1768,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-fresh-outlook-1-dp.mp3",
       "sha256": "b03d9560d950300d1e65e7cc44b98a470371c01b0fcca8f7c2132eb500879474",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_fresh_outlook_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_newly_new_2",
@@ -1787,9 +1787,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-newly-new-2-dp.mp3",
       "sha256": "7526a490e8e8cb5f8be7a4f2c1e49da831aaec920221c64065cbfaa5fff797f9",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_newly_new_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_coming_true_2",
@@ -1806,9 +1806,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-coming-true-2-dp.mp3",
       "sha256": "530f3ef901c4b6ebcced63c63ec67c4367aef25511633402fdfdead09f09956b",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_coming_true_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_ooh_1",
@@ -1825,9 +1825,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-ooh-1-dp.mp3",
       "sha256": "eb50d1240342ff19d2a4cf16a7c4a9d1409da9ee22b530649cd00ca25537dc2c",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_ooh_1",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_take_little",
@@ -1844,9 +1844,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-take-little-dp.mp3",
       "sha256": "e20f547a6744e05f0be53dd75bd4eadd511dd5c13746803a32484ebc463e0a71",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_take_little",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_take_lot",
@@ -1863,9 +1863,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-take-lot-dp.mp3",
       "sha256": "9beec3a7c7a453c428e66e86a0269bd163c2b49f313f0a48d2d2df9b0ff454f5",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_take_lot",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_everything_got",
@@ -1882,9 +1882,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-everything-got-dp.mp3",
       "sha256": "4995302b3933f10349a0f9c6cd2727b8f3d06ed4ff51ecd10a15b7f37f673721",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_everything_got",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_holding_on",
@@ -1901,9 +1901,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-holding-on-dp.mp3",
       "sha256": "2dcc6e0271d1e6a7fa356a43afa3f0f5c35af67f253cb03f07f831648127b8d2",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_holding_on",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_gone",
@@ -1920,9 +1920,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-gone-dp.mp3",
       "sha256": "f43ee2c66e5bdd73b416d893702ed21dbd9403cfd53f5f10b6730ef5c05174a9",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_gone",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_waste_time",
@@ -1939,9 +1939,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-waste-time-dp.mp3",
       "sha256": "2ac365728371c20bb8dae0ebca4672b9f74238da8043e9a8456c6af5d8c4076e",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_waste_time",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_looking_back",
@@ -1958,9 +1958,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-looking-back-dp.mp3",
       "sha256": "886ceb71b0490a0b0248274d9d2c10fc4aebac94e0b0f00e7cfac1831c126785",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_looking_back",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_moving_on",
@@ -1977,9 +1977,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-moving-on-dp.mp3",
       "sha256": "d61a07da02fb8c6dea4e4101682cffd19a271686c62526d93c1bc3a89410b107",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_moving_on",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_belong",
@@ -1996,9 +1996,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-belong-dp.mp3",
       "sha256": "a00711b4486689a044c0481ed4404b2f9bf74042b7714edc7c25fc0baeeb1050",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_belong",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_newly_new_3",
@@ -2015,9 +2015,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-newly-new-3-dp.mp3",
       "sha256": "0121bd46fdbeeb6c131685aa7c978767eadd5d4d245872499611bdb55c055cc4",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_newly_new_3",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_coming_true_3",
@@ -2034,9 +2034,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-coming-true-3-dp.mp3",
       "sha256": "cfb16e8bf8cc9a15cf5e9a43a4fb6f05beda91c07165c43421a31b7948f9b517",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_coming_true_3",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_old_paint_2",
@@ -2053,9 +2053,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-old-paint-2-dp.mp3",
       "sha256": "8a52b2b44b035f6938272f7d71c05b0d2b3850f4b311e8dfbaa41461a0cbed73",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_old_paint_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_fade_2",
@@ -2072,9 +2072,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-fade-2-dp.mp3",
       "sha256": "cb41a3e1a684ad4e095e4ab303201f03d981ff8d94715ecfb3c6ebb64d4cfd30",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_fade_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_fresh_outlook_2",
@@ -2091,9 +2091,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-fresh-outlook-2-dp.mp3",
       "sha256": "93e03acd0df3fb1b76d5d9696da1962ff96002d434d1638eca53be69b3a31760",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_fresh_outlook_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_coming_true_4",
@@ -2110,9 +2110,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-coming-true-4-dp.mp3",
       "sha256": "ba4c401512caa0ea328ca7eb0028faadfbba415207d0862547421a9eb2404a82",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_coming_true_4",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_ooh_2",
@@ -2129,9 +2129,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-ooh-2-dp.mp3",
       "sha256": "777ed2c1dc9b8500b56ca8f2e18f964165391601d820d75eb3e9b9ccc0661b97",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_ooh_2",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_coming_true_5",
@@ -2148,9 +2148,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-coming-true-5-dp.mp3",
       "sha256": "5967389c4590f7037a7a12d5aceaecfad834ace2a3fe823f2b70413134d73313",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_coming_true_5",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_bug_ooh_3",
@@ -2167,9 +2167,9 @@
       "audio_url": "/ii-delivery/bugs/comin-true/comin-true-bug-ooh-3-dp.mp3",
       "sha256": "4d6cca4e4f33f382496c78ced0b0d2f3095b999803efbe97a30d8f67e9031a10",
       "price_usd": "1.99",
-      "checkout_url": "/checkout?ii=comin_true_bug_ooh_3",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     }
   ],
   "story_bugs": [
@@ -2185,9 +2185,9 @@
         "comin_true_bug_coming_true_1"
       ],
       "price_usd": "2.98",
-      "checkout_url": "/checkout?ii=comin_true_story_bug_room_to_bloom",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_story_bug_holding_to_moving",
@@ -2201,9 +2201,9 @@
         "comin_true_bug_moving_on"
       ],
       "price_usd": "2.98",
-      "checkout_url": "/checkout?ii=comin_true_story_bug_holding_to_moving",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     },
     {
       "ii_key": "comin_true_story_bug_old_to_fresh",
@@ -2217,9 +2217,9 @@
         "comin_true_bug_fresh_outlook_2"
       ],
       "price_usd": "2.98",
-      "checkout_url": "/checkout?ii=comin_true_story_bug_old_to_fresh",
       "llbp_state": "PUBLIC_PASS",
-      "source_audio_unchanged": true
+      "source_audio_unchanged": true,
+      "purchase_state": "PAYMENT_LINK_PENDING_EXACT_PRICE"
     }
   ]
 }
