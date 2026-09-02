@@ -47,6 +47,20 @@ function ProductSection({ id, title, description, product, items }: { id: string
 }
 
 export default function CominTrueIIFamilyPage() {
+  if (String(manifest.status) !== "PUBLIC_READY_COMPLETE_FAMILY") {
+    return (
+      <main className="min-h-screen bg-[#09070d] px-5 py-12 text-white">
+        <section className="mx-auto max-w-3xl rounded-[2rem] border border-amber-300/30 bg-[#151020] p-8 shadow-2xl">
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-amber-200">Comin&apos; True · Audio Hold</p>
+          <h1 className="mt-4 text-4xl font-black">Captured CC END correction in progress</h1>
+          <p className="mt-5 text-lg font-semibold leading-8 text-white/75">
+            These previews are withheld until every captured CC stops at the exact acoustic end of its last audible vocal note. No old padded render is available for listening or purchase.
+          </p>
+        </section>
+      </main>
+    );
+  }
+
   const bugByKey = new Map(manifest.bugs.map((bug) => [bug.ii_key, bug]));
 
   return (
