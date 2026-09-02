@@ -1,0 +1,2447 @@
+{
+  "schema_version": "GPMX_DEDUPLICATED_CAPTURED_CC_CORRECTION_WORKLIST_V1",
+  "status": "CORRECTION_REVIEW_REQUIRED",
+  "effective_date": "2026-09-02",
+  "source_title": "Comin' True",
+  "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+  "discovery_search_permitted": false,
+  "fresh_lt_pix_pass_permitted": false,
+  "deduplication_key": "EXACT_CAPTURE_START_SEC_PLUS_STORED_CAPTURE_END_SEC",
+  "source_record_count": 98,
+  "deduplicated_capture_count": 96,
+  "hard_stop_rule": "END_AT_EXACT_ACOUSTIC_END_OF_LAST_AUDIBLE_VOCAL_NOTE",
+  "uncertain_boundary": "HOLD",
+  "materialization_gate": {
+    "required_worklist_status": "CAPTURED_CC_CORRECTIONS_COMPLETE",
+    "required_item_review_state": "LAST_VOCAL_NOTE_END_CONFIRMED",
+    "required_boundary_prosecution_state": "STRICT_LAST_VOCAL_NOTE_END_PASS",
+    "corrected_end_must_replace_stored_end": true,
+    "listening_verification_required": true,
+    "post_vocal_audio_allowed": false
+  },
+  "source_audio_path": "incoming/comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3",
+  "source_sha256": "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda",
+  "output_manifest_path": "data/ii-delivery-registry/comin-true-captured-cc-last-vocal-note-end-v1.json",
+  "items": [
+    {
+      "work_item_id": "comin_true_cc_001",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12.036,
+        "stored_capture_end_sec": 37.884
+      },
+      "consumer_ii_keys": [
+        "comin_true_kk1"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Waiting for the Light"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_002",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38.739,
+        "stored_capture_end_sec": 66.585
+      },
+      "consumer_ii_keys": [
+        "comin_true_kk2"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Make Room for Hope"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_003",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70.097,
+        "stored_capture_end_sec": 82.831
+      },
+      "consumer_ii_keys": [
+        "comin_true_kk3"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_004",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 83.573,
+        "stored_capture_end_sec": 96.584
+      },
+      "consumer_ii_keys": [
+        "comin_true_kk4"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Like Brand New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_005",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 96.671,
+        "stored_capture_end_sec": 135.497
+      },
+      "consumer_ii_keys": [
+        "comin_true_kk5"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "A Fresh Look Forward"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_006",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12.036,
+        "stored_capture_end_sec": 66.585
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo1_2"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Light, Patience & Hope"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_007",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12.036,
+        "stored_capture_end_sec": 82.831
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo1_3"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "From Waiting to Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_008",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12.036,
+        "stored_capture_end_sec": 96.584
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo1_4"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "The Reinvention Journey"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_009",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12.036,
+        "stored_capture_end_sec": 135.497
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo1_5"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "The Full Coming True Story"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_010",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38.739,
+        "stored_capture_end_sec": 82.831
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo2_3"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Make Room—I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_011",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38.739,
+        "stored_capture_end_sec": 96.584
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo2_4"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Hope to Brand New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_012",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38.739,
+        "stored_capture_end_sec": 135.497
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo2_5"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Hope and a Fresh Start"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_013",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70.097,
+        "stored_capture_end_sec": 96.584
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo3_4"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Coming True, Like Brand New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_014",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70.097,
+        "stored_capture_end_sec": 135.497
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo3_5"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Coming True with a Fresh Look"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_015",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 83.573,
+        "stored_capture_end_sec": 135.497
+      },
+      "consumer_ii_keys": [
+        "comin_true_kombo4_5"
+      ],
+      "product_families": [
+        "HUG"
+      ],
+      "display_titles": [
+        "Brand New, Fresh Look"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_016",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12,
+        "stored_capture_end_sec": 15
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_waiting_good_luck"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I've Been Waiting Like Good Luck"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_017",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 15,
+        "stored_capture_end_sec": 19
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_lights_turned_up"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Keep the Lights Turned Up"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_018",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 19,
+        "stored_capture_end_sec": 22
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_laying_low"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Laying a Little Low"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_019",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 22,
+        "stored_capture_end_sec": 25
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_moving_slow",
+        "comin_true_bug_moving_slow"
+      ],
+      "product_families": [
+        "TUG",
+        "BUG"
+      ],
+      "display_titles": [
+        "Moving Through It Slow",
+        "Moving Slow"
+      ],
+      "correction": {
+        "review_state": "OWNER_REPORTED_TRESPASS_REQUIRES_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false,
+        "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END",
+        "required_action": "SHORTEN_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE"
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_020",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 25,
+        "stored_capture_end_sec": 28
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_long_wait"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "There's Just So Long I Can Wait"
+      ],
+      "correction": {
+        "review_state": "OWNER_REPORTED_TRESPASS_REQUIRES_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false,
+        "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END",
+        "required_action": "SHORTEN_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE"
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_021",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 28.41,
+        "stored_capture_end_sec": 32
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_space_and_faith"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Only So Much Space and Fate"
+      ],
+      "correction": {
+        "review_state": "OWNER_REPORTED_TRESPASS_REQUIRES_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false,
+        "defect": "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END",
+        "required_action": "SHORTEN_STORED_CAPTURE_END_TO_EXACT_LAST_AUDIBLE_VOCAL_NOTE"
+      },
+      "title_correction": "FATE_NOT_FAITH"
+    },
+    {
+      "work_item_id": "comin_true_cc_022",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 32,
+        "stored_capture_end_sec": 35
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_make_room"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Time to Make Some Room"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_023",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 35,
+        "stored_capture_end_sec": 38
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_flowers_bloom"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Let the Flowers Bloom"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_024",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38,
+        "stored_capture_end_sec": 42
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_newly_new"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Newly New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_025",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 42,
+        "stored_capture_end_sec": 46
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_coming_true_first"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_026",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 46,
+        "stored_capture_end_sec": 52
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_old_paint_fade"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Old Paint About to Fade"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_027",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 52,
+        "stored_capture_end_sec": 57
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_fresh_outlook_place"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Put a Fresh Outlook in Its Place"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_028",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 57.27,
+        "stored_capture_end_sec": 63
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_newly_coming_true_1"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Newly New—I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_029",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 60,
+        "stored_capture_end_sec": 67
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_coming_true_repeat"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_030",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70,
+        "stored_capture_end_sec": 73
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_take_little_lot"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Take a Little, Take a Lot"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_031",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 73,
+        "stored_capture_end_sec": 77
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_everything_got"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'll Give You Everything I've Got"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_032",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 77,
+        "stored_capture_end_sec": 80
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_holding_on"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I've Been Holding On"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_033",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 80,
+        "stored_capture_end_sec": 82
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_thought_was_gone"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "To What I Thought Was Gone"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_034",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 82,
+        "stored_capture_end_sec": 85
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_no_looking_back"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I Won't Waste Time Looking Back"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_035",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 85.3,
+        "stored_capture_end_sec": 89
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_what_ive_had"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "It Doesn't Matter What I've Had"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_036",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 89,
+        "stored_capture_end_sec": 92
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_moving_on"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Now I'm Moving On"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_037",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 92,
+        "stored_capture_end_sec": 96
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_where_belong"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Getting Back Where I Belong"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_038",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 96,
+        "stored_capture_end_sec": 103
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_newly_coming_true_2",
+        "comin_true_tug_renewal_refrain"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Newly New—I'm Coming True",
+        "Newly New and Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_039",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 103,
+        "stored_capture_end_sec": 109
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_old_paint_fade_2"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Took Off That Old Paint About to Fade"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_040",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 109.41,
+        "stored_capture_end_sec": 115
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_fresh_outlook_place_2"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Put a Fresh Outlook in Its Place"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_041",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 115,
+        "stored_capture_end_sec": 121
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_newly_coming_true_3"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Newly New—I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_042",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 127,
+        "stored_capture_end_sec": 131
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_coming_true_final"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_043",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12,
+        "stored_capture_end_sec": 19
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_waiting_lights"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Waiting with the Lights Turned Up"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_044",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 19,
+        "stored_capture_end_sec": 25
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_low_but_moving"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "A Little Low, Still Moving"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_045",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 25,
+        "stored_capture_end_sec": 32
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_wait_space_faith"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Waiting, Space and Faith"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_046",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 32,
+        "stored_capture_end_sec": 38
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_room_to_bloom"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Make Room—Let the Flowers Bloom"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_047",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38,
+        "stored_capture_end_sec": 46
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_new_to_true"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Newly New and Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_048",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 46,
+        "stored_capture_end_sec": 57
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_paint_to_outlook"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Old Paint, Fresh Outlook"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_049",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70,
+        "stored_capture_end_sec": 77
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_take_and_give"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Take What You Need—I'll Give What I've Got"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_050",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 77,
+        "stored_capture_end_sec": 82
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_holding_what_remains"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Holding On to What I Thought Was Gone"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_051",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 82,
+        "stored_capture_end_sec": 89
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_past_doesnt_matter"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "No Looking Back—The Past Doesn't Matter"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_052",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 89,
+        "stored_capture_end_sec": 96
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_moving_where_belong"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Moving On to Where I Belong"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_053",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 103,
+        "stored_capture_end_sec": 115
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_shed_and_replace"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Shed the Old—Choose a Fresh Outlook"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_054",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 115,
+        "stored_capture_end_sec": 124
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_closing_renewal"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Newly New, Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_055",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 12,
+        "stored_capture_end_sec": 25
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_waiting_low_moving"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Waiting, Laying Low, Still Moving"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_056",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 25,
+        "stored_capture_end_sec": 38
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_faith_room_bloom"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Faith Makes Room to Bloom"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_057",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 38,
+        "stored_capture_end_sec": 57
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_renewal_transformation"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Coming True with a Fresh Outlook"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_058",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70,
+        "stored_capture_end_sec": 82
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_give_hold_find"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Give Everything—Hold On—Find What Remains"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_059",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 82,
+        "stored_capture_end_sec": 96
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_release_return"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Release the Past—Return Where You Belong"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_060",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 96,
+        "stored_capture_end_sec": 115
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_renew_and_replace"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Come True—Replace the Old with a Fresh Outlook"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_061",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 77,
+        "stored_capture_end_sec": 96
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_holding_to_belonging"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "From Holding On to Moving On"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_062",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 82,
+        "stored_capture_end_sec": 103
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_past_to_coming_true"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "No Looking Back—I'm Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_063",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 103,
+        "stored_capture_end_sec": 124
+      },
+      "consumer_ii_keys": [
+        "comin_true_tug_fresh_final_arc"
+      ],
+      "product_families": [
+        "TUG"
+      ],
+      "display_titles": [
+        "Old Paint to Fresh Outlook to Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_064",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 13.65,
+        "stored_capture_end_sec": 15
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_good_luck"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Good Luck"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_065",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 17.05,
+        "stored_capture_end_sec": 19
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_lights_up"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Lights Turned Up"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_066",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 20.7,
+        "stored_capture_end_sec": 22
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_little_low"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "A Little Low"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_067",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 27.48,
+        "stored_capture_end_sec": 28
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_wait"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Wait"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_068",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 29.8,
+        "stored_capture_end_sec": 32
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_space_faith"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Space and Faith"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_069",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 32.99,
+        "stored_capture_end_sec": 35
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_make_room"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Make Some Room"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_070",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 36,
+        "stored_capture_end_sec": 38
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_flowers_bloom"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Flowers Bloom"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_071",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 39.08,
+        "stored_capture_end_sec": 42
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_newly_new_1"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Newly New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_072",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 42.92,
+        "stored_capture_end_sec": 46
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_coming_true_1"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_073",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 47.14,
+        "stored_capture_end_sec": 48
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_old_paint_1"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Old Paint"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_074",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 50.53,
+        "stored_capture_end_sec": 52
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_fade_1"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Fade"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_075",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 52.49,
+        "stored_capture_end_sec": 54
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_fresh_outlook_1"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Fresh Outlook"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_076",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 57.81,
+        "stored_capture_end_sec": 60
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_newly_new_2"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Newly New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_077",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 60.69,
+        "stored_capture_end_sec": 63
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_coming_true_2"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_078",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 67,
+        "stored_capture_end_sec": 70
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_ooh_1"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Hopeful Ooh"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_079",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 70.41,
+        "stored_capture_end_sec": 72.19
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_take_little"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Take a Little"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_080",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 72.19,
+        "stored_capture_end_sec": 73
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_take_lot"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Take a Lot"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_081",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 74.55,
+        "stored_capture_end_sec": 77
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_everything_got"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Everything I've Got"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_082",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 78.39,
+        "stored_capture_end_sec": 80
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_holding_on"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Holding On"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_083",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 81.6,
+        "stored_capture_end_sec": 82
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_gone"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Gone"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_084",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 82.92,
+        "stored_capture_end_sec": 83.84
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_waste_time"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Waste Time"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_085",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 83.84,
+        "stored_capture_end_sec": 85
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_looking_back"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Looking Back"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_086",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 90.27,
+        "stored_capture_end_sec": 92
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_moving_on"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Moving On"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_087",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 94.93,
+        "stored_capture_end_sec": 96
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_belong"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Belong"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_088",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 96.81,
+        "stored_capture_end_sec": 99
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_newly_new_3"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Newly New"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_089",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 99.92,
+        "stored_capture_end_sec": 103
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_coming_true_3"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_090",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 104.39,
+        "stored_capture_end_sec": 106.77
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_old_paint_2"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Old Paint"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_091",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 108.16,
+        "stored_capture_end_sec": 109
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_fade_2"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Fade"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_092",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 109.92,
+        "stored_capture_end_sec": 112.68
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_fresh_outlook_2"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Fresh Outlook"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_093",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 118.69,
+        "stored_capture_end_sec": 121
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_coming_true_4"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_094",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 124,
+        "stored_capture_end_sec": 127
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_ooh_2"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Renewing Ooh"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_095",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 127.92,
+        "stored_capture_end_sec": 131
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_coming_true_5"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Coming True"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    },
+    {
+      "work_item_id": "comin_true_cc_096",
+      "authority_source_kind": "CAPTURED_CC_AUTHORITY_ONLY",
+      "captured_cc": {
+        "source_manifest_path": "data/ii-delivery-registry/comin-true-full-family-v1.json",
+        "capture_start_sec": 131,
+        "stored_capture_end_sec": 135
+      },
+      "consumer_ii_keys": [
+        "comin_true_bug_ooh_3"
+      ],
+      "product_families": [
+        "BUG"
+      ],
+      "display_titles": [
+        "Final Ooh"
+      ],
+      "correction": {
+        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
+        "corrected_capture_end_sec": null,
+        "boundary_prosecution_state": "HOLD",
+        "listening_verified": false,
+        "post_vocal_audio_allowed": false
+      }
+    }
+  ],
+  "separator_policy": {
+    "always_distinct_between_trms": true,
+    "gap_is_separator_not_tail": true,
+    "no_room_before_next_fresh_vocal": "MAKE_DISTINCT_HARD_CUTS_AT_THE_BREAK",
+    "default_padding_after_last_vocal_note_sec": 0,
+    "inherited_renderer_tail_forbidden": true
+  },
+  "calibration_note": "A new vocal start, however close, never extends the preceding captured CC. Every TRM has a break and must remain distinct."
+}
