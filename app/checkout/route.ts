@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
+import { paymentRolloutStatus } from "@/lib/paymentRolloutStatus";
 import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
@@ -88,12 +89,6 @@ export async function POST(request: NextRequest) {
     return returnToStore(request, "offer-inventory-price-mismatch");
   }
 
-  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
-  if (!isLiveStripeSecretKey(stripeSecretKey)) {
-    console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
-    return returnToStore(request, "stripe-secret-key-invalid");
-  }
-
   let token: string;
   try {
     token = await createPendingH2Order({
@@ -111,6 +106,24 @@ export async function POST(request: NextRequest) {
   const clientReference = `${H2_CLIENT_REFERENCE_PREFIX}${token}`;
   if (clientReference.length > CLIENT_REFERENCE_LIMIT || !/^[A-Za-z0-9_-]+$/.test(clientReference)) {
     return returnToStore(request, "pending-order-reference-invalid");
+  }
+
+  const rollout = paymentRolloutStatus();
+  console.info(
+    "K_KUT_PAYMENT_ROLLOUT_STATUS",
+    JSON.stringify({
+      enabled: rollout.enabled,
+      current_rollout_day: rollout.currentRolloutDay,
+      elapsed_days: rollout.elapsedDays,
+      reason: rollout.reason || "enabled",
+    }),
+  );
+  if (!rollout.enabled) return returnToStore(request, rollout.reason || "payment-rollout-disabled");
+
+  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
+  if (!isLiveStripeSecretKey(stripeSecretKey)) {
+    console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
+    return returnToStore(request, "stripe-secret-key-invalid");
   }
 
   const stripe = new Stripe(stripeSecretKey);
