@@ -12,7 +12,7 @@ type AdminPageProps = {
 };
 
 const links = [
-  ["Comin' True Boundary Review", "/admin/comin-true-boundary-review", "Inspect KKr batch prosecution and work only the endpoints still held as scientific exceptions."],
+  ["P0 KUT Reviewer", "/admin/kut-reviewer", "Review governed KUT queue items from Supabase with exact endpoint controls and persisted decisions."],
   ["Localization Preview", "/admin/localization-preview", "Review HUG localization, audio-safety, rollout, and pricing data."],
   ["HUG Health", "/admin/hug-health", "Review HUG system health."],
   ["Kleigh Guide", "/admin/kleigh-guide", "Review internal Kleigh guidance."],
