@@ -22,8 +22,6 @@ for (const required of [
   "K_KUT_PAYMENT_ROLLOUT_STATUS",
   "current_rollout_day",
   "elapsed_days",
-  "payment-rollout-day-1-2",
-  "payment-rollout-force-disabled",
   'returnToStore(request, rollout.reason || "payment-rollout-disabled")',
   'checkout_authority: "current_ii_shared_product_law"',
 ]) {
