@@ -1,4 +1,6 @@
-import manifest from "@/data/ii-delivery-registry/comin-true-full-family-v1.json";
+import fs from "node:fs";
+import path from "node:path";
+import { loadApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
 import {
   paymentRolloutBuyerNotice,
   paymentRolloutStatus,
@@ -9,6 +11,8 @@ export const metadata = {
   description: "Exact Comin' True HUG, TUG, BUG, and Story BUG music moments for hope, determination, renewal, and moving forward.",
 };
 
+export const dynamic = "force-dynamic";
+
 type AudioII = {
   ii_key: string;
   display_title: string;
@@ -17,15 +21,40 @@ type AudioII = {
   price_usd: string;
 };
 
+type StoryBug = AudioII & {
+  component_bug_keys: string[];
+};
+
+type Manifest = {
+  status: string;
+  hugs: AudioII[];
+  tugs: AudioII[];
+  bugs: AudioII[];
+  story_bugs: StoryBug[];
+};
+
+const MANIFEST_PATH = path.join(
+  process.cwd(),
+  "data",
+  "ii-delivery-registry",
+  "comin-true-full-family-v1.json",
+);
+
+function loadManifest(): Manifest {
+  return JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8")) as Manifest;
+}
+
 function AudioCard({
   ii,
   product,
   checkoutEnabled,
+  checkoutEligible,
   checkoutNotice,
 }: {
   ii: AudioII;
   product: "HUG" | "TUG" | "BUG";
   checkoutEnabled: boolean;
+  checkoutEligible: boolean;
   checkoutNotice: string | null;
 }) {
   const publicOptionId = `public_comin_true_${ii.ii_key}`;
@@ -37,7 +66,7 @@ function AudioCard({
       <h3 className="mt-3 text-2xl font-black">{ii.display_title}</h3>
       <p className="mt-3 min-h-14 text-sm font-semibold leading-6 text-white/68">{ii.buyer_intent}</p>
       <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={ii.audio_url} />
-      {checkoutEnabled ? (
+      {checkoutEnabled && checkoutEligible ? (
         <form action="/checkout" method="post" className="mt-6">
           <input type="hidden" name="public_option_id" value={publicOptionId} />
           <input type="hidden" name="ii" value={ii.ii_key} />
@@ -47,14 +76,30 @@ function AudioCard({
         </form>
       ) : (
         <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">
-          {checkoutNotice}
+          {checkoutEligible
+            ? checkoutNotice
+            : "Public preview is open. Checkout is not available for this item yet."}
         </p>
       )}
     </article>
   );
 }
 
-function ProductSection({ id, title, description, product, items }: { id: string; title: string; description: string; product: "HUG" | "TUG" | "BUG"; items: AudioII[] }) {
+function ProductSection({
+  id,
+  title,
+  description,
+  product,
+  items,
+  approvedOptionIds,
+}: {
+  id: string;
+  title: string;
+  description: string;
+  product: "HUG" | "TUG" | "BUG";
+  items: AudioII[];
+  approvedOptionIds: Set<string>;
+}) {
   const rollout = paymentRolloutStatus();
   const checkoutNotice = paymentRolloutBuyerNotice(rollout);
   return (
@@ -68,6 +113,7 @@ function ProductSection({ id, title, description, product, items }: { id: string
             ii={ii}
             product={product}
             checkoutEnabled={rollout.enabled}
+            checkoutEligible={approvedOptionIds.has(`public_comin_true_${ii.ii_key}`)}
             checkoutNotice={checkoutNotice}
           />
         ))}
@@ -77,6 +123,11 @@ function ProductSection({ id, title, description, product, items }: { id: string
 }
 
 export default function CominTrueIIFamilyPage() {
+  const manifest = loadManifest();
+  const approvedRecords = loadApprovedPublicOptions("/hugs/comin-true");
+  const approvedOptionIds = new Set(
+    approvedRecords.map((record) => record.public_option_id),
+  );
   const rollout = paymentRolloutStatus();
   const checkoutNotice = paymentRolloutBuyerNotice(rollout);
 
@@ -106,9 +157,11 @@ export default function CominTrueIIFamilyPage() {
             101 finished music IIs, each cut directly from the same full vocal recording. Choose a larger musical HUG, a meaningful lyric TUG, a compact BUG, or a three-part Story BUG.
           </p>
           <p className="mt-4 text-sm font-bold text-violet-100/75">
-            {rollout.enabled
-              ? "Public audio preview · stream only · original recording unchanged · HUG/TUG/BUG exact-price checkout active"
-              : `Public audio preview · stream only · original recording unchanged · ${checkoutNotice}`}
+            {approvedOptionIds.size > 0
+              ? rollout.enabled
+                ? "Public audio preview · stream only · original recording unchanged · exact-price checkout is active on released items"
+                : `Public audio preview · stream only · original recording unchanged · ${checkoutNotice}`
+              : "Public audio preview · stream only · original recording unchanged · exact-price checkout remains held pending current release approval"}
           </p>
           <nav className="mt-7 grid gap-3 sm:grid-cols-4">
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#hugs">15 HUGs</a>
@@ -118,9 +171,9 @@ export default function CominTrueIIFamilyPage() {
           </nav>
         </section>
 
-        <ProductSection id="hugs" title="HUGs" description="Larger musical moments and contiguous KOMBOs for a fuller emotional message. $7.99 each." product="HUG" items={manifest.hugs} />
-        <ProductSection id="tugs" title="TUGs" description="Exact meaningful lyric moments: phrases, one-liners, line pairs, line trios, hooks, idioms, twists, and metaphors. $4.99 each." product="TUG" items={manifest.tugs} />
-        <ProductSection id="bugs" title="BUGs" description="Compact emotional terms and vocal sounds derived directly from the full recording. $1.99 each." product="BUG" items={manifest.bugs} />
+        <ProductSection id="hugs" title="HUGs" description="Larger musical moments and contiguous KOMBOs for a fuller emotional message. $7.99 each." product="HUG" items={manifest.hugs} approvedOptionIds={approvedOptionIds} />
+        <ProductSection id="tugs" title="TUGs" description="Exact meaningful lyric moments: phrases, one-liners, line pairs, line trios, hooks, idioms, twists, and metaphors. $4.99 each." product="TUG" items={manifest.tugs} approvedOptionIds={approvedOptionIds} />
+        <ProductSection id="bugs" title="BUGs" description="Compact emotional terms and vocal sounds derived directly from the full recording. $1.99 each." product="BUG" items={manifest.bugs} approvedOptionIds={approvedOptionIds} />
 
         <section id="story-bugs" className="mt-14 scroll-mt-8">
           <h2 className="text-4xl font-black">Story BUGs</h2>

@@ -7,6 +7,8 @@ export const metadata = {
     "Send a bold romantic K-UPID HUG from MIAL-approved GPM music inventory.",
 };
 
+export const dynamic = "force-dynamic";
+
 const KUPID_LEVELS = ["Desire / Passion", "Physical Spark", "Private Intimate"];
 
 export default function KupidPage() {

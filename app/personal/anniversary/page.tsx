@@ -6,6 +6,8 @@ export const metadata = {
     "Send an anniversary-ready GPM music HUG from approved K-KUT options.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function AnniversaryPage() {
   return (
     <ApprovedPersonalRoutePage

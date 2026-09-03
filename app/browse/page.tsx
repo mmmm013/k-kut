@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { loadAllApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
 import HugzCardGrid from "@/components/HugzCardGrid";
 import {
   paymentRolloutBuyerNotice,
@@ -11,9 +12,20 @@ export const metadata = {
     "Browse the 13 public HUGz Cards and see the current K-KUT release status.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function BrowsePage() {
   const rollout = paymentRolloutStatus();
   const checkoutNotice = paymentRolloutBuyerNotice(rollout);
+  const approvedRecords = loadAllApprovedPublicOptions().sort(
+    (a, b) =>
+      a.public_route.localeCompare(b.public_route) ||
+      a.display_title.localeCompare(b.display_title) ||
+      a.public_option_id.localeCompare(b.public_option_id),
+  );
+  const approvedCount = approvedRecords.length;
+  const primaryApprovedRoute = approvedRecords[0]?.public_route || "/hug";
+  const hasApprovedChoices = approvedCount > 0;
 
   return (
     <main className="min-h-screen bg-[#09070b] text-white">
@@ -26,11 +38,13 @@ export default function BrowsePage() {
             Browse the human moments.
           </h1>
           <p className="mt-5 max-w-4xl text-lg font-bold leading-8 text-[#EFEBE9]">
-            {rollout.enabled
-              ? "The 13 HUGz Cards are open. One exact Sweet Love HUG is approved for the controlled $7.99 purchase canary; every other item remains held."
-              : "The 13 HUGz Cards are open. One exact Sweet Love HUG is approved for the controlled $7.99 purchase canary preview, and checkout opens on day 3 of rollout."}
+            {hasApprovedChoices
+              ? rollout.enabled
+                ? `The 13 HUGz Cards are open. Site-wide, ${approvedCount} exact K-KUT ${approvedCount === 1 ? "choice is" : "choices are"} released for controlled purchase.`
+                : `The 13 HUGz Cards are open. Site-wide, ${approvedCount} exact K-KUT ${approvedCount === 1 ? "choice is" : "choices are"} released for controlled preview.`
+              : "The 13 HUGz Cards are open. Exact K-KUT purchase choices remain held while release review continues."}
           </p>
-          {!rollout.enabled && checkoutNotice ? (
+          {!rollout.enabled && hasApprovedChoices && checkoutNotice ? (
             <p className="mt-4 max-w-4xl text-sm font-black uppercase tracking-[0.2em] text-[#FFD54F]">
               {checkoutNotice}
             </p>
@@ -40,13 +54,19 @@ export default function BrowsePage() {
               HUGz Cards: 13
             </span>
             <span className="rounded-2xl border border-red-400/35 bg-red-950/25 px-4 py-3 text-sm font-black text-red-100">
-              {rollout.enabled ? "Customer-ready exact choices: 1" : "Preview-ready exact choices: 1"}
+              {rollout.enabled
+                ? `Site-wide exact choices: ${approvedCount}`
+                : `Site-wide preview choices: ${approvedCount}`}
             </span>
             <Link
-              href="/romance"
+              href={hasApprovedChoices ? primaryApprovedRoute : "/find"}
               className="rounded-2xl bg-pink-200 px-5 py-3 text-sm font-black text-[#160915]"
             >
-              {rollout.enabled ? "Hear & buy the approved HUG" : "Hear the approved HUG"}
+              {hasApprovedChoices
+                ? rollout.enabled
+                  ? "Open released music option"
+                  : "Hear released music option"
+                : "Browse 13 HUGz Cards"}
             </Link>
             <Link
               href="/hug"

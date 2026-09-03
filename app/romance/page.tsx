@@ -7,6 +7,8 @@ export const metadata = {
     "Choose a Romance Level and send a MIAL-approved GPM music moment as a K-KUT HUG.",
 };
 
+export const dynamic = "force-dynamic";
+
 const ROMANCE_LEVELS = [
   "Gentle Affection",
   "New Love",

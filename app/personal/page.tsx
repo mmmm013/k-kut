@@ -9,6 +9,8 @@ export const metadata = {
     "Choose a personal moment. Exact audio and payment appear only for fully released K-KUT options.",
 };
 
+export const dynamic = "force-dynamic";
+
 const categoryGroups = [
   {
     title: "Everyday connection",
