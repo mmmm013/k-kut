@@ -6,6 +6,8 @@ export const metadata = {
     "Send an apology or repair-ready GPM music HUG from approved K-KUT options.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function ApologyPage() {
   return (
     <ApprovedPersonalRoutePage

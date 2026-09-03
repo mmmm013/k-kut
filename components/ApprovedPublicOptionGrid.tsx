@@ -1,4 +1,8 @@
 import type { ApprovedPublicOption } from "@/lib/publication-bridge/approvedPublicOptions";
+import {
+  paymentRolloutBuyerNotice,
+  paymentRolloutStatus,
+} from "@/lib/paymentRolloutStatus";
 
 function titleCase(value: string) {
   return String(value || "")
@@ -20,6 +24,9 @@ export default function ApprovedPublicOptionGrid({
   emptyTitle?: string;
   buttonLabel?: string;
 }) {
+  const rollout = paymentRolloutStatus();
+  const checkoutNotice = paymentRolloutBuyerNotice(rollout);
+
   if (records.length === 0) {
     return (
       <section className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
@@ -62,15 +69,23 @@ export default function ApprovedPublicOptionGrid({
 
             <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={record.audio_delivery_url} />
 
-            <form action="/checkout" method="post" className="mt-5">
-              <input type="hidden" name="public_option_id" value={record.public_option_id} />
-              <input type="hidden" name="ii" value={record.kk_id_or_delivery_object_id} />
-              <button type="submit" className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white">
-                {buttonLabel || `Buy & send this ${record.product_family} · ${formatPrice(record.price_cents)}`}
-              </button>
-            </form>
+            {rollout.enabled ? (
+              <form action="/checkout" method="post" className="mt-5">
+                <input type="hidden" name="public_option_id" value={record.public_option_id} />
+                <input type="hidden" name="ii" value={record.kk_id_or_delivery_object_id} />
+                <button type="submit" className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white">
+                  {buttonLabel || `Buy & send this ${record.product_family} · ${formatPrice(record.price_cents)}`}
+                </button>
+              </form>
+            ) : (
+              <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-center text-sm font-black text-white/75">
+                {checkoutNotice}
+              </div>
+            )}
             <p className="mt-3 text-xs font-bold leading-5 text-white/50">
-              Checkout verifies this exact approved II and its locked {record.product_family} price before Stripe opens.
+              {rollout.enabled
+                ? `Checkout verifies this exact approved II and its locked ${record.product_family} price before Stripe opens.`
+                : "Audio preview is live now. Payment stays closed until rollout allows checkout."}
             </p>
           </article>
         ))}

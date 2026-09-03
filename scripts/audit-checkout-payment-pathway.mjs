@@ -5,6 +5,7 @@ const fail = (message) => { throw new Error(`CHECKOUT PAYMENT PATHWAY AUDIT FAIL
 
 const grid = read("components/ApprovedPublicOptionGrid.tsx");
 const checkout = read("app/checkout/route.ts");
+const pendingAuthority = read("lib/checkoutPendingOrderAuthority.ts");
 const rollout = read("lib/paymentRolloutStatus.ts");
 const operatorStatus = read("app/api/admin/payment-rollout-status/route.ts");
 
@@ -16,16 +17,28 @@ for (const required of [
   "STRIPE_SECRET_KEY",
   "stripe.checkout.sessions.create",
   "createPendingH2Order",
+  "createCheckoutPendingOrderAuthority",
   "paymentRolloutStatus",
   "findApprovedPublicOptionByPublicOptionId",
   'process.env.VERCEL_ENV !== "production"',
   "K_KUT_PAYMENT_ROLLOUT_STATUS",
   "current_rollout_day",
   "elapsed_days",
-  'returnToStore(request, rollout.reason || "payment-rollout-disabled")',
+  "returnToStore(request, pendingOrderAuthority.reason)",
   'checkout_authority: "current_ii_shared_product_law"',
 ]) {
   if (!checkout.includes(required)) fail(`shared checkout missing ${required}`);
+}
+
+const rolloutIndex = pendingAuthority.indexOf(
+  "const rollout = (dependencies.paymentRolloutStatus || paymentRolloutStatus)();",
+);
+const pendingOrderIndex = pendingAuthority.indexOf(
+  "token = await (dependencies.createPendingH2Order || defaultCreatePendingH2Order)({",
+);
+
+if (rolloutIndex < 0 || pendingOrderIndex < 0 || rolloutIndex > pendingOrderIndex) {
+  fail("payment rollout gate must run before pending order creation");
 }
 
 for (const required of [

@@ -11,6 +11,20 @@ export type PaymentRolloutStatus = {
   forceDisabled: boolean;
 };
 
+export function paymentRolloutBuyerNotice(status: PaymentRolloutStatus) {
+  if (status.enabled) return null;
+  switch (status.reason) {
+    case "payment-rollout-day-1-2":
+      return "Preview is open. Checkout opens on day 3 of the controlled rollout.";
+    case "payment-rollout-not-started":
+      return "Preview is open. Checkout opens when the controlled rollout begins.";
+    case "payment-rollout-force-disabled":
+      return "Preview is open. Checkout is temporarily paused.";
+    default:
+      return "Preview is open. Checkout is not available yet.";
+  }
+}
+
 function parseUtcDateOnly(value: string) {
   const normalized = value.trim();
   if (!/^\d{4}-\d{2}-\d{2}$/u.test(normalized)) return null;

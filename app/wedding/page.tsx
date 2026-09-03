@@ -7,6 +7,8 @@ export const metadata = {
     "Send a wedding-ready GPM music HUG from MIAL-approved customer delivery inventory.",
 };
 
+export const dynamic = "force-dynamic";
+
 const WEDDING_LEVELS = ["Wedding / Vow-Level", "First Dance", "Forever / Ceremony"];
 
 export default function WeddingPage() {
