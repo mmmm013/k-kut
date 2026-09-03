@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { KutReviewerWorkbench } from "../comin-true-boundary-review/workbench";
+import { KutReviewerWorkbench } from "./workbench";
 
 export const dynamic = "force-dynamic";
 
