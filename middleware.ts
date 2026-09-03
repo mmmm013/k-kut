@@ -81,6 +81,34 @@ export function middleware(request: NextRequest) {
     .toLowerCase()
     .split(":")[0];
 
+  const [firstSegment, ...restSegments] = pathname.split("/");
+  const normalizedFirst = firstSegment ? "" : (restSegments[0] || "");
+  const canonicalPrefix = normalizedFirst.toLowerCase();
+  const canonicalizePrefixes = new Set([
+    "hugs",
+    "hugz",
+    "hug",
+    "tug",
+    "bug",
+    "browse",
+    "find",
+    "personal",
+    "holiday",
+    "themes",
+    "kupid",
+    "wedding",
+    "sentimeant",
+    "pix",
+    "mkut",
+  ]);
+
+  if (canonicalizePrefixes.has(canonicalPrefix) && normalizedFirst !== canonicalPrefix) {
+    const url = request.nextUrl.clone();
+    const tail = restSegments.slice(1).join("/");
+    url.pathname = `/${canonicalPrefix}${tail ? `/${tail}` : ""}`;
+    return NextResponse.redirect(url, 308);
+  }
+
   if (SENTIMEANT_DEFENSIVE_HOSTS.has(host)) {
     const url = request.nextUrl.clone();
     url.protocol = "https:";
@@ -196,5 +224,6 @@ export const config = {
     "/favicon.ico",
     "/apple-touch-icon.png",
     "/apple-touch-icon-precomposed.png",
+    "/:path*",
   ],
 };
