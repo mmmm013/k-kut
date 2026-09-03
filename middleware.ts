@@ -98,6 +98,7 @@ export function middleware(request: NextRequest) {
     "kupid",
     "wedding",
     "sentimeant",
+    "checkout",
     "pix",
     "mkut",
   ]);
