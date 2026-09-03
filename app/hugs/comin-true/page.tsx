@@ -1,5 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+import ApprovedLyricHighlight from "@/components/ApprovedLyricHighlight";
+import {
+  getApprovedLyricLines,
+  getCompactApprovedLyricLines,
+} from "@/lib/approvedLyricHighlights";
 import { loadApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
 import {
   paymentRolloutBuyerNotice,
@@ -47,12 +52,14 @@ function loadManifest(): Manifest {
 function AudioCard({
   ii,
   product,
+  lyricLines,
   checkoutEnabled,
   checkoutEligible,
   checkoutNotice,
 }: {
   ii: AudioII;
   product: "HUG" | "TUG" | "BUG";
+  lyricLines?: string[];
   checkoutEnabled: boolean;
   checkoutEligible: boolean;
   checkoutNotice: string | null;
@@ -64,6 +71,10 @@ function AudioCard({
         Comin&apos; True {product}
       </p>
       <h3 className="mt-3 text-2xl font-black">{ii.display_title}</h3>
+      <ApprovedLyricHighlight
+        lines={getCompactApprovedLyricLines(lyricLines || [])}
+        className="mt-3"
+      />
       <p className="mt-3 min-h-14 text-sm font-semibold leading-6 text-white/68">{ii.buyer_intent}</p>
       <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={ii.audio_url} />
       {checkoutEnabled && checkoutEligible ? (
@@ -112,6 +123,7 @@ function ProductSection({
             key={ii.ii_key}
             ii={ii}
             product={product}
+            lyricLines={product === "HUG" ? getApprovedLyricLines(ii.ii_key) : []}
             checkoutEnabled={rollout.enabled}
             checkoutEligible={approvedOptionIds.has(`public_comin_true_${ii.ii_key}`)}
             checkoutNotice={checkoutNotice}

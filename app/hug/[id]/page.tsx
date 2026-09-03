@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
+import ApprovedLyricHighlight from "@/components/ApprovedLyricHighlight";
 import EofSignatureAudio from "@/components/EofSignatureAudio";
+import { getApprovedLyricLines } from "@/lib/approvedLyricHighlights";
 import { findApprovedPublicOptionByInventoryId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const dynamic = "force-dynamic";
@@ -74,6 +76,10 @@ export default async function HugDeliveryPage({
       currentOption.inventory_family === "KK",
   );
   const audioUrl = verifiedPlayable ? currentOption?.audio_delivery_url || "" : "";
+  const lyricLines =
+    verifiedPlayable && currentOption
+      ? getApprovedLyricLines(currentOption.kk_id_or_delivery_object_id)
+      : [];
 
   const sender = firstString(hug.sender_name) || "Someone";
   const recipient = firstString(hug.recipient_name) || "you";
@@ -95,6 +101,21 @@ export default async function HugDeliveryPage({
         <p className="mt-4 text-lg text-[#e8cf9f]">
           {sender} sent you a real-audio K-KUT HUG.
         </p>
+
+        {verifiedPlayable && currentOption && (
+          <section className="mt-8 rounded-2xl border border-[#d6a400]/25 bg-[#160d08] p-5 text-left">
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#ffd36a]">
+              Approved K-KUT
+            </p>
+            <h2 className="mt-3 text-2xl font-black text-[#fff3cf]">
+              {currentOption.display_title}
+            </h2>
+            <ApprovedLyricHighlight lines={lyricLines} className="mt-4" />
+            <p className="mt-4 text-sm font-bold leading-6 text-[#e8cf9f]">
+              {currentOption.interpretation_summary}
+            </p>
+          </section>
+        )}
 
         {verifiedPlayable ? (
           <EofSignatureAudio src={audioUrl} className="mt-8 w-full" />

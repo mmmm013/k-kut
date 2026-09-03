@@ -1,6 +1,8 @@
 import Link from "next/link";
+import ApprovedLyricHighlight from "@/components/ApprovedLyricHighlight";
 import CurrentIiAuthorityHold from "@/components/CurrentIiAuthorityHold";
 import EofSignatureAudio from "@/components/EofSignatureAudio";
+import { getApprovedLyricLines } from "@/lib/approvedLyricHighlights";
 import { findApprovedPublicOptionByAnyId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const dynamic = "force-dynamic";
@@ -12,6 +14,9 @@ export default async function KKutPlayPage({
 }) {
   const { id } = await params;
   const option = findApprovedPublicOptionByAnyId(decodeURIComponent(id));
+  const lyricLines = option
+    ? getApprovedLyricLines(option.kk_id_or_delivery_object_id)
+    : [];
 
   if (
     !option ||
@@ -30,6 +35,7 @@ export default async function KKutPlayPage({
         <h1 className="mt-3 text-3xl font-black text-[#FFD54F]">
           {option.display_title}
         </h1>
+        <ApprovedLyricHighlight lines={lyricLines} className="mt-4" />
         <p className="mt-3 text-sm font-bold leading-6 text-[#C8A882]">
           {option.interpretation_summary}
         </p>
