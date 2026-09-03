@@ -1,62 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeGovernedQueueRows } from "@/lib/admin/kutReviewer";
-
-export const dynamic = "force-dynamic";
-
-function authorized(request: NextRequest) {
-  const expected = process.env.ADMIN_PREVIEW_TOKEN?.trim();
-  const supplied =
-    request.headers.get("x-admin-token")?.trim() ||
-    request.nextUrl.searchParams.get("token")?.trim();
-  return Boolean(expected && supplied && supplied === expected);
-}
-
-function createServiceClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() ||
-    process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim();
-
-  if (!url || !key) {
-    return null;
-  }
-
-  return createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-}
-
-export async function GET(request: NextRequest) {
-  if (!authorized(request)) {
-    return NextResponse.json({ error: "not_found" }, { status: 404 });
-  }
-
-  const supabase = createServiceClient();
-  if (!supabase) {
-    return NextResponse.json(
-      { error: "server_supabase_connection_not_configured" },
-      { status: 503 },
-    );
-  }
-
-  const { data, error } = await supabase
-    .from("k_kut_audio_qc")
-    .select("*")
-    .limit(500);
-
-  if (error) {
-    return NextResponse.json(
-      { error: "governed_queue_read_failed", detail: error.message },
-      { status: 502 },
-    );
-  }
-
-  const queue = normalizeGovernedQueueRows(data || []);
-
-  return NextResponse.json({
-    queue,
-    total: queue.length,
-    source: "supabase.k_kut_audio_qc",
-  });
-}
+export const dynamic="force-dynamic";
+function authorized(r:NextRequest){const e=process.env.ADMIN_PREVIEW_TOKEN?.trim(),s=r.headers.get("x-admin-token")?.trim()||r.nextUrl.searchParams.get("token")?.trim();return Boolean(e&&s&&s===e)}
+function client(){const u=process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(),k=process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()||process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim();return u&&k?createClient(u,k,{db:{schema:"gpmx_backend"},auth:{persistSession:false,autoRefreshToken:false}}):null}
+function toReviewerRow(r:any){return {id:r.ii_key,kut_id:r.ii_key,display_title:r.authority_title,display_text:r.display_text,capture_start_sec:r.start_sec,stored_capture_end_sec:r.end_sec,corrected_capture_end_sec:r.end_sec,review_state:r.review_state||"PENDING_GREGORY_REVIEW",boundary_prosecution_state:r.evidence_state||"RECONCILED_EXISTING_EVIDENCE",source_audio_path:r.audio_path,storage_bucket:"tracks",product_family:r.container_type||r.ii_type,intent_lane:r.form_key||r.ii_type,public_route:null,updated_at:r.updated_at};}
+export async function GET(request:NextRequest){if(!authorized(request))return NextResponse.json({error:"not_found"},{status:404});const s=client();if(!s)return NextResponse.json({error:"server_supabase_connection_not_configured"},{status:503});const {data,error,count}=await s.from("universal_kut_reviewer_queue_v1").select("*",{count:"exact"}).eq("playable_rank",0).limit(500);if(error)return NextResponse.json({error:"universal_queue_read_failed",detail:error.message},{status:502});const queue=normalizeGovernedQueueRows((data||[]).map(toReviewerRow));const {count:playableTotal}=await s.from("universal_kut_reviewer_queue_v1").select("ii_key",{count:"exact",head:true}).eq("playable_rank",0);const {data:cards}=await s.from("lt_pix_card_summary_v2").select("card_key");return NextResponse.json({queue,total:count||0,playableTotal:playableTotal||0,cards:cards?.length||0,source:"gpmx_backend.universal_kut_reviewer_queue_v1",pageLimit:500});}
