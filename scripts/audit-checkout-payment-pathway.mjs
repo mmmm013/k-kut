@@ -28,6 +28,13 @@ for (const required of [
   if (!checkout.includes(required)) fail(`shared checkout missing ${required}`);
 }
 
+const rolloutIndex = checkout.indexOf("const rollout = paymentRolloutStatus();");
+const pendingOrderIndex = checkout.indexOf("token = await createPendingH2Order({");
+
+if (rolloutIndex < 0 || pendingOrderIndex < 0 || rolloutIndex > pendingOrderIndex) {
+  fail("payment rollout gate must run before pending order creation");
+}
+
 for (const required of [
   "K_KUT_PAYMENT_LINKS_START_DATE",
   "K_KUT_PAYMENT_LINKS_FORCE_DISABLE",

@@ -89,6 +89,18 @@ export async function POST(request: NextRequest) {
     return returnToStore(request, "offer-inventory-price-mismatch");
   }
 
+  const rollout = paymentRolloutStatus();
+  console.info(
+    "K_KUT_PAYMENT_ROLLOUT_STATUS",
+    JSON.stringify({
+      enabled: rollout.enabled,
+      current_rollout_day: rollout.currentRolloutDay,
+      elapsed_days: rollout.elapsedDays,
+      reason: rollout.reason || "enabled",
+    }),
+  );
+  if (!rollout.enabled) return returnToStore(request, rollout.reason || "payment-rollout-disabled");
+
   let token: string;
   try {
     token = await createPendingH2Order({
@@ -107,18 +119,6 @@ export async function POST(request: NextRequest) {
   if (clientReference.length > CLIENT_REFERENCE_LIMIT || !/^[A-Za-z0-9_-]+$/.test(clientReference)) {
     return returnToStore(request, "pending-order-reference-invalid");
   }
-
-  const rollout = paymentRolloutStatus();
-  console.info(
-    "K_KUT_PAYMENT_ROLLOUT_STATUS",
-    JSON.stringify({
-      enabled: rollout.enabled,
-      current_rollout_day: rollout.currentRolloutDay,
-      elapsed_days: rollout.elapsedDays,
-      reason: rollout.reason || "enabled",
-    }),
-  );
-  if (!rollout.enabled) return returnToStore(request, rollout.reason || "payment-rollout-disabled");
 
   const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
   if (!isLiveStripeSecretKey(stripeSecretKey)) {
