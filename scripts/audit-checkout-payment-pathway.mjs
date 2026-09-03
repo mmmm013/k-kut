@@ -16,6 +16,9 @@ for (const required of [
   "createPendingH2Order",
   "findApprovedPublicOptionByPublicOptionId",
   'process.env.VERCEL_ENV !== "production"',
+  "K_KUT_PAYMENT_LINKS_START_DATE",
+  "K_KUT_PAYMENT_LINKS_FORCE_DISABLE",
+  "payment-rollout-day-1-2",
   'checkout_authority: "current_ii_shared_product_law"',
 ]) {
   if (!checkout.includes(required)) fail(`shared checkout missing ${required}`);

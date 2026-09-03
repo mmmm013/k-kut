@@ -17,6 +17,9 @@ const CLIENT_REFERENCE_LIMIT = 200;
 const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 const BF_PROFILE = "k-kut";
 const STRIPE_REDIRECT_STATUS = 303;
+const PAYMENT_LINKS_START_DATE_KEY = "K_KUT_PAYMENT_LINKS_START_DATE";
+const PAYMENT_LINKS_FORCE_DISABLE_KEY = "K_KUT_PAYMENT_LINKS_FORCE_DISABLE";
+const MS_IN_DAY = 24 * 60 * 60 * 1000;
 
 function returnToStore(request: NextRequest, reason: string) {
   const url = request.nextUrl.clone();
@@ -50,6 +53,36 @@ function originDomain(request: NextRequest) {
 
 function isLiveStripeSecretKey(value: string) {
   return /^(?:sk|rk)_live_[A-Za-z0-9]+$/u.test(value);
+}
+
+function parseUtcDateOnly(value: string) {
+  const normalized = value.trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/u.test(normalized)) return null;
+  const date = new Date(`${normalized}T00:00:00.000Z`);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function paymentLinksEnabled(now = new Date()) {
+  const forceDisable = String(process.env[PAYMENT_LINKS_FORCE_DISABLE_KEY] || "").trim();
+  if (forceDisable === "1") return { enabled: false, reason: "payment-rollout-force-disabled" } as const;
+
+  const startValue = String(process.env[PAYMENT_LINKS_START_DATE_KEY] || "").trim();
+  if (!startValue) return { enabled: false, reason: "payment-rollout-start-date-missing" } as const;
+
+  const rolloutStart = parseUtcDateOnly(startValue);
+  if (!rolloutStart) return { enabled: false, reason: "payment-rollout-start-date-invalid" } as const;
+
+  const nowUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const startUtc = Date.UTC(
+    rolloutStart.getUTCFullYear(),
+    rolloutStart.getUTCMonth(),
+    rolloutStart.getUTCDate(),
+  );
+  const elapsedDays = Math.floor((nowUtc - startUtc) / MS_IN_DAY);
+
+  if (elapsedDays < 0) return { enabled: false, reason: "payment-rollout-not-started" } as const;
+  if (elapsedDays < 2) return { enabled: false, reason: "payment-rollout-day-1-2" } as const;
+  return { enabled: true } as const;
 }
 
 export async function GET(request: NextRequest) {
@@ -88,12 +121,6 @@ export async function POST(request: NextRequest) {
     return returnToStore(request, "offer-inventory-price-mismatch");
   }
 
-  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
-  if (!isLiveStripeSecretKey(stripeSecretKey)) {
-    console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
-    return returnToStore(request, "stripe-secret-key-invalid");
-  }
-
   let token: string;
   try {
     token = await createPendingH2Order({
@@ -111,6 +138,15 @@ export async function POST(request: NextRequest) {
   const clientReference = `${H2_CLIENT_REFERENCE_PREFIX}${token}`;
   if (clientReference.length > CLIENT_REFERENCE_LIMIT || !/^[A-Za-z0-9_-]+$/.test(clientReference)) {
     return returnToStore(request, "pending-order-reference-invalid");
+  }
+
+  const rollout = paymentLinksEnabled();
+  if (!rollout.enabled) return returnToStore(request, rollout.reason);
+
+  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
+  if (!isLiveStripeSecretKey(stripeSecretKey)) {
+    console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
+    return returnToStore(request, "stripe-secret-key-invalid");
   }
 
   const stripe = new Stripe(stripeSecretKey);
