@@ -2,8 +2,6 @@ import Link from "next/link";
 import ApprovedPublicOptionGrid from "@/components/ApprovedPublicOptionGrid";
 import { loadApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
 
-export const dynamic = "force-dynamic";
-
 const SENSITIVE_ROUTES = new Set([
   "sympathy",
   "grief",
