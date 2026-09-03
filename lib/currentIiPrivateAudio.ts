@@ -19,3 +19,12 @@ export function findCurrentIiPrivateAudio(
 export function currentIiOwnerReviewRecords() {
   return manifest.records.filter((record) => record.owner_review_enabled);
 }
+
+
+export function findCurrentIiPrivateAudioByReviewId(
+  reviewId: string,
+): CurrentIiPrivateAudioRecord | null {
+  return (
+    manifest.records.find((record) => record.review_id === reviewId) || null
+  );
+}
