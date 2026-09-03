@@ -107,6 +107,9 @@ for (const route of ["/hugz", "/tug", "/bug", "/checkout"]) {
     stop(`domain boundary list is missing ${route}`);
   }
 }
+if (!middleware.includes('"checkout"')) {
+  stop("mixed-case canonical prefix list is missing checkout");
+}
 for (const icon of [
   "/favicon.ico",
   "/apple-touch-icon.png",
