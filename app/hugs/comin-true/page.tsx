@@ -1,4 +1,8 @@
 import manifest from "@/data/ii-delivery-registry/comin-true-full-family-v1.json";
+import {
+  paymentRolloutBuyerNotice,
+  paymentRolloutStatus,
+} from "@/lib/paymentRolloutStatus";
 
 export const metadata = {
   title: "Comin' True — 101 Music IIs",
@@ -13,7 +17,17 @@ type AudioII = {
   price_usd: string;
 };
 
-function AudioCard({ ii, product }: { ii: AudioII; product: "HUG" | "TUG" | "BUG" }) {
+function AudioCard({
+  ii,
+  product,
+  checkoutEnabled,
+  checkoutNotice,
+}: {
+  ii: AudioII;
+  product: "HUG" | "TUG" | "BUG";
+  checkoutEnabled: boolean;
+  checkoutNotice: string | null;
+}) {
   const publicOptionId = `public_comin_true_${ii.ii_key}`;
   return (
     <article className="rounded-3xl border border-white/10 bg-[#151020] p-6 shadow-xl">
@@ -23,30 +37,49 @@ function AudioCard({ ii, product }: { ii: AudioII; product: "HUG" | "TUG" | "BUG
       <h3 className="mt-3 text-2xl font-black">{ii.display_title}</h3>
       <p className="mt-3 min-h-14 text-sm font-semibold leading-6 text-white/68">{ii.buyer_intent}</p>
       <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={ii.audio_url} />
-      <form action="/checkout" method="post" className="mt-6">
-        <input type="hidden" name="public_option_id" value={publicOptionId} />
-        <input type="hidden" name="ii" value={ii.ii_key} />
-        <button type="submit" className="w-full rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100 transition hover:bg-violet-200/20">
-          Buy {product} · ${ii.price_usd}
-        </button>
-      </form>
+      {checkoutEnabled ? (
+        <form action="/checkout" method="post" className="mt-6">
+          <input type="hidden" name="public_option_id" value={publicOptionId} />
+          <input type="hidden" name="ii" value={ii.ii_key} />
+          <button type="submit" className="w-full rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100 transition hover:bg-violet-200/20">
+            Buy {product} · ${ii.price_usd}
+          </button>
+        </form>
+      ) : (
+        <p className="mt-6 rounded-2xl border border-violet-200/30 bg-violet-200/10 px-6 py-4 text-center font-black text-violet-100">
+          {checkoutNotice}
+        </p>
+      )}
     </article>
   );
 }
 
 function ProductSection({ id, title, description, product, items }: { id: string; title: string; description: string; product: "HUG" | "TUG" | "BUG"; items: AudioII[] }) {
+  const rollout = paymentRolloutStatus();
+  const checkoutNotice = paymentRolloutBuyerNotice(rollout);
   return (
     <section id={id} className="mt-14 scroll-mt-8">
       <h2 className="text-4xl font-black">{title}</h2>
       <p className="mt-3 max-w-3xl text-base font-semibold leading-7 text-white/70">{description}</p>
       <div className="mt-7 grid gap-5 md:grid-cols-2">
-        {items.map((ii) => <AudioCard key={ii.ii_key} ii={ii} product={product} />)}
+        {items.map((ii) => (
+          <AudioCard
+            key={ii.ii_key}
+            ii={ii}
+            product={product}
+            checkoutEnabled={rollout.enabled}
+            checkoutNotice={checkoutNotice}
+          />
+        ))}
       </div>
     </section>
   );
 }
 
 export default function CominTrueIIFamilyPage() {
+  const rollout = paymentRolloutStatus();
+  const checkoutNotice = paymentRolloutBuyerNotice(rollout);
+
   if (String(manifest.status) !== "PUBLIC_READY_COMPLETE_FAMILY") {
     return (
       <main className="min-h-screen bg-[#09070d] px-5 py-12 text-white">
@@ -72,7 +105,11 @@ export default function CominTrueIIFamilyPage() {
           <p className="mt-5 max-w-3xl text-lg font-bold leading-8 text-white/75">
             101 finished music IIs, each cut directly from the same full vocal recording. Choose a larger musical HUG, a meaningful lyric TUG, a compact BUG, or a three-part Story BUG.
           </p>
-          <p className="mt-4 text-sm font-bold text-violet-100/75">Public audio preview · stream only · original recording unchanged · HUG/TUG/BUG exact-price checkout active</p>
+          <p className="mt-4 text-sm font-bold text-violet-100/75">
+            {rollout.enabled
+              ? "Public audio preview · stream only · original recording unchanged · HUG/TUG/BUG exact-price checkout active"
+              : `Public audio preview · stream only · original recording unchanged · ${checkoutNotice}`}
+          </p>
           <nav className="mt-7 grid gap-3 sm:grid-cols-4">
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#hugs">15 HUGs</a>
             <a className="rounded-xl bg-white/10 px-4 py-3 text-center font-black" href="#tugs">49 TUGs</a>

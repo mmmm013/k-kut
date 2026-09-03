@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { createCheckoutPendingOrderAuthority } from "@/lib/checkoutPendingOrderAuthority";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
 import { paymentRolloutStatus } from "@/lib/paymentRolloutStatus";
 import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
@@ -14,8 +15,6 @@ const PRODUCT_LAW = {
 
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
-const CLIENT_REFERENCE_LIMIT = 200;
-const H2_CLIENT_REFERENCE_PREFIX = "H2_";
 const BF_PROFILE = "k-kut";
 const STRIPE_REDIRECT_STATUS = 303;
 
@@ -47,10 +46,6 @@ function originDomain(request: NextRequest) {
     .toLowerCase()
     .replace(/:\d+$/u, "");
   return /^[A-Za-z0-9.-]{1,253}$/.test(host) ? host : "k-kut.com";
-}
-
-function isLiveStripeSecretKey(value: string) {
-  return /^(?:sk|rk)_live_[A-Za-z0-9]+$/u.test(value);
 }
 
 export async function GET(request: NextRequest) {
@@ -89,26 +84,16 @@ export async function POST(request: NextRequest) {
     return returnToStore(request, "offer-inventory-price-mismatch");
   }
 
-  let token: string;
-  try {
-    token = await createPendingH2Order({
-      inventoryId,
-      personalNote,
-      bfProfile: BF_PROFILE,
-      originDomain: originDomain(request),
-      publicProductName: option.product_family,
-    });
-  } catch (reason) {
-    console.error("H2_PENDING_ORDER_CREATE_FAILED", reason instanceof Error ? reason.message : "unidentified_error");
-    return returnToStore(request, "pending-order-unavailable");
-  }
+  const pendingOrderAuthority = await createCheckoutPendingOrderAuthority({
+    inventoryId,
+    personalNote,
+    bfProfile: BF_PROFILE,
+    originDomain: originDomain(request),
+    publicProductName: option.product_family,
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+  }, { createPendingH2Order, paymentRolloutStatus });
 
-  const clientReference = `${H2_CLIENT_REFERENCE_PREFIX}${token}`;
-  if (clientReference.length > CLIENT_REFERENCE_LIMIT || !/^[A-Za-z0-9_-]+$/.test(clientReference)) {
-    return returnToStore(request, "pending-order-reference-invalid");
-  }
-
-  const rollout = paymentRolloutStatus();
+  const rollout = pendingOrderAuthority.rollout;
   console.info(
     "K_KUT_PAYMENT_ROLLOUT_STATUS",
     JSON.stringify({
@@ -118,14 +103,17 @@ export async function POST(request: NextRequest) {
       reason: rollout.reason || "enabled",
     }),
   );
-  if (!rollout.enabled) return returnToStore(request, rollout.reason || "payment-rollout-disabled");
-
-  const stripeSecretKey = String(process.env.STRIPE_SECRET_KEY || "").trim();
-  if (!isLiveStripeSecretKey(stripeSecretKey)) {
-    console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
-    return returnToStore(request, "stripe-secret-key-invalid");
+  if (!pendingOrderAuthority.ok) {
+    if (pendingOrderAuthority.reason === "pending-order-unavailable") {
+      console.error("H2_PENDING_ORDER_CREATE_FAILED", pendingOrderAuthority.errorMessage || "unidentified_error");
+    }
+    if (pendingOrderAuthority.reason === "stripe-secret-key-invalid") {
+      console.error("K_KUT_STRIPE_SECRET_KEY_INVALID");
+    }
+    return returnToStore(request, pendingOrderAuthority.reason);
   }
 
+  const { clientReference, stripeSecretKey } = pendingOrderAuthority;
   const stripe = new Stripe(stripeSecretKey);
   const siteOrigin = new URL(request.url).origin;
 
