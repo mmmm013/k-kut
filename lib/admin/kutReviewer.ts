@@ -15,6 +15,7 @@ export type GovernedKutQueueItem = {
   intentLane: string | null;
   productFamily: string | null;
   updatedAt: string | null;
+  queueOrder: number | null;
 };
 
 type UnknownRecord = Record<string, unknown>;
@@ -59,6 +60,7 @@ const NUMBER_PATHS = {
     "corrected_capture_end_sec",
     "correction.corrected_capture_end_sec",
   ],
+  queueOrder: ["queue_order", "playable_rank"],
 } as const;
 
 function readPath(value: unknown, path: string): unknown {
@@ -109,6 +111,7 @@ export function normalizeGovernedQueueRows(rows: unknown[]): GovernedKutQueueIte
       const startSec = firstNumber(row, NUMBER_PATHS.startSec);
       const storedEndSec = firstNumber(row, NUMBER_PATHS.storedEndSec);
       const sourceAudioPath = firstString(row, STRING_PATHS.sourceAudioPath);
+      const queueOrder = firstNumber(row, NUMBER_PATHS.queueOrder);
 
       if (!id || !kutId || startSec === null || storedEndSec === null || !sourceAudioPath) {
         return null;
@@ -139,11 +142,14 @@ export function normalizeGovernedQueueRows(rows: unknown[]): GovernedKutQueueIte
         intentLane: firstString(row, STRING_PATHS.intentLane),
         productFamily: firstString(row, STRING_PATHS.productFamily),
         updatedAt: firstString(row, STRING_PATHS.updatedAt),
+        queueOrder,
       } as GovernedKutQueueItem;
     })
     .filter((item): item is GovernedKutQueueItem => Boolean(item))
     .filter((item) => isPendingReview(item))
     .sort((a, b) => {
+      const queueOrderDelta = (a.queueOrder ?? Number.MAX_SAFE_INTEGER) - (b.queueOrder ?? Number.MAX_SAFE_INTEGER);
+      if (queueOrderDelta !== 0) return queueOrderDelta;
       const aTime = Date.parse(a.updatedAt || "");
       const bTime = Date.parse(b.updatedAt || "");
       if (Number.isFinite(aTime) && Number.isFinite(bTime) && aTime !== bTime) {

@@ -8,10 +8,6 @@ import {
   type ReviewerAction,
 } from "@/lib/admin/kutReviewer";
 
-type Props = {
-  reviewerToken: string;
-};
-
 type QueueResponse = {
   queue?: GovernedKutQueueItem[];
 };
@@ -109,7 +105,7 @@ function Waveform({
   return <canvas ref={canvasRef} className="h-36 w-full rounded-xl border border-amber-200/20" aria-label="Audio waveform around endpoint" />;
 }
 
-export function KutReviewerWorkbench({ reviewerToken }: Props) {
+export function KutReviewerWorkbench() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const stopAtRef = useRef<number | null>(null);
   const [queue, setQueue] = useState<GovernedKutQueueItem[]>([]);
@@ -140,7 +136,7 @@ export function KutReviewerWorkbench({ reviewerToken }: Props) {
     setIsLoadingQueue(true);
     setQueueError(null);
 
-    void fetch(`/api/admin/kut-reviewer/queue?token=${encodeURIComponent(reviewerToken)}`)
+    void fetch("/api/admin/kut-reviewer/queue")
       .then(async (response) => {
         const body = (await response.json().catch(() => ({}))) as QueueResponse & {
           error?: string;
@@ -168,15 +164,15 @@ export function KutReviewerWorkbench({ reviewerToken }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [reviewerToken]);
+  }, []);
 
   const activeItem = queue[activeIndex] || null;
   const correctedEndSec = activeItem ? corrections[activeItem.id] ?? activeItem.correctedEndSec : 0;
 
   const audioSrc = useMemo(() => {
     if (!activeItem) return "";
-    return `/api/admin/kut-reviewer/audio/${encodeURIComponent(activeItem.id)}?token=${encodeURIComponent(reviewerToken)}`;
-  }, [activeItem, reviewerToken]);
+    return `/api/admin/kut-reviewer/audio/${encodeURIComponent(activeItem.id)}`;
+  }, [activeItem]);
 
   useEffect(() => {
     let cancelled = false;
@@ -254,7 +250,7 @@ export function KutReviewerWorkbench({ reviewerToken }: Props) {
 
     setPendingAction(action);
     try {
-      const response = await fetch(`/api/admin/kut-reviewer/decision?token=${encodeURIComponent(reviewerToken)}`,
+      const response = await fetch("/api/admin/kut-reviewer/decision",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -279,7 +275,7 @@ export function KutReviewerWorkbench({ reviewerToken }: Props) {
     } finally {
       setPendingAction(null);
     }
-  }, [activeItem, audioReady, correctedEndSec, hasPlayedCurrent, pendingAction, queue.length, reviewerToken]);
+  }, [activeItem, audioReady, correctedEndSec, hasPlayedCurrent, pendingAction, queue.length]);
 
   useEffect(() => {
     if (!activeItem) return;
