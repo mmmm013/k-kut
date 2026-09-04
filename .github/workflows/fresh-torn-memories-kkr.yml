@@ -6,11 +6,16 @@ on:
       - fix/universal-reviewer-main-reconcile
     paths:
       - '.github/workflows/fresh-torn-memories-kkr.yml'
+      - 'data/kkr-lyric-authority/torn_memories.txt'
   workflow_dispatch:
 
 jobs:
   prosecute-first-vocal-cc:
     runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: https://vwlzubxshjjonabpeagd.supabase.co
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      GPMC_KUT_SUPABASE_SECRET_KEY: ${{ secrets.GPMC_KUT_SUPABASE_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -21,18 +26,24 @@ jobs:
           sudo apt-get install -y ffmpeg
           python3 -m pip install --disable-pip-version-check numpy
 
-      - name: Retrieve exact Torn Memories LT-PIX and IN-PIX bytes
+      - name: Retrieve exact private Torn Memories LT-PIX and IN-PIX bytes
         run: |
           set -euo pipefail
+          KEY="${SUPABASE_SERVICE_ROLE_KEY:-${GPMC_KUT_SUPABASE_SECRET_KEY:-}}"
+          test -n "$KEY" || { echo 'No GitHub Supabase server secret configured'; exit 41; }
           mkdir -p torn-memories
           curl --fail --location --retry 3 \
-            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/081%20-%20KLEIGH%20-%20COMING%20OVER%20ME.mp3' \
+            -H "Authorization: Bearer $KEY" \
+            -H "apikey: $KEY" \
+            "$SUPABASE_URL/storage/v1/object/authenticated/tracks/COMING%20OVER%20ME.mp3" \
             -o torn-memories/vocal.mp3
           curl --fail --location --retry 3 \
-            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/082%20-%20KLEIGH%20-%20Coming%20Over%20Me%20-%20INSTRO.mp3' \
+            -H "Authorization: Bearer $KEY" \
+            -H "apikey: $KEY" \
+            "$SUPABASE_URL/storage/v1/object/authenticated/tracks/Coming%20Over%20Me%20-%20-%20INSTRO.mp3" \
             -o torn-memories/instro.mp3
 
-          # Byte identity must match the current resolved storage objects.
+          # Exact current private-object identity from resolver metadata. Never infer from title.
           test "$(stat -c%s torn-memories/vocal.mp3)" = '14258427'
           test "$(stat -c%s torn-memories/instro.mp3)" = '14255091'
           test "$(md5sum torn-memories/vocal.mp3 | awk '{print $1}')" = '69cc2add1e0c96c394eb55a245f8553c'
@@ -41,23 +52,35 @@ jobs:
           ffprobe -v error -show_entries format=duration,size -of json torn-memories/instro.mp3 > torn-memories/instro-probe.json
           sha256sum torn-memories/vocal.mp3 torn-memories/instro.mp3 > torn-memories/source-sha256.txt
 
-      - name: KKr internal IN-PIX structure plus LT-PIX vocal prosecution
+      - name: Verify current owner lyric authority
+        run: |
+          set -euo pipefail
+          grep -Fqx "But our minds thought in wicked ways." data/kkr-lyric-authority/torn_memories.txt
+          ! grep -Fq "But I had my own story in wicked ways." data/kkr-lyric-authority/torn_memories.txt
+          ! grep -Fq "But I our minds thought in wicked ways." data/kkr-lyric-authority/torn_memories.txt
+          sha256sum data/kkr-lyric-authority/torn_memories.txt > torn-memories/lyric-authority-sha256.txt
+
+      - name: KKr internal IN-PIX structure plus vocal LT-PIX prosecution
         run: |
           set -euo pipefail
           python3 - <<'PY'
           import json, subprocess, pathlib, numpy as np
 
           SR=8000
-          FRAME=160      # 20 ms
-          HOP=80         # 10 ms
+          FRAME=160
+          HOP=80
           LOW=0.66
           STRONG=0.78
-          MIN_GAP=0.55   # long enough to separate candidate vocal events, not word gaps
+          MIN_GAP=0.55
           PAD_START=0.10
 
           root=pathlib.Path('torn-memories')
           vocal=root/'vocal.mp3'
           inst=root/'instro.mp3'
+          lyric_path=pathlib.Path('data/kkr-lyric-authority/torn_memories.txt')
+          lyrics=lyric_path.read_text(encoding='utf-8')
+          if 'But our minds thought in wicked ways.' not in lyrics:
+              raise SystemExit('current owner lyric authority missing')
 
           def decode(path):
               p=subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(path),'-vn','-ac','1','-ar',str(SR),'-f','f32le','pipe:1'],check=True,stdout=subprocess.PIPE)
@@ -68,7 +91,7 @@ jobs:
           n=min(len(y),len(x))
           y=y[:n]; x=x[:n]
 
-          # Find best short alignment between the paired masters.
+          # Paired-master alignment. IN-PIX is evidence only; never reviewer audio.
           max_shift=int(0.60*SR)
           best=None
           for shift in range(-max_shift,max_shift+1,8):
@@ -77,8 +100,7 @@ jobs:
               else:
                   yy=y[:n+shift]; xx=x[-shift:n]
               if len(yy)<SR*20: continue
-              step=64
-              yy2=yy[::step]; xx2=xx[::step]
+              yy2=yy[::64]; xx2=xx[::64]
               den=float(np.dot(xx2,xx2))
               if den<=1e-12: continue
               scale=float(np.dot(xx2,yy2)/den)
@@ -102,11 +124,10 @@ jobs:
               times.append((base+i+FRAME/2)/SR)
               ratios.append(rr/max(vr,1e-9))
           times=np.array(times); ratios=np.array(ratios)
-
           strong=ratios>=STRONG
           low=ratios<LOW
 
-          # Candidate separators: sustained low residual after strong-vocal evidence.
+          # CMG feel-BLK prosecution: find actual sustained structural separators; do not impose V/CH sequence.
           min_gap_frames=max(1,int(MIN_GAP/(HOP/SR)))
           separators=[]
           i=0
@@ -121,34 +142,31 @@ jobs:
                       separators.append((float(times[i]),float(times[j-1])))
               i=j
 
-          first_strong=int(np.argmax(strong)) if strong.any() else -1
-          if first_strong<0: raise SystemExit('no vocal event detected')
+          if not strong.any(): raise SystemExit('no vocal event detected')
+          first_strong=int(np.argmax(strong))
           first_vocal=float(times[first_strong])
-
-          first_sep=None
-          for a,b in separators:
-              if a>first_vocal+2.0:
-                  first_sep=(a,b); break
+          first_sep=next(((a,b) for a,b in separators if a>first_vocal+2.0),None)
           if not first_sep: raise SystemExit('no proved separator after first vocal event')
 
           start=max(0.0,round(first_vocal-PAD_START,3))
           end=round(first_sep[0],3)
           if end-start<2.0: raise SystemExit('first candidate too short')
 
-          # Render the exact candidate from the vocal LT-PIX. IN-PIX never becomes reviewer audio.
+          # Reviewer gets only vocal LT-PIX CC audio.
           out=root/'TORN_MEMORIES__KKR_CC_001.mp3'
           subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(vocal),'-ss',f'{start:.3f}','-to',f'{end:.3f}','-map','0:a:0','-c:a','libmp3lame','-q:a','0',str(out)],check=True)
           subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(out),'-f','null','-'],check=True)
           dur=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(out)],text=True).strip())
 
           result={
-            'schema':'GPMX_KKR_TORN_MEMORIES_FIRST_CC_V1',
+            'schema':'GPMX_KKR_TORN_MEMORIES_FIRST_CC_V2',
             'authority_title':'TORN MEMORIES',
             'lt_pix_track_id':'c5b9e589-2db5-41c6-a335-0e3ee7f1f43f',
             'in_pix_track_id':'94856625-a4a7-449b-99ac-730d7a39e7b9',
             'review_audio_source':'VOCAL_LT_PIX_ONLY',
             'in_pix_role':'INTERNAL_STRUCTURE_AND_ATTRIBUTE_EVIDENCE_ONLY',
             'writer_pattern_mode':'CMG_FEEL_BLK',
+            'lyric_authority_line':'But our minds thought in wicked ways.',
             'candidate_id':'TORN_MEMORIES__KKR_CC_001',
             'candidate_start_sec':start,
             'candidate_end_sec':end,
@@ -159,19 +177,29 @@ jobs:
             'separator':{'start_sec':first_sep[0],'end_sec':first_sep[1],'minimum_gap_sec':MIN_GAP},
             'all_proved_separators':[{'start_sec':a,'end_sec':b} for a,b in separators],
             'review_state':'PENDING_GREGORY_APPROVE_TRIM_HOLD_REJECT',
-            'public_release_authorized':False,
-            'note':'Machine-prosecuted first vocal CC candidate for human TPR. Gregory reviews resulting vocal CC only; IN-PIX is never reviewer audio.'
+            'public_release_authorized':False
           }
           (root/'candidate.json').write_text(json.dumps(result,indent=2)+'\n')
-          print(json.dumps(result,indent=2))
+          print('KKR_CANDIDATE_JSON='+json.dumps(result,separators=(',',':')))
           PY
 
-      - name: Candidate evidence hashes
+      - name: Upload vocal CC to private reviewer storage
         run: |
           set -euo pipefail
+          KEY="${SUPABASE_SERVICE_ROLE_KEY:-${GPMC_KUT_SUPABASE_SECRET_KEY:-}}"
+          DEST='kkr-tpr/torn-memories/TORN_MEMORIES__KKR_CC_001.mp3'
+          curl --fail --request POST \
+            -H "Authorization: Bearer $KEY" \
+            -H "apikey: $KEY" \
+            -H 'Content-Type: audio/mpeg' \
+            -H 'x-upsert: true' \
+            --data-binary @torn-memories/TORN_MEMORIES__KKR_CC_001.mp3 \
+            "$SUPABASE_URL/storage/v1/object/tracks/$DEST" \
+            > torn-memories/upload-result.json
+          echo "$DEST" > torn-memories/reviewer-storage-path.txt
           sha256sum torn-memories/TORN_MEMORIES__KKR_CC_001.mp3 > torn-memories/candidate-sha256.txt
 
-      - name: Upload KKr candidate artifact
+      - name: Upload KKr candidate evidence artifact
         uses: actions/upload-artifact@v4
         with:
           name: torn-memories-kkr-cc-001
