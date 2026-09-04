@@ -13,7 +13,7 @@ function authorized(request: NextRequest) {
 function createServiceClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim();
-  return url && key ? createClient(url, key, { db: { schema: "gpmx_backend" }, auth: { persistSession: false, autoRefreshToken: false } }) : null;
+  return url && key ? createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } }) : null;
 }
 
 function toReviewerRow(row: any) {
@@ -30,10 +30,10 @@ export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = createServiceClient();
   if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const { data, error, count } = await supabase.from("universal_kut_reviewer_queue_v1").select("*", { count: "exact" }).order("playable_rank", { ascending: true }).order("authority_title", { ascending: true }).order("ii_type", { ascending: true }).order("start_sec", { ascending: true, nullsFirst: false }).limit(500);
+  const { data, error, count } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("*", { count: "exact" }).order("playable_rank", { ascending: true }).order("authority_title", { ascending: true }).order("ii_type", { ascending: true }).order("start_sec", { ascending: true, nullsFirst: false }).limit(500);
   if (error) return NextResponse.json({ error: "universal_queue_read_failed", detail: error.message }, { status: 502 });
   const queue = normalizeGovernedQueueRows((data || []).map(toReviewerRow));
-  const { count: playableTotal } = await supabase.from("universal_kut_reviewer_queue_v1").select("ii_key", { count: "exact", head: true }).eq("playable_rank", 0);
-  const { count: cardTotal } = await supabase.from("lt_pix_card_summary_v2").select("card_key", { count: "exact", head: true });
-  return NextResponse.json({ queue, total: count || 0, playableTotal: playableTotal || 0, cards: cardTotal || 0, source: "gpmx_backend.universal_kut_reviewer_queue_v1", pageLimit: 500 });
+  const { count: playableTotal } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key", { count: "exact", head: true }).eq("playable_rank", 0);
+  const { count: cardTotal } = await supabase.from("gpmx_admin_lt_pix_card_summary_v1").select("card_key", { count: "exact", head: true });
+  return NextResponse.json({ queue, total: count || 0, playableTotal: playableTotal || 0, cards: cardTotal || 0, source: "gpmx_backend via service-role-only public bridge", pageLimit: 500 });
 }
