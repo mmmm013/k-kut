@@ -4,7 +4,7 @@ const nextConfig = {
   images: { unoptimized: true },
   outputFileTracingRoot: require('path').join(__dirname),
   outputFileTracingIncludes: {
-    '/api/admin/kkr-torn-memories/prosecute': ['./node_modules/ffmpeg-static/ffmpeg'],
+    '/api/admin/kkr-torn-memories/prosecute': ['./node_modules/@ffmpeg-installer/**'],
   },
 };
 
