@@ -6,20 +6,38 @@ export const dynamic = "force-dynamic";
 const PRIVATE_HEADERS = { "Cache-Control": "private, no-store, max-age=0", "Referrer-Policy": "no-referrer", "X-Robots-Tag": "noindex, nofollow, noarchive" };
 function authorized(request: NextRequest) { const supplied = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return trustedProtectedPreview() || validAdminToken(supplied) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
 function serviceClient() { const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(); const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim(); return url && key ? createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } }) : null; }
-function unavailable(status = 404) { return NextResponse.json({ error: status === 404 ? "not_found" : "private_audio_unavailable" }, { status, headers: PRIVATE_HEADERS }); }
+function unavailable(status = 404, detail?: string) { return NextResponse.json({ error: status === 404 ? "not_found" : "private_audio_unavailable", ...(detail ? { detail } : {}) }, { status, headers: PRIVATE_HEADERS }); }
+function redirect(url: string) { const response = NextResponse.redirect(url, 307); Object.entries(PRIVATE_HEADERS).forEach(([key, value]) => response.headers.set(key, value)); return response; }
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   if (!authorized(request)) return unavailable();
-  const supabase = serviceClient(); if (!supabase) return unavailable(503);
+  const supabase = serviceClient(); if (!supabase) return unavailable(503, "service client unavailable");
   const { id } = await params;
-  const { data, error } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key,audio_path,playable_rank").eq("ii_key", id).limit(1).maybeSingle();
+  const { data, error } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key,authority_title,audio_path,playable_rank").eq("ii_key", id).limit(1).maybeSingle();
   if (error || !data || data.playable_rank !== 0 || !data.audio_path) return unavailable();
+
+  // Reconciliation evidence may carry stale historical public URLs. Resolve the current
+  // LT-PIX storage object by canonical authority title first, then sign the real object name.
+  const { data: currentTrack } = await supabase.from("gpmx_admin_track_audio_storage_v1")
+    .select("bucket_id,storage_object_name,delivery_ready")
+    .ilike("authority_title", String(data.authority_title))
+    .not("storage_object_name", "is", null)
+    .order("delivery_ready", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (currentTrack?.storage_object_name) {
+    const bucket = String(currentTrack.bucket_id || "tracks");
+    const signed = await supabase.storage.from(bucket).createSignedUrl(String(currentTrack.storage_object_name), 300);
+    if (!signed.error && signed.data?.signedUrl) return redirect(signed.data.signedUrl);
+  }
+
   const pathValue = String(data.audio_path);
-  if (/^https?:\/\//i.test(pathValue)) return NextResponse.redirect(pathValue, 307);
-  if (pathValue.startsWith("public/")) { const response = NextResponse.redirect(new URL("/" + pathValue.replace(/^public\//, ""), request.url), 307); Object.entries(PRIVATE_HEADERS).forEach(([key, value]) => response.headers.set(key, value)); return response; }
+  if (/^https?:\/\//i.test(pathValue)) return redirect(pathValue);
+  if (pathValue.startsWith("public/")) return redirect(new URL("/" + pathValue.replace(/^public\//, ""), request.url).toString());
   let bucket = "tracks"; let path = pathValue;
   if (pathValue.startsWith("current-ii/")) { bucket = "ii-delivery"; path = pathValue; }
   const signed = await supabase.storage.from(bucket).createSignedUrl(path, 300);
-  if (signed.error || !signed.data?.signedUrl) return unavailable(503);
-  const response = NextResponse.redirect(signed.data.signedUrl, 307); Object.entries(PRIVATE_HEADERS).forEach(([key, value]) => response.headers.set(key, value)); return response;
+  if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "signed audio unavailable");
+  return redirect(signed.data.signedUrl);
 }
