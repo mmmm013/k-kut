@@ -26,5 +26,5 @@ export default async function KutReviewerPage({ searchParams }: PageProps) {
   const cookieStore = await cookies();
   if (!validAdminSession(cookieStore.get(ADMIN_SESSION_COOKIE)?.value)) notFound();
 
-  return <KutReviewerWorkbench reviewerToken="session" />;
+  return <KutReviewerWorkbench />;
 }
