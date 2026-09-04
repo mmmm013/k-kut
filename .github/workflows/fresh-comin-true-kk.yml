@@ -1,0 +1,101 @@
+name: Fresh Comin True KK Verify
+
+on:
+  push:
+    branches:
+      - fix/universal-reviewer-main-reconcile
+    paths:
+      - '.github/workflows/fresh-comin-true-kk.yml'
+      - 'data/kkr-boundary-truth/comin_true.json'
+      - 'data/kkr-lyric-authority/comin_true.txt'
+  workflow_dispatch:
+
+jobs:
+  render-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ffmpeg
+
+      - name: Download exact LT-PIX vocal SSOT from resolved storage object
+        run: |
+          set -euo pipefail
+          mkdir -p fresh-comin-true
+          curl --fail --location --retry 3 \
+            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/76.5bpm.mp3' \
+            -o fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3
+          sha256sum fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3
+          ACTUAL_SHA=$(sha256sum fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3 | awk '{print $1}')
+          EXPECTED_SHA='fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda'
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+
+      - name: Verification 1 - authority and five governed pairs
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('fs');
+          const truth = JSON.parse(fs.readFileSync('data/kkr-boundary-truth/comin_true.json','utf8'));
+          if (truth.status !== 'OWNER_LOCKED_SCRIPT_AUDITED') throw new Error('truth status not owner locked');
+          if (truth.intro?.included_as_kut !== false) throw new Error('intro exclusion failed');
+          if (truth.sources?.authority_split?.exact_cc_boundaries !== 'VOCAL_MASTER_PLUS_CANONICAL_LYRICS') throw new Error('wrong boundary authority');
+          if (truth.sources?.authority_split?.either_master_may_substitute_for_the_other !== false) throw new Error('master substitution must be false');
+          if (!Array.isArray(truth.sections) || truth.sections.length !== 5) throw new Error('expected exactly five major BLKs');
+          for (const [i,s] of truth.sections.entries()) {
+            if (s.section_id !== `BLK${i+1}`) throw new Error(`wrong section order ${s.section_id}`);
+            if (s.approved !== true || s.kkr_listening_approved !== true) throw new Error(`${s.section_id} not approved`);
+            if (!(s.start_sec < s.end_sec)) throw new Error(`${s.section_id} bad interval`);
+            if (!s.intp_id || !s.vtp_id) throw new Error(`${s.section_id} missing InTP/VTP identity`);
+            if (s.complete_meaningful_thought !== true) throw new Error(`${s.section_id} incomplete thought`);
+            if (s.last_vocal_resonance_preserved !== true) throw new Error(`${s.section_id} last vocal resonance not preserved`);
+            if (s.boundary_authority !== 'INSTRUMENTAL_STRUCTURE_PLUS_VOCAL_LYRIC_VTP') throw new Error(`${s.section_id} wrong boundary authority`);
+          }
+          console.log('VERIFICATION_1_PASS');
+          NODE
+
+      - name: Fresh materialization
+        run: |
+          set -euo pipefail
+          SRC='fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3'
+          mkdir -p fresh-comin-true/kks
+          cut_one() {
+            id="$1"; start="$2"; end="$3"
+            ffmpeg -hide_banner -loglevel error -y -i "$SRC" -ss "$start" -to "$end" -map 0:a:0 -c:a libmp3lame -q:a 0 "fresh-comin-true/kks/${id}.mp3"
+          }
+          cut_one BLK1 12.036 37.884
+          cut_one BLK2 38.739 66.585
+          cut_one BLK3 70.097 82.831
+          cut_one BLK4 83.573 96.584
+          cut_one BLK5 96.671 135.497
+          sha256sum fresh-comin-true/kks/*.mp3 | tee fresh-comin-true/kk-sha256.txt
+
+      - name: Verification 2 - decode/replay and duration audit
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess, pathlib
+          truth=json.load(open('data/kkr-boundary-truth/comin_true.json'))
+          out=[]
+          for s in truth['sections']:
+              p=pathlib.Path('fresh-comin-true/kks')/(s['section_id']+'.mp3')
+              subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(p),'-f','null','-'],check=True)
+              dur=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(p)],text=True).strip())
+              expected=float(s['end_sec'])-float(s['start_sec'])
+              delta=abs(dur-expected)
+              if delta > 0.12:
+                  raise SystemExit(f"{s['section_id']} duration drift {delta:.3f}s")
+              out.append({'section_id':s['section_id'],'start_sec':s['start_sec'],'end_sec':s['end_sec'],'expected_duration_sec':expected,'rendered_duration_sec':dur,'duration_delta_sec':delta,'decode_replay':'PASS'})
+          pathlib.Path('fresh-comin-true/verification-2.json').write_text(json.dumps(out,indent=2))
+          print('VERIFICATION_2_PASS')
+          PY
+
+      - name: Upload fresh KK evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fresh-comin-true-kks
+          path: fresh-comin-true
+          if-no-files-found: error
+          retention-days: 14
