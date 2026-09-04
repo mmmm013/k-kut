@@ -20,7 +20,10 @@ function toReviewerRow(row: any) {
   return {
     id: row.ii_key, kut_id: row.ii_key, display_title: row.authority_title, display_text: row.display_text,
     capture_start_sec: row.start_sec, stored_capture_end_sec: row.end_sec, corrected_capture_end_sec: row.end_sec,
-    review_state: row.review_state || "PENDING_GREGORY_REVIEW", boundary_prosecution_state: row.evidence_state || "RECONCILED_EXISTING_EVIDENCE",
+    // The universal queue itself is the unresolved Gregory-review authority. Preserve the
+    // source evidence state separately; do not let legacy review-state vocabulary filter it out.
+    review_state: "PENDING_GREGORY_REVIEW",
+    boundary_prosecution_state: row.evidence_state || "RECONCILED_EXISTING_EVIDENCE",
     source_audio_path: row.audio_path, storage_bucket: "tracks", product_family: row.container_type || row.ii_type,
     intent_lane: row.form_key || row.ii_type, public_route: null, updated_at: row.updated_at, queue_order: row.playable_rank,
   };
