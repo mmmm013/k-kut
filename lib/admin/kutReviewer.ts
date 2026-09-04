@@ -6,6 +6,7 @@ export type GovernedKutQueueItem = {
   title: string;
   startSec: number;
   storedEndSec: number;
+  correctedStartSec: number;
   correctedEndSec: number;
   reviewState: string;
   boundaryState: string;
@@ -15,6 +16,7 @@ export type GovernedKutQueueItem = {
   intentLane: string | null;
   productFamily: string | null;
   updatedAt: string | null;
+  queueOrder: number | null;
 };
 
 type UnknownRecord = Record<string, unknown>;
@@ -24,23 +26,9 @@ const STRING_PATHS = {
   kutId: ["kut_id", "ii_id", "source_kut_id", "track_id", "source_track_id"],
   title: ["display_title", "title", "source_title", "track_title"],
   reviewState: ["review_state", "correction.review_state"],
-  boundaryState: [
-    "boundary_prosecution_state",
-    "correction.boundary_prosecution_state",
-  ],
-  sourceAudioBucket: [
-    "source_audio_bucket",
-    "storage_bucket",
-    "audio_bucket",
-    "bucket",
-  ],
-  sourceAudioPath: [
-    "source_audio_path",
-    "storage_object_path",
-    "audio_object_path",
-    "object_path",
-    "captured_cc.source_audio_path",
-  ],
+  boundaryState: ["boundary_prosecution_state", "correction.boundary_prosecution_state"],
+  sourceAudioBucket: ["source_audio_bucket", "storage_bucket", "audio_bucket", "bucket"],
+  sourceAudioPath: ["source_audio_path", "storage_object_path", "audio_object_path", "object_path", "captured_cc.source_audio_path"],
   publicRoute: ["public_route"],
   intentLane: ["intent_lane"],
   productFamily: ["product_family"],
@@ -49,23 +37,16 @@ const STRING_PATHS = {
 
 const NUMBER_PATHS = {
   startSec: ["capture_start_sec", "start_sec", "captured_cc.capture_start_sec"],
-  storedEndSec: [
-    "stored_capture_end_sec",
-    "capture_end_sec",
-    "end_sec",
-    "captured_cc.stored_capture_end_sec",
-  ],
-  correctedEndSec: [
-    "corrected_capture_end_sec",
-    "correction.corrected_capture_end_sec",
-  ],
+  storedEndSec: ["stored_capture_end_sec", "capture_end_sec", "end_sec", "captured_cc.stored_capture_end_sec"],
+  correctedStartSec: ["corrected_capture_start_sec", "correction.corrected_capture_start_sec"],
+  correctedEndSec: ["corrected_capture_end_sec", "correction.corrected_capture_end_sec"],
+  queueOrder: ["queue_order", "playable_rank"],
 } as const;
 
 function readPath(value: unknown, path: string): unknown {
   if (!value || typeof value !== "object") return undefined;
-  const segments = path.split(".");
   let current: unknown = value;
-  for (const segment of segments) {
+  for (const segment of path.split(".")) {
     if (!current || typeof current !== "object") return undefined;
     current = (current as UnknownRecord)[segment];
   }
@@ -93,11 +74,25 @@ function firstNumber(record: unknown, paths: readonly string[]): number | null {
   return null;
 }
 
+// Release/materializer compatibility: never extend a confirmed endpoint past its stored authority.
 export function clampNoTrespassEnd(startSec: number, storedEndSec: number, value: number): number {
   if (!Number.isFinite(value)) return storedEndSec;
   const low = Math.min(startSec, storedEndSec);
   const high = Math.max(startSec, storedEndSec);
   return Number(Math.min(high, Math.max(low, value)).toFixed(3));
+}
+
+// TPR candidate editing is intentionally broader. Historical locator boundaries are evidence,
+// not authority. Gregory may move START/END anywhere inside the decoded LT-PIX source while listening.
+export function clampTprStart(value: number, endSec: number): number {
+  if (!Number.isFinite(value)) return 0;
+  return Number(Math.max(0, Math.min(Math.max(0, endSec - 0.01), value)).toFixed(3));
+}
+
+export function clampTprEnd(startSec: number, maxSec: number, value: number): number {
+  if (!Number.isFinite(value)) return Math.max(startSec + 0.01, maxSec);
+  const high = Math.max(startSec + 0.01, maxSec);
+  return Number(Math.min(high, Math.max(startSec + 0.01, value)).toFixed(3));
 }
 
 export function normalizeGovernedQueueRows(rows: unknown[]): GovernedKutQueueItem[] {
@@ -109,46 +104,35 @@ export function normalizeGovernedQueueRows(rows: unknown[]): GovernedKutQueueIte
       const startSec = firstNumber(row, NUMBER_PATHS.startSec);
       const storedEndSec = firstNumber(row, NUMBER_PATHS.storedEndSec);
       const sourceAudioPath = firstString(row, STRING_PATHS.sourceAudioPath);
+      const queueOrder = firstNumber(row, NUMBER_PATHS.queueOrder);
+      if (!id || !kutId || startSec === null || storedEndSec === null || !sourceAudioPath) return null;
 
-      if (!id || !kutId || startSec === null || storedEndSec === null || !sourceAudioPath) {
-        return null;
-      }
-
-      const sourceAudioBucket =
-        firstString(row, STRING_PATHS.sourceAudioBucket) ||
-        (sourceAudioPath.startsWith("current-ii/") ? "ii-delivery" : "tracks");
+      const sourceAudioBucket = firstString(row, STRING_PATHS.sourceAudioBucket) || (sourceAudioPath.startsWith("current-ii/") ? "ii-delivery" : "tracks");
+      const correctedStartCandidate = firstNumber(row, NUMBER_PATHS.correctedStartSec);
       const correctedEndCandidate = firstNumber(row, NUMBER_PATHS.correctedEndSec);
-      const correctedEndSec = clampNoTrespassEnd(
-        startSec,
-        storedEndSec,
-        correctedEndCandidate === null ? storedEndSec : correctedEndCandidate,
-      );
+      const correctedStartSec = clampTprStart(correctedStartCandidate === null ? startSec : correctedStartCandidate, storedEndSec);
+      const correctedEndSec = clampNoTrespassEnd(correctedStartSec, storedEndSec, correctedEndCandidate === null ? storedEndSec : correctedEndCandidate);
 
       return {
-        id,
-        kutId,
-        title,
-        startSec,
-        storedEndSec,
-        correctedEndSec,
-        reviewState: firstString(row, STRING_PATHS.reviewState) || "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
-        boundaryState: firstString(row, STRING_PATHS.boundaryState) || "HOLD",
-        sourceAudioBucket,
-        sourceAudioPath,
+        id, kutId, title, startSec, storedEndSec, correctedStartSec, correctedEndSec,
+        reviewState: firstString(row, STRING_PATHS.reviewState) || "PENDING_HUMAN_TPR",
+        boundaryState: firstString(row, STRING_PATHS.boundaryState) || "TPR_CANDIDATE",
+        sourceAudioBucket, sourceAudioPath,
         publicRoute: firstString(row, STRING_PATHS.publicRoute),
         intentLane: firstString(row, STRING_PATHS.intentLane),
         productFamily: firstString(row, STRING_PATHS.productFamily),
         updatedAt: firstString(row, STRING_PATHS.updatedAt),
+        queueOrder,
       } as GovernedKutQueueItem;
     })
     .filter((item): item is GovernedKutQueueItem => Boolean(item))
     .filter((item) => isPendingReview(item))
     .sort((a, b) => {
+      const queueOrderDelta = (a.queueOrder ?? Number.MAX_SAFE_INTEGER) - (b.queueOrder ?? Number.MAX_SAFE_INTEGER);
+      if (queueOrderDelta !== 0) return queueOrderDelta;
       const aTime = Date.parse(a.updatedAt || "");
       const bTime = Date.parse(b.updatedAt || "");
-      if (Number.isFinite(aTime) && Number.isFinite(bTime) && aTime !== bTime) {
-        return aTime - bTime;
-      }
+      if (Number.isFinite(aTime) && Number.isFinite(bTime) && aTime !== bTime) return aTime - bTime;
       return a.startSec - b.startSec;
     });
 }
@@ -157,46 +141,8 @@ export function isPendingReview(item: GovernedKutQueueItem): boolean {
   const review = item.reviewState.toUpperCase();
   const boundary = item.boundaryState.toUpperCase();
   if (review.includes("REJECT")) return false;
-  if (review.includes("CONFIRMED") && boundary.includes("STRICT_LAST_VOCAL_NOTE_END_PASS")) {
-    return false;
-  }
-  return review.includes("PENDING") || review.includes("HOLD") || boundary.includes("HOLD") || boundary.includes("EXCEPTION");
-}
-
-export function mapDecisionToPatch(action: ReviewerAction, correctedEndSec: number) {
-  if (action === "HOLD") {
-    return {
-      corrected_capture_end_sec: correctedEndSec,
-      review_state: "HOLD",
-      boundary_prosecution_state: "HOLD",
-      listening_verified: false,
-      post_vocal_audio_allowed: false,
-      reviewer_action: "HOLD",
-      reviewed_at: new Date().toISOString(),
-    } as const;
-  }
-
-  if (action === "REJECT") {
-    return {
-      corrected_capture_end_sec: correctedEndSec,
-      review_state: "REJECTED_LAST_VOCAL_NOTE_END",
-      boundary_prosecution_state: "REJECT",
-      listening_verified: true,
-      post_vocal_audio_allowed: false,
-      reviewer_action: "REJECT",
-      reviewed_at: new Date().toISOString(),
-    } as const;
-  }
-
-  return {
-    corrected_capture_end_sec: correctedEndSec,
-    review_state: "LAST_VOCAL_NOTE_END_CONFIRMED",
-    boundary_prosecution_state: "STRICT_LAST_VOCAL_NOTE_END_PASS",
-    listening_verified: true,
-    post_vocal_audio_allowed: false,
-    reviewer_action: action,
-    reviewed_at: new Date().toISOString(),
-  } as const;
+  if (review.includes("CONFIRMED") && boundary.includes("STRICT_LAST_VOCAL_NOTE_END_PASS")) return false;
+  return review.includes("PENDING") || review.includes("HOLD") || review.includes("TPR") || boundary.includes("HOLD") || boundary.includes("EXCEPTION") || boundary.includes("TPR");
 }
 
 export function nextQueueIndexAfterDecision(currentIndex: number, queueLength: number): number {
