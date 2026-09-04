@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "1.1.0",
+    "@ffmpeg-installer/linux-x64": "4.1.0",
     "@supabase/ssr": "^0.5.0",
     "@supabase/supabase-js": "^2.103.0",
     "@vercel/analytics": "^2.0.1",
