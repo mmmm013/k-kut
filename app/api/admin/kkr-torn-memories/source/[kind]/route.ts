@@ -33,11 +33,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   }
   const { data: signed, error: signError } = await supabase.storage.from(row.resolved_bucket_id).createSignedUrl(row.resolved_object_name, 300);
   if (signError || !signed?.signedUrl) return NextResponse.json({ error: "sign_failed", detail: signError?.message }, { status: 502 });
-  return NextResponse.redirect(signed.signedUrl, 307, {
-    headers: {
-      "Cache-Control": "private, no-store, max-age=0",
-      "Referrer-Policy": "no-referrer",
-      "X-Robots-Tag": "noindex, nofollow, noarchive",
-    },
-  } as any);
+  const response = NextResponse.redirect(signed.signedUrl, 307);
+  response.headers.set("Cache-Control", "private, no-store, max-age=0");
+  response.headers.set("Referrer-Policy", "no-referrer");
+  response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  return response;
 }
