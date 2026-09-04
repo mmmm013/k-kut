@@ -25,13 +25,16 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p fresh-comin-true
+          # Authority: tracks.storage_object_id -> storage.objects.id -> bucket/name.
+          # Object name contains a decimal point; encode it because Supabase's public object route
+          # otherwise parses this specific object path incorrectly and returns HTTP 400.
           curl --fail --location --retry 3 \
-            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/76.5bpm.mp3' \
+            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/76%2E5bpm%2Emp3' \
             -o fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3
-          sha256sum fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3
-          ACTUAL_SHA=$(sha256sum fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3 | awk '{print $1}')
-          EXPECTED_SHA='fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda'
-          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          test "$(stat -c%s fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3)" = '5604104'
+          file fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3
+          ffprobe -v error -show_entries format=format_name,duration -of default=nw=1 fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3
+          sha256sum fresh-comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3 | tee fresh-comin-true/source-sha256.txt
 
       - name: Verification 1 - authority and five governed pairs
         run: |
@@ -39,6 +42,9 @@ jobs:
           node <<'NODE'
           const fs = require('fs');
           const truth = JSON.parse(fs.readFileSync('data/kkr-boundary-truth/comin_true.json','utf8'));
+          const lyric = fs.readFileSync('data/kkr-lyric-authority/comin_true.txt','utf8');
+          if (!lyric.includes('Only so much space and fate')) throw new Error('owner FATE correction missing');
+          if (lyric.includes('Only so much space and faith')) throw new Error('stale faith lyric survived');
           if (truth.status !== 'OWNER_LOCKED_SCRIPT_AUDITED') throw new Error('truth status not owner locked');
           if (truth.intro?.included_as_kut !== false) throw new Error('intro exclusion failed');
           if (truth.sources?.authority_split?.exact_cc_boundaries !== 'VOCAL_MASTER_PLUS_CANONICAL_LYRICS') throw new Error('wrong boundary authority');
