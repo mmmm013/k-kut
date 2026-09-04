@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
-import { ADMIN_SESSION_COOKIE, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
+import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
 import { KutReviewerWorkbench } from "./workbench";
 
 export const dynamic = "force-dynamic";
@@ -22,6 +22,8 @@ export default async function KutReviewerPage({ searchParams }: PageProps) {
   if (validAdminToken(suppliedToken)) {
     redirect(`/admin/access?token=${encodeURIComponent(suppliedToken!)}&next=${encodeURIComponent("/admin/kut-reviewer")}`);
   }
+
+  if (trustedProtectedPreview()) return <KutReviewerWorkbench />;
 
   const cookieStore = await cookies();
   if (!validAdminSession(cookieStore.get(ADMIN_SESSION_COOKIE)?.value)) notFound();
