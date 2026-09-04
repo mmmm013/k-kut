@@ -115,20 +115,39 @@ export function KutReviewerWorkbench() {
   const [pendingAction, setPendingAction] = useState<ReviewerAction | null>(null);
   const [audioBuffer, setAudioBuffer] = useState<AudioBuffer | null>(null);
   const [audioReady, setAudioReady] = useState(false);
+  const [audioError, setAudioError] = useState<string | null>(null);
   const [hasPlayedCurrent, setHasPlayedCurrent] = useState(false);
   const [corrections, setCorrections] = useState<Record<string, number>>({});
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
     const onTimeUpdate = () => {
       if (stopAtRef.current !== null && audio.currentTime >= stopAtRef.current) {
         audio.pause();
         stopAtRef.current = null;
       }
     };
+    const onReady = () => {
+      setAudioReady(true);
+      setAudioError(null);
+    };
+    const onError = () => {
+      setAudioReady(false);
+      setAudioError("Governed audio did not load in the browser.");
+    };
+
     audio.addEventListener("timeupdate", onTimeUpdate);
-    return () => audio.removeEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("loadedmetadata", onReady);
+    audio.addEventListener("canplay", onReady);
+    audio.addEventListener("error", onError);
+    return () => {
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("loadedmetadata", onReady);
+      audio.removeEventListener("canplay", onReady);
+      audio.removeEventListener("error", onError);
+    };
   }, []);
 
   useEffect(() => {
@@ -180,39 +199,39 @@ export function KutReviewerWorkbench() {
     if (!activeItem || !audioSrc) {
       setAudioBuffer(null);
       setAudioReady(false);
+      setAudioError(null);
       return;
     }
 
     setAudioReady(false);
+    setAudioError(null);
+    setAudioBuffer(null);
     setHasPlayedCurrent(false);
+    stopAtRef.current = null;
+
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.src = audioSrc;
       audioRef.current.load();
     }
 
+    // Waveform decoding is supplemental. Failure here must never disable PLAY.
     void fetch(audioSrc)
       .then((response) => {
-        if (!response.ok) throw new Error("Audio fetch failed");
+        if (!response.ok) throw new Error("Waveform audio fetch failed");
         return response.arrayBuffer();
       })
       .then(async (arrayBuffer) => {
         const context = new AudioContext();
         try {
           const decoded = await context.decodeAudioData(arrayBuffer.slice(0));
-          if (!cancelled) {
-            setAudioBuffer(decoded);
-            setAudioReady(true);
-          }
+          if (!cancelled) setAudioBuffer(decoded);
         } finally {
           await context.close();
         }
       })
       .catch(() => {
-        if (!cancelled) {
-          setAudioBuffer(null);
-          setAudioReady(false);
-        }
+        if (!cancelled) setAudioBuffer(null);
       });
 
     return () => {
@@ -227,12 +246,20 @@ export function KutReviewerWorkbench() {
     const start = fullCapture
       ? activeItem.startSec
       : Math.max(activeItem.startSec, correctedEndSec - END_WINDOW_LEAD);
-    const stopAt = Math.min(audio.duration, correctedEndSec + END_WINDOW_TAIL);
+    const finiteDuration = Number.isFinite(audio.duration) ? audio.duration : activeItem.storedEndSec;
+    const stopAt = Math.min(finiteDuration, correctedEndSec + END_WINDOW_TAIL);
 
     audio.currentTime = Math.max(0, start);
     stopAtRef.current = stopAt;
-    setHasPlayedCurrent(true);
-    void audio.play();
+    void audio.play()
+      .then(() => {
+        setHasPlayedCurrent(true);
+        setAudioError(null);
+      })
+      .catch((error: unknown) => {
+        setHasPlayedCurrent(false);
+        setAudioError(error instanceof Error ? error.message : "Browser blocked governed audio playback.");
+      });
   }, [activeItem, audioReady, correctedEndSec]);
 
   const setCurrentEnd = useCallback((next: number) => {
@@ -250,16 +277,15 @@ export function KutReviewerWorkbench() {
 
     setPendingAction(action);
     try {
-      const response = await fetch("/api/admin/kut-reviewer/decision",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            itemId: activeItem.id,
-            action,
-            correctedEndSec,
-          }),
-        });
+      const response = await fetch("/api/admin/kut-reviewer/decision", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          itemId: activeItem.id,
+          action,
+          correctedEndSec,
+        }),
+      });
 
       if (!response.ok) {
         const body = (await response.json().catch(() => ({}))) as { detail?: string; error?: string };
@@ -363,7 +389,7 @@ export function KutReviewerWorkbench() {
               storedEnd={activeItem.storedEndSec}
               correctedEnd={correctedEndSec}
             />
-            <div className="mt-2 flex justify-between text-[11px] text-stone-500"><span>{timeLabel(windowStart)}</span><span>gray = stored · green = END</span><span>{timeLabel(windowEnd)}</span></div>
+            <div className="mt-2 flex justify-between text-[11px] text-stone-500"><span>{timeLabel(windowStart)}</span><span>{audioBuffer ? "waveform loaded" : "waveform optional"} · gray = stored · green = END</span><span>{timeLabel(windowEnd)}</span></div>
           </div>
 
           <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
@@ -391,9 +417,13 @@ export function KutReviewerWorkbench() {
             </div>
           </div>
 
+          <div className="mt-2 text-right text-xs">
+            {audioReady ? <span className="text-emerald-300">Audio ready</span> : <span className="text-amber-300">Loading governed audio…</span>}
+          </div>
+
           <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             <button onClick={() => void commitDecision("APPROVE")} disabled={pendingAction !== null || !audioReady || !hasPlayedCurrent} className="rounded-xl bg-emerald-400 px-5 py-4 text-lg font-black text-black disabled:cursor-not-allowed disabled:opacity-30">APPROVE</button>
-            <button onClick={() => void commitDecision("TRIM")} disabled={pendingAction !== null || !audioReady || !hasPlayedCurrent} className="rounded-xl bg-cyan-400 px-5 py-4 text-lg font-black text-black disabled:cursor-not-allowed disabled:opacity-30">TRIM</button>
+            <button onClick={() => void commitDecision("TRIM")} disabled={pendingAction !== null || !audioReady || !hasPlayedCurrent} className="rounded-xl bg-cyan-400 px-5 py-4 text-lg font-black disabled:cursor-not-allowed disabled:opacity-30">TRIM</button>
             <button onClick={() => void commitDecision("HOLD")} disabled={pendingAction !== null} className="rounded-xl border border-amber-300/60 bg-amber-300/10 px-5 py-4 text-lg font-black text-amber-200">HOLD</button>
             <button onClick={() => void commitDecision("REJECT")} disabled={pendingAction !== null} className="rounded-xl border border-red-400/60 bg-red-500/10 px-5 py-4 text-lg font-black text-red-300">REJECT</button>
           </div>
@@ -401,6 +431,7 @@ export function KutReviewerWorkbench() {
           {!hasPlayedCurrent && (
             <p className="mt-3 text-center text-xs text-stone-500">APPROVE/TRIM unlock after playback from governed source.</p>
           )}
+          {audioError && <p className="mt-3 text-center text-xs text-red-400">{audioError}</p>}
           {queueError && <p className="mt-3 text-center text-xs text-red-400">{queueError}</p>}
         </section>
       </section>
