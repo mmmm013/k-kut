@@ -1,10 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { clampNoTrespassEnd, type ReviewerAction } from "@/lib/admin/kutReviewer";
+import { ADMIN_SESSION_COOKIE, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
 
 export const dynamic = "force-dynamic";
 const VALID_ACTIONS = new Set<ReviewerAction>(["APPROVE", "TRIM", "HOLD", "REJECT"]);
-function authorized(request: NextRequest) { const expected = process.env.ADMIN_PREVIEW_TOKEN?.trim(); const supplied = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return Boolean(expected && supplied && supplied === expected); }
+function authorized(request: NextRequest) { const supplied = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return validAdminToken(supplied) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
 function serviceClient() { const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(); const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim(); return url && key ? createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } }) : null; }
 type RequestBody = { itemId?: string; action?: ReviewerAction; correctedEndSec?: number };
 
@@ -12,8 +13,7 @@ export async function POST(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const body = await request.json().catch(() => null) as RequestBody | null;
   if (!body?.itemId || !body.action || !VALID_ACTIONS.has(body.action)) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
-  const supabase = serviceClient();
-  if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
+  const supabase = serviceClient(); if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
   const query = await supabase.schema("gpmx_backend").from("universal_kut_reviewer_queue_v1").select("ii_key,card_key,start_sec,end_sec,source_relation,evidence_state").eq("ii_key", body.itemId).limit(1).maybeSingle();
   if (query.error || !query.data) return NextResponse.json({ error: "item_not_found", detail: query.error?.message }, { status: 404 });
   const item = query.data;
