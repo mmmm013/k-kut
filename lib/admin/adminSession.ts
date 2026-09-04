@@ -30,6 +30,13 @@ export function validAdminSession(value?: string | null) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
+// Preview deployments are already gated by Vercel Authentication for the project.
+// Inside that protected environment, do not force the owner to supply a second app secret.
+// Production/custom-domain admin access continues to require the app's signed admin session.
+export function trustedProtectedPreview() {
+  return process.env.VERCEL_ENV === "preview";
+}
+
 export function adminSessionCookieValue() {
   return sessionSignature();
 }
