@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   if (!authorized(request)) return unavailable();
   const supabase = serviceClient(); if (!supabase) return unavailable(503);
   const { id } = await params;
-  const { data, error } = await supabase.schema("gpmx_backend").from("universal_kut_reviewer_queue_v1").select("ii_key,audio_path,playable_rank").eq("ii_key", id).limit(1).maybeSingle();
+  const { data, error } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key,audio_path,playable_rank").eq("ii_key", id).limit(1).maybeSingle();
   if (error || !data || data.playable_rank !== 0 || !data.audio_path) return unavailable();
   const pathValue = String(data.audio_path);
   if (/^https?:\/\//i.test(pathValue)) return NextResponse.redirect(pathValue, 307);
