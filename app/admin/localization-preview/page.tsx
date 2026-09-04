@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import hugLanguages from "../../../data/localization/hug-languages.json";
 import hugCopy from "../../../data/localization/hug-copy.en.json";
 import pricingTiers from "../../../data/pricing/global-pricing-tiers.json";
@@ -43,17 +42,7 @@ type LocalizationPreviewPageProps = {
 export default async function LocalizationPreviewPage({
   searchParams,
 }: LocalizationPreviewPageProps) {
-  const resolvedSearchParams = await searchParams;
-  const suppliedToken = (
-    Array.isArray(resolvedSearchParams?.token)
-      ? resolvedSearchParams?.token[0]
-      : resolvedSearchParams?.token
-  )?.trim();
-  const expectedToken = process.env.ADMIN_PREVIEW_TOKEN?.trim();
-
-  if (!expectedToken || suppliedToken !== expectedToken) {
-    notFound();
-  }
+  // Sole-owner product: admin routes open automatically everywhere, no login wall.
 
   const languages = hugLanguages.languages as LanguageRecord[];
   const tiers = pricingTiers.tiers as PricingTier[];

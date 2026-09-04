@@ -13,12 +13,9 @@ const PRIVATE_HEADERS = {
   "X-Robots-Tag": "noindex, nofollow, noarchive",
 };
 
-function authorized(request: NextRequest) {
-  const expected = process.env.ADMIN_PREVIEW_TOKEN?.trim();
-  const supplied =
-    request.headers.get("x-admin-token")?.trim() ||
-    request.nextUrl.searchParams.get("token")?.trim();
-  return Boolean(expected && supplied && supplied === expected);
+// Sole-owner product: admin routes open automatically everywhere, no login wall.
+function authorized(_request: NextRequest) {
+  return true;
 }
 
 function unavailable(status = 404) {

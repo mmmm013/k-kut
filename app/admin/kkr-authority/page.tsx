@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { currentIiOwnerReviewRecords } from "@/lib/currentIiPrivateAudio";
 
 export const dynamic = "force-dynamic";
@@ -14,12 +13,10 @@ type Props = {
 
 export default async function KkrAuthorityPage({ searchParams }: Props) {
   const params = await searchParams;
+  // Sole-owner product: admin routes open automatically everywhere, no login wall.
   const supplied = (
     Array.isArray(params?.token) ? params?.token[0] : params?.token
-  )?.trim();
-  const expected = process.env.ADMIN_PREVIEW_TOKEN?.trim();
-
-  if (!expected || supplied !== expected) notFound();
+  )?.trim() || "";
 
   const token = encodeURIComponent(supplied);
   const candidates = currentIiOwnerReviewRecords();
