@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import ffmpegPath from "ffmpeg-static";
+import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
@@ -11,6 +11,7 @@ import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, valid
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
+const ffmpegPath = ffmpegInstaller.path;
 const VOCAL_TRACK_ID = "c5b9e589-2db5-41c6-a335-0e3ee7f1f43f";
 const INSTRO_TRACK_ID = "94856625-a4a7-449b-99ac-730d7a39e7b9";
 const CANDIDATE_KEY = "kkr-torn-memories-cc-001";
@@ -44,8 +45,9 @@ function median(values: number[]) {
 }
 
 function decodeMono(path: string) {
-  if (!ffmpegPath) throw new Error("ffmpeg-static path unavailable");
+  if (!ffmpegPath) throw new Error("ffmpeg path unavailable");
   const run = spawnSync(ffmpegPath, ["-hide_banner","-loglevel","error","-i",path,"-vn","-ac","1","-ar",String(SR),"-f","f32le","pipe:1"], { maxBuffer: 128 * 1024 * 1024 });
+  if (run.error) throw new Error(`ffmpeg spawn failed: ${run.error.message}`);
   if (run.status !== 0) throw new Error(`ffmpeg decode failed: ${run.stderr?.toString() || run.status}`);
   const buf = run.stdout;
   const values = new Float32Array(Math.floor(buf.length / 4));
@@ -120,7 +122,6 @@ function prosecute(frames: {time:number;ratio:number;instRms:number}[]) {
   for (let i=firstStrong;i<frames.length && frames[i].time<sep.start;i++) if (strong[i]) lastStrong=i;
   const vtpEnd=frames[lastStrong].time + (FRAME/(2*SR));
 
-  // IN-PIX structural cue: choose the strongest smoothed RMS change within 4s before VTP start.
   const searchStart=Math.max(0,vtpStart-4);
   let bestIndex=firstStrong, bestNovelty=-1;
   const lag=Math.max(1,Math.round(0.35/(HOP/SR)));
@@ -185,6 +186,7 @@ export async function GET(request: NextRequest) {
 
     const rendered=join(dir,"candidate.mp3");
     const render=spawnSync(ffmpegPath,["-hide_banner","-loglevel","error","-y","-i",vocalPath,"-ss",String(p.intpStart),"-to",String(p.intpEnd),"-map","0:a:0","-c:a","libmp3lame","-q:a","0",rendered],{maxBuffer:32*1024*1024});
+    if (render.error) throw new Error(`candidate render spawn failed: ${render.error.message}`);
     if (render.status!==0) throw new Error(`candidate render failed: ${render.stderr?.toString() || render.status}`);
     const renderedBytes=new Uint8Array(await readFile(rendered));
     const upload=await supabase.storage.from("tracks").upload(RENDER_PATH,renderedBytes,{contentType:"audio/mpeg",upsert:true});
