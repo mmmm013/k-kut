@@ -1,0 +1,180 @@
+name: Fresh Torn Memories KKr Candidate
+
+on:
+  push:
+    branches:
+      - fix/universal-reviewer-main-reconcile
+    paths:
+      - '.github/workflows/fresh-torn-memories-kkr.yml'
+  workflow_dispatch:
+
+jobs:
+  prosecute-first-vocal-cc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg and numpy
+        run: |
+          set -euo pipefail
+          sudo apt-get update -y
+          sudo apt-get install -y ffmpeg
+          python3 -m pip install --disable-pip-version-check numpy
+
+      - name: Retrieve exact Torn Memories LT-PIX and IN-PIX bytes
+        run: |
+          set -euo pipefail
+          mkdir -p torn-memories
+          curl --fail --location --retry 3 \
+            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/081%20-%20KLEIGH%20-%20COMING%20OVER%20ME.mp3' \
+            -o torn-memories/vocal.mp3
+          curl --fail --location --retry 3 \
+            'https://tlbqzzhhypixfbejoucr.supabase.co/storage/v1/object/public/tracks/082%20-%20KLEIGH%20-%20Coming%20Over%20Me%20-%20INSTRO.mp3' \
+            -o torn-memories/instro.mp3
+
+          # Byte identity must match the current resolved storage objects.
+          test "$(stat -c%s torn-memories/vocal.mp3)" = '14258427'
+          test "$(stat -c%s torn-memories/instro.mp3)" = '14255091'
+          test "$(md5sum torn-memories/vocal.mp3 | awk '{print $1}')" = '69cc2add1e0c96c394eb55a245f8553c'
+          test "$(md5sum torn-memories/instro.mp3 | awk '{print $1}')" = '1c623bc7eb95104f221eba87dd7ef62d'
+          ffprobe -v error -show_entries format=duration,size -of json torn-memories/vocal.mp3 > torn-memories/vocal-probe.json
+          ffprobe -v error -show_entries format=duration,size -of json torn-memories/instro.mp3 > torn-memories/instro-probe.json
+          sha256sum torn-memories/vocal.mp3 torn-memories/instro.mp3 > torn-memories/source-sha256.txt
+
+      - name: KKr internal IN-PIX structure plus LT-PIX vocal prosecution
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess, pathlib, numpy as np
+
+          SR=8000
+          FRAME=160      # 20 ms
+          HOP=80         # 10 ms
+          LOW=0.66
+          STRONG=0.78
+          MIN_GAP=0.55   # long enough to separate candidate vocal events, not word gaps
+          PAD_START=0.10
+
+          root=pathlib.Path('torn-memories')
+          vocal=root/'vocal.mp3'
+          inst=root/'instro.mp3'
+
+          def decode(path):
+              p=subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(path),'-vn','-ac','1','-ar',str(SR),'-f','f32le','pipe:1'],check=True,stdout=subprocess.PIPE)
+              return np.frombuffer(p.stdout,dtype=np.float32)
+
+          y=decode(vocal)
+          x=decode(inst)
+          n=min(len(y),len(x))
+          y=y[:n]; x=x[:n]
+
+          # Find best short alignment between the paired masters.
+          max_shift=int(0.60*SR)
+          best=None
+          for shift in range(-max_shift,max_shift+1,8):
+              if shift>=0:
+                  yy=y[shift:n]; xx=x[:n-shift]
+              else:
+                  yy=y[:n+shift]; xx=x[-shift:n]
+              if len(yy)<SR*20: continue
+              step=64
+              yy2=yy[::step]; xx2=xx[::step]
+              den=float(np.dot(xx2,xx2))
+              if den<=1e-12: continue
+              scale=float(np.dot(xx2,yy2)/den)
+              resid=yy2-scale*xx2
+              mse=float(np.mean(resid*resid))
+              if best is None or mse<best[0]: best=(mse,shift,scale)
+          if best is None: raise SystemExit('alignment failed')
+          mse,shift,scale=best
+
+          if shift>=0:
+              yy=y[shift:n]; xx=x[:n-shift]; base=shift
+          else:
+              yy=y[:n+shift]; xx=x[-shift:n]; base=0
+          resid=yy-scale*xx
+
+          times=[]; ratios=[]
+          for i in range(0,len(resid)-FRAME,HOP):
+              r=resid[i:i+FRAME]; v=yy[i:i+FRAME]
+              rr=float(np.sqrt(np.mean(r*r)))
+              vr=float(np.sqrt(np.mean(v*v)))
+              times.append((base+i+FRAME/2)/SR)
+              ratios.append(rr/max(vr,1e-9))
+          times=np.array(times); ratios=np.array(ratios)
+
+          strong=ratios>=STRONG
+          low=ratios<LOW
+
+          # Candidate separators: sustained low residual after strong-vocal evidence.
+          min_gap_frames=max(1,int(MIN_GAP/(HOP/SR)))
+          separators=[]
+          i=0
+          while i<len(low):
+              if not low[i]: i+=1; continue
+              j=i
+              while j<len(low) and low[j]: j+=1
+              if j-i>=min_gap_frames:
+                  before=strong[max(0,i-80):i]
+                  after=strong[j:min(len(strong),j+80)]
+                  if before.any() and after.any():
+                      separators.append((float(times[i]),float(times[j-1])))
+              i=j
+
+          first_strong=int(np.argmax(strong)) if strong.any() else -1
+          if first_strong<0: raise SystemExit('no vocal event detected')
+          first_vocal=float(times[first_strong])
+
+          first_sep=None
+          for a,b in separators:
+              if a>first_vocal+2.0:
+                  first_sep=(a,b); break
+          if not first_sep: raise SystemExit('no proved separator after first vocal event')
+
+          start=max(0.0,round(first_vocal-PAD_START,3))
+          end=round(first_sep[0],3)
+          if end-start<2.0: raise SystemExit('first candidate too short')
+
+          # Render the exact candidate from the vocal LT-PIX. IN-PIX never becomes reviewer audio.
+          out=root/'TORN_MEMORIES__KKR_CC_001.mp3'
+          subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(vocal),'-ss',f'{start:.3f}','-to',f'{end:.3f}','-map','0:a:0','-c:a','libmp3lame','-q:a','0',str(out)],check=True)
+          subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(out),'-f','null','-'],check=True)
+          dur=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(out)],text=True).strip())
+
+          result={
+            'schema':'GPMX_KKR_TORN_MEMORIES_FIRST_CC_V1',
+            'authority_title':'TORN MEMORIES',
+            'lt_pix_track_id':'c5b9e589-2db5-41c6-a335-0e3ee7f1f43f',
+            'in_pix_track_id':'94856625-a4a7-449b-99ac-730d7a39e7b9',
+            'review_audio_source':'VOCAL_LT_PIX_ONLY',
+            'in_pix_role':'INTERNAL_STRUCTURE_AND_ATTRIBUTE_EVIDENCE_ONLY',
+            'writer_pattern_mode':'CMG_FEEL_BLK',
+            'candidate_id':'TORN_MEMORIES__KKR_CC_001',
+            'candidate_start_sec':start,
+            'candidate_end_sec':end,
+            'rendered_duration_sec':dur,
+            'alignment_lag_sec':shift/SR,
+            'alignment_scale':scale,
+            'alignment_residual_mse':mse,
+            'separator':{'start_sec':first_sep[0],'end_sec':first_sep[1],'minimum_gap_sec':MIN_GAP},
+            'all_proved_separators':[{'start_sec':a,'end_sec':b} for a,b in separators],
+            'review_state':'PENDING_GREGORY_APPROVE_TRIM_HOLD_REJECT',
+            'public_release_authorized':False,
+            'note':'Machine-prosecuted first vocal CC candidate for human TPR. Gregory reviews resulting vocal CC only; IN-PIX is never reviewer audio.'
+          }
+          (root/'candidate.json').write_text(json.dumps(result,indent=2)+'\n')
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Candidate evidence hashes
+        run: |
+          set -euo pipefail
+          sha256sum torn-memories/TORN_MEMORIES__KKR_CC_001.mp3 > torn-memories/candidate-sha256.txt
+
+      - name: Upload KKr candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: torn-memories-kkr-cc-001
+          path: torn-memories
+          if-no-files-found: error
+          retention-days: 14
