@@ -11,6 +11,7 @@ type AdminPageProps = {
 
 const links = [
   ["P0 KUT Reviewer", "/admin/kut-reviewer", "Review governed KUT queue items from Supabase with exact endpoint controls and persisted decisions."],
+  ["TPR Reviewer", "/admin/kkr-tpr-reviewer", "Listen to and decide on prosecuted TPR candidates (reads gpmx_admin_kkr_tpr_candidate_v1 directly)."],
   ["Localization Preview", "/admin/localization-preview", "Review HUG localization, audio-safety, rollout, and pricing data."],
   ["HUG Health", "/admin/hug-health", "Review HUG system health."],
   ["Kleigh Guide", "/admin/kleigh-guide", "Review internal Kleigh guidance."],
