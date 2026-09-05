@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  clampNoTrespassEnd,
+  clampTprEnd,
   nextQueueIndexAfterDecision,
   type GovernedKutQueueItem,
   type ReviewerAction,
@@ -144,7 +144,7 @@ export function KutReviewerWorkbench() {
     return () => { cancelled = true; sourceRef.current?.stop(); sourceRef.current = null; };
   }, [audioSrc]);
 
-  const playWindow = useCallback(async (fullCapture = false) => {
+  const playWindow = useCallback(async (mode: "ending" | "blk" | "source") => {
     if (!activeItem || !audioBuffer) return;
     try {
       sourceRef.current?.stop();
@@ -157,8 +157,8 @@ export function KutReviewerWorkbench() {
       const source = context.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(context.destination);
-      const start = fullCapture ? activeItem.startSec : Math.max(activeItem.startSec, correctedEndSec - END_WINDOW_LEAD);
-      const stopAt = Math.min(audioBuffer.duration, correctedEndSec + END_WINDOW_TAIL);
+      const start = mode === "source" ? 0 : mode === "blk" ? activeItem.startSec : Math.max(0, correctedEndSec - END_WINDOW_LEAD);
+      const stopAt = mode === "source" ? audioBuffer.duration : Math.min(audioBuffer.duration, correctedEndSec + END_WINDOW_TAIL);
       const duration = Math.max(0.01, stopAt - start);
       source.start(0, Math.max(0, start), duration);
       sourceRef.current = source;
@@ -172,10 +172,10 @@ export function KutReviewerWorkbench() {
   }, [activeItem, audioBuffer, correctedEndSec]);
 
   const setCurrentEnd = useCallback((next: number) => {
-    if (!activeItem) return;
-    setCorrections((current) => ({ ...current, [activeItem.id]: clampNoTrespassEnd(activeItem.startSec, activeItem.storedEndSec, next) }));
+    if (!activeItem || !audioBuffer) return;
+    setCorrections((current) => ({ ...current, [activeItem.id]: clampTprEnd(activeItem.startSec, audioBuffer.duration, next) }));
     setHasPlayedCurrent(false);
-  }, [activeItem]);
+  }, [activeItem, audioBuffer]);
 
   const runTornMemoriesIntake = useCallback(async () => {
     if (isRunningIntake) return;
@@ -201,7 +201,7 @@ export function KutReviewerWorkbench() {
       const response = await fetch("/api/admin/kut-reviewer/decision", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ itemId: activeItem.id, action, correctedEndSec }),
+        body: JSON.stringify({ itemId: activeItem.id, action, correctedEndSec, sourceDurationSec: audioBuffer.duration }),
       });
       if (!response.ok) {
         const body = (await response.json().catch(() => ({}))) as { detail?: string; error?: string };
@@ -247,7 +247,7 @@ export function KutReviewerWorkbench() {
       <section className="rounded-2xl border border-amber-300/30 bg-stone-900 p-5 shadow-2xl">
         <p className="text-xs font-black uppercase tracking-widest text-amber-300">Review {activeIndex + 1} of {queue.length}</p>
         <h2 className="mt-1 text-3xl font-black">{activeItem.title}</h2>
-        <p className="mt-2 text-sm text-stone-300">Exact capture: {timeLabel(activeItem.startSec)} → {timeLabel(activeItem.storedEndSec)}</p>
+        <p className="mt-2 text-sm text-stone-300">Machine proposal: {timeLabel(activeItem.startSec)} → {timeLabel(activeItem.storedEndSec)} · owner review range: 0:00.000 → {audioBuffer ? timeLabel(audioBuffer.duration) : "loading"}</p>
         <p className="mt-1 text-xs text-stone-500">state {activeItem.reviewState} / {activeItem.boundaryState}</p>
         <div className="mt-5">
           <Waveform buffer={audioBuffer} windowStart={windowStart} windowEnd={windowEnd} storedEnd={activeItem.storedEndSec} correctedEnd={correctedEndSec} />
@@ -258,14 +258,15 @@ export function KutReviewerWorkbench() {
             <label className="text-xs font-black uppercase tracking-widest text-stone-400">END (LAST VOCAL NOTE)</label>
             <div className="mt-2 flex items-center gap-2">
               <button onClick={() => setCurrentEnd(correctedEndSec - SMALL_NUDGE)} className="rounded-lg bg-stone-800 px-3 py-3 font-black">−.05</button>
-              <input type="number" step={0.01} min={activeItem.startSec} max={activeItem.storedEndSec} value={correctedEndSec} onChange={(event) => setCurrentEnd(fixed(Number(event.target.value)))} className="min-w-0 flex-1 rounded-lg border border-stone-600 bg-black px-4 py-3 text-center font-mono text-xl text-emerald-300" />
+              <input type="number" step={0.01} min={activeItem.startSec} max={audioBuffer?.duration || undefined} value={correctedEndSec} onChange={(event) => setCurrentEnd(fixed(Number(event.target.value)))} className="min-w-0 flex-1 rounded-lg border border-stone-600 bg-black px-4 py-3 text-center font-mono text-xl text-emerald-300" />
               <button onClick={() => setCurrentEnd(correctedEndSec + SMALL_NUDGE)} className="rounded-lg bg-stone-800 px-3 py-3 font-black">+.05</button>
             </div>
-            <p className="mt-2 text-xs text-stone-500">END cannot go past stored endpoint.</p>
+            <p className="mt-2 text-xs text-stone-500">The machine endpoint is a proposal. Owner TPR may set END anywhere after BLK start and before the decoded LT-PIX source ends.</p>
           </div>
           <div className="flex gap-2">
-            <button onClick={() => void playWindow(false)} disabled={!audioBuffer} className="rounded-xl bg-sky-500 px-5 py-3 font-black text-black disabled:opacity-30">▶ Play END window</button>
-            <button onClick={() => void playWindow(true)} disabled={!audioBuffer} className="rounded-xl border border-sky-400/50 px-4 py-3 font-bold text-sky-300 disabled:opacity-30">Play full capture</button>
+            <button onClick={() => void playWindow("ending")} disabled={!audioBuffer} className="rounded-xl bg-sky-500 px-5 py-3 font-black text-black disabled:opacity-30">▶ Listen at END</button>
+            <button onClick={() => void playWindow("blk")} disabled={!audioBuffer} className="rounded-xl border border-sky-400/50 px-4 py-3 font-bold text-sky-300 disabled:opacity-30">Listen BLK</button>
+            <button onClick={() => void playWindow("source")} disabled={!audioBuffer} className="rounded-xl border border-stone-500 px-4 py-3 font-bold text-stone-200 disabled:opacity-30">Listen source</button>
           </div>
         </div>
         <div className="mt-2 text-right text-xs">{audioBuffer ? <span className="text-emerald-300">Audio ready</span> : <span className="text-amber-300">Loading governed audio…</span>}</div>
