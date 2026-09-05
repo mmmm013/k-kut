@@ -75,7 +75,7 @@ function initialBlks(): Blk[] { return TORN_MEMORIES.trim().split(/\n\s*\n/).map
 function decodeNotes(notes:string|null): Blk[] { try { const value=JSON.parse(notes||""); return Array.isArray(value?.blks) ? value.blks : initialBlks(); } catch { return initialBlks(); } }
 function validTime(value:string) { return Number.isFinite(Number(value)) && Number(value) >= 0; }
 
-export function InPixReviewerWorkbench() {
+export function TornMemoriesIntakeWorkbench() {
  const audioRef=useRef<HTMLAudioElement|null>(null); const [queue,setQueue]=useState<Item[]>([]); const [activeIndex,setActiveIndex]=useState(0); const [blks,setBlks]=useState<Blk[]>(initialBlks); const [status,setStatus]=useState("Loading BLK mapping queue…");
  useEffect(()=>{void fetch("/api/admin/kkr-torn-memories/mapping",{cache:"no-store"}).then(async r=>{const body=await r.json().catch(()=>({})) as QueueResponse;if(!r.ok)throw new Error(body.detail||body.error||"Queue load failed");const items=body.queue||[];setQueue(items);setActiveIndex(0);setBlks(decodeNotes(items[0]?.structure_notes||null));setStatus(items.length?"Listen through the whole IN-PIX, then map every lyric BLK.":"No pending IN-PIX structure reviews.");}).catch((e:unknown)=>setStatus(e instanceof Error?e.message:"Queue load failed"));},[]);
  const active=queue[activeIndex]||null; const audioSrc=useMemo(()=>active?"/api/admin/kkr-torn-memories/source/instro":"",[active]);
