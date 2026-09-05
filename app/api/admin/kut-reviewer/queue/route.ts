@@ -33,10 +33,20 @@ export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = createServiceClient();
   if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const { data, error, count } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("*", { count: "exact" }).order("playable_rank", { ascending: true }).order("authority_title", { ascending: true }).order("ii_type", { ascending: true }).order("start_sec", { ascending: true, nullsFirst: false }).limit(500);
+  const [{ data, error, count }, candidates] = await Promise.all([
+    supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("*", { count: "exact" }).order("playable_rank", { ascending: true }).order("authority_title", { ascending: true }).order("ii_type", { ascending: true }).order("start_sec", { ascending: true, nullsFirst: false }).limit(500),
+    supabase.from("gpmx_admin_kkr_tpr_candidate_v1").select("*").eq("review_state", "PENDING_GREGORY_REVIEW").order("updated_at", { ascending: true }).limit(100),
+  ]);
   if (error) return NextResponse.json({ error: "universal_queue_read_failed", detail: error.message }, { status: 502 });
-  const queue = normalizeGovernedQueueRows((data || []).map(toReviewerRow));
+  if (candidates.error) return NextResponse.json({ error: "kkr_candidate_queue_read_failed", detail: candidates.error.message }, { status: 502 });
+  const kkrRows = (candidates.data || []).map((row: any) => ({
+    ii_key: row.candidate_key, authority_title: row.authority_title, display_text: row.display_text,
+    start_sec: row.start_sec, end_sec: row.end_sec, evidence_state: row.evidence_state,
+    audio_path: row.audio_path, container_type: row.container_type, ii_type: row.ii_type,
+    form_key: row.form_key, updated_at: row.updated_at, playable_rank: 0,
+  }));
+  const queue = [...new Map(normalizeGovernedQueueRows([...(data || []).map(toReviewerRow), ...kkrRows.map(toReviewerRow)]).map((item) => [item.id, item])).values()];
   const { count: playableTotal } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key", { count: "exact", head: true }).eq("playable_rank", 0);
   const { count: cardTotal } = await supabase.from("gpmx_admin_lt_pix_card_summary_v1").select("card_key", { count: "exact", head: true });
-  return NextResponse.json({ queue, total: count || 0, playableTotal: playableTotal || 0, cards: cardTotal || 0, source: "gpmx_backend via service-role-only public bridge", pageLimit: 500 });
+  return NextResponse.json({ queue, total: count || 0, playableTotal: playableTotal || 0, cards: cardTotal || 0, source: "governed queue plus direct KKr candidate intake via service-role-only bridge", pageLimit: 500 });
 }

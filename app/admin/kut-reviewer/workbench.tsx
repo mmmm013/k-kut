@@ -87,6 +87,7 @@ export function KutReviewerWorkbench() {
   const [isLoadingQueue, setIsLoadingQueue] = useState(true);
   const [queueError, setQueueError] = useState<string | null>(null);
   const [pendingAction, setPendingAction] = useState<ReviewerAction | null>(null);
+  const [isRunningIntake, setIsRunningIntake] = useState(false);
   const [audioBuffer, setAudioBuffer] = useState<AudioBuffer | null>(null);
   const [audioError, setAudioError] = useState<string | null>(null);
   const [hasPlayedCurrent, setHasPlayedCurrent] = useState(false);
@@ -176,6 +177,22 @@ export function KutReviewerWorkbench() {
     setHasPlayedCurrent(false);
   }, [activeItem]);
 
+  const runTornMemoriesIntake = useCallback(async () => {
+    if (isRunningIntake) return;
+    setIsRunningIntake(true);
+    setQueueError(null);
+    try {
+      const response = await fetch("/api/admin/kkr-torn-memories/prosecute", { method: "POST", cache: "no-store" });
+      const body = (await response.json().catch(() => ({}))) as { error?: string };
+      if (!response.ok || body.error) throw new Error(body.error || "KKr intake failed");
+      window.location.reload();
+    } catch (error) {
+      setQueueError(error instanceof Error ? error.message : "KKr intake failed");
+    } finally {
+      setIsRunningIntake(false);
+    }
+  }, [isRunningIntake]);
+
   const commitDecision = useCallback(async (action: ReviewerAction) => {
     if (!activeItem || pendingAction) return;
     if ((action === "APPROVE" || action === "TRIM") && (!audioBuffer || !hasPlayedCurrent)) return;
@@ -202,7 +219,7 @@ export function KutReviewerWorkbench() {
   }, [activeItem, audioBuffer, correctedEndSec, hasPlayedCurrent, pendingAction, queue.length]);
 
   if (isLoadingQueue) return <main className="min-h-screen bg-[#090806] p-8 text-stone-200">Loading governed KUT queue…</main>;
-  if (!activeItem) return <main className="min-h-screen bg-[#090806] p-8 text-stone-200"><h1 className="text-2xl font-black text-amber-200">P0 KUT REVIEWER</h1><p className="mt-4">No pending governed KUT review items in Supabase.</p>{queueError && <p className="mt-2 text-red-400">{queueError}</p>}</main>;
+  if (!activeItem) return <main className="min-h-screen bg-[#090806] p-8 text-stone-200"><h1 className="text-2xl font-black text-amber-200">P0 KUT REVIEWER</h1><p className="mt-4">No pending governed KUT review items in Supabase.</p><button onClick={() => void runTornMemoriesIntake()} disabled={isRunningIntake} className="mt-5 rounded-lg bg-amber-300 px-4 py-2 text-sm font-black text-black disabled:opacity-40">{isRunningIntake ? "Running Torn Memories intake…" : "Run Torn Memories intake"}</button>{queueError && <p className="mt-2 text-red-400">{queueError}</p>}</main>;
 
   const windowStart = Math.max(activeItem.startSec, correctedEndSec - END_WINDOW_LEAD);
   const windowEnd = correctedEndSec + END_WINDOW_TAIL;
@@ -210,8 +227,11 @@ export function KutReviewerWorkbench() {
   return <main className="min-h-screen bg-[#090806] text-stone-100">
     <header className="border-b border-amber-200/20 bg-[#100d08] px-5 py-4">
       <p className="text-xs font-black uppercase tracking-[0.24em] text-amber-300">Internal · Admin only</p>
-      <h1 className="mt-1 text-2xl font-black">P0 KUT REVIEWER</h1>
-      <p className="mt-1 text-sm text-stone-400">Governed queue · decoded source audio · one KUT at a time.</p>
+      <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-2xl font-black">P0 KUT REVIEWER</h1>
+        <button onClick={() => void runTornMemoriesIntake()} disabled={isRunningIntake} className="rounded-lg bg-amber-300 px-4 py-2 text-sm font-black text-black disabled:opacity-40">{isRunningIntake ? "Running Torn Memories intake…" : "Run Torn Memories intake"}</button>
+      </div>
+      <p className="mt-1 text-sm text-stone-400">BLK → Sister Pair Unit → governed vocal CC. IN-PIX remains internal evidence; review audio is vocal LT-PIX only.</p>
     </header>
     <section className="mx-auto grid max-w-[1500px] gap-4 px-4 py-4 lg:grid-cols-[320px_minmax(0,1fr)]">
       <aside className="rounded-2xl border border-stone-700 bg-stone-900/80 p-4">
