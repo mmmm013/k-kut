@@ -195,13 +195,14 @@ export function KutReviewerWorkbench() {
 
   const commitDecision = useCallback(async (action: ReviewerAction) => {
     if (!activeItem || pendingAction) return;
-    if ((action === "APPROVE" || action === "TRIM") && (!audioBuffer || !hasPlayedCurrent)) return;
+    const sourceDurationSec = audioBuffer?.duration;
+    if ((action === "APPROVE" || action === "TRIM") && (!sourceDurationSec || !hasPlayedCurrent)) return;
     setPendingAction(action);
     try {
       const response = await fetch("/api/admin/kut-reviewer/decision", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ itemId: activeItem.id, action, correctedEndSec, sourceDurationSec: audioBuffer.duration }),
+        body: JSON.stringify({ itemId: activeItem.id, action, correctedEndSec, sourceDurationSec }),
       });
       if (!response.ok) {
         const body = (await response.json().catch(() => ({}))) as { detail?: string; error?: string };
