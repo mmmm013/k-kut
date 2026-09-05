@@ -230,7 +230,7 @@ export function KutReviewerWorkbench() {
       <p className="text-xs font-black uppercase tracking-[0.24em] text-amber-300">Internal · Admin only</p>
       <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-black">P0 KUT REVIEWER</h1>
-        <button onClick={() => void runTornMemoriesIntake()} disabled={isRunningIntake} className="rounded-lg bg-amber-300 px-4 py-2 text-sm font-black text-black disabled:opacity-40">{isRunningIntake ? "Running Torn Memories intake…" : "Run Torn Memories intake"}</button>
+        <div className="flex flex-wrap gap-2"><a href="/admin/in-pix-reviewer" className="rounded-lg border border-sky-400/60 px-4 py-2 text-sm font-black text-sky-200">Map IN-PIX BLKs</a><button onClick={() => void runTornMemoriesIntake()} disabled={isRunningIntake} className="rounded-lg bg-amber-300 px-4 py-2 text-sm font-black text-black disabled:opacity-40">{isRunningIntake ? "Running Torn Memories intake…" : "Run Torn Memories intake"}</button></div>
       </div>
       <p className="mt-1 text-sm text-stone-400">BLK → Sister Pair Unit → governed vocal CC. IN-PIX remains internal evidence; review audio is vocal LT-PIX only.</p>
     </header>
