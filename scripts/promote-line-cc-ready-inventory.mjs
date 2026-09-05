@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
 import { prosecuteSingleBlkCc } from "./lib/cc-single-blk-boundary-law.mjs";
+import { validate4peIntakeEvidence } from "./lib/4pe-intake-evidence-gate.mjs";
 
 assertBlkKkMassGenerationAllowed(import.meta.url);
 
@@ -18,7 +19,8 @@ const payload = JSON.parse(fs.readFileSync(source, "utf8"));
 const candidates = payload.candidates || [];
 const prosecuted = candidates.map((candidate) => {
   const boundary = prosecuteSingleBlkCc(candidate, { requireRenderedEndpoint: true });
-  if (candidate.status === "READY_FOR_CC" && boundary.passed) {
+  const intake = validate4peIntakeEvidence(candidate.method_notes);
+  if (candidate.status === "READY_FOR_CC" && boundary.passed && intake.passed) {
     return { ...candidate, boundary_prosecution: boundary };
   }
   return {
@@ -28,6 +30,7 @@ const prosecuted = candidates.map((candidate) => {
       ...(Array.isArray(candidate.hold_reasons) ? candidate.hold_reasons : []),
       ...(candidate.status === "READY_FOR_CC" ? [] : [`source status was ${candidate.status || "missing"}`]),
       ...boundary.reasons,
+      ...intake.reasons,
     ],
     boundary_prosecution: boundary,
   };

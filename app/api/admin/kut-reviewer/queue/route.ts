@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeGovernedQueueRows } from "@/lib/admin/kutReviewer";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
+import { validate4peIntakeEvidence } from "@/lib/kkr/intakeEvidenceGate";
 
 export const dynamic = "force-dynamic";
 
@@ -39,7 +40,7 @@ export async function GET(request: NextRequest) {
   ]);
   if (error) return NextResponse.json({ error: "universal_queue_read_failed", detail: error.message }, { status: 502 });
   if (candidates.error) return NextResponse.json({ error: "kkr_candidate_queue_read_failed", detail: candidates.error.message }, { status: 502 });
-  const kkrRows = (candidates.data || []).map((row: any) => ({
+  const kkrRows = (candidates.data || []).filter((row: any) => validate4peIntakeEvidence(row.method_notes).passed).map((row: any) => ({
     ii_key: row.candidate_key, authority_title: row.authority_title, display_text: row.display_text,
     start_sec: row.start_sec, end_sec: row.end_sec, evidence_state: row.evidence_state,
     audio_path: row.audio_path, container_type: row.container_type, ii_type: row.ii_type,
