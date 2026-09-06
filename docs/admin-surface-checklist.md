@@ -67,3 +67,33 @@ Use this checklist when adding, renaming, splitting, repairing, or reviewing any
 - [ ] Admin index and internal references point to the canonical route.
 - [ ] Route wiring is intact, smoke-tested, and free of missing local modules.
 - [ ] Persistence, safety, tests, and audits have been checked before merge.
+
+## Release gate
+
+Use this release checklist when deciding whether a change is deploy-ready. Platform readiness is the hard gate; content coverage is a separate quality check.
+
+### Platform readiness score (must pass: 8/8)
+
+- [ ] Canonical route correct
+- [ ] Local active module
+- [ ] Legacy paths redirect-only
+- [ ] Internal links/docs updated
+- [ ] Token/private gates preserved
+- [ ] Route wiring intact
+- [ ] Smoke-tested end to end
+- [ ] Persistence/safety intact
+
+### Content coverage score (target: 6/7 or better)
+
+- [ ] Core themes represented
+- [ ] Top sentiment buckets covered
+- [ ] Major user intents covered
+- [ ] No obvious theme skew
+- [ ] Messaging matches audience
+- [ ] Seasonal/campaign themes included if needed
+- [ ] Coverage gaps explicitly accepted if below target
+
+### Decision rule
+
+- **Deploy:** Platform readiness passes, and content coverage meets target or has explicit approval.
+- **Block:** Any platform readiness item fails.
