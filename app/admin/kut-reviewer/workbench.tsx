@@ -91,6 +91,7 @@ export function KutReviewerWorkbench() {
   const [audioError, setAudioError] = useState<string | null>(null);
   const [hasPlayedCurrent, setHasPlayedCurrent] = useState(false);
   const [corrections, setCorrections] = useState<Record<string, number>>({});
+  const playerRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -117,6 +118,7 @@ export function KutReviewerWorkbench() {
     let cancelled = false;
     sourceRef.current?.stop();
     sourceRef.current = null;
+    playerRef.current?.pause();
     setAudioBuffer(null);
     setAudioError(null);
     setHasPlayedCurrent(false);
@@ -211,8 +213,15 @@ export function KutReviewerWorkbench() {
     <header className="border-b border-amber-200/20 bg-[#100d08] px-5 py-4">
       <p className="text-xs font-black uppercase tracking-[0.24em] text-amber-300">Internal · Admin only</p>
       <h1 className="mt-1 text-2xl font-black">TPR · PRE-MADE II REVIEWER</h1>
-      <p className="mt-1 text-sm text-stone-400">Pre-made II queue only · READY_FOR_REVIEW / NEEDS_GREGORY_REVIEW · one II at a time.</p>
+      <p className="mt-1 text-sm text-stone-400">Pre-made vocal II queue only. KKr establishes InTP/VTP evidence; TPR listens, trims, approves, holds, or rejects.</p>
     </header>
+    <div className="sticky top-0 z-20 border-b border-amber-300/30 bg-[#100d08]/95 px-4 py-3 backdrop-blur">
+      <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-3">
+        <strong className="text-sm text-amber-200">VOCAL TPR PLAYER</strong>
+        <span className="min-w-0 flex-1 truncate text-xs text-stone-400">{activeItem ? `${activeItem.title} · ${timeLabel(activeItem.startSec)} → ${timeLabel(activeItem.storedEndSec)}` : "No active II"}</span>
+        <audio ref={playerRef} controls preload="metadata" src={audioSrc} onPlay={() => setHasPlayedCurrent(true)} onError={() => setAudioError("Private vocal audio could not be played.")} className="min-w-[280px] flex-1" />
+      </div>
+    </div>
     <section className="mx-auto grid max-w-[1500px] gap-4 px-4 py-4 lg:grid-cols-[320px_minmax(0,1fr)]">
       <aside className="rounded-2xl border border-stone-700 bg-stone-900/80 p-4">
         <p className="text-sm text-stone-300">Pending queue: <strong>{queue.length}</strong></p>
