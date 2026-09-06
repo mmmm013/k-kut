@@ -18,14 +18,13 @@ function createServiceClient() {
 
 function toReviewerRow(row: any) {
   return {
-    id: row.ii_key, kut_id: row.ii_key, display_title: row.authority_title, display_text: row.display_text,
-    capture_start_sec: row.start_sec, stored_capture_end_sec: row.end_sec, corrected_capture_end_sec: row.end_sec,
-    // The universal queue itself is the unresolved Gregory-review authority. Preserve the
-    // source evidence state separately; do not let legacy review-state vocabulary filter it out.
-    review_state: "PENDING_GREGORY_REVIEW",
-    boundary_prosecution_state: row.evidence_state || "RECONCILED_EXISTING_EVIDENCE",
-    source_audio_path: row.audio_path, storage_bucket: "tracks", product_family: row.container_type || row.ii_type,
-    intent_lane: row.form_key || row.ii_type, public_route: null, updated_at: row.updated_at, queue_order: row.playable_rank,
+    id: row.ii_key, kut_id: row.ii_key, display_title: row.parent_title || row.authority_title || "Pre-made II",
+    display_text: row.display_text || row.section_label || null,
+    capture_start_sec: row.start_seconds, stored_capture_end_sec: row.end_seconds, corrected_capture_end_sec: row.end_seconds,
+    review_state: row.review_pack_state || "NEEDS_GREGORY_REVIEW",
+    boundary_prosecution_state: row.approval_state || "PREMADE_REVIEW_PACK",
+    source_audio_path: row.local_audio_path, storage_bucket: "tracks", product_family: row.ii_type,
+    intent_lane: row.section_label || row.kk_no || row.ii_type, public_route: null, updated_at: row.updated_at || null, queue_order: row.queue_order ?? null,
   };
 }
 
@@ -33,8 +32,8 @@ export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = createServiceClient();
   if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const { data, error, count } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("*", { count: "exact" }).in("review_state", ["READY_FOR_REVIEW", "NEEDS_GREGORY_REVIEW"]).order("playable_rank", { ascending: true }).order("authority_title", { ascending: true }).order("ii_type", { ascending: true }).order("start_sec", { ascending: true, nullsFirst: false }).limit(1001);
-  if (error) return NextResponse.json({ error: "premade_ii_queue_read_failed", detail: error.message }, { status: 502 });
+  const { data, error, count } = await supabase.from("gpmx_v012_vocal_ii_review_queue_v1").select("*", { count: "exact" }).order("parent_title", { ascending: true }).order("kk_no", { ascending: true, nullsFirst: false }).order("start_seconds", { ascending: true, nullsFirst: false }).limit(1001);
+  if (error) return NextResponse.json({ error: "premade_vocal_queue_read_failed", detail: error.message }, { status: 502 });
   const queue = [...new Map(normalizeGovernedQueueRows((data || []).map(toReviewerRow)).map((item) => [item.id, item])).values()];
-  return NextResponse.json({ queue, total: count || 0, source: "gpmx_backend.universal_kut_reviewer_queue_v1; pre-made READY_FOR_REVIEW / NEEDS_GREGORY_REVIEW only; deduped by ii_key", pageLimit: 1001 });
+  return NextResponse.json({ queue, total: count || 0, source: "gpmx_v012_vocal_ii_review_queue_v1; pre-made vocal II review packs; deduped by ii_key", pageLimit: 1001 });
 }

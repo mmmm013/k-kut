@@ -14,11 +14,11 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null) as RequestBody | null;
   if (!body?.itemId || !body.action || !VALID_ACTIONS.has(body.action)) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   const supabase = serviceClient(); if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const query = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key,card_key,start_sec,end_sec,source_relation,evidence_state").eq("ii_key", body.itemId).in("review_state", ["READY_FOR_REVIEW", "NEEDS_GREGORY_REVIEW"]).limit(1).maybeSingle();
+  const query = await supabase.from("gpmx_v012_vocal_ii_review_queue_v1").select("ii_key,card_key,start_seconds,end_seconds,source_relation,approval_state").eq("ii_key", body.itemId).limit(1).maybeSingle();
   if (query.error || !query.data) return NextResponse.json({ error: "item_not_found", detail: query.error?.message }, { status: 404 });
   const item = query.data;
-  const correctedEndSec = clampNoTrespassEnd(Number(item.start_sec), Number(item.end_sec), body.correctedEndSec ?? Number(item.end_sec));
-  const insert = await supabase.from("gpmx_admin_kut_review_decision_v1").insert({ ii_key: item.ii_key, card_key: item.card_key, action: body.action, original_start_sec: item.start_sec, original_end_sec: item.end_sec, corrected_end_sec: correctedEndSec, reviewer_key: "GREGORY", source_relation: item.source_relation, evidence_state: item.evidence_state }).select("id").single();
+  const correctedEndSec = clampNoTrespassEnd(Number(item.start_seconds), Number(item.end_seconds), body.correctedEndSec ?? Number(item.end_seconds));
+  const insert = await supabase.from("gpmx_admin_kut_review_decision_v1").insert({ ii_key: item.ii_key, card_key: item.card_key, action: body.action, original_start_sec: item.start_seconds, original_end_sec: item.end_seconds, corrected_end_sec: correctedEndSec, reviewer_key: "GREGORY", source_relation: item.source_relation, evidence_state: item.approval_state }).select("id").single();
   if (insert.error) return NextResponse.json({ error: "decision_persist_failed", detail: insert.error.message }, { status: 502 });
   return NextResponse.json({ ok: true, decisionId: insert.data.id, itemId: item.ii_key, action: body.action, correctedEndSec });
 }
