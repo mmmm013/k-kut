@@ -142,7 +142,7 @@ export function isPendingReview(item: GovernedKutQueueItem): boolean {
   const boundary = item.boundaryState.toUpperCase();
   if (review.includes("REJECT")) return false;
   if (review.includes("CONFIRMED") && boundary.includes("STRICT_LAST_VOCAL_NOTE_END_PASS")) return false;
-  return review.includes("PENDING") || review.includes("HOLD") || review.includes("TPR") || boundary.includes("HOLD") || boundary.includes("EXCEPTION") || boundary.includes("TPR");
+  return review.includes("READY_FOR_REVIEW") || review.includes("NEEDS_GREGORY_REVIEW") || review.includes("PENDING") || review.includes("HOLD") || review.includes("TPR") || boundary.includes("HOLD") || boundary.includes("EXCEPTION") || boundary.includes("TPR");
 }
 
 export function nextQueueIndexAfterDecision(currentIndex: number, queueLength: number): number {
