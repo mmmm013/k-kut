@@ -29,7 +29,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   const supabase = serviceClient();
   if (!supabase) return unavailable(503, "service client unavailable");
   const { id } = await params;
-  const { data, error } = await supabase.schema("gpmx_backend").from("universal_kut_reviewer_queue_v1")
+  const { data, error } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1")
     .select("ii_key,authority_title,audio_path,playable_rank,source_track_ref")
     .eq("ii_key", id).in("review_state", ["READY_FOR_REVIEW", "NEEDS_GREGORY_REVIEW"]).limit(1).maybeSingle();
   if (error || !data || data.playable_rank !== 0) return unavailable();
