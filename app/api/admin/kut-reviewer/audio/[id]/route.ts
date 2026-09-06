@@ -29,7 +29,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   const supabase = serviceClient();
   if (!supabase) return unavailable(503, "service client unavailable");
   const { id } = await params;
-  const { data, error } = await supabase.from("gpmx_v012_vocal_ii_review_queue_v1")
+  const { data, error } = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1")
     .select("ii_key,local_audio_path")
     .eq("ii_key", id).limit(1).maybeSingle();
   if (error || !data) return unavailable();

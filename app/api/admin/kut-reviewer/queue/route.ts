@@ -32,8 +32,8 @@ export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = createServiceClient();
   if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const { data, error, count } = await supabase.from("gpmx_v012_vocal_ii_review_queue_v1").select("*", { count: "exact" }).order("parent_title", { ascending: true }).order("kk_no", { ascending: true, nullsFirst: false }).order("start_seconds", { ascending: true, nullsFirst: false }).limit(1001);
+  const { data, error, count } = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1").select("*", { count: "exact" }).order("parent_title", { ascending: true }).order("kk_no", { ascending: true, nullsFirst: false }).order("start_seconds", { ascending: true, nullsFirst: false }).limit(1001);
   if (error) return NextResponse.json({ error: "premade_vocal_queue_read_failed", detail: error.message }, { status: 502 });
   const queue = [...new Map(normalizeGovernedQueueRows((data || []).map(toReviewerRow)).map((item) => [item.id, item])).values()];
-  return NextResponse.json({ queue, total: count || 0, source: "gpmx_v012_vocal_ii_review_queue_v1; pre-made vocal II review packs; deduped by ii_key", pageLimit: 1001 });
+  return NextResponse.json({ queue, total: count || 0, source: "gpmc_v012_vocal_ii_review_queue_v1; pre-made vocal II review packs; deduped by ii_key", pageLimit: 1001 });
 }

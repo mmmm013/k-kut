@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null) as RequestBody | null;
   if (!body?.itemId || !body.action || !VALID_ACTIONS.has(body.action)) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   const supabase = serviceClient(); if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const query = await supabase.from("gpmx_v012_vocal_ii_review_queue_v1").select("ii_key,card_key,start_seconds,end_seconds,source_relation,approval_state").eq("ii_key", body.itemId).limit(1).maybeSingle();
+  const query = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1").select("ii_key,card_key,start_seconds,end_seconds,source_relation,approval_state").eq("ii_key", body.itemId).limit(1).maybeSingle();
   if (query.error || !query.data) return NextResponse.json({ error: "item_not_found", detail: query.error?.message }, { status: 404 });
   const item = query.data;
   const correctedEndSec = clampNoTrespassEnd(Number(item.start_seconds), Number(item.end_seconds), body.correctedEndSec ?? Number(item.end_seconds));
