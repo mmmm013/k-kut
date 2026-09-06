@@ -29,40 +29,15 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   const supabase = serviceClient();
   if (!supabase) return unavailable(503, "service client unavailable");
   const { id } = await params;
-  const { data: governed, error } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1")
-    .select("ii_key,authority_title,audio_path,playable_rank,source_track_ref")
+  const { data, error } = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1")
+    .select("ii_key,local_audio_path")
     .eq("ii_key", id).limit(1).maybeSingle();
-  if (error) return unavailable(503, error.message);
-  const candidate = governed ? null : await supabase.from("gpmx_admin_kkr_tpr_candidate_v1")
-    .select("candidate_key,authority_title,audio_path,source_track_ref,review_state")
-    .eq("candidate_key", id).eq("review_state", "PENDING_GREGORY_REVIEW").limit(1).maybeSingle();
-  if (candidate?.error) return unavailable(503, candidate.error.message);
-  const data = governed || (candidate?.data ? { ...candidate.data, ii_key: candidate.data.candidate_key, playable_rank: 0 } : null);
-  if (!data || data.playable_rank !== 0) return unavailable();
-
-  // Fresh-inventory law: resolve the exact LT-PIX family by track id first.
-  // Never infer the source object from display title or a legacy URL/filename.
-  if (data.source_track_ref) {
-    const { data: resolved } = await supabase.from("gpmx_track_storage_audio_resolver_v1")
-      .select("resolved_bucket_id,resolved_object_name,resolver_state,delivery_ready")
-      .eq("track_id", String(data.source_track_ref))
-      .eq("resolver_state", "RESOLVED_FROM_STORAGE_OBJECT_ID")
-      .limit(1).maybeSingle();
-    if (resolved?.resolved_object_name) {
-      const bucket = String(resolved.resolved_bucket_id || "tracks");
-      const signed = await supabase.storage.from(bucket).createSignedUrl(String(resolved.resolved_object_name), 300);
-      if (!signed.error && signed.data?.signedUrl) return proxyAudio(request, signed.data.signedUrl);
-    }
-  }
-
-  // Compatibility fallback for older reviewer evidence only. Fresh inventory must carry source_track_ref.
-  if (!data.audio_path) return unavailable(503, "fresh inventory source_track_ref did not resolve");
-  const pathValue = String(data.audio_path);
+  if (error || !data) return unavailable();
+  const pathValue = String(data.local_audio_path || "").trim();
+  if (!pathValue) return unavailable(503, "review-pack audio path missing");
   if (/^https?:\/\//i.test(pathValue)) return proxyAudio(request, pathValue);
-  if (pathValue.startsWith("public/")) return proxyAudio(request, new URL("/" + pathValue.replace(/^public\//, ""), request.url).toString());
-  let bucket = "tracks"; let path = pathValue;
-  if (pathValue.startsWith("current-ii/")) { bucket = "ii-delivery"; path = pathValue; }
-  const signed = await supabase.storage.from(bucket).createSignedUrl(path, 300);
-  if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "signed audio unavailable");
+  if (pathValue.startsWith("/")) return unavailable(503, "review-pack audio has not been uploaded to private Storage");
+  const signed = await supabase.storage.from("tracks").createSignedUrl(pathValue, 300);
+  if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private review audio unavailable");
   return proxyAudio(request, signed.data.signedUrl);
 }

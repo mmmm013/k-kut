@@ -22,13 +22,13 @@ export type GovernedKutQueueItem = {
 type UnknownRecord = Record<string, unknown>;
 
 const STRING_PATHS = {
-  id: ["id", "review_id", "work_item_id", "qc_id"],
-  kutId: ["kut_id", "ii_id", "source_kut_id", "track_id", "source_track_id"],
-  title: ["display_title", "title", "source_title", "track_title"],
-  reviewState: ["review_state", "correction.review_state"],
-  boundaryState: ["boundary_prosecution_state", "correction.boundary_prosecution_state"],
+  id: ["ii_key", "id", "review_id", "work_item_id", "qc_id"],
+  kutId: ["ii_key", "kut_id", "ii_id", "source_kut_id", "track_id", "source_track_id"],
+  title: ["parent_title", "display_title", "title", "source_title", "track_title"],
+  reviewState: ["review_pack_state", "review_state", "correction.review_state"],
+  boundaryState: ["approval_state", "boundary_prosecution_state", "correction.boundary_prosecution_state"],
   sourceAudioBucket: ["source_audio_bucket", "storage_bucket", "audio_bucket", "bucket"],
-  sourceAudioPath: ["source_audio_path", "storage_object_path", "audio_object_path", "object_path", "captured_cc.source_audio_path"],
+  sourceAudioPath: ["local_audio_path", "source_audio_path", "storage_object_path", "audio_object_path", "object_path", "captured_cc.source_audio_path"],
   publicRoute: ["public_route"],
   intentLane: ["intent_lane"],
   productFamily: ["product_family"],
@@ -36,8 +36,8 @@ const STRING_PATHS = {
 } as const;
 
 const NUMBER_PATHS = {
-  startSec: ["capture_start_sec", "start_sec", "captured_cc.capture_start_sec"],
-  storedEndSec: ["stored_capture_end_sec", "capture_end_sec", "end_sec", "captured_cc.stored_capture_end_sec"],
+  startSec: ["start_seconds", "capture_start_sec", "start_sec", "captured_cc.capture_start_sec"],
+  storedEndSec: ["end_seconds", "stored_capture_end_sec", "capture_end_sec", "end_sec", "captured_cc.stored_capture_end_sec"],
   correctedStartSec: ["corrected_capture_start_sec", "correction.corrected_capture_start_sec"],
   correctedEndSec: ["corrected_capture_end_sec", "correction.corrected_capture_end_sec"],
   queueOrder: ["queue_order", "playable_rank"],
@@ -142,7 +142,7 @@ export function isPendingReview(item: GovernedKutQueueItem): boolean {
   const boundary = item.boundaryState.toUpperCase();
   if (review.includes("REJECT")) return false;
   if (review.includes("CONFIRMED") && boundary.includes("STRICT_LAST_VOCAL_NOTE_END_PASS")) return false;
-  return review.includes("PENDING") || review.includes("HOLD") || review.includes("TPR") || boundary.includes("HOLD") || boundary.includes("EXCEPTION") || boundary.includes("TPR");
+  return review.includes("READY_FOR_REVIEW") || review.includes("NEEDS_GREGORY_REVIEW") || review.includes("PENDING") || review.includes("HOLD") || review.includes("TPR") || boundary.includes("HOLD") || boundary.includes("EXCEPTION") || boundary.includes("TPR");
 }
 
 export function nextQueueIndexAfterDecision(currentIndex: number, queueLength: number): number {

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeGovernedQueueRows } from "@/lib/admin/kutReviewer";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
-import { validate4peIntakeEvidence } from "@/lib/kkr/intakeEvidenceGate";
 
 export const dynamic = "force-dynamic";
 
@@ -19,14 +18,13 @@ function createServiceClient() {
 
 function toReviewerRow(row: any) {
   return {
-    id: row.ii_key, kut_id: row.ii_key, display_title: row.authority_title, display_text: row.display_text,
-    capture_start_sec: row.start_sec, stored_capture_end_sec: row.end_sec, corrected_capture_end_sec: row.end_sec,
-    // The universal queue itself is the unresolved Gregory-review authority. Preserve the
-    // source evidence state separately; do not let legacy review-state vocabulary filter it out.
-    review_state: "PENDING_GREGORY_REVIEW",
-    boundary_prosecution_state: row.evidence_state || "RECONCILED_EXISTING_EVIDENCE",
-    source_audio_path: row.audio_path, storage_bucket: "tracks", product_family: row.container_type || row.ii_type,
-    intent_lane: row.form_key || row.ii_type, public_route: null, updated_at: row.updated_at, queue_order: row.playable_rank,
+    id: row.ii_key, kut_id: row.ii_key, display_title: row.parent_title || row.authority_title || "Pre-made II",
+    display_text: row.display_text || row.section_label || null,
+    capture_start_sec: row.start_seconds, stored_capture_end_sec: row.end_seconds, corrected_capture_end_sec: row.end_seconds,
+    review_state: row.review_pack_state || "NEEDS_GREGORY_REVIEW",
+    boundary_prosecution_state: row.approval_state || "PREMADE_REVIEW_PACK",
+    source_audio_path: row.local_audio_path, storage_bucket: "tracks", product_family: row.ii_type,
+    intent_lane: row.section_label || row.kk_no || row.ii_type, public_route: null, updated_at: row.updated_at || null, queue_order: row.queue_order ?? null,
   };
 }
 
@@ -34,20 +32,8 @@ export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = createServiceClient();
   if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const [{ data, error, count }, candidates] = await Promise.all([
-    supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("*", { count: "exact" }).order("playable_rank", { ascending: true }).order("authority_title", { ascending: true }).order("ii_type", { ascending: true }).order("start_sec", { ascending: true, nullsFirst: false }).limit(500),
-    supabase.from("gpmx_admin_kkr_tpr_candidate_v1").select("*").eq("review_state", "PENDING_GREGORY_REVIEW").order("updated_at", { ascending: true }).limit(100),
-  ]);
-  if (error) return NextResponse.json({ error: "universal_queue_read_failed", detail: error.message }, { status: 502 });
-  if (candidates.error) return NextResponse.json({ error: "kkr_candidate_queue_read_failed", detail: candidates.error.message }, { status: 502 });
-  const kkrRows = (candidates.data || []).filter((row: any) => validate4peIntakeEvidence(row.method_notes).passed).map((row: any) => ({
-    ii_key: row.candidate_key, authority_title: row.authority_title, display_text: row.display_text,
-    start_sec: row.start_sec, end_sec: row.end_sec, evidence_state: row.evidence_state,
-    audio_path: row.audio_path, container_type: row.container_type, ii_type: row.ii_type,
-    form_key: row.form_key, updated_at: row.updated_at, playable_rank: 0,
-  }));
-  const queue = [...new Map(normalizeGovernedQueueRows([...(data || []).map(toReviewerRow), ...kkrRows.map(toReviewerRow)]).map((item) => [item.id, item])).values()];
-  const { count: playableTotal } = await supabase.from("gpmx_admin_kut_reviewer_queue_v1").select("ii_key", { count: "exact", head: true }).eq("playable_rank", 0);
-  const { count: cardTotal } = await supabase.from("gpmx_admin_lt_pix_card_summary_v1").select("card_key", { count: "exact", head: true });
-  return NextResponse.json({ queue, total: count || 0, playableTotal: playableTotal || 0, cards: cardTotal || 0, source: "governed queue plus direct KKr candidate intake via service-role-only bridge", pageLimit: 500 });
+  const { data, error, count } = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1").select("*", { count: "exact" }).order("parent_title", { ascending: true }).order("kk_no", { ascending: true, nullsFirst: false }).order("start_seconds", { ascending: true, nullsFirst: false }).limit(1001);
+  if (error) return NextResponse.json({ error: "premade_vocal_queue_read_failed", detail: error.message }, { status: 502 });
+  const queue = [...new Map(normalizeGovernedQueueRows((data || []).map(toReviewerRow)).map((item) => [item.id, item])).values()];
+  return NextResponse.json({ queue, total: count || 0, source: "gpmc_v012_vocal_ii_review_queue_v1; pre-made vocal II review packs; deduped by ii_key", pageLimit: 1001 });
 }
