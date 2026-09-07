@@ -12,27 +12,39 @@ export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = fourPeServiceClient();
   if (!supabase) return NextResponse.json({ error: "service_client_unavailable" }, { status: 503 });
-  const [staged, runs] = await Promise.all([
+  const [staged, runs, tracks] = await Promise.all([
     supabase.from("gpm_4pe_staged_changes").select("*").eq("stage_state", "STAGED").order("staged_at"),
     supabase.from("gpm_4pe_runs").select("id,run_key,run_state,staged_item_count,started_at,completed_at").order("started_at", { ascending: false }).limit(12),
+    supabase.from("tracks").select("id,title,kkr_track_title,bucket_id,source_path,storage_object_id,source_status,pix_source_type,is_instrumental").eq("pix_source_type", "LT-PIX").eq("source_status", "active").eq("is_instrumental", false).order("title").limit(2000),
   ]);
-  if (staged.error || runs.error) return NextResponse.json({ error: "four_pe_status_read_failed", detail: staged.error?.message || runs.error?.message }, { status: 502 });
-  return NextResponse.json({ staged: staged.data || [], runs: runs.data || [] });
+  if (staged.error || runs.error || tracks.error) return NextResponse.json({ error: "four_pe_status_read_failed", detail: staged.error?.message || runs.error?.message || tracks.error?.message }, { status: 502 });
+  return NextResponse.json({
+    staged: staged.data || [], runs: runs.data || [],
+    availableTracks: (tracks.data || []).map((track) => ({ id: track.id, title: track.kkr_track_title || track.title })),
+  });
 }
 
 export async function POST(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const input = await request.json().catch(() => null) as Record<string, unknown> | null;
-  const discoTrackKey = String(input?.discoTrackKey || "").trim();
-  const authorityTitle = String(input?.authorityTitle || "").trim();
+  const trackId = String(input?.trackId || "").trim();
   const operation = String(input?.operation || "UPSERT").toUpperCase();
-  const sourceLocator = input?.sourceLocator;
-  const stlTrackId = sourceLocator && typeof sourceLocator === "object" && !Array.isArray(sourceLocator) ? String((sourceLocator as Record<string, unknown>).stlTrackId || "").trim() : "";
-  if (!discoTrackKey || !authorityTitle || !["UPSERT", "REPROCESS", "DELETE"].includes(operation) || !stlTrackId || !validSha256(input?.expectedMixedSha256) || !validSha256(input?.lyricAuthoritySha256)) {
+  if (!trackId || !["UPSERT", "REPROCESS", "DELETE"].includes(operation) || !validSha256(input?.expectedMixedSha256) || !validSha256(input?.lyricAuthoritySha256)) {
     return NextResponse.json({ error: "valid_disco_stl_stage_contract_required" }, { status: 400 });
   }
   const supabase = fourPeServiceClient();
   if (!supabase) return NextResponse.json({ error: "service_client_unavailable" }, { status: 503 });
+  const authority = await supabase.from("tracks").select("id,title,kkr_track_title,bucket_id,source_path,storage_object_id,pix_source_type,source_status,is_instrumental").eq("id", trackId).eq("pix_source_type", "LT-PIX").eq("source_status", "active").eq("is_instrumental", false).maybeSingle();
+  if (authority.error || !authority.data) return NextResponse.json({ error: "active_lt_pix_authority_required", detail: authority.error?.message }, { status: 409 });
+  const discoTrackKey = authority.data.id;
+  const authorityTitle = authority.data.kkr_track_title || authority.data.title;
+  const sourceLocator = {
+    authority: "DISCO_STL",
+    supabaseLtPixTrackId: authority.data.id,
+    storageObjectId: authority.data.storage_object_id,
+    bucket: authority.data.bucket_id,
+    path: authority.data.source_path,
+  };
   const existing = await supabase.from("gpm_4pe_staged_changes").select("id").eq("disco_track_key", discoTrackKey).eq("stage_state", "STAGED").maybeSingle();
   if (existing.error) return NextResponse.json({ error: "staging_lookup_failed", detail: existing.error.message }, { status: 502 });
   const payload = {

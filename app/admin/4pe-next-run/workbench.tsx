@@ -4,10 +4,12 @@ import { FormEvent, useCallback, useEffect, useState } from "react";
 
 type Staged = { id: string; disco_track_key: string; authority_title: string; operation: string; staged_at: string };
 type Run = { id: string; run_key: string; run_state: string; staged_item_count: number; started_at: string };
+type AvailableTrack = { id: string; title: string };
 
 export function FourPeNextRunWorkbench() {
   const [staged, setStaged] = useState<Staged[]>([]);
   const [runs, setRuns] = useState<Run[]>([]);
+  const [availableTracks, setAvailableTracks] = useState<AvailableTrack[]>([]);
   const [message, setMessage] = useState("Loading Next Run…");
   const [busy, setBusy] = useState(false);
 
@@ -17,6 +19,7 @@ export function FourPeNextRunWorkbench() {
     if (!response.ok) throw new Error(body.detail || body.error || "4PE status unavailable");
     setStaged(body.staged || []);
     setRuns(body.runs || []);
+    setAvailableTracks(body.availableTracks || []);
     setMessage("");
   }, []);
 
@@ -30,8 +33,7 @@ export function FourPeNextRunWorkbench() {
       const response = await fetch("/api/admin/4pe/stage", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          discoTrackKey: data.get("discoTrackKey"), authorityTitle: data.get("authorityTitle"),
-          operation: data.get("operation"), sourceLocator: { stlTrackId: data.get("stlTrackId") },
+          trackId: data.get("trackId"), operation: data.get("operation"),
           stagedReason: data.get("stagedReason"),
         }),
       });
@@ -76,11 +78,9 @@ export function FourPeNextRunWorkbench() {
       </header>
 
       <form onSubmit={stage} className="grid gap-4 rounded-2xl border border-stone-700 bg-stone-900 p-5 md:grid-cols-2">
-        <label className="text-sm">Title<input required name="authorityTitle" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3" /></label>
-        <label className="text-sm">DISCO stable track ID<input required name="stlTrackId" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3" /></label>
-        <label className="text-sm">DISCO track key<input required name="discoTrackKey" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3" placeholder="gotta-keep-movin" /></label>
+        <label className="text-sm md:col-span-2">LT-PIX from DISCO STL<select required name="trackId" defaultValue="" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3"><option value="" disabled>Select a track…</option>{availableTracks.map((track) => <option key={track.id} value={track.id}>{track.title}</option>)}</select></label>
         <label className="text-sm">Action<select name="operation" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3"><option>UPSERT</option><option>REPROCESS</option><option>DELETE</option></select></label>
-        <label className="text-sm md:col-span-2">Reason<input name="stagedReason" defaultValue="NEXT_RUN" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3" /></label>
+        <label className="text-sm">Reason<input name="stagedReason" defaultValue="NEXT_RUN" className="mt-1 w-full rounded-lg border border-stone-600 bg-black p-3" /></label>
         <button disabled={busy} className="rounded-xl bg-amber-300 px-5 py-3 font-black text-black disabled:opacity-50">Stage for Next Run</button>
         <button type="button" disabled={busy || staged.length === 0} onClick={runNow} className="rounded-xl border border-amber-300 px-5 py-3 font-black text-amber-200 disabled:opacity-40">Run staged items now</button>
       </form>

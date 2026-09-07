@@ -21,7 +21,8 @@ requireText(stabilization, "requested_types = array['KK']::text[]", "KK-only sta
 requireText(migration, "where stage_state = 'STAGED'", "Next Run snapshot filter missing");
 requireText(migration, "'0 */12 * * *'", "12-hour scheduler missing");
 requireText(migration, "catalog_state = 'ARCHIVED'", "replacement archive lifecycle missing");
-requireText(stage, "stlTrackId", "DISCO stable track identifier missing from staging API");
+requireText(stage, '.eq("pix_source_type", "LT-PIX")', "stored LT-PIX authority selection missing from staging API");
+requireText(stage, 'authority: "DISCO_STL"', "DISCO STL source lineage missing from staging API");
 requireText(service, "FOUR_PE_WORKER_SECRET", "machine-only worker authentication missing");
 requireText(worker, "gpm_4pe_complete_step", "atomic worker completion RPC missing");
 requireText(reviewer, "gpm_4pe_ii_catalog", "TPR is not reading the immutable II catalog");
