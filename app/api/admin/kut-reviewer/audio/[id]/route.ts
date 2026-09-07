@@ -29,6 +29,23 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   const supabase = serviceClient();
   if (!supabase) return unavailable(503, "service client unavailable");
   const { id } = await params;
+  const candidate = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1")
+    .select("candidate_key,audio_path,method_notes")
+    .eq("candidate_key", id).limit(1).maybeSingle();
+  if (candidate.error) return unavailable(503, candidate.error.message);
+  if (candidate.data) {
+    const notes = candidate.data.method_notes && typeof candidate.data.method_notes === "object"
+      ? candidate.data.method_notes as Record<string, unknown>
+      : {};
+    const pathValue = String(notes.rendered_cc_path || candidate.data.audio_path || "").trim();
+    const bucket = String(notes.rendered_cc_bucket || "tracks").trim();
+    if (!pathValue) return unavailable(503, "governed CC audio path missing");
+    if (/^https?:\/\//i.test(pathValue)) return proxyAudio(request, pathValue);
+    if (pathValue.startsWith("/")) return unavailable(503, "governed CC audio has not been uploaded to private Storage");
+    const signed = await supabase.storage.from(bucket).createSignedUrl(pathValue, 300);
+    if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private governed CC unavailable");
+    return proxyAudio(request, signed.data.signedUrl);
+  }
   const { data, error } = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1")
     .select("ii_key,local_audio_path")
     .eq("ii_key", id).limit(1).maybeSingle();

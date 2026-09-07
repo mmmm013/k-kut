@@ -236,6 +236,7 @@ export function KutReviewerWorkbench() {
       <section className="rounded-2xl border border-amber-300/30 bg-stone-900 p-5 shadow-2xl">
         <p className="text-xs font-black uppercase tracking-widest text-amber-300">Review {activeIndex + 1} of {queue.length}</p>
         <h2 className="mt-1 text-3xl font-black">{activeItem.title}</h2>
+        {activeItem.displayText ? <p className="mt-3 whitespace-pre-line rounded-xl border border-amber-200/20 bg-black/30 p-4 text-base leading-relaxed text-amber-50">{activeItem.displayText}</p> : null}
         <p className="mt-2 text-sm text-stone-300">Exact capture: {timeLabel(activeItem.startSec)} → {timeLabel(activeItem.storedEndSec)}</p>
         <p className="mt-1 text-xs text-stone-500">state {activeItem.reviewState} / {activeItem.boundaryState}</p>
         <div className="mt-5">

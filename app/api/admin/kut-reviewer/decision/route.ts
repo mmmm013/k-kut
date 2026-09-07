@@ -14,11 +14,23 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null) as RequestBody | null;
   if (!body?.itemId || !body.action || !VALID_ACTIONS.has(body.action)) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   const supabase = serviceClient(); if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const query = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1").select("ii_key,card_key,start_seconds,end_seconds,source_relation,approval_state").eq("ii_key", body.itemId).limit(1).maybeSingle();
+  const candidateQuery = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1").select("candidate_key,card_key,start_sec,end_sec,source_relation,evidence_state").eq("candidate_key", body.itemId).limit(1).maybeSingle();
+  if (candidateQuery.error) return NextResponse.json({ error: "candidate_read_failed", detail: candidateQuery.error.message }, { status: 502 });
+  if (candidateQuery.data) {
+    const item = candidateQuery.data;
+    const correctedEndSec = clampNoTrespassEnd(Number(item.start_sec), Number(item.end_sec), body.correctedEndSec ?? Number(item.end_sec));
+    const insert = await supabase.from("gpmx_admin_kut_review_decision_v1").insert({ ii_key: item.candidate_key, card_key: item.card_key, action: body.action, original_start_sec: item.start_sec, original_end_sec: item.end_sec, corrected_end_sec: correctedEndSec, reviewer_key: "GREGORY", source_relation: item.source_relation, evidence_state: item.evidence_state }).select("id").single();
+    if (insert.error) return NextResponse.json({ error: "decision_persist_failed", detail: insert.error.message }, { status: 502 });
+    const reviewState = { APPROVE: "OWNER_APPROVED", TRIM: "OWNER_TRIMMED", HOLD: "OWNER_HELD", REJECT: "OWNER_REJECTED" }[body.action];
+    const update = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1").update({ review_state: reviewState, ...(body.action === "TRIM" ? { end_sec: correctedEndSec } : {}), updated_at: new Date().toISOString() }).eq("candidate_key", item.candidate_key);
+    if (update.error) return NextResponse.json({ error: "candidate_state_update_failed", detail: update.error.message }, { status: 502 });
+    return NextResponse.json({ ok: true, decisionId: insert.data.id, itemId: item.candidate_key, action: body.action, correctedEndSec });
+  }
+  const query = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1").select("ii_key,start_seconds,end_seconds,approval_state").eq("ii_key", body.itemId).limit(1).maybeSingle();
   if (query.error || !query.data) return NextResponse.json({ error: "item_not_found", detail: query.error?.message }, { status: 404 });
   const item = query.data;
   const correctedEndSec = clampNoTrespassEnd(Number(item.start_seconds), Number(item.end_seconds), body.correctedEndSec ?? Number(item.end_seconds));
-  const insert = await supabase.from("gpmx_admin_kut_review_decision_v1").insert({ ii_key: item.ii_key, card_key: item.card_key, action: body.action, original_start_sec: item.start_seconds, original_end_sec: item.end_seconds, corrected_end_sec: correctedEndSec, reviewer_key: "GREGORY", source_relation: item.source_relation, evidence_state: item.approval_state }).select("id").single();
+  const insert = await supabase.from("gpmx_admin_kut_review_decision_v1").insert({ ii_key: item.ii_key, card_key: item.ii_key, action: body.action, original_start_sec: item.start_seconds, original_end_sec: item.end_seconds, corrected_end_sec: correctedEndSec, reviewer_key: "GREGORY", source_relation: "PREMADE_VOCAL_II", evidence_state: item.approval_state }).select("id").single();
   if (insert.error) return NextResponse.json({ error: "decision_persist_failed", detail: insert.error.message }, { status: 502 });
   return NextResponse.json({ ok: true, decisionId: insert.data.id, itemId: item.ii_key, action: body.action, correctedEndSec });
 }

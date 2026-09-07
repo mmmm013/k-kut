@@ -4,6 +4,7 @@ export type GovernedKutQueueItem = {
   id: string;
   kutId: string;
   title: string;
+  displayText: string | null;
   startSec: number;
   storedEndSec: number;
   correctedStartSec: number;
@@ -25,6 +26,7 @@ const STRING_PATHS = {
   id: ["ii_key", "id", "review_id", "work_item_id", "qc_id"],
   kutId: ["ii_key", "kut_id", "ii_id", "source_kut_id", "track_id", "source_track_id"],
   title: ["parent_title", "display_title", "title", "source_title", "track_title"],
+  displayText: ["display_text", "captured_cc.display_text"],
   reviewState: ["review_pack_state", "review_state", "correction.review_state"],
   boundaryState: ["approval_state", "boundary_prosecution_state", "correction.boundary_prosecution_state"],
   sourceAudioBucket: ["source_audio_bucket", "storage_bucket", "audio_bucket", "bucket"],
@@ -114,7 +116,7 @@ export function normalizeGovernedQueueRows(rows: unknown[]): GovernedKutQueueIte
       const correctedEndSec = clampNoTrespassEnd(correctedStartSec, storedEndSec, correctedEndCandidate === null ? storedEndSec : correctedEndCandidate);
 
       return {
-        id, kutId, title, startSec, storedEndSec, correctedStartSec, correctedEndSec,
+        id, kutId, title, displayText: firstString(row, STRING_PATHS.displayText), startSec, storedEndSec, correctedStartSec, correctedEndSec,
         reviewState: firstString(row, STRING_PATHS.reviewState) || "PENDING_HUMAN_TPR",
         boundaryState: firstString(row, STRING_PATHS.boundaryState) || "TPR_CANDIDATE",
         sourceAudioBucket, sourceAudioPath,
