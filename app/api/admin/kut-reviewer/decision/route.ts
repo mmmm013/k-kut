@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   const result = await supabase.from("gpm_bic_ii_candidates").select("*").eq("candidate_key", body.itemId).eq("dmaic_state", "CONTROL").eq("reviewer_state", "PENDING_GREGORY_REVIEW").maybeSingle();
   if (result.error) return NextResponse.json({ error: "bic_inventory_read_failed", detail: result.error.message }, { status: 502 }); if (!result.data || !validateBicCandidate(result.data).passed) return NextResponse.json({ error: "candidate_not_admitted" }, { status: 409 });
   const end = clampNoTrespassEnd(Number(result.data.start_sec), Number(result.data.end_sec), body.correctedEndSec ?? Number(result.data.end_sec)); const state = { APPROVE: "OWNER_APPROVED", TRIM: "OWNER_TRIMMED", HOLD: "OWNER_HELD", REJECT: "OWNER_REJECTED" }[body.action];
-  const update = await supabase.from("gpm_bic_ii_candidates").update({ reviewer_state: state, updated_at: new Date().toISOString() }).eq("id", result.data.id); if (update.error) return NextResponse.json({ error: "decision_persist_failed", detail: update.error.message }, { status: 502 });
+  const update = await supabase.from("gpm_bic_ii_candidates").update({ reviewer_state: state, ...(body.action === "TRIM" ? { end_sec: end } : {}), updated_at: new Date().toISOString() }).eq("id", result.data.id); if (update.error) return NextResponse.json({ error: "decision_persist_failed", detail: update.error.message }, { status: 502 });
   await supabase.from("gpm_bic_ii_events").insert({ candidate_id: result.data.id, stage: "CONTROL", outcome: state, measures: { action: body.action, original_end_sec: result.data.end_sec, corrected_end_sec: end } });
   return NextResponse.json({ ok: true, itemId: body.itemId, action: body.action, correctedEndSec: end });
 }
