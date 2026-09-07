@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
+import { validate4peIntakeEvidence } from "@/lib/kkr/intakeEvidenceGate";
 
 export const dynamic = "force-dynamic";
 const PRIVATE_HEADERS = { "Cache-Control": "private, no-store, max-age=0", "Referrer-Policy": "no-referrer", "X-Robots-Tag": "noindex, nofollow, noarchive" };
@@ -37,6 +38,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const notes = candidate.data.method_notes && typeof candidate.data.method_notes === "object"
       ? candidate.data.method_notes as Record<string, unknown>
       : {};
+    if (!validate4peIntakeEvidence(notes).passed) return unavailable();
     const pathValue = String(notes.rendered_cc_path || candidate.data.audio_path || "").trim();
     const bucket = String(notes.rendered_cc_bucket || "tracks").trim();
     if (!pathValue) return unavailable(503, "governed CC audio path missing");
@@ -46,15 +48,5 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private governed CC unavailable");
     return proxyAudio(request, signed.data.signedUrl);
   }
-  const { data, error } = await supabase.from("gpmc_v012_vocal_ii_review_queue_v1")
-    .select("ii_key,local_audio_path")
-    .eq("ii_key", id).limit(1).maybeSingle();
-  if (error || !data) return unavailable();
-  const pathValue = String(data.local_audio_path || "").trim();
-  if (!pathValue) return unavailable(503, "review-pack audio path missing");
-  if (/^https?:\/\//i.test(pathValue)) return proxyAudio(request, pathValue);
-  if (pathValue.startsWith("/")) return unavailable(503, "review-pack audio has not been uploaded to private Storage");
-  const signed = await supabase.storage.from("tracks").createSignedUrl(pathValue, 300);
-  if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private review audio unavailable");
-  return proxyAudio(request, signed.data.signedUrl);
+  return unavailable();
 }
