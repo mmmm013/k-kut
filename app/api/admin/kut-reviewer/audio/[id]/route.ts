@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
 import { validateBicCandidate } from "@/lib/bic/iiControl";
+import { validateVocalCcForTpr, vocalCcRender } from "@/lib/admin/vocalCcReviewer";
 export const dynamic = "force-dynamic";
 const PRIVATE_HEADERS = { "Cache-Control": "private, no-store, max-age=0", "Referrer-Policy": "no-referrer", "X-Robots-Tag": "noindex, nofollow, noarchive" };
 function authorized(request: NextRequest) { const token = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return trustedProtectedPreview() || validAdminToken(token) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
@@ -17,6 +18,14 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     if (artifact.error || !artifact.data?.storage_path) return unavailable(503, artifact.error?.message || "verified render path missing");
     const signed = await supabase.storage.from(artifact.data.storage_bucket || "tracks").createSignedUrl(artifact.data.storage_path, 300);
     if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private render unavailable");
+    return proxyAudio(request, signed.data.signedUrl);
+  }
+  const vocalCc = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1").select("*").eq("candidate_key", id).eq("source_relation", "VOCAL_LT_PIX_CC").eq("review_state", "PENDING_GREGORY_REVIEW").maybeSingle();
+  if (vocalCc.error) return unavailable(503, vocalCc.error.message);
+  if (vocalCc.data && validateVocalCcForTpr(vocalCc.data).passed) {
+    const render = vocalCcRender(vocalCc.data);
+    const signed = await supabase.storage.from(render.bucket).createSignedUrl(render.path, 300);
+    if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private vocal CC unavailable");
     return proxyAudio(request, signed.data.signedUrl);
   }
   const result = await supabase.from("gpm_bic_ii_candidates").select("*").eq("candidate_key", id).eq("dmaic_state", "CONTROL").eq("reviewer_state", "PENDING_GREGORY_REVIEW").maybeSingle();

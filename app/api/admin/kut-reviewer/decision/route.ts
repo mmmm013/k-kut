@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { clampNoTrespassEnd, type ReviewerAction } from "@/lib/admin/kutReviewer";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
 import { validateBicCandidate } from "@/lib/bic/iiControl";
+import { validateVocalCcForTpr } from "@/lib/admin/vocalCcReviewer";
 export const dynamic = "force-dynamic";
 const VALID_ACTIONS = new Set<ReviewerAction>(["APPROVE", "TRIM", "HOLD", "REJECT"]);
 function authorized(request: NextRequest) { const token = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return trustedProtectedPreview() || validAdminToken(token) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
@@ -16,6 +17,15 @@ export async function POST(request: NextRequest) {
     const end = clampNoTrespassEnd(Number(catalog.data.start_sec), Number(catalog.data.end_sec), body.correctedEndSec ?? Number(catalog.data.end_sec));
     const decision = await supabase.rpc("gpm_4pe_record_tpr_decision", { p_ii_key: body.itemId, p_action: body.action, p_corrected_end_sec: body.action === "TRIM" ? end : null });
     if (decision.error) return NextResponse.json({ error: "decision_persist_failed", detail: decision.error.message }, { status: 502 });
+    return NextResponse.json({ ok: true, itemId: body.itemId, action: body.action, correctedEndSec: end });
+  }
+  const vocalCc = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1").select("*").eq("candidate_key", body.itemId).eq("source_relation", "VOCAL_LT_PIX_CC").eq("review_state", "PENDING_GREGORY_REVIEW").maybeSingle();
+  if (vocalCc.error) return NextResponse.json({ error: "vocal_cc_inventory_read_failed", detail: vocalCc.error.message }, { status: 502 });
+  if (vocalCc.data && validateVocalCcForTpr(vocalCc.data).passed) {
+    const end = clampNoTrespassEnd(Number(vocalCc.data.start_sec), Number(vocalCc.data.end_sec), body.correctedEndSec ?? Number(vocalCc.data.end_sec));
+    const state = { APPROVE: "OWNER_APPROVED", TRIM: "OWNER_TRIMMED", HOLD: "OWNER_HELD", REJECT: "OWNER_REJECTED" }[body.action];
+    const update = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1").update({ review_state: state, ...(body.action === "TRIM" ? { end_sec: end, vtp_end_sec: end, intp_end_sec: end } : {}), updated_at: new Date().toISOString() }).eq("candidate_key", body.itemId).eq("review_state", "PENDING_GREGORY_REVIEW");
+    if (update.error) return NextResponse.json({ error: "decision_persist_failed", detail: update.error.message }, { status: 502 });
     return NextResponse.json({ ok: true, itemId: body.itemId, action: body.action, correctedEndSec: end });
   }
   const result = await supabase.from("gpm_bic_ii_candidates").select("*").eq("candidate_key", body.itemId).eq("dmaic_state", "CONTROL").eq("reviewer_state", "PENDING_GREGORY_REVIEW").maybeSingle();

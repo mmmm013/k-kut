@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
 import { validateBicCandidate } from "@/lib/bic/iiControl";
 import { normalizeGovernedQueueRows } from "@/lib/admin/kutReviewer";
+import { validateVocalCcForTpr, vocalCcRender } from "@/lib/admin/vocalCcReviewer";
 
 export const dynamic = "force-dynamic";
 function authorized(request: NextRequest) { const token = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return trustedProtectedPreview() || validAdminToken(token) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
@@ -14,11 +15,12 @@ function toReviewerRow(row: any) {
 export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 });
   const supabase = serviceClient(); if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
-  const [catalog, legacy] = await Promise.all([
+  const [catalog, legacy, vocalCcs] = await Promise.all([
     supabase.from("gpm_4pe_ii_catalog").select("*").eq("review_state", "PENDING_TPR").eq("catalog_state", "STAGED").order("created_at").limit(500),
     supabase.from("gpm_bic_ii_candidates").select("*").eq("dmaic_state", "CONTROL").eq("reviewer_state", "PENDING_GREGORY_REVIEW").order("updated_at", { ascending: true }).limit(500),
+    supabase.from("gpmx_admin_kkr_tpr_candidate_v1").select("*").eq("source_relation", "VOCAL_LT_PIX_CC").eq("review_state", "PENDING_GREGORY_REVIEW").order("updated_at", { ascending: true }).limit(500),
   ]);
-  if (catalog.error || legacy.error) return NextResponse.json({ error: "four_pe_inventory_read_failed", detail: catalog.error?.message || legacy.error?.message }, { status: 502 });
+  if (catalog.error || legacy.error || vocalCcs.error) return NextResponse.json({ error: "four_pe_inventory_read_failed", detail: catalog.error?.message || legacy.error?.message || vocalCcs.error?.message }, { status: 502 });
   const catalogRows = (catalog.data || []).filter((row: any) => row.definition_proof?.passed === true);
   const artifactIds = catalogRows.map((row: any) => row.rendered_artifact_id);
   const artifacts = artifactIds.length ? await supabase.from("gpm_4pe_artifacts").select("id,storage_bucket,storage_path").in("id", artifactIds) : { data: [], error: null };
@@ -29,6 +31,10 @@ export async function GET(request: NextRequest) {
     return { ii_key: row.ii_key, display_title: row.authority_title, display_text: row.blk_key, start_sec: row.start_sec, end_sec: row.end_sec, review_state: row.review_state, boundary_prosecution_state: "TPR", source_audio_path: artifact.storage_path, storage_bucket: artifact.storage_bucket || "tracks", product_family: row.ii_type, intent_lane: row.tp_key, updated_at: row.created_at, queue_order: 0 };
   });
   const admittedLegacy = (legacy.data || []).filter((row: any) => validateBicCandidate(row).passed).map(toReviewerRow);
-  const queue = normalizeGovernedQueueRows([...productionRows, ...admittedLegacy]);
-  return NextResponse.json({ queue, total: queue.length, source: "4PE immutable II catalog + governed legacy queue", pageLimit: 500 });
+  const admittedVocalCcs = (vocalCcs.data || []).filter((row: any) => validateVocalCcForTpr(row).passed).map((row: any) => {
+    const render = vocalCcRender(row);
+    return { ii_key: row.candidate_key, display_title: row.authority_title, display_text: row.display_text, start_sec: row.start_sec, end_sec: row.end_sec, review_state: row.review_state, boundary_prosecution_state: row.evidence_state, source_audio_path: render.path, storage_bucket: render.bucket, product_family: "VOCAL_CC", intent_lane: row.method_notes?.blk_key || row.card_key, updated_at: row.updated_at, queue_order: row.method_notes?.queue_order ?? -1000 };
+  });
+  const queue = normalizeGovernedQueueRows([...productionRows, ...admittedVocalCcs, ...admittedLegacy]);
+  return NextResponse.json({ queue, total: queue.length, source: "4PE vocal CC TPR + immutable II catalog + governed legacy queue", pageLimit: 500 });
 }
