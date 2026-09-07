@@ -1,52 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
-import { validate4peIntakeEvidence } from "@/lib/kkr/intakeEvidenceGate";
-
+import { validateBicCandidate } from "@/lib/bic/iiControl";
 export const dynamic = "force-dynamic";
 const PRIVATE_HEADERS = { "Cache-Control": "private, no-store, max-age=0", "Referrer-Policy": "no-referrer", "X-Robots-Tag": "noindex, nofollow, noarchive" };
-function authorized(request: NextRequest) { const supplied = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return trustedProtectedPreview() || validAdminToken(supplied) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
+function authorized(request: NextRequest) { const token = request.headers.get("x-admin-token")?.trim() || request.nextUrl.searchParams.get("token")?.trim(); return trustedProtectedPreview() || validAdminToken(token) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
 function serviceClient() { const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(); const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim(); return url && key ? createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } }) : null; }
 function unavailable(status = 404, detail?: string) { return NextResponse.json({ error: status === 404 ? "not_found" : "private_audio_unavailable", ...(detail ? { detail } : {}) }, { status, headers: PRIVATE_HEADERS }); }
-
-async function proxyAudio(request: NextRequest, url: string) {
-  const headers = new Headers();
-  const range = request.headers.get("range");
-  if (range) headers.set("range", range);
-  const upstream = await fetch(url, { headers, cache: "no-store", redirect: "follow" });
-  if (!upstream.ok && upstream.status !== 206) return unavailable(503, `upstream audio ${upstream.status}`);
-  const responseHeaders = new Headers(PRIVATE_HEADERS);
-  for (const name of ["content-type", "content-length", "content-range", "accept-ranges", "etag", "last-modified"]) {
-    const value = upstream.headers.get(name);
-    if (value) responseHeaders.set(name, value);
-  }
-  if (!responseHeaders.has("content-type")) responseHeaders.set("content-type", "audio/mpeg");
-  responseHeaders.set("accept-ranges", upstream.headers.get("accept-ranges") || "bytes");
-  return new NextResponse(upstream.body, { status: upstream.status, headers: responseHeaders });
-}
-
+async function proxyAudio(request: NextRequest, url: string) { const headers = new Headers(); const range = request.headers.get("range"); if (range) headers.set("range", range); const upstream = await fetch(url, { headers, cache: "no-store" }); if (!upstream.ok && upstream.status !== 206) return unavailable(503, `upstream audio ${upstream.status}`); const responseHeaders = new Headers(PRIVATE_HEADERS); ["content-type", "content-length", "content-range", "accept-ranges"].forEach((name) => { const value = upstream.headers.get(name); if (value) responseHeaders.set(name, value); }); return new NextResponse(upstream.body, { status: upstream.status, headers: responseHeaders }); }
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  if (!authorized(request)) return unavailable();
-  const supabase = serviceClient();
-  if (!supabase) return unavailable(503, "service client unavailable");
-  const { id } = await params;
-  const candidate = await supabase.from("gpmx_admin_kkr_tpr_candidate_v1")
-    .select("candidate_key,audio_path,method_notes")
-    .eq("candidate_key", id).limit(1).maybeSingle();
-  if (candidate.error) return unavailable(503, candidate.error.message);
-  if (candidate.data) {
-    const notes = candidate.data.method_notes && typeof candidate.data.method_notes === "object"
-      ? candidate.data.method_notes as Record<string, unknown>
-      : {};
-    if (!validate4peIntakeEvidence(notes).passed) return unavailable();
-    const pathValue = String(notes.rendered_cc_path || candidate.data.audio_path || "").trim();
-    const bucket = String(notes.rendered_cc_bucket || "tracks").trim();
-    if (!pathValue) return unavailable(503, "governed CC audio path missing");
-    if (/^https?:\/\//i.test(pathValue)) return proxyAudio(request, pathValue);
-    if (pathValue.startsWith("/")) return unavailable(503, "governed CC audio has not been uploaded to private Storage");
-    const signed = await supabase.storage.from(bucket).createSignedUrl(pathValue, 300);
-    if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private governed CC unavailable");
-    return proxyAudio(request, signed.data.signedUrl);
-  }
-  return unavailable();
+  if (!authorized(request)) return unavailable(); const supabase = serviceClient(); if (!supabase) return unavailable(503, "service client unavailable"); const { id } = await params;
+  const result = await supabase.from("gpm_bic_ii_candidates").select("*").eq("candidate_key", id).eq("dmaic_state", "CONTROL").eq("reviewer_state", "PENDING_GREGORY_REVIEW").maybeSingle();
+  if (result.error) return unavailable(503, result.error.message); if (!result.data || !validateBicCandidate(result.data).passed) return unavailable();
+  const rendering = result.data.rendering as Record<string, unknown>; const path = String(rendering.private_object_path || ""); const bucket = String(rendering.private_bucket || "tracks"); if (!path) return unavailable(503, "verified render path missing");
+  const signed = await supabase.storage.from(bucket).createSignedUrl(path, 300); if (signed.error || !signed.data?.signedUrl) return unavailable(503, signed.error?.message || "private render unavailable"); return proxyAudio(request, signed.data.signedUrl);
 }
