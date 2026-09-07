@@ -16,6 +16,7 @@ staging/
 app/page Bup Text.tsx
 scripts/gpmx-first-pass-process.mjs
 .vercel
+supabase/.temp/
 
 # 4PE local capture inbox
 inbox/

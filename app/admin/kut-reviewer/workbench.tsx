@@ -214,6 +214,7 @@ export function KutReviewerWorkbench() {
       <p className="text-xs font-black uppercase tracking-[0.24em] text-amber-300">Internal · Admin only</p>
       <h1 className="mt-1 text-2xl font-black">TPR · PRE-MADE II REVIEWER</h1>
       <p className="mt-1 text-sm text-stone-400">Pre-made vocal II queue only. KKr establishes InTP/VTP evidence; TPR listens, trims, approves, holds, or rejects.</p>
+      <a href="/admin/4pe-next-run" className="mt-3 inline-block text-sm font-bold text-amber-300 underline">Stage the Next 4PE Run</a>
     </header>
     <div className="sticky top-0 z-20 border-b border-amber-300/30 bg-[#100d08]/95 px-4 py-3 backdrop-blur">
       <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-3">

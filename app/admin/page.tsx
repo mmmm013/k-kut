@@ -10,6 +10,7 @@ type AdminPageProps = {
 };
 
 const links = [
+  ["4PE Next Run", "/admin/4pe-next-run", "Stage DISCO STL track additions, updates, reprocessing, or deletions for the next twice-daily production run."],
   ["P0 KUT Reviewer", "/admin/kut-reviewer", "Review governed KUT queue items from Supabase with exact endpoint controls and persisted decisions."],
   ["Torn Memories Intake", "/admin/kkr-torn-memories-intake", "Full-lyric BLK mapping: listen to the whole IN-PIX, map every BLK's VTP/InTP sister pair and MGS before any KUT candidate can be generated."],
   ["Localization Preview", "/admin/localization-preview", "Review HUG localization, audio-safety, rollout, and pricing data."],

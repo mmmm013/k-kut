@@ -10,6 +10,14 @@ function serviceClient() { const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.tri
 export async function POST(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: "not_found" }, { status: 404 }); const body = await request.json().catch(() => null) as { itemId?: string; action?: ReviewerAction; correctedEndSec?: number } | null;
   if (!body?.itemId || !body.action || !VALID_ACTIONS.has(body.action)) return NextResponse.json({ error: "invalid_request" }, { status: 400 }); const supabase = serviceClient(); if (!supabase) return NextResponse.json({ error: "server_supabase_connection_not_configured" }, { status: 503 });
+  const catalog = await supabase.from("gpm_4pe_ii_catalog").select("ii_key,start_sec,end_sec").eq("ii_key", body.itemId).eq("review_state", "PENDING_TPR").eq("catalog_state", "STAGED").maybeSingle();
+  if (catalog.error) return NextResponse.json({ error: "four_pe_inventory_read_failed", detail: catalog.error.message }, { status: 502 });
+  if (catalog.data) {
+    const end = clampNoTrespassEnd(Number(catalog.data.start_sec), Number(catalog.data.end_sec), body.correctedEndSec ?? Number(catalog.data.end_sec));
+    const decision = await supabase.rpc("gpm_4pe_record_tpr_decision", { p_ii_key: body.itemId, p_action: body.action, p_corrected_end_sec: body.action === "TRIM" ? end : null });
+    if (decision.error) return NextResponse.json({ error: "decision_persist_failed", detail: decision.error.message }, { status: 502 });
+    return NextResponse.json({ ok: true, itemId: body.itemId, action: body.action, correctedEndSec: end });
+  }
   const result = await supabase.from("gpm_bic_ii_candidates").select("*").eq("candidate_key", body.itemId).eq("dmaic_state", "CONTROL").eq("reviewer_state", "PENDING_GREGORY_REVIEW").maybeSingle();
   if (result.error) return NextResponse.json({ error: "bic_inventory_read_failed", detail: result.error.message }, { status: 502 }); if (!result.data || !validateBicCandidate(result.data).passed) return NextResponse.json({ error: "candidate_not_admitted" }, { status: 409 });
   const end = clampNoTrespassEnd(Number(result.data.start_sec), Number(result.data.end_sec), body.correctedEndSec ?? Number(result.data.end_sec)); const state = { APPROVE: "OWNER_APPROVED", TRIM: "OWNER_TRIMMED", HOLD: "OWNER_HELD", REJECT: "OWNER_REJECTED" }[body.action];
