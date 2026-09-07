@@ -46,7 +46,7 @@ function toCandidateReviewerRow(row: any) {
     intent_lane: notes.blk_key || row.form_key || "governed vocal CC",
     public_route: null,
     updated_at: row.updated_at || null,
-    queue_order: -1,
+    queue_order: Number(notes.queue_order ?? -1),
   };
 }
 
