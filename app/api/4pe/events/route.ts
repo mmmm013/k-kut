@@ -120,6 +120,6 @@ export async function GET() {
     route: "/api/4pe/events",
     status: "ready",
     sms_enabled: false,
-    rule: "Capture only. No UI wiring. No SMS sending.",
+    rule: "Capture-only route. Never mutates Next Run, Stable II, registry, or inventory.",
   });
 }

@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
 import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
+import {
+  findApprovedStableForFulfillment,
+  recordFailClosedOutcome,
+} from "@/lib/4pe/nextRunStablePath";
 
 export const runtime = "nodejs";
 
@@ -59,6 +63,40 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const stableRecord = findApprovedStableForFulfillment(selectedPublicOptionId, selectedHugId);
+
+  if (!stableRecord.ok) {
+    if (stableRecord.status === "stable_path_missing") {
+      recordFailClosedOutcome("/api/4pe/fulfillment", "stable_path_missing", {
+        selected_hug_id: selectedHugId,
+        selected_public_option_id: selectedPublicOptionId,
+      });
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "stable_path_missing_fail_closed",
+          selected_hug_id: selectedHugId,
+        },
+        { status: 503 },
+      );
+    }
+
+    recordFailClosedOutcome("/api/4pe/fulfillment", "stable_record_not_found", {
+      selected_hug_id: selectedHugId,
+      selected_public_option_id: selectedPublicOptionId,
+    });
+
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "current_ii_not_staged",
+        selected_hug_id: selectedHugId,
+      },
+      { status: 409 },
+    );
+  }
+
   const currentOption = findApprovedPublicOptionByPublicOptionId(
     selectedPublicOptionId,
   );
@@ -86,15 +124,15 @@ export async function POST(req: NextRequest) {
     status: "pending_checkout_or_manual_fulfillment",
 
     source_page: cleanString(body.source_page, 200) || "/browse",
-    product_family: currentOption.product_family,
-    inventory_family: currentOption.inventory_family,
+    product_family: stableRecord.record.product_family,
+    inventory_family: stableRecord.record.inventory_family,
     holiday_set: cleanString(body.holiday_set, 80) || "mothers_day",
     source_song: cleanString(body.source_song, 120) || "Thank You",
 
     selected_hug_id: selectedHugId,
     selected_public_option_id: selectedPublicOptionId,
-    selected_hug_title: selectedHugTitle,
-    sentiment_product_type: currentOption.product_family,
+    selected_hug_title: selectedHugTitle || stableRecord.record.selected_hug_title,
+    sentiment_product_type: stableRecord.record.product_family,
 
     typed_feeling: cleanString(body.typed_feeling, 500),
     interpreted_feeling: cleanString(body.interpreted_feeling, 220),
@@ -110,6 +148,10 @@ export async function POST(req: NextRequest) {
     checkout_session_id: cleanString(body.checkout_session_id, 220),
     stripe_payment_status: cleanString(body.stripe_payment_status, 80),
     order_id: cleanString(body.order_id, 220),
+
+    stable_ii_id: stableRecord.record.stable_ii_id,
+    stable_approval_evidence_id: stableRecord.record.approval_evidence_id,
+    stable_approved_at: stableRecord.record.approved_at,
 
     hug_link_status: "not_created",
     hug_link_url: "",
@@ -146,7 +188,7 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     route: "/api/4pe/fulfillment",
-    status: "current_ii_gate_active",
-    rule: "Creates a pending fulfillment record only for an exact STAGE-authorized II. No SMS. No download. No UI wiring.",
+    status: "stable_ii_gate_active",
+    rule: "Consumes only approved Stable II state. Fails closed when Stable path is missing.",
   });
 }
