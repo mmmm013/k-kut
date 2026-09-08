@@ -1,0 +1,34 @@
+{
+  "schema": "GPMX_PROMO_APPROVAL_PATH_V1",
+  "track_id": "41c9fe20-76cf-42ad-85d5-beab1d433dea",
+  "ii_id": "ii-romance-reuse-d3dfd13c-7421-4671-8261-0c735cb51f38",
+  "display_title": "A LOVE LIKE THAT",
+  "product_family": "HUG",
+  "inventory_family": "KK",
+  "price_cents": 799,
+  "promo_copy": "Send a love that is warm, specific, and easy to receive.",
+  "linguistic_authority": {
+    "phrase": "a love like that",
+    "token": "like",
+    "part_of_speech": "preposition",
+    "function": "Introduces the comparison complement ‘that’; it is not the phrase’s verb.",
+    "approved_by_owner": true
+  },
+  "source_authority": {
+    "vocal_lt_pix_only": true,
+    "source_audio_sha256": "6ea1bca85e3f33b2bac0e03b70f6ae8037e83dee53c3d87bf9012f39cfa29afb",
+    "canonical_track_id": "41c9fe20-76cf-42ad-85d5-beab1d433dea"
+  },
+  "release_gate": {
+    "state": "HOLD_BOUNDARY_AND_TWINKLE_INTEGRITY",
+    "blocked_legacy_end_seconds": 24,
+    "candidate_end_seconds": 34.875,
+    "requirements": [
+      "single_BLK_VTP_InTP_boundary_proof",
+      "owner_approved_uncorrupted_delivery_hash",
+      "current_II_STAGE_record",
+      "payment_link_authorization"
+    ],
+    "rule": "This private promo path must not create a public player, checkout, recipient link, or delivery until every requirement passes."
+  }
+}
