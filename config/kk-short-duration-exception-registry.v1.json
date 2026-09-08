@@ -1,6 +1,6 @@
 {
-  "schema_version": "GPMX_KK_SHORT_DURATION_EXCEPTION_REGISTRY_V1",
-  "status": "LOCKED_OWNER_AUTHORIZED",
+  "schema_version": "GPMX_KK_SHORT_DURATION_EXCEPTION_REGISTRY_V1_DRAFT",
+  "status": "DRAFT_PENDING_OWNER_LOCK",
   "normal_source_content_floor_seconds": 10,
   "measurement_rule": "Measure only the authorized source musical content bound to the proposed KK. Exclude delivery padding, silence added for delivery, and Twinkle/bookends.",
   "structural_rule": "Duration never establishes BLK identity. A normal structurally proven KK below 10.000 seconds is blocked unless an exact locked exception applies.",
@@ -32,17 +32,5 @@
   ],
   "wildcard_exceptions_allowed": false,
   "title_only_exception_matching_allowed": false,
-  "automatic_exception_creation_allowed": false,
-  "love_arena_mk_tier_exception": {
-    "exception_id": "love-arena-mk-min-8-seconds",
-    "status": "LOCKED_OWNER_AUTHORIZED",
-    "applies_to_tier": "mK_internal",
-    "allowed_minimum_seconds": 8,
-    "normal_kk_minimum_seconds_remains": 10,
-    "review_gate_id": "GPMX_LT_PIX_BLK_REVIEW_GATE_V1",
-    "notes": [
-      "This exception only authorizes mK internal candidate inventory.",
-      "KK floor remains 10+ seconds unless exact per-song exception is separately locked."
-    ]
-  }
+  "automatic_exception_creation_allowed": false
 }

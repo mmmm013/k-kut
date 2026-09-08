@@ -1,6 +1,6 @@
 {
-  "schema_version": "GPMX_LT_PIX_BLK_WORKSHEET_V1",
-  "governance_status": "LOCKED_OWNER_AUTHORIZED",
+  "schema_version": "GPMX_LT_PIX_BLK_WORKSHEET_V1_DRAFT",
+  "governance_status": "DRAFT_PENDING_OWNER_LOCK",
   "worksheet_status": "TRIAGE",
   "instruction": "Create one copy per LT-PIX. Null means unresolved; never replace null with a guessed section label or boundary.",
   "lt_pix_identity": {
