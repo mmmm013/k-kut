@@ -576,11 +576,14 @@
         "Time to Make Some Room"
       ],
       "correction": {
-        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
-        "corrected_capture_end_sec": null,
-        "boundary_prosecution_state": "HOLD",
-        "listening_verified": false,
-        "post_vocal_audio_allowed": false
+        "review_state": "LAST_VOCAL_NOTE_END_CONFIRMED",
+        "corrected_capture_end_sec": 36.25,
+        "boundary_prosecution_state": "STRICT_LAST_VOCAL_NOTE_END_PASS",
+        "listening_verified": true,
+        "post_vocal_audio_allowed": false,
+        "authority_state": "OWNER_CONFIRMED_LAST_VOCAL_NOTE_END",
+        "authority_recorded_at": "2026-09-08T00:00:00.000Z",
+        "authority_note": "Recovered from Gregory D. Putnam's explicit owner confirmation: Time to Make Some Room END = 36.250 seconds."
       }
     },
     {
@@ -1753,11 +1756,14 @@
         "Make Some Room"
       ],
       "correction": {
-        "review_state": "PENDING_LAST_VOCAL_NOTE_END_REVIEW",
-        "corrected_capture_end_sec": null,
-        "boundary_prosecution_state": "HOLD",
-        "listening_verified": false,
-        "post_vocal_audio_allowed": false
+        "review_state": "LAST_VOCAL_NOTE_END_CONFIRMED",
+        "corrected_capture_end_sec": 36.25,
+        "boundary_prosecution_state": "STRICT_LAST_VOCAL_NOTE_END_PASS",
+        "listening_verified": true,
+        "post_vocal_audio_allowed": false,
+        "authority_state": "OWNER_CONFIRMED_LAST_VOCAL_NOTE_END",
+        "authority_recorded_at": "2026-09-08T00:00:00.000Z",
+        "authority_note": "Recovered from Gregory D. Putnam's explicit owner confirmation: Time to Make Some Room END = 36.250 seconds."
       }
     },
     {
@@ -2443,5 +2449,15 @@
     "default_padding_after_last_vocal_note_sec": 0,
     "inherited_renderer_tail_forbidden": true
   },
-  "calibration_note": "A new vocal start, however close, never extends the preceding captured CC. Every TRM has a break and must remain distinct."
+  "calibration_note": "A new vocal start, however close, never extends the preceding captured CC. Every TRM has a break and must remain distinct.",
+  "recovery_state": {
+    "status": "PARTIAL_OWNER_DECISION_RECOVERY",
+    "recovered_work_item_ids": [
+      "comin_true_cc_022",
+      "comin_true_cc_069"
+    ],
+    "recovered_endpoint_count": 1,
+    "remaining_hold_work_items": 94,
+    "machine_exception_timestamps_authoritative": false
+  }
 }
