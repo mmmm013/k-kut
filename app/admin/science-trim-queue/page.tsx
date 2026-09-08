@@ -1,30 +1,49 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import targets from '@/data/kkr-correction-queues/comin-true-owner-trim-targets-v1.json';
 
-type T = (typeof targets.targets)[number];
+import recoveryQueue from '@/data/kkr-correction-queues/comin-true-owner-trim-targets-v1.json';
 
-const loopStartFor = (endpoint: number) => Math.max(0, endpoint - 3);
-const loopEndFor = (endpoint: number) => endpoint + 2;
+type RecoveryTarget = {
+  work_item_ids: string[];
+  consumer_ii_keys: string[];
+  titles: string[];
+  stored_end_sec: number;
+  machine_proposed_end_sec: number;
+  owner_end_sec: number | null;
+  machine_evidence_state: 'QUARANTINED_NOT_ENDPOINT_AUTHORITY';
+  authority_state: 'OWNER_CONFIRMED_LAST_VOCAL_NOTE_END' | 'OWNER_DECISION_RECOVERY_REQUIRED';
+  action_state: 'PRIVATE_REVISION_QUEUED' | 'NO_ACTION_AUTHORIZED';
+};
+
+const targets = recoveryQueue.targets as RecoveryTarget[];
+
+function reviewCenter(target: RecoveryTarget) {
+  return target.owner_end_sec ?? target.stored_end_sec;
+}
+
+function loopStartFor(target: RecoveryTarget) {
+  return Math.max(0, reviewCenter(target) - 3);
+}
+
+function loopEndFor(target: RecoveryTarget) {
+  return reviewCenter(target) + 2;
+}
 
 export default function ScienceTrimQueue() {
-  const first = targets.targets[0];
+  const first = targets[0];
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [active, setActive] = useState<T>(first);
-  const [end, setEnd] = useState(first.proposed_end_sec);
-  const [loopStart, setLoopStart] = useState(loopStartFor(first.proposed_end_sec));
-  const [loopEnd, setLoopEnd] = useState(loopEndFor(first.proposed_end_sec));
+  const [active, setActive] = useState(first);
+  const [loopStart, setLoopStart] = useState(loopStartFor(first));
+  const [loopEnd, setLoopEnd] = useState(loopEndFor(first));
   const [looping, setLooping] = useState(false);
   const [status, setStatus] = useState('');
 
-  const choose = (target: T) => {
-    const proposedEnd = target.proposed_end_sec;
+  const choose = (target: RecoveryTarget) => {
     audioRef.current?.pause();
     setActive(target);
-    setEnd(proposedEnd);
-    setLoopStart(loopStartFor(proposedEnd));
-    setLoopEnd(loopEndFor(proposedEnd));
+    setLoopStart(loopStartFor(target));
+    setLoopEnd(loopEndFor(target));
     setLooping(false);
     setStatus('');
   };
@@ -38,73 +57,72 @@ export default function ScienceTrimQueue() {
 
     audio.currentTime = loopStart;
     setLooping(true);
-    setStatus('Looping the endpoint review window.');
+    setStatus('Looping the endpoint evidence window.');
 
     try {
       await audio.play();
     } catch {
       setLooping(false);
-      setStatus('Playback could not start. Use the audio play control, then try the loop again.');
+      setStatus('Playback could not start. Use the audio play control, then try again.');
     }
   };
 
   const stopLoop = () => {
     setLooping(false);
+    audioRef.current?.pause();
     setStatus('Loop stopped. Audio remains available for scrubbing.');
   };
 
-  const trim = async () => {
-    setStatus('Saving private replacement request…');
-    const response = await fetch('/api/admin/science-trim-queue/decision', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        iiKey: active.work_item_ids[0],
-        originalEnd: active.stored_end_sec,
-        correctedEnd: end,
-      }),
-    });
-    const body = await response.json();
-    setStatus(
-      response.ok
-        ? `Queued private render revision ${body.revisionId}. Original remains unchanged.`
-        : body.detail || body.error || 'Save failed',
-    );
-  };
+  const recovered = active.authority_state === 'OWNER_CONFIRMED_LAST_VOCAL_NOTE_END';
 
   return (
     <main className="min-h-screen bg-[#090806] p-5 text-stone-100">
-      <h1 className="text-2xl font-black text-amber-200">SCIENCE TRIM QUEUE · COMIN’ TRUE</h1>
-      <p className="mt-2 text-stone-400">
-        19 exact endpoint exceptions. Vocal LT-PIX only. TRIM creates a private replacement request; it does not release anything.
+      <h1 className="text-2xl font-black text-amber-200">
+        OWNER BOUNDARY RECOVERY · COMIN’ TRUE
+      </h1>
+      <p className="mt-2 max-w-4xl text-stone-300">
+        The 19 machine exception timestamps are quarantined. They are evidence only and cannot
+        initialize, save, trim, render, approve, stage, or release a product.
+      </p>
+      <p className="mt-2 font-bold text-emerald-300">
+        Recovered: {recoveryQueue.recovered_endpoint_count} · Still quarantined:{' '}
+        {recoveryQueue.unrecovered_endpoint_count}
       </p>
 
-      <div className="mt-5 grid gap-4 lg:grid-cols-[340px_1fr]">
-        <aside>
-          {targets.targets.map((target) => (
-            <button
-              type="button"
-              onClick={() => choose(target)}
-              key={target.work_item_ids[0]}
-              aria-pressed={active.work_item_ids[0] === target.work_item_ids[0]}
-              className={`mb-2 block w-full rounded border p-3 text-left ${
-                active.work_item_ids[0] === target.work_item_ids[0]
-                  ? 'border-amber-300 bg-amber-300/10'
-                  : 'border-stone-700'
-              }`}
-            >
-              <b>{target.titles[0]}</b>
-              <br />
-              <small>
-                {target.stored_end_sec.toFixed(3)} → {target.proposed_end_sec.toFixed(3)}
-              </small>
-            </button>
-          ))}
+      <div className="mt-5 grid gap-4 lg:grid-cols-[360px_1fr]">
+        <aside aria-label="Boundary recovery items">
+          {targets.map((target) => {
+            const isActive = active.work_item_ids[0] === target.work_item_ids[0];
+            const isRecovered =
+              target.authority_state === 'OWNER_CONFIRMED_LAST_VOCAL_NOTE_END';
+
+            return (
+              <button
+                type="button"
+                onClick={() => choose(target)}
+                key={target.work_item_ids[0]}
+                aria-pressed={isActive}
+                className={`mb-2 block w-full rounded border p-3 text-left ${
+                  isActive ? 'border-amber-300 bg-amber-300/10' : 'border-stone-700'
+                }`}
+              >
+                <b>{target.titles[0]}</b>
+                <br />
+                <small className={isRecovered ? 'text-emerald-300' : 'text-stone-400'}>
+                  {isRecovered
+                    ? `OWNER END: ${target.owner_end_sec?.toFixed(3)} · REVISION QUEUED`
+                    : 'QUARANTINED · NO ENDPOINT AUTHORIZED'}
+                </small>
+              </button>
+            );
+          })}
         </aside>
 
         <section className="rounded border border-amber-300/30 p-5">
           <h2 className="text-3xl font-black">{active.titles[0]}</h2>
-          <p className="mt-2 text-sm text-stone-400">Linked items: {active.work_item_ids.join(', ')}</p>
+          <p className="mt-2 text-sm text-stone-400">
+            Products: {active.consumer_ii_keys.join(', ')}
+          </p>
 
           <audio
             ref={audioRef}
@@ -153,11 +171,11 @@ export default function ScienceTrimQueue() {
               className="rounded bg-amber-300 px-4 py-2 font-black text-black"
               onClick={() => void playLoop()}
             >
-              PLAY ENDPOINT LOOP
+              PLAY EVIDENCE LOOP
             </button>
             <button
               type="button"
-              className="rounded border border-stone-500 px-4 py-2 font-black"
+              className="rounded border border-stone-500 px-4 py-2 font-black disabled:opacity-40"
               onClick={stopLoop}
               disabled={!looping}
             >
@@ -165,29 +183,35 @@ export default function ScienceTrimQueue() {
             </button>
           </div>
 
-          <label className="mt-5 block font-black">
-            END (last vocal note)
-            <input
-              aria-label="End last vocal note"
-              className="ml-3 rounded bg-black p-2 font-mono text-emerald-300"
-              type="number"
-              step="0.001"
-              min="0.001"
-              value={end}
-              onChange={(event) => setEnd(Number(event.target.value))}
-            />
-          </label>
-          <p className="mt-3 text-sm text-stone-400">
-            Stored: {active.stored_end_sec.toFixed(3)} · scientific proposal: {active.proposed_end_sec.toFixed(3)}
+          <div className="mt-5 rounded border border-stone-700 bg-black p-4">
+            <p className="font-black">OWNER END (last audible vocal-note end)</p>
+            <p className={`mt-2 font-mono text-2xl ${recovered ? 'text-emerald-300' : 'text-stone-500'}`}>
+              {active.owner_end_sec === null ? 'NOT RECOVERED' : active.owner_end_sec.toFixed(3)}
+            </p>
+            <p className="mt-3 text-sm text-stone-400">
+              Prior stored capture: {active.stored_end_sec.toFixed(3)}
+            </p>
+            <details className="mt-3 text-sm text-stone-500">
+              <summary>Rejected machine evidence</summary>
+              <p className="mt-2">
+                {active.machine_proposed_end_sec.toFixed(3)} · not endpoint authority · no action
+                permitted
+              </p>
+            </details>
+          </div>
+
+          <p
+            className={`mt-5 rounded border p-4 font-bold ${
+              recovered
+                ? 'border-emerald-400/50 bg-emerald-400/10 text-emerald-200'
+                : 'border-red-400/50 bg-red-400/10 text-red-200'
+            }`}
+          >
+            {recovered
+              ? '36.250 is durably recorded as Gregory’s owner-confirmed endpoint. Private revisions are queued for both linked products; originals remain unchanged.'
+              : 'No owner endpoint is available in the durable SSOT. This row remains quarantined and cannot create a revision.'}
           </p>
 
-          <button
-            type="button"
-            className="mt-5 rounded bg-cyan-400 px-5 py-3 font-black text-black"
-            onClick={() => void trim()}
-          >
-            TRIM AND QUEUE PRIVATE RENDER
-          </button>
           <p className="mt-3 text-sm text-amber-200" role="status">
             {status}
           </p>
