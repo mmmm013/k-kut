@@ -1,4 +1,33 @@
-import {createClient}from '@supabase/supabase-js';import{NextRequest,NextResponse}from'next/server';import{ADMIN_SESSION_COOKIE,trustedProtectedPreview,validAdminSession,validAdminToken}from'@/lib/admin/adminSession';
-export const dynamic='force-dynamic';function ok(r:NextRequest){return trustedProtectedPreview()||validAdminToken(r.headers.get('x-admin-token'))||validAdminSession(r.cookies.get(ADMIN_SESSION_COOKIE)?.value)}function db(){const u=process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(),k=process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()||process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim();return u&&k?createClient(u,k,{auth:{persistSession:false,autoRefreshToken:false}}):null}
-type Body={iiKey?:string;originalEnd?:number;correctedEnd?:number};
-export async function POST(r:NextRequest){if(!ok(r))return NextResponse.json({error:'not_found'},{status:404});const b=await r.json().catch(()=>null)as Body|null;const iiKey=b?.iiKey?.trim()||'';const originalEnd=Number(b?.originalEnd);const correctedEnd=Number(b?.correctedEnd);if(!iiKey||!Number.isFinite(originalEnd)||!Number.isFinite(correctedEnd)||correctedEnd<=0)return NextResponse.json({error:'invalid_trim'},{status:400});const s=db();if(!s)return NextResponse.json({error:'service_client_unavailable'},{status:503});const pending=await s.from('gpm_ii_render_revisions').select('id').eq('source_ii_key',iiKey).in('revision_state',['PENDING_RENDER','RENDERED_PENDING_OWNER_REVIEW']).maybeSingle();if(pending.error)return NextResponse.json({error:'revision_lookup_failed',detail:pending.error.message},{status:502});if(pending.data)return NextResponse.json({error:'revision_already_pending',revisionId:pending.data.id},{status:409});const decision=await s.from('gpmx_admin_kut_review_decision_v1').insert({ii_key:iiKey,card_key:'COMIN_TRUE_SCIENCE_TRIM',action:'TRIM',original_start_sec:0,original_end_sec:originalEnd,corrected_end_sec:correctedEnd,reviewer_key:'GREGORY',source_relation:'COMIN_TRUE_VOCAL_LT_PIX',evidence_state:'OWNER_SCIENCE_TRIM'}).select('id').single();if(decision.error)return NextResponse.json({error:'decision_persist_failed',detail:decision.error.message},{status:502});const revision=await s.from('gpm_ii_render_revisions').insert({source_ii_key:iiKey,decision_id:decision.data.id,original_start_sec:0,original_end_sec:originalEnd,corrected_end_sec:correctedEnd}).select('id').single();if(revision.error)return NextResponse.json({error:'revision_enqueue_failed',detail:revision.error.message},{status:502});return NextResponse.json({ok:true,revisionId:revision.data.id,state:'PENDING_RENDER'})}
+import { NextRequest, NextResponse } from 'next/server';
+
+import {
+  ADMIN_SESSION_COOKIE,
+  trustedProtectedPreview,
+  validAdminSession,
+  validAdminToken,
+} from '@/lib/admin/adminSession';
+
+export const dynamic = 'force-dynamic';
+
+function authorized(request: NextRequest) {
+  return (
+    trustedProtectedPreview() ||
+    validAdminToken(request.headers.get('x-admin-token')) ||
+    validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value)
+  );
+}
+
+export async function POST(request: NextRequest) {
+  if (!authorized(request)) {
+    return NextResponse.json({ error: 'not_found' }, { status: 404 });
+  }
+
+  return NextResponse.json(
+    {
+      error: 'machine_exception_queue_quarantined',
+      detail:
+        'Direct endpoint writes are disabled. Machine exception timestamps are evidence only. Use a durable owner-confirmed boundary decision.',
+    },
+    { status: 409 },
+  );
+}
