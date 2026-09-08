@@ -1,0 +1,289 @@
+{
+  "schema_version": "GPMX_OWNER_II_TRIM_TARGETS_V1",
+  "source_worklist": "data/kkr-captured-cc-correction-worklists/comin_true.endpoint-prosecution-v1.json",
+  "policy": "Each TRIM creates a private versioned render request. The existing II remains active until the corrected render is approved, then is archived as predecessor.",
+  "target_count": 19,
+  "targets": [
+    {
+      "work_item_ids": [
+        "comin_true_cc_022",
+        "comin_true_cc_069"
+      ],
+      "titles": [
+        "Time to Make Some Room",
+        "Make Some Room"
+      ],
+      "stored_end_sec": 35,
+      "proposed_end_sec": 33.971,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_025",
+        "comin_true_cc_047",
+        "comin_true_cc_072"
+      ],
+      "titles": [
+        "I'm Coming True",
+        "Newly New and Coming True",
+        "Coming True"
+      ],
+      "stored_end_sec": 46,
+      "proposed_end_sec": 44.981,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_026",
+        "comin_true_cc_074"
+      ],
+      "titles": [
+        "Old Paint About to Fade",
+        "Fade"
+      ],
+      "stored_end_sec": 52,
+      "proposed_end_sec": 50.931,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_075"
+      ],
+      "titles": [
+        "Fresh Outlook"
+      ],
+      "stored_end_sec": 54,
+      "proposed_end_sec": 53.091,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_027",
+        "comin_true_cc_048",
+        "comin_true_cc_057"
+      ],
+      "titles": [
+        "Put a Fresh Outlook in Its Place",
+        "Old Paint, Fresh Outlook",
+        "Coming True with a Fresh Outlook"
+      ],
+      "stored_end_sec": 57,
+      "proposed_end_sec": 57.181,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_076"
+      ],
+      "titles": [
+        "Newly New"
+      ],
+      "stored_end_sec": 60,
+      "proposed_end_sec": 58.861,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_028",
+        "comin_true_cc_077"
+      ],
+      "titles": [
+        "I'm Newly New—I'm Coming True",
+        "Coming True"
+      ],
+      "stored_end_sec": 63,
+      "proposed_end_sec": 62.001,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_029"
+      ],
+      "titles": [
+        "I'm Coming True"
+      ],
+      "stored_end_sec": 67,
+      "proposed_end_sec": 65.781,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_078"
+      ],
+      "titles": [
+        "Hopeful Ooh"
+      ],
+      "stored_end_sec": 70,
+      "proposed_end_sec": 69.461,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_034",
+        "comin_true_cc_085"
+      ],
+      "titles": [
+        "I Won't Waste Time Looking Back",
+        "Looking Back"
+      ],
+      "stored_end_sec": 85,
+      "proposed_end_sec": 84.731,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_036",
+        "comin_true_cc_086"
+      ],
+      "titles": [
+        "Now I'm Moving On",
+        "Moving On"
+      ],
+      "stored_end_sec": 92,
+      "proposed_end_sec": 92.031,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_037",
+        "comin_true_cc_052",
+        "comin_true_cc_059",
+        "comin_true_cc_061",
+        "comin_true_cc_087"
+      ],
+      "titles": [
+        "Getting Back Where I Belong",
+        "Moving On to Where I Belong",
+        "Release the Past—Return Where You Belong",
+        "From Holding On to Moving On",
+        "Belong"
+      ],
+      "stored_end_sec": 96,
+      "proposed_end_sec": 94.951,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_088"
+      ],
+      "titles": [
+        "Newly New"
+      ],
+      "stored_end_sec": 99,
+      "proposed_end_sec": 99.001,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_090"
+      ],
+      "titles": [
+        "Old Paint"
+      ],
+      "stored_end_sec": 106.77,
+      "proposed_end_sec": 106.841,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_039",
+        "comin_true_cc_091"
+      ],
+      "titles": [
+        "Took Off That Old Paint About to Fade",
+        "Fade"
+      ],
+      "stored_end_sec": 109,
+      "proposed_end_sec": 108.941,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_040",
+        "comin_true_cc_053",
+        "comin_true_cc_060"
+      ],
+      "titles": [
+        "Put a Fresh Outlook in Its Place",
+        "Shed the Old—Choose a Fresh Outlook",
+        "Come True—Replace the Old with a Fresh Outlook"
+      ],
+      "stored_end_sec": 115,
+      "proposed_end_sec": 113.781,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_054",
+        "comin_true_cc_063"
+      ],
+      "titles": [
+        "Newly New, Coming True",
+        "Old Paint to Fresh Outlook to Coming True"
+      ],
+      "stored_end_sec": 124,
+      "proposed_end_sec": 122.761,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_094"
+      ],
+      "titles": [
+        "Renewing Ooh"
+      ],
+      "stored_end_sec": 127,
+      "proposed_end_sec": 126.941,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "work_item_ids": [
+        "comin_true_cc_096"
+      ],
+      "titles": [
+        "Final Ooh"
+      ],
+      "stored_end_sec": 135,
+      "proposed_end_sec": 133.761,
+      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
+      "action": "OWNER_TRIM_REQUIRED",
+      "state": "PENDING_OWNER_REVIEW"
+    }
+  ]
+}

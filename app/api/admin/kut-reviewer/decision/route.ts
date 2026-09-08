@@ -27,5 +27,13 @@ export async function POST(request: NextRequest) {
   const correctedEndSec = clampTprEnd(Number(item.start_sec), sourceDurationSec, body.correctedEndSec ?? Number(item.end_sec));
   const insert = await supabase.from("gpmx_admin_kut_review_decision_v1").insert({ ii_key: item.ii_key, card_key: item.card_key, action: body.action, original_start_sec: item.start_sec, original_end_sec: item.end_sec, corrected_end_sec: correctedEndSec, reviewer_key: "GREGORY", source_relation: item.source_relation, evidence_state: item.evidence_state }).select("id").single();
   if (insert.error) return NextResponse.json({ error: "decision_persist_failed", detail: insert.error.message }, { status: 502 });
+  if (body.action === "TRIM") {
+    const revision = await supabase.from("gpm_ii_render_revisions").insert({
+      source_ii_key: item.ii_key, decision_id: insert.data.id, original_start_sec: item.start_sec,
+      original_end_sec: item.end_sec, corrected_end_sec: correctedEndSec,
+    }).select("id").single();
+    if (revision.error) return NextResponse.json({ error: "trim_revision_enqueue_failed", detail: revision.error.message }, { status: 502 });
+    return NextResponse.json({ ok: true, decisionId: insert.data.id, revisionId: revision.data.id, itemId: item.ii_key, action: body.action, correctedEndSec, state: "PENDING_RENDER" });
+  }
   return NextResponse.json({ ok: true, decisionId: insert.data.id, itemId: item.ii_key, action: body.action, correctedEndSec });
 }
