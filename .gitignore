@@ -64,3 +64,6 @@ ops/
 
 # Local emergency backups
 local-backups/
+
+# Private local inventory artifacts
+private-artifacts/
