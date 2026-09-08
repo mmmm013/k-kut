@@ -1,6 +1,6 @@
 {
-  "schema_version": "GPMX_LT_PIX_BLK_REVIEW_GATE_V1_DRAFT",
-  "status": "DRAFT_PENDING_OWNER_LOCK",
+  "schema_version": "GPMX_LT_PIX_BLK_REVIEW_GATE_V1",
+  "status": "LOCKED_OWNER_AUTHORIZED",
   "default_incomplete_state": "TRIAGE",
   "stage_is_uncertainty_state": false,
   "hold_is_default_uncertainty_state": false,

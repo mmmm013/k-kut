@@ -75,7 +75,13 @@ for (const [name, source] of [["HUG delivery page", hugPage], ["HUG delivery API
   if (source.includes("k_kut_audio_qc")) fail(`${name} still reads legacy playable authority`);
 }
 
-for (const required of ["current_ii_not_staged", "findApprovedPublicOptionByPublicOptionId", "currentOption.kk_id_or_delivery_object_id !== selectedHugId", "selected_public_option_id: selectedPublicOptionId"])
+for (const required of [
+  "current_ii_not_staged",
+  "findApprovedStableForFulfillment",
+  "selected_public_option_id: selectedPublicOptionId",
+  "stable_record_not_found",
+  "stable_path_missing_fail_closed",
+])
   if (!fulfillment.includes(required)) fail(`4PE fulfillment missing ${required}`);
 for (const required of ["enforceCurrentIiAuthority", "findApprovedPublicOptionByPublicOptionId", "option.kk_id_or_delivery_object_id !== inventoryId", "selected_public_option_id", "paid_held_current_ii_authority", 'hug_link_status: "blocked_current_ii_hold"'])
   if (!webhook.includes(required)) fail(`Stripe webhook missing ${required}`);

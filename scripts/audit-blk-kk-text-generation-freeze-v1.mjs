@@ -36,21 +36,34 @@ const reviewGate = readJson(reviewGatePath);
 if (!fs.existsSync(ontologyPath)) fail(`missing ${ontologyPath}`);
 const ontology = fs.readFileSync(ontologyPath, "utf8");
 
-if (freeze.status !== "ACTIVE_OWNER_AUTHORIZED_FREEZE") {
-  fail("mass-generation freeze is not active");
-}
+const freezeIsActive = freeze.status === "ACTIVE_OWNER_AUTHORIZED_FREEZE";
+const freezeIsLifted = freeze.status === "FREEZE_LIFTED_ALL_PREREQUISITES_LOCKED";
+if (!freezeIsActive && !freezeIsLifted) fail(`unexpected freeze status: ${freeze.status}`);
 
 const prerequisiteStatuses = new Map(
-  freeze.unlock_rule?.prerequisites?.map((item) => [item.id, item.status]) || []
+  (freeze.unlock_rule?.prerequisites_locked || freeze.unlock_rule?.prerequisites || []).map((item) => [
+    item.id,
+    item.status,
+  ]),
 );
 for (const id of ["ontology", "per_lt_pix_worksheet", "exception_registry", "review_gate"]) {
-  if (prerequisiteStatuses.get(id) !== "DRAFT_PENDING_OWNER_LOCK") {
-    fail(`${id} must remain DRAFT_PENDING_OWNER_LOCK while the freeze is active`);
+  const expected = freezeIsActive ? "DRAFT_PENDING_OWNER_LOCK" : "LOCKED_OWNER_AUTHORIZED";
+  if (prerequisiteStatuses.get(id) !== expected) {
+    fail(`${id} must remain ${expected} for freeze status ${freeze.status}`);
   }
 }
 
-if (!ontology.includes("Status: DRAFT — PENDING OWNER LOCK")) {
-  fail("ontology draft status marker missing");
+if (freezeIsActive && !ontology.includes("Status: DRAFT — PENDING OWNER LOCK")) {
+  fail("ontology draft status marker missing while freeze is active");
+}
+if (freezeIsLifted && !ontology.includes("Status: LOCKED — OWNER AUTHORIZED")) {
+  fail("ontology locked status marker missing while freeze is lifted");
+}
+if (freezeIsActive && !ontology.includes("Mass-generation effect: FROZEN")) {
+  fail("ontology frozen effect marker missing while freeze is active");
+}
+if (freezeIsLifted && !ontology.includes("Mass-generation effect: AUTHORIZED")) {
+  fail("ontology authorized effect marker missing while freeze is lifted");
 }
 if (!ontology.includes("A BLK is a **song section**")) {
   fail("ontology does not define BLK as a song section");
@@ -59,8 +72,8 @@ if (!ontology.includes("ordinary structural uncertainty produces `TRIAGE`")) {
   fail("ontology does not preserve TRIAGE for ordinary uncertainty");
 }
 
-if (worksheet.governance_status !== "DRAFT_PENDING_OWNER_LOCK") {
-  fail("worksheet governance status changed without lock");
+if (worksheet.governance_status !== (freezeIsLifted ? "LOCKED_OWNER_AUTHORIZED" : "DRAFT_PENDING_OWNER_LOCK")) {
+  fail("worksheet governance status does not match freeze state");
 }
 if (worksheet.worksheet_status !== "TRIAGE" || worksheet.review_decision?.status !== "TRIAGE") {
   fail("worksheet must default incomplete work to TRIAGE");
@@ -75,13 +88,13 @@ if (worksheet.song_context?.section_count_target_rule !== "FORBIDDEN") {
   fail("worksheet must prohibit section-count targets");
 }
 
-if (exceptions.status !== "DRAFT_PENDING_OWNER_LOCK") {
-  fail("exception registry status changed without lock");
+if (exceptions.status !== (freezeIsLifted ? "LOCKED_OWNER_AUTHORIZED" : "DRAFT_PENDING_OWNER_LOCK")) {
+  fail("exception registry status does not match freeze state");
 }
 if (exceptions.normal_source_content_floor_seconds !== 10) {
   fail("normal source-content floor must remain 10 seconds in this draft");
 }
-if (exceptions.exceptions?.length !== 2) {
+if (!Array.isArray(exceptions.exceptions) || exceptions.exceptions.length !== 2) {
   fail("exception registry must contain only the two named draft families");
 }
 const exceptionFamilies = exceptions.exceptions.map((item) => item.display_family).sort();
@@ -94,9 +107,14 @@ if (exceptions.exceptions.some((item) => item.status !== "TRIAGE_BINDING_REQUIRE
 if (exceptions.title_only_exception_matching_allowed !== false) {
   fail("title-only exception matching must remain prohibited");
 }
+if (freezeIsLifted) {
+  const mkException = exceptions.love_arena_mk_tier_exception;
+  if (!mkException) fail("love_arena_mk_tier_exception missing while freeze is lifted");
+  if (mkException.allowed_minimum_seconds !== 8) fail("love_arena mK exception must lock 8-second floor");
+}
 
-if (reviewGate.status !== "DRAFT_PENDING_OWNER_LOCK") {
-  fail("review gate status changed without lock");
+if (reviewGate.status !== (freezeIsLifted ? "LOCKED_OWNER_AUTHORIZED" : "DRAFT_PENDING_OWNER_LOCK")) {
+  fail("review gate status does not match freeze state");
 }
 if (reviewGate.default_incomplete_state !== "TRIAGE") {
   fail("review gate must default incomplete evidence to TRIAGE");
@@ -135,4 +153,4 @@ console.log(`STATUS: ${freeze.status}`);
 console.log(`GUARDED SCRIPTS: ${freeze.guarded_scripts.length}`);
 console.log("UNCERTAINTY: TRIAGE");
 console.log("LEGACY FIXED WINDOWS: HOLD_NOT_BLK");
-console.log("PREREQUISITES: 4 DRAFT · 0 LOCKED");
+console.log(`PREREQUISITES: ${freezeIsLifted ? "0 DRAFT · 4 LOCKED" : "4 DRAFT · 0 LOCKED"}`);

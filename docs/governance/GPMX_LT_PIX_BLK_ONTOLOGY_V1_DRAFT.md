@@ -1,7 +1,7 @@
-# GPMx LT-PIX / BLK / KK Ontology V1 — Draft
+# GPMx LT-PIX / BLK / KK Ontology V1
 
-Status: DRAFT — PENDING OWNER LOCK  
-Mass-generation effect: FROZEN
+Status: LOCKED — OWNER AUTHORIZED  
+Mass-generation effect: AUTHORIZED
 
 This draft does not replace any locked product law. It defines the distinctions that must be reconciled and owner-locked before mass BLK/KK text generation may resume.
 
