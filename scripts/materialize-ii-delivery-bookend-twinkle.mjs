@@ -1,12 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
+import {
+  buildLoveArenaRomanceInventory,
+  writeLoveArenaRomanceInventory,
+} from "./lib/love-arena-romance-inventory.mjs";
 
 assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const configPath = "manifests/kkr/audio/ii-delivery-bookend-twinkle.json";
+const LOVE_ARENA_ROMANCE_MODE = process.argv.includes("--love-arena-romance");
 
 function stop(msg) {
   console.error(`STOP: ${msg}`);
@@ -19,6 +24,36 @@ function run(cmd, args) {
 
 function publicPathFromUrl(url) {
   return path.join("public", String(url || "").replace(/^\//, ""));
+}
+
+if (LOVE_ARENA_ROMANCE_MODE) {
+  const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+  const seedCatalogPath = path.join(repoRoot, "data/hugz/hugz-seed-catalog-v001.json");
+  const lineInventoryPath = path.join(repoRoot, "manifests/kkr/line-cc/lnduo-lntrio-rmst-cc-inventory.json");
+
+  if (!fs.existsSync(seedCatalogPath)) stop(`missing Love Arena LT-PIX source pool at ${seedCatalogPath}`);
+  if (!fs.existsSync(lineInventoryPath)) {
+    stop(
+      `missing line-cc inventory at ${lineInventoryPath}; run scripts/build-line-cc-inventory.mjs before romance materialization`,
+    );
+  }
+
+  const seedCatalog = JSON.parse(fs.readFileSync(seedCatalogPath, "utf8"));
+  const lineInventory = JSON.parse(fs.readFileSync(lineInventoryPath, "utf8"));
+  const inventory = buildLoveArenaRomanceInventory({ seedCatalog, lineInventory });
+  const paths = writeLoveArenaRomanceInventory({ repoRoot, inventory });
+
+  console.log("LOVE ARENA ROMANCE INVENTORY GENERATED");
+  console.log(`LT-PIX pool: ${inventory.ltPixPool.length}`);
+  console.log(`KK count: ${inventory.totals.kk_count}`);
+  console.log(`mK count: ${inventory.totals.mk_count}`);
+  console.log(`sK count: ${inventory.totals.sk_count}`);
+  console.log(`Delivery integrity status: ${inventory.totals.delivery_integrity_status}`);
+  console.log(`WROTE ${paths.kkPath}`);
+  console.log(`WROTE ${paths.mkPath}`);
+  console.log(`WROTE ${paths.skPath}`);
+  console.log(`WROTE ${paths.totalsPath}`);
+  process.exit(0);
 }
 
 if (!fs.existsSync(configPath)) stop(`missing ${configPath}`);
