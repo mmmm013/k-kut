@@ -5,6 +5,9 @@ import { execFileSync, spawnSync } from "node:child_process";
 const manifestPath = "data/ii-delivery-registry/comin-true-full-family-v1.json";
 const worklistPath = "data/kkr-captured-cc-correction-worklists/comin_true.deduplicated-v1.json";
 const publicPagePath = "app/hugs/comin-true/page.tsx";
+const recoveryQueuePath = "data/kkr-correction-queues/comin-true-owner-trim-targets-v1.json";
+const recoveryPagePath = "app/admin/science-trim-queue/page.tsx";
+const recoveryDecisionRoutePath = "app/api/admin/science-trim-queue/decision/route.ts";
 const expectedSourceSha256 = "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda";
 const PUBLIC_STATUS = "PUBLIC_READY_COMPLETE_FAMILY";
 const HOLD_STATUS = "CAPTURED_CC_LAST_VOCAL_NOTE_END_REVIEW_HOLD";
@@ -116,7 +119,37 @@ if (isCorrectionHold) {
   assert(worklist.separator_policy?.gap_is_separator_not_tail === true, "Gap must remain a separator");
   assert(worklist.separator_policy?.always_distinct_between_trms === true, "Adjacent TRMs must remain distinct");
   assert(worklist.source_record_count === 98 && worklist.deduplicated_capture_count === 96, "Captured-CC worklist count changed");
-  assert(worklist.items.every((item) => item.correction?.boundary_prosecution_state === "HOLD"), "Unreviewed worklist leaked a pass");
+  const recoveredIds = new Set(["comin_true_cc_022", "comin_true_cc_069"]);
+  for (const item of worklist.items) {
+    if (recoveredIds.has(item.work_item_id)) {
+      assert(item.correction?.corrected_capture_end_sec === 36.25, `Recovered owner endpoint changed: ${item.work_item_id}`);
+      assert(item.correction?.review_state === "LAST_VOCAL_NOTE_END_CONFIRMED", `Recovered item lost owner confirmation: ${item.work_item_id}`);
+      assert(item.correction?.boundary_prosecution_state === "STRICT_LAST_VOCAL_NOTE_END_PASS", `Recovered item lost strict boundary pass: ${item.work_item_id}`);
+      assert(item.correction?.listening_verified === true, `Recovered item lost listening verification: ${item.work_item_id}`);
+    } else {
+      assert(item.correction?.boundary_prosecution_state === "HOLD", `Unrecovered worklist item leaked a pass: ${item.work_item_id}`);
+      assert(item.correction?.listening_verified === false, `Unrecovered worklist item leaked listening verification: ${item.work_item_id}`);
+    }
+  }
+
+  assert(fs.existsSync(recoveryQueuePath), "Missing quarantined owner-boundary recovery queue");
+  const recoveryQueue = JSON.parse(fs.readFileSync(recoveryQueuePath, "utf8"));
+  assert(recoveryQueue.status === "MACHINE_EXCEPTION_QUEUE_QUARANTINED", "Machine exception queue is not quarantined");
+  assert(recoveryQueue.recovered_endpoint_count === 1 && recoveryQueue.unrecovered_endpoint_count === 18, "Recovery counts changed");
+  assert(recoveryQueue.targets.every((target) => !Object.hasOwn(target, "proposed_end_sec")), "Machine proposal leaked into actionable endpoint field");
+  assert(recoveryQueue.targets.every((target) => target.machine_evidence_state === "QUARANTINED_NOT_ENDPOINT_AUTHORITY"), "Machine evidence escaped quarantine");
+  const recovered = recoveryQueue.targets.find((target) => target.work_item_ids.includes("comin_true_cc_022"));
+  assert(recovered?.owner_end_sec === 36.25, "Owner-confirmed 36.250 endpoint changed");
+  assert(recovered?.authority_state === "OWNER_CONFIRMED_LAST_VOCAL_NOTE_END", "Recovered endpoint lost owner authority");
+  assert(recovered?.consumer_ii_keys?.includes("comin_true_tug_make_room"), "Recovered TUG product lineage missing");
+  assert(recovered?.consumer_ii_keys?.includes("comin_true_bug_make_room"), "Recovered BUG product lineage missing");
+  assert(recoveryQueue.targets.filter((target) => target.owner_end_sec !== null).length === 1, "Unrecovered endpoint received an owner value");
+
+  const recoveryPage = fs.readFileSync(recoveryPagePath, "utf8");
+  assert(!recoveryPage.includes("scientific proposal"), "Rejected machine proposal is still presented as scientific authority");
+  assert(!recoveryPage.includes("TRIM AND QUEUE"), "Quarantined page still exposes the trim action");
+  const decisionRoute = fs.readFileSync(recoveryDecisionRoutePath, "utf8");
+  assert(decisionRoute.includes("machine_exception_queue_quarantined"), "Quarantined write route does not fail closed");
   const reported = new Set(["comin_true_cc_019", "comin_true_cc_020", "comin_true_cc_021"]);
   assert(worklist.items.filter((item) => reported.has(item.work_item_id)).every((item) => item.correction?.defect === "STEPS_PAST_LAST_AUDIBLE_VOCAL_NOTE_END"), "Owner-reported trespass defect missing");
   const fate = manifest.tugs.find((item) => item.ii_key === "comin_true_tug_space_and_faith");
