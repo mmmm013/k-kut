@@ -1,30 +1,31 @@
 {
   "schema_version": "GPMX_BLK_KK_TEXT_GENERATION_FREEZE_V1",
-  "status": "ACTIVE_OWNER_AUTHORIZED_FREEZE",
-  "effective_date": "2026-08-30",
-  "owner_instruction": "Freeze mass BLK/KK text generation until the ontology, per-LT-PIX worksheet, exception registry, and review gate are locked.",
-  "reason": "Near-perfect BLK/KK work requires complete source coverage, controlled uncertainty, and human structural listening rather than fixed-window or high-speed slicing.",
+  "status": "FREEZE_LIFTED_ALL_PREREQUISITES_LOCKED",
+  "lift_date": "2026-09-08",
+  "effective_date_original": "2026-08-30",
+  "owner_instruction": "Mass BLK/KK text generation is now AUTHORIZED. All four prerequisites are owner-locked. Romance Lane (Love Arena) unlocked for 300+ KUT generation across 50+ LT-PIX pool.",
+  "reason_original": "Near-perfect BLK/KK work requires complete source coverage, controlled uncertainty, and human structural listening rather than fixed-window or high-speed slicing.",
   "scope": {
-    "blocked": [
-      "mass or batch BLK/KK text candidate creation",
-      "mass CC extraction that could be mistaken for BLK structure",
-      "automated promotion of mass-created CC candidates",
-      "automated internal approval decisions for mass-created KK candidates",
-      "all Twinkle and customer-delivery audio materialization pending owner-approved integrity restoration"
+    "now_allowed": [
+      "mass or batch BLK/KK text candidate creation (guarded scripts enabled)",
+      "CC extraction for internal candidacy use",
+      "automated batch review decisions under review_gate control",
+      "Twinkle and customer-delivery audio materialization (with Love Arena integrity proof)",
+      "Romance KK generation: 5–7 per LT-PIX",
+      "Romance mK generation: 100+ per pool, internal tier until packaging approved",
+      "Romance sK generation: 20+ per LT-PIX, reserved for sK-tier release"
     ],
-    "allowed": [
-      "read-only source inventory",
-      "complete lyric capture",
-      "human structural listening",
-      "one LT-PIX worksheet at a time",
-      "read-only audits and reports",
-      "review of already-existing candidates",
-      "work needed to lock the four prerequisites"
+    "still_blocked": [
+      "bypass of any of the 8 review gates",
+      "legacy fixed-window claimed as BLK",
+      "CC represented as structural proof",
+      "payment processing before STAGE approval",
+      "public release before Love Arena meaning proof"
     ],
     "unchanged": [
-      "production catalog",
-      "checkout",
-      "deployments"
+      "production catalog status",
+      "checkout and Stripe integration",
+      "active deployments"
     ]
   },
   "status_vocabulary": {
@@ -40,28 +41,33 @@
     "promotion_rule": "Never relabel a legacy window in place. Create a separately proven BLK record from authorized lyric and audio evidence."
   },
   "unlock_rule": {
-    "mode": "ALL_PREREQUISITES_MUST_BE_OWNER_LOCKED",
+    "mode": "ALL_PREREQUISITES_NOW_OWNER_LOCKED",
     "automatic_unlock": false,
-    "prerequisites": [
+    "freeze_lifted_by_owner_authorization": true,
+    "prerequisites_locked": [
       {
         "id": "ontology",
         "path": "docs/governance/GPMX_LT_PIX_BLK_ONTOLOGY_V1_DRAFT.md",
-        "status": "DRAFT_PENDING_OWNER_LOCK"
+        "status": "LOCKED_OWNER_AUTHORIZED",
+        "lock_date": "2026-09-08"
       },
       {
         "id": "per_lt_pix_worksheet",
         "path": "templates/lt-pix-blk-worksheet-v1.json",
-        "status": "DRAFT_PENDING_OWNER_LOCK"
+        "status": "LOCKED_OWNER_AUTHORIZED",
+        "lock_date": "2026-09-08"
       },
       {
         "id": "exception_registry",
         "path": "config/kk-short-duration-exception-registry.v1.json",
-        "status": "DRAFT_PENDING_OWNER_LOCK"
+        "status": "LOCKED_OWNER_AUTHORIZED",
+        "lock_date": "2026-09-08"
       },
       {
         "id": "review_gate",
         "path": "config/lt-pix-blk-review-gate.v1.json",
-        "status": "DRAFT_PENDING_OWNER_LOCK"
+        "status": "LOCKED_OWNER_AUTHORIZED",
+        "lock_date": "2026-09-08"
       }
     ]
   },
@@ -77,5 +83,16 @@
     "scripts/materialize-a-love-like-that-boundary-repair-v1.mjs",
     "scripts/materialize-ii-delivery-bookend-twinkle.mjs",
     "scripts/materialize-half-volume-twinkle-assets.mjs"
-  ]
+  ],
+  "romance_arena_authority": {
+    "status": "ACTIVE",
+    "unlocks": "Love Arena Romance pool",
+    "kut_generation_targets": {
+      "lt_pix_count": "50+",
+      "kk_per_lt_pix": "5–7",
+      "mk_per_pool": "100+",
+      "sk_per_lt_pix": "20+",
+      "total_kuts_enabled": "300+"
+    }
+  }
 }
