@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
-import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 import {
   findApprovedStableForFulfillment,
   recordFailClosedOutcome,
@@ -87,24 +86,6 @@ export async function POST(req: NextRequest) {
       selected_public_option_id: selectedPublicOptionId,
     });
 
-    return NextResponse.json(
-      {
-        ok: false,
-        error: "current_ii_not_staged",
-        selected_hug_id: selectedHugId,
-      },
-      { status: 409 },
-    );
-  }
-
-  const currentOption = findApprovedPublicOptionByPublicOptionId(
-    selectedPublicOptionId,
-  );
-
-  if (
-    !currentOption ||
-    currentOption.kk_id_or_delivery_object_id !== selectedHugId
-  ) {
     return NextResponse.json(
       {
         ok: false,
