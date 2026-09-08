@@ -1,23 +1,32 @@
 {
-  "schema_version": "GPMX_OWNER_II_TRIM_TARGETS_V1",
-  "source_worklist": "data/kkr-captured-cc-correction-worklists/comin_true.endpoint-prosecution-v1.json",
-  "policy": "Each TRIM creates a private versioned render request. The existing II remains active until the corrected render is approved, then is archived as predecessor.",
+  "schema_version": "GPMX_OWNER_BOUNDARY_RECOVERY_QUEUE_V2",
+  "status": "MACHINE_EXCEPTION_QUEUE_QUARANTINED",
+  "source_sha256": "fcf14e890b2c23c1eff1d213722332d67d282d9315c8b0e290fb2522fb092cda",
+  "machine_evidence_source": "data/kkr-captured-cc-correction-worklists/comin_true.endpoint-prosecution-v1.json",
+  "policy": "Machine exception timestamps are diagnostic evidence only and may never initialize an owner endpoint. Only durable owner-confirmed endpoints may create private revisions. Existing products remain unchanged until replacement audio is rendered and verified.",
   "target_count": 19,
+  "recovered_endpoint_count": 1,
+  "unrecovered_endpoint_count": 18,
   "targets": [
     {
       "work_item_ids": [
         "comin_true_cc_022",
         "comin_true_cc_069"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_make_room",
+        "comin_true_bug_make_room"
+      ],
       "titles": [
         "Time to Make Some Room",
         "Make Some Room"
       ],
       "stored_end_sec": 35,
-      "proposed_end_sec": 33.971,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 33.971,
+      "owner_end_sec": 36.25,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_CONFIRMED_LAST_VOCAL_NOTE_END",
+      "action_state": "PRIVATE_REVISION_QUEUED"
     },
     {
       "work_item_ids": [
@@ -25,44 +34,59 @@
         "comin_true_cc_047",
         "comin_true_cc_072"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_coming_true_first",
+        "comin_true_tug_new_to_true",
+        "comin_true_bug_coming_true_1"
+      ],
       "titles": [
         "I'm Coming True",
         "Newly New and Coming True",
         "Coming True"
       ],
       "stored_end_sec": 46,
-      "proposed_end_sec": 44.981,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 44.981,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_026",
         "comin_true_cc_074"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_old_paint_fade",
+        "comin_true_bug_fade_1"
+      ],
       "titles": [
         "Old Paint About to Fade",
         "Fade"
       ],
       "stored_end_sec": 52,
-      "proposed_end_sec": 50.931,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 50.931,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_075"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_fresh_outlook_1"
+      ],
       "titles": [
         "Fresh Outlook"
       ],
       "stored_end_sec": 54,
-      "proposed_end_sec": 53.091,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 53.091,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
@@ -70,100 +94,133 @@
         "comin_true_cc_048",
         "comin_true_cc_057"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_fresh_outlook_place",
+        "comin_true_tug_paint_to_outlook",
+        "comin_true_tug_renewal_transformation"
+      ],
       "titles": [
         "Put a Fresh Outlook in Its Place",
         "Old Paint, Fresh Outlook",
         "Coming True with a Fresh Outlook"
       ],
       "stored_end_sec": 57,
-      "proposed_end_sec": 57.181,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 57.181,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_076"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_newly_new_2"
+      ],
       "titles": [
         "Newly New"
       ],
       "stored_end_sec": 60,
-      "proposed_end_sec": 58.861,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 58.861,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_028",
         "comin_true_cc_077"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_newly_coming_true_1",
+        "comin_true_bug_coming_true_2"
+      ],
       "titles": [
         "I'm Newly New—I'm Coming True",
         "Coming True"
       ],
       "stored_end_sec": 63,
-      "proposed_end_sec": 62.001,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 62.001,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_029"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_coming_true_repeat"
+      ],
       "titles": [
         "I'm Coming True"
       ],
       "stored_end_sec": 67,
-      "proposed_end_sec": 65.781,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 65.781,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_078"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_ooh_1"
+      ],
       "titles": [
         "Hopeful Ooh"
       ],
       "stored_end_sec": 70,
-      "proposed_end_sec": 69.461,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 69.461,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_034",
         "comin_true_cc_085"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_no_looking_back",
+        "comin_true_bug_looking_back"
+      ],
       "titles": [
         "I Won't Waste Time Looking Back",
         "Looking Back"
       ],
       "stored_end_sec": 85,
-      "proposed_end_sec": 84.731,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 84.731,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_036",
         "comin_true_cc_086"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_moving_on",
+        "comin_true_bug_moving_on"
+      ],
       "titles": [
         "Now I'm Moving On",
         "Moving On"
       ],
       "stored_end_sec": 92,
-      "proposed_end_sec": 92.031,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 92.031,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
@@ -173,6 +230,13 @@
         "comin_true_cc_061",
         "comin_true_cc_087"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_where_belong",
+        "comin_true_tug_moving_where_belong",
+        "comin_true_tug_release_return",
+        "comin_true_tug_holding_to_belonging",
+        "comin_true_bug_belong"
+      ],
       "titles": [
         "Getting Back Where I Belong",
         "Moving On to Where I Belong",
@@ -181,51 +245,65 @@
         "Belong"
       ],
       "stored_end_sec": 96,
-      "proposed_end_sec": 94.951,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 94.951,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_088"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_newly_new_3"
+      ],
       "titles": [
         "Newly New"
       ],
       "stored_end_sec": 99,
-      "proposed_end_sec": 99.001,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 99.001,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_090"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_old_paint_2"
+      ],
       "titles": [
         "Old Paint"
       ],
       "stored_end_sec": 106.77,
-      "proposed_end_sec": 106.841,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 106.841,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_039",
         "comin_true_cc_091"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_old_paint_fade_2",
+        "comin_true_bug_fade_2"
+      ],
       "titles": [
         "Took Off That Old Paint About to Fade",
         "Fade"
       ],
       "stored_end_sec": 109,
-      "proposed_end_sec": 108.941,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 108.941,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
@@ -233,57 +311,76 @@
         "comin_true_cc_053",
         "comin_true_cc_060"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_fresh_outlook_place_2",
+        "comin_true_tug_shed_and_replace",
+        "comin_true_tug_renew_and_replace"
+      ],
       "titles": [
         "Put a Fresh Outlook in Its Place",
         "Shed the Old—Choose a Fresh Outlook",
         "Come True—Replace the Old with a Fresh Outlook"
       ],
       "stored_end_sec": 115,
-      "proposed_end_sec": 113.781,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 113.781,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_054",
         "comin_true_cc_063"
       ],
+      "consumer_ii_keys": [
+        "comin_true_tug_closing_renewal",
+        "comin_true_tug_fresh_final_arc"
+      ],
       "titles": [
         "Newly New, Coming True",
         "Old Paint to Fresh Outlook to Coming True"
       ],
       "stored_end_sec": 124,
-      "proposed_end_sec": 122.761,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 122.761,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_094"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_ooh_2"
+      ],
       "titles": [
         "Renewing Ooh"
       ],
       "stored_end_sec": 127,
-      "proposed_end_sec": 126.941,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 126.941,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     },
     {
       "work_item_ids": [
         "comin_true_cc_096"
       ],
+      "consumer_ii_keys": [
+        "comin_true_bug_ooh_3"
+      ],
       "titles": [
         "Final Ooh"
       ],
       "stored_end_sec": 135,
-      "proposed_end_sec": 133.761,
-      "source": "COMIN_TRUE_CAPTURED_CC_AUTHORITY",
-      "action": "OWNER_TRIM_REQUIRED",
-      "state": "PENDING_OWNER_REVIEW"
+      "machine_proposed_end_sec": 133.761,
+      "owner_end_sec": null,
+      "machine_evidence_state": "QUARANTINED_NOT_ENDPOINT_AUTHORITY",
+      "authority_state": "OWNER_DECISION_RECOVERY_REQUIRED",
+      "action_state": "NO_ACTION_AUTHORIZED"
     }
   ]
 }
