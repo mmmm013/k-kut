@@ -53,8 +53,17 @@ for (const id of ["ontology", "per_lt_pix_worksheet", "exception_registry", "rev
   }
 }
 
-if (!ontology.includes("Status: DRAFT — PENDING OWNER LOCK")) {
-  fail("ontology draft status marker missing");
+if (freezeIsActive && !ontology.includes("Status: DRAFT — PENDING OWNER LOCK")) {
+  fail("ontology draft status marker missing while freeze is active");
+}
+if (freezeIsLifted && !ontology.includes("Status: LOCKED — OWNER AUTHORIZED")) {
+  fail("ontology locked status marker missing while freeze is lifted");
+}
+if (freezeIsActive && !ontology.includes("Mass-generation effect: FROZEN")) {
+  fail("ontology frozen effect marker missing while freeze is active");
+}
+if (freezeIsLifted && !ontology.includes("Mass-generation effect: AUTHORIZED")) {
+  fail("ontology authorized effect marker missing while freeze is lifted");
 }
 if (!ontology.includes("A BLK is a **song section**")) {
   fail("ontology does not define BLK as a song section");

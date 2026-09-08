@@ -4,7 +4,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-freeze.mjs";
 import {
-  buildLoveArenaRomanceInventory,
+  buildLoveArenaRomanceInventoryFromAuthority,
   writeLoveArenaRomanceInventory,
 } from "./lib/love-arena-romance-inventory.mjs";
 
@@ -12,6 +12,10 @@ assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const configPath = "manifests/kkr/audio/ii-delivery-bookend-twinkle.json";
 const LOVE_ARENA_ROMANCE_MODE = process.argv.includes("--love-arena-romance");
+const AUTHORITY_ARG = process.argv.find((arg) => arg.startsWith("--authority-manifest="));
+const AUTHORITY_MANIFEST_PATH = AUTHORITY_ARG
+  ? AUTHORITY_ARG.slice("--authority-manifest=".length)
+  : "manifests/kkr/authority/love-arena-romance-authority-v001.json";
 
 function stop(msg) {
   console.error(`STOP: ${msg}`);
@@ -28,22 +32,21 @@ function publicPathFromUrl(url) {
 
 if (LOVE_ARENA_ROMANCE_MODE) {
   const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-  const seedCatalogPath = path.join(repoRoot, "data/hugz/hugz-seed-catalog-v001.json");
-  const lineInventoryPath = path.join(repoRoot, "manifests/kkr/line-cc/lnduo-lntrio-rmst-cc-inventory.json");
-
-  if (!fs.existsSync(seedCatalogPath)) stop(`missing Love Arena LT-PIX source pool at ${seedCatalogPath}`);
-  if (!fs.existsSync(lineInventoryPath)) {
+  const authorityPath = path.isAbsolute(AUTHORITY_MANIFEST_PATH)
+    ? AUTHORITY_MANIFEST_PATH
+    : path.join(repoRoot, AUTHORITY_MANIFEST_PATH);
+  if (!fs.existsSync(authorityPath)) {
     stop(
-      `missing line-cc inventory at ${lineInventoryPath}; run scripts/build-line-cc-inventory.mjs before romance materialization`,
+      `missing authority manifest at ${authorityPath}. Love Arena generation requires LT-PIX SSOT + event-based CC lineage bundle.`,
     );
   }
 
-  const seedCatalog = JSON.parse(fs.readFileSync(seedCatalogPath, "utf8"));
-  const lineInventory = JSON.parse(fs.readFileSync(lineInventoryPath, "utf8"));
-  const inventory = buildLoveArenaRomanceInventory({ seedCatalog, lineInventory });
+  const authority = JSON.parse(fs.readFileSync(authorityPath, "utf8"));
+  const inventory = buildLoveArenaRomanceInventoryFromAuthority({ authority });
   const paths = writeLoveArenaRomanceInventory({ repoRoot, inventory });
 
   console.log("LOVE ARENA ROMANCE INVENTORY GENERATED");
+  console.log(`Authority manifest: ${authorityPath}`);
   console.log(`LT-PIX pool: ${inventory.ltPixPool.length}`);
   console.log(`KK count: ${inventory.totals.kk_count}`);
   console.log(`mK count: ${inventory.totals.mk_count}`);
