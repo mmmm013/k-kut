@@ -7,7 +7,6 @@ import { assertBlkKkMassGenerationAllowed } from "./lib/blk-kk-text-generation-f
 assertBlkKkMassGenerationAllowed(import.meta.url);
 
 const configPath = "manifests/kkr/audio/ii-delivery-bookend-twinkle.json";
-
 function stop(msg) {
   console.error(`STOP: ${msg}`);
   process.exit(1);
