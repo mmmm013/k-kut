@@ -4,7 +4,7 @@ import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminSession, valid
 
 export const dynamic = 'force-dynamic';
 const HEADERS = { 'Cache-Control': 'private, no-store, max-age=0', 'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex, nofollow, noarchive' };
-const COMIN_TRUE_OBJECT = 'incoming/comin-true/COMIN_TRUE_FULL_LT_PIX_SSOT.mp3';
+const COMIN_TRUE_OBJECT = '76.5bpm.mp3';
 const COMIN_TRUE_TRACK_ID = '168275759';
 function authorized(request: NextRequest) { return trustedProtectedPreview() || validAdminToken(request.headers.get('x-admin-token')) || validAdminSession(request.cookies.get(ADMIN_SESSION_COOKIE)?.value); }
 function client() { const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(); const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim(); return url && key ? createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } }) : null; }
@@ -12,7 +12,7 @@ async function signedFrom(s: NonNullable<ReturnType<typeof client>>, bucket: str
 export async function GET(request: NextRequest) {
   if (!authorized(request)) return NextResponse.json({ error: 'not_found' }, { status: 404, headers: HEADERS });
   const s = client(); if (!s) return NextResponse.json({ error: 'audio_unavailable' }, { status: 503, headers: HEADERS });
-  // The locked Comin' True boundary authority names this exact private LT-PIX object.
+  // Locked Comin' True LT-PIX authority: private tracks/76.5bpm.mp3, 5,604,104 bytes.
   let url = await signedFrom(s, 'tracks', COMIN_TRUE_OBJECT);
   if (!url) {
     const resolved = await s.from('gpmx_track_storage_audio_resolver_v1').select('resolved_bucket_id,resolved_object_name').eq('track_id', COMIN_TRUE_TRACK_ID).eq('resolver_state', 'RESOLVED_FROM_STORAGE_OBJECT_ID').maybeSingle();
