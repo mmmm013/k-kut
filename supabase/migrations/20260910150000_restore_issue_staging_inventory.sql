@@ -83,15 +83,13 @@ select
   m.album,
   m.artist,
   m.isrc,
-  case
-    when m.inventory_lane = 'FULLMIX' then 'VOCAL_LT_PIX_CANDIDATE'
-    else 'IN_PIX_CANDIDATE'
-  end,
+  'VOCAL_LT_PIX_CANDIDATE',
   m.source_import_id,
   now()
 from public.gpm_stl_track_memberships m
 join public.gpm_stl_playlist_imports i on i.id = m.source_import_id
 where i.is_current
+  and m.inventory_lane = 'FULLMIX'
   and m.staging_state = 'ACTIVE'
 on conflict (disco_track_id) do update
 set track_name = excluded.track_name,
@@ -120,7 +118,8 @@ from (
     count(*) filter (where m.wav_url_state in ('PRESENT_UNVERIFIED', 'VERIFIED'))::int as wav_present,
     count(*) filter (where m.wav_url_state = 'MISSING')::int as wav_missing,
     count(*) filter (
-      where m.staging_state = 'ACTIVE'
+      where m.inventory_lane = 'FULLMIX'
+        and m.staging_state = 'ACTIVE'
         and m.wav_url_state = 'VERIFIED'
         and m.wav_url is not null
     )::int as kkr_ready
@@ -131,3 +130,21 @@ from (
   group by m.source_import_id
 ) s
 where i.id = s.source_import_id;
+
+
+-- KUT source law: KKr reads only verified FullMix LT-PIX.
+-- INSTRO_ONLY remains governed inventory but is never a KUT input.
+create or replace view public.gpm_stl_kkr_ready_inventory_v1
+with (security_invoker = true)
+as
+select *
+from public.gpm_stl_current_split_inventory_v2
+where inventory_lane = 'FULLMIX'
+  and wav_url_state = 'VERIFIED'
+  and wav_url is not null;
+
+revoke all on public.gpm_stl_kkr_ready_inventory_v1 from public, anon, authenticated;
+grant select on public.gpm_stl_kkr_ready_inventory_v1 to service_role;
+
+comment on view public.gpm_stl_kkr_ready_inventory_v1 is
+  'KUT source gate: current active FullMix LT-PIX only, with verified WAV. INSTRO_ONLY inventory is never eligible for KKr or KUT production.';
