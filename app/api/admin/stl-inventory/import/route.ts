@@ -72,10 +72,6 @@ function validWavUrl(value: string) {
   }
 }
 
-function normalize(value: string | null) {
-  return String(value || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
-}
-
 function parseFile(file: File, text: string, lane: Lane): ImportRow[] {
   const records = csv(text.replace(/^\uFEFF/, ""))
     .map((sourceRecord, index): ImportRow => ({
@@ -108,34 +104,29 @@ function parseFile(file: File, text: string, lane: Lane): ImportRow[] {
   return records;
 }
 
-function stageDuplicates(fullmix: ImportRow[], instro: ImportRow[]) {
+function stageExactDuplicateTrackIds(fullmix: ImportRow[], instro: ImportRow[]) {
   const all = [...fullmix, ...instro];
-  const by = (key: (row: ImportRow) => string, reason: string) => {
-    const counts = new Map<string, number>();
-    for (const row of all) {
-      const value = key(row);
-      if (value) counts.set(value, (counts.get(value) || 0) + 1);
-    }
-    for (const row of all) {
-      const value = key(row);
-      if (value && (counts.get(value) || 0) > 1) row.dup_reasons.push(reason);
-    }
-  };
-
-  by((row) => row.disco_track_id, "DUP_TRACK_ID");
-  by((row) => normalize(row.isrc), "DUP_ISRC");
-  by((row) => `${normalize(row.track_name)}|${normalize(row.album)}`, "DUP_TITLE_ALBUM");
-
-  const instrumentalLabel = /\b(instro|instrumental|no vocals?)\b/i;
-  for (const row of fullmix) {
-    if (instrumentalLabel.test(row.track_name)) row.dup_reasons.push("DUP_OR_WRONG_LANE_INSTRO_LABEL");
+  const groups = new Map<string, ImportRow[]>();
+  for (const row of all) {
+    const group = groups.get(row.disco_track_id) || [];
+    group.push(row);
+    groups.set(row.disco_track_id, group);
   }
 
-  for (const row of all) {
-    row.dup_reasons = [...new Set(row.dup_reasons)].sort();
-    row.staging_state = row.dup_reasons.length ? "DUP" : "ACTIVE";
-    if (row.dup_reasons.includes("DUP_TRACK_ID")) row.conflict_state = "QUARANTINED_CROSS_LIST";
-    else if (row.dup_reasons.includes("DUP_OR_WRONG_LANE_INSTRO_LABEL")) row.conflict_state = "QUARANTINED_LANE_LABEL_CONFLICT";
+  const instrumentalLabel = /\\b(instro|instrumental|no vocals?)\\b/i;
+  for (const group of groups.values()) {
+    if (group.length < 2) continue;
+    const instrumentalNamed = group.some((row) => instrumentalLabel.test(row.track_name));
+    const canonical = group.find((row) =>
+      instrumentalNamed ? row.inventory_lane === "INSTRO_ONLY" : row.inventory_lane === "FULLMIX"
+    ) || group[0];
+
+    for (const row of group) {
+      if (row === canonical) continue;
+      row.staging_state = "DUP";
+      row.dup_reasons = ["DUP_TRACK_ID_REDUNDANT"];
+      row.conflict_state = "QUARANTINED_CROSS_LIST";
+    }
   }
 }
 
