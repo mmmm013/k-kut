@@ -143,7 +143,11 @@ from (
 ) s
 where i.id = s.source_import_id;
 
-create or replace view public.gpm_stl_current_split_inventory_v2
+drop view if exists public.gpm_stl_kkr_ready_inventory_v1;
+drop view if exists public.gpm_stl_dup_staging_v1;
+drop view if exists public.gpm_stl_current_split_inventory_v2;
+
+create view public.gpm_stl_current_split_inventory_v2
 with (security_invoker = true)
 as
 select
@@ -170,7 +174,7 @@ where i.is_current
   and i.inventory_lane = m.inventory_lane
   and m.staging_state = 'ACTIVE';
 
-create or replace view public.gpm_stl_dup_staging_v1
+create view public.gpm_stl_dup_staging_v1
 with (security_invoker = true)
 as
 select
@@ -195,7 +199,7 @@ where i.is_current
   and i.inventory_lane = m.inventory_lane
   and m.staging_state = 'DUP';
 
-create or replace view public.gpm_stl_kkr_ready_inventory_v1
+create view public.gpm_stl_kkr_ready_inventory_v1
 with (security_invoker = true)
 as
 select *
