@@ -1,2 +1,37 @@
-'use client';import {useState} from 'react';
-export default function StlInventory(){const[status,setStatus]=useState('');async function submit(e:React.FormEvent<HTMLFormElement>){e.preventDefault();setStatus('Importing…');const r=await fetch('/api/admin/stl-inventory/import',{method:'POST',body:new FormData(e.currentTarget)});setStatus(JSON.stringify(await r.json(),null,2))}return <main className="min-h-screen bg-black p-8 text-stone-100"><h1 className="text-2xl font-black">GPMx INVENTORY INTAKE</h1><p className="mt-2 text-stone-400">Upload the GPMx CSV. Vocal rows are registered as LT-PIX candidates; instrumentals are retained for pairing; no public release is created.</p><form onSubmit={submit} className="mt-6 space-y-4"><input name="file" type="file" accept=".csv,text/csv" required/><button className="block rounded bg-amber-300 px-4 py-2 font-bold text-black">Import playlist</button></form><pre className="mt-6 whitespace-pre-wrap text-sm">{status}</pre></main>}
+'use client';
+
+import { useState } from 'react';
+
+export default function StlInventory() {
+  const [status, setStatus] = useState('');
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus('Importing both inventories…');
+    const response = await fetch('/api/admin/stl-inventory/import', { method: 'POST', body: new FormData(event.currentTarget) });
+    setStatus(JSON.stringify(await response.json(), null, 2));
+  }
+  return (
+    <main className="min-h-screen bg-black p-8 text-stone-100">
+      <h1 className="text-2xl font-black">GPMx INVENTORY INTAKE</h1>
+      <p className="mt-2 max-w-3xl text-stone-400">
+        Upload the dated FullMix and INSTRO-ONLY CSVs together. The source worksheet determines the inventory lane. No KUT, stage item, or public release is created.
+      </p>
+      <form onSubmit={submit} className="mt-6 max-w-2xl space-y-5">
+        <label className="block">
+          <span className="mb-2 block font-bold">Snapshot date</span>
+          <input name="snapshotDate" type="date" required className="rounded bg-stone-900 p-2" />
+        </label>
+        <label className="block">
+          <span className="mb-2 block font-bold">FullMix CSV</span>
+          <input name="fullmix" type="file" accept=".csv,text/csv" required />
+        </label>
+        <label className="block">
+          <span className="mb-2 block font-bold">INSTRO-ONLY CSV</span>
+          <input name="instro" type="file" accept=".csv,text/csv" required />
+        </label>
+        <button className="block rounded bg-amber-300 px-4 py-2 font-bold text-black">Import split inventory</button>
+      </form>
+      <pre className="mt-6 whitespace-pre-wrap text-sm">{status}</pre>
+    </main>
+  );
+}
