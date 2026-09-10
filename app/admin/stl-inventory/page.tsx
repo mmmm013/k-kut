@@ -6,7 +6,7 @@ export default function StlInventory() {
   const [status, setStatus] = useState('');
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus('Validating WAV URLs and staging duplicate candidates…');
+    setStatus('Validating WAV URLs and resolving exact duplicate Track IDs…');
     const response = await fetch('/api/admin/stl-inventory/import', { method: 'POST', body: new FormData(event.currentTarget) });
     setStatus(JSON.stringify(await response.json(), null, 2));
   }
@@ -14,7 +14,7 @@ export default function StlInventory() {
     <main className="min-h-screen bg-black p-8 text-stone-100">
       <h1 className="text-2xl font-black">GPMx INVENTORY INTAKE</h1>
       <p className="mt-2 max-w-3xl text-stone-400">
-        Upload the dated FullMix and INSTRO-ONLY CSVs together. Every source row must include a non-empty <strong>WAV URL</strong>. Suspected duplicates are preserved in private DUP staging and excluded from active inventory. No KUT, stage item, or public release is created.
+        Upload the dated FullMix and INSTRO-ONLY CSVs together. Every source row must include a non-empty <strong>WAV URL</strong>. Only redundant occurrences of an identical Track ID are preserved in private DUP staging and excluded from active inventory. No KUT, stage item, or public release is created.
       </p>
       <form onSubmit={submit} className="mt-6 max-w-2xl space-y-5">
         <label className="block">
