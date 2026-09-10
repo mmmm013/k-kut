@@ -6,7 +6,7 @@ export default function StlInventory() {
   const [status, setStatus] = useState('');
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus('Importing both inventories…');
+    setStatus('Validating WAV URLs and staging duplicate candidates…');
     const response = await fetch('/api/admin/stl-inventory/import', { method: 'POST', body: new FormData(event.currentTarget) });
     setStatus(JSON.stringify(await response.json(), null, 2));
   }
@@ -14,7 +14,7 @@ export default function StlInventory() {
     <main className="min-h-screen bg-black p-8 text-stone-100">
       <h1 className="text-2xl font-black">GPMx INVENTORY INTAKE</h1>
       <p className="mt-2 max-w-3xl text-stone-400">
-        Upload the dated FullMix and INSTRO-ONLY CSVs together. The source worksheet determines the inventory lane. No KUT, stage item, or public release is created.
+        Upload the dated FullMix and INSTRO-ONLY CSVs together. Every source row must include a non-empty <strong>WAV URL</strong>. Suspected duplicates are preserved in private DUP staging and excluded from active inventory. No KUT, stage item, or public release is created.
       </p>
       <form onSubmit={submit} className="mt-6 max-w-2xl space-y-5">
         <label className="block">
@@ -22,14 +22,14 @@ export default function StlInventory() {
           <input name="snapshotDate" type="date" required className="rounded bg-stone-900 p-2" />
         </label>
         <label className="block">
-          <span className="mb-2 block font-bold">FullMix CSV</span>
+          <span className="mb-2 block font-bold">FullMix CSV with WAV URL column</span>
           <input name="fullmix" type="file" accept=".csv,text/csv" required />
         </label>
         <label className="block">
-          <span className="mb-2 block font-bold">INSTRO-ONLY CSV</span>
+          <span className="mb-2 block font-bold">INSTRO-ONLY CSV with WAV URL column</span>
           <input name="instro" type="file" accept=".csv,text/csv" required />
         </label>
-        <button className="block rounded bg-amber-300 px-4 py-2 font-bold text-black">Import split inventory</button>
+        <button className="block rounded bg-amber-300 px-4 py-2 font-bold text-black">Validate and import</button>
       </form>
       <pre className="mt-6 whitespace-pre-wrap text-sm">{status}</pre>
     </main>
