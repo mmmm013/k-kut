@@ -106,7 +106,7 @@ grouped as (
   group by source_import_id, disco_track_id
 )
 update public.gpm_stl_track_memberships m
-set staging_state = case when g.source_import_id is null then 'ACTIVE' else 'DUP' end,
+set staging_state = case when g.reasons is null then 'ACTIVE' else 'DUP' end,
     dup_reasons = coalesce(g.reasons, '{}'::text[])
 from (
   select c.source_import_id, c.disco_track_id, g.reasons
