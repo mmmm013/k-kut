@@ -3,24 +3,29 @@
   "status": "FREEZE_LIFTED_ALL_PREREQUISITES_LOCKED",
   "lift_date": "2026-09-08",
   "effective_date_original": "2026-08-30",
-  "owner_instruction": "Mass BLK/KK text generation is now AUTHORIZED. All four prerequisites are owner-locked. Romance Lane (Love Arena) unlocked for 300+ KUT generation across 50+ LT-PIX pool.",
+  "authority_update": "2026-09-10",
+  "owner_instruction": "KUT production is authorized only from the 324 original FullMix LT-PIX SSOTs and only in this order: prove BLKs, CC exact KKs and contiguous KK-KOMBOs, verify the captured FullMix excerpts, add permitted KK/KOMBO headings, obtain owner approval, then derive mKs and then sKs.",
   "reason_original": "Near-perfect BLK/KK work requires complete source coverage, controlled uncertainty, and human structural listening rather than fixed-window or high-speed slicing.",
   "scope": {
     "now_allowed": [
-      "mass or batch BLK/KK text candidate creation (guarded scripts enabled)",
-      "CC extraction for internal candidacy use",
-      "automated batch review decisions under review_gate control",
-      "Twinkle and customer-delivery audio materialization (with Love Arena integrity proof)",
-      "Romance KK generation: 5–7 per LT-PIX",
-      "Romance mK generation: 100+ per pool, internal tier until packaging approved",
-      "Romance sK generation: 20+ per LT-PIX, reserved for sK-tier release"
+      "complete sequential BLK mapping from each original FullMix LT-PIX SSOT",
+      "CC of an exact KK from one proven BLK",
+      "CC of an exact KK-KOMBO across two or more source-contiguous proven BLKs",
+      "post-CC verification against the original FullMix",
+      "permitted KK/KOMBO headings only after CC verification",
+      "owner review and approval",
+      "mK derivation only after the KK/KOMBO inventory is established",
+      "sK derivation only after the mK inventory is established"
     ],
     "still_blocked": [
-      "bypass of any of the 8 review gates",
+      "use of INSTRO-ONLY or INO-PIX inventory as any KUT source",
+      "bypass or reordering of the mandatory production sequence",
       "legacy fixed-window claimed as BLK",
       "CC represented as structural proof",
-      "payment processing before STAGE approval",
-      "public release before Love Arena meaning proof"
+      "heading used to establish a BLK or boundary",
+      "duration used to trigger, generate, qualify, disqualify, or approve a KK, KK-KOMBO, mK, or sK",
+      "noncontiguous KK-KOMBO assembly",
+      "public release or sale without owner approval"
     ],
     "unchanged": [
       "production catalog status",
@@ -28,9 +33,27 @@
       "active deployments"
     ]
   },
+  "production_authority": {
+    "fullmix_lt_pix_ssot_count": 324,
+    "required_kut_source_lane": "FULLMIX",
+    "instro_only_kut_eligible": false,
+    "exact_source_excerpt_required": true,
+    "duration_triggers_cc": false,
+    "duration_qualifies_kut": false,
+    "production_order": [
+      "BLK_MAP",
+      "KK_AND_KOMBO_CC",
+      "CC_VERIFICATION",
+      "KK_AND_KOMBO_HEADING",
+      "OWNER_APPROVAL",
+      "MK_DERIVATION",
+      "SK_DERIVATION"
+    ],
+    "kleigh_heading_rule": "A proven recurring chorus/title passage may display as Refrain or Refrain[n]; every other KLEIGH section remains BLK[n]."
+  },
   "status_vocabulary": {
-    "TRIAGE": "Evidence exists, but the authority join, structural identity, boundary proof, or review proof is incomplete. Preserve the uncertainty; do not guess a section label.",
-    "STAGE": "Every required source, lyric, sequential BLK, boundary, vocal, delivery, playback, pricing, and human-review proof is complete. STAGE is never an uncertainty state.",
+    "TRIAGE": "Evidence exists, but the authority join, structural identity, boundary proof, CC proof, heading proof, or review proof is incomplete. Preserve the uncertainty; do not invent a timestamp or heading.",
+    "STAGE": "Every required source, lyric, sequential BLK, boundary, CC, vocal, delivery, playback, and owner-review proof is complete. STAGE is never an uncertainty state.",
     "HOLD": "A deliberate hard stop for a known conflict, unsafe use, disqualified object, missing required authority source, or owner-directed stop. HOLD is not the ordinary incomplete-evidence state.",
     "HOLD_NOT_BLK": "A hard disqualification applied to legacy fixed clock windows so they cannot be represented as BLKs. A new authoritative BLK record may be created only after complete structural proof."
   },
@@ -39,6 +62,12 @@
     "fixed_clock_windows_may_establish_structure": false,
     "required_legacy_status": "HOLD_NOT_BLK",
     "promotion_rule": "Never relabel a legacy window in place. Create a separately proven BLK record from authorized lyric and audio evidence."
+  },
+  "duration_law": {
+    "kut_duration_gate": "NONE",
+    "time_is_locator_and_verification_metadata_only": true,
+    "swsp_instrumental_minimum_seconds": 13,
+    "swsp_rule_applies_to_kut_tiers": false
   },
   "unlock_rule": {
     "mode": "ALL_PREREQUISITES_NOW_OWNER_LOCKED",
@@ -86,13 +115,8 @@
   ],
   "romance_arena_authority": {
     "status": "ACTIVE",
-    "unlocks": "Love Arena Romance pool",
-    "kut_generation_targets": {
-      "lt_pix_count": "50+",
-      "kk_per_lt_pix": "5–7",
-      "mk_per_pool": "100+",
-      "sk_per_lt_pix": "20+",
-      "total_kuts_enabled": "300+"
-    }
+    "unlocks": "Love Arena Romance pool under the same catalog-wide production authority",
+    "special_duration_gate": "NONE",
+    "special_generation_quota": "NONE"
   }
 }
