@@ -16,8 +16,8 @@ type ImportRow = {
   album: string | null;
   artist: string | null;
   isrc: string | null;
-  wav_url: string;
-  wav_url_state: "PRESENT_UNVERIFIED";
+  wav_url: string | null;
+  wav_url_state: "MISSING" | "PRESENT_UNVERIFIED";
   staging_state: "ACTIVE" | "DUP";
   dup_reasons: string[];
   conflict_state: "CLEAR" | "QUARANTINED_CROSS_LIST" | "QUARANTINED_LANE_LABEL_CONFLICT";
@@ -58,18 +58,10 @@ function csv(text: string): CsvRecord[] {
     rows.push(row);
   }
   const [headers, ...body] = rows;
-  for (const required of ["Track ID", "Track name", "WAV URL"]) {
+  for (const required of ["Track ID", "Track name"]) {
     if (!headers?.includes(required)) throw new Error(`required ${required} header is missing`);
   }
   return body.map((values) => Object.fromEntries(headers.map((header, index) => [header, values[index] || ""])));
-}
-
-function validWavUrl(value: string) {
-  try {
-    return new URL(value).protocol === "https:";
-  } catch {
-    return false;
-  }
 }
 
 function parseFile(file: File, text: string, lane: Lane): ImportRow[] {
@@ -83,8 +75,8 @@ function parseFile(file: File, text: string, lane: Lane): ImportRow[] {
       album: String(sourceRecord.Album || "").trim() || null,
       artist: String(sourceRecord.Artist || "").trim() || null,
       isrc: String(sourceRecord.ISRC || "").trim() || null,
-      wav_url: String(sourceRecord["WAV URL"] || "").trim(),
-      wav_url_state: "PRESENT_UNVERIFIED",
+      wav_url: String(sourceRecord["WAV URL"] || "").trim() || null,
+      wav_url_state: String(sourceRecord["WAV URL"] || "").trim() ? "PRESENT_UNVERIFIED" : "MISSING",
       staging_state: "ACTIVE",
       dup_reasons: [],
       conflict_state: "CLEAR",
@@ -95,16 +87,10 @@ function parseFile(file: File, text: string, lane: Lane): ImportRow[] {
   const duplicateIds = [...new Set(records.map((record) => record.disco_track_id).filter((id, index, ids) => ids.indexOf(id) !== index))];
   if (duplicateIds.length) throw new Error(`${file.name}: duplicate Track IDs inside one source file: ${duplicateIds.join(", ")}`);
 
-  const missingOrInvalid = records
-    .filter((record) => !validWavUrl(record.wav_url))
-    .map((record) => record.source_ordinal);
-  if (missingOrInvalid.length) {
-    throw new Error(`${file.name}: missing or invalid WAV URL at source rows ${missingOrInvalid.slice(0, 25).join(", ")}${missingOrInvalid.length > 25 ? "…" : ""}`);
-  }
   return records;
 }
 
-function stageExactDuplicateTrackIds(fullmix: ImportRow[], instro: ImportRow[]) {
+function stageKnownIssues(fullmix: ImportRow[], instro: ImportRow[]) {
   const all = [...fullmix, ...instro];
   const groups = new Map<string, ImportRow[]>();
   for (const row of all) {
@@ -113,7 +99,14 @@ function stageExactDuplicateTrackIds(fullmix: ImportRow[], instro: ImportRow[]) 
     groups.set(row.disco_track_id, group);
   }
 
-  const instrumentalLabel = /\\b(instro|instrumental|no vocals?)\\b/i;
+  const instrumentalLabel = /\b(instro|instrumental|no vocals?)\b/i;
+  for (const row of fullmix) {
+    if (!instrumentalLabel.test(row.track_name)) continue;
+    row.staging_state = "DUP";
+    row.dup_reasons = ["WRONG_LANE_INSTRO_LABEL"];
+    row.conflict_state = "QUARANTINED_LANE_LABEL_CONFLICT";
+  }
+
   for (const group of groups.values()) {
     if (group.length < 2) continue;
     const instrumentalNamed = group.some((row) => instrumentalLabel.test(row.track_name));
@@ -124,7 +117,7 @@ function stageExactDuplicateTrackIds(fullmix: ImportRow[], instro: ImportRow[]) 
     for (const row of group) {
       if (row === canonical) continue;
       row.staging_state = "DUP";
-      row.dup_reasons = ["DUP_TRACK_ID_REDUNDANT"];
+      row.dup_reasons = [...new Set([...row.dup_reasons, "DUP_TRACK_ID_REDUNDANT"])];
       row.conflict_state = "QUARANTINED_CROSS_LIST";
     }
   }
@@ -155,7 +148,7 @@ export async function POST(request: NextRequest) {
     const [fullmixText, instroText] = await Promise.all([fullmixFile.text(), instroFile.text()]);
     const fullmix = parseFile(fullmixFile, fullmixText, "FULLMIX");
     const instro = parseFile(instroFile, instroText, "INSTRO_ONLY");
-    stageExactDuplicateTrackIds(fullmix, instro);
+    stageKnownIssues(fullmix, instro);
 
     const inputs = [
       { lane: "FULLMIX" as const, text: fullmixText, rows: fullmix },
@@ -176,8 +169,8 @@ export async function POST(request: NextRequest) {
           rows: input.rows.length,
           active_inventory: input.rows.length - dupStaged,
           dup_staged: dupStaged,
-          wav_present: input.rows.length,
-          wav_missing: 0,
+          wav_present: input.rows.filter((row) => row.wav_url_state === "PRESENT_UNVERIFIED").length,
+          wav_missing: input.rows.filter((row) => row.wav_url_state === "MISSING").length,
           kkr_ready: 0,
         },
       }, { onConflict: "source_sha256" }).select("id").single();
@@ -195,6 +188,27 @@ export async function POST(request: NextRequest) {
     const activate = await service.from("gpm_stl_playlist_imports").update({ is_current: true }).in("id", [importIds.FULLMIX, importIds.INSTRO_ONLY]);
     if (activate.error) throw new Error(activate.error.message);
 
+    const registryRows = inputs.flatMap((input) =>
+      input.rows
+        .filter((row) => row.staging_state === "ACTIVE")
+        .map((row) => ({
+          disco_track_id: row.disco_track_id,
+          track_name: row.track_name,
+          album: row.album,
+          artist: row.artist,
+          isrc: row.isrc,
+          classification: input.lane === "FULLMIX" ? "VOCAL_LT_PIX_CANDIDATE" : "IN_PIX_CANDIDATE",
+          source_import_id: importIds[input.lane],
+          last_seen_at: new Date().toISOString(),
+        }))
+    );
+    for (let start = 0; start < registryRows.length; start += 100) {
+      const registry = await service
+        .from("gpm_stl_track_registry")
+        .upsert(registryRows.slice(start, start + 100), { onConflict: "disco_track_id" });
+      if (registry.error) throw new Error(registry.error.message);
+    }
+
     return NextResponse.json({
       ok: true,
       snapshotDate,
@@ -208,9 +222,10 @@ export async function POST(request: NextRequest) {
         activeInventory: instro.filter((row) => row.staging_state === "ACTIVE").length,
         dupStaged: instro.filter((row) => row.staging_state === "DUP").length,
       },
-      wavUrlsPresent: fullmix.length + instro.length,
+      wavUrlsPresent: [...fullmix, ...instro].filter((row) => row.wav_url_state === "PRESENT_UNVERIFIED").length,
+      wavUrlsMissing: [...fullmix, ...instro].filter((row) => row.wav_url_state === "MISSING").length,
       kkrReady: 0,
-      note: "WAV URLs are present but remain private and unverified until the owner review gate.",
+      note: "Inventory intake continues when WAV URLs are missing. KKr readiness remains blocked until exact WAV URLs are supplied and verified.",
       source: "GPMx split inventory",
     });
   } catch (error) {
