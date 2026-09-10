@@ -2,7 +2,7 @@
   "schema_version": "GPMX_LT_PIX_BLK_WORKSHEET_V1",
   "governance_status": "LOCKED_OWNER_AUTHORIZED",
   "worksheet_status": "TRIAGE",
-  "instruction": "Create one copy per LT-PIX. Null means unresolved; never replace null with a guessed section label or boundary.",
+  "instruction": "Create one copy per FullMix LT-PIX. Prove BLKs first; then CC exact KKs/KOMBOS from the original FullMix; then assign permitted headings. Null means unresolved and may never be replaced with an invented boundary or heading.",
   "lt_pix_identity": {
     "lt_pix_id": null,
     "canonical_title": null,
@@ -12,7 +12,10 @@
     "rights_authority_reference": null,
     "canonical_lyric_source": null,
     "canonical_lyrics_complete": false,
-    "authority_join_complete": false
+    "authority_join_complete": false,
+    "source_inventory_lane": "FULLMIX",
+    "original_fullmix_required": true,
+    "instro_only_source_allowed": false
   },
   "source_coverage": {
     "audio_identity_proven": false,
@@ -86,9 +89,14 @@
     "cc_evidence_ids": [],
     "cc_defines_structure": false,
     "legacy_window_used_as_structure": false,
-    "short_duration_exception_id": null,
     "status": "TRIAGE",
-    "triage_reasons": []
+    "triage_reasons": [],
+    "cc_created_after_blk_lock": false,
+    "source_excerpt_exact": false,
+    "kk_or_kombo_heading": null,
+    "heading_assigned_after_cc_verification": false,
+    "kleigh_heading_rule": "IF_KLEIGH: proven recurring chorus/title passage may be Refrain; otherwise BLK[n]",
+    "duration_used_to_trigger_or_qualify_kut": false
   },
   "sequence_checks": {
     "whole_source_covered_without_unexplained_gaps": false,
@@ -96,7 +104,13 @@
     "no_legacy_fixed_window_claimed_as_blk": false,
     "no_cc_claimed_as_blk": false,
     "no_vocal_cut_mid_word_or_mid_phrase": false,
-    "repeated_sections_sequentially_distinguished": false
+    "repeated_sections_sequentially_distinguished": false,
+    "all_kut_audio_copied_from_original_fullmix": false,
+    "all_kk_and_kombo_ccs_created_after_blk_lock": false,
+    "all_headings_assigned_after_cc_verification": false,
+    "no_instro_only_kut_source": false,
+    "no_duration_triggered_cc_or_kut_qualification": false,
+    "kleigh_refrain_or_blk_heading_rule_passed": false
   },
   "unresolved_items": [],
   "review_decision": {
@@ -105,5 +119,20 @@
     "human_structural_listener": null,
     "human_structural_listening_approved_at": null,
     "decision_notes": []
-  }
+  },
+  "authority_update": "2026-09-10",
+  "catalog_authority": {
+    "current_fullmix_lt_pix_ssot_count": 324,
+    "required_kut_source_lane": "FULLMIX",
+    "instro_only_kut_eligible": false
+  },
+  "production_order": [
+    "BLK_MAP",
+    "KK_AND_KOMBO_CC",
+    "CC_VERIFICATION",
+    "KK_AND_KOMBO_HEADING",
+    "OWNER_APPROVAL",
+    "MK_DERIVATION",
+    "SK_DERIVATION"
+  ]
 }
