@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
     const [fullmixText, instroText] = await Promise.all([fullmixFile.text(), instroFile.text()]);
     const fullmix = parseFile(fullmixFile, fullmixText, "FULLMIX");
     const instro = parseFile(instroFile, instroText, "INSTRO_ONLY");
-    stageDuplicates(fullmix, instro);
+    stageExactDuplicateTrackIds(fullmix, instro);
 
     const inputs = [
       { lane: "FULLMIX" as const, text: fullmixText, rows: fullmix },
