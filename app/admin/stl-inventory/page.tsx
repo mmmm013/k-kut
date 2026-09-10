@@ -14,7 +14,7 @@ export default function StlInventory() {
     <main className="min-h-screen bg-black p-8 text-stone-100">
       <h1 className="text-2xl font-black">GPMx INVENTORY INTAKE</h1>
       <p className="mt-2 max-w-3xl text-stone-400">
-        Upload the dated FullMix and INSTRO-ONLY CSVs together. Inventory rows continue even when the optional <strong>WAV URL</strong> is missing; those rows remain blocked from KKr until an exact WAV is supplied and verified. Known issue rows are preserved in private staging. No KUT, stage item, or public release is created.
+        Upload the dated FullMix and INSTRO-ONLY CSVs together. Only verified <strong>FullMix LT-PIX</strong> may enter KKr and KUT production. INSTRO-ONLY stays separate inventory and never feeds KUTs. Missing WAV URLs do not stop inventory intake. Known issue rows remain in private staging. No KUT, stage item, or public release is created.
       </p>
       <form onSubmit={submit} className="mt-6 max-w-2xl space-y-5">
         <label className="block">
