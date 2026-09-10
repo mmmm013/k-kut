@@ -46,6 +46,15 @@ set wav_url = nullif(btrim(coalesce(
     end
 where wav_url is null;
 
+update public.gpm_stl_track_memberships m
+set staging_state = 'ACTIVE',
+    dup_reasons = '{}'::text[],
+    conflict_state = 'CLEAR'
+from public.gpm_stl_playlist_imports i
+where i.id = m.source_import_id
+  and i.is_current
+  and i.inventory_lane in ('FULLMIX', 'INSTRO_ONLY');
+
 with current_rows as (
   select m.*
   from public.gpm_stl_track_memberships m
@@ -53,70 +62,39 @@ with current_rows as (
   where i.is_current
     and i.inventory_lane in ('FULLMIX', 'INSTRO_ONLY')
 ),
-signals as (
-  select c.source_import_id, c.disco_track_id, 'DUP_TRACK_ID'::text as reason
-  from current_rows c
-  join (
-    select disco_track_id
-    from current_rows
-    where btrim(disco_track_id) <> ''
-    group by disco_track_id
-    having count(*) > 1
-  ) d using (disco_track_id)
-
-  union all
-
-  select c.source_import_id, c.disco_track_id, 'DUP_ISRC'::text
-  from current_rows c
-  join (
-    select regexp_replace(upper(isrc), '[^A-Z0-9]', '', 'g') as normalized_isrc
-    from current_rows
-    where nullif(btrim(isrc), '') is not null
-    group by regexp_replace(upper(isrc), '[^A-Z0-9]', '', 'g')
-    having count(*) > 1
-  ) d on d.normalized_isrc = regexp_replace(upper(c.isrc), '[^A-Z0-9]', '', 'g')
-
-  union all
-
-  select c.source_import_id, c.disco_track_id, 'DUP_TITLE_ALBUM'::text
-  from current_rows c
-  join (
-    select
-      regexp_replace(upper(track_name), '[^A-Z0-9]', '', 'g') as normalized_title,
-      regexp_replace(upper(coalesce(album, '')), '[^A-Z0-9]', '', 'g') as normalized_album
-    from current_rows
-    group by
-      regexp_replace(upper(track_name), '[^A-Z0-9]', '', 'g'),
-      regexp_replace(upper(coalesce(album, '')), '[^A-Z0-9]', '', 'g')
-    having count(*) > 1
-  ) d
-    on d.normalized_title = regexp_replace(upper(c.track_name), '[^A-Z0-9]', '', 'g')
-   and d.normalized_album = regexp_replace(upper(coalesce(c.album, '')), '[^A-Z0-9]', '', 'g')
-
-  union all
-
-  select c.source_import_id, c.disco_track_id, 'DUP_OR_WRONG_LANE_INSTRO_LABEL'::text
-  from current_rows c
-  where c.inventory_lane = 'FULLMIX'
-    and c.track_name ~* '(^|[^a-z])(instro|instrumental|no vocals?)([^a-z]|$)'
+duplicate_ids as (
+  select
+    disco_track_id,
+    bool_or(track_name ~* '(^|[^a-z])(instro|instrumental|no vocals?)([^a-z]|$)') as instrumental_named
+  from current_rows
+  group by disco_track_id
+  having count(*) > 1
 ),
-grouped as (
-  select source_import_id, disco_track_id, array_agg(distinct reason order by reason) as reasons
-  from signals
-  group by source_import_id, disco_track_id
+ranked as (
+  select
+    c.source_import_id,
+    c.disco_track_id,
+    row_number() over (
+      partition by c.disco_track_id
+      order by
+        case
+          when d.instrumental_named then case when c.inventory_lane = 'INSTRO_ONLY' then 0 else 1 end
+          else case when c.inventory_lane = 'FULLMIX' then 0 else 1 end
+        end,
+        c.source_ordinal,
+        c.source_import_id
+    ) as canonical_rank
+  from current_rows c
+  join duplicate_ids d using (disco_track_id)
 )
 update public.gpm_stl_track_memberships m
-set staging_state = case when g.reasons is null then 'ACTIVE' else 'DUP' end,
-    dup_reasons = coalesce(g.reasons, '{}'::text[])
-from (
-  select c.source_import_id, c.disco_track_id, g.reasons
-  from current_rows c
-  left join grouped g
-    on g.source_import_id = c.source_import_id
-   and g.disco_track_id = c.disco_track_id
-) g
-where m.source_import_id = g.source_import_id
-  and m.disco_track_id = g.disco_track_id;
+set staging_state = 'DUP',
+    dup_reasons = array['DUP_TRACK_ID_REDUNDANT']::text[],
+    conflict_state = 'QUARANTINED_CROSS_LIST'
+from ranked r
+where r.canonical_rank > 1
+  and m.source_import_id = r.source_import_id
+  and m.disco_track_id = r.disco_track_id;
 
 update public.gpm_stl_playlist_imports i
 set totals = i.totals || jsonb_build_object(
