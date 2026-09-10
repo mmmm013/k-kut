@@ -85,7 +85,7 @@ for (const marker of [
   "A BLK is a song section",
   "Duration never triggers a CC",
   "Refrain",
-  "ordinary structural uncertainty"
+  "Unresolved evidence remains \\`TRIAGE\\`"
 ]) {
   if (!ontology.includes(marker)) fail(`ontology marker missing: ${marker}`);
 }
