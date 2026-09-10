@@ -189,18 +189,20 @@ export async function POST(request: NextRequest) {
     if (activate.error) throw new Error(activate.error.message);
 
     const registryRows = inputs.flatMap((input) =>
-      input.rows
-        .filter((row) => row.staging_state === "ACTIVE")
-        .map((row) => ({
-          disco_track_id: row.disco_track_id,
-          track_name: row.track_name,
-          album: row.album,
-          artist: row.artist,
-          isrc: row.isrc,
-          classification: input.lane === "FULLMIX" ? "VOCAL_LT_PIX_CANDIDATE" : "IN_PIX_CANDIDATE",
-          source_import_id: importIds[input.lane],
-          last_seen_at: new Date().toISOString(),
-        }))
+      input.lane !== "FULLMIX"
+        ? []
+        : input.rows
+            .filter((row) => row.staging_state === "ACTIVE")
+            .map((row) => ({
+              disco_track_id: row.disco_track_id,
+              track_name: row.track_name,
+              album: row.album,
+              artist: row.artist,
+              isrc: row.isrc,
+              classification: "VOCAL_LT_PIX_CANDIDATE" as const,
+              source_import_id: importIds.FULLMIX,
+              last_seen_at: new Date().toISOString(),
+            }))
     );
     for (let start = 0; start < registryRows.length; start += 100) {
       const registry = await service
@@ -225,7 +227,7 @@ export async function POST(request: NextRequest) {
       wavUrlsPresent: [...fullmix, ...instro].filter((row) => row.wav_url_state === "PRESENT_UNVERIFIED").length,
       wavUrlsMissing: [...fullmix, ...instro].filter((row) => row.wav_url_state === "MISSING").length,
       kkrReady: 0,
-      note: "Inventory intake continues when WAV URLs are missing. KKr readiness remains blocked until exact WAV URLs are supplied and verified.",
+      note: "FullMix inventory continues when WAV URLs are missing. Only verified FullMix LT-PIX can enter KKr. INSTRO-ONLY inventory never feeds KUT production.",
       source: "GPMx split inventory",
     });
   } catch (error) {
