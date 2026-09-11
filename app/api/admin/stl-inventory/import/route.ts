@@ -99,20 +99,12 @@ function stageKnownIssues(fullmix: ImportRow[], instro: ImportRow[]) {
     groups.set(row.disco_track_id, group);
   }
 
-  const instrumentalLabel = /\b(instro|instrumental|no vocals?)\b/i;
-  for (const row of fullmix) {
-    if (!instrumentalLabel.test(row.track_name)) continue;
-    row.staging_state = "DUP";
-    row.dup_reasons = ["WRONG_LANE_INSTRO_LABEL"];
-    row.conflict_state = "QUARANTINED_LANE_LABEL_CONFLICT";
-  }
-
   for (const group of groups.values()) {
     if (group.length < 2) continue;
-    const instrumentalNamed = group.some((row) => instrumentalLabel.test(row.track_name));
-    const canonical = group.find((row) =>
-      instrumentalNamed ? row.inventory_lane === "INSTRO_ONLY" : row.inventory_lane === "FULLMIX"
-    ) || group[0];
+    // Source-list membership is authority. Never guess the lane from a title.
+    // If the exact same Track ID occurs in both lists, retain FullMix for KUT-source
+    // inventory and set aside only the redundant INSTRO-ONLY occurrence.
+    const canonical = group.find((row) => row.inventory_lane === "FULLMIX") || group[0];
 
     for (const row of group) {
       if (row === canonical) continue;
