@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSession";
+import { loadGpmxWavSources } from "@/lib/gpmx/stlWavResolver";
 
 export const dynamic = "force-dynamic";
 
@@ -28,16 +29,31 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "inventory_read_failed", detail: rows.error.message }, { status: 502 });
   }
 
-  const items = (rows.data || []).map((row) => ({
-    ...row,
-    wavReady: row.wav_url_state === "VERIFIED",
-    resolved: null,
-  }));
+  let wavSources = new Map<string, unknown>();
+  let resolutionError: string | null = null;
+  try {
+    wavSources = await loadGpmxWavSources();
+  } catch (error) {
+    resolutionError = error instanceof Error ? error.message : String(error);
+  }
+
+  const items = (rows.data || []).map((row) => {
+    const resolved = wavSources.has(String(row.disco_track_id));
+    return {
+      ...row,
+      wavReady: resolved,
+      resolved: resolved ? "GPMX_ORIGINAL_WAV" : null,
+    };
+  });
+  const resolved = items.filter((item) => item.wavReady).length;
 
   return NextResponse.json({
     items,
     total: items.length,
-    wavReady: items.filter((item) => item.wavReady).length,
-    source: "current private GPMx FullMix inventory; known issue rows excluded",
+    resolved,
+    unresolved: items.length - resolved,
+    wavReady: resolved,
+    resolutionError,
+    source: "current private GPMx FullMix inventory; exact Track-ID original-WAV matches only",
   });
 }
