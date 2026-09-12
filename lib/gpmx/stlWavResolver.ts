@@ -36,6 +36,8 @@ export type GpmxWavSource = {
   signedWavUrl: string;
   playlistId: string;
   shareUrl: string;
+  playlistUrl?: string;
+  sessionCookie?: string;
 };
 
 let cachedSources: Promise<Map<string, GpmxWavSource>> | null = null;
@@ -50,7 +52,11 @@ function approvedShareUrl(): string {
   return url.toString();
 }
 
-export function parseGpmxWavSources(html: string, shareUrl: string): Map<string, GpmxWavSource> {
+export function parseGpmxWavSources(
+  html: string,
+  shareUrl: string,
+  session?: { playlistUrl: string; cookie: string },
+): Map<string, GpmxWavSource> {
   const marker = "window.playlist_data = ";
   const start = html.indexOf(marker);
   if (start < 0) throw new Error("GPMx playlist data marker is missing");
@@ -87,6 +93,8 @@ export function parseGpmxWavSources(html: string, shareUrl: string): Map<string,
             signedWavUrl: url.toString(),
             playlistId,
             shareUrl,
+            playlistUrl: session?.playlistUrl,
+            sessionCookie: session?.cookie,
           });
         }
       }
@@ -107,6 +115,7 @@ async function fetchSources(): Promise<Map<string, GpmxWavSource>> {
   });
 
   let response = redirectResponse;
+  let session: { playlistUrl: string; cookie: string } | undefined;
   if (redirectResponse.status >= 300 && redirectResponse.status < 400) {
     const location = redirectResponse.headers.get("location");
     if (!location) throw new Error("GPMx playlist redirect is missing its destination");
@@ -125,6 +134,8 @@ async function fetchSources(): Promise<Map<string, GpmxWavSource>> {
       ?.match(/(?:^|,\s*)(sessionid=[^;]+)/i)?.[1];
     if (!sessionCookie) throw new Error("GPMx playlist redirect is missing its session cookie");
 
+    session = { playlistUrl: redirectUrl.toString(), cookie: sessionCookie };
+
     response = await fetch(redirectUrl, {
       cache: "no-store",
       redirect: "error",
@@ -140,7 +151,7 @@ async function fetchSources(): Promise<Map<string, GpmxWavSource>> {
   if (Buffer.byteLength(html, "utf8") > MAX_SHARE_PAGE_BYTES) {
     throw new Error("GPMx playlist response exceeds the safety limit");
   }
-  return parseGpmxWavSources(html, shareUrl);
+  return parseGpmxWavSources(html, shareUrl, session);
 }
 
 export async function loadGpmxWavSources(): Promise<Map<string, GpmxWavSource>> {
