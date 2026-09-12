@@ -1,6 +1,14 @@
 const DEFAULT_FULLMIX_SHARE_URL = "https://s.disco.ac/bvftlpcldiqy";
 const MAX_SHARE_PAGE_BYTES = 12 * 1024 * 1024;
 const CACHE_TTL_MS = 5 * 60 * 1000;
+const SHARE_FETCH_TIMEOUT_MS = 45_000;
+
+const SHARE_REQUEST_HEADERS = {
+  accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "accept-language": "en-US,en;q=0.9",
+  "user-agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+} as const;
 
 type ShareTrack = {
   id?: number | string;
@@ -91,12 +99,40 @@ export function parseGpmxWavSources(html: string, shareUrl: string): Map<string,
 
 async function fetchSources(): Promise<Map<string, GpmxWavSource>> {
   const shareUrl = approvedShareUrl();
-  const response = await fetch(shareUrl, {
+  const redirectResponse = await fetch(shareUrl, {
     cache: "no-store",
-    redirect: "follow",
-    signal: AbortSignal.timeout(20_000),
-    headers: { accept: "text/html" },
+    redirect: "manual",
+    signal: AbortSignal.timeout(SHARE_FETCH_TIMEOUT_MS),
+    headers: SHARE_REQUEST_HEADERS,
   });
+
+  let response = redirectResponse;
+  if (redirectResponse.status >= 300 && redirectResponse.status < 400) {
+    const location = redirectResponse.headers.get("location");
+    if (!location) throw new Error("GPMx playlist redirect is missing its destination");
+
+    const redirectUrl = new URL(location, shareUrl);
+    if (
+      redirectUrl.protocol !== "https:" ||
+      !redirectUrl.hostname.endsWith(".disco.ac") ||
+      !redirectUrl.pathname.startsWith("/playlist-new/")
+    ) {
+      throw new Error("GPMx playlist redirect is not an approved destination");
+    }
+
+    const sessionCookie = redirectResponse.headers
+      .get("set-cookie")
+      ?.match(/(?:^|,\s*)(sessionid=[^;]+)/i)?.[1];
+    if (!sessionCookie) throw new Error("GPMx playlist redirect is missing its session cookie");
+
+    response = await fetch(redirectUrl, {
+      cache: "no-store",
+      redirect: "error",
+      signal: AbortSignal.timeout(SHARE_FETCH_TIMEOUT_MS),
+      headers: { ...SHARE_REQUEST_HEADERS, cookie: sessionCookie },
+    });
+  }
+
   if (!response.ok) throw new Error(`GPMx playlist request failed (${response.status})`);
   const length = Number(response.headers.get("content-length") || 0);
   if (length > MAX_SHARE_PAGE_BYTES) throw new Error("GPMx playlist response exceeds the safety limit");
