@@ -4,6 +4,7 @@ import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSessi
 import { resolveGpmxWav } from "@/lib/gpmx/stlWavResolver";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const PRIVATE_HEADERS = {
   "Cache-Control": "private, no-store, max-age=0",
@@ -24,11 +25,11 @@ function unavailable(status = 404, detail?: string) {
   );
 }
 
-async function proxyAudio(request: NextRequest, upstreamUrl: string) {
+async function proxyAudio(request: NextRequest, upstreamUrl: string, sourceHeaders?: Record<string, string>) {
   const range = request.headers.get("range");
   const upstream = await fetch(upstreamUrl, {
     cache: "no-store",
-    headers: range ? { range } : undefined,
+    headers: { ...sourceHeaders, ...(range ? { range } : {}) },
     signal: AbortSignal.timeout(30_000),
   });
   if (!upstream.ok && upstream.status !== 206) {
@@ -74,7 +75,14 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   try {
     const source = await resolveGpmxWav(id);
     if (!source) return unavailable(503, "original WAV is not available in the current GPMx share authority");
-    return proxyAudio(request, source.signedWavUrl);
+    if (!source.sessionCookie || !source.playlistUrl) return unavailable(503, "GPMx WAV session is unavailable");
+    return proxyAudio(request, source.signedWavUrl, {
+      accept: "audio/wav,audio/*;q=0.9,*/*;q=0.8",
+      cookie: source.sessionCookie,
+      referer: source.playlistUrl,
+      "user-agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    });
   } catch (error) {
     return unavailable(503, error instanceof Error ? error.message : String(error));
   }
