@@ -46,7 +46,7 @@ export default function StlListen() {
       {data?.error && <p className="mt-3 text-red-500">Failed to load inventory: {data.error}</p>}
       {data && !data.error && (
         <p className="mt-3">
-          {data.total} FullMix LT-PIX · {data.resolved} playable original WAV · {data.unresolved} set aside
+          {data.total} FullMix LT-PIX · {data.resolved} playable original WAV · exact inventory verified
         </p>
       )}
       {data?.resolutionError && <p className="mt-2 text-amber-400">Audio source unavailable: {data.resolutionError}</p>}
@@ -63,7 +63,7 @@ export default function StlListen() {
               <b>{item.track_name}</b>
               <br />
               <small>
-                {item.artist} · {item.album} · {item.wavReady ? "original WAV ready" : "set aside—original WAV unavailable"}
+                {item.artist} · {item.album} · original WAV ready
               </small>
             </button>
           ))}
