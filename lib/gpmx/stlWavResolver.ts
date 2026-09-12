@@ -1,0 +1,126 @@
+const DEFAULT_FULLMIX_SHARE_URL = "https://s.disco.ac/bvftlpcldiqy";
+const MAX_SHARE_PAGE_BYTES = 12 * 1024 * 1024;
+const CACHE_TTL_MS = 5 * 60 * 1000;
+
+type ShareTrack = {
+  id?: number | string;
+  name?: string;
+  all_files?: {
+    wav?: {
+      id?: number | string;
+      original_name?: string;
+      play_url?: string;
+    };
+  };
+  nested_tracks?: ShareTrack[];
+};
+
+type SharePayload = {
+  playlist_id?: number | string;
+  tracks?: ShareTrack[];
+};
+
+export type GpmxWavSource = {
+  trackId: string;
+  trackName: string | null;
+  fileId: string;
+  originalName: string;
+  signedWavUrl: string;
+  playlistId: string;
+  shareUrl: string;
+};
+
+let cachedSources: Promise<Map<string, GpmxWavSource>> | null = null;
+let cacheExpiresAt = 0;
+
+function approvedShareUrl(): string {
+  const raw = process.env.GPMX_STL_FULLMIX_SHARE_URL?.trim() || DEFAULT_FULLMIX_SHARE_URL;
+  const url = new URL(raw);
+  if (url.protocol !== "https:" || (url.hostname !== "s.disco.ac" && !url.hostname.endsWith(".disco.ac"))) {
+    throw new Error("GPMx FullMix share URL is not an approved HTTPS audio host");
+  }
+  return url.toString();
+}
+
+export function parseGpmxWavSources(html: string, shareUrl: string): Map<string, GpmxWavSource> {
+  const marker = "window.playlist_data = ";
+  const start = html.indexOf(marker);
+  if (start < 0) throw new Error("GPMx playlist data marker is missing");
+  const jsonStart = start + marker.length;
+  const jsonEnd = html.indexOf(";\n", jsonStart);
+  if (jsonEnd < 0) throw new Error("GPMx playlist data terminator is missing");
+
+  const payload = JSON.parse(html.slice(jsonStart, jsonEnd)) as SharePayload;
+  const playlistId = String(payload.playlist_id || "").trim();
+  if (!playlistId) throw new Error("GPMx playlist ID is missing");
+
+  const sources = new Map<string, GpmxWavSource>();
+  const visit = (tracks: ShareTrack[] | undefined) => {
+    for (const track of tracks || []) {
+      const trackId = String(track.id || "").trim();
+      const wav = track.all_files?.wav;
+      const signedWavUrl = String(wav?.play_url || "").trim();
+      const fileId = String(wav?.id || "").trim();
+      const originalName = String(wav?.original_name || "").trim();
+      if (trackId && signedWavUrl && fileId && originalName) {
+        const url = new URL(signedWavUrl);
+        const expectedPath = `/play/${trackId}/file/${fileId}/`;
+        if (
+          url.protocol === "https:" &&
+          url.hostname.endsWith(".disco.ac") &&
+          url.pathname.includes(expectedPath) &&
+          url.pathname.toLowerCase().endsWith(".wav")
+        ) {
+          sources.set(trackId, {
+            trackId,
+            trackName: track.name?.trim() || null,
+            fileId,
+            originalName,
+            signedWavUrl: url.toString(),
+            playlistId,
+            shareUrl,
+          });
+        }
+      }
+      visit(track.nested_tracks);
+    }
+  };
+  visit(payload.tracks);
+  return sources;
+}
+
+async function fetchSources(): Promise<Map<string, GpmxWavSource>> {
+  const shareUrl = approvedShareUrl();
+  const response = await fetch(shareUrl, {
+    cache: "no-store",
+    redirect: "follow",
+    signal: AbortSignal.timeout(20_000),
+    headers: { accept: "text/html" },
+  });
+  if (!response.ok) throw new Error(`GPMx playlist request failed (${response.status})`);
+  const length = Number(response.headers.get("content-length") || 0);
+  if (length > MAX_SHARE_PAGE_BYTES) throw new Error("GPMx playlist response exceeds the safety limit");
+  const html = await response.text();
+  if (Buffer.byteLength(html, "utf8") > MAX_SHARE_PAGE_BYTES) {
+    throw new Error("GPMx playlist response exceeds the safety limit");
+  }
+  return parseGpmxWavSources(html, shareUrl);
+}
+
+export async function loadGpmxWavSources(): Promise<Map<string, GpmxWavSource>> {
+  const now = Date.now();
+  if (!cachedSources || now >= cacheExpiresAt) {
+    cachedSources = fetchSources().catch((error) => {
+      cachedSources = null;
+      cacheExpiresAt = 0;
+      throw error;
+    });
+    cacheExpiresAt = now + CACHE_TTL_MS;
+  }
+  return cachedSources;
+}
+
+export async function resolveGpmxWav(trackId: string): Promise<GpmxWavSource | null> {
+  if (!/^\d+$/.test(trackId)) return null;
+  return (await loadGpmxWavSources()).get(trackId) || null;
+}
