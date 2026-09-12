@@ -4,6 +4,7 @@ import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSessi
 import { loadGpmxWavSources } from "@/lib/gpmx/stlWavResolver";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 function client() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
@@ -47,13 +48,25 @@ export async function GET(request: NextRequest) {
   });
   const resolved = items.filter((item) => item.wavReady).length;
 
+  if (resolutionError || resolved !== items.length) {
+    return NextResponse.json(
+      {
+        error: "fullmix_audio_authority_incomplete",
+        detail: resolutionError || `Exact Track-ID WAV resolution returned ${resolved} of ${items.length}`,
+        total: items.length,
+        resolved,
+        unresolved: items.length - resolved,
+      },
+      { status: 503 },
+    );
+  }
+
   return NextResponse.json({
     items,
     total: items.length,
     resolved,
     unresolved: items.length - resolved,
     wavReady: resolved,
-    resolutionError,
     source: "current private GPMx FullMix inventory; exact Track-ID original-WAV matches only",
   });
 }
