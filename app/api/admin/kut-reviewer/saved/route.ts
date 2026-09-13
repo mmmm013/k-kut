@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, validAdminSession, validAdminToken } from "@/lib/admin/adminSession";
+import { archivedKK, readArchivedKK } from "@/lib/admin/recoveredKKArchive";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -17,8 +18,28 @@ export async function GET(request: NextRequest) {
   const db = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   const audioId = request.nextUrl.searchParams.get("audio");
   if (audioId) {
-    const { data, error } = await db.from("gpmx_saved_kut_review_inventory_v1").select("storage_bucket,storage_object_path").eq("record_key", audioId).eq("object_exists", true).maybeSingle();
+    const { data, error } = await db.from("gpmx_saved_kut_review_inventory_v1").select("record_key,title,object_exists,storage_bucket,storage_object_path").eq("record_key", audioId).maybeSingle();
     if (error || !data) return NextResponse.json({ error: "saved_audio_not_resolved" }, { status: error ? 503 : 404, headers });
+    if (!data.object_exists) {
+      const archive = archivedKK(data);
+      if (!archive) return NextResponse.json({ error: "saved_audio_not_resolved" }, { status: 404, headers });
+      try {
+        const bytes = await readArchivedKK(archive);
+        const out = new Headers({ ...headers, "Content-Type": "audio/mpeg", "Accept-Ranges": "bytes" });
+        const range = request.headers.get("range");
+        let start = 0, end = bytes.length - 1;
+        if (range) {
+          const match = /^bytes=(\d*)-(\d*)$/.exec(range);
+          if (!match || (!match[1] && !match[2])) return new NextResponse(null, { status: 416, headers: { ...headers, "Content-Range": `bytes */${bytes.length}` } });
+          start = match[1] ? Number(match[1]) : Math.max(0, bytes.length - Number(match[2]));
+          end = match[1] && match[2] ? Math.min(Number(match[2]), end) : end;
+          if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start > end || start >= bytes.length) return new NextResponse(null, { status: 416, headers: { ...headers, "Content-Range": `bytes */${bytes.length}` } });
+          out.set("Content-Range", `bytes ${start}-${end}/${bytes.length}`);
+        }
+        out.set("Content-Length", String(end - start + 1));
+        return new NextResponse(new Uint8Array(bytes.subarray(start, end + 1)), { status: range ? 206 : 200, headers: out });
+      } catch { return NextResponse.json({ error: "archive_verification_failed" }, { status: 502, headers }); }
+    }
     const signed = await db.storage.from(data.storage_bucket).createSignedUrl(data.storage_object_path, 120);
     if (signed.error || !signed.data) return NextResponse.json({ error: "audio_signing_failed" }, { status: 503, headers });
     try {
@@ -41,5 +62,6 @@ export async function GET(request: NextRequest) {
   }
   const decisions = await db.from("gpmx_saved_kut_review_decisions_v1").select("*").order("created_at");
   if (decisions.error) return NextResponse.json({ error: "saved_decisions_read_failed" }, { status: 503, headers });
-  return NextResponse.json({ items, decisions: decisions.data, total: items.length, linkedAudio: items.filter(item => item.object_exists).length }, { headers });
+  const linked = items.map(item => ({ ...item, audio_available: Boolean(item.object_exists || archivedKK({ record_key: String(item.record_key), title: String(item.title) })) }));
+  return NextResponse.json({ items: linked, decisions: decisions.data, total: linked.length, linkedAudio: linked.filter(item => item.audio_available).length }, { headers });
 }
