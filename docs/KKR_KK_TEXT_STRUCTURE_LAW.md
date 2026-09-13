@@ -1,78 +1,94 @@
 # KKr KK Text-Structure Law
 
-Status: LOCKED
+Status: LOCKED — OWNER AUTHORIZED  
+Authority update: 2026-09-10
 
-All user-facing KKs are governed by text, lyric, and text-structure.
+## Core order
 
-No exceptions.
+KKr must process every KUT in this exact order:
 
-## KK Validity
+1. Establish and lock the BLK map from the original FullMix LT-PIX SSOT.
+2. CC the exact KK from one proven BLK, or CC the exact KK-KOMBO from two or more contiguous proven BLKs.
+3. Verify the CC against the FullMix, including the last vocal note and adjoining BLK boundaries.
+4. Add the permitted KK/KOMBO heading.
+5. Obtain owner approval.
 
-A KK is valid when:
+A heading never creates a cut. A CC never establishes a BLK.
 
-1. The owning PIX / LT-PIX has a lyric/text structure.
-2. The KK maps to an exact structure unit or contiguous structure group.
-3. The KK record preserves the locked structure identity.
-4. The KK audio binding exists for that exact structure item.
-5. The item is customer-approved as KK.
+## KK and KK-KOMBO validity
 
-## What Never Qualifies a KK
+A KK is valid only when it is an exact FullMix CC of one proven BLK.
 
-- File size
-- Duration
-- "Too big"
-- "Too small"
-- Arbitrary time thresholds
-- Generic audio-folder discovery
+A KK-KOMBO is valid only when it is one exact FullMix CC spanning two or more source-contiguous proven BLKs in their original order.
 
-Time may be stored as metadata for cutting/binding, but time is not a KK qualification rule.
+Both must preserve:
 
-## SWSP Exception
+- FullMix LT-PIX Track ID
+- FullMix source object/path
+- FullMix source SHA256
+- component BLK identities
+- exact CC start and end locators
+- captured/rendered audio SHA256
+- approval and revision history
 
-Only SWSPs have the 13-second floor.
+INSTRO-ONLY / INO-PIX is never a KUT source.
 
-That rule does not apply to LT-PIX KKs.
+## What never qualifies or creates a KUT
 
-## Internal Inventory Rule
+- duration
+- file size
+- arbitrary time thresholds
+- equal-time windows
+- target counts
+- headings
+- filenames
+- folder discovery
+- INSTRO-ONLY inventory
+- raw CCs without BLK authority
+- noncontiguous KOMBO assembly
 
-CCs, FeelLines, LNDUOs, LNTRIOs, RMSTs, mKs, mKUTs, micros, and generic audio are internal only unless separately promoted/materialized as approved KKs.
+Time may be stored as locator and verification metadata. Duration never triggers a CC and never qualifies or disqualifies a KK, KK-KOMBO, mK, or sK.
 
-Users can never directly pull CCs.
+Only SWSP instrumental KUTs have a duration rule: they must run at least 13 seconds.
 
-## Structure Rule
+## Heading law
 
-Each PIX may have its own structure.
+Traditional song-structure headings are added only to verified KKs and KK-KOMBOs after capture.
 
-Each KK is its own item.
+Permitted traditional display headings include:
 
-Structure labels must survive from lyric/text SSOT into delivery manifests exactly.
+- `V1`, `V2`, and later sequential verses
+- `Ch1`, `Ch2`, and later sequential choruses
+- `Bridge`
 
-Example locked Thank You structure:
+An internal legacy `Br` identity may remain stable; its permitted display heading is `Bridge`.
 
-V1a
-V1b
-PreCh1
-Ch1
-V2a
-V2b
-Br
-Ch2
-Outro
+If a traditional heading is not proven, the item remains `BLK[n]`.
 
-## Bridge / Br Alias Law
+### KLEIGH
 
-Bridge and Br are the same song-structure item.
+KLEIGH structure is never guessed or exposed as traditional verse/chorus/bridge structure.
 
-Canonical delivery label: Br.
+- A proven recurring chorus/title passage may be headed `Refrain` or `Refrain[n]`.
+- Every other KLEIGH item remains `BLK[n]`.
+- No other traditional structure heading is assigned without a new explicit owner rule.
 
-Accepted input aliases:
-- Br
-- Bridge
-- bridge
+mKs and sKs retain BLK lineage and do not receive traditional song-structure headings.
 
-Required delivery id for Thank You:
-thank-you-sec-br
+## Production sequence
 
-Required delivery file:
-public/mothers-day/thank-you/kks-expanded/thank-you-sec-br.mp3
+The catalog is processed in this order:
 
+1. 324 FullMix LT-PIX SSOTs
+2. KKs and KK-KOMBOs
+3. owner approval
+4. mKs
+5. sKs
+
+## Existing Thank You identities
+
+Existing internal structure identities remain:
+
+`V1a`, `V1b`, `PreCh1`, `Ch1`, `V2a`, `V2b`, `Br`, `Ch2`, `Outro`.
+
+This preserves stable identity. Where traditional customer-facing heading metadata is used, internal `Br` may display as `Bridge`; the underlying identity is not renamed.

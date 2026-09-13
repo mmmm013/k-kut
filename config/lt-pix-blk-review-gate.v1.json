@@ -1,46 +1,68 @@
 {
   "schema_version": "GPMX_LT_PIX_BLK_REVIEW_GATE_V1",
   "status": "LOCKED_OWNER_AUTHORIZED",
+  "authority_update": "2026-09-10",
+  "source_inventory": {
+    "required_lane": "FULLMIX",
+    "current_ssot_count": 324,
+    "instro_only_kut_eligible": false
+  },
+  "mandatory_order": [
+    "prove exact FullMix LT-PIX SSOT identity, source object/path, source SHA256, rights, and complete lyrics/transcript",
+    "establish the complete sequential BLK map by listening",
+    "lock each BLK boundary",
+    "CC the exact KK from one proven BLK or exact KK-KOMBO from contiguous proven BLKs",
+    "verify exact FullMix excerpt, last vocal note, musical resolution, and no adjacent-BLK trespass",
+    "assign permitted KK/KOMBO heading only after CC verification",
+    "obtain owner approval",
+    "derive mKs only after KK/KOMBO inventory",
+    "derive sKs only after mK inventory"
+  ],
+  "stage_requirements": [
+    "exact FullMix LT-PIX SSOT identity and source hash",
+    "rights authority and lineage",
+    "complete canonical lyrics or transcript",
+    "all required listening passes complete",
+    "complete sequential BLK identity for the LT-PIX",
+    "exact Start TP and End TP supported by audible evidence",
+    "CC copied only from the original FullMix and only after BLK boundaries were proven",
+    "no vocal cut mid-word, mid-phrase, or before the last vocal note",
+    "no neighboring-BLK trespass",
+    "KK is exactly one BLK or KK-KOMBO is two or more contiguous BLKs",
+    "heading assigned only after CC verification and never used to create a cut",
+    "KLEIGH heading rule passed: proven recurring passage may be Refrain; all other sections remain BLK[n]",
+    "duration was not used to trigger, qualify, disqualify, generate, or approve the KUT",
+    "customer-delivery identity and hash",
+    "playback and next-item transition proof",
+    "named owner or owner-authorized human approval"
+  ],
+  "duration_gate": {
+    "kut_duration_rule": "NONE",
+    "swsp_instrumental_minimum_seconds": 13
+  },
   "default_incomplete_state": "TRIAGE",
   "stage_is_uncertainty_state": false,
   "hold_is_default_uncertainty_state": false,
-  "stage_requirements": [
-    "exact LT-PIX SSOT identity and source hash",
-    "rights authority and lineage",
-    "complete canonical lyrics or transcript",
-    "all required human listening passes complete",
-    "complete sequential BLK identity for the LT-PIX",
-    "each BLK label supported rather than guessed",
-    "exact Start TP and End TP with audible opening and closing proof",
-    "no vocal cut mid-word, mid-phrase, or before the section's intended completion",
-    "each BLK meaning reviewed independently from whole-song meaning",
-    "CCs used only as evidence and never as structural definitions",
-    "no legacy fixed window represented as a BLK",
-    "sub-10-second control passed or exact locked exception applied",
-    "customer-delivery identity and hash",
-    "Twinkle/bookend and padding proof",
-    "playback and next-item transition proof",
-    "exact server-side checkout price proof",
-    "named human structural-listening approval"
-  ],
   "triage_rules": [
     "Any incomplete proof remains TRIAGE unless a specific hard-stop condition applies.",
-    "An uncertain section label remains null with evidence notes; it is never guessed.",
-    "An uncertain boundary remains unresolved; a convenient timestamp is never substituted.",
+    "An uncertain BLK boundary remains unresolved; a convenient timestamp is never substituted.",
+    "An uncertain KK/KOMBO heading remains BLK[n]; it is never guessed.",
     "TRIAGE records cannot be returned by the production storefront."
   ],
   "hold_conditions": [
+    "INSTRO-ONLY or INO-PIX offered as a KUT source",
     "legacy fixed window presented as a BLK",
     "known source or rights conflict",
-    "unsafe or contradictory public use not yet controlled",
-    "missing indispensable authority source with no valid recovery path",
-    "owner-directed stop",
+    "vocal cutoff or adjacent-BLK trespass",
+    "attempted heading-to-boundary substitution",
     "attempted CC-to-BLK substitution",
-    "attempted mass-generation bypass"
+    "attempted duration-triggered CC or KUT qualification",
+    "attempted noncontiguous KK-KOMBO",
+    "owner-directed stop"
   ],
   "unlock_requirements": {
-    "all_four_governance_artifacts_owner_locked": true,
-    "separate_owner_authorization_to_lift_freeze": true,
-    "automatic_mass_generation_resume": false
+    "all_governance_artifacts_owner_locked": true,
+    "separate_owner_authorization_to_generate": true,
+    "automatic_publication": false
   }
 }

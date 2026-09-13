@@ -1,10 +1,41 @@
 {
   "law": "k-kut-candidate-laws",
+  "authority_update": "2026-09-10",
   "rules": [
+    {
+      "id": "FULLMIX_SSOT_ONLY_FOR_ALL_KUTS",
+      "status": "active",
+      "rule": "Every KK, KK-KOMBO, mK, and sK is an exact excerpt copied directly from one of the 324 original FullMix LT-PIX SSOTs, with exact source identity and hash lineage."
+    },
     {
       "id": "NO_INSTRO_FOR_KKUT_BUYER_OR_DELIVERY",
       "status": "active",
-      "rule": "INSTRO / instrumental-only material is forbidden for K-KUT buyer flow, HUG customer selection, and II delivery paths."
+      "rule": "INSTRO-ONLY / INO-PIX material is separate inventory and is forbidden as a source for any KUT, K-KUT buyer flow, HUG customer selection, or II delivery path."
+    },
+    {
+      "id": "BLK_BEFORE_CC",
+      "status": "active",
+      "rule": "Establish and lock the complete sequential BLK map first. Only then may KKr CC an exact KK from one proven BLK or an exact KK-KOMBO across source-contiguous proven BLKs."
+    },
+    {
+      "id": "VERIFY_CC_BEFORE_HEADING",
+      "status": "active",
+      "rule": "Verify the CC against the original FullMix, including complete vocal onset, last vocal note, musical resolution, and no adjoining-BLK trespass. Only after that verification may a permitted KK/KOMBO heading be added."
+    },
+    {
+      "id": "HEADING_NEVER_CREATES_CUT",
+      "status": "active",
+      "rule": "A heading is post-capture KK/KOMBO metadata. It never establishes a BLK, moves a boundary, creates a CC, or changes captured audio."
+    },
+    {
+      "id": "KLEIGH_REFRAIN_OR_BLK_ONLY",
+      "status": "active",
+      "rule": "For KLEIGH works, a proven recurring chorus/title passage may display as Refrain or Refrain[n]. Every other section remains BLK[n]; guessed verse, chorus, and bridge labels are forbidden."
+    },
+    {
+      "id": "NO_KUT_DURATION_GATE",
+      "status": "active",
+      "rule": "Duration never triggers, generates, qualifies, disqualifies, or approves a KK, KK-KOMBO, mK, or sK. Time is locator and verification metadata only. The separate SWSP instrumental product rule requires at least 13 seconds and does not apply to these KUT tiers."
     },
     {
       "id": "NO_DIRECT_HOLIDAY_LT_PIX_FOR_SAME_HOLIDAY",

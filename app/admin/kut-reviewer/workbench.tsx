@@ -8,6 +8,8 @@ import {
   type ReviewerAction,
 } from "@/lib/admin/kutReviewer";
 
+import { SavedRecordings } from "./saved-recordings";
+
 type QueueResponse = { queue?: GovernedKutQueueItem[] };
 
 const SMALL_NUDGE = 0.05;
@@ -220,7 +222,7 @@ export function KutReviewerWorkbench() {
   }, [activeItem, audioBuffer, correctedEndSec, hasPlayedCurrent, pendingAction, queue.length]);
 
   if (isLoadingQueue) return <main className="min-h-screen bg-[#090806] p-8 text-stone-200">Loading governed KUT queue…</main>;
-  if (!activeItem) return <main className="min-h-screen bg-[#090806] p-8 text-stone-200"><h1 className="text-2xl font-black text-amber-200">P0 KUT REVIEWER</h1><p className="mt-4">No pending governed KUT review items in Supabase.</p><button onClick={() => void runTornMemoriesIntake()} disabled={isRunningIntake} className="mt-5 rounded-lg bg-amber-300 px-4 py-2 text-sm font-black text-black disabled:opacity-40">{isRunningIntake ? "Running Torn Memories intake…" : "Run Torn Memories intake"}</button>{queueError && <p className="mt-2 text-red-400">{queueError}</p>}</main>;
+  if (!activeItem) return <main className="min-h-screen bg-[#090806] p-8 text-stone-200"><h1 className="text-2xl font-black text-amber-200">P0 KUT REVIEWER</h1><SavedRecordings /><p className="mt-4">No pending governed KUT review items in Supabase.</p><button onClick={() => void runTornMemoriesIntake()} disabled={isRunningIntake} className="mt-5 rounded-lg bg-amber-300 px-4 py-2 text-sm font-black text-black disabled:opacity-40">{isRunningIntake ? "Running Torn Memories intake…" : "Run Torn Memories intake"}</button>{queueError && <p className="mt-2 text-red-400">{queueError}</p>}</main>;
 
   const windowStart = Math.max(activeItem.startSec, correctedEndSec - END_WINDOW_LEAD);
   const windowEnd = correctedEndSec + END_WINDOW_TAIL;
@@ -234,6 +236,7 @@ export function KutReviewerWorkbench() {
       </div>
       <p className="mt-1 text-sm text-stone-400">BLK → Sister Pair Unit → governed vocal CC. IN-PIX remains internal evidence; review audio is vocal LT-PIX only.</p>
     </header>
+    <div className="mx-auto max-w-[1500px] p-4"><SavedRecordings /></div>
     <section className="mx-auto grid max-w-[1500px] gap-4 px-4 py-4 lg:grid-cols-[320px_minmax(0,1fr)]">
       <aside className="rounded-2xl border border-stone-700 bg-stone-900/80 p-4">
         <p className="text-sm text-stone-300">Pending queue: <strong>{queue.length}</strong></p>
