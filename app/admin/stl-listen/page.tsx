@@ -7,7 +7,7 @@ type Item = {
   track_name: string;
   album: string | null;
   artist: string | null;
-  resolved: "GPMX_ORIGINAL_WAV" | null;
+  resolved: "GPMX_ORIGINAL_WAV" | "RECORDED_FULLMIX_WAV" | null;
   storedCopyLocated?: boolean;
   wavReady: boolean;
 };
@@ -18,6 +18,7 @@ type Queue = {
   resolved: number;
   unresolved: number;
   resolutionError?: string | null;
+  ownerAuthenticated?: boolean;
   error?: string;
 };
 
@@ -68,6 +69,13 @@ export default function StlListen() {
         <p className="mt-2 text-amber-400">Some WAV source connections are unavailable. All FullMix members remain listed.</p>
       )}
       {data && !data.error && <button onClick={downloadInventory} className="mt-3 rounded border border-stone-600 px-4 py-2">Download all {data.total} inventory rows</button>}
+      {data && !data.error && !data.ownerAuthenticated && <details className="mt-4">
+        <summary>Owner access to private WAV copies</summary>
+        <form method="post" action="/admin/access" className="mt-2 flex flex-wrap gap-2">
+          <label>Existing owner access token <input type="password" name="token" required autoComplete="off" className="ml-2 rounded bg-stone-900 p-2" /></label>
+          <button type="submit" className="rounded border border-stone-600 px-3 py-2">Open private playback</button>
+        </form>
+      </details>}
 
       <div className="mt-5 grid gap-4 lg:grid-cols-[360px_1fr]">
         <aside className="max-h-[70vh] overflow-auto">
@@ -97,7 +105,7 @@ export default function StlListen() {
                 autoPlay
                 className="w-full"
                 src={`/api/admin/stl-listen/audio/${encodeURIComponent(active.disco_track_id)}`}
-              /> : <p>{active.storedCopyLocated ? "A recorded private WAV copy is located. Authenticated playback is not connected." : "This FullMix remains in inventory. Its SSOT WAV link needs to be connected for playback."}</p>}
+              /> : <p>{active.storedCopyLocated ? "Your private WAV copy is located. Use owner access above to play it." : "This FullMix remains in inventory. Its SSOT WAV link needs to be connected for playback."}</p>}
             </>
           ) : (
             <p>Select an original-WAV FullMix master.</p>
