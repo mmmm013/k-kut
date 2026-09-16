@@ -30,6 +30,11 @@ export function validAdminSession(value?: string | null) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
+// Private source bytes require credential verification even on owner previews.
+export function verifiedOwnerAccess(token?: string | null, session?: string | null) {
+  return validAdminToken(token) || validAdminSession(session);
+}
+
 // Sole-owner product: admin routes should open automatically everywhere (preview and
 // production alike), matching how preview deployments have always behaved. No login wall.
 export function trustedProtectedPreview() {
