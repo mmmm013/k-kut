@@ -42,28 +42,29 @@ export default function StlListen() {
         Exact current FullMix Track IDs only. Listening does not create, approve, or release a KUT.
       </p>
 
-      {!data && <p className="mt-3">Resolving original WAV inventory…</p>}
+      {!data && <p className="mt-3">Loading FullMix inventory…</p>}
       {data?.error && <p className="mt-3 text-red-500">Failed to load inventory: {data.error}</p>}
       {data && !data.error && (
         <p className="mt-3">
-          {data.total} FullMix LT-PIX · {data.resolved} playable original WAV · exact inventory verified
+          {data.total} FullMix LT-PIX · {data.resolved} WAV sources linked · {data.unresolved} awaiting audio connection
         </p>
       )}
-      {data?.resolutionError && <p className="mt-2 text-amber-400">Audio source unavailable: {data.resolutionError}</p>}
+      {data?.resolutionError && (
+        <p className="mt-2 text-amber-400">The WAV source connection is unavailable. All FullMix members remain listed.</p>
+      )}
 
       <div className="mt-5 grid gap-4 lg:grid-cols-[360px_1fr]">
         <aside className="max-h-[70vh] overflow-auto">
           {data?.items.map((item) => (
             <button
               key={item.disco_track_id}
-              disabled={!item.wavReady}
               onClick={() => setActive(item)}
               className="mb-2 block w-full rounded border border-stone-700 p-3 text-left disabled:cursor-not-allowed disabled:opacity-40"
             >
               <b>{item.track_name}</b>
               <br />
               <small>
-                {item.artist} · {item.album} · original WAV ready
+                {item.disco_track_id} · {item.wavReady ? "WAV source linked" : "Awaiting audio connection"}
               </small>
             </button>
           ))}
@@ -75,12 +76,12 @@ export default function StlListen() {
               <p className="my-2 text-stone-400">
                 {active.artist} · {active.album}
               </p>
-              <audio
+              {active.wavReady ? <audio
                 controls
                 autoPlay
                 className="w-full"
                 src={`/api/admin/stl-listen/audio/${encodeURIComponent(active.disco_track_id)}`}
-              />
+              /> : <p>This FullMix remains in inventory. Its SSOT WAV link needs to be connected for playback.</p>}
             </>
           ) : (
             <p>Select an original-WAV FullMix master.</p>
