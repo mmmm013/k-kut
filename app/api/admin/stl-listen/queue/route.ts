@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSession";
 import { loadGpmxWavSources } from "@/lib/gpmx/stlWavResolver";
+import { buildFullMixListeningInventory } from "@/lib/gpmx/fullmixListeningInventory";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -38,35 +39,8 @@ export async function GET(request: NextRequest) {
     resolutionError = error instanceof Error ? error.message : String(error);
   }
 
-  const items = (rows.data || []).map((row) => {
-    const resolved = wavSources.has(String(row.disco_track_id));
-    return {
-      ...row,
-      wavReady: resolved,
-      resolved: resolved ? "GPMX_ORIGINAL_WAV" : null,
-    };
-  });
-  const resolved = items.filter((item) => item.wavReady).length;
-
-  if (resolutionError || resolved !== items.length) {
-    return NextResponse.json(
-      {
-        error: "fullmix_audio_authority_incomplete",
-        detail: resolutionError || `Exact Track-ID WAV resolution returned ${resolved} of ${items.length}`,
-        total: items.length,
-        resolved,
-        unresolved: items.length - resolved,
-      },
-      { status: 503 },
-    );
-  }
-
-  return NextResponse.json({
-    items,
-    total: items.length,
-    resolved,
-    unresolved: items.length - resolved,
-    wavReady: resolved,
-    source: "current private GPMx FullMix inventory; exact Track-ID original-WAV matches only",
-  });
+  return NextResponse.json(
+    buildFullMixListeningInventory(rows.data || [], wavSources, resolutionError),
+    { headers: { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex" } },
+  );
 }
