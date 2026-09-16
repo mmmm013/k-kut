@@ -8,6 +8,7 @@ type Item = {
   album: string | null;
   artist: string | null;
   resolved: "GPMX_ORIGINAL_WAV" | null;
+  storedCopyLocated?: boolean;
   wavReady: boolean;
 };
 
@@ -23,6 +24,20 @@ type Queue = {
 export default function StlListen() {
   const [data, setData] = useState<Queue | null>(null);
   const [active, setActive] = useState<Item | null>(null);
+  function downloadInventory() {
+    if (!data || data.error) return;
+    const cell = (value: string) => `"${(/^[=+@-]/.test(value) ? "'" + value : value).replaceAll('"', '""')}"`;
+    const rows = [
+      ["DISCO Track ID", "Title", "Album", "Artist", "Inventory lane", "Membership", "Audio connection", "Recorded private WAV copy located"],
+      ...data.items.map(item => [item.disco_track_id, item.track_name, item.album || "", item.artist || "", "FULLMIX", "ACTIVE", item.resolved || "UNRESOLVED", item.storedCopyLocated ? "YES" : "NO"]),
+    ];
+    const url = URL.createObjectURL(new Blob(["\uFEFF" + rows.map(row => row.map(cell).join(",")).join("\r\n")], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "GPM-STL-FullMix-Inventory.csv";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
 
   useEffect(() => {
     fetch("/api/admin/stl-listen/queue")
@@ -50,8 +65,9 @@ export default function StlListen() {
         </p>
       )}
       {data?.resolutionError && (
-        <p className="mt-2 text-amber-400">The WAV source connection is unavailable. All FullMix members remain listed.</p>
+        <p className="mt-2 text-amber-400">Some WAV source connections are unavailable. All FullMix members remain listed.</p>
       )}
+      {data && !data.error && <button onClick={downloadInventory} className="mt-3 rounded border border-stone-600 px-4 py-2">Download all {data.total} inventory rows</button>}
 
       <div className="mt-5 grid gap-4 lg:grid-cols-[360px_1fr]">
         <aside className="max-h-[70vh] overflow-auto">
@@ -81,7 +97,7 @@ export default function StlListen() {
                 autoPlay
                 className="w-full"
                 src={`/api/admin/stl-listen/audio/${encodeURIComponent(active.disco_track_id)}`}
-              /> : <p>This FullMix remains in inventory. Its SSOT WAV link needs to be connected for playback.</p>}
+              /> : <p>{active.storedCopyLocated ? "A recorded private WAV copy is located. Authenticated playback is not connected." : "This FullMix remains in inventory. Its SSOT WAV link needs to be connected for playback."}</p>}
             </>
           ) : (
             <p>Select an original-WAV FullMix master.</p>
