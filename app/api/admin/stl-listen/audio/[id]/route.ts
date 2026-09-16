@@ -1,7 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
-import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSession";
+import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminToken, verifiedOwnerAccess } from "@/lib/admin/adminSession";
 import { resolveGpmxWav } from "@/lib/gpmx/stlWavResolver";
+import { storedFullMixWavs } from "@/lib/gpmx/storedFullMixWavs";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -58,23 +59,26 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     .maybeSingle();
   if (track.error || !track.data) return unavailable();
 
-  const stored = await service
-    .from("gpmx_track_storage_audio_resolver_v1")
-    .select("resolved_bucket_id,resolved_object_name,resolver_state")
-    .eq("track_id", id)
-    .eq("resolver_state", "RESOLVED_FROM_STORAGE_OBJECT_ID")
-    .maybeSingle();
-
-  if (!stored.error && stored.data?.resolved_object_name) {
-    const signed = await service.storage
-      .from(String(stored.data.resolved_bucket_id || "tracks"))
-      .createSignedUrl(String(stored.data.resolved_object_name), 300);
-    if (!signed.error && signed.data?.signedUrl) return proxyAudio(request, signed.data.signedUrl);
+  const ownerAuthenticated = verifiedOwnerAccess(
+    request.headers.get("x-admin-token"), request.cookies.get(ADMIN_SESSION_COOKIE)?.value,
+  );
+  if (ownerAuthenticated) {
+    try {
+      const stored = (await storedFullMixWavs(service, [id])).get(id);
+      if (stored) {
+        const signed = await service.storage.from(stored.bucket).createSignedUrl(stored.path, 300);
+        if (!signed.error && signed.data?.signedUrl) {
+          const response = await proxyAudio(request, signed.data.signedUrl);
+          if (response.ok) return response;
+        }
+      }
+    } catch { /* Continue to the exact DISCO source if private storage is unavailable. */ }
   }
 
   try {
     const source = await resolveGpmxWav(id);
-    if (!source) return unavailable(503, "original WAV is not available in the current GPMx share authority");
+    if (!source) return unavailable(ownerAuthenticated ? 503 : 401,
+      ownerAuthenticated ? "No connected WAV for this exact FullMix ID" : "Owner authentication required for private WAV playback");
     if (!source.sessionCookie || !source.playlistUrl) return unavailable(503, "GPMx WAV session is unavailable");
     return proxyAudio(request, source.signedWavUrl, {
       accept: "audio/wav,audio/*;q=0.9,*/*;q=0.8",
