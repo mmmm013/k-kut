@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSession";
 import { loadGpmxWavSources } from "@/lib/gpmx/stlWavResolver";
 import { buildFullMixListeningInventory } from "@/lib/gpmx/fullmixListeningInventory";
+import { storedFullMixWavs } from "@/lib/gpmx/storedFullMixWavs";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -39,8 +40,14 @@ export async function GET(request: NextRequest) {
     resolutionError = error instanceof Error ? error.message : String(error);
   }
 
+  let storedSources = new Map<string, { bucket: string; path: string }>();
+  try {
+    storedSources = await storedFullMixWavs(service, (rows.data || []).map(row => String(row.disco_track_id)));
+  } catch (error) {
+    resolutionError = [resolutionError, error instanceof Error ? error.message : String(error)].filter(Boolean).join("; ");
+  }
   return NextResponse.json(
-    buildFullMixListeningInventory(rows.data || [], wavSources, resolutionError),
+    buildFullMixListeningInventory(rows.data || [], wavSources, resolutionError, storedSources),
     { headers: { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex" } },
   );
 }
