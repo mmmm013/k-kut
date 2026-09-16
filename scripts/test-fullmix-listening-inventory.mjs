@@ -27,9 +27,11 @@ assert.equal(withdrawn.items[0].wavReady, false);
 assert.equal(withdrawn.total, 324);
 const storage = buildFullMixListeningInventory(members, new Map([['1', {}]]), null, new Map([['1', {}], ['2', {}], ['outside', {}]]));
 assert.equal(storage.total, 324);
-assert.equal(storage.resolved, 2);
+assert.equal(storage.resolved, 1);
 assert.equal(storage.items[0].resolved, 'GPMX_ORIGINAL_WAV');
-assert.equal(storage.items[1].resolved, 'RECORDED_FULLMIX_WAV');
+assert.equal(storage.items[1].resolved, null);
+assert.equal(storage.items[1].wavReady, false);
+assert.equal(storage.items[1].storedCopyLocated, true);
 let requestedIds;
 const filters = [];
 const mockRows = [
