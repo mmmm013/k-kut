@@ -10,11 +10,12 @@ export function buildFullMixListeningInventory<T extends { disco_track_id: strin
     const id = String(row.disco_track_id);
     const disco = wavSources.has(id);
     const stored = storedSources.has(id);
-    const linked = disco || stored;
+    const linked = disco;
     return {
       ...row,
       wavReady: linked,
-      resolved: disco ? "GPMX_ORIGINAL_WAV" as const : stored ? "RECORDED_FULLMIX_WAV" as const : null,
+      resolved: disco ? "GPMX_ORIGINAL_WAV" as const : null,
+      storedCopyLocated: stored,
     };
   });
   const resolved = items.filter((item) => item.wavReady).length;
