@@ -1,0 +1,26 @@
+// Inventory membership comes from the current FullMix source list. Resolution
+// annotates those members; it never removes them or authorizes KUT production.
+export function buildFullMixListeningInventory<T extends { disco_track_id: string }>(
+  rows: T[],
+  wavSources: ReadonlyMap<string, unknown>,
+  resolutionError: string | null,
+) {
+  const items = rows.map((row) => {
+    const linked = wavSources.has(String(row.disco_track_id));
+    return {
+      ...row,
+      wavReady: linked,
+      resolved: linked ? "GPMX_ORIGINAL_WAV" as const : null,
+    };
+  });
+  const resolved = items.filter((item) => item.wavReady).length;
+  return {
+    items,
+    total: items.length,
+    resolved,
+    unresolved: items.length - resolved,
+    wavReady: resolved,
+    resolutionError,
+    source: "current GPMx FullMix membership; WAV links resolved separately by exact Track ID",
+  };
+}
