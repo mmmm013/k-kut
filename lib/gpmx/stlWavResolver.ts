@@ -1,6 +1,10 @@
 const MAX_SHARE_PAGE_BYTES = 12 * 1024 * 1024;
 const CACHE_TTL_MS = 5 * 60 * 1000;
 const SHARE_FETCH_TIMEOUT_MS = 45_000;
+// Recorded GPM STL connection, preserved from a7bfd8bc6a94ba632f9317fb3c9e8ca0b9c39e49.
+// Rechecked 2026-09-16: 191 exact current FullMix IDs resolve on the existing
+// deployment. This is a source lookup, never an inventory or promotion authority.
+const RECORDED_GPM_STL_SHARE_URL = "https://s.disco.ac/bvftlpcldiqy";
 
 const SHARE_REQUEST_HEADERS = {
   accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -43,10 +47,7 @@ let cachedSources: Promise<Map<string, GpmxWavSource>> | null = null;
 let cacheExpiresAt = 0;
 
 function approvedShareUrl(): string {
-  const raw = process.env.GPMX_STL_FULLMIX_SHARE_URL?.trim();
-  if (!raw) {
-    throw new Error("Current GPMx FullMix playlist authority is not configured");
-  }
+  const raw = process.env.GPMX_STL_FULLMIX_SHARE_URL?.trim() || RECORDED_GPM_STL_SHARE_URL;
   const url = new URL(raw);
   if (url.protocol !== "https:" || (url.hostname !== "s.disco.ac" && !url.hostname.endsWith(".disco.ac"))) {
     throw new Error("GPMx FullMix share URL is not an approved HTTPS audio host");
