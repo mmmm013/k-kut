@@ -6,7 +6,22 @@ select a.source_table || ':' || a.source_record_id as record_key,
   a.source_table, a.source_record_id,
   d.trim_start_sec as capture_start_sec, d.trim_end_sec as capture_end_sec,
   d.storage_bucket, d.storage_object_path,
-  o.id is not null as object_exists
+  case
+    when d.storage_bucket is not null and d.storage_object_path is not null
+      then o.id is not null
+    else null
+  end as object_exists,
+  a.audio_locator as recorded_audio_locator,
+  a.source_audio_path as recorded_source_audio_path,
+  case
+    when o.id is not null then 'STORAGE_OBJECT_PRESENT'
+    when d.storage_bucket is not null and d.storage_object_path is not null
+      then 'RECORDED_STORAGE_OBJECT_MISSING'
+    when a.audio_locator like '/Users/%' then 'LOCAL_PATH_NOT_CHECKED'
+    when a.audio_locator like 'public/%' then 'REPOSITORY_PATH_NOT_CHECKED'
+    else 'LOCATION_NOT_CHECKED'
+  end as audio_location_status,
+  a.provenance ->> 'active_state' as recorded_source_state
 from public.gpm_r4u_inventory_authority a
 left join public.gpmc_kk_rendered_deployable_inventory_ee d
   on a.source_table = 'public.gpmc_kk_rendered_deployable_inventory_ee'
