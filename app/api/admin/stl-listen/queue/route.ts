@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
-import { trustedProtectedPreview, validAdminToken } from "@/lib/admin/adminSession";
+import { ADMIN_SESSION_COOKIE, trustedProtectedPreview, validAdminToken, verifiedOwnerAccess } from "@/lib/admin/adminSession";
 import { loadGpmxWavSources } from "@/lib/gpmx/stlWavResolver";
 import { buildFullMixListeningInventory } from "@/lib/gpmx/fullmixListeningInventory";
 import { storedFullMixWavs } from "@/lib/gpmx/storedFullMixWavs";
@@ -47,7 +47,8 @@ export async function GET(request: NextRequest) {
     resolutionError = [resolutionError, error instanceof Error ? error.message : String(error)].filter(Boolean).join("; ");
   }
   return NextResponse.json(
-    buildFullMixListeningInventory(rows.data || [], wavSources, resolutionError, storedSources),
+    buildFullMixListeningInventory(rows.data || [], wavSources, resolutionError, storedSources,
+      verifiedOwnerAccess(request.headers.get("x-admin-token"), request.cookies.get(ADMIN_SESSION_COOKIE)?.value)),
     { headers: { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex" } },
   );
 }
