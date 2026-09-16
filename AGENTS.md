@@ -22,6 +22,15 @@ K-KUT is a G Putnam Music / GPEx invention platform for real-audio gifts and exa
 - Always run `npm run build` before any deploy-related change.
 - For public promo changes, verify live HTML contains expected text after deployment.
 
+## Foundational GPM STL source — preserve across handoffs
+- Owner foundation: `GPMx STL Playlist 08-09-26.csv`. Its internal playlist title is `Shine the Light (STL) - GPM Inventory 08-06-26`.
+- Exact file SHA-256: `4012cbd89703ab1b203815e555e54a4ce30a179f3d8eb435450bfe70f9625fb7`.
+- Persistent source reference: `libfile_a28d4f461a8481919a12c5fc2eaa5fe9`. Read an explicitly supplied local copy directly when available; otherwise resolve this existing source before requesting another export.
+- The foundation contains 523 unique Track IDs. Reconciliation on 2026-09-16 found all 324 current FullMix IDs in it, with zero missing and zero duplicate foundation IDs. The later paired FullMix/INSTRO-ONLY inventories determine current lane membership; the broader foundation does not make all 523 rows FullMix.
+- Every FM/LT-PIX WAV URL is the SSOT audio source for its derived KUTs. Preserve original WAVs and identity; perform operations only on clones and retain exact source lineage. Never invent or substitute a URL.
+- This CSV contains metadata and Track IDs, with no WAV URL column or HTTP links. Follow exact Track IDs to recorded WAV authority. Missing copied fields do not establish missing originals or remove inventory members.
+- Do not confuse this foundation with older `GPMC/gpm_stl.csv`, `GPMC/public/assets/stl.csv`, or an assistant-generated inventory report. Do not ask the owner to explain the foundation again.
+
 ## Current live promo
 - `https://k-kut.com`
 - `https://www.k-kut.com`
