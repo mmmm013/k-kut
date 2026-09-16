@@ -4,13 +4,17 @@ export function buildFullMixListeningInventory<T extends { disco_track_id: strin
   rows: T[],
   wavSources: ReadonlyMap<string, unknown>,
   resolutionError: string | null,
+  storedSources: ReadonlyMap<string, unknown> = new Map(),
 ) {
   const items = rows.map((row) => {
-    const linked = wavSources.has(String(row.disco_track_id));
+    const id = String(row.disco_track_id);
+    const disco = wavSources.has(id);
+    const stored = storedSources.has(id);
+    const linked = disco || stored;
     return {
       ...row,
       wavReady: linked,
-      resolved: linked ? "GPMX_ORIGINAL_WAV" as const : null,
+      resolved: disco ? "GPMX_ORIGINAL_WAV" as const : stored ? "RECORDED_FULLMIX_WAV" as const : null,
     };
   });
   const resolved = items.filter((item) => item.wavReady).length;
