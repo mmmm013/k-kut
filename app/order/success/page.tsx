@@ -5,7 +5,7 @@ import Stripe from "stripe";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "HUG order received | K-KUT",
+  title: "Order received | K-KUT",
   robots: { index: false, follow: false },
 };
 
@@ -44,15 +44,15 @@ export default async function OrderSuccessPage({
         </h1>
         <p className="mt-5 text-lg font-bold leading-8 text-[#FFF8E1]">
           {confirmed
-            ? "Your exact HUG is now in GPM’s controlled delivery review."
+            ? "Your selected music gift is in delivery preparation."
             : "No completed payment is confirmed for this page yet."}
         </p>
 
         {confirmed && (
           <ol className="mt-7 space-y-4 text-sm font-bold leading-7 text-[#D7CCC8]">
             <li>1. GPM verifies the purchased music moment and personal note.</li>
-            <li>2. GPM prepares one private, stream-only HUG link.</li>
-            <li>3. The link is sent to the recipient mobile number entered at checkout.</li>
+            <li>2. GPM prepares your private, stream-only gift link.</li>
+            <li>3. GPM uses your selected email or private-link delivery option. This confirmation does not mean the gift has already been delivered.</li>
           </ol>
         )}
 

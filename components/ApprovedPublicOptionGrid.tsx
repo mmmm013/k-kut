@@ -1,3 +1,4 @@
+import NonSmsDeliveryFields from "./NonSmsDeliveryFields";
 import ApprovedLyricHighlight from "@/components/ApprovedLyricHighlight";
 import {
   getApprovedLyricLines,
@@ -87,6 +88,7 @@ export default function ApprovedPublicOptionGrid({
                 <form action="/checkout" method="post" className="mt-5">
                   <input type="hidden" name="public_option_id" value={record.public_option_id} />
                   <input type="hidden" name="ii" value={record.kk_id_or_delivery_object_id} />
+                  <NonSmsDeliveryFields />
                   <button type="submit" className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white">
                     {buttonLabel || `Buy & send this ${record.product_family} · ${formatPrice(record.price_cents)}`}
                   </button>
