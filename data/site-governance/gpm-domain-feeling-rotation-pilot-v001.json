@@ -1,0 +1,284 @@
+{
+  "schema_version": "gpm-domain-feeling-rotation-pilot-v001",
+  "status": "GD_ADOPTED_DOCUMENTED_LOCKED_CANDIDATE_PREPARATION_ONLY",
+  "adopted_date": "2026-07-17",
+  "production_deployment_authorized": false,
+  "canonical_domains": {
+    "sentimeant.com": "feeling_and_occasion_discovery",
+    "sentimeants.com": "alias_to_canonical_sentimeant_experience_no_independent_rotation",
+    "k-kut.com": "approved_playback_selection_purchase_delivery",
+    "gputnammusic.com": "source_artist_catalog_authority"
+  },
+  "weekly_event": {
+    "name": "Friday Feeling Drop",
+    "cadence": "weekly_friday",
+    "clock_time": null,
+    "clock_time_status": "GD_SELECTION_REQUIRED_NO_INVENTED_TIME"
+  },
+  "lanes": [
+    {
+      "id": "im_sorry_repair",
+      "public_name": "I'm Sorry",
+      "presentation": "smaller_three_line_feature",
+      "status": "adopted"
+    },
+    {
+      "id": "thank_you_appreciation",
+      "public_name": "Thank You",
+      "presentation": "standard_rotation_lane",
+      "status": "adopted"
+    },
+    {
+      "id": "romance_sexy",
+      "public_name": "Romance & Sexy",
+      "presentation": "standard_rotation_lane_tasteful_adult",
+      "status": "adopted"
+    },
+    {
+      "id": "courage_overcoming",
+      "public_name": "Courage & Overcoming",
+      "presentation": "standard_rotation_lane",
+      "status": "adopted"
+    },
+    {
+      "id": "awesome_anniversary",
+      "public_name": "Awesome Anniversary",
+      "presentation": "distinct_occasion_lane",
+      "status": "adopted"
+    },
+    {
+      "id": "best_birthday",
+      "public_name": "Best Birthday",
+      "presentation": "distinct_occasion_lane",
+      "status": "adopted"
+    },
+    {
+      "id": "comfort_sympathy_grief",
+      "public_name": "Comfort & Sympathy",
+      "presentation": "gentle_non_exploitative_lane",
+      "status": "adopted_major_missing_theme"
+    }
+  ],
+  "review_queue": {
+    "trigger": "after_candidate_list_proof_pass_is_complete",
+    "priority_order": [
+      {
+        "source": "The Foundation",
+        "action": "IMMEDIATE_GD_REVIEW",
+        "purpose": "approve_touch_points_and_select_first_reviewable_KK_or_sK",
+        "status": "STAGED"
+      }
+    ]
+  },
+  "candidate_pool": [
+    {
+      "source": "The Foundation",
+      "primary_lane": "thank_you_appreciation",
+      "secondary_lane": "courage_overcoming",
+      "readiness": "HOLD_PARENT_AUDIO_READY_NO_II_GENERATION_TP_GD_MARK_PENDING",
+      "post_list_action": "IMMEDIATE_GD_REVIEW",
+      "evidence": {
+        "lt_pix_id": "LTPIX_0176",
+        "source_title": "THE FOUNDATION - DEMOCRACY",
+        "source_file": "361 - Elliott Sedgewick - THE FOUNDATION - DEMOCRACY .wav",
+        "source_sha256": "f1531d16ddaec27de352088e40bf7b39657db0e0481156d66c2ff4ddb8a5c5bf",
+        "parent_audio_status": "PASS85_PARENT_AUDIO_LOCK_CANDIDATE_QA_CLEAN",
+        "ii_status": "PARENT_AUDIO_READY_BUT_NO_II_GENERATION_YET",
+        "tp_status": "WAITING_FOR_GD_MARK"
+      }
+    },
+    {
+      "source": "Do It Again",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "HOLD_PARENT_KK_MAP_APPROVED_NO_FINAL_II_TWINKLE_OR_LIVE_ROUTE_PROOF",
+      "evidence": {
+        "lt_pix_id": "SBTRACK-008",
+        "source_title": "KLEIGH - DO IT AGAIN",
+        "parent_audio_file": "174 - KLEIGH - DO IT AGAIN.wav",
+        "parent_kk_count": 7,
+        "final_map_status": "KK_PARENT_SSOT_FINAL_APPROVED_MAP",
+        "packet_status": "SBTRACK_008_CLONE_SECOND_DISPATCH_THIRD_PACKET_REVIEWED_OK",
+        "label_sequence": "BLK1|BLK2|BLK3|BLK4|BLK5|BLK6|BLK7",
+        "dkk_rows": 7,
+        "nkk_rows": 7,
+        "final_ii_status": "NOT_PROVEN",
+        "twinkle_status": "NOT_PROVEN",
+        "live_route_status": "NOT_PROVEN"
+      }
+    },
+    {
+      "source": "Yours & Mine",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": "awesome_anniversary",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Got Me Smokin'",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Dreamer's Dance",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": "courage_overcoming",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Without a Soul",
+      "primary_lane": "im_sorry_repair",
+      "secondary_lane": "comfort_sympathy_grief",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Hang On",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": "comfort_sympathy_grief",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Ridin' Cloud 10",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "I Am a Fighter",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Salt of the Earth",
+      "primary_lane": "thank_you_appreciation",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Your Touch",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Misty Midnight Blue",
+      "primary_lane": "romance_sexy",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "I Do Swear",
+      "primary_lane": "awesome_anniversary",
+      "secondary_lane": "romance_sexy",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "My Rock",
+      "primary_lane": "thank_you_appreciation",
+      "secondary_lane": "awesome_anniversary",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Dark Cloud v4",
+      "primary_lane": "comfort_sympathy_grief",
+      "secondary_lane": "im_sorry_repair",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Awesome Anniversary sKs",
+      "primary_lane": "awesome_anniversary",
+      "secondary_lane": "romance_sexy",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Best Birthday sKs",
+      "primary_lane": "best_birthday",
+      "secondary_lane": "thank_you_appreciation",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Scherer / Poppin' Out / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Scherer / Fight Fright / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Scherer / Where Are the Smiles / INO-PIX SWSP",
+      "primary_lane": "comfort_sympathy_grief",
+      "secondary_lane": "im_sorry_repair",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Other approved Michael Scherer INO-PIX SWSPs",
+      "primary_lane": "AUDIBLE_MEANING_DECIDES",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Clay piano / Even if I Tried [f] / INO-PIX SWSP",
+      "primary_lane": "im_sorry_repair",
+      "secondary_lane": "comfort_sympathy_grief",
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Clay piano / No Luck w/ Luck / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Michael Clay piano / Til I'm Dyin' I'm Tryin' / INO-PIX SWSP",
+      "primary_lane": "courage_overcoming",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    },
+    {
+      "source": "Other approved Michael Clay piano INO-PIX SWSPs",
+      "primary_lane": "AUDIBLE_MEANING_DECIDES",
+      "secondary_lane": null,
+      "readiness": "PROOF_REQUIRED"
+    }
+  ],
+  "four_week_representation_required": [
+    "all_seven_lanes",
+    "michael_scherer_source_or_swsp",
+    "michael_clay_piano_or_swsp",
+    "vocal_and_instrumental_piano_presentation",
+    "older_and_newer_controlled_sources",
+    "awesome_anniversary_sk",
+    "best_birthday_sk"
+  ],
+  "release_gates": [
+    "controlled_source_and_rights",
+    "playable_audio",
+    "identity_and_source_binding",
+    "approved_audio_boundaries_and_natural_resolve",
+    "canonical_gpmx_twinkle_at_end",
+    "registry_status_proof",
+    "buyer_safe_copy",
+    "correct_domain_route",
+    "live_click_to_play_proof",
+    "no_autoplay",
+    "no_public_internal_metadata",
+    "single_canonical_sentimeant_rotation",
+    "production_bic_pass"
+  ],
+  "next_step": "continue_pilot_selection_manifest_v001_with_yours_and_mine",
+  "forbidden_in_this_lock": [
+    "production_deployment",
+    "pricing_change",
+    "product_change",
+    "checkout_change",
+    "audio_rebuild_or_substitution",
+    "twinkle_replacement",
+    "domain_reassignment",
+    "dirty_sentimeants_commerce_deployment"
+  ]
+}
