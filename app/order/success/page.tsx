@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Stripe from "stripe";
 
+import { validatePaidCheckout } from "@/lib/paidCheckoutValidation";
+import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
+
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
@@ -18,7 +21,8 @@ async function paymentConfirmed(sessionId: string) {
   try {
     const stripe = new Stripe(key);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    return session.payment_status === "paid";
+    return session.status === "complete" && validatePaidCheckout(session,
+      findApprovedPublicOptionByPublicOptionId(session.metadata?.public_option_id || "")) === null;
   } catch {
     return false;
   }
@@ -40,17 +44,17 @@ export default async function OrderSuccessPage({
           K-KUT · G Putnam Music
         </p>
         <h1 className="mt-4 text-4xl font-black">
-          {confirmed ? "Payment received." : "Order confirmation pending."}
+          {confirmed ? "Order received." : "Order confirmation pending."}
         </h1>
         <p className="mt-5 text-lg font-bold leading-8 text-[#FFF8E1]">
           {confirmed
             ? "Your selected music gift is in delivery preparation."
-            : "No completed payment is confirmed for this page yet."}
+            : "No completed order is confirmed for this page yet."}
         </p>
 
         {confirmed && (
           <ol className="mt-7 space-y-4 text-sm font-bold leading-7 text-[#D7CCC8]">
-            <li>1. GPM verifies the purchased music moment and personal note.</li>
+            <li>1. GPM verifies the selected music moment and personal note.</li>
             <li>2. GPM prepares your private, stream-only gift link.</li>
             <li>3. GPM uses your selected email or private-link delivery option. This confirmation does not mean the gift has already been delivered.</li>
           </ol>

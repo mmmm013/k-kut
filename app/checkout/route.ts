@@ -8,6 +8,8 @@ import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-brid
 
 import { parseNonSmsDelivery } from "@/lib/nonSmsDelivery";
 
+import { weekendPricing } from "@/lib/weekendPricing";
+
 export const runtime = "nodejs";
 
 const PRODUCT_LAW = {
@@ -123,6 +125,8 @@ export async function POST(request: NextRequest) {
   const siteOrigin = new URL(request.url).origin;
 
   try {
+    // Quote at session creation; existing free orders are never charged later.
+    const pricing = weekendPricing(law.priceCents);
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       client_reference_id: clientReference,
@@ -130,7 +134,7 @@ export async function POST(request: NextRequest) {
         quantity: 1,
         price_data: {
           currency: "usd",
-          unit_amount: law.priceCents,
+          unit_amount: pricing.amountCents,
           product_data: {
             name: `K-KUT ${option.product_family}`,
             description: "A private, stream-only music moment from G Putnam Music.",
@@ -145,6 +149,7 @@ export async function POST(request: NextRequest) {
         submit: { message: "K-KUT by G Putnam Music · private, stream-only delivery · no download." },
       },
       metadata: {
+        promotion_id: pricing.promotionId,
         delivery_method: delivery.method,
         recipient_email: delivery.recipientEmail,
         public_option_id: option.public_option_id,
@@ -157,7 +162,7 @@ export async function POST(request: NextRequest) {
         locked_price_cents: String(law.priceCents),
         checkout_authority: "current_ii_shared_product_law",
       },
-      payment_intent_data: {
+      ...(!pricing.free ? { payment_intent_data: {
         description: `K-KUT ${option.product_family}`,
         metadata: {
           public_option_id: option.public_option_id,
@@ -167,7 +172,7 @@ export async function POST(request: NextRequest) {
           locked_price_cents: String(law.priceCents),
           checkout_authority: "current_ii_shared_product_law",
         },
-      },
+      } } : {}),
     });
 
     if (!session.url) return returnToStore(request, "stripe-session-url-missing");

@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 function load(file, globals = {}) {
-  const ctx = { exports: {}, ...globals };
+  const ctx = { exports: {}, require: name => load('lib/' + name.replace('./', '') + '.ts'), ...globals };
   vm.runInNewContext(ts.transpileModule(fs.readFileSync(file, 'utf8'), {
     compilerOptions: { module: ts.ModuleKind.CommonJS },
   }).outputText, ctx);

@@ -11,11 +11,13 @@ export async function persistPaidFulfillment(record: Record<string, unknown>) {
   const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   const { error } = await client.from("stripe_webhook_events").upsert({
     id: `render_fulfillment_${eventId}`,
-    event_type: "k_kut.paid_fulfillment_recorded",
+    event_type: record.stripe_payment_status === "no_payment_required"
+      ? "k_kut.free_fulfillment_recorded" : "k_kut.paid_fulfillment_recorded",
     payload: record,
     processed_at: null,
   }, { onConflict: "id", ignoreDuplicates: true });
   if (error) throw new Error("paid_fulfillment_store_write_failed");
+  if (record.stripe_payment_status === "no_payment_required") return "durable_free_manual_fulfillment_recorded";
   return record.status === "paid_held_current_ii_authority"
     ? "durable_paid_hold_recorded" : "durable_paid_manual_fulfillment_recorded";
 }

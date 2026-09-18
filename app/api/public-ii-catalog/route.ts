@@ -1,3 +1,4 @@
+import { weekendPricing, FREE_WEEKEND_END } from "@/lib/weekendPricing";
 import { NextResponse } from "next/server";
 import { loadAllApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
 import { checkoutAvailability } from "@/lib/checkoutAvailability";
@@ -12,7 +13,8 @@ export async function GET() {
     ii_id: record.kk_id_or_delivery_object_id,
     product_family: record.product_family,
     inventory_family: record.inventory_family,
-    price_cents: record.price_cents,
+    price_cents: weekendPricing(record.price_cents).amountCents,
+    regular_price_cents: record.price_cents,
     display_title: record.display_title,
     interpretation_summary: record.interpretation_summary,
     intent_lane: record.intent_lane,
@@ -28,6 +30,7 @@ export async function GET() {
         ? "CONTROLLED_PURCHASE_CANARY_ACTIVE" : "PREVIEW_ONLY",
       message:
         "Only explicitly STAGE-authorized IIs are returned. Every other II remains held.",
+      free_weekend_ends_at: FREE_WEEKEND_END,
       inventoryCount: records.length,
       purchasableCount: records.filter((record) => record.payment_allowed).length,
       records,
