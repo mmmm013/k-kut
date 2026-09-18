@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import { loadAllApprovedPublicOptions } from "@/lib/publication-bridge/approvedPublicOptions";
+import { checkoutAvailability } from "@/lib/checkoutAvailability";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const checkoutEnabled = checkoutAvailability().enabled;
   const records = loadAllApprovedPublicOptions().map((record) => ({
     public_option_id: record.public_option_id,
     ii_id: record.kk_id_or_delivery_object_id,
@@ -16,13 +18,14 @@ export async function GET() {
     intent_lane: record.intent_lane,
     audio_delivery_url: record.audio_delivery_url,
     public_route: record.public_route,
-    payment_allowed: record.payment_allowed,
+    payment_allowed: record.payment_allowed && checkoutEnabled,
   }));
 
   return NextResponse.json(
     {
       ok: true,
-      status: "CONTROLLED_PURCHASE_CANARY_ACTIVE",
+      status: records.length === 0 ? "NO_PUBLIC_OPTIONS" : checkoutEnabled
+        ? "CONTROLLED_PURCHASE_CANARY_ACTIVE" : "PREVIEW_ONLY",
       message:
         "Only explicitly STAGE-authorized IIs are returned. Every other II remains held.",
       inventoryCount: records.length,
@@ -39,7 +42,7 @@ export async function GET() {
       status: 200,
       headers: {
         "Cache-Control": "no-store, max-age=0",
-        "X-KKUT-Controlled-Canary": "active",
+        "X-KKUT-Controlled-Canary": records.some(record => record.payment_allowed) ? "active" : "inactive",
         "X-KKUT-Inventory-Count": String(records.length),
         "X-KKUT-Purchasable-Count": String(
           records.filter((record) => record.payment_allowed).length,

@@ -58,7 +58,7 @@ for (const required of [
   "findApprovedPublicOptionByPublicOptionId",
   "stripe.checkout.sessions.create",
   "createPendingH2Order",
-  'process.env.VERCEL_ENV !== "production"',
+  '!checkoutProductionEnvironment()',
 ]) if (!checkout.includes(required)) fail(`shared checkout missing ${required}`);
 
 for (const required of ['action="/checkout"', 'name="public_option_id"', 'name="ii"'])

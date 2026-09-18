@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import { createCheckoutPendingOrderAuthority } from "@/lib/checkoutPendingOrderAuthority";
 import { createPendingH2Order } from "@/lib/h2PendingOrder";
 import { paymentRolloutStatus } from "@/lib/paymentRolloutStatus";
+import { checkoutProductionEnvironment } from "@/lib/checkoutAvailability";
 import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
 export const runtime = "nodejs";
@@ -53,7 +54,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  if (process.env.VERCEL_ENV !== "production") {
+  if (!checkoutProductionEnvironment()) {
     return returnToStore(request, "preview-payment-disabled");
   }
 
