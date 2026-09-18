@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "node:fs";
-import path from "node:path";
+import { persistPaidFulfillment } from "@/lib/paidFulfillmentStore";
+import { validatePaidCheckout } from "@/lib/paidCheckoutValidation";
 import Stripe from "stripe";
 import {
   consumePendingH2Order,
@@ -12,7 +12,6 @@ export const runtime = "nodejs";
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || "";
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
-const isVercelProduction = Boolean(process.env.VERCEL);
 const PERSONAL_NOTE_WORD_LIMIT = 13;
 const PERSONAL_NOTE_CHARACTER_LIMIT = 160;
 const LEGACY_CLIENT_REFERENCE_PREFIX = "H1|";
@@ -127,80 +126,6 @@ function parseClientReference(value: unknown): ParsedClientReference {
 function moneyFromCents(value: number | null | undefined) {
   if (typeof value !== "number") return "";
   return (value / 100).toFixed(2);
-}
-
-function writeLocalPaidFulfillmentPacket(record: Record<string, unknown>) {
-  const inboxDir = path.join(
-    process.cwd(),
-    "inbox",
-    "4pe-fulfillment",
-    "stripe-paid",
-  );
-  fs.mkdirSync(inboxDir, { recursive: true });
-
-  const createdAt =
-    cleanString(record.created_at, 80) || new Date().toISOString();
-  const eventId =
-    cleanString(record.stripe_event_id, 120) || `stripe_${Date.now()}`;
-
-  const filePath = path.join(
-    inboxDir,
-    `${createdAt.replace(/[:.]/g, "-")}-${eventId}.json`,
-  );
-
-  fs.writeFileSync(filePath, `${JSON.stringify(record, null, 2)}\n`);
-  return "local_mial_import_packet_written";
-}
-
-function stagePaidFulfillmentRecord(record: Record<string, unknown>) {
-  const authorityHeld = record.status === "paid_held_current_ii_authority";
-
-  if (!isVercelProduction) {
-    writeLocalPaidFulfillmentPacket(record);
-    return authorityHeld
-      ? "local_paid_hold_packet_written"
-      : "local_mial_import_packet_written";
-  }
-
-  const productionEvidence = {
-    fulfillment_id: record.fulfillment_id,
-    created_at: record.created_at,
-    status: record.status,
-    stripe_event_id: record.stripe_event_id,
-    stripe_event_type: record.stripe_event_type,
-    stripe_checkout_session_id: record.stripe_checkout_session_id,
-    stripe_payment_intent_id: record.stripe_payment_intent_id,
-    amount_paid_usd: record.amount_paid_usd,
-    core_product_name: record.product_name,
-    public_product_name: record.public_product_name,
-    bf_profile: record.bf_profile,
-    origin_domain: record.origin_domain,
-    selected_hug_id: record.selected_hug_id,
-    selected_public_option_id: record.selected_public_option_id,
-    current_ii_authority: record.current_ii_authority,
-    current_ii_product_family: record.current_ii_product_family,
-    current_ii_inventory_family: record.current_ii_inventory_family,
-    personal_note_present: record.personal_note_present,
-    personal_note_word_count: record.personal_note_word_count,
-    personal_note_placement: record.personal_note_placement,
-    client_reference_format: record.client_reference_format,
-    customer_email_present: record.customer_email_present,
-    customer_phone_present: record.customer_phone_present,
-    recipient_mobile_present: record.recipient_mobile_present,
-    recipient_mobile_source: record.recipient_mobile_source,
-    delivery_preference: record.delivery_preference,
-    durable_order_authority: "stripe_checkout_session",
-    manual_review_required: true,
-  };
-
-  console.info(
-    "K_KUT_PAID_FULFILLMENT_EVIDENCE",
-    JSON.stringify(productionEvidence),
-  );
-
-  return authorityHeld
-    ? "paid_held_current_ii_authority"
-    : "stripe_durable_manual_review_queue";
 }
 
 function enforceCurrentIiAuthority(
@@ -333,6 +258,7 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
       stripeCheckoutSessionId: session.id,
     });
 
+    if (pendingOrder.inventoryId !== session.metadata?.selected_hug_id) throw new Error("paid_order_selection_mismatch");
     selectedInventoryId = pendingOrder.inventoryId;
     referenceNote = pendingOrder.personalNote;
     publicProductName = pendingOrder.publicProductName;
@@ -346,7 +272,8 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
   return {
     ...record,
     ...noteFields,
-    product_name: "K-KUT HUG",
+    product_name: `K-KUT ${session.metadata?.product_family || publicProductName}`,
+    product_family: session.metadata?.product_family || "",
     public_product_name: publicProductName,
     bf_profile: bfProfile,
     origin_domain: originDomain,
@@ -463,12 +390,19 @@ export async function POST(req: NextRequest) {
 
   let fulfillmentQueueStatus = "event_acknowledged_no_fulfillment_action";
 
-  if (event.type === "checkout.session.completed") {
+  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
+    const session = event.data.object as Stripe.Checkout.Session;
+    if (session.payment_status !== "paid") {
+      return NextResponse.json({ ok: true, received: true, fulfillment_queue_status: "awaiting_confirmed_payment" });
+    }
+    const option = findApprovedPublicOptionByPublicOptionId(session.metadata?.public_option_id || "");
+    const paymentError = validatePaidCheckout(session, option);
+    if (paymentError) return NextResponse.json({ ok: false, error: paymentError }, { status: 409 });
     try {
       const record = enforceCurrentIiAuthority(
         await recordFromCheckoutSession(event),
       );
-      fulfillmentQueueStatus = stagePaidFulfillmentRecord(record);
+      fulfillmentQueueStatus = await persistPaidFulfillment(record);
     } catch (reason) {
       console.error(
         "H2_PENDING_ORDER_RESOLUTION_FAILED",
@@ -521,7 +455,7 @@ export async function GET() {
     checkout_session_creation: checkoutSessionCreationReady
       ? "configured"
       : "invalid_or_missing_live_secret_key",
-    handles: ["checkout.session.completed", "payment_intent.succeeded"],
+    handles: ["checkout.session.completed", "checkout.session.async_payment_succeeded", "payment_intent.succeeded"],
     exact_ii_capture:
       "h2_pending_order_token_to_selected_hug_id_plus_server_stripe_public_option_id",
     personal_note_capture: "optional_13_words_before_hug_content",
@@ -537,9 +471,8 @@ export async function GET() {
     payment_intent_rule:
       "Evidence only; payment_intent.succeeded never creates a second fulfillment packet.",
     production_fulfillment_mode: "manual_review_from_stripe_order",
-    local_packet_mode: isVercelProduction
-      ? "disabled_on_read_only_runtime"
-      : "local_mial_import_packet",
+    local_packet_mode: "disabled",
+    paid_record_store: "private_supabase_event_store",
     rule:
       "H2 recovers the exact selected II, optional 13-word note, BF profile, origin domain, and public product identity from a server-only pending-order record. No automatic SMS or download. Manual HUG fulfillment review remains required.",
   });
