@@ -11,35 +11,35 @@ const offers = [
   {
     name: "HUG",
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
-    heading: "A full music moment",
-    description:
-      "15 Comin' True HUG and KOMBO audio previews are published. Exact-price checkout remains held.",
-    href: "/hugs/comin-true#hugs",
-    cta: "Hear 15 HUGs",
+    heading: "A music moment to share",
+    status: "HUG · K-KUT",
+    description: "Find a song section that says what you mean.",
+    href: "/find?mode=hug",
+    cta: "Find a HUG",
     statusHref: "/hugz",
-    statusCta: "Browse HUGz Cards",
+    statusCta: "Explore HUGz Cards",
   },
   {
     name: "TUG",
     price: formatUsd(PRODUCT_OFFER_LAW.TUG.priceUsd),
-    heading: "A shorter music moment",
-    description:
-      "49 Comin' True TUG audio previews are published from meaningful lyric combinations.",
-    href: "/hugs/comin-true#tugs",
-    cta: "Hear 49 TUGs",
+    heading: "Say it with a lyric",
+    status: "TUG · shortKUT",
+    description: "Find a phrase or lyric that fits your message.",
+    href: "/find?mode=tug",
+    cta: "Find a TUG",
     statusHref: "/tug",
-    statusCta: "View all TUG status",
+    statusCta: "About TUGs",
   },
   {
     name: "BUG",
     price: formatUsd(PRODUCT_OFFER_LAW.BUG.priceUsd),
-    heading: "A mini music moment",
-    description:
-      "34 Comin' True BUGs and three Story BUG progressions are published under the strict mK source rules.",
-    href: "/hugs/comin-true#bugs",
-    cta: "Hear BUGs",
+    heading: "A little musical nudge",
+    status: "BUG · mini-KUT",
+    description: "Find a compact musical expression for someone on your mind.",
+    href: "/find?mode=bug",
+    cta: "Find a BUG",
     statusHref: "/bug",
-    statusCta: "View all BUG status",
+    statusCta: "About BUGs",
   },
 ] as const;
 
@@ -60,18 +60,12 @@ export default function HugPage() {
         </header>
 
         <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
-            Customer release review active
-          </p>
-          <h2 className="mt-3 text-3xl font-black">101 Comin&apos; True IIs are published now.</h2>
+          <h2 className="text-3xl font-black">What would you like to say?</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            Comin&apos; True audio is live. A LOVE LIKE THAT remains held, and exact-price payment links remain closed until corrected.
+            Start with your message. Explore music by feeling or occasion, then listen to the available choices.
           </p>
-          <Link
-            href="/hugs/comin-true"
-            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
-          >
-            Hear Comin&apos; True IIs
+          <Link href="/find" className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100">
+            Find the right music moment
           </Link>
         </section>
 
