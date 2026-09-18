@@ -49,6 +49,7 @@ type PendingH2OrderRow = {
   created_at: string;
   expires_at: string;
   stripe_event_id: string | null;
+  stripe_checkout_session_id: string | null;
 };
 
 function cleanText(value: unknown, max: number) {
@@ -68,7 +69,7 @@ function countWords(value: string) {
 function serverSupabase() {
   const url =
     process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || "";
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.GPMC_KUT_SUPABASE_SECRET_KEY || "";
 
   if (!url || !serviceRoleKey) {
     throw new Error("h2_pending_order_store_not_configured");
@@ -105,7 +106,7 @@ function normalizeRow(row: PendingH2OrderRow): PendingH2Order {
 export function h2PendingOrderStoreConfigured() {
   return Boolean(
     (process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL) &&
-      process.env.SUPABASE_SERVICE_ROLE_KEY,
+      (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.GPMC_KUT_SUPABASE_SECRET_KEY),
   );
 }
 
@@ -198,7 +199,7 @@ export async function consumePendingH2Order(
     .eq("status", "awaiting_payment")
     .gt("expires_at", now)
     .select(
-      "token,inventory_id,personal_note,bf_profile,origin_domain,public_product_name,core_offer_code,status,created_at,expires_at,stripe_event_id",
+      "token,inventory_id,personal_note,bf_profile,origin_domain,public_product_name,core_offer_code,status,created_at,expires_at,stripe_event_id,stripe_checkout_session_id",
     )
     .maybeSingle();
 
@@ -213,7 +214,7 @@ export async function consumePendingH2Order(
   const { data: existing, error: existingError } = await supabase
     .from(H2_TABLE)
     .select(
-      "token,inventory_id,personal_note,bf_profile,origin_domain,public_product_name,core_offer_code,status,created_at,expires_at,stripe_event_id",
+      "token,inventory_id,personal_note,bf_profile,origin_domain,public_product_name,core_offer_code,status,created_at,expires_at,stripe_event_id,stripe_checkout_session_id",
     )
     .eq("token", token)
     .maybeSingle();
@@ -225,7 +226,7 @@ export async function consumePendingH2Order(
   if (
     existing &&
     existing.status === "paid_received" &&
-    existing.stripe_event_id === stripeEventId
+    existing.stripe_checkout_session_id === stripeCheckoutSessionId
   ) {
     return normalizeRow(existing as PendingH2OrderRow);
   }

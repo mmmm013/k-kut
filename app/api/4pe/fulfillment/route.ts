@@ -107,12 +107,12 @@ export async function POST(req: NextRequest) {
     source_page: cleanString(body.source_page, 200) || "/browse",
     product_family: stableRecord.record.product_family,
     inventory_family: stableRecord.record.inventory_family,
-    holiday_set: cleanString(body.holiday_set, 80) || "mothers_day",
-    source_song: cleanString(body.source_song, 120) || "Thank You",
+    holiday_set: cleanString(body.holiday_set, 80),
+    source_song: "",
 
     selected_hug_id: selectedHugId,
     selected_public_option_id: selectedPublicOptionId,
-    selected_hug_title: selectedHugTitle || stableRecord.record.selected_hug_title,
+    selected_hug_title: stableRecord.record.selected_hug_title,
     sentiment_product_type: stableRecord.record.product_family,
 
     typed_feeling: cleanString(body.typed_feeling, 500),
@@ -127,7 +127,7 @@ export async function POST(req: NextRequest) {
     customer_phone: cleanString(body.customer_phone, 80),
 
     checkout_session_id: cleanString(body.checkout_session_id, 220),
-    stripe_payment_status: cleanString(body.stripe_payment_status, 80),
+    stripe_payment_status: "unverified",
     order_id: cleanString(body.order_id, 220),
 
     stable_ii_id: stableRecord.record.stable_ii_id,
