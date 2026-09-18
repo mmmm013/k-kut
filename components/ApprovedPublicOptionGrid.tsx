@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from "next/cache";
+import { weekendPricing } from "@/lib/weekendPricing";
 import NonSmsDeliveryFields from "./NonSmsDeliveryFields";
 import ApprovedLyricHighlight from "@/components/ApprovedLyricHighlight";
 import {
@@ -30,6 +32,8 @@ export default function ApprovedPublicOptionGrid({
   emptyTitle?: string;
   buttonLabel?: string;
 }) {
+  noStore();
+  const pricing = weekendPricing(0);
   const checkout = checkoutAvailability();
   const checkoutNotice = paymentRolloutBuyerNotice(checkout.rollout) || "Checkout is not available yet.";
 
@@ -54,6 +58,7 @@ export default function ApprovedPublicOptionGrid({
         </p>
       </div>
 
+      {pricing.free && <p className="mb-4">Free weekend: $0 for new orders until Monday, September 21 at 12:00:13 AM Central. Regular prices apply afterward.</p>}
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {records.map((record) => {
           const lyricLines = getApprovedLyricLines(
@@ -63,7 +68,7 @@ export default function ApprovedPublicOptionGrid({
           return (
             <article key={record.public_option_id} className="rounded-[1.75rem] border border-pink-200/15 bg-[#0d0711] p-5 shadow-xl">
               <p className="text-xs font-black uppercase tracking-[0.24em] text-[#FFD54F]">
-                {record.product_family} · {formatPrice(record.price_cents)} · {titleCase(record.intent_lane)}
+                {record.product_family} · {pricing.free ? "FREE · Regular " + formatPrice(record.price_cents) : formatPrice(record.price_cents)} · {titleCase(record.intent_lane)}
               </p>
               <h2 className="mt-3 text-2xl font-black">{record.display_title}</h2>
               <ApprovedLyricHighlight
@@ -90,7 +95,7 @@ export default function ApprovedPublicOptionGrid({
                   <input type="hidden" name="ii" value={record.kk_id_or_delivery_object_id} />
                   <NonSmsDeliveryFields />
                   <button type="submit" className="block w-full rounded-2xl bg-pink-200 px-5 py-3 text-center font-black text-[#160915] transition hover:bg-white">
-                    {buttonLabel || `Buy & send this ${record.product_family} · ${formatPrice(record.price_cents)}`}
+                    {pricing.free ? `Order this ${record.product_family} free · $0` : buttonLabel || `Buy & send this ${record.product_family} · ${formatPrice(record.price_cents)}`}
                   </button>
                 </form>
               ) : (

@@ -276,6 +276,8 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
   return {
     ...record,
     ...noteFields,
+    status: session.payment_status === "no_payment_required" ? "free_needs_manual_fulfillment" : record.status,
+    promotion_id: session.metadata?.promotion_id || "regular",
     product_name: `K-KUT ${session.metadata?.product_family || publicProductName}`,
     product_family: session.metadata?.product_family || "",
     public_product_name: publicProductName,
@@ -400,7 +402,7 @@ export async function POST(req: NextRequest) {
 
   if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
     const session = event.data.object as Stripe.Checkout.Session;
-    if (session.payment_status !== "paid") {
+    if (session.payment_status !== "paid" && session.payment_status !== "no_payment_required") {
       return NextResponse.json({ ok: true, received: true, fulfillment_queue_status: "awaiting_confirmed_payment" });
     }
     const option = findApprovedPublicOptionByPublicOptionId(session.metadata?.public_option_id || "");
