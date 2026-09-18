@@ -20,7 +20,7 @@ for (const required of [
   "createCheckoutPendingOrderAuthority",
   "paymentRolloutStatus",
   "findApprovedPublicOptionByPublicOptionId",
-  'process.env.VERCEL_ENV !== "production"',
+  '!checkoutProductionEnvironment()',
   "K_KUT_PAYMENT_ROLLOUT_STATUS",
   "current_rollout_day",
   "elapsed_days",

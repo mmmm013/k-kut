@@ -6,8 +6,8 @@ import {
 import type { ApprovedPublicOption } from "@/lib/publication-bridge/approvedPublicOptions";
 import {
   paymentRolloutBuyerNotice,
-  paymentRolloutStatus,
 } from "@/lib/paymentRolloutStatus";
+import { checkoutAvailability } from "@/lib/checkoutAvailability";
 
 function titleCase(value: string) {
   return String(value || "")
@@ -29,8 +29,8 @@ export default function ApprovedPublicOptionGrid({
   emptyTitle?: string;
   buttonLabel?: string;
 }) {
-  const rollout = paymentRolloutStatus();
-  const checkoutNotice = paymentRolloutBuyerNotice(rollout);
+  const checkout = checkoutAvailability();
+  const checkoutNotice = paymentRolloutBuyerNotice(checkout.rollout) || "Checkout is not available yet.";
 
   if (records.length === 0) {
     return (
@@ -83,7 +83,7 @@ export default function ApprovedPublicOptionGrid({
 
               <audio className="mt-5 w-full" controls controlsList="nodownload noplaybackrate" preload="metadata" src={record.audio_delivery_url} />
 
-              {rollout.enabled ? (
+              {checkout.enabled && record.payment_allowed ? (
                 <form action="/checkout" method="post" className="mt-5">
                   <input type="hidden" name="public_option_id" value={record.public_option_id} />
                   <input type="hidden" name="ii" value={record.kk_id_or_delivery_object_id} />
@@ -97,7 +97,7 @@ export default function ApprovedPublicOptionGrid({
                 </div>
               )}
               <p className="mt-3 text-xs font-bold leading-5 text-white/50">
-                {rollout.enabled
+                {checkout.enabled && record.payment_allowed
                   ? `Checkout verifies this exact approved II and its locked ${record.product_family} price before Stripe opens.`
                   : "Audio preview is live now. Payment stays closed until rollout allows checkout."}
               </p>
