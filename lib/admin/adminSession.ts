@@ -30,10 +30,10 @@ export function validAdminSession(value?: string | null) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
-// Sole-owner product: admin routes should open automatically everywhere (preview and
-// production alike), matching how preview deployments have always behaved. No login wall.
+// A public deployment URL is not proof of owner identity.
+// Preserve the existing signed owner session across admin tools.
 export function trustedProtectedPreview() {
-  return true;
+  return false;
 }
 
 export function adminSessionCookieValue() {

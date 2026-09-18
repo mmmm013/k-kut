@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { trustedProtectedPreview, validAdminToken } from '@/lib/admin/adminSession';
+import { ADMIN_SESSION_COOKIE, validAdminSession, trustedProtectedPreview, validAdminToken } from '@/lib/admin/adminSession';
 export const runtime = 'nodejs';
 function client(){const u=process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(),k=process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()||process.env.GPMC_KUT_SUPABASE_SECRET_KEY?.trim();return u&&k?createClient(u,k,{auth:{persistSession:false,autoRefreshToken:false}}):null}
 export async function GET(req:NextRequest){
-  if(!trustedProtectedPreview()&&!validAdminToken(req.headers.get('x-admin-token')))return NextResponse.json({error:'not_found'},{status:404});
+  if(!trustedProtectedPreview()&&!validAdminToken(req.headers.get('x-admin-token'))&&!validAdminSession(req.cookies.get(ADMIN_SESSION_COOKIE)?.value))return NextResponse.json({error:'not_found'},{status:404});
   const s=client();if(!s)return NextResponse.json({error:'service_client_unavailable'},{status:503});
   const active=await s.from('gpm_stl_fullmix_imports').select('id,source_name,totals').eq('active',true).maybeSingle();
   if(active.error)return NextResponse.json({error:'active_inventory_read_failed',detail:active.error.message},{status:502});
