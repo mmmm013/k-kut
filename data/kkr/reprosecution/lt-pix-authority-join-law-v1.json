@@ -1,0 +1,35 @@
+{
+  "schema_version": "KKUT_LT_PIX_AUTHORITY_JOIN_V1",
+  "status": "LOCKED_READ_ONLY_PROSECUTION",
+  "inventory_authority": "Full-track LT-PIX SSOT",
+  "cutting_authority": "Sequential BLKs bounded by exact InTP/VTP pairs",
+  "laws": {
+    "lyrics_required_for_every_vocal_lt_pix": true,
+    "top_cc_focus": true,
+    "legacy_song_section_labels_are_not_cutting_authority": true,
+    "clock_is_locator_only": true,
+    "derived_kks_are_not_authority": true,
+    "never_cut_a_vtp": true,
+    "never_infer_one_blk_end_from_next_blk_start": true,
+    "top50_is_ranking_not_boundary_authority": true,
+    "source_unavailable_in_session_is_triage_not_missing": true,
+    "blocked_missing_authority_requires_explicit_exhaustive_absence_proof": true,
+    "audio_mutation_allowed": false,
+    "database_write_allowed": false,
+    "deployment_allowed": false
+  },
+  "partitions": {
+    "STAGE": "Audio identity, full lyrics, sequential BLKs, and exact VTP/InTP boundary pairs are joined and internally consistent.",
+    "TRIAGE": "Authorities are reachable but incomplete, inconsistent, legacy-labeled, or awaiting listening approval.",
+    "TRIAGE_SESSION_ACCESS_REQUIRED": "A required authority exists outside the current session or its location has not been joined.",
+    "BLOCKED_MISSING_AUTHORITY": "An exhaustive, recorded search affirmatively proves the authority does not exist."
+  },
+  "required_join_fields": [
+    "lt_pix_id",
+    "source_audio_path",
+    "source_audio_sha256",
+    "full_lyrics",
+    "blks",
+    "vtp_intp_pairs"
+  ]
+}
