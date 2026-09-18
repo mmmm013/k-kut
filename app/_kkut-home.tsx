@@ -12,35 +12,35 @@ const offers = [
   {
     name: "HUG",
     price: formatUsd(PRODUCT_OFFER_LAW.HUG.priceUsd),
-    status: "15 Comin' True HUGs live",
-    description:
-      "Hear 15 released HUG and KOMBO moments from Comin' True. Exact-price checkout links remain held until corrected.",
-    href: "/hugs/comin-true#hugs",
-    cta: "Hear 15 HUGs",
+    heading: "A music moment to share",
+    status: "HUG · K-KUT",
+    description: "Find a song section that says what you mean.",
+    href: "/find?mode=hug",
+    cta: "Find a HUG",
     statusHref: "/hugz",
-    statusCta: "Browse HUGz Cards",
+    statusCta: "Explore HUGz Cards",
   },
   {
     name: "TUG",
     price: formatUsd(PRODUCT_OFFER_LAW.TUG.priceUsd),
-    status: "49 Comin' True TUGs live",
-    description:
-      "Hear 49 released phrase, hook, one-line, line-pair, line-trio, twist, idiom, and metaphor moments.",
-    href: "/hugs/comin-true#tugs",
-    cta: "Hear 49 TUGs",
+    heading: "Say it with a lyric",
+    status: "TUG · shortKUT",
+    description: "Find a phrase or lyric that fits your message.",
+    href: "/find?mode=tug",
+    cta: "Find a TUG",
     statusHref: "/tug",
-    statusCta: "View all TUG status",
+    statusCta: "About TUGs",
   },
   {
     name: "BUG",
     price: formatUsd(PRODUCT_OFFER_LAW.BUG.priceUsd),
-    status: "34 BUGs + 3 Story BUGs live",
-    description:
-      "Hear 34 released compact vocal moments plus three Story BUG progressions.",
-    href: "/hugs/comin-true#bugs",
-    cta: "Hear BUGs",
+    heading: "A little musical nudge",
+    status: "BUG · mini-KUT",
+    description: "Find a compact musical expression for someone on your mind.",
+    href: "/find?mode=bug",
+    cta: "Find a BUG",
     statusHref: "/bug",
-    statusCta: "View all BUG status",
+    statusCta: "About BUGs",
   },
 ] as const;
 
@@ -53,18 +53,12 @@ export default function KKutHome() {
         <HtbHero headline={standardHeadline} />
 
         <section className="rounded-[1.75rem] border border-pink-200/30 bg-pink-950/20 p-6">
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-pink-200">
-            Customer release review active
-          </p>
-          <h2 className="mt-3 text-3xl font-black">101 Comin&apos; True IIs are published now.</h2>
+          <h2 className="text-3xl font-black">What would you like to say?</h2>
           <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-pink-50/75">
-            Hear 15 HUGs, 49 TUGs, 34 BUGs, and three Story BUGs. The audio is live; purchase buttons remain held until exact-price Stripe links are corrected.
+            Start with your message. Explore music by feeling or occasion, then listen to the available choices.
           </p>
-          <Link
-            href="/hugs/comin-true"
-            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100"
-          >
-            Hear Comin&apos; True IIs
+          <Link href="/find" className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl border border-pink-200/60 px-5 py-3 text-sm font-black text-pink-100">
+            Find the right music moment
           </Link>
         </section>
 
@@ -97,14 +91,7 @@ export default function KKutHome() {
           ))}
         </section>
 
-        <section className="rounded-[1.75rem] border border-amber-300/25 bg-amber-950/20 p-6">
-          <p className="text-xs font-black uppercase tracking-[0.24em] text-amber-200">
-            Release control
-          </p>
-          <p className="mt-3 text-sm font-bold leading-7 text-amber-50/80">
-            Comin&apos; True is the governed public release. Other catalog audio, titles, delivery, and payment remain unavailable until approved. A missing payment button means the exact-price checkout link is not active—not that your browser failed.
-          </p>
-        </section>
+
 
         <footer className="rounded-[1.75rem] border border-[#8D6E63]/35 bg-black/20 p-5 text-sm font-bold leading-7 text-[#BCAAA4]">
           Need help? Contact reachus@gputnammusic.com.
