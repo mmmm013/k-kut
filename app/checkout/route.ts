@@ -6,6 +6,8 @@ import { paymentRolloutStatus } from "@/lib/paymentRolloutStatus";
 import { checkoutProductionEnvironment } from "@/lib/checkoutAvailability";
 import { findApprovedPublicOptionByPublicOptionId } from "@/lib/publication-bridge/approvedPublicOptions";
 
+import { parseNonSmsDelivery } from "@/lib/nonSmsDelivery";
+
 export const runtime = "nodejs";
 
 const PRODUCT_LAW = {
@@ -62,6 +64,8 @@ export async function POST(request: NextRequest) {
   const publicOptionId = safeId(formData.get("public_option_id"));
   const inventoryId = safeId(formData.get("ii"));
   const personalNote = normalizePersonalNote(formData.get("personal_note"));
+  const delivery = parseNonSmsDelivery(formData.get("delivery_method"), formData.get("recipient_email"));
+  if (!delivery) return returnToStore(request, "invalid-delivery-selection");
 
   if (!publicOptionId || !inventoryId) {
     return returnToStore(request, "invalid-selection");
@@ -136,17 +140,13 @@ export async function POST(request: NextRequest) {
       }],
       success_url: `${siteOrigin}/order/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteOrigin}${option.public_route}?checkout=cancelled`,
-      phone_number_collection: { enabled: true },
-      custom_fields: [{
-        key: "recipientmobile",
-        label: { type: "custom", custom: "Recipient mobile number" },
-        type: "text",
-        text: { minimum_length: 7, maximum_length: 20 },
-      }],
+      phone_number_collection: { enabled: false },
       custom_text: {
         submit: { message: "K-KUT by G Putnam Music · private, stream-only delivery · no download." },
       },
       metadata: {
+        delivery_method: delivery.method,
+        recipient_email: delivery.recipientEmail,
         public_option_id: option.public_option_id,
         selected_hug_id: inventoryId,
         product_family: option.product_family,

@@ -1,0 +1,11 @@
+const fs = require("node:fs"), vm = require("node:vm"), ts = require("typescript"), assert = require("node:assert/strict");
+const ctx = { exports: {} };
+vm.runInNewContext(ts.transpileModule(fs.readFileSync("lib/nonSmsDelivery.ts", "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText, ctx);
+const parse = ctx.exports.parseNonSmsDelivery;
+assert.equal(parse(null, null).method, "share_link");
+assert.equal(parse("share_link", "ignored@example.com").recipientEmail, "");
+assert.equal(parse("email", " recipient@example.com ").recipientEmail, "recipient@example.com");
+for (const email of ["", "not-email", "a\nb@example.com", "a".repeat(255)+"@example.com"]) assert.equal(parse("email", email), null);
+assert.equal(parse("sms", "+18008483161"), null);
+assert.equal(parse("bogus", null), null);
+console.log("9 non-SMS delivery assertions passed");

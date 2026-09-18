@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { parseNonSmsDelivery } from "@/lib/nonSmsDelivery";
 import { persistPaidFulfillment } from "@/lib/paidFulfillmentStore";
 import { validatePaidCheckout } from "@/lib/paidCheckoutValidation";
 import Stripe from "stripe";
@@ -268,6 +269,9 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
 
   const noteFields = personalNoteFields(session.metadata, referenceNote);
   const recipientMobile = checkoutTextField(session, "recipientmobile");
+  const delivery = session.metadata?.delivery_method
+    ? parseNonSmsDelivery(session.metadata.delivery_method, session.metadata.recipient_email) : null;
+  if (session.metadata?.delivery_method && !delivery) throw new Error("invalid_paid_delivery_selection");
 
   return {
     ...record,
@@ -290,6 +294,8 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
     customer_phone_present: Boolean(
       session.customer_details?.phone || recipientMobile,
     ),
+    delivery_method: delivery?.method || "legacy_sms",
+    recipient_email: delivery?.recipientEmail || "",
     recipient_mobile: recipientMobile,
     recipient_mobile_present: Boolean(recipientMobile),
     recipient_mobile_source: recipientMobile
@@ -300,7 +306,9 @@ async function recordFromCheckoutSession(event: Stripe.Event) {
       session.metadata?.public_option_id,
     ),
     client_reference_format: parsedReference.format,
-    delivery_preference: selectedInventoryId
+    delivery_preference: delivery
+      ? delivery.method === "email" ? "fulfill_exact_selected_ii_by_email" : "prepare_private_link_for_buyer_to_share"
+      : selectedInventoryId
       ? recipientMobile
         ? "fulfill_exact_selected_ii_to_recipient_mobile"
         : "manual_review_missing_recipient_mobile"
